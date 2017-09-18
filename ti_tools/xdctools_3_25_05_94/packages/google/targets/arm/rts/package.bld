@@ -1,0 +1,36 @@
+/* 
+ *  Copyright (c) 2011 Texas Instruments and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *  Contributors:
+ *      Texas Instruments - initial implementation
+ *
+ * 
+ */
+var RtsBuild = xdc.loadCapsule('xdc/runtime/build.xs');
+var KnlBuild = xdc.loadCapsule('xdc/runtime/knl/build.xs');
+
+Pkg.makePrologue = RtsBuild.makePrologue;
+Pkg.otherFiles = ["package.bld"];
+Pkg.otherSrcs = Pkg.otherFiles;
+
+/* clean lib folder */
+Pkg.generatedFiles.$add("lib/");
+
+var cobjs = RtsBuild.objs.concat(KnlBuild.c_objs);
+for (var i = 0; i < Build.targets.length; i++) {
+    var targ = Build.targets[i];
+    if (targ.rts == Pkg.name) {
+        var lib = Pkg.addLibrary("lib/" + Pkg.name, targ);
+        lib.addObjects(cobjs);
+    }
+}
+
+/*
+ *  @(#) google.targets.arm.rts; 1, 0, 0,57; 12-20-2013 16:12:29; /db/ztree/library/trees/xdctargets/xdctargets-g41x/src/ xlibrary
+
+ */
+

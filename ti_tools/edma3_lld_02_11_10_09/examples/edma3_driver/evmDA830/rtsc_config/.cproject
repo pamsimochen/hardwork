@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule configRelations="2" moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.ti.ccstudio.buildDefinitions.C6000.Default.1164666266">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.ti.ccstudio.buildDefinitions.C6000.Default.1164666266" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.rtsc.xdctools.parsers.ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="cmd" artifactName="configPkg/linker" buildProperties="" description="" id="com.ti.ccstudio.buildDefinitions.C6000.Default.1164666266" name="Debug" parent="com.ti.ccstudio.buildDefinitions.C6000.Default">
+					<folderInfo id="com.ti.ccstudio.buildDefinitions.C6000.Default.1164666266.1403311756" name="/" resourcePath="">
+						<toolChain id="com.ti.ccstudio.buildDefinitions.C6000_7.2.exe.DebugToolchain.45630580" name="TI Code Generation Tools" superClass="com.ti.ccstudio.buildDefinitions.C6000_7.2.exe.DebugToolchain" targetTool="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.559842170">
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.1249997881" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+								<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=com.ti.ccstudio.deviceModel.C6000.GenericC674xDevice"/>
+								<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
+								<listOptionValue builtIn="false" value="OUTPUT_FORMAT=ELF"/>
+								<listOptionValue builtIn="false" value="CCS_MBS_VERSION=5.1.0"/>
+								<listOptionValue builtIn="false" value="XDC_VERSION=3.22.1.21"/>
+								<listOptionValue builtIn="false" value="RTSC_PRODUCTS=com.ti.rtsc.SYSBIOS:6.32.2.39;"/>
+								<listOptionValue builtIn="false" value="PROJECT_KIND=org.eclipse.rtsc.xdctools.buildDefinitions.XDC.ProjectKind_Configuration"/>
+								<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=rts6740.lib"/>
+								<listOptionValue builtIn="false" value="IS_ASSEMBLY_ONLY=false"/>
+								<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE="/>
+								<listOptionValue builtIn="false" value="OUTPUT_TYPE=rtscConfiguration"/>
+								<listOptionValue builtIn="false" value="LINK_ORDER="/>
+							</option>
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.1729801027" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="7.2.3" valueType="string"/>
+							<targetPlatform id="com.ti.ccstudio.buildDefinitions.C6000_7.2.exe.targetPlatformDebug.186556331" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.C6000_7.2.exe.targetPlatformDebug"/>
+							<builder buildPath="${workspace_loc:/edma3_drv_bios6_da830_st_sample_configuration/Debug}" id="com.ti.ccstudio.buildDefinitions.C6000_7.2.exe.builderDebug.933807684" name="GNU Make.Debug" superClass="com.ti.ccstudio.buildDefinitions.C6000_7.2.exe.builderDebug"/>
+							<tool id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.559842170" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool">
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.XDC_PATH.1169237848" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.XDC_PATH" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${BIOS_CG_ROOT}/packages&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;../../../../../packages&quot;"/>
+								</option>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.OUTPUT_DIR.643558379" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.OUTPUT_DIR" value="&quot;configPkg&quot;" valueType="string"/>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.TARGET.414358009" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.TARGET" value="ti.targets.elf.C674" valueType="string"/>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM.1562143759" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM" value="ti.platforms.evmDA830" valueType="string"/>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.BUILD_PROFILE.827330388" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.BUILD_PROFILE" value="debug" valueType="string"/>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.CODEGEN_TOOL_DIR.1978424516" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.CODEGEN_TOOL_DIR" value="&quot;${CG_TOOL_ROOT}&quot;" valueType="string"/>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM_RAW.847270132" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM_RAW" value="ti.platforms.evmDA830" valueType="string"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="edma3_drv_bios6_da830_st_sample.cfg|Copy of edma3_drv_bios6_da830_st_sample.cfg" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.ti.ccstudio.buildDefinitions.C6000.Default.1800299584">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.ti.ccstudio.buildDefinitions.C6000.Default.1800299584" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.rtsc.xdctools.parsers.ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="cmd" artifactName="configPkg/linker" buildProperties="" description="" id="com.ti.ccstudio.buildDefinitions.C6000.Default.1800299584" name="Release" parent="com.ti.ccstudio.buildDefinitions.C6000.Default">
+					<folderInfo id="com.ti.ccstudio.buildDefinitions.C6000.Default.1800299584.59732742" name="/" resourcePath="">
+						<toolChain id="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.DebugToolchain.1531104011" name="TI Code Generation Tools" superClass="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.DebugToolchain" targetTool="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.1450105518">
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.801363089" name="Code Generation tools version" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="6.1.11" valueType="string"/>
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.647894777" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+								<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=com.ti.ccstudio.deviceModel.C6000.GenericC674xDevice"/>
+								<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
+								<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE="/>
+								<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=rts6740.lib"/>
+								<listOptionValue builtIn="false" value="IS_ASSEMBLY_ONLY=false"/>
+								<listOptionValue builtIn="false" value="CCS_MBS_VERSION=4.0.1"/>
+								<listOptionValue builtIn="false" value="XDC_VERSION=3.15.02.62"/>
+								<listOptionValue builtIn="false" value="RTSC_PRODUCTS=com.ti.rtsc.DSPBIOS:6.21.00.06.eng;"/>
+								<listOptionValue builtIn="false" value="PROJECT_KIND=org.eclipse.rtsc.xdctools.buildDefinitions.XDC.ProjectKind_Configuration"/>
+							</option>
+							<targetPlatform id="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.targetPlatformDebug.782221629" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.targetPlatformDebug"/>
+							<builder buildPath="${workspace_loc:/edma3_drv_bios6_da830_st_sample_configuration/Release}" id="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.builderDebug.340103999" keepEnvironmentInBuildfile="false" name="GNU Make" superClass="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.builderDebug"/>
+							<tool id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.1450105518" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool">
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.XDC_PATH.329707899" name="Package repositories (--xdcpath)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.XDC_PATH" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${BIOS_CG_ROOT}/packages&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;../../../../../packages&quot;"/>
+								</option>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.OUTPUT_DIR.1932860449" name="Output directory (-o)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.OUTPUT_DIR" value="&quot;configPkg&quot;" valueType="string"/>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.TARGET.1515652371" name="Target (-t)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.TARGET" value="ti.targets.C674" valueType="string"/>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.PLATFORM.1982073656" name="Platform (-p)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.PLATFORM" value="ti.platforms.evmDA830" valueType="string"/>
+								<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.CODEGEN_TOOL_DIR.221430812" name="Code generation tool directory (-c)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.CODEGEN_TOOL_DIR" value="&quot;${CG_TOOL_ROOT}&quot;" valueType="string"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="edma3_drv_bios6_da830_st_sample.cfg|Copy of edma3_drv_bios6_da830_st_sample.cfg" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="edma3_drv_bios6_da830_st_sample_configuration.com.ti.ccstudio.buildDefinitions.C6000.ProjectType.5132074" name="C6000" projectType="com.ti.ccstudio.buildDefinitions.C6000.ProjectType"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+</cproject>

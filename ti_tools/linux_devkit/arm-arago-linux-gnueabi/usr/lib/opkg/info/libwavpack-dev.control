@@ -1,0 +1,14 @@
+Package: libwavpack-dev
+Version: 4.60.1-r0.6
+Description: WavPack is a completely open audio compression format providing lossless, high-quality lossy, and a unique hybrid compression mode.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: BSD
+Architecture: armv7a
+OE: wavpack
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libwavpack1 (= 4.60.1-r0.6), libwavpack1
+Recommends: libc6-dev, libwavpack-dev
+Source: http://wavpack.com/wavpack-4.60.1.tar.bz2

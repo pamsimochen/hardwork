@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EDMA3 LLD 02.11.10 Help
+Bundle-SymbolicName: com.ti.sdo.edma3.rtscRegistry_02.11.10;singleton:=true
+Bundle-Version: 02.11.10
+Bundle-Activator: org.eclipse.rtsc.xdctools.ui.CCSActivator
+Bundle-Vendor: Texas Instruments
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.help,
+ org.eclipse.rtsc.xdctools.ui
+Eclipse-LazyStart: true

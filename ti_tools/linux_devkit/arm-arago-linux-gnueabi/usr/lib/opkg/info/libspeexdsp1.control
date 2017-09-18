@@ -1,0 +1,13 @@
+Package: libspeexdsp1
+Version: 1.1+1.2rc1-r2.6
+Description: Speex is an Open Source/Free Software patent-free audio compression format designed for speech.
+Section: libs/multimedia
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: BSD
+Architecture: armv7a
+OE: speex
+Homepage: http://www.speex.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://downloads.us.xiph.org/releases/speex/speex-1.2rc1.tar.gz

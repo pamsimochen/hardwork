@@ -1,0 +1,13 @@
+Package: libsdl-1.2-0
+Version: 1.2.14-r2.8.6
+Description: Simple DirectMedia Layer (DirectFB and Framebuffer support)
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: libsdl-x11
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2), libts-1.0-0 (>= 1.0+gitr0+5f48c7b878862b67ba61)
+Source: http://www.libsdl.org/release/SDL-1.2.14.tar.gz

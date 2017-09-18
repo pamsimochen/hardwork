@@ -1,0 +1,143 @@
+From 9b0c8ad5265435c09bd6a54b53e158bfdd9d7ce7 Mon Sep 17 00:00:00 2001
+From: Deepa <deepa_g@ti.com>
+Date: Thu, 5 Apr 2012 18:19:33 +0530
+Subject: [PATCH 1/1]  Bug Fix: SDOCM00089891
+
+      - This fixes bug SDOCM00089891: [Capture VIP] Disabling of VIP port in
+        NMI interrupt when VIP parser overflows should be configurable
+
+      Analysis & Resolution:
+         1. By default capture driver disables the VIP Ports whenever overflow
+	    occurs
+	 2. IOCTL_VPS_CAPT_DISABLE_PORT_ON_OVERFLOW interface is provided to
+	    the application whether to disable or not to disable VIP Ports
+	    whenever overflow occurs
+
+Signed-off-by: Sujith <sujith.s@ti.com>
+---
+ .../vps/drivers/capture/src/vpsdrv_captureApi.c    |   34 +++++++++++++++++--
+ .../vps/drivers/capture/src/vpsdrv_capturePriv.h   |    2 +
+ pspdrivers_/packages/ti/psp/vps/vps_capture.h      |   27 +++++++++++++++
+ 3 files changed, 59 insertions(+), 4 deletions(-)
+
+diff --git a/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_captureApi.c b/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_captureApi.c
+index 454e1a1..2ef4cbd 100755
+--- a/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_captureApi.c
++++ b/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_captureApi.c
+@@ -26,6 +26,8 @@ Int32 Vps_captInit (  )
+      */
+     memset ( &gVps_captCommonObj, 0, sizeof ( gVps_captCommonObj ) );
+ 
++    gVps_captCommonObj.disPortonOverflow = TRUE;
++
+     /*
+      * create driver locks
+      */
+@@ -53,11 +55,15 @@ Int32 Vps_captInit (  )
+          */
+         return status;
+     }
+-
+-    status = Vem_registerVipIntr(&Vps_CaptOverflowCallback);
+-    if(status != FVID2_SOK)
++    
++    if (gVps_captCommonObj.disPortonOverflow)
+     {
+-       return status;
++        status = Vem_registerVipIntr(&Vps_CaptOverflowCallback);
++        if (status != FVID2_SOK)
++        {
++           return status;
++        }
++    
+     }
+ 
+     if ( status == FVID2_SOK )
+@@ -683,6 +689,7 @@ Int32 Vps_captControl ( Fdrv_Handle handle, UInt32 cmd,
+     Int32                       status;
+     Vps_CaptVipTiledMem        *tiledMem;
+     Vps_CaptVipTiledMemInfo    *tiledMemInfo;
++    UInt32                      disPortonOverflow;
+ 
+     /*
+      * check if global handle, IOCTLs not support for global handles
+@@ -778,6 +785,25 @@ Int32 Vps_captControl ( Fdrv_Handle handle, UInt32 cmd,
+                 }
+                 break;
+ 
++            case IOCTL_VPS_CAPT_DISABLE_PORT_ON_OVERFLOW:
++                disPortonOverflow = (UInt32 )cmdArgs;
++                if (gVps_captCommonObj.disPortonOverflow != disPortonOverflow)
++                {
++                    gVps_captCommonObj.disPortonOverflow = disPortonOverflow;
++                    if (disPortonOverflow)
++                    {
++                        /**Register VIP Interrupt on Overflow*/
++                        status = Vem_registerVipIntr(&Vps_CaptOverflowCallback);
++                    }
++                    else
++                    {
++                        /**Unregister VIP Interrupt on Overflow*/
++                        Vem_unRegisterVipIntr();
++                        status = FVID2_SOK;
++                    }
++                }
++                break;
++
+             default:
+                 /*
+                  * illegal IOCTL
+diff --git a/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_capturePriv.h b/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_capturePriv.h
+index e492304..cdb299a 100755
+--- a/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_capturePriv.h
++++ b/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_capturePriv.h
+@@ -716,6 +716,8 @@ typedef struct
+     Void   *dropDataAddr;
+ 
+     Vps_CaptVipTiledMem tiledMem;
++    /* Flag to disable or not to disable VIP Ports on Overflow*/
++    UInt32 disPortonOverflow;
+ 
+ } Vps_CaptCommonObj;
+ 
+diff --git a/pspdrivers_/packages/ti/psp/vps/vps_capture.h b/pspdrivers_/packages/ti/psp/vps/vps_capture.h
+index c7b9495..f336dbf 100755
+--- a/pspdrivers_/packages/ti/psp/vps/vps_capture.h
++++ b/pspdrivers_/packages/ti/psp/vps/vps_capture.h
+@@ -596,6 +596,33 @@
+  */
+ #define IOCTL_VPS_CAPT_GET_BACK_TILER_MEM   (VPS_CAPT_IOCTL_BASE + 0x0013u)
+ 
++/*
++ *  Advanced IOCTL for capture driver.
++ *  Used for Debug Purpose
++ */
++ 
++/**
++ * \brief Disables VIP Ports on Overflow
++ *
++ * This IOCTL disable or not to disable VIP Ports based on the cmdArgs
++ * parameter whenever Overflow occurs
++ * 
++ * By default capture driver disables the VIP Ports whenever overflow occurs
++ *
++ * So Application is supposed to call reset and restart IOCTL for 
++ * all platforms (TI816x ,TI814x and TI813x) if not capture driver
++ * may get hung up.
++ *
++ *  Note: This IOCTL applies to the global handle as this is used across
++ *  all handles.
++ *
++ * \param cmdArgs       [IN]  UInt32 Flag to disable or not to disable VIP ports
++ *                                   on Overflow
++ * \param cmdArgsStatus [OUT] NULL
++ *
++ * \return FVID2_SOK
++*/
++#define IOCTL_VPS_CAPT_DISABLE_PORT_ON_OVERFLOW  (VPS_CAPT_IOCTL_BASE + 0x0014u)
+ 
+ /* @} */
+ 
+-- 
+1.6.5.1.1367.gcd48
+

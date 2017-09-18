@@ -1,0 +1,1272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.fc.dskt2" version="1, 0, 4" producerId="undefined">
+    <units>
+        <module name="DSKT2"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="dskt2_scratch.c"/>
+        <srcFile name="dskt2_seg.c"/>
+        <srcFile name="dskt2_qos.c"/>
+        <srcFile name="dskt2actv.c"/>
+        <srcFile name="dskt2crea.c"/>
+        <srcFile name="dskt2ctrl.c"/>
+        <srcFile name="dskt2dact.c"/>
+        <srcFile name="dskt2free.c"/>
+        <srcFile name="dskt2_permute.c"/>
+        <srcFile name="dskt2_lock.c"/>
+        <srcFile name="dskt2cfg.c"/>
+        <srcFile name="dskt2_yield.c"/>
+        <srcFile name="dskt2_cache.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/debug/dskt2.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.o64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.o64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.o64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.o64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.o64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.o64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.o64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.o64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.o64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.o64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.o64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.o64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.o64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.o64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.o64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.o64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.o64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.o64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.o64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.o64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.o64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.o64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.o64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.o64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.o64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.o64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.o64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.o64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.o64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.o64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.o64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.o64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.o64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.o64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.o64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.o64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.o64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.o64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.o64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.o64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.o64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.o64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.o64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.o64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.o64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.o64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.o64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.o64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.o64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.o64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.o64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.o64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.o64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.o64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.o64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.o64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.o64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.o64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.o64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.o64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.o64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.o64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.o64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.o64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.o64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.o64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.o64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.o64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.o64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.o64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.o64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.o64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.o64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.o64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.o64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.o64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.o64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.o64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.o64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.o64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.o64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.o64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.o64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.o64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.o674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.o674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.o674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.o674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.o674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.o674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.o674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.o674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.o674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.o674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.o674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.o674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.o674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.o674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.o674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.o674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.o674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.o674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.o674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.o674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.o674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.o674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.o674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.o674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.o674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.o674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.o674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.o674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.o674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.o674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.o674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.o674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.o674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.o674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.o674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.o674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.o674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.o674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.o674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.o674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.o674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.o674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.o674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.o674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.o674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.o674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.o674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.o674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.o674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.o674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.o674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.o674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.o674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.o674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.o674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.o674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.o674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.o674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.o674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.o674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.o674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.o674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.o674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.o674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.o674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.o674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.o674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.o674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.o674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.o674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.o674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.o674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.o674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.o674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.o674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.o674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.o674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.o674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.o674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.o674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.o674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.o674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.o674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.o674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.oem3.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.oem3.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.oem3.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.oem3.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.oem3.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.oem3.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.oem3.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.oem3.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.oem3.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.oem3.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.oem3.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.oem3.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.oem3.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.oem3.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oem3.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.oem3.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.oem3.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.oem3.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.oem3.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.oem3.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.oem3.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.oem3.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.oem3.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.oem3.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.oem3.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.oem3.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.oem3.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.oem3.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.oem3.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.oem3.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.oem3.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.oem3.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.oem3.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.oem3.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.oem3.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.oem3.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.oem3.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.oem3.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.oem3.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.oem3.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.oem3.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.oem3.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oem3.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.oem3.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.oem3.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.oem3.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.oem3.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.oem3.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.oem3.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.oem3.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.oem3.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.oem3.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.oem3.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.oem3.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.oem3.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.oem3.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.oem3.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.oem3.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.oem3.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.oem3.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.oem3.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.oem3.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.oem3.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.oem3.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.oem3.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.oem3.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.oem3.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.oem3.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.oem3.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.oem3.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oem3.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.oem3.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.oem3.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.oem3.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.oem3.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.oem3.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.oem3.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.oem3.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.oem3.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.oem3.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.oem3.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.oem3.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.oem3.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.oem3.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.oem4.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.oem4.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.oem4.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.oem4.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.oem4.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.oem4.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.oem4.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.oem4.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.oem4.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.oem4.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.oem4.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.oem4.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.oem4.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.oem4.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oem4.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.oem4.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.oem4.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.oem4.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.oem4.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.oem4.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.oem4.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.oem4.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.oem4.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.oem4.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.oem4.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.oem4.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.oem4.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.oem4.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.oem4.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.oem4.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.oem4.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.oem4.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.oem4.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.oem4.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.oem4.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.oem4.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.oem4.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.oem4.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.oem4.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.oem4.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.oem4.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.oem4.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oem4.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.oem4.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.oem4.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.oem4.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.oem4.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.oem4.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.oem4.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.oem4.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.oem4.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.oem4.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.oem4.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.oem4.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.oem4.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.oem4.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.oem4.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.oem4.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.oem4.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.oem4.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.oem4.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.oem4.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.oem4.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.oem4.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.oem4.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.oem4.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.oem4.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.oem4.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.oem4.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.oem4.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oem4.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.oem4.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.oem4.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.oem4.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.oem4.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.oem4.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.oem4.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.oem4.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.oem4.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.oem4.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.oem4.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.oem4.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.oem4.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.oem4.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.oe64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.oe64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.oe64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.oe64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.oe64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.oe64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.oe64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.oe64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.oe64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.oe64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.oe64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.oe64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.oe64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.oe64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.oe64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.oe64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.oe64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.oe64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.oe64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.oe64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.oe64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.oe64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.oe64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.oe64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.oe64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.oe64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.oe64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.oe64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.oe64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.oe64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.oe64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.oe64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.oe64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.oe64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.oe64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.oe64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.oe64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.oe64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.oe64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.oe64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.oe64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.oe64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.oe64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.oe64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.oe64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.oe64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.oe64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.oe64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.oe64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.oe64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.oe64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.oe64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.oe64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.oe64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.oe64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.oe64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.oe64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.oe64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.oe64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.oe64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.oe64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.oe64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.oe64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.oe64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.oe64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.oe64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.oe64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.oe64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe64P.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.oe64P.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.oe64P.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.oe64P.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.oe64P.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.oe64P.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.oe64P.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.oe64P.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.oe64P.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.oe64P.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.oe64P.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.oe64P.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.oe64P.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.oe64P.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.oe64T.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.oe64T.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.oe64T.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.oe64T.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.oe64T.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.oe64T.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.oe64T.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.oe64T.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.oe64T.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.oe64T.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.oe64T.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.oe64T.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.oe64T.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.oe64T.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe64T.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.oe64T.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.oe64T.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.oe64T.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.oe64T.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.oe64T.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.oe64T.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.oe64T.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.oe64T.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.oe64T.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.oe64T.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.oe64T.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.oe64T.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.oe64T.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.oe64T.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.oe64T.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.oe64T.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.oe64T.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.oe64T.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.oe64T.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.oe64T.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.oe64T.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.oe64T.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.oe64T.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.oe64T.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.oe64T.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.oe64T.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.oe64T.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe64T.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.oe64T.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.oe64T.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.oe64T.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.oe64T.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.oe64T.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.oe64T.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.oe64T.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.oe64T.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.oe64T.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.oe64T.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.oe64T.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.oe64T.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.oe64T.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.oe64T.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.oe64T.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.oe64T.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.oe64T.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.oe64T.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.oe64T.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.oe64T.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.oe64T.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.oe64T.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.oe64T.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.oe64T.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.oe64T.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.oe64T.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.oe64T.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe64T.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.oe64T.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.oe64T.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.oe64T.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.oe64T.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.oe64T.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.oe64T.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.oe64T.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.oe64T.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.oe64T.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.oe64T.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.oe64T.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.oe64T.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.oe64T.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.oe66.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.oe66.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.oe66.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.oe66.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.oe66.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.oe66.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.oe66.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.oe66.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.oe66.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.oe66.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.oe66.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.oe66.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.oe66.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.oe66.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe66.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.oe66.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.oe66.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.oe66.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.oe66.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.oe66.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.oe66.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.oe66.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.oe66.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.oe66.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.oe66.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.oe66.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.oe66.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.oe66.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.oe66.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.oe66.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.oe66.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.oe66.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.oe66.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.oe66.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.oe66.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.oe66.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.oe66.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.oe66.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.oe66.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.oe66.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.oe66.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.oe66.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe66.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.oe66.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.oe66.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.oe66.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.oe66.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.oe66.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.oe66.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.oe66.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.oe66.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.oe66.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.oe66.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.oe66.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.oe66.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.oe66.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.oe66.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.oe66.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.oe66.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.oe66.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.oe66.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.oe66.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.oe66.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.oe66.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.oe66.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.oe66.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.oe66.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.oe66.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.oe66.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.oe66.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe66.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.oe66.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.oe66.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.oe66.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.oe66.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.oe66.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.oe66.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.oe66.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.oe66.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.oe66.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.oe66.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.oe66.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.oe66.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.oe66.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.oe66e.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.oe66e.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.oe66e.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.oe66e.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.oe66e.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.oe66e.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.oe66e.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.oe66e.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.oe66e.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.oe66e.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.oe66e.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.oe66e.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.oe66e.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.oe66e.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe66e.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.oe66e.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.oe66e.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.oe66e.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.oe66e.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.oe66e.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.oe66e.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.oe66e.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.oe66e.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.oe66e.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.oe66e.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.oe66e.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.oe66e.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.oe66e.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.oe66e.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.oe66e.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.oe66e.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.oe66e.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.oe66e.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.oe66e.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.oe66e.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.oe66e.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.oe66e.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.oe66e.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.oe66e.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.oe66e.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.oe66e.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.oe66e.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe66e.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.oe66e.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.oe66e.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.oe66e.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.oe66e.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.oe66e.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.oe66e.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.oe66e.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.oe66e.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.oe66e.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.oe66e.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.oe66e.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.oe66e.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.oe66e.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.oe66e.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.oe66e.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.oe66e.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.oe66e.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.oe66e.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.oe66e.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.oe66e.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.oe66e.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.oe66e.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.oe66e.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.oe66e.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.oe66e.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.oe66e.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.oe66e.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe66e.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.oe66e.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.oe66e.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.oe66e.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.oe66e.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.oe66e.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.oe66e.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.oe66e.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.oe66e.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.oe66e.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.oe66e.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.oe66e.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.oe66e.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.oe66e.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2/package/package_ti.sdo.fc.dskt2.oe674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_scratch.oe674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_seg.oe674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_qos.oe674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2actv.oe674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2crea.oe674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2ctrl.oe674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2dact.oe674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2free.oe674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_permute.oe674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_lock.oe674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2cfg.oe674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_yield.oe674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2/dskt2_cache.oe674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/debug/dskt2_lazydDisable.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_scratch.oe674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_seg.oe674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_qos.oe674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2actv.oe674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2crea.oe674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2ctrl.oe674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2dact.oe674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2free.oe674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_permute.oe674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_lock.oe674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2cfg.oe674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_yield.oe674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/debug/dskt2_lazydDisable/dskt2_cache.oe674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2/package/package_ti.sdo.fc.dskt2.oe674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_scratch.oe674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_seg.oe674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_qos.oe674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2actv.oe674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2crea.oe674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2ctrl.oe674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2dact.oe674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2free.oe674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_permute.oe674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_lock.oe674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2cfg.oe674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_yield.oe674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2/dskt2_cache.oe674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/release/dskt2_lazydDisable.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_scratch.oe674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_seg.oe674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_qos.oe674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2actv.oe674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2crea.oe674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2ctrl.oe674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2dact.oe674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2free.oe674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_permute.oe674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_lock.oe674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2cfg.oe674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_yield.oe674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/release/dskt2_lazydDisable/dskt2_cache.oe674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/package/package_ti.sdo.fc.dskt2.oe674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_scratch.oe674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_seg.oe674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_qos.oe674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2actv.oe674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2crea.oe674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2ctrl.oe674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2dact.oe674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2free.oe674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_permute.oe674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_lock.oe674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2cfg.oe674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_yield.oe674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2/dskt2_cache.oe674.dep" src="dskt2_cache.c"/>
+        <srcFile name="lib/notrace/dskt2_lazydDisable.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/package/package_ti.sdo.fc.dskt2.oe674.dep" src="package/package_ti.sdo.fc.dskt2.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_scratch.oe674.dep" src="dskt2_scratch.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_seg.oe674.dep" src="dskt2_seg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_qos.oe674.dep" src="dskt2_qos.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2actv.oe674.dep" src="dskt2actv.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2crea.oe674.dep" src="dskt2crea.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2ctrl.oe674.dep" src="dskt2ctrl.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2dact.oe674.dep" src="dskt2dact.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2free.oe674.dep" src="dskt2free.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_permute.oe674.dep" src="dskt2_permute.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_lock.oe674.dep" src="dskt2_lock.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2cfg.oe674.dep" src="dskt2cfg.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_yield.oe674.dep" src="dskt2_yield.c"/>
+        <srcFile name="package/lib/lib/notrace/dskt2_lazydDisable/dskt2_cache.oe674.dep" src="dskt2_cache.c"/>
+        <srcFile name="package/rel/ti_sdo_fc_dskt2.tar.gz.dep" src="package/rel/ti_sdo_fc_dskt2.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.sim6xxx:TMS320CDM420"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evmDA830"
+            isa="674"
+            suffix="674"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            rawVersion="5.0.1"
+            platform="ti.platforms.simCM3"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            rawVersion="5.0.1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.sim6xxx:TMS320CDM420"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.sdp4430"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.simTCI6616"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.simTCI6616"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evmDA830"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.a64P"
+        profile="release"
+        target="ti.targets.C64P"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.a64P"
+        profile="release"
+        target="ti.targets.C64P"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.a64P"
+        profile="notrace"
+        target="ti.targets.C64P"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.a64P"
+        profile="notrace"
+        target="ti.targets.C64P"/>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.a674"
+        profile="release"
+        target="ti.targets.C674"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.a674"
+        profile="release"
+        target="ti.targets.C674"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.a674"
+        profile="notrace"
+        target="ti.targets.C674"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.a674"
+        profile="notrace"
+        target="ti.targets.C674"/>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.aem3"
+        profile="release"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.aem3"
+        profile="release"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.aem3"
+        profile="notrace"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.aem3"
+        profile="notrace"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.aem4"
+        profile="release"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.aem4"
+        profile="release"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.aem4"
+        profile="notrace"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.aem4"
+        profile="notrace"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.ae64P"
+        profile="release"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.ae64P"
+        profile="release"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.ae64P"
+        profile="notrace"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.ae64P"
+        profile="notrace"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.ae64T"
+        profile="release"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.ae64T"
+        profile="release"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.ae64T"
+        profile="notrace"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.ae64T"
+        profile="notrace"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.ae66"
+        profile="release"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.ae66"
+        profile="release"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.ae66"
+        profile="notrace"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.ae66"
+        profile="notrace"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.ae66e"
+        profile="release"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.ae66e"
+        profile="release"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.ae66e"
+        profile="notrace"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.ae66e"
+        profile="notrace"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/debug/dskt2"
+        pname="lib/debug/dskt2.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/debug/dskt2_lazydDisable"
+        pname="lib/debug/dskt2_lazydDisable.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/release/dskt2"
+        pname="lib/release/dskt2.ae674"
+        profile="release"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/release/dskt2_lazydDisable"
+        pname="lib/release/dskt2_lazydDisable.ae674"
+        profile="release"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/notrace/dskt2"
+        pname="lib/notrace/dskt2.ae674"
+        profile="notrace"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/notrace/dskt2_lazydDisable"
+        pname="lib/notrace/dskt2_lazydDisable.ae674"
+        profile="notrace"
+        target="ti.targets.elf.C674"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_fc_dskt2"
+        pname="ti_sdo_fc_dskt2.tar.gz"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="dskt2_mem.h"/>
+        <file name="dskt2_qos.h"/>
+        <file name="dskt2_lock.h"/>
+        <file name="dskt2.h"/>
+        <file name="_dskt2.h"/>
+        <file name="dskt2_permute.h"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/debug/dskt2.a64P"/>
+        <file name="package/package_ti.sdo.fc.dskt2.c"/>
+        <file name="dskt2_scratch.c"/>
+        <file name="dskt2_seg.c"/>
+        <file name="dskt2_qos.c"/>
+        <file name="dskt2actv.c"/>
+        <file name="dskt2crea.c"/>
+        <file name="dskt2ctrl.c"/>
+        <file name="dskt2dact.c"/>
+        <file name="dskt2free.c"/>
+        <file name="dskt2_permute.c"/>
+        <file name="dskt2_lock.c"/>
+        <file name="dskt2cfg.c"/>
+        <file name="dskt2_yield.c"/>
+        <file name="dskt2_cache.c"/>
+        <file name="lib/debug/dskt2_lazydDisable.a64P"/>
+        <file name="lib/release/dskt2.a64P"/>
+        <file name="lib/release/dskt2_lazydDisable.a64P"/>
+        <file name="lib/notrace/dskt2.a64P"/>
+        <file name="lib/notrace/dskt2_lazydDisable.a64P"/>
+        <file name="lib/debug/dskt2.a674"/>
+        <file name="lib/debug/dskt2_lazydDisable.a674"/>
+        <file name="lib/release/dskt2.a674"/>
+        <file name="lib/release/dskt2_lazydDisable.a674"/>
+        <file name="lib/notrace/dskt2.a674"/>
+        <file name="lib/notrace/dskt2_lazydDisable.a674"/>
+        <file name="lib/debug/dskt2.aem3"/>
+        <file name="lib/debug/dskt2_lazydDisable.aem3"/>
+        <file name="lib/release/dskt2.aem3"/>
+        <file name="lib/release/dskt2_lazydDisable.aem3"/>
+        <file name="lib/notrace/dskt2.aem3"/>
+        <file name="lib/notrace/dskt2_lazydDisable.aem3"/>
+        <file name="lib/debug/dskt2.aem4"/>
+        <file name="lib/debug/dskt2_lazydDisable.aem4"/>
+        <file name="lib/release/dskt2.aem4"/>
+        <file name="lib/release/dskt2_lazydDisable.aem4"/>
+        <file name="lib/notrace/dskt2.aem4"/>
+        <file name="lib/notrace/dskt2_lazydDisable.aem4"/>
+        <file name="lib/debug/dskt2.ae64P"/>
+        <file name="lib/debug/dskt2_lazydDisable.ae64P"/>
+        <file name="lib/release/dskt2.ae64P"/>
+        <file name="lib/release/dskt2_lazydDisable.ae64P"/>
+        <file name="lib/notrace/dskt2.ae64P"/>
+        <file name="lib/notrace/dskt2_lazydDisable.ae64P"/>
+        <file name="lib/debug/dskt2.ae64T"/>
+        <file name="lib/debug/dskt2_lazydDisable.ae64T"/>
+        <file name="lib/release/dskt2.ae64T"/>
+        <file name="lib/release/dskt2_lazydDisable.ae64T"/>
+        <file name="lib/notrace/dskt2.ae64T"/>
+        <file name="lib/notrace/dskt2_lazydDisable.ae64T"/>
+        <file name="lib/debug/dskt2.ae66"/>
+        <file name="lib/debug/dskt2_lazydDisable.ae66"/>
+        <file name="lib/release/dskt2.ae66"/>
+        <file name="lib/release/dskt2_lazydDisable.ae66"/>
+        <file name="lib/notrace/dskt2.ae66"/>
+        <file name="lib/notrace/dskt2_lazydDisable.ae66"/>
+        <file name="lib/debug/dskt2.ae66e"/>
+        <file name="lib/debug/dskt2_lazydDisable.ae66e"/>
+        <file name="lib/release/dskt2.ae66e"/>
+        <file name="lib/release/dskt2_lazydDisable.ae66e"/>
+        <file name="lib/notrace/dskt2.ae66e"/>
+        <file name="lib/notrace/dskt2_lazydDisable.ae66e"/>
+        <file name="lib/debug/dskt2.ae674"/>
+        <file name="lib/debug/dskt2_lazydDisable.ae674"/>
+        <file name="lib/release/dskt2.ae674"/>
+        <file name="lib/release/dskt2_lazydDisable.ae674"/>
+        <file name="lib/notrace/dskt2.ae674"/>
+        <file name="lib/notrace/dskt2_lazydDisable.ae674"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

@@ -1,0 +1,246 @@
+/*******************************************************************************
+ *                                                                             *
+ * Copyright (c) 2009 Texas Instruments Incorporated - http://www.ti.com/      *
+ *                        ALL RIGHTS RESERVED                                  *
+ *                                                                             *
+ ******************************************************************************/
+
+/*********************************************************************
+* file: cslr_vps_dei.h
+*
+* Brief: This file contains the Register Description for vps_dei
+*
+*********************************************************************/
+#ifndef _CSLR_VPS_DEI_H_
+#define _CSLR_VPS_DEI_H_
+
+
+
+/* Minimum unit = 1 byte */
+
+/**************************************************************************\
+* Register Overlay Structure
+\**************************************************************************/
+typedef struct  {
+    volatile Uint32 DEI_REG0;
+    volatile Uint32 DEI_REG1;
+    volatile Uint32 DEI_REG2;
+    volatile Uint32 DEI_REG3;
+    volatile Uint32 DEI_REG4;
+    volatile Uint32 DEI_REG5;
+    volatile Uint32 DEI_REG6;
+    volatile Uint32 DEI_REG7;
+    volatile Uint32 DEI_REG8;
+    volatile Uint32 DEI_REG9;
+    volatile Uint32 DEI_REG10;
+    volatile Uint32 DEI_REG11;
+    volatile Uint32 DEI_REG12;
+    volatile Uint32 DEI_REG13;
+    volatile Uint32 DEI_REG14;
+} CSL_Vps_deiRegs;
+
+/**************************************************************************\
+* Overlay structure typedef definition
+\**************************************************************************/
+typedef volatile CSL_Vps_deiRegs            *CSL_VpsDeiRegsOvly;
+
+/**************************************************************************\
+* Field Definition Macros
+\**************************************************************************/
+
+/* dei_reg0 */
+
+#define CSL_VPS_DEI_DEI_REG0_FIELD_FLUSH_MASK (0x40000000u)
+#define CSL_VPS_DEI_DEI_REG0_FIELD_FLUSH_SHIFT (0x0000001Eu)
+
+#define CSL_VPS_DEI_DEI_REG0_HEIGHT_MASK (0x07FF0000u)
+#define CSL_VPS_DEI_DEI_REG0_HEIGHT_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG0_INTERLACE_BYPASS_MASK (0x20000000u)
+#define CSL_VPS_DEI_DEI_REG0_INTERLACE_BYPASS_SHIFT (0x0000001Du)
+
+#define CSL_VPS_DEI_DEI_REG0_PROGRESSIVE_BYPASS_MASK (0x80000000u)
+#define CSL_VPS_DEI_DEI_REG0_PROGRESSIVE_BYPASS_SHIFT (0x0000001Fu)
+
+#define CSL_VPS_DEI_DEI_REG0_WIDTH_MASK  (0x000007FFu)
+#define CSL_VPS_DEI_DEI_REG0_WIDTH_SHIFT (0x00000000u)
+
+
+/* dei_reg1 */
+
+#define CSL_VPS_DEI_DEI_REG1_MDT_SPATMAX_BYPASS_MASK (0x00000002u)
+#define CSL_VPS_DEI_DEI_REG1_MDT_SPATMAX_BYPASS_SHIFT (0x00000001u)
+
+#define CSL_VPS_DEI_DEI_REG1_MDT_TEMPMAX_BYPASS_MASK (0x00000001u)
+#define CSL_VPS_DEI_DEI_REG1_MDT_TEMPMAX_BYPASS_SHIFT (0x00000000u)
+
+
+/* dei_reg2 */
+
+#define CSL_VPS_DEI_DEI_REG2_MDT_MVSTMAX_COR_THR_MASK (0xF0000000u)
+#define CSL_VPS_DEI_DEI_REG2_MDT_MVSTMAX_COR_THR_SHIFT (0x0000001Cu)
+
+#define CSL_VPS_DEI_DEI_REG2_MDT_MV_COR_THR_MASK (0x0F000000u)
+#define CSL_VPS_DEI_DEI_REG2_MDT_MV_COR_THR_SHIFT (0x00000018u)
+
+#define CSL_VPS_DEI_DEI_REG2_MDT_SF_SC_THR1_MASK (0x000000FFu)
+#define CSL_VPS_DEI_DEI_REG2_MDT_SF_SC_THR1_SHIFT (0x00000000u)
+
+#define CSL_VPS_DEI_DEI_REG2_MDT_SF_SC_THR2_MASK (0x0000FF00u)
+#define CSL_VPS_DEI_DEI_REG2_MDT_SF_SC_THR2_SHIFT (0x00000008u)
+
+#define CSL_VPS_DEI_DEI_REG2_MDT_SF_SC_THR3_MASK (0x00FF0000u)
+#define CSL_VPS_DEI_DEI_REG2_MDT_SF_SC_THR3_SHIFT (0x00000010u)
+
+
+/* dei_reg3 */
+
+#define CSL_VPS_DEI_DEI_REG3_EDI_CHROMA3D_COR_THR_MASK (0x0000FF00u)
+#define CSL_VPS_DEI_DEI_REG3_EDI_CHROMA3D_COR_THR_SHIFT (0x00000008u)
+
+#define CSL_VPS_DEI_DEI_REG3_EDI_CHROMA_3D_ENABLE_MASK (0x00000008u)
+#define CSL_VPS_DEI_DEI_REG3_EDI_CHROMA_3D_ENABLE_SHIFT (0x00000003u)
+
+#define CSL_VPS_DEI_DEI_REG3_EDI_COR_SCALE_FACTOR_MASK (0xFF000000u)
+#define CSL_VPS_DEI_DEI_REG3_EDI_COR_SCALE_FACTOR_SHIFT (0x00000018u)
+
+#define CSL_VPS_DEI_DEI_REG3_EDI_DIR_COR_LOWER_THR_MASK (0x00FF0000u)
+#define CSL_VPS_DEI_DEI_REG3_EDI_DIR_COR_LOWER_THR_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG3_EDI_ENABLE_3D_MASK (0x00000004u)
+#define CSL_VPS_DEI_DEI_REG3_EDI_ENABLE_3D_SHIFT (0x00000002u)
+
+#define CSL_VPS_DEI_DEI_REG3_EDI_INP_MODE_MASK (0x00000003u)
+#define CSL_VPS_DEI_DEI_REG3_EDI_INP_MODE_SHIFT (0x00000000u)
+
+
+/* dei_reg4 */
+
+#define CSL_VPS_DEI_DEI_REG4_EDI_LUT0_MASK (0x0000001Fu)
+#define CSL_VPS_DEI_DEI_REG4_EDI_LUT0_SHIFT (0x00000000u)
+
+#define CSL_VPS_DEI_DEI_REG4_EDI_LUT1_MASK (0x00001F00u)
+#define CSL_VPS_DEI_DEI_REG4_EDI_LUT1_SHIFT (0x00000008u)
+
+#define CSL_VPS_DEI_DEI_REG4_EDI_LUT2_MASK (0x001F0000u)
+#define CSL_VPS_DEI_DEI_REG4_EDI_LUT2_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG4_EDI_LUT3_MASK (0x1F000000u)
+#define CSL_VPS_DEI_DEI_REG4_EDI_LUT3_SHIFT (0x00000018u)
+
+
+/* dei_reg5 */
+
+#define CSL_VPS_DEI_DEI_REG5_EDI_LUT4_MASK (0x0000001Fu)
+#define CSL_VPS_DEI_DEI_REG5_EDI_LUT4_SHIFT (0x00000000u)
+
+#define CSL_VPS_DEI_DEI_REG5_EDI_LUT5_MASK (0x00001F00u)
+#define CSL_VPS_DEI_DEI_REG5_EDI_LUT5_SHIFT (0x00000008u)
+
+#define CSL_VPS_DEI_DEI_REG5_EDI_LUT6_MASK (0x001F0000u)
+#define CSL_VPS_DEI_DEI_REG5_EDI_LUT6_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG5_EDI_LUT7_MASK (0x1F000000u)
+#define CSL_VPS_DEI_DEI_REG5_EDI_LUT7_SHIFT (0x00000018u)
+
+
+/* dei_reg6 */
+
+#define CSL_VPS_DEI_DEI_REG6_EDI_LUT10_MASK (0x001F0000u)
+#define CSL_VPS_DEI_DEI_REG6_EDI_LUT10_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG6_EDI_LUT11_MASK (0x1F000000u)
+#define CSL_VPS_DEI_DEI_REG6_EDI_LUT11_SHIFT (0x00000018u)
+
+#define CSL_VPS_DEI_DEI_REG6_EDI_LUT8_MASK (0x0000001Fu)
+#define CSL_VPS_DEI_DEI_REG6_EDI_LUT8_SHIFT (0x00000000u)
+
+#define CSL_VPS_DEI_DEI_REG6_EDI_LUT9_MASK (0x00001F00u)
+#define CSL_VPS_DEI_DEI_REG6_EDI_LUT9_SHIFT (0x00000008u)
+
+
+/* dei_reg7 */
+
+#define CSL_VPS_DEI_DEI_REG7_EDI_LUT12_MASK (0x0000001Fu)
+#define CSL_VPS_DEI_DEI_REG7_EDI_LUT12_SHIFT (0x00000000u)
+
+#define CSL_VPS_DEI_DEI_REG7_EDI_LUT13_MASK (0x00001F00u)
+#define CSL_VPS_DEI_DEI_REG7_EDI_LUT13_SHIFT (0x00000008u)
+
+#define CSL_VPS_DEI_DEI_REG7_EDI_LUT14_MASK (0x001F0000u)
+#define CSL_VPS_DEI_DEI_REG7_EDI_LUT14_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG7_EDI_LUT15_MASK (0x1F000000u)
+#define CSL_VPS_DEI_DEI_REG7_EDI_LUT15_SHIFT (0x00000018u)
+
+
+/* dei_reg8 */
+
+#define CSL_VPS_DEI_DEI_REG8_FMD_WINDOW_ENABLE_MASK (0x80000000u)
+#define CSL_VPS_DEI_DEI_REG8_FMD_WINDOW_ENABLE_SHIFT (0x0000001Fu)
+
+#define CSL_VPS_DEI_DEI_REG8_FMD_WINDOW_MAXX_MASK (0x07FF0000u)
+#define CSL_VPS_DEI_DEI_REG8_FMD_WINDOW_MAXX_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG8_FMD_WINDOW_MINX_MASK (0x000007FFu)
+#define CSL_VPS_DEI_DEI_REG8_FMD_WINDOW_MINX_SHIFT (0x00000000u)
+
+
+/* dei_reg9 */
+
+#define CSL_VPS_DEI_DEI_REG9_FMD_WINDOW_MAXY_MASK (0x07FF0000u)
+#define CSL_VPS_DEI_DEI_REG9_FMD_WINDOW_MAXY_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG9_FMD_WINDOW_MINY_MASK (0x000007FFu)
+#define CSL_VPS_DEI_DEI_REG9_FMD_WINDOW_MINY_SHIFT (0x00000000u)
+
+
+/* dei_reg10 */
+
+#define CSL_VPS_DEI_DEI_REG10_FMD_BED_ENABLE_MASK (0x00000008u)
+#define CSL_VPS_DEI_DEI_REG10_FMD_BED_ENABLE_SHIFT (0x00000003u)
+
+#define CSL_VPS_DEI_DEI_REG10_FMD_CAF_FIELD_THR_MASK (0x003F0000u)
+#define CSL_VPS_DEI_DEI_REG10_FMD_CAF_FIELD_THR_SHIFT (0x00000010u)
+
+#define CSL_VPS_DEI_DEI_REG10_FMD_CAF_LINE_THR_MASK (0x3F000000u)
+#define CSL_VPS_DEI_DEI_REG10_FMD_CAF_LINE_THR_SHIFT (0x00000018u)
+
+#define CSL_VPS_DEI_DEI_REG10_FMD_ENABLE_MASK (0x00000001u)
+#define CSL_VPS_DEI_DEI_REG10_FMD_ENABLE_SHIFT (0x00000000u)
+
+#define CSL_VPS_DEI_DEI_REG10_FMD_JAM_DIR_MASK (0x00000004u)
+#define CSL_VPS_DEI_DEI_REG10_FMD_JAM_DIR_SHIFT (0x00000002u)
+
+#define CSL_VPS_DEI_DEI_REG10_FMD_LOCK_MASK (0x00000002u)
+#define CSL_VPS_DEI_DEI_REG10_FMD_LOCK_SHIFT (0x00000001u)
+
+
+/* dei_reg11 */
+
+#define CSL_VPS_DEI_DEI_REG11_FMD_CAF_THR_MASK (0x000FFFFFu)
+#define CSL_VPS_DEI_DEI_REG11_FMD_CAF_THR_SHIFT (0x00000000u)
+
+
+/* dei_reg12 */
+
+#define CSL_VPS_DEI_DEI_REG12_FMD_CAF_MASK (0x001FFFFFu)
+#define CSL_VPS_DEI_DEI_REG12_FMD_CAF_SHIFT (0x00000000u)
+
+#define CSL_VPS_DEI_DEI_REG12_FMD_RESET_MASK (0x01000000u)
+#define CSL_VPS_DEI_DEI_REG12_FMD_RESET_SHIFT (0x00000018u)
+
+
+/* dei_reg13 */
+
+#define CSL_VPS_DEI_DEI_REG13_FMD_FIELD_DIFF_MASK (0x0FFFFFFFu)
+#define CSL_VPS_DEI_DEI_REG13_FMD_FIELD_DIFF_SHIFT (0x00000000u)
+
+
+/* dei_reg14 */
+
+#define CSL_VPS_DEI_DEI_REG14_FMD_FRAME_DIFF_MASK (0x000FFFFFu)
+#define CSL_VPS_DEI_DEI_REG14_FMD_FRAME_DIFF_SHIFT (0x00000000u)
+
+
+#endif

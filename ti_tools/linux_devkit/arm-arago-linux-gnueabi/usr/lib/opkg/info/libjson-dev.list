@@ -1,0 +1,13 @@
+/usr/include/json/json_util.h
+/usr/include/json/linkhash.h
+/usr/lib/libjson.la
+/usr/include/json/json_tokener.h
+/usr/include/json/debug.h
+/usr/lib/libjson.so
+/usr/include/json/json_object.h
+/usr/include/json/json.h
+/usr/include/json/arraylist.h
+/usr/include/json/json_object_private.h
+/usr/include/json/bits.h
+/usr/lib/pkgconfig/json.pc
+/usr/include/json/printbuf.h

@@ -1,0 +1,14 @@
+Package: libsqlite3-dev
+Version: 3.6.23.1-r4.0.6
+Description: An Embeddable SQL Database Engine
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: PD
+Architecture: armv7a
+OE: sqlite3
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libsqlite3-0
+Recommends: libreadline-dev, ncurses-dev, libc6-dev, libsqlite3-dev
+Source: http://www.sqlite.org/sqlite-3.6.23.1.tar.gz file://libtool.patch

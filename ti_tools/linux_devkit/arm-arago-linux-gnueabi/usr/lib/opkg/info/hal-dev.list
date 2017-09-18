@@ -1,0 +1,8 @@
+/usr/include/hal/libhal.h
+/usr/include/hal/libhal-storage.h
+/usr/lib/libhal.la
+/usr/lib/libhal-storage.la
+/usr/lib/pkgconfig/hal.pc
+/usr/lib/libhal.so
+/usr/lib/pkgconfig/hal-storage.pc
+/usr/lib/libhal-storage.so

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>interface xdc.runtime.knl.ISemProcessSupport</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> *  Copyright (c) 2008 Texas Instruments. All rights reserved. 
+</span>     3    <span class="comment"> *  This program and the accompanying materials are made available under the 
+</span>     4    <span class="comment"> *  terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+</span>     5    <span class="comment"> *  v. 1.0 which accompanies this distribution. The Eclipse Public License is
+</span>     6    <span class="comment"> *  available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+</span>     7    <span class="comment"> *  Distribution License is available at 
+</span>     8    <span class="comment"> *  http://www.eclipse.org/org/documents/edl-v10.php.
+</span>     9    <span class="comment"> *
+</span>    10    <span class="comment"> *  Contributors:
+</span>    11    <span class="comment"> *      Texas Instruments - initial implementation
+</span>    12    <span class="comment"> * */</span>
+    13    <span class="comment">/*
+</span>    14    <span class="comment"> *  ======== ISemProcessSupport.xdc ========
+</span>    15    <span class="comment"> */</span>
+    16    
+    17    import xdc.runtime.Error;
+    18    
+    19    <span class="xdoc">/*! 
+</span>    20    <span class="xdoc"> *  ======== ISemProcessSupport ========
+</span>    21    <span class="xdoc"> *  Interface for OS specific back-end.
+</span>    22    <span class="xdoc"> *
+</span>    23    <span class="xdoc"> *  The {<b>@link</b> xdc.runtime.knl} package contains modules that provide typical
+</span>    24    <span class="xdoc"> *  OS services. These xdc.runtime.knl modules however require proxies to be
+</span>    25    <span class="xdoc"> *  bound to an OS specific delegate. This specifies the interface to 
+</span>    26    <span class="xdoc"> *  be implemented by the OS specific delegate for 
+</span>    27    <span class="xdoc"> *  {<b>@link</b> xdc.runtime.knl#SemProcess} module.
+</span>    28    <span class="xdoc"> *
+</span>    29    <span class="xdoc"> *  create() takes a 32-bit integer key parameter to be used for identifying
+</span>    30    <span class="xdoc"> *  the semaphore to create across processes. For example, for Linux System V
+</span>    31    <span class="xdoc"> *  semaphores, the key is necessary so that different processes can access
+</span>    32    <span class="xdoc"> *  the same semaphore.
+</span>    33    <span class="xdoc"> */</span>
+    34    <span class=key>interface</span> ISemProcessSupport <span class=key>inherits</span> ISemaphore
+    35    {
+    36    
+    37    <span class=key>instance</span>:
+    38    
+    39       <span class="xdoc">/*!
+</span>    40    <span class="xdoc">    *  ======== create ========
+</span>    41    <span class="xdoc">    *  Create a SemProcess object.
+</span>    42    <span class="xdoc">    *
+</span>    43    <span class="xdoc">    *  This function creates a new `SemProcess` object which is 
+</span>    44    <span class="xdoc">    *  initialized to count.  
+</span>    45    <span class="xdoc">    *  All semaphores created with the same key reference the same
+</span>    46    <span class="xdoc">    *  underlying synchronization object and work between processes.  The
+</span>    47    <span class="xdoc">    *  underlying synchronization object should be automatically deleted when
+</span>    48    <span class="xdoc">    *  all references to it have been deleted, and the reference count should
+</span>    49    <span class="xdoc">    *  be maintained consistently across process forks or similar operations.
+</span>    50    <span class="xdoc">    *  An implementation for a platform on which this is technically impossible
+</span>    51    <span class="xdoc">    *  (e.g. an operating system that does not support multiple processes) may
+</span>    52    <span class="xdoc">    *  provide a 'toy' implementation with behavior matching that of
+</span>    53    <span class="xdoc">    *  `{<b>@link</b> ISemProcessSupport}`.
+</span>    54    <span class="xdoc">    *
+</span>    55    <span class="xdoc">    *  <b>@param(count)</b>    initial semaphore count
+</span>    56    <span class="xdoc">    *  <b>@param(key)</b>      globally unique key
+</span>    57    <span class="xdoc">    */</span>
+    58        create(Int count, Int key);
+    59    
+    60    }
+    61    <span class="comment">/*
+</span>    62    <span class="comment"> *  @(#) xdc.runtime.knl; 1, 0, 0,248; 12-19-2013 19:53:41; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+</span>    63    <span class="comment"> */</span>
+    64    
+</pre>
+</body></html>

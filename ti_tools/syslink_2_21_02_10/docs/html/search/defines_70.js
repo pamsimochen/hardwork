@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['procmgr_5fe_5faccessdenied',['ProcMgr_E_ACCESSDENIED',['../_proc_mgr_8h.html#aeb6b7409cd90c5c2f66d0a65ed95ed4b',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5falreadyexists',['ProcMgr_E_ALREADYEXISTS',['../_proc_mgr_8h.html#a4b666cbc5f9844986d7e12c66cbe19b3',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5ffail',['ProcMgr_E_FAIL',['../_proc_mgr_8h.html#ab743ea4ecf6d3b950d2f369f0814aaf4',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5fhandle',['ProcMgr_E_HANDLE',['../_proc_mgr_8h.html#a6cc24c61c4f594c4aafc9017d9190b68',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5finvalidarg',['ProcMgr_E_INVALIDARG',['../_proc_mgr_8h.html#a02bcbc8b9aa766b5278f57507e73f1af',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5finvalidstate',['ProcMgr_E_INVALIDSTATE',['../_proc_mgr_8h.html#ae1ca1a24aa8fac5eb9ee78d58b280824',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5fmap',['ProcMgr_E_MAP',['../_proc_mgr_8h.html#aa4f4b12a655c73a6feb93cd6e3c1c036',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5fmemory',['ProcMgr_E_MEMORY',['../_proc_mgr_8h.html#a74176ebc9761c27ac045476eef209bf8',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5fnotfound',['ProcMgr_E_NOTFOUND',['../_proc_mgr_8h.html#a7211032de4f5ea4347b428a7b04e9893',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5fosfailure',['ProcMgr_E_OSFAILURE',['../_proc_mgr_8h.html#a26e1ad4293f0d85398c634b26a798ea5',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5fresource',['ProcMgr_E_RESOURCE',['../_proc_mgr_8h.html#a35a73d55a33c0412b42343578cea1136',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5frestart',['ProcMgr_E_RESTART',['../_proc_mgr_8h.html#a82a4547afc0530e32915789364a8ee72',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5fsymbolnotfound',['ProcMgr_E_SYMBOLNOTFOUND',['../_proc_mgr_8h.html#a2dc4054dc121fda45f8f089dc1918d06',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5ftimeout',['ProcMgr_E_TIMEOUT',['../_proc_mgr_8h.html#a858f6fc632e46cf0998e7d5cb73b6a63',1,'ProcMgr.h']]],
+  ['procmgr_5fe_5ftranslate',['ProcMgr_E_TRANSLATE',['../_proc_mgr_8h.html#a63e6f403c131848f1e9552ca4873574c',1,'ProcMgr.h']]],
+  ['procmgr_5fmasterknlvirt',['ProcMgr_MASTERKNLVIRT',['../_proc_mgr_8h.html#aa5ea86c4ce21b076759462360e7041c0',1,'ProcMgr.h']]],
+  ['procmgr_5fmasterusrvirt',['ProcMgr_MASTERUSRVIRT',['../_proc_mgr_8h.html#ad10e4bd523297b81e384cfb6bddfee1f',1,'ProcMgr.h']]],
+  ['procmgr_5fs_5falreadyexists',['ProcMgr_S_ALREADYEXISTS',['../_proc_mgr_8h.html#a5abaa6d47895e1a6bf01357bd189f24e',1,'ProcMgr.h']]],
+  ['procmgr_5fs_5falreadysetup',['ProcMgr_S_ALREADYSETUP',['../_proc_mgr_8h.html#a60503565d3578777b8c3afea1489ebe3',1,'ProcMgr.h']]],
+  ['procmgr_5fs_5fbusy',['ProcMgr_S_BUSY',['../_proc_mgr_8h.html#ad9ea557bdbea079a9ed00d4031a2b50f',1,'ProcMgr.h']]],
+  ['procmgr_5fs_5fopenhandle',['ProcMgr_S_OPENHANDLE',['../_proc_mgr_8h.html#a226944a5fcc19b90b311890cd1eea7f4',1,'ProcMgr.h']]],
+  ['procmgr_5fs_5fsetup',['ProcMgr_S_SETUP',['../_proc_mgr_8h.html#a0bf1c3c2f4b7fefc319fd0c7d985f74a',1,'ProcMgr.h']]],
+  ['procmgr_5fs_5fsuccess',['ProcMgr_S_SUCCESS',['../_proc_mgr_8h.html#a49d1bb9b881a2ec95d83c7ed3ed3fee4',1,'ProcMgr.h']]],
+  ['procmgr_5fslavevirt',['ProcMgr_SLAVEVIRT',['../_proc_mgr_8h.html#a600563221a5f65ff9d64983b5adf8871',1,'ProcMgr.h']]]
+];

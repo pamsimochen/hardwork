@@ -1,0 +1,12 @@
+Package: libatomics-ops
+Version: 1.2-r3.6
+Description: A library for atomic integer operations
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT
+Architecture: armv7a
+OE: libatomics-ops
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Source: http://www.hpl.hp.com/research/linux/atomic_ops/download/libatomic_ops-1.2.tar.gz file://fedora/libatomic_ops-1.2-ppclwzfix.patch file://gentoo/libatomic_ops-1.2-mips.patch file://dont.install.header.twice.patch

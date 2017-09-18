@@ -1,0 +1,13 @@
+Package: libjasper1
+Version: 1.900.1-r1.6
+Description: Jpeg 2000 implementation
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT
+Architecture: armv7a
+OE: jasper
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2), libjpeg8 (>= 8b)
+Source: http://www.ece.uvic.ca/~mdadams/jasper/software/jasper-1.900.1.zip

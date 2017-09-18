@@ -1,0 +1,13 @@
+Package: tcl
+Version: 8.5.8-r8.6
+Description: Tool Command Language
+Section: devel/tcltk
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: tcl
+Architecture: armv7a
+OE: tcl
+Homepage: http://tcl.sourceforge.net
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libtcl8.5-0 (>= 8.5.8), libc6 (>= 2.12.2)
+Source: http://downloads.sourceforge.net/tcl/tcl8.5.8-src.tar.gz file://confsearch.diff;striplevel=2 file://manpages.diff;striplevel=2 file://non-linux.diff;striplevel=2 file://rpath.diff;striplevel=2 file://tcllibrary.diff;striplevel=2 file://tclpackagepath.diff;striplevel=2 file://tclprivate.diff;striplevel=2 file://mips-tclstrtod.patch;patchdir=..;striplevel=0

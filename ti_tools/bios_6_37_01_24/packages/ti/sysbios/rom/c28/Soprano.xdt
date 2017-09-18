@@ -1,0 +1,19 @@
+#pragma DATA_SECTION(ti_sysbios_BIOS_Module__state__V, ".state:ti_sysbios_BIOS_Module__state__V");
+#pragma DATA_SECTION(ti_sysbios_family_c28_Hwi_Module__state__V, ".state:ti_sysbios_family_c28_Hwi_Module__state__V");
+#pragma DATA_SECTION(ti_sysbios_family_c28_Timer_Module__state__V, ".state:ti_sysbios_family_c28_Timer_Module__state__V");
+#pragma DATA_SECTION(ti_sysbios_knl_Clock_Module__state__V, ".state:ti_sysbios_knl_Clock_Module__state__V");
+#pragma DATA_SECTION(ti_sysbios_knl_Swi_Module__state__V, ".state:ti_sysbios_knl_Swi_Module__state__V");
+#pragma DATA_SECTION(ti_sysbios_knl_Task_Module__state__V, ".state:ti_sysbios_knl_Task_Module__state__V");
+
+Void ti_sysbios_rom_c28_Soprano_romVersionCheck()
+{
+    UChar *byte = (UChar *)(0x3f8054);
+
+    if (*byte == 0x216C) {
+        /* This is the latest version of the ROM (from SYS/BIOS 6.37.01) */
+    }
+    else {
+        /* This is the old version of the ROM. Spin forever */
+        while (1);
+    }
+}

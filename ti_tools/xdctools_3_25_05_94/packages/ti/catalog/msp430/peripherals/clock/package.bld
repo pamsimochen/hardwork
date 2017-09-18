@@ -1,0 +1,2 @@
+Pkg.otherSrcs = ["clock.h"];
+Pkg.otherFiles = Pkg.otherSrcs;

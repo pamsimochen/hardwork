@@ -1,0 +1,71 @@
+From 3507d7f2cdb985453ccd03666c698c498b68f1b9 Mon Sep 17 00:00:00 2001
+From: Deepa <deepa_g@ti.com>
+Date: Mon, 21 May 2012 19:04:04 +0530
+Subject: [PATCH 1/1] Bug Fix: SDOCM00092290
+    - This fixes bug SDOCM00092290:
+         [Capture VIP] Disabling of VIP port in NMI interrupt when
+ 	VIP parser overflows should be done only for Netra PG1.1
+
+     Analysis & Resolution:
+         By default ,disabling of VIP port in NMI interrupt when
+	 VIP parser overflows have done only for Netra PG1.1 but
+	 not for all platforms.
+
+Signed-off-by: Sujith <sujith.s@ti.com>
+---
+ .../vps/drivers/capture/src/vpsdrv_captureApi.c    |   32 ++++++++++++++++++-
+ 1 files changed, 30 insertions(+), 2 deletions(-)
+
+diff --git a/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_captureApi.c b/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_captureApi.c
+index a48b018..99fe301 100755
+--- a/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_captureApi.c
++++ b/pspdrivers_/packages/ti/psp/vps/drivers/capture/src/vpsdrv_captureApi.c
+@@ -20,15 +20,43 @@ static Int32 Vps_captSubFrameInitArgs(  Vps_CaptObj * pObj );
+ Int32 Vps_captInit (  )
+ {
+     Int32 status = FVID2_SOK, instId;
++    Vps_PlatformCpuRev cpuRev;
++    /**< Version of the silicon being used */
++    Vps_PlatformId platform;
++    /**< Current pltform */
+ 
+     /*
+      * set to 0's
+      */
+     memset ( &gVps_captCommonObj, 0, sizeof ( gVps_captCommonObj ) );
++    
++    /* Get the platform and the CPU version */
++    platform = Vps_platformGetId();
+ 
+-    gVps_captCommonObj.disPortonOverflow = TRUE;
++    if ((platform <= VPS_PLATFORM_ID_UNKNOWN) ||
++        (platform >= VPS_PLATFORM_ID_MAX))
++    {
++        GT_assert( GT_DEFAULT_MASK, FALSE);
++    }
++    cpuRev = Vps_platformGetCpuRev();
++    if (cpuRev >= VPS_PLATFORM_CPU_REV_UNKNOWN)
++    {
++        GT_assert( GT_DEFAULT_MASK,  FALSE);
++    }
++    
++    /* When VIP parser overflows, disabling of VIP port is a workaround for the 
++       memory flush issue that exists only on Netra PG1.1.*/
++    if ((platform == VPS_PLATFORM_ID_EVM_TI816x) &&
++        (cpuRev == VPS_PLATFORM_CPU_REV_1_1)) 
++    {
++        gVps_captCommonObj.disPortonOverflow = TRUE;
++    }
++    else
++    {
++        gVps_captCommonObj.disPortonOverflow = FALSE;
++    }
+ 
+-    /*
++        /*
+      * create driver locks
+      */
+     for (instId = 0u; instId < VPS_CAPT_INST_MAX; instId++)
+-- 
+1.6.5.1.1367.gcd48
+

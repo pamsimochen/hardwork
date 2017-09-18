@@ -1,0 +1,14 @@
+Package: bigreqsproto-dev
+Version: 1:1.1.1-r2.0.6
+Description: X protocol headers: bigreqsproto
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: bigreqsproto
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: bigreqsproto (= 1:1.1.1-r2.0.6)
+Recommends: util-macros-dev, bigreqsproto-dev
+Source: http://xorg.freedesktop.org/releases/individual/proto/bigreqsproto-1.1.1.tar.bz2;name=archive

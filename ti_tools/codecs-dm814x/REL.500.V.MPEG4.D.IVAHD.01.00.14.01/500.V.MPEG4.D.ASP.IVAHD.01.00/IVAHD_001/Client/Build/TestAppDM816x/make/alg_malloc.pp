@@ -1,0 +1,17 @@
+alg_malloc.obj: ..\..\..\..\Client\Test\Src\alg_malloc.c
+alg_malloc.obj: D:\cg_tools_5.0.3\include\stdlib.h
+alg_malloc.obj: D:\cg_tools_5.0.3\include\linkage.h
+alg_malloc.obj: D:\cg_tools_5.0.3\include\string.h
+alg_malloc.obj: D:\framework_components_3_20_00_22\fctools\packages\xdc/std.h
+alg_malloc.obj: D:\cg_tools_5.0.3\include\stdarg.h
+alg_malloc.obj: D:\cg_tools_5.0.3\include\stddef.h
+alg_malloc.obj: D:/xdctools_3_20_04_68\packages/ti\targets\std.h
+alg_malloc.obj: D:\xdctools_3_20_04_68\packages\ti\targets\TMS470.h
+alg_malloc.obj: D:\cg_tools_5.0.3\include\stdint.h
+alg_malloc.obj: D:\framework_components_3_20_00_22\fctools\packages\ti/xdais/xdas.h
+alg_malloc.obj: D:\framework_components_3_20_00_22\fctools\packages\ti/xdais/ialg.h
+alg_malloc.obj: D:\framework_components_3_20_00_22\packages\ti/sdo/fc/utils/api/alg.h
+alg_malloc.obj: D:\framework_components_3_20_00_22\packages\ti/sdo/fc/utils/api/_alg.h
+alg_malloc.obj: ..\..\..\..\client\Test\Inc\TestApp_Constants.h
+alg_malloc.obj: D:\cg_tools_5.0.3\include\stdio.h
+alg_malloc.obj: D:\cg_tools_5.0.3\include\stdarg.h

@@ -1,0 +1,13 @@
+Package: python-pygtk
+Version: 2.16.0-r4.6
+Description: Python GTK+ 2.10.x Bindings
+Section: devel/python
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: python-pygtk
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: python-shell, python-pycairo, python-pygobject, python-core, pango (>= 1.24.4), libc6 (>= 2.12.2), libgobject-2.0-0 (>= 2.24.1), libgmodule-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libglib-2.0-0 (>= 2.24.1), gtk+ (>= 2.20.1), libatk-1.0-0 (>= 1.30.0), libgio-2.0-0 (>= 2.24.1), libcairo2 (>= 1.10.0), libpixman-1-0 (>= 0.21.6), libpng12-0 (>= 1.2.44), libxrender1 (>= 0.9.6), libx11-6 (>= 1.4.1), libxcb1 (>= 1.6), libpthread-stubs0 (>= 0.2), libxau6 (>= 1.0.6), libxdmcp6 (>= 1.1.0), libz1 (>= 1.2.3), libfontconfig1 (>= 2.8.0), libfreetype6 (>= 2.4.6), libexpat1 (>= 2.0.1), libglade-2.0-0 (>= 2.6.4)
+Source: ftp://ftp.gnome.org/pub/gnome/sources/pygtk/2.16/pygtk-2.16.0.tar.bz2;name=pygtk file://fix-gtkunixprint.patch file://acinclude.m4

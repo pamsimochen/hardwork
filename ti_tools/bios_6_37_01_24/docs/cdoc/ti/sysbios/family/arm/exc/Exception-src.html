@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.family.arm.exc.Exception</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> * Copyright (c) 2013, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Exception.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> */</span>
+    36    
+    37    <span class=key>package</span> ti.sysbios.family.arm.exc;
+    38    
+    39    import xdc.rov.ViewInfo;
+    40    
+    41    import xdc.runtime.Error;
+    42    
+    43    import ti.sysbios.BIOS;
+    44    
+    45    <span class="xdoc">/*!
+</span>    46    <span class="xdoc"> *  ======== Exception ========
+</span>    47    <span class="xdoc"> *  Exception Module
+</span>    48    <span class="xdoc"> *
+</span>    49    <span class="xdoc"> *  The Exception module is a basic ARM exception handler.
+</span>    50    <span class="xdoc"> *  When an exception occurs, the execution state is saved into
+</span>    51    <span class="xdoc"> *  a buffer with a structure of type {<b>@link</b> #ExcContext ExcContext}.
+</span>    52    <span class="xdoc"> *
+</span>    53    <span class="xdoc"> *  By default, a formatted dump of this structure is also sent to
+</span>    54    <span class="xdoc"> *  the console using System_printf(). This behavior can be suppressed
+</span>    55    <span class="xdoc"> *  by setting the {<b>@link</b> #enableDecode} config parameter to 'false'.
+</span>    56    <span class="xdoc"> *
+</span>    57    <span class="xdoc"> *  An ROV view of the exception context is provided when
+</span>    58    <span class="xdoc"> *  attached to the target board with CCS.
+</span>    59    <span class="xdoc"> *
+</span>    60    <span class="xdoc"> *  <b>@a(Notes)</b>
+</span>    61    <span class="xdoc"> *  No attempt is made to return from an exception as these are
+</span>    62    <span class="xdoc"> *  generally fatal in nature.
+</span>    63    <span class="xdoc"> *
+</span>    64    <span class="xdoc"> *  When used, the Exception module will override the default
+</span>    65    <span class="xdoc"> *  exception handlers provided by the current Hwi module.
+</span>    66    <span class="xdoc"> */</span>
+    67    
+    68    @ModuleStartup          <span class="comment">/* generates call to Exception_Module_startup at startup */</span>
+    69    <span class=key>module</span> Exception
+    70    {
+    71        <span class="xdoc">/*! Exception hook function type definition. */</span>
+    72        <span class=key>typedef</span> Void (*ExceptionHookFuncPtr)(ExcContext *);
+    73    
+    74        <span class="comment">/* Exception types */</span>
+    75        <span class=key>enum</span> Type {
+    76            Type_Supervisor = 0x13,         <span class="xdoc">/*! Supervisor (SWI). */</span>
+    77            Type_PreAbort   = 0x17,         <span class="xdoc">/*! Abort exception. */</span>
+    78            Type_DataAbort  = 0x18,         <span class="xdoc">/*! Abort exception. */</span>
+    79            Type_UndefInst  = 0x1b          <span class="xdoc">/*! Undefined instruction exception. */</span>
+    80        };
+    81    
+    82        <span class="xdoc">/*!
+</span>    83    <span class="xdoc">     *  Exception Context - Register contents at the time of an exception.
+</span>    84    <span class="xdoc">     */</span>
+    85        <span class=key>struct</span> ExcContext {
+    86            <span class="comment">/* Thread Context */</span>
+    87            BIOS.ThreadType threadType; <span class="comment">/* Type of thread executing at */</span>
+    88                                        <span class="comment">/* the time the exception occurred */</span>
+    89            Ptr     threadHandle;       <span class="comment">/* Handle to thread executing at */</span>
+    90                                        <span class="comment">/* the time the exception occurred */</span>
+    91            Ptr     threadStack;        <span class="comment">/* Address of stack contents of thread */</span>
+    92                                        <span class="comment">/* executing at the time the exception */</span>
+    93                                        <span class="comment">/* occurred */</span>
+    94            SizeT   threadStackSize;    <span class="comment">/* size of thread stack */</span>
+    95    
+    96            Type    type;
+    97    
+    98            <span class="comment">/* Internal Registers */</span>
+    99            Ptr     r0;
+   100            Ptr     r1;
+   101            Ptr     r2;
+   102            Ptr     r3;
+   103            Ptr     r4;
+   104            Ptr     r5;
+   105            Ptr     r6;
+   106            Ptr     r7;
+   107            Ptr     r8;
+   108            Ptr     r9;
+   109            Ptr     r10;
+   110            Ptr     r11;
+   111            Ptr     r12;
+   112            Ptr     sp;
+   113            Ptr     lr;
+   114            Ptr     pc;
+   115            Ptr     psr;
+   116    
+   117            <span class="comment">/* Fault registers */</span>
+   118            Ptr     dfsr;
+   119            Ptr     ifsr;
+   120            Ptr     dfar;
+   121            Ptr     ifar;
+   122        }
+   123    
+   124        @Facet
+   125        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo =
+   126            ViewInfo.create({
+   127                viewMap: [
+   128                    [<span class="string">'Basic'</span>,
+   129                        {
+   130                            type: ViewInfo.TREE,
+   131                            viewInitFxn: <span class="string">'viewInitBasic'</span>,
+   132                            structName: <span class="string">'ExcContext'</span>
+   133                        }
+   134                    ]
+   135                ]
+   136            });
+   137    
+   138        <span class="xdoc">/*! Error raised when a SWI exception occurs */</span>
+   139        <span class=key>config</span> Error.Id E_swi = {
+   140            msg: <span class="string">"E_swi: pc = 0x%08x, lr = 0x%08x."</span>
+   141        };
+   142    
+   143        <span class="xdoc">/*! Error raised when an prefetch abort exception occurs */</span>
+   144        <span class=key>config</span> Error.Id E_prefetchAbort = {
+   145            msg: <span class="string">"E_prefetchAbort: pc = 0x%08x, lr = 0x%08x."</span>
+   146        };
+   147    
+   148        <span class="xdoc">/*! Error raised when an data abort exception occurs */</span>
+   149        <span class=key>config</span> Error.Id E_dataAbort = {
+   150            msg: <span class="string">"E_dataAbort: pc = 0x%08x, lr = 0x%08x."</span>
+   151        };
+   152    
+   153        <span class="xdoc">/*! Error raised when an undefined instruction exception occurs */</span>
+   154        <span class=key>config</span> Error.Id E_undefinedInstruction = {
+   155            msg: <span class="string">"E_undefinedInstruction: pc = 0x%08x, lr = 0x%08x."</span>
+   156        };
+   157    
+   158        <span class="xdoc">/*!
+</span>   159    <span class="xdoc">     *  Enable full exception decoding, default is true.
+</span>   160    <span class="xdoc">     *
+</span>   161    <span class="xdoc">     *  When enabled, the exception handler will fully
+</span>   162    <span class="xdoc">     *  decode an exception and dump the registers to the
+</span>   163    <span class="xdoc">     *  system console.
+</span>   164    <span class="xdoc">     *
+</span>   165    <span class="xdoc">     *  When set to false, only an Error is printed on the console.
+</span>   166    <span class="xdoc">     *
+</span>   167    <span class="xdoc">     *  In either case, the full exception context is always
+</span>   168    <span class="xdoc">     *  saved and visible with ROV.
+</span>   169    <span class="xdoc">     */</span>
+   170        <span class=key>config</span> Bool enableDecode = <span class=key>true</span>;
+   171    
+   172        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   173    <span class="xdoc">     *  Exception stack pointer. Default = null.
+</span>   174    <span class="xdoc">     *  (Indicates that stack is to be created using
+</span>   175    <span class="xdoc">     *  staticPlace()
+</span>   176    <span class="xdoc">     */</span>
+   177        <span class=key>config</span> Ptr excStack = <span class=key>null</span>;
+   178    
+   179        <span class="xdoc">/*!
+</span>   180    <span class="xdoc">     * Exception stack size in MAUs.
+</span>   181    <span class="xdoc">     * Default is 128 bytes.
+</span>   182    <span class="xdoc">     */</span>
+   183        <span class=key>metaonly</span> <span class=key>config</span> SizeT excStackSize = 128;
+   184    
+   185        <span class="xdoc">/*!
+</span>   186    <span class="xdoc">     *  Memory section used for Exception stack.
+</span>   187    <span class="xdoc">     *  Default is null, which results in the stack
+</span>   188    <span class="xdoc">     *  being placed in .bss.
+</span>   189    <span class="xdoc">     */</span>
+   190        <span class=key>metaonly</span> <span class=key>config</span> String excStackSection = <span class=key>null</span>;
+   191    
+   192        <span class="xdoc">/*!
+</span>   193    <span class="xdoc">     *  User Exception Context Buffer Address
+</span>   194    <span class="xdoc">     *
+</span>   195    <span class="xdoc">     *  By default, when an exception occurs, an {<b>@link</b> #ExcContext}
+</span>   196    <span class="xdoc">     *  structure is allocated on the exception stack and filled in
+</span>   197    <span class="xdoc">     *  by the exception handler.
+</span>   198    <span class="xdoc">     *
+</span>   199    <span class="xdoc">     *  If {<b>@link</b> #excContextBuffer} is initialized by the user, the
+</span>   200    <span class="xdoc">     *  {<b>@link</b> #ExcContext} structure will be placed at that address instead.
+</span>   201    <span class="xdoc">     *
+</span>   202    <span class="xdoc">     *  The buffer must be large enough to contain an {<b>@link</b> #ExcContext}
+</span>   203    <span class="xdoc">     *  structure.
+</span>   204    <span class="xdoc">     */</span>
+   205        <span class=key>metaonly</span> <span class=key>config</span> Ptr excContextBuffer;
+   206    
+   207        <span class="xdoc">/*!
+</span>   208    <span class="xdoc">     *  User Exception Stack Buffer Address
+</span>   209    <span class="xdoc">     *
+</span>   210    <span class="xdoc">     *  When an exception occurs, a pointer to the base address
+</span>   211    <span class="xdoc">     *  of the stack being used by the thread causing the exception is stored
+</span>   212    <span class="xdoc">     *  in the ExcContext buffer.
+</span>   213    <span class="xdoc">     *
+</span>   214    <span class="xdoc">     *  If {<b>@link</b> #excStackBuffer} is initialized by the user, the
+</span>   215    <span class="xdoc">     *  entire contents of that stack will also be
+</span>   216    <span class="xdoc">     *  copied to the address specified.
+</span>   217    <span class="xdoc">     *
+</span>   218    <span class="xdoc">     *  The buffer must be large enough to contain the largest task stack or ISR
+</span>   219    <span class="xdoc">     *  stack defined in the application.
+</span>   220    <span class="xdoc">     */</span>
+   221        <span class=key>metaonly</span> <span class=key>config</span> Ptr excStackBuffer;
+   222    
+   223        <span class="xdoc">/*!
+</span>   224    <span class="xdoc">     *  User Exception hook function.
+</span>   225    <span class="xdoc">     *
+</span>   226    <span class="xdoc">     *  Called just after exception context has been initialized.
+</span>   227    <span class="xdoc">     */</span>
+   228        <span class=key>config</span> ExceptionHookFuncPtr excHookFunc = <span class=key>null</span>;
+   229    
+   230    <span class=key>internal</span>:   <span class="comment">/* not for client use */</span>
+   231    
+   232        <span class="comment">/* assembly code mode registers setup */</span>
+   233        Void init();
+   234    
+   235        <span class="xdoc">/*!
+</span>   236    <span class="xdoc">     *  ======== excHandlerAsm ========
+</span>   237    <span class="xdoc">     *  asm code common exception handler
+</span>   238    <span class="xdoc">     */</span>
+   239        Void excHandlerAsm();
+   240    
+   241        <span class="xdoc">/*!
+</span>   242    <span class="xdoc">     *  ======== excHandlerDataAsm ========
+</span>   243    <span class="xdoc">     *  asm code Data Abort exception handler
+</span>   244    <span class="xdoc">     */</span>
+   245        Void excHandlerDataAsm();
+   246    
+   247        <span class="xdoc">/*!
+</span>   248    <span class="xdoc">     *  ======== excHandler ========
+</span>   249    <span class="xdoc">     *  C function exception Handler
+</span>   250    <span class="xdoc">     */</span>
+   251        Void excHandler(UInt *excStack, UInt lr);
+   252    
+   253        <span class="xdoc">/*!
+</span>   254    <span class="xdoc">     *  ======== excDumpContext ========
+</span>   255    <span class="xdoc">     */</span>
+   256        Void excDumpContext(UInt pc);
+   257    
+   258        <span class=key>struct</span> Module_State {
+   259            Bool        excActive;          <span class=comment>// TRUE if an exception has occurred</span>
+   260            ExcContext  *excContext;        <span class=comment>// Exception context</span>
+   261            Ptr         excStackBuffer;     <span class=comment>// where to copy thread's stack</span>
+   262            Char        excStack[];         <span class=comment>// buffer used for exception stack</span>
+   263            SizeT       excStackSize;
+   264        };
+   265    }
+</pre>
+</body></html>

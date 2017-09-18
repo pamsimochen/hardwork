@@ -1,0 +1,14 @@
+Package: libxv-dev
+Version: 1.0.6-r9.1.6
+Description: X11 Video extension library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-style
+Architecture: armv7a
+OE: libxv
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libxv1 (= 1.0.6-r9.1.6), libxv1, xproto-dev, videoproto-dev
+Recommends: util-macros-dev, libxext-dev, videoproto-dev, libx11-dev, libxcb-dev, libpthread-stubs-dev, libxau-dev, libxdmcp-dev, libc6-dev, libxv-dev, xproto-dev
+Source: http://xorg.freedesktop.org/releases/individual/lib/libXv-1.0.6.tar.bz2;name=archive

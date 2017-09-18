@@ -1,0 +1,13 @@
+Package: libproxy
+Version: 0.2.3-r2.6
+Description: A library handling all the details of proxy configuration
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1+
+Architecture: armv7a
+OE: libproxy
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2), libxmu6 (>= 1.1.0), libxext6 (>= 1.2.0), libxt6 (>= 1.0.9), libsm6 (>= 1.2.0), libuuid1 (>= 2.17), libice6 (>= 1.0.7), libx11-6 (>= 1.4.1), libxcb1 (>= 1.6), libpthread-stubs0 (>= 0.2), libxau6 (>= 1.0.6), libxdmcp6 (>= 1.1.0), gconf (>= 2.28.0), orbit2 (>= 2.14.17), libgmodule-2.0-0 (>= 2.24.1), libdbus-glib-1-2 (>= 0.86), libdbus-1-3 (>= 1.4.1), libgobject-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libglib-2.0-0 (>= 2.24.1)
+Source: http://libproxy.googlecode.com/files/libproxy-0.2.3.tar.gz file://libproxy-move-define-__USE_BSD.patch

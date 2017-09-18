@@ -1,0 +1,67 @@
+%%{
+/* --COPYRIGHT--,EPL
+ *  Copyright (c) 2010 Texas Instruments and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *      Texas Instruments - initial implementation
+ * 
+ * --/COPYRIGHT--*/
+%%}
+%%{
+    var Mod = this.$name.replace(/\./g, '_');
+%%}
+
+/*
+ *  ======== _`Mod`_stop ========
+ */
+static void _`Mod`_stop(void)
+{
+#ifdef __ti__
+    /*  Define C$$EXIT label because TI debugger uses this to know when
+     *  programs terminate.  This can be removed if the debugger is not
+     *  used.
+     */
+    __asm("        .global C$$EXIT");
+    __asm("C$$EXIT: nop");
+#endif
+    for (;;);   /* spin forever (nowhere else to go) */
+}
+
+/*
+ *  ======== atexit ========
+ *  The TI RTS library's atexit() implementation requires a _huge_ amount of
+ *  data.  We stub it out here and replace exit() and abort() with functions
+ *  that are sufficient for the proper operation of xdc.runtime.System.
+ */
+int atexit(void (*fxn)(void))
+{
+    return (`Mod`_atExitFxn ? `Mod`_atExitFxn(fxn) : 0);
+}
+
+/*
+ *  ======== abort ========
+ *  See atexit() above
+ */
+void abort(void)
+{
+    if (`Mod`_abortFxn != 0) {
+        `Mod`_abortFxn();
+    }
+    _`Mod`_stop();
+}
+
+/*
+ *  ======== exit ========
+ *  See atexit() above
+ */
+void exit(int status)
+{
+    if (`Mod`_exitFxn != 0) {
+        `Mod`_exitFxn(status);
+    }
+    _`Mod`_stop();
+}

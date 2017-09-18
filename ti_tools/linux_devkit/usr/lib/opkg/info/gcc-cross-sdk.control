@@ -1,0 +1,12 @@
+Package: gcc-cross-sdk
+Version: 4.5.3-r3.6
+Description: The GNU cc and gcc C compilers
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv3+
+Architecture: i686-armv7a-sdk
+OE: external-toolchain-sdk-arago
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/meta/external-toolchain-sdk-arago.bb

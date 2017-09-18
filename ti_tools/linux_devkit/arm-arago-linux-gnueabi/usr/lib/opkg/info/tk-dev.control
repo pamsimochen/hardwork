@@ -1,0 +1,14 @@
+Package: tk-dev
+Version: 8.5.8-r2.6
+Description: Tool Command Language ToolKit Extension
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: tcl
+Architecture: armv7a
+OE: tk
+Homepage: http://tcl.sourceforge.net
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: tk (= 8.5.8-r2.6), libtk8.5-0
+Recommends: tcl-dev, libxt-dev, libc6-dev, libx11-dev, libxft-dev, tk-lib-dev, tcl-lib-dev, tk-dev
+Source: http://downloads.sourceforge.net/tcl/tk8.5.8-src.tar.gz file://confsearch.diff;striplevel=2 file://manpages.diff;striplevel=2 file://non-linux.diff;striplevel=2 file://rpath.diff;striplevel=2 file://tklibrary.diff;striplevel=2 file://tkprivate.diff;striplevel=2 file://fix-xft.diff

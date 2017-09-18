@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>package xdc.runtime.knl</title>
+<meta name="description" content="XDC Runtime support for OS-related primitives">
+<link rel="stylesheet" type="text/css" href="../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">package</span> <span class="xdoc-id">xdc.runtime.knl</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/ICacheSupport.html" title="interface ICacheSupport"><img class="xdocHdrArrow" src="../../../Arrow_right.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/package.html">index URL</a></div>
+<p class="xdocHdrSummary">XDC Runtime support for OS-related primitives</p>
+<ul class="xdocToc">
+</ul>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/package-src.html"><span class="xdocLabelFile">xdc/runtime/knl/package.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynX">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">package</span> <span class="xdoc-id">xdc.runtime.knl</span> [1, 0, 0] {
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">interface</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/ICacheSupport.html' title='xdc.runtime.knl.ICacheSupport'><span class="xdoc-id">ICacheSupport</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Interface for OS specific back-end</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">interface</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/IGateProcessSupport.html' title='xdc.runtime.knl.IGateProcessSupport'><span class="xdoc-id">IGateProcessSupport</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Interface for OS specific back-end</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">interface</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/IGateThreadSupport.html' title='xdc.runtime.knl.IGateThreadSupport'><span class="xdoc-id">IGateThreadSupport</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Interface for OS specific back-end</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">interface</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/ISemProcessSupport.html' title='xdc.runtime.knl.ISemProcessSupport'><span class="xdoc-id">ISemProcessSupport</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Interface for OS specific back-end</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">interface</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/ISemThreadSupport.html' title='xdc.runtime.knl.ISemThreadSupport'><span class="xdoc-id">ISemThreadSupport</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Interface for OS specific back-end</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">interface</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/ISemaphore.html' title='xdc.runtime.knl.ISemaphore'><span class="xdoc-id">ISemaphore</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Interface implemented by all front-end semaphore providers</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">interface</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/ISync.html' title='xdc.runtime.knl.ISync'><span class="xdoc-id">ISync</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;OS independent synchronization</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">interface</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/IThreadSupport.html' title='xdc.runtime.knl.IThreadSupport'><span class="xdoc-id">IThreadSupport</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Interface for OS specific back-end</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/Cache.html' title='xdc.runtime.knl.Cache'><span class="xdoc-id">Cache</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Cache Services</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/CacheSupportNull.html' title='xdc.runtime.knl.CacheSupportNull'><span class="xdoc-id">CacheSupportNull</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Empty ICacheSupport implementation</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/GateH.html' title='xdc.runtime.knl.GateH'><span class="xdoc-id">GateH</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Provides APIs to protect critical sections when an IGate.Handle is
+  available</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/GateProcess.html' title='xdc.runtime.knl.GateProcess'><span class="xdoc-id">GateProcess</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Provides protection of critical sections across processes</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/GateProcessSupportNull.html' title='xdc.runtime.knl.GateProcessSupportNull'><span class="xdoc-id">GateProcessSupportNull</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Empty IGateProcessSupport implementation</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/GateThread.html' title='xdc.runtime.knl.GateThread'><span class="xdoc-id">GateThread</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Provides protection of critical sections across threads</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/GateThreadSupportNull.html' title='xdc.runtime.knl.GateThreadSupportNull'><span class="xdoc-id">GateThreadSupportNull</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Empty IGateProcessSupport implementation</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/SemProcess.html' title='xdc.runtime.knl.SemProcess'><span class="xdoc-id">SemProcess</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;SemProcess Manager</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/SemThread.html' title='xdc.runtime.knl.SemThread'><span class="xdoc-id">SemThread</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;SemThread Manager</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/Semaphore.html' title='xdc.runtime.knl.Semaphore'><span class="xdoc-id">Semaphore</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Provides semaphore services when an ISemaphore.Handle is available</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/Sync.html' title='xdc.runtime.knl.Sync'><span class="xdoc-id">Sync</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Provides synchronization APIs when an ISync.Handle is available</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/SyncGeneric.html' title='xdc.runtime.knl.SyncGeneric'><span class="xdoc-id">SyncGeneric</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Generic ISync implementation</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/SyncNull.html' title='xdc.runtime.knl.SyncNull'><span class="xdoc-id">SyncNull</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Empty ISync implementation used mainly for testing</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/SyncSemThread.html' title='xdc.runtime.knl.SyncSemThread'><span class="xdoc-id">SyncSemThread</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;A ISync implementation based on a SemThread. [EXPERIMENTAL]</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">module</span> <a class='xdocSynGo' href='../../../xdc/runtime/knl/Thread.html' title='xdc.runtime.knl.Thread'><span class="xdoc-id">Thread</span>;</a>
+</div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;Thread services</div>
+<div class="xdocSynCode">
+<tt></tt>}
+</div>
+</div>
+<div id="xdocDate">generated on Sat, 21 Dec 2013 00:09:49 GMT</div>
+</div></div></body>
+</html>

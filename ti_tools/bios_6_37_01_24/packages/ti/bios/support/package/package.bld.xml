@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.bios.support" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Lck"/>
+        <module name="Sys"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.bios.support.c"/>
+        <srcFile name="Lck.c"/>
+        <srcFile name="Sys.c"/>
+        <srcFile name="boot.s28"/>
+        <srcFile name="boot.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/release/ti.bios.support.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.o28L.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.o28L.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.o28L.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.o28L.dep" src="boot.s28"/>
+        <srcFile name="lib/release/ti.bios.support.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.o28FP.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.o28FP.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.o28FP.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.o28FP.dep" src="boot.s28"/>
+        <srcFile name="lib/release/ti.bios.support.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.o64P.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.o64P.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.o64P.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.o64P.dep" src="boot.c"/>
+        <srcFile name="lib/release/ti.bios.support.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.o64Pe.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.o64Pe.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.o64Pe.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.o64Pe.dep" src="boot.c"/>
+        <srcFile name="lib/release/ti.bios.support.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.o674.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.o674.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.o674.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.o674.dep" src="boot.c"/>
+        <srcFile name="lib/release/ti.bios.support.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.oe64P.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.oe64P.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.oe64P.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.oe64P.dep" src="boot.c"/>
+        <srcFile name="lib/release/ti.bios.support.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.oe64Pe.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.oe64Pe.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.oe64Pe.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.oe64Pe.dep" src="boot.c"/>
+        <srcFile name="lib/release/ti.bios.support.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.oe674.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.oe674.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.oe674.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.oe674.dep" src="boot.c"/>
+        <srcFile name="lib/release/ti.bios.support.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.oe64T.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.oe64T.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.oe64T.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.oe64T.dep" src="boot.c"/>
+        <srcFile name="lib/release/ti.bios.support.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.oe66.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.oe66.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.oe66.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.oe66.dep" src="boot.c"/>
+        <srcFile name="lib/release/ti.bios.support.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/package/package_ti.bios.support.oe66e.dep" src="package/package_ti.bios.support.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Lck.oe66e.dep" src="Lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/Sys.oe66e.dep" src="Sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios.support/boot.oe66e.dep" src="boot.c"/>
+        <srcFile name="package/rel/ti_bios_support.tar.gz.dep" src="package/rel/ti_bios_support.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,6.1,0"
+            rawVersion="6.1.0"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/vendors/ti/c28/6.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,6.1,0"
+            rawVersion="6.1.0"
+            platform="ti.platforms.tms320x28:F28377D:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/vendors/ti/c28/6.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6472"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6748"
+            isa="674"
+            suffix="674"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6472"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6748"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.sdp4430"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6678"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6670"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.a28L"
+        profile="release"
+        target="ti.targets.C28_large"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.a28FP"
+        profile="release"
+        target="ti.targets.C28_float"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.a64P"
+        profile="release"
+        target="ti.targets.C64P"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.a64Pe"
+        profile="release"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.a674"
+        profile="release"
+        target="ti.targets.C674"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.ae64P"
+        profile="release"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.ae64Pe"
+        profile="release"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.ae674"
+        profile="release"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.ae64T"
+        profile="release"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.ae66"
+        profile="release"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/release/ti.bios.support"
+        pname="lib/release/ti.bios.support.ae66e"
+        profile="release"
+        target="ti.targets.elf.C66_big_endian"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_bios_support"
+        pname="../../..//../exports/ti_bios_support.tar.gz"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="boot.s28"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/release/ti.bios.support.a28L"/>
+        <file name="package/package_ti.bios.support.c"/>
+        <file name="Lck.c"/>
+        <file name="Sys.c"/>
+        <file name="lib/release/ti.bios.support.a28FP"/>
+        <file name="lib/release/ti.bios.support.a64P"/>
+        <file name="boot.c"/>
+        <file name="lib/release/ti.bios.support.a64Pe"/>
+        <file name="lib/release/ti.bios.support.a674"/>
+        <file name="lib/release/ti.bios.support.ae64P"/>
+        <file name="lib/release/ti.bios.support.ae64Pe"/>
+        <file name="lib/release/ti.bios.support.ae674"/>
+        <file name="lib/release/ti.bios.support.ae64T"/>
+        <file name="lib/release/ti.bios.support.ae66"/>
+        <file name="lib/release/ti.bios.support.ae66e"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

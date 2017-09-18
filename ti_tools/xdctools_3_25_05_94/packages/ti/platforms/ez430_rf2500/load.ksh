@@ -1,0 +1,3 @@
+#!/bin/sh
+echo can\'t run $* ...
+exit 0

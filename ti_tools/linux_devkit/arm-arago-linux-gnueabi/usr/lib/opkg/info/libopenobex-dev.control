@@ -1,0 +1,14 @@
+Package: libopenobex-dev
+Version: 1.5-r3-arago2.6
+Description: The Openobex project is an open source implementation of the Object Exchange (OBEX) protocol.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2/LGPLv2.1
+Architecture: armv7a
+OE: openobex
+Homepage: http://openobex.triq.net
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libopenobex1 (= 1.5-r3-arago2.6), libopenobex1
+Recommends: bluez-libs-dev, libusb-0.1-dev, libusb-1.0-dev, libc6-dev, libopenobex-dev, bluez4-dev
+Source: http://www.kernel.org/pub/linux/bluetooth/openobex-1.5.tar.gz file://disable-cable-test.patch file://libusb_crosscompile_check.patch

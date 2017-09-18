@@ -1,0 +1,493 @@
+<html>
+<head>
+<title>module xdc.runtime.knl.Sync</title>
+<meta name="description" content="Provides synchronization APIs when an ISync.Handle is available">
+<link rel="stylesheet" type="text/css" href="../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">module</span> <span class="xdoc-id">xdc.runtime.knl.</span><span class="xdoc-id">Sync</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Semaphore.html" title="module Semaphore"><img class="xdocHdrArrow" src="../../../Arrow_left.png"/></a></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/package.html" title="package xdc.runtime.knl"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/SyncGeneric.html" title="module SyncGeneric"><img class="xdocHdrArrow" src="../../../Arrow_right.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html">index URL</a></div>
+<p class="xdocHdrSummary">Provides synchronization APIs when an ISync.Handle is available</p>
+<ul class="xdocToc">
+<li class="xdocToc"><a class="xdocToc" href="#targ-synop">C synopsis</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocElems">Individual elements</a></li>
+<li class="xdocToc"><a class="xdocToc" href="#meta-synop">Configuration settings</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocMetaElems">Individual elements</a></li>
+</ul>
+<div class="xdocBrief">
+The application must first obtain an ISync.Handle. 
+  It can get such a handle by directly calling <a class="xdoc-link" href="SyncGeneric.html#per-instance_creation" title="SyncGeneric.create">SyncGeneric.create</a> or 
+  <a class="xdoc-link" href="SyncSemThread.html#per-instance_creation" title="SyncSemThread.create">SyncSemThread.create</a>. Then the application can use the generic 
+  APIs provided by this module.
+</div>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2">C</span></tt> synopsis</td>
+<td class="xdocLabelCenter">target-domain</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/Sync-src.html"><span class="xdocLabelFile">xdc/runtime/knl/Sync.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynT">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw3">#include</span> <span class="xdoc-id">&lt;xdc/runtime/knl/Sync.h&gt;</span>
+</div>
+<table cellspacing="0" cellpadding="0" border="0">
+<tr><td colspan='2'><div class='xdocSynTblHdr'>Functions</div></td></tr>
+
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#query"><span class="xdoc-id">Sync_query</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Query for a particular quality</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#per-instance_object_types" title="xdc.runtime.knl.ISync.Handle">ISync_Handle</a>&nbsp;<span class="xdoc-id">sync</span>, <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">qual</span>);</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#signal"><span class="xdoc-id">Sync_signal</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Called at completion of an activity</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#per-instance_object_types" title="xdc.runtime.knl.ISync.Handle">ISync_Handle</a>&nbsp;<span class="xdoc-id">sync</span>);</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw2">Int</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#wait"><span class="xdoc-id">Sync_wait</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Called to wait/poll for completion of an activity</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#per-instance_object_types" title="xdc.runtime.knl.ISync.Handle">ISync_Handle</a>&nbsp;<span class="xdoc-id">sync</span>, <span class="xdoc-kw2">UInt</span>&nbsp;<span class="xdoc-id">timeout</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error_Block</a>&nbsp;*<span class="xdoc-id">eb</span>);</div></td></tr>
+<tr><td class="xdocSynFxnCat" colspan="2"><div class="xdocSynFxnCat">Functions common to all target modules</div></td></tr>
+
+<tr>
+<td></td>
+<td>
+<div class="xdocSynTblPack">
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">Sync_Module_getMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Returns the diagnostics mask for this module</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">Sync_Module_hasMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Test whether this module has a diagnostics mask</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">Sync_Module_heap</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The heap from which this module allocates memory</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">Sync_Module_id</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Get this module's unique id</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">Sync_Module_setMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Set the diagnostics mask for this module</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">Sync_Module_startupDone</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Test if this module has completed startup</span></span></a>
+</div>
+</td>
+</tr>
+<tr><td colspan='2'><div class='xdocSynTblHdr'>Defines</div></td></tr>
+
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.N.O_.W.A.I.T"><span class="xdoc-id">Sync_NO_WAIT</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Used to specify no waiting</span></span></a>  (<i><span class="xdoc-kw2">UInt</span></i>)<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#.N.O_.W.A.I.T" title="xdc.runtime.knl.ISync.NO_WAIT">ISync.NO_WAIT</a></div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.W.A.I.T_.F.O.R.E.V.E.R"><span class="xdoc-id">Sync_WAIT_FOREVER</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Used to wait forever</span></span></a>  (<i><span class="xdoc-kw2">UInt</span></i>)<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#.W.A.I.T_.F.O.R.E.V.E.R" title="xdc.runtime.knl.ISync.WAIT_FOREVER">ISync.WAIT_FOREVER</a></div></td></tr>
+<tr><td colspan='2'><div class='xdocSynTblHdr'>Typedefs</div></td></tr>
+
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">typedef</span> <span class="xdoc-kw1">enum</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.Wait.Status"><span class="xdoc-id">Sync_WaitStatus</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Error codes returned by Sync_wait</span></span></a> ...</div></td></tr>
+</table>
+<div class="xdocSynSpacer">&nbsp;</div>
+</div>
+<div id="xdocSep">
+</div>
+<div id="xdocElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".N.O_.W.A.I.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">Sync_</span><span class="xdoc-id">NO_WAIT</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#.N.O_.W.A.I.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Used to specify no waiting</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">Sync_NO_WAIT</span>  (<i><span class="xdoc-kw2">UInt</span></i>)<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#.N.O_.W.A.I.T" title="xdc.runtime.knl.ISync.NO_WAIT">ISync.NO_WAIT</a>
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".W.A.I.T_.F.O.R.E.V.E.R"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">Sync_</span><span class="xdoc-id">WAIT_FOREVER</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#.W.A.I.T_.F.O.R.E.V.E.R">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Used to wait forever</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">Sync_WAIT_FOREVER</span>  (<i><span class="xdoc-kw2">UInt</span></i>)<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#.W.A.I.T_.F.O.R.E.V.E.R" title="xdc.runtime.knl.ISync.WAIT_FOREVER">ISync.WAIT_FOREVER</a>
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".Wait.Status"></a>
+<a class="xdocAnchor" id=".Wait.Status_.E.R.R.O.R"></a>
+<a class="xdocAnchor" id=".Wait.Status_.T.I.M.E.O.U.T"></a>
+<a class="xdocAnchor" id=".Wait.Status_.S.U.C.C.E.S.S"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">enum</span> <span class="xdoc-id">Sync_</span><span class="xdoc-id">WaitStatus</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#.Wait.Status">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Error codes returned by Sync_wait</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">typedef</span> <span class="xdoc-kw1">enum</span> <span class="xdoc-id">Sync_WaitStatus</span> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Sync_WaitStatus_ERROR</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Sync_WaitStatus_TIMEOUT</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Sync_WaitStatus_SUCCESS</span>
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>} <span class="xdoc-id">Sync_WaitStatus</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="query"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">Sync_</span><span class="xdoc-id">query</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#query">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Query for a particular quality</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">Sync_query</span>(<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#per-instance_object_types" title="xdc.runtime.knl.ISync.Handle">ISync_Handle</a>&nbsp;<span class="xdoc-id">sync</span>, <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">qual</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">sync</span>
+<span class="xdocChildSum">&#151;&nbsp;sync handle</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">qual</span>
+<span class="xdocChildSum">&#151;&nbsp;quality</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">FALSE is returned if quality not supported.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">TRUE or FALSE.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="signal"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">Sync_</span><span class="xdoc-id">signal</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#signal">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Called at completion of an activity</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;<span class="xdoc-id">Sync_signal</span>(<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#per-instance_object_types" title="xdc.runtime.knl.ISync.Handle">ISync_Handle</a>&nbsp;<span class="xdoc-id">sync</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">sync</span>
+<span class="xdocChildSum">&#151;&nbsp;sync handle</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This function is non-blocking. It is also required that the underlying
+  sync be binary in nature.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="wait"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">Sync_</span><span class="xdoc-id">wait</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#wait">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Called to wait/poll for completion of an activity</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">Sync_wait</span>(<a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#per-instance_object_types" title="xdc.runtime.knl.ISync.Handle">ISync_Handle</a>&nbsp;<span class="xdoc-id">sync</span>, <span class="xdoc-kw2">UInt</span>&nbsp;<span class="xdoc-id">timeout</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error_Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">sync</span>
+<span class="xdocChildSum">&#151;&nbsp;sync handle</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">timeout</span>
+<span class="xdocChildSum">&#151;&nbsp;timeout in microseconds</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This function can block and typically waits for a semaphore to become
+  available.</div>
+<div class="xdocText">Non-blocking implementations should return <a class="xdoc-link" href="Sync.html#.Wait.Status_.T.I.M.E.O.U.T" title="WaitStatus_TIMEOUT">WaitStatus_TIMEOUT</a>.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText"></div>
+<div class="xdocText"><UL><LI><a class="xdoc-link" href="Sync.html#.Wait.Status_.E.R.R.O.R" title="WaitStatus_ERROR">WaitStatus_ERROR</a> if an error occured.
+</LI><LI><a class="xdoc-link" href="Sync.html#.Wait.Status_.T.I.M.E.O.U.T" title="WaitStatus_TIMEOUT">WaitStatus_TIMEOUT</a> denotes timeout.
+</LI><LI><a class="xdoc-link" href="Sync.html#.Wait.Status_.S.U.C.C.E.S.S" title="WaitStatus_SUCCESS">WaitStatus_SUCCESS</a> semaphore was decremented. 
+</LI></UL></div>
+<a class="xdocAnchor" id="module-wide_built-ins"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdocSynSum">Module-Wide Built-Ins</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#module-wide_built-ins">index URL</a></div>
+<p class="xdocHdrSummary"></p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><a class="xdoc-link" href="../../../xdc/runtime/Types.html#.Module.Id" title="xdc.runtime.Types.ModuleId">Types_ModuleId</a> <span class="xdoc-id">Sync_Module_id</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Get this module's unique id</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span> <span class="xdoc-id">Sync_Module_startupDone</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Test if this module has completed startup</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><a class="xdoc-link" href="../../../xdc/runtime/IHeap.html#per-instance_object_types" title="xdc.runtime.IHeap.Handle">IHeap_Handle</a> <span class="xdoc-id">Sync_Module_heap</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;The heap from which this module allocates memory</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span> <span class="xdoc-id">Sync_Module_hasMask</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Test whether this module has a diagnostics mask</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bits16</span> <span class="xdoc-id">Sync_Module_getMask</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Returns the diagnostics mask for this module</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Void</span> <span class="xdoc-id">Sync_Module_setMask</span>(<span class="xdoc-kw2">Bits16</span> <span class="xdoc-id">mask</span>);
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Set the diagnostics mask for this module</div>
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/Sync-src.html"><span class="xdocLabelFile">xdc/runtime/knl/Sync.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynM">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">var</span> Sync = <span class="xdoc-kw3">xdc.useModule</span>(<span class="xdoc-id">'xdc.runtime.knl.Sync'</span>);
+</div>
+<div class='xdocSynHdr'>local proxy modules</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#.Proxy">Sync.<span class="xdoc-id">Proxy</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Platform-specific implementation</span></span></a> = <i><a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html" title="xdc.runtime.knl.ISync">ISync</a>.Module</i> <span class="xdoc-kw2">null</span>
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Proxy" title="xdc.runtime.knl.Sync.Proxy">Sync.<span class="xdoc-id">Proxy</span></a>.delegate$ = <i><a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html" title="xdc.runtime.knl.ISync">ISync</a>.Module</i> <span class="xdoc-kw2">null</span>
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Proxy" title="xdc.runtime.knl.Sync.Proxy">Sync.<span class="xdoc-id">Proxy</span></a>.abstractInstances$ = <span class="xdoc-kw2">false</span>
+</div>
+<div class='xdocSynHdr'>module-wide constants & types</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.N.O_.W.A.I.T">Sync.<span class="xdoc-id">NO_WAIT</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Used to specify no waiting</span></span></a> = <a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#.N.O_.W.A.I.T" title="xdc.runtime.knl.ISync.NO_WAIT">ISync.NO_WAIT</a>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.W.A.I.T_.F.O.R.E.V.E.R">Sync.<span class="xdoc-id">WAIT_FOREVER</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Used to wait forever</span></span></a> = <a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#.W.A.I.T_.F.O.R.E.V.E.R" title="xdc.runtime.knl.ISync.WAIT_FOREVER">ISync.WAIT_FOREVER</a>;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><i>values of type <a class="xdocSynGo" href="#meta.Wait.Status">Sync.<span class="xdoc-id">WaitStatus</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Error codes returned by Sync_wait</span></span></a></i>
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.Wait.Status" title="xdc.runtime.knl.Sync.WaitStatus">Sync.<span class="xdoc-id">WaitStatus_ERROR</span></a>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.Wait.Status" title="xdc.runtime.knl.Sync.WaitStatus">Sync.<span class="xdoc-id">WaitStatus_TIMEOUT</span></a>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.Wait.Status" title="xdc.runtime.knl.Sync.WaitStatus">Sync.<span class="xdoc-id">WaitStatus_SUCCESS</span></a>;
+</div>
+<div class='xdocSynHdr'>module-wide config parameters</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#common$">Sync.<span class="xdoc-id">common$</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Common module configuration parameters</span></span></a> = <i><a class="xdoc-link" href="../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+</div>
+<div id="xdocSep">
+</div>
+<div id="xdocMetaElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".Proxy"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">proxy</span> <span class="xdoc-id">Sync.</span><span class="xdoc-id">Proxy</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#.Proxy">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Platform-specific implementation</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Sync.<span class="xdoc-id">Proxy</span> = <i><a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html" title="xdc.runtime.knl.ISync">ISync</a>.Module</i> <span class="xdoc-kw2">null</span>
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;some delegate module inheriting the <a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html" title="xdc.runtime.knl.ISync">ISync</a> interface</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>Sync.<span class="xdoc-id">Proxy</span>.delegate$ = <i><a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html" title="xdc.runtime.knl.ISync">ISync</a>.Module</i> <span class="xdoc-kw2">null</span>
+</div>
+<div class='xdocSynSum'><tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;explicit access to the currently bound delegate module</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>Sync.<span class="xdoc-id">Proxy</span>.abstractInstances$ = <span class="xdoc-kw2">false</span>
+</div>
+<div class='xdocSynSum'><tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;use indirect runtime function calls if true</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">If ALL <tt>ISync.Handles</tt> were created using the same module 
+  (e.g SyncSemProcess), then setting <tt>Proxy</tt> to <tt>SyncSemProcess</tt> and 
+  <tt>Sync.Proxy.abstractInstances$</tt> to <tt>false</tt> will improve the
+  performance of the <tt>Sync</tt> APIs.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.N.O_.W.A.I.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">Sync.</span><span class="xdoc-id">NO_WAIT</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#.N.O_.W.A.I.T">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Used to specify no waiting</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> Sync.<span class="xdoc-id">NO_WAIT</span> = <a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#.N.O_.W.A.I.T" title="xdc.runtime.knl.ISync.NO_WAIT">ISync.NO_WAIT</a>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.N.O_.W.A.I.T" title="Sync_NO_WAIT">Sync_NO_WAIT</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.W.A.I.T_.F.O.R.E.V.E.R"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">Sync.</span><span class="xdoc-id">WAIT_FOREVER</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#.W.A.I.T_.F.O.R.E.V.E.R">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Used to wait forever</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> Sync.<span class="xdoc-id">WAIT_FOREVER</span> = <a class="xdoc-link" href="../../../xdc/runtime/knl/ISync.html#.W.A.I.T_.F.O.R.E.V.E.R" title="xdc.runtime.knl.ISync.WAIT_FOREVER">ISync.WAIT_FOREVER</a>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.W.A.I.T_.F.O.R.E.V.E.R" title="Sync_WAIT_FOREVER">Sync_WAIT_FOREVER</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.Wait.Status"></a>
+<a class="xdocAnchor" id=".Wait.Status_.E.R.R.O.R"></a>
+<a class="xdocAnchor" id=".Wait.Status_.T.I.M.E.O.U.T"></a>
+<a class="xdocAnchor" id=".Wait.Status_.S.U.C.C.E.S.S"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">enum</span> <span class="xdoc-id">Sync.</span><span class="xdoc-id">WaitStatus</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#.Wait.Status">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Error codes returned by Sync_wait</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><i>values of type Sync.<span class="xdoc-id">WaitStatus</span></i>
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">const</span> Sync.<span class="xdoc-id">WaitStatus_ERROR</span>;
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">const</span> Sync.<span class="xdoc-id">WaitStatus_TIMEOUT</span>;
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw1">const</span> Sync.<span class="xdoc-id">WaitStatus_SUCCESS</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.Wait.Status" title="Sync_WaitStatus">Sync_WaitStatus</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="common$"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <span class="xdoc-id">Sync.</span><span class="xdoc-id">common$</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Sync.html" title="module Sync"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/Sync.html#common$">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Common module configuration parameters</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Sync.<span class="xdoc-id">common$</span> = <i><a class="xdoc-link" href="../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">All modules have this configuration parameter.  Its name
+  contains the '$' character to ensure it does not conflict with
+  configuration parameters declared by the module.  This allows
+  new configuration parameters to be added in the future without
+  any chance of breaking existing modules.</div>
+</div>
+<div id="xdocDate">generated on Sat, 21 Dec 2013 00:09:49 GMT</div>
+</div></div></body>
+</html>

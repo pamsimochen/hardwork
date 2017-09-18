@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" href="$_gate_m_p_8h.html" title="Multiple processor gate that provides local and remote context protection." alt="" coords="32,97,138,121" />
+<area shape="rect" href="$_frame_q_buf_mgr_8h.html" title="Defines for interfaces for FrameQBufMgr module. (Deprecated)" alt="" coords="162,97,333,121" />
+<area shape="rect" href="$_frame_q_defs_8h.html" title="Defines configurable elements for FrameQ module. (Deprecated)" alt="" coords="8,171,160,195" />
+<area shape="rect" href="$_sys_link_8h.html" title="This module contains common definitions, types, structures and functions used by SysLink." alt="" coords="184,171,312,195" />
+<area shape="rect" href="$_notify_8h.html" title="Notification manager for IPC." alt="" coords="336,171,432,195" />
+</map>

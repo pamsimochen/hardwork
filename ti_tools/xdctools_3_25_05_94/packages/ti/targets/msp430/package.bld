@@ -1,0 +1,2 @@
+Pkg.otherFiles = ["std.h"];
+Pkg.otherSrcs = Pkg.otherFiles;

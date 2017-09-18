@@ -1,0 +1,53 @@
+clean::
+	$(RM) package/hdvpss_examples_m2mNsf_Subframe_configuro.sch
+	$(RM) package/.vers_g180
+	$(RM) package/.vers_r170
+	$(RM) package/.vers_b150
+	$(RM) package/.xdc-y25
+	$(RM) package/hdvpss_examples_m2mNsf_Subframe_configuro.java
+	$(RM) package/hdvpss_examples_m2mNsf_Subframe_configuro.class
+	$(RM) package/package_hdvpss_examples_m2mNsf_Subframe_configuro.c
+	$(RM) package/package.defs.h
+	$(RM) package/hdvpss_examples_m2mNsf_Subframe_configuro.ccs
+
+.interfaces: package/hdvpss_examples_m2mNsf_Subframe_configuro.sch package/.vers_g180 package/.vers_r170 package/.vers_b150 package/.xdc-y25 package/hdvpss_examples_m2mNsf_Subframe_configuro.java package/package_hdvpss_examples_m2mNsf_Subframe_configuro.c package/package.defs.h package/hdvpss_examples_m2mNsf_Subframe_configuro.ccs 
+package/package.xdc.inc: package/.vers_g180
+package/.vers_g180:
+package/package.xdc.inc: package/.vers_r170
+package/.vers_r170:
+package/package.xdc.inc: package/.vers_b150
+package/.vers_b150:
+
+.interfaces: 
+
+# schema include file dependencies
+package.xs:
+package/package.xdc.inc: package.xs
+
+# schema update dependencies
+package/package.xdc.inc: xdc/IPackage.xdc
+xdc/IPackage.xdc:
+vpath xdc/IPackage.xdc $(XPKGVPATH)
+
+ifneq (clean,$(MAKECMDGOALS))
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/global/java/package.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/global/java/package.jar
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/shelf/java/ecj.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/shelf/java/ecj.jar
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/intern/xsr/java/package.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/intern/xsr/java/package.jar
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/shelf/java/antlr.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/shelf/java/antlr.jar
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/intern/gen/java/package.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/intern/gen/java/package.jar
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/shelf/java/tar.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/shelf/java/tar.jar
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/spec/java/package.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/spec/java/package.jar
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/shelf/java/js.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/shelf/java/js.jar
+/data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/intern/cmd/java/package.jar:
+package/package.xdc.inc: /data/datalocal_videoapps01/ipnc_tools/basic_tools/xdctools_3_23_03_53/packages/xdc/services/intern/cmd/java/package.jar
+endif
+# goals for files generated during schema generation but unspecified by schema's pattern rule
+

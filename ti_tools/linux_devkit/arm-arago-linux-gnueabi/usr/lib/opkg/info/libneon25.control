@@ -1,0 +1,13 @@
+Package: libneon25
+Version: 0.25.5-r5.6
+Description: neon is an HTTP and WebDAV client library, with a C interface.
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2+
+Architecture: armv7a
+OE: neon
+Homepage: http://www.webdav.org/neon
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libgnutls26 (>= 2.10.4), libz1 (>= 1.2.3), libgcrypt11 (>= 1.4.1), libgpg-error0 (>= 1.4), libexpat1 (>= 2.0.1), libc6 (>= 2.12.2)
+Source: http://www.webdav.org/neon/neon-0.25.5.tar.gz file://gnutls-force-and-detect.patch file://gnutls-2.patch

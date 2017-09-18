@@ -1,0 +1,14 @@
+Package: gst-plugins-ugly-dev
+Version: 0.10.16-r12.1-arago1.6
+Description: Plugins for GStreamer
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2
+Architecture: armv7a
+OE: gst-plugins-ugly
+Homepage: http://www.gstreamer.net/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: gst-plugins-ugly (= 0.10.16-r12.1-arago1.6)
+Recommends: libwavpack-dev, libvisual-0.4-dev, gstreamer-dev, jack-dev, libvpx-dev, libx264-dev, libmms-dev, libmusicbrainz3-dev, libschroedinger-1.0-dev, faac-dev, faad2-dev, libmikmod-dev, liboil-dev, libogg-dev, libvorbisidec-dev, libvorbis-dev, libmad-dev, libid3tag-dev, gst-plugins-base-dev, mpeg2dec-dev, libsidplay-dev
+Source: http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-0.10.16.tar.bz2;name=archive file://gstmad_16bit.patch file://gstsid_autofoo_HACK.patch

@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.bios" version="5, 6, 0" producerId="undefined">
+    <units>
+        <module name="SYS"/>
+        <module name="LOG"/>
+        <module name="MEM"/>
+        <module name="TSK"/>
+        <module name="CLK"/>
+        <module name="SEM"/>
+        <module name="SWI"/>
+        <module name="IDL"/>
+        <module name="MBX"/>
+        <module name="STS"/>
+        <module name="QUE"/>
+        <module name="PRD"/>
+        <module name="HWI"/>
+        <module name="PIE"/>
+        <module name="BUF"/>
+        <module name="LCK"/>
+        <module name="HOOK"/>
+        <module name="GBL"/>
+        <module name="HST"/>
+        <module name="PIP"/>
+        <module name="RTDX"/>
+        <module name="ECM"/>
+        <module name="DEV"/>
+        <module name="DGN"/>
+        <module name="DHL"/>
+        <module name="DPI"/>
+        <module name="DIO"/>
+        <module name="GIO"/>
+        <module name="SIO"/>
+        <module name="UDEV"/>
+        <module name="MSGQ"/>
+        <module name="POOL"/>
+        <module name="STATICPOOL"/>
+        <module name="PIP"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.bios.c"/>
+        <srcFile name="sio.c"/>
+        <srcFile name="dio.c"/>
+        <srcFile name="dio_cbStaticOpen.c"/>
+        <srcFile name="dio_tskStaticOpen.c"/>
+        <srcFile name="dio_tskDynamic.c"/>
+        <srcFile name="dio_cbDynamic.c"/>
+        <srcFile name="gio.c"/>
+        <srcFile name="iom_stub.c"/>
+        <srcFile name="dev.c"/>
+        <srcFile name="dev_data.c"/>
+        <srcFile name="dev_init.c"/>
+        <srcFile name="dgn.c"/>
+        <srcFile name="dov.c"/>
+        <srcFile name="dnl.c"/>
+        <srcFile name="dpi.c"/>
+        <srcFile name="dtr.c"/>
+        <srcFile name="atm.s28"/>
+        <srcFile name="buf.c"/>
+        <srcFile name="fxn.c"/>
+        <srcFile name="gbl.c"/>
+        <srcFile name="hwi.c"/>
+        <srcFile name="lck.c"/>
+        <srcFile name="log.c"/>
+        <srcFile name="mbx.c"/>
+        <srcFile name="mem.c"/>
+        <srcFile name="mem_data.c"/>
+        <srcFile name="msgq.c"/>
+        <srcFile name="pool.c"/>
+        <srcFile name="sem.c"/>
+        <srcFile name="staticpool.c"/>
+        <srcFile name="swi.c"/>
+        <srcFile name="sys.c"/>
+        <srcFile name="sys_abort.c"/>
+        <srcFile name="tsk.c"/>
+        <srcFile name="tsk_data.c"/>
+        <srcFile name="que_get.s28"/>
+        <srcFile name="que_crea.c"/>
+        <srcFile name="atm.s62"/>
+        <srcFile name="que_get.s62"/>
+        <srcFile name="ecm.c"/>
+        <srcFile name="bcache.c"/>
+        <srcFile name="pip_rese.c"/>
+        <srcFile name="pip_peek.c"/>
+        <srcFile name="pip_c.s62"/>
+        <srcFile name="pip.s62"/>
+        <srcFile name="pip_start.c"/>
+        <srcFile name="atm.s64T"/>
+        <srcFile name="que_get.s64T"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/release/ti.bios.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.o28L.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.o28L.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.o28L.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.o28L.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.o28L.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.o28L.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.o28L.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.o28L.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.o28L.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.o28L.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.o28L.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.o28L.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.o28L.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.o28L.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.o28L.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.o28L.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.o28L.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.o28L.dep" src="atm.s28"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.o28L.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.o28L.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.o28L.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.o28L.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.o28L.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.o28L.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.o28L.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.o28L.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.o28L.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.o28L.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.o28L.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.o28L.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.o28L.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.o28L.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.o28L.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.o28L.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.o28L.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.o28L.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.o28L.dep" src="que_get.s28"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.o28L.dep" src="que_crea.c"/>
+        <srcFile name="lib/release/ti.bios.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.o28FP.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.o28FP.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.o28FP.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.o28FP.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.o28FP.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.o28FP.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.o28FP.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.o28FP.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.o28FP.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.o28FP.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.o28FP.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.o28FP.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.o28FP.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.o28FP.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.o28FP.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.o28FP.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.o28FP.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.o28FP.dep" src="atm.s28"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.o28FP.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.o28FP.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.o28FP.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.o28FP.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.o28FP.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.o28FP.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.o28FP.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.o28FP.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.o28FP.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.o28FP.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.o28FP.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.o28FP.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.o28FP.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.o28FP.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.o28FP.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.o28FP.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.o28FP.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.o28FP.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.o28FP.dep" src="que_get.s28"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.o28FP.dep" src="que_crea.c"/>
+        <srcFile name="lib/release/ti.bios.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.o64P.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.o64P.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.o64P.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.o64P.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.o64P.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.o64P.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.o64P.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.o64P.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.o64P.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.o64P.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.o64P.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.o64P.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.o64P.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.o64P.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.o64P.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.o64P.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.o64P.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.o64P.dep" src="atm.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.o64P.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.o64P.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.o64P.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.o64P.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.o64P.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.o64P.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.o64P.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.o64P.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.o64P.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.o64P.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.o64P.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.o64P.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.o64P.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.o64P.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.o64P.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.o64P.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.o64P.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.o64P.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.o64P.dep" src="que_get.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.o64P.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.o64P.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.o64P.dep" src="bcache.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_rese.o64P.dep" src="pip_rese.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_peek.o64P.dep" src="pip_peek.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_c.o64P.dep" src="pip_c.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip.o64P.dep" src="pip.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_start.o64P.dep" src="pip_start.c"/>
+        <srcFile name="lib/release/ti.bios.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.o64Pe.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.o64Pe.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.o64Pe.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.o64Pe.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.o64Pe.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.o64Pe.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.o64Pe.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.o64Pe.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.o64Pe.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.o64Pe.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.o64Pe.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.o64Pe.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.o64Pe.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.o64Pe.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.o64Pe.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.o64Pe.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.o64Pe.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.o64Pe.dep" src="atm.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.o64Pe.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.o64Pe.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.o64Pe.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.o64Pe.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.o64Pe.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.o64Pe.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.o64Pe.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.o64Pe.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.o64Pe.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.o64Pe.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.o64Pe.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.o64Pe.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.o64Pe.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.o64Pe.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.o64Pe.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.o64Pe.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.o64Pe.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.o64Pe.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.o64Pe.dep" src="que_get.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.o64Pe.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.o64Pe.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.o64Pe.dep" src="bcache.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_rese.o64Pe.dep" src="pip_rese.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_peek.o64Pe.dep" src="pip_peek.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_c.o64Pe.dep" src="pip_c.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip.o64Pe.dep" src="pip.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_start.o64Pe.dep" src="pip_start.c"/>
+        <srcFile name="lib/release/ti.bios.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.o674.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.o674.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.o674.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.o674.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.o674.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.o674.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.o674.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.o674.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.o674.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.o674.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.o674.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.o674.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.o674.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.o674.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.o674.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.o674.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.o674.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.o674.dep" src="atm.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.o674.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.o674.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.o674.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.o674.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.o674.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.o674.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.o674.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.o674.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.o674.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.o674.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.o674.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.o674.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.o674.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.o674.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.o674.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.o674.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.o674.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.o674.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.o674.dep" src="que_get.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.o674.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.o674.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.o674.dep" src="bcache.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_rese.o674.dep" src="pip_rese.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_peek.o674.dep" src="pip_peek.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_c.o674.dep" src="pip_c.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip.o674.dep" src="pip.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_start.o674.dep" src="pip_start.c"/>
+        <srcFile name="lib/release/ti.bios.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.oe64P.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.oe64P.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.oe64P.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.oe64P.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.oe64P.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.oe64P.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.oe64P.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.oe64P.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.oe64P.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.oe64P.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.oe64P.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.oe64P.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.oe64P.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.oe64P.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.oe64P.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.oe64P.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.oe64P.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.oe64P.dep" src="atm.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.oe64P.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.oe64P.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.oe64P.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.oe64P.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.oe64P.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.oe64P.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.oe64P.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.oe64P.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.oe64P.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.oe64P.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.oe64P.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.oe64P.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.oe64P.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.oe64P.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.oe64P.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.oe64P.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.oe64P.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.oe64P.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.oe64P.dep" src="que_get.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.oe64P.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.oe64P.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.oe64P.dep" src="bcache.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_rese.oe64P.dep" src="pip_rese.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_peek.oe64P.dep" src="pip_peek.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_c.oe64P.dep" src="pip_c.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip.oe64P.dep" src="pip.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_start.oe64P.dep" src="pip_start.c"/>
+        <srcFile name="lib/release/ti.bios.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.oe64Pe.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.oe64Pe.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.oe64Pe.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.oe64Pe.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.oe64Pe.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.oe64Pe.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.oe64Pe.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.oe64Pe.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.oe64Pe.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.oe64Pe.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.oe64Pe.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.oe64Pe.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.oe64Pe.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.oe64Pe.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.oe64Pe.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.oe64Pe.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.oe64Pe.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.oe64Pe.dep" src="atm.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.oe64Pe.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.oe64Pe.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.oe64Pe.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.oe64Pe.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.oe64Pe.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.oe64Pe.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.oe64Pe.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.oe64Pe.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.oe64Pe.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.oe64Pe.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.oe64Pe.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.oe64Pe.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.oe64Pe.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.oe64Pe.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.oe64Pe.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.oe64Pe.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.oe64Pe.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.oe64Pe.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.oe64Pe.dep" src="que_get.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.oe64Pe.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.oe64Pe.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.oe64Pe.dep" src="bcache.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_rese.oe64Pe.dep" src="pip_rese.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_peek.oe64Pe.dep" src="pip_peek.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_c.oe64Pe.dep" src="pip_c.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip.oe64Pe.dep" src="pip.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_start.oe64Pe.dep" src="pip_start.c"/>
+        <srcFile name="lib/release/ti.bios.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.oe674.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.oe674.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.oe674.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.oe674.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.oe674.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.oe674.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.oe674.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.oe674.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.oe674.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.oe674.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.oe674.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.oe674.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.oe674.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.oe674.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.oe674.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.oe674.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.oe674.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.oe674.dep" src="atm.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.oe674.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.oe674.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.oe674.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.oe674.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.oe674.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.oe674.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.oe674.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.oe674.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.oe674.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.oe674.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.oe674.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.oe674.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.oe674.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.oe674.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.oe674.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.oe674.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.oe674.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.oe674.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.oe674.dep" src="que_get.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.oe674.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.oe674.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.oe674.dep" src="bcache.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_rese.oe674.dep" src="pip_rese.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_peek.oe674.dep" src="pip_peek.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_c.oe674.dep" src="pip_c.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip.oe674.dep" src="pip.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_start.oe674.dep" src="pip_start.c"/>
+        <srcFile name="lib/release/ti.bios.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.oe64T.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.oe64T.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.oe64T.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.oe64T.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.oe64T.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.oe64T.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.oe64T.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.oe64T.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.oe64T.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.oe64T.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.oe64T.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.oe64T.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.oe64T.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.oe64T.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.oe64T.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.oe64T.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.oe64T.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.oe64T.dep" src="atm.s64T"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.oe64T.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.oe64T.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.oe64T.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.oe64T.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.oe64T.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.oe64T.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.oe64T.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.oe64T.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.oe64T.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.oe64T.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.oe64T.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.oe64T.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.oe64T.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.oe64T.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.oe64T.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.oe64T.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.oe64T.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.oe64T.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.oe64T.dep" src="que_get.s64T"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.oe64T.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.oe64T.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.oe64T.dep" src="bcache.c"/>
+        <srcFile name="lib/release/ti.bios.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.oe66.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.oe66.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.oe66.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.oe66.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.oe66.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.oe66.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.oe66.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.oe66.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.oe66.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.oe66.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.oe66.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.oe66.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.oe66.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.oe66.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.oe66.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.oe66.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.oe66.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.oe66.dep" src="atm.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.oe66.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.oe66.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.oe66.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.oe66.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.oe66.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.oe66.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.oe66.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.oe66.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.oe66.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.oe66.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.oe66.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.oe66.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.oe66.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.oe66.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.oe66.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.oe66.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.oe66.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.oe66.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.oe66.dep" src="que_get.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.oe66.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.oe66.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.oe66.dep" src="bcache.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_rese.oe66.dep" src="pip_rese.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_peek.oe66.dep" src="pip_peek.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_c.oe66.dep" src="pip_c.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip.oe66.dep" src="pip.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_start.oe66.dep" src="pip_start.c"/>
+        <srcFile name="lib/release/ti.bios.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/release/ti.bios/package/package_ti.bios.oe66e.dep" src="package/package_ti.bios.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sio.oe66e.dep" src="sio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio.oe66e.dep" src="dio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbStaticOpen.oe66e.dep" src="dio_cbStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskStaticOpen.oe66e.dep" src="dio_tskStaticOpen.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_tskDynamic.oe66e.dep" src="dio_tskDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dio_cbDynamic.oe66e.dep" src="dio_cbDynamic.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gio.oe66e.dep" src="gio.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/iom_stub.oe66e.dep" src="iom_stub.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev.oe66e.dep" src="dev.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_data.oe66e.dep" src="dev_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dev_init.oe66e.dep" src="dev_init.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dgn.oe66e.dep" src="dgn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dov.oe66e.dep" src="dov.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dnl.oe66e.dep" src="dnl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dpi.oe66e.dep" src="dpi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/dtr.oe66e.dep" src="dtr.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/atm.oe66e.dep" src="atm.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/buf.oe66e.dep" src="buf.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/fxn.oe66e.dep" src="fxn.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/gbl.oe66e.dep" src="gbl.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/hwi.oe66e.dep" src="hwi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/lck.oe66e.dep" src="lck.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/log.oe66e.dep" src="log.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mbx.oe66e.dep" src="mbx.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem.oe66e.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/mem_data.oe66e.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/msgq.oe66e.dep" src="msgq.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pool.oe66e.dep" src="pool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sem.oe66e.dep" src="sem.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/staticpool.oe66e.dep" src="staticpool.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/swi.oe66e.dep" src="swi.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys.oe66e.dep" src="sys.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/sys_abort.oe66e.dep" src="sys_abort.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk.oe66e.dep" src="tsk.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/tsk_data.oe66e.dep" src="tsk_data.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_get.oe66e.dep" src="que_get.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/que_crea.oe66e.dep" src="que_crea.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/ecm.oe66e.dep" src="ecm.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/bcache.oe66e.dep" src="bcache.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_rese.oe66e.dep" src="pip_rese.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_peek.oe66e.dep" src="pip_peek.c"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_c.oe66e.dep" src="pip_c.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip.oe66e.dep" src="pip.s62"/>
+        <srcFile name="package/lib/lib/release/ti.bios/pip_start.oe66e.dep" src="pip_start.c"/>
+        <srcFile name="package/rel/ti_bios.tar.gz.dep" src="package/rel/ti_bios.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,6.1,0"
+            rawVersion="6.1.0"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/vendors/ti/c28/6.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,6.1,0"
+            rawVersion="6.1.0"
+            platform="ti.platforms.tms320x28:F28377D:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/vendors/ti/c28/6.1.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6472"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6748"
+            isa="674"
+            suffix="674"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6472"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6748"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.sdp4430"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6678"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6670"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.a28L"
+        profile="release"
+        target="ti.targets.C28_large"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.a28FP"
+        profile="release"
+        target="ti.targets.C28_float"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.a64P"
+        profile="release"
+        target="ti.targets.C64P"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.a64Pe"
+        profile="release"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.a674"
+        profile="release"
+        target="ti.targets.C674"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.ae64P"
+        profile="release"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.ae64Pe"
+        profile="release"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.ae674"
+        profile="release"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.ae64T"
+        profile="release"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.ae66"
+        profile="release"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/release/ti.bios"
+        pname="lib/release/ti.bios.ae66e"
+        profile="release"
+        target="ti.targets.elf.C66_big_endian"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_bios"
+        pname="../..//../exports/ti_bios.tar.gz"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="include/_dev.h"/>
+        <file name="include/_gio.h"/>
+        <file name="include/atm.h"/>
+        <file name="include/bcache.h"/>
+        <file name="include/bios.h"/>
+        <file name="include/buf.h"/>
+        <file name="include/c62.h"/>
+        <file name="include/c64.h"/>
+        <file name="include/clk.h"/>
+        <file name="include/dev.h"/>
+        <file name="include/dgn.h"/>
+        <file name="include/dio.h"/>
+        <file name="include/dnl.h"/>
+        <file name="include/dov.h"/>
+        <file name="include/dpi.h"/>
+        <file name="include/dtr.h"/>
+        <file name="include/ecm.h"/>
+        <file name="include/fxn.h"/>
+        <file name="include/fxn.h62"/>
+        <file name="include/gbl.h"/>
+        <file name="include/gio.h"/>
+        <file name="include/hook.h"/>
+        <file name="include/hwi.h"/>
+        <file name="include/hwi_c28.h"/>
+        <file name="include/hwi_c64.h"/>
+        <file name="include/hwi_c64p.h"/>
+        <file name="include/hwi_c64t.h"/>
+        <file name="include/hwi_c67p.h"/>
+        <file name="include/idl.h"/>
+        <file name="include/iom.h"/>
+        <file name="include/lck.h"/>
+        <file name="include/log.h"/>
+        <file name="include/mbx.h"/>
+        <file name="include/mem.h"/>
+        <file name="include/msgq.h"/>
+        <file name="include/msgq_mqt.h"/>
+        <file name="include/obj.h"/>
+        <file name="include/pip.h"/>
+        <file name="include/pip.h62"/>
+        <file name="include/pool.h"/>
+        <file name="include/prd.h"/>
+        <file name="include/que.h"/>
+        <file name="include/sem.h"/>
+        <file name="include/sio.h"/>
+        <file name="include/staticpool.h"/>
+        <file name="include/std.h"/>
+        <file name="include/sts.h"/>
+        <file name="include/swi.h"/>
+        <file name="include/sys.h"/>
+        <file name="include/tistdtypes.h"/>
+        <file name="include/trc.h"/>
+        <file name="include/trc.h62"/>
+        <file name="include/trg.h"/>
+        <file name="include/tsk.h"/>
+        <file name="include/utl.h"/>
+        <file name="./linkcmd.xdt"/>
+        <file name="./PIP_link.xdt"/>
+        <file name="./package.bld"/>
+        <file name="./hwi_c28.c"/>
+        <file name="./hwi_c64.c"/>
+        <file name="./hwi_c64p.c"/>
+        <file name="./hwi_c67p.c"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/release/ti.bios.a28L"/>
+        <file name="package/package_ti.bios.c"/>
+        <file name="sio.c"/>
+        <file name="dio.c"/>
+        <file name="dio_cbStaticOpen.c"/>
+        <file name="dio_tskStaticOpen.c"/>
+        <file name="dio_tskDynamic.c"/>
+        <file name="dio_cbDynamic.c"/>
+        <file name="gio.c"/>
+        <file name="iom_stub.c"/>
+        <file name="dev.c"/>
+        <file name="dev_data.c"/>
+        <file name="dev_init.c"/>
+        <file name="dgn.c"/>
+        <file name="dov.c"/>
+        <file name="dnl.c"/>
+        <file name="dpi.c"/>
+        <file name="dtr.c"/>
+        <file name="atm.s28"/>
+        <file name="buf.c"/>
+        <file name="fxn.c"/>
+        <file name="gbl.c"/>
+        <file name="hwi.c"/>
+        <file name="lck.c"/>
+        <file name="log.c"/>
+        <file name="mbx.c"/>
+        <file name="mem.c"/>
+        <file name="mem_data.c"/>
+        <file name="msgq.c"/>
+        <file name="pool.c"/>
+        <file name="sem.c"/>
+        <file name="staticpool.c"/>
+        <file name="swi.c"/>
+        <file name="sys.c"/>
+        <file name="sys_abort.c"/>
+        <file name="tsk.c"/>
+        <file name="tsk_data.c"/>
+        <file name="que_get.s28"/>
+        <file name="que_crea.c"/>
+        <file name="lib/release/ti.bios.a28FP"/>
+        <file name="lib/release/ti.bios.a64P"/>
+        <file name="atm.s62"/>
+        <file name="que_get.s62"/>
+        <file name="ecm.c"/>
+        <file name="bcache.c"/>
+        <file name="pip_rese.c"/>
+        <file name="pip_peek.c"/>
+        <file name="pip_c.s62"/>
+        <file name="pip.s62"/>
+        <file name="pip_start.c"/>
+        <file name="lib/release/ti.bios.a64Pe"/>
+        <file name="lib/release/ti.bios.a674"/>
+        <file name="lib/release/ti.bios.ae64P"/>
+        <file name="lib/release/ti.bios.ae64Pe"/>
+        <file name="lib/release/ti.bios.ae674"/>
+        <file name="lib/release/ti.bios.ae64T"/>
+        <file name="atm.s64T"/>
+        <file name="que_get.s64T"/>
+        <file name="lib/release/ti.bios.ae66"/>
+        <file name="lib/release/ti.bios.ae66e"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

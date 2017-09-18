@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>interface xdc.runtime.knl.ISemThreadSupport</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> *  Copyright (c) 2008 Texas Instruments. All rights reserved. 
+</span>     3    <span class="comment"> *  This program and the accompanying materials are made available under the 
+</span>     4    <span class="comment"> *  terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+</span>     5    <span class="comment"> *  v. 1.0 which accompanies this distribution. The Eclipse Public License is
+</span>     6    <span class="comment"> *  available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+</span>     7    <span class="comment"> *  Distribution License is available at 
+</span>     8    <span class="comment"> *  http://www.eclipse.org/org/documents/edl-v10.php.
+</span>     9    <span class="comment"> *
+</span>    10    <span class="comment"> *  Contributors:
+</span>    11    <span class="comment"> *      Texas Instruments - initial implementation
+</span>    12    <span class="comment"> * */</span>
+    13    <span class="comment">/*
+</span>    14    <span class="comment"> *  ======== ISemThreadSupport.xdc ========
+</span>    15    <span class="comment"> */</span>
+    16    
+    17    <span class="xdoc">/*! 
+</span>    18    <span class="xdoc"> *  ======== ISemThreadSupport ========
+</span>    19    <span class="xdoc"> *  Interface for OS specific back-end.
+</span>    20    <span class="xdoc"> *
+</span>    21    <span class="xdoc"> *  The {<b>@link</b> xdc.runtime.knl} package contains modules that provide typical
+</span>    22    <span class="xdoc"> *  OS services. These xdc.runtime.knl modules require proxies to be
+</span>    23    <span class="xdoc"> *  bound to an OS specific delegate. This specifies the interface to 
+</span>    24    <span class="xdoc"> *  be implemented by the OS specific delegate for 
+</span>    25    <span class="xdoc"> *  {<b>@link</b> xdc.runtime.knl#SemThread} module.
+</span>    26    <span class="xdoc"> * 
+</span>    27    <span class="xdoc"> *  This interface adds the create() function.
+</span>    28    <span class="xdoc"> */</span>
+    29    <span class=key>interface</span> ISemThreadSupport <span class=key>inherits</span> ISemaphore
+    30    {
+    31    
+    32    <span class=key>instance</span>:
+    33    
+    34       <span class="xdoc">/*!
+</span>    35    <span class="xdoc">    *  ======== create ========
+</span>    36    <span class="xdoc">    *  Create a Semaphore object
+</span>    37    <span class="xdoc">    *
+</span>    38    <span class="xdoc">    *  This function creates a new Semaphore object which is initialized to
+</span>    39    <span class="xdoc">    *  count.
+</span>    40    <span class="xdoc">    *
+</span>    41    <span class="xdoc">    *  <b>@param(count)</b>    initial semaphore count
+</span>    42    <span class="xdoc">    */</span>
+    43        create(Int count);
+    44    }
+    45    <span class="comment">/*
+</span>    46    <span class="comment"> *  @(#) xdc.runtime.knl; 1, 0, 0,248; 12-19-2013 19:53:41; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+</span>    47    <span class="comment"> */</span>
+    48    
+</pre>
+</body></html>

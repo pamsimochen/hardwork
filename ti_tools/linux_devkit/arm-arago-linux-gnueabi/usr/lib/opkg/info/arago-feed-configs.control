@@ -1,0 +1,13 @@
+Package: arago-feed-configs
+Version: 1.0-r13.6
+Description: Sample configuration files for online package repositories aka feeds
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT
+Architecture: am335x-evm
+OE: arago-feed-configs
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Recommends: opkg
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/arago/arago-feed-configs.bb

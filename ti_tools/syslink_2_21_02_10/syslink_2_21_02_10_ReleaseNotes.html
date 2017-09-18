@@ -1,0 +1,1133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--
+ *  Copyright (c) 2012-2013, Texas Instruments Incorporated
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *  *  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *  *  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *  *  Neither the name of Texas Instruments Incorporated nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ *  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<html>
+<head>
+    <title>SysLink 2.21.02.10 Release Notes </title>
+    <!-- For now, we use the doxygen style sheet -->
+    <link type="text/css" rel="stylesheet" href="docs/html/doxygen.css">
+    <!-- doxygen's css .memproto's all have tables for a little extra pad...
+         don't like tables, so give 'em a little extra left pad ourselves
+    --->
+    <style type="text/css">
+    body {
+        margin: 20px;
+    }
+    .memproto {
+        padding-left: 6px;
+    }
+    </style>
+</head>
+<body>
+<table width="100%">
+  <tbody>
+    <tr>
+      <td bgcolor="black" width="1">
+        <a href="http://www.ti.com">
+          <img border=0 src="docs/html/tilogo.gif" alt="Texas Instruments">
+        </a>
+      </td>
+      <td bgcolor="red">
+        <img src="docs/html/titagline.gif" alt="Technology for Innovators(tm)">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 align="center">SysLink 2.21.02.10 Release Notes </h1>
+<h2 align="center">August 2013</h2>
+
+<p>
+This SysLink Release is targeted to SYS/BIOS 6-based platforms.
+</p>
+<p align="center">
+<a href="#Introduction">Introduction</a>,
+<a href="#Documentation">Documentation</a>,
+<a href="#Whats_New">What's New</a>,
+<a href="#Upgrade_Info">Upgrade Info</a>,
+<a href="#Compatibility">Compatibility Information</a>,
+<a href="#Device_Support">Device Support</a>,
+<a href="#Validation">Validation Info</a>,
+<a href="#Known_Issues">Known Issues</a>,
+<a href="#Examples">Examples</a>,
+<a href="#Version">Version Information</a>,
+<a href="#Support">Technical Support</a>.
+</p>
+
+<hr>
+
+<h2><a name="Introduction">Introduction</a></h2>
+
+<p>
+SysLink is runtime software <!--and an associated porting kit--> that
+simplifies the development of embedded applications in which either
+General-Purpose microprocessors (GPP) or DSPs communicate with each other.
+The SysLink product provides software connectivity between multiple
+processors. Each processor may run either an HLOS (e.g. Linux)
+or an RTOS (e.g. SYS/BIOS).  In addition, a
+processor may also be designated as the master for another slave processor,
+and may be responsible for controlling the slave processor's execution
+(including boot-loading the slave).
+</p>
+<p>
+The SysLink product provides the following services to frameworks and applications:
+<ul>
+    <li>Processor Manager</li>
+    <li>Inter-Processor Communication</li>
+    <li>Utility modules</li>
+</ul>
+</p>
+<p>
+SYS/BIOS operating system is expected to be running on the slaves with all
+of these platforms.
+</p>
+<!-- not yet
+<p>
+This product includes a "redist" directory containing some dependent products
+for convenience.  Products included in this redist directory include are:
+<ul>
+  <li>IPC <b>1.25.01.09</b></li>
+</ul>
+</p>
+-->
+
+<hr>
+
+<h2><a name="Documentation">Documentation</a></h2>
+<p>
+The following documentation is available:
+</p>
+<ul>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_UserGuide">
+    SysLink Users' Guide</a>
+  </li>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_Install_Guide">
+    SysLink Install Guide</a>
+  </li>
+  <li>SysLink Application Programming Interface (API) Reference
+  Guide (<a href="docs/html/index.html">HTML</a> | <a
+  href="docs/html/syslink_2_21_02_10.chm">CHM</a>)</li>
+  <li>
+    <a href="docs/cdoc/index.html">Package Reference Guide</a> - includes
+    configuration details
+  </li>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_MigrationGuide">
+    SysLink Migration Guide</a>
+  </li>
+</ul>
+
+<p>
+In addition, users are encouraged to monitor (and contribute to!) the
+<a href="http://processors.wiki.ti.com">TI Embedded Processors Wiki</a>.
+</p>
+
+<p>
+Release notes from previous releases are also available in the <a
+href="relnotes_archive">relnotes_archive</a> directory.
+</p>
+
+<hr>
+<h2><a name="Whats_New">What's New</a></h2>
+<p>The following significant changes have been made since 2.00</p>
+
+<div class="memitem">
+<div class="memproto">2.21.02.10 </div>
+
+<div class="memdoc">
+<ul>
+  <li>The following defects were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00099529">SDOCM00099529</a></td>
+      <td>Invalid C++ brace in Std.h header
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00103264">SDOCM00103264</a></td>
+      <td>SysLink NotifyDrv kernel driver can cause Linux kernel "scheduling while atomic" BUG
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+  <br />
+
+  <li>The following enhancements were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+
+</ul>
+</div>
+</div>
+
+<div class="memitem">
+<div class="memproto">2.21.01.05 </div>
+
+<div class="memdoc">
+<ul>
+  <li>The following defects were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00097320">SDOCM00097320</a></td>
+      <td>OMAPL138 interrupt 29 (lineId=1) is not working
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00094663">SDOCM00094663</a></td>
+      <td>ProcMgr module returning status codes from lower modules
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00094661">SDOCM00094661</a></td>
+      <td>Incorrect address translate in ProcMgr_read
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00095698">SDOCM00095698</a></td>
+      <td>Ipc_isAttached() is missing from the user-mode implementation
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00097743">SDOCM00097743</a></td>
+      <td>Multiple calls to Ipc_control loadCallback fail due to AddrTable_SIZE max reached
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+  <br />
+
+  <li>The following enhancements were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00097487">SDOCM00097487</a></td>
+      <td>Add radar example to show how to use Umsg
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00097824">SDOCM00097824</a></td>
+      <td>Work around for linker plt section warning
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00097486">SDOCM00097486</a></td>
+      <td>Add Umsg example as a producer
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+
+</ul>
+</div>
+</div>
+
+<div class="memitem">
+<div class="memproto">2.21.00.03 </div>
+
+<div class="memdoc">
+<ul>
+  <li>New features
+    <ul>
+      <li>To address issues in building BIOS-side libraries, some
+      fundamental behaviors of the build system have changed.
+      Notably, debug libraries have asserts and tracing enabled, and
+      release libraries have asserts and tracing removed.  During
+      development and validation, we found several cases where newly
+      enabled (and incorrect!) BIOS-side asserts were firing,
+      resulting in what appeared to be a system hang - until we
+      attached with a debugger and found we were inside an assert.  We
+      think we got the incorrect asserts, but if we missed any, please
+      <a href="http://e2e.ti.com/support/embedded/bios/default.aspx">report
+      them to us on the forums</a> and we'll address them in a future
+      release.
+    </li>
+    </ul>
+  </li>
+  <br />
+  <li>The following defects were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00091475">SDOCM00091475</a></td>
+      <td>RingIO functions parameters are not clear what the expected datatype is.
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00097195">SDOCM00097195</a></td>
+      <td>SysLink attach hook leaks memory
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00096320">SDOCM00096320</a></td>
+      <td>SysLink loader fails with overlays
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00095816">SDOCM00095816</a></td>
+      <td>Unsafe use of SET_BIT macro in OMAP-L138 interrupt handler
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00096518">SDOCM00096518</a></td>
+      <td>Calling Ipc_control(LOADCB) without actually loading causes ELF loader crash
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00095726">SDOCM00095726</a></td>
+      <td>RuntimeId allocation overflow
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00095725">SDOCM00095725</a></td>
+      <td>Make variables DEBUG, OPTIMIZE, TRACE ignored when building SysLink user library
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00096517">SDOCM00096517</a></td>
+      <td>Ipc_control() can crash if invalid procId provided
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00096112">SDOCM00096112</a></td>
+      <td>Remove legacy sample run scripts
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00094002">SDOCM00094002</a></td>
+      <td>Remove COFF references to platforms that dont support the format
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00096080">SDOCM00096080</a></td>
+      <td>BIOS-side 'release' libraries are built with 'debug' options
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00081973">SDOCM00081973</a></td>
+      <td>BIOS libraries don't honor OPTIMIZE option from products.mak
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00067766">SDOCM00067766</a></td>
+      <td>[MessageQ] MessageQ_alloc() should check minimum memory required for a Message allocation
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00077367">SDOCM00077367</a></td>
+      <td>[Ipc] Ipc_read/writeConfig APIs leak memory
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00091934">SDOCM00091934</a></td>
+      <td>GateMP_open returning GateMP_E_FAIL instead of GateMP_E_NOTFOUND
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+  <br />
+
+  <li>The following enhancements were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00095727">SDOCM00095727</a></td>
+      <td>SharedRegion_getPtr() in user mode should not use a gate
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00096902">SDOCM00096902</a></td>
+      <td>Example which builds vpss executable using virtual addresses
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00096910">SDOCM00096910</a></td>
+      <td>Add example to illustrate overlay loading
+</td>
+    </tr>
+    <tr>
+      <td><a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&entityDefName=IncidentReport&username=readonly&password=readonly&entityID=SDOCM00096516">SDOCM00096516</a></td>
+      <td>Introduce SL_DEBUG to simplify enabling trace
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+
+</ul>
+</div>
+</div>
+
+
+<div class="memitem">
+<div class="memproto">2.20.00.14 </div>
+
+<div class="memdoc">
+<ul>
+  <li>New features
+    <ul>
+      <li>Added support for Linux on TI811X and TI813X devices</li>
+    </ul>
+  </li>
+  <br />
+  <li>Removed features
+    <ul>
+      <li>Android support for TI814X has been removed.</li>
+      <li>FrameQ is deprecated.  While still supported, it will be
+      removed in a future release.</li>
+      <li>The loading of COFF slave images is deprecated (note that COFF slave
+      images are only supported on OMAP-L138 and OMAP3, not TI81XX devices).
+      While still supported, the loading of COFF images will be removed in a
+      future release.</li>
+    </ul>
+  </li>
+  <br />
+  <li>The following defects were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td>SDOCM00088052</td>
+      <td>Resolve compile warning (UInt16 assigned to enum) when TILER enabled
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091482</td>
+      <td>RingIO_acquire() fails to set pData pointer when RingIO_E_BUFFULL or RingIO_E_BUFWRAP is returned
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090004</td>
+      <td>SYSLINK_BUILD_OPTIMIZE build flag is being ignored in hlos build on QNX
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00092234</td>
+      <td>FrameQ_close() fails to free buffers when they are of type TILER
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00076039</td>
+      <td>[Generic] MemoryOS_map and unmap do not check for size and range when reference counting existing mapped regions
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00089707</td>
+      <td>Types and Objects definitions in SysLink cause errors with C++ compiler
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091979</td>
+      <td>SysLink ELF loader crashes if slave image fails to throw --dynamic flag
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00068120</td>
+      <td>[RingIO] Programmers guide and design document doesn't give enough information on RingIO APIs and their parameters
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088134</td>
+      <td>Program args for executable crashes SysLink driver on QNX
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088851</td>
+      <td>RingIO_delete calls Memory_free with the wrong size if RingIO is not empty
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091985</td>
+      <td>L2_RAM memory region has wrong size for M3 on TI811x and TI814x
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091827</td>
+      <td>RingIO_destroy should not attempt to clean up after non-closed or non-deleted instances
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091478</td>
+      <td>Improper description for the return value RingIO_S_NOTCONTIGUOUSDATA
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00080433</td>
+      <td>Samples crash when run with cache-enabled SR0
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088125</td>
+      <td>[Ipc] Ipc_control(Ipc_CONTROLCMD_STOPCALLBACK) unmaps SRs from all slaves, even others used by the app
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088131</td>
+      <td>HeapBufMP example fails on QNX after several runs
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090010</td>
+      <td>ClientNotifyMgr_create does not properly initialize its IOV array when calling into the syslink driver
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090000</td>
+      <td>Fix warnings that appear when building SysLink for QNX
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00094178</td>
+      <td>MessageQ_get mishandles error code -ERESTARTSYS
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088394</td>
+      <td>Null pointer dereference in GateMP_destroy
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090769</td>
+      <td>MemoryOS_map needs to use NORMAL memory type on QNX
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088129</td>
+      <td>Resource leak in ClockOpts on QNX
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090369</td>
+      <td>Though dual BSD/GPL licensed, some SysLink headers errantly contain GPL-only copyrights
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00084871</td>
+      <td>The Cache module is not yet implemented for QNX, so cached SharedRegions are not properly supported.
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088700</td>
+      <td>Loader raises assert with non-BIOS DSP executable
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091562</td>
+      <td>RingIO_setup()/destroy() must call NameServer_open()/close() in QNX when global refcount is > 0
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091232</td>
+      <td>HeapBufMP sample causes SysLink driver to crash in QNX when using BSP 201111241341
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00092285</td>
+      <td>SysLink support for NoBoot mode needs to be fixed and documented
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00092175</td>
+      <td>RingIO_delete returns NULL pointer error and assertions when RingIO_close was not called
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+  <br />
+
+  <li>The following enhancements were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td>SDOCM00090468</td>
+      <td>Address translation fails if L2 MMU is disabled
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00089332</td>
+      <td>Dynamic memory allocation of temporary variables during SysLink IOCTL calls can create performance issues
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00089335</td>
+      <td>Add TI813X support
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091565</td>
+      <td>Modify default TI81XXDSP_DMTIMER_FREQ from 32kHz to 20MHz on QNX
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00086848</td>
+      <td>Validate on QNX J5 EVM BSP Nov 24, 2011
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00089906</td>
+      <td>Deprecate FrameQ, including documentation
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091333</td>
+      <td>Remove Android support
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090006</td>
+      <td>Add TI811X support for Linux and Qnx
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090319</td>
+      <td>FrameQBufMgr should support allocation of buffers that are not mapped into Linux virtual address space
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00091800</td>
+      <td>RingIO_close and RingIO_delete needs to ensure input handle type is correct
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088697</td>
+      <td>Timeout values needed in Platform_startCallback
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090981</td>
+      <td>Ipc_control start callback takes too long
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00093126</td>
+      <td>Replace samples with simpler, platform-specific, standalone examples
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00090008</td>
+      <td>Update Linux and Qnx samples to build for TI811X
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00093166</td>
+      <td>Remove unsupported c6x-linux prototypes
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00092794</td>
+      <td>Deprecate COFF support
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00088127</td>
+      <td>[ProcMgr] Introduce ProcMgr_maxMemoryRegions(), and remove ProcMgr_MAX_MEMORY_REGIONS from user mode
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+
+</ul>
+</div>
+</div>
+
+
+<div class="memitem">
+<div class="memproto">2.10.00.12 </div>
+
+<div class="memdoc">
+<ul>
+  <li>New features
+    <ul>
+      <li>Added initial support for QNX and Android on TI814X devices</li>
+    </ul>
+  </li>
+  <br />
+  <li>The following defects were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td>SDOCM00084067</td>
+      <td>SysLink crashes Linux kernel when ProcMgr_MAX_MEMORY_REGIONS > 45
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00086179</td>
+      <td>Kernel side MessageQ_get function must break when status is E_FAIL
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00080606</td>
+      <td>[RingIO] RingIO_registerNotifier should return error when a function has already been registered previously
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00083784</td>
+      <td>Detect when notify is enabled in the kernel and auto-assign USE_SYSLINK_NOTIFY
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00076425</td>
+      <td>[RingIO] RingIO_close() returns success even if handle passed is NULL
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00079441</td>
+      <td>[Samples] ringIO_gpp sample application hangs in Ipc_attach()
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00083749</td>
+      <td>ListMP_empty is not returning correct value
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00080114</td>
+      <td>[RingIO] Invalid gate delete assertion observed in RingIO delete
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00076871</td>
+      <td>[RingIO] Application crash is observed when RingIO instance is tried to open twice with same name in HLOS side.
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00080378</td>
+      <td>[RingIO] RingIOShm_delete() is closing and deleting the same clientNotifyMgrGate
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00084089</td>
+      <td>Caching of Shared Region (SR1 onwards) does not happen in user space
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00075737</td>
+      <td>ProcMgr ELF loader does not support argc/argv loading
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00084478</td>
+      <td>[FrameQ] FrameQ fails to initialize  'isRegistered' field for writer during FrameQ creation.
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00082706</td>
+      <td>ClientNotifyMgr_execCallBackFxn crashes upon receiving notifications to recently unregistered and deleted client
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00081803</td>
+      <td>Slaveloader fails on dsp internal memories
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00085776</td>
+      <td>Setting ProcMgr_map()'s addrInfo.isCached field to TRUE doesn't map the memory as cached
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00084014</td>
+      <td>ProcMgr_load() hangs while loading DSP image on TI814X PG 2.1
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00068875</td>
+      <td>[RingIO] RingIO create [RingIO_create() API] crashes if shared region is not set [SharedRegion_setEntry() API] on ARM
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00081563</td>
+      <td>[RingIO] RingIO error codes and  RingIOShm error codes are not matching
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+  <br />
+
+  <li>The following enhancements were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td>SDOCM00084285</td>
+      <td>Add Android support to SysLink on TI814x
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00082644</td>
+      <td>Enable users to modify SysLink_params via env var (SL_PARAMS) to avoid a rebuild
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00085767</td>
+      <td>SysLink should enable both GP Timer 3 and 4 for TI816x to support recent BIOS releases
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00081847</td>
+      <td>[RingIO] RingIO needs to support non-zero shared regions
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00085773</td>
+      <td>Add explicit dmtimer.Timer frequency assignment to sample config scripts
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+
+</ul>
+</div>
+</div>
+
+<div class="memitem">
+<div class="memproto">2.00.00.78 </div>
+
+<div class="memdoc">
+<ul>
+  <li>See the
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_MigrationGuide">
+    SysLink Migration Guide</a> for new features in this initial SysLink
+    release
+  </li>
+  <br />
+
+</ul>
+</div>
+</div>
+
+<br />
+
+<hr>
+<h2><a name="Upgrade_Info">Upgrade Information</a></h2>
+<p>
+<b>This SysLink release is not suitable for BIOS 5-based DVSDKs.
+DVSDK users should continue to use the BIOS 5-based DSP Link 1.x
+releases.</b>
+</p>
+<p>
+The SysLink packages are available in the "packages/"
+subdirectory of the product.  If you have a previous release of the
+SysLink product, you can install this release next to it, and
+modify your build scripts/makefiles to use this newer release.</p>
+<h2><a name="Compatibility"><font color="red">Compatibility Breaks!</font></a></h2>
+<ul>
+  <li>SysLink 2.21.02.10 requires system integrators to update
+  the following dependencies:
+    <ul>
+      <li>XDC Tools 3.24.03.33 (or compatible)</li>
+      <li>SYS/BIOS 6.34.03.19 (or compatible)</li>
+      <li>IPC 1.25.01.09 (or compatible)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>
+Note, if you're upgrading from a release earlier than SysLink 2.20, be
+sure to review the <b>Upgrade</b> section for each of the releases between
+your current release and this one.  Previous release notes are
+available in the <a href="relnotes_archive">relnotes_archive</a> directory.
+</p>
+
+
+<hr>
+<h2><a name="Device_Support">Device Support</a></h2>
+
+<p>
+This release supports the following devices:
+<ul>
+  <li>OMAP3530:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP)</li>
+    </ul>
+  </li>
+  <li>OMAP-L138:
+    <ul>
+      <li>multiprocessor configuration, running Linux (ARM 9)
+        and SYS/BIOS (DSP)</li>
+    </ul>
+  </li>
+  <li>TI816X:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+  <li>TI814X:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running QNX (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running SYS/BIOS on all cores
+        (A8, DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+  <li>TI813X:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+  <li>TI811X:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running QNX (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+</ul>
+
+</p>
+
+
+<hr>
+<h2><a name="Validation">Validation</a></h2>
+<p>
+This release was built and validated against using the following software
+components:
+</p>
+
+<ul>
+<!-- Note, these versions are autogenerated -->
+  <li>XDCtools <b>3.24.03.33</b></li>
+  <li>SYS/BIOS <b>6.34.03.19</b></li>
+  <li>IPC <b>1.25.01.09</b></li>
+  <li>TI816X PSP <b>04.04.00.01.patch1</b></li>
+  <li>TI814X PSP <b>04.04.00.01.patch1</b></li>
+  <li>TI813X PSP <b>04.04.00.01.patch1</b></li>
+  <li>TI811X PSP <b>04.07.00.02</b></li>
+  <li>OMAP3 PSP <b>03.00.00.05</b></li>
+  <li>OMAP-L138 PSP <b>03.21.00.04</b></li>
+<!-- TODO - autogenerate these -->
+  <li>toolchains:
+    <ul>
+      <li>Linux GCC - <b>CodeSourcery 2009q1-203</b></li>
+      <li><a href="http://processors.wiki.ti.com/index.php/Compiler_Releases">TI A8 ARM</a> (ti.targets.arm.elf.A8F) - <b>5.0.1</b></li>
+      <li><a href="http://processors.wiki.ti.com/index.php/Compiler_Releases">TI M3 ARM</a> (ti.targets.arm.elf.M3) - <b>5.0.1</b></li>
+      <li><a href="http://processors.wiki.ti.com/index.php/Compiler_Releases">TI C64P ELF</a> (ti.targets.elf.C64P) - <b>7.2.2</b></li>
+      <li><a href="http://processors.wiki.ti.com/index.php/Compiler_Releases">TI C64P COFF</a> (ti.targets.C64P) - <b>7.2.2</b></li>
+      <li><a href="http://processors.wiki.ti.com/index.php/Compiler_Releases">TI C674 ELF</a> (ti.targets.elf.C674) - <b>7.2.2</b></li>
+      <li><a href="http://processors.wiki.ti.com/index.php/Compiler_Releases">TI C674 COFF</a> (ti.targets.C674) - <b>7.2.2</b></li>
+    </ul>
+  </li>
+</ul>
+
+<p>
+This release was validated using the following hardware platforms:
+</p>
+
+<ul>
+  <li>OMAP3530 BeagleBoard:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP)</li>
+    </ul>
+  </li>
+  <li>OMAP-L138 EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (ARM 9)
+        and SYS/BIOS (DSP)</li>
+    </ul>
+  </li>
+  <li>TI816X EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+  <li>TI814X EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running QNX (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running SYS/BIOS on all cores
+        (A8, DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+  <li>TI813X EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+  <li>TI811X EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running QNX (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+</ul>
+
+
+<hr>
+<h2><a name="Known_Issues">Known Issues</a></h2>
+<p>
+Consult the <a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&queryID=34483205&entityDefName=IncidentReport&username=readonly&password=readonly">SDOWP database</a> for open issues.
+</p>
+<p>
+<ul>
+   <li>SysLink 2.20+ supports configuring SR0 as A8-side cached (although most
+   users are still recommended to configure it non-cached).  However
+   the TI81XX Linux-provided notify driver does not support this A8-side
+   cache-enable feature.  As a result, TI81XX Linux users that configure their
+   Linux kernel with CONFIG_SYSLINK_NOTIFY enabled must continue to ensure
+   SR0 is configured as A8-side <i>uncached</i>.
+   See <a href="http://processors.wiki.ti.com/index.php/SysLink_Notify">the
+   SysLink Notify article</a> for more details.
+   </li>
+   <li>The IPC product defines a HeapMultiBufMP interface.  SysLink
+   does not provide an implementation for this interface, and there
+   are currently no plans to add it.  Users can create multiple
+   instances of HeapBufMP instead.
+   </li>
+<!-- removed next item as _samples_ are no longer shipped.  Need to check if
+   this is still an issue with the new _examples_.
+   <li>The QNX <i>release</i> samples fail when using <i>dynamic</i>
+     libraries.
+   </li>
+-->
+</ul>
+</p>
+
+<hr>
+<h2><a name="Version">Version Information</a></h2>
+<p>
+This product's version follows a version format, <b>M.mm.pp.bb</b>,
+where <b>M</b> is a single digit Major number, <b>mm</b> is 2 digit
+minor number, <b>pp</b> is a 2 digit patch number, and <b>b</b> is an
+unrestricted set of digits used as an incrementing build counter.
+</p>
+
+<p>
+To support multiple side-by-side installations of the product, the
+product version is encoded in the top level directory,
+ex. <b>syslink_2_21_02_10</b>.
+</p>
+
+<p>
+Subsequent releases of patch upgrades will be identified by the patch
+number, ex. SysLink 2.21.01.XX with directory <b>syslink_2_21_01_XX</b>.
+Typically, these patches only include critical bug fixes.
+</p>
+
+<hr>
+<h2><a name="Support">Technical Support</a></h2>
+<p>For technical support, contact <a href="mailto:softwaresupport@ti.com">softwaresupport@ti.com</a></p>
+
+<p>
+Check the following web site for updates: <a href="http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/index.html">http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/index.html</a>
+</p>
+
+<hr>
+<p>
+Last updated: August 28, 2013
+</p>
+</body>
+</html>

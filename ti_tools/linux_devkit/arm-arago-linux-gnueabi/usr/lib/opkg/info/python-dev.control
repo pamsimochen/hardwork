@@ -1,0 +1,14 @@
+Package: python-dev
+Version: 2.6.6-ml12.4.6
+Description: Python Development Package
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: PSF
+Architecture: armv7a
+OE: python
+Homepage: http://www.python.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: python-core, libpython2.6-1.0
+Recommends: db-dev, libgdbm-dev, openssl-dev, libreadline-dev, sqlite3-dev, tcl-dev, libz-dev, tk-dev, libc6-dev, python-core-dev, libpython2-dev, python-lang-dev, python-zlib-dev, libbz2-dev, libssl-dev, libcrypto-dev, libgcc1-dev, ncurses-libncursesw-dev, ncurses-libtinfo-dev, ncurses-libpanelw-dev, python-codecs-dev, python-io-dev, python-re-dev, python-stringold-dev, python-shell-dev, python-pprint-dev, python-unittest-dev, python-debugger-dev, python-difflib-dev, python-mime-dev, python-audio-dev, python-image-dev, python-netclient-dev, python-tkinter-dev, python-math-dev, python-pickle-dev, python-crypt-dev, python-datetime-dev, python-logging-dev, python-textutils-dev, python-netserver-dev, python-email-dev, python-threading-dev, libsqlite3-dev, python-sqlite3-dev, python-fcntl-dev, tk-lib-dev, tcl-lib-dev, libx11-dev, python-elementtree-dev, python-xml-dev, python-bsddb-dev, python-compile-dev, python-compiler-dev, python-compression-dev, python-ctypes-dev, python-curses-dev, python-db-dev, python-distutils-dev, python-doctest-dev, python-gdbm-dev, python-hotshot-dev, python-html-dev, python-idle-dev, python-json-dev, python-mailbox-dev, python-mmap-dev, python-multiprocessing-dev, python-numbers-dev, python-pkgutil-dev, python-profile-dev, python-pydoc-dev, python-readline-dev, python-resource-dev, python-robotparser-dev, python-smtpd-dev, python-sqlite3-tests-dev, python-subprocess-dev, python-syslog-dev, python-terminal-dev, python-tests-dev, python-unixadmin-dev, python-xmlrpc-dev
+Source: http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tar.bz2 file://00-fix-parallel-make.patch file://01-use-proper-tools-for-cross-build.patch file://02-remove-test-for-cross.patch file://03-fix-tkinter-detection.patch file://04-default-is-optimized.patch file://05-enable-ctypes-cross-build.patch file://06-ctypes-libffi-fix-configure.patch file://07-linux3-regen-fix.patch file://ipv6-cross.patch file://python-module-rpath-fix.patch file://sitecustomize.py file://pkgconfig-support.patch

@@ -1,0 +1,8 @@
+/usr/bin/audiofile-config
+/usr/share/aclocal/audiofile.m4
+/usr/include/audiofile.h
+/usr/lib/libaudiofile.la
+/usr/include/aupvlist.h
+/usr/lib/pkgconfig/audiofile.pc
+/usr/lib/libaudiofile.so
+/usr/include/af_vfs.h

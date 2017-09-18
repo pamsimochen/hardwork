@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ti.sdo.edma3_02.11.10"
+      label="EDMA3"
+      version="02.11.10"
+      provider-name="Texas Instruments">
+
+   <description url="http://ti.com">
+      PSP
+   </description>
+
+   <copyright>
+      Copyright Texas Instruments 2009
+   </copyright>
+
+   <license>
+      See Code Composer Studio license for specific terms and conditions.
+   </license>
+
+   <plugin
+        id="com.ti.sdo.edma3.rtscRegistry_02.11.10"
+        version="02.11.10"
+        unpack="false" />
+
+   <!-- ADD PLUGINS HERE -->
+
+</feature>

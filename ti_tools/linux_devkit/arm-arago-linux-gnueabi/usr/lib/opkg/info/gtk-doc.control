@@ -1,0 +1,12 @@
+Package: gtk-doc
+Version: 1.0-r4.6
+Description: Version 1.0-r4 of package gtk-doc
+Section: x11/base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2
+Architecture: armv7a
+OE: gtk-doc
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Source: file://gtk-doc.m4

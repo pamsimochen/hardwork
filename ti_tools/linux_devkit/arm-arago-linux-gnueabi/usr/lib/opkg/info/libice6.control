@@ -1,0 +1,13 @@
+Package: libice6
+Version: 1:1.0.7-r9.0.6
+Description: X11 Inter-Client Exchange library
+Section: x11/libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: libice
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://xorg.freedesktop.org/releases/individual/lib/libICE-1.0.7.tar.bz2;name=archive

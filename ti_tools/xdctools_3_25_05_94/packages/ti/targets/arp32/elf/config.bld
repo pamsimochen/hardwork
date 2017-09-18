@@ -1,0 +1,17 @@
+/*
+ *  Copyright 2013 by Texas Instruments Incorporated.
+ *
+ */
+
+/*  This file is necessary because we need to avoid including
+ *  ti.targets.elf because this is the ti.targets.elf package and after an
+ *  'xdc clean' this package does not exist!
+ */
+xdc.loadCapsule("common.bld");
+
+Build.useTargets = null;    /* force the set of build targets to be empty */
+/*
+ *  @(#) ti.targets.arp32.elf; 1, 0, 0,114; 12-19-2013 15:12:34; /db/ztree/library/trees/xdctargets/xdctargets-g41x/src/ xlibrary
+
+ */
+

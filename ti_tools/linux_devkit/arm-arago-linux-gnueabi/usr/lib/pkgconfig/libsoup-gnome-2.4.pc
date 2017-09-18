@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: libsoup
+Description: a glib-based HTTP library
+Version: 2.32.2
+Requires: libsoup-2.4
+Libs: -L${libdir} -lsoup-gnome-2.4
+Cflags: -I${includedir}/libsoup-gnome-2.4

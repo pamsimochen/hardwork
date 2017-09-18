@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>module ti.syslink.ipc.rtos.Syslink</title>
+<link rel="stylesheet" type="text/css" href="../../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">module</span> <span class="xdoc-id">ti.syslink.ipc.rtos.</span><span class="xdoc-id">Syslink</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/syslink/ipc/rtos/package.html" title="package ti.syslink.ipc.rtos"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/syslink/ipc/rtos/Syslink.html">index URL</a></div>
+<ul class="xdocToc">
+<li class="xdocToc"><a class="xdocToc" href="#meta-synop">XDCscript usage</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocMetaElems">Individual elements</a></li>
+</ul>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2">XDCscript</span></tt> usage</td>
+<td class="xdocLabelCenter">meta-domain</td>
+<td class="xdocLabelRight">sourced in <span class="xdocLabelFile">ti/syslink/ipc/rtos/Syslink.xdc</span></td>
+</tr></table>
+<div class="xdocSynM">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">var</span> Syslink = <span class="xdoc-kw3">xdc.useModule</span>(<span class="xdoc-id">'ti.syslink.ipc.rtos.Syslink'</span>);
+</div>
+<div class='xdocSynHdr'>module-wide config parameters</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#plt.Sect.Fix">Syslink.<span class="xdoc-id">pltSectFix</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Work around for linker bug regarding placement of .plt section</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#terminate.Event.Id">Syslink.<span class="xdoc-id">terminateEventId</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Notify event id to be used for the terminate event</span></span></a> = <i><span class="xdoc-kw2">UInt32</span></i> 30;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#terminate.Event.Line.Id">Syslink.<span class="xdoc-id">terminateEventLineId</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Notify line id to be used for the terminate event</span></span></a> = <i><span class="xdoc-kw2">UInt16</span></i> 0;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+</div>
+<div id="xdocSep">
+</div>
+<div id="xdocMetaElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="plt.Sect.Fix"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Syslink.</span><span class="xdoc-id">pltSectFix</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/syslink/ipc/rtos/Syslink.html" title="module Syslink"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/syslink/ipc/rtos/Syslink.html#plt.Sect.Fix">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Work around for linker bug regarding placement of .plt section</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Syslink.<span class="xdoc-id">pltSectFix</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Set this config param to false to disable the work around fix.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="terminate.Event.Id"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Syslink.</span><span class="xdoc-id">terminateEventId</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/syslink/ipc/rtos/Syslink.html" title="module Syslink"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/syslink/ipc/rtos/Syslink.html#terminate.Event.Id">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Notify event id to be used for the terminate event</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Syslink.<span class="xdoc-id">terminateEventId</span> = <i><span class="xdoc-kw2">UInt32</span></i> 30;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">When a SysLink application is terminated, the SysLink driver will
+  send a notify terminate event to all attached slaves to inform them
+  that the application has terminated. The event id used for this
+  terminate event is specified by this config param.</div>
+<div class="xdocText">The payload of the terminate event is the runtime id of the
+  terminated application.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="terminate.Event.Line.Id"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Syslink.</span><span class="xdoc-id">terminateEventLineId</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../ti/syslink/ipc/rtos/Syslink.html" title="module Syslink"><img class="xdocHdrArrow" src="../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../index.html#ti/syslink/ipc/rtos/Syslink.html#terminate.Event.Line.Id">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Notify line id to be used for the terminate event</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Syslink.<span class="xdoc-id">terminateEventLineId</span> = <i><span class="xdoc-kw2">UInt16</span></i> 0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">The SysLink driver uses Notify_sendEvent() to send the terminate
+  event. This config param specifies which lineId to use when sending
+  this event.</div>
+</div>
+<div id="xdocDate">generated on Wed, 28 Aug 2013 00:58:51 GMT</div>
+</div></div></body>
+</html>

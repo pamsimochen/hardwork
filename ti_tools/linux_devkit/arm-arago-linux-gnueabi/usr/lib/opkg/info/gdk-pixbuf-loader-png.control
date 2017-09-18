@@ -1,0 +1,13 @@
+Package: gdk-pixbuf-loader-png
+Version: 2.20.1-r10.5.6
+Description: GDK pixbuf loader for png
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2 LGPLv2+ LGPLv2.1+
+Architecture: armv7a
+OE: gtk+
+Homepage: http://www.gtk.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libpng12-0 (>= 1.2.44), gtk+ (>= 2.20.1), libgio-2.0-0 (>= 2.24.1), libc6 (>= 2.12.2), libz1 (>= 1.2.3), libgobject-2.0-0 (>= 2.24.1), libgmodule-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libglib-2.0-0 (>= 2.24.1)
+Source: http://download.gnome.org/sources/gtk+/2.20/gtk+-2.20.1.tar.bz2;name=gtk file://hardcoded_libtool.patch file://run-iconcache.patch file://toggle-font.diff;striplevel=0 file://xsettings.patch file://gtk-dnd-grab-deadlock-fix.patch file://cross-nm.patch file://xkb-ifdef.patch

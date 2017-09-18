@@ -1,0 +1,7 @@
+/usr/include/esd.h
+/usr/lib/pkgconfig/esound.pc
+/usr/lib/libesddsp.la
+/usr/lib/libesd.la
+/usr/lib/libesddsp.so
+/usr/lib/libesd.so
+/usr/share/aclocal/esd.m4

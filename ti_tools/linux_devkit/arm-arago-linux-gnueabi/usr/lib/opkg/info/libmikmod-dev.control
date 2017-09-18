@@ -1,0 +1,14 @@
+Package: libmikmod-dev
+Version: 3.1.12-r5.6
+Description: libmikmod is a module player library supporting many formats, including mod, s3m, it, and xm.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: libmikmod
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libmikmod (= 3.1.12-r5.6), libmikmod
+Recommends: libc6-dev, libmikmod-dev
+Source: http://downloads.sourceforge.net/mikmod/libmikmod-3.1.12.tar.gz file://m4.patch file://autofoo.patch file://ldflags.patch file://CVE-2010-2971.patch

@@ -1,0 +1,84 @@
+%%{
+/*
+ *  @file   linkcmd.xdt
+ *
+ *  @brief      xdt file
+ *
+ *
+ *  ============================================================================
+ *
+ *  Copyright (c) 2008-2012, Texas Instruments Incorporated
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *  
+ *  *  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *  
+ *  *  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *  
+ *  *  Neither the name of Texas Instruments Incorporated nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *  
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ *  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *  Contact information for paper mail:
+ *  Texas Instruments
+ *  Post Office Box 655303
+ *  Dallas, Texas 75265
+ *  Contact information: 
+ *  http://www-k.ext.ti.com/sc/technical-support/product-information-centers.htm?
+ *  DCMP=TIHomeTracking&HQS=Other+OT+home_d_contact
+ *  ============================================================================
+ *  
+ */
+%%}
+
+
+    /*
+     *  Set entry point to the HWI reset vector 0 to automatically satisfy
+     *  any alignment constraints for the boot vector.
+     */
+%if ((Program.build.target.$name.match(/C64P/)) ||
+%    (Program.build.target.$name.match(/C674/)) ||
+%    (Program.build.target.$name.match(/C64T/)) ||
+%    (Program.build.target.$name.match(/C67P/))) {
+%    if (Program.build.target.$name.match(/elf/)) {
+    -eti_sysbios_family_c64p_Hwi0
+%    }
+%    else {
+    -e_ti_sysbios_family_c64p_Hwi0
+%    }
+%}
+
+    /*
+     * We just modified the entry point, so suppress the "entry point symbol other
+     * than _c_int00 specified" warning.
+     */
+    --diag_suppress=10063
+
+%if (Program.build.target.$name.match(/elf/)) {
+    /* Add the flags needed for SysLink ELF build. */
+    --dynamic
+    --retain=_Ipc_ResetVector
+
+    /* 
+     * Added symbol to ensure SysBios code is retained when entrypoint is
+     * something other than _c_int00.  This workaround will be removed once
+     * fixed in the SysBios package
+     */
+    -u _c_int00
+%}

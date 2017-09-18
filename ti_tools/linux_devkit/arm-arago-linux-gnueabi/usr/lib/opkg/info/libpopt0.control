@@ -1,0 +1,13 @@
+Package: libpopt0
+Version: 1.14-r3.0.6
+Description: Popt is a C library for parsing command line parameters
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT
+Architecture: armv7a
+OE: popt
+Homepage: http://rpm5.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://rpm5.org/files/popt/popt-1.14.tar.gz

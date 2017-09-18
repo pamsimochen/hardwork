@@ -1,0 +1,19 @@
+prefix=/usr/
+exec_prefix=${prefix}
+libdir=${prefix}lib
+includedir=${prefix}include/qtopia
+qt_config=lex yacc uic resources qt release incremental link_prl rpath_libdirs def_files_disabled exceptions no_mocdepend release stl qt_no_framework silent release shared dll embedded largefile stl neon dylib create_prl link_prl depend_includepath QTDIR_build qt_install_headers qt depend_includepath qmake_cache target_qt bsymbolic_functions create_libtool create_pc explicitlib building-libs standalone_package depend_includepath moc thread shared dll
+moc_location=/usr/bin/moc4
+uic_location=/usr/bin/uic4
+rcc_location=$(OE_QMAKE_RCC)
+lupdate_location=/usr//bin/lupdate
+lrelease_location=/usr//bin/lrelease
+
+Name: Qtscripte
+Description: Qtscripte Library
+Version: 4.7.2
+Libs: -L${libdir} -lQtScriptE 
+Libs.private:    -lQtCoreE   -lpthread   
+Cflags: -DQT_SHARED -I${includedir}/QtScript -I${includedir}
+Requires: QtCoreE
+

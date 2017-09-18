@@ -1,0 +1,25 @@
+/* 
+ *  Copyright (c) 2011 Texas Instruments and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *      Texas Instruments - initial implementation
+ * 
+ * 
+ */
+/*  This file is necessary because we need to avoid including
+ *  gnu.targets because this is the gnu.targets package and after an
+ *  'xdc clean' this package does not exist!
+ */
+xdc.loadCapsule("common.bld");
+
+Build.useTargets = null;    /* force the set of build targets to be empty */
+
+/*
+ *  @(#) google.targets.arm; 1, 0, 0,138; 12-19-2013 15:12:11; /db/ztree/library/trees/xdctargets/xdctargets-g41x/src/ xlibrary
+
+ */
+

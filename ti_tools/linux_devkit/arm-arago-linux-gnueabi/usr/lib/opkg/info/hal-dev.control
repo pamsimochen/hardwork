@@ -1,0 +1,14 @@
+Package: hal-dev
+Version: 0.5.14-r11.2+gitr0763f4900a32ac01d4b259fe010ab8ebfc83ad0f-arago1.6
+Description: Hardware Abstraction Layer
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2 LGPLv2 AFLv2.1
+Architecture: armv7a
+OE: hal
+Homepage: http://freedesktop.org/Software/hal
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: hal (= 0.5.14-r11.2+gitr0763f4900a32ac01d4b259fe010ab8ebfc83ad0f-arago1.6), hal, dbus-dev
+Recommends: consolekit-dev, util-linux-ng-dev, libdbus-glib-1-dev, udev-dev, intltool-dev, libexpat-dev, hal-info-dev, udev-utils-dev, dbus-lib-dev, gobject-2.0-dev, libglib-2.0-dev, libc6-dev, libblkid-dev, libusb-0.1-dev, hal-dev, dbus-dev
+Source: git://anongit.freedesktop.org/hal/;protocol=git file://0001-Add-touchscreen-option.patch file://20hal file://99_hal

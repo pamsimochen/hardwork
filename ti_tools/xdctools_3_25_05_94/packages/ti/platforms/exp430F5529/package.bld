@@ -1,0 +1,1 @@
+Pkg.otherFiles = ["defaults.xs", "linkcmd.xdt", "./simpliciti"];

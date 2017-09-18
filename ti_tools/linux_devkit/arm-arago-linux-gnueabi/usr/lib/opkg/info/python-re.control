@@ -1,0 +1,13 @@
+Package: python-re
+Version: 2.6.6-ml12.4.6
+Description: Python Regular Expression APIs
+Section: devel/python
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: PSF
+Architecture: armv7a
+OE: python
+Homepage: http://www.python.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: python-core
+Source: http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tar.bz2 file://00-fix-parallel-make.patch file://01-use-proper-tools-for-cross-build.patch file://02-remove-test-for-cross.patch file://03-fix-tkinter-detection.patch file://04-default-is-optimized.patch file://05-enable-ctypes-cross-build.patch file://06-ctypes-libffi-fix-configure.patch file://07-linux3-regen-fix.patch file://ipv6-cross.patch file://python-module-rpath-fix.patch file://sitecustomize.py file://pkgconfig-support.patch

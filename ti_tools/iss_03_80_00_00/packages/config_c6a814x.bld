@@ -1,0 +1,340 @@
+/*
+ *  ======== config.bld ========
+ *  Build configuration script for HDVPSS drivers
+ */
+
+/* load the required modules for the configuration */
+
+var M3 = xdc.useModule('ti.targets.arm.elf.M3');
+
+var buildReleaseConfig = true;
+
+/* configure  the options for the M3 targets     */
+
+/* M3 compiler directory path                    */
+M3.rootDir = java.lang.System.getenv("CGTOOLS");
+
+/* linker options */
+
+M3.lnkOpts.suffix += " --zero_init=off ";
+M3.lnkOpts.suffix += " --dynamic --retain=_Ipc_ResetVector";
+
+/* compiler options                                */
+M3.ccOpts.suffix += " -DTI_814X_BUILD -DPLATFORM_EVM_SI ";
+
+/* set default platform and list of all interested
+ * platforms for M3
+ */
+M3.platforms = [
+                        "ti.platforms.evmDM8148:core0",
+                        "ti.platforms.evmDM8148:core1",
+               ];
+
+/* Select the default platform
+ *
+ * Making core1 as defualt core configuration to be used
+ *  Core 0 ==    Ducati.M3.VIDEO
+ *  Core 1 ==    Ducati.M3.VPS
+ */
+M3.platform = M3.platforms[1];
+
+/* list interested targets in Build.targets array  */
+Build.targets = [
+                    M3,
+                ];
+
+
+/*
+Memory map for both "evmSi" and "sim"
+DDR: 0x80000000
++-----------------+
+|                 |
+|  Linux          | 166MB
+|                 |
++-----------------+
+|  CMEM           | 10MB
++-----------------+
+|  DSP            | 32MB
++-----------------+
+| SR1/Syslink IPC | 12MB
+|                 |
++-----------------+
+| Notify Shared   | 1MB
+|      Mem        |
++-----------------+
+|  VPDMA Desc Mem | 2MB     - Non Cached
++-----------------+
+|  HDVPSS Shared  | 2MB     - Non Cached
+|      Mem        |
++-----------------+
+|  SR0/SHARED     | 16MB    - Required by IPC/SysLink
+|                 |
++-----------------+
+|  DSS-M3         | 16MB - DSS M3 Code/Data
+|                 |
++-----------------+
+Partition 1 - 256 MB - Not used segments Linux, CMEM and DSP - reffered as
+    LINUX segment
+
+Partition 2 - 256 MB - Not used
+
+OCMC: 0x00300000
++-----------------+
+| OCMC0 (Not used)| 256KB
++-----------------+
+
+OCMC: 0x00400000
++-----------------+
+| OCMC1 (Not used)| 256KB
++-----------------+
+
+*/
+
+var KB=1024;
+var MB=KB*KB;
+
+var DDR3_ADDR;
+var DDR3_SIZE;
+
+var OCMC0_ADDR;
+var OCMC1_ADDR;
+var OCMC_SIZE;
+
+var LINUX_ADDR;
+var LINUX_SIZE;
+
+var SR1_SYSLINK_IPC_ADDR;
+var SR1_SYSLINK_IPC_SIZE;
+
+var HDVPSS_DESC_ADDR;
+var HDVPSS_DESC_SIZE;
+
+var HDVPSS_SHARED_ADDR;
+var HDVPSS_SHARED_SIZE;
+
+var SR0_SHARED_ADDR;
+var SR0_SHARED_SIZE;
+
+var DSS_M3_CODE_ADDR;
+var DSS_M3_CODE_SIZE;
+
+var DSS_M3_DATA_ADDR;
+var DSS_M3_DATA_SIZE;
+
+
+DDR3_ADDR               = 0x80000000;
+DDR3_SIZE               = 256*MB;      /* Since we are using partition 1 only */
+
+OCMC0_ADDR              = 0x00300000;
+OCMC1_ADDR              = 0x00400000;
+OCMC_SIZE               = 256*KB;
+
+LINUX_SIZE              = 207*MB
+SR1_SYSLINK_IPC_SIZE    = 12*MB;
+HDVPSS_DESC_SIZE        = 2*MB;
+HDVPSS_SHARED_SIZE      = 2*MB;
+NOTIFY_SHARED_SIZE      = 1*MB;
+SR0_SHARED_SIZE         = 16*MB
+DSS_M3_CODE_SIZE        = 8*MB;
+DSS_M3_DATA_SIZE        = 8*MB;
+
+LINUX_ADDR              = 0x80000000;
+SR1_SYSLINK_IPC_ADDR    = LINUX_ADDR + LINUX_SIZE;
+NOTIFY_SHARED_ADDR      = SR1_SYSLINK_IPC_ADDR + SR1_SYSLINK_IPC_SIZE;
+HDVPSS_DESC_ADDR        = NOTIFY_SHARED_ADDR + NOTIFY_SHARED_SIZE;
+HDVPSS_SHARED_ADDR      = HDVPSS_DESC_ADDR + HDVPSS_DESC_SIZE;
+SR0_SHARED_ADDR         = HDVPSS_SHARED_ADDR + HDVPSS_SHARED_SIZE;
+DSS_M3_CODE_ADDR        = SR0_SHARED_ADDR + SR0_SHARED_SIZE;
+DSS_M3_DATA_ADDR        = DSS_M3_CODE_ADDR + DSS_M3_CODE_SIZE;
+
+
+Build.platformTable["ti.platforms.evmDM8148:core1"] =
+{
+    externalMemoryMap:
+    [
+        ["DDR3_RAM", {
+            comment: "DDR3_RAM",
+            name: "DDR3_RAM",
+            base: DDR3_ADDR,
+            len:  DDR3_SIZE
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ],
+    customMemoryMap:
+    [
+        ["SR0", {
+            comment : "SR0 - Shared Region 0 required by IPC",
+            name    : "SR0",
+            base    : SR0_SHARED_ADDR,
+            len     : SR0_SHARED_SIZE
+        }],
+        ["HDVPSS_DESC_MEM", {
+            comment : "HDVPSS_DESC_MEM",
+            name    : "HDVPSS_DESC_MEM",
+            base    : HDVPSS_DESC_ADDR,
+            len     : HDVPSS_DESC_SIZE
+        }],
+        ["HDVPSS_SHARED_MEM", {
+            comment : "HDVPSS_SHARED_MEM",
+            name    : "HDVPSS_SHARED_MEM",
+            base    : HDVPSS_SHARED_ADDR,
+            len     : HDVPSS_SHARED_SIZE
+        }],
+
+        ["HOST_VPSS_NOITFYMEM", {
+            comment : "HOST_VPSS_NOITFYMEM",
+            name    : "HOST_VPSS_NOITFYMEM",
+            base    : NOTIFY_SHARED_ADDR,
+            len     : NOTIFY_SHARED_SIZE
+        }],
+
+        ["SR1", {
+            comment : "SR1 - Allocated by IPC to Apps",
+            name    : "SR1",
+            base    : SR1_SYSLINK_IPC_ADDR,
+            len     : SR1_SYSLINK_IPC_SIZE
+        }],
+        ["DSS_M3_CODE_MEM", {
+            comment : "DSS_M3_CODE_MEM",
+            name    : "DSS_M3_CODE_MEM",
+            base    : DSS_M3_CODE_ADDR,
+            len     : DSS_M3_CODE_SIZE
+        }],
+        ["DDR3_RAM", {
+            comment : "DDR3_RAM",
+            name    : "DDR3_RAM",
+            base    : DSS_M3_DATA_ADDR,
+            len     : DSS_M3_DATA_SIZE
+        }],
+        ["L2_RAM", {
+            comment: "L2_RAM",
+            name: "L2_RAM",
+            base: 0x20004000,
+            len:  0x00010000
+        }],
+        ["L2_ROM", {
+            comment: "L2_ROM",
+            name: "L2_ROM",
+            base: 0x00000000,
+            len:  0x00004000
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ]
+};
+
+
+Build.platformTable["ti.platforms.evmDM8148:core0"] =
+{
+    externalMemoryMap:
+    [
+        ["DDR3_RAM", {
+            comment: "DDR3_RAM",
+            name: "DDR3_RAM",
+            base: DDR3_ADDR,
+            len:  DDR3_SIZE
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ],
+    customMemoryMap:
+    [
+        ["SR0", {
+            comment : "SR0 - Shared Region 0 required by IPC",
+            name    : "SR0",
+            base    : SR0_SHARED_ADDR,
+            len     : SR0_SHARED_SIZE
+        }],
+        ["HDVPSS_DESC_MEM", {
+            comment : "HDVPSS_DESC_MEM",
+            name    : "HDVPSS_DESC_MEM",
+            base    : HDVPSS_DESC_ADDR,
+            len     : HDVPSS_DESC_SIZE
+        }],
+        ["HDVPSS_SHARED_MEM", {
+            comment : "HDVPSS_SHARED_MEM",
+            name    : "HDVPSS_SHARED_MEM",
+            base    : HDVPSS_SHARED_ADDR,
+            len     : HDVPSS_SHARED_SIZE
+        }],
+        ["HOST_VPSS_NOITFYMEM", {
+            comment : "HOST_VPSS_NOITFYMEM",
+            name    : "HOST_VPSS_NOITFYMEM",
+            base    : NOTIFY_SHARED_ADDR,
+            len     : NOTIFY_SHARED_SIZE
+        }],
+        ["SR1", {
+            comment : "SR1 - Allocated by IPC to Apps",
+            name    : "SR1",
+            base    : SR1_SYSLINK_IPC_ADDR,
+            len     : SR1_SYSLINK_IPC_SIZE
+        }],
+        ["DSS_M3_CODE_MEM", {
+            comment : "DSS_M3_CODE_MEM",
+            name    : "DSS_M3_CODE_MEM",
+            base    : DSS_M3_CODE_ADDR,
+            len     : DSS_M3_CODE_SIZE
+        }],
+        ["DDR3_M3", {
+            comment : "DDR3_M3",
+            name    : "DDR3_M3",
+            base    : DSS_M3_DATA_ADDR,
+            len     : DSS_M3_DATA_SIZE
+        }],
+        ["L2_RAM", {
+            comment: "L2_RAM",
+            name: "L2_RAM",
+            base: 0x20004000,
+            len:  0x00010000
+        }],
+        ["L2_ROM", {
+            comment: "L2_ROM",
+            name: "L2_ROM",
+            base: 0x00000000,
+            len:  0x00004000
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ]
+};

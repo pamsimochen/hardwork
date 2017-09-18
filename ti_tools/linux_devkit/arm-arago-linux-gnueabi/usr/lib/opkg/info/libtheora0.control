@@ -1,0 +1,13 @@
+Package: libtheora0
+Version: 1.1.1-r3.0.6
+Description: theora  is a high-quality video codec that is free of intellectual property restrictions
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: BSD
+Architecture: armv7a
+OE: libtheora
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libogg0 (>= 1.1.4), libc6 (>= 2.12.2)
+Source: http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2 file://no-docs.patch

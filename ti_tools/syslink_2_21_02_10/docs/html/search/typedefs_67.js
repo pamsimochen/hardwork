@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['gatemonitor_5fhandle',['GateMonitor_Handle',['../_gate_monitor_8h.html#a7e6b9e8280fc464d185f8466a0b7d086',1,'GateMonitor.h']]],
+  ['gatemonitor_5fobject',['GateMonitor_Object',['../_gate_monitor_8h.html#a661f4d9bf33c2a7bdd0a972f65a5b3e2',1,'GateMonitor.h']]],
+  ['gatemonitor_5fparams',['GateMonitor_Params',['../_gate_monitor_8h.html#a52830313d2793814144f112a567c3450',1,'GateMonitor.h']]],
+  ['gatemp_5fhandle',['GateMP_Handle',['../_gate_m_p_8h.html#ad5bb259f928a14e98d973334bc60ebb3',1,'GateMP.h']]],
+  ['gatemp_5flocalprotect',['GateMP_LocalProtect',['../_gate_m_p_8h.html#accb7b6c936aebe10e31d909310398fe5',1,'GateMP.h']]],
+  ['gatemp_5fparams',['GateMP_Params',['../_gate_m_p_8h.html#aa87249c5e69b88bfaa4ee817cacd3b42',1,'GateMP.h']]],
+  ['gatemp_5fremoteprotect',['GateMP_RemoteProtect',['../_gate_m_p_8h.html#a1400ba94db5b5fefd196649a9c9a4c63',1,'GateMP.h']]],
+  ['gatemutex_5fhandle',['GateMutex_Handle',['../_gate_mutex_8h.html#ac49162d777d2f9f56bb4d9f361781e73',1,'GateMutex.h']]],
+  ['gatemutex_5fobject',['GateMutex_Object',['../_gate_mutex_8h.html#a5af3a82210d8cf0bac5312329ceea115',1,'GateMutex.h']]],
+  ['gatemutex_5fparams',['GateMutex_Params',['../_gate_mutex_8h.html#a503d94df5ee1011e68f51a9ed6b9dbcf',1,'GateMutex.h']]],
+  ['gateprocess_5fhandle',['GateProcess_Handle',['../_gate_process_8h.html#a8d4e7a2d70b8a629daf846a8db5d2004',1,'GateProcess.h']]],
+  ['gateprocess_5fobject',['GateProcess_Object',['../_gate_process_8h.html#ac28f8c2ebde0bf7a20923993e97cc11e',1,'GateProcess.h']]],
+  ['gatesem_5fhandle',['GateSem_Handle',['../_gate_sem_8h.html#a3f3ed7317427c4286210ddcc51b031ee',1,'GateSem.h']]],
+  ['gatesem_5fobject',['GateSem_Object',['../_gate_sem_8h.html#ab48ac142f8f2b506083581c28de3ecef',1,'GateSem.h']]],
+  ['gatesem_5fparams',['GateSem_Params',['../_gate_sem_8h.html#a08f584586884d64aa8c483444c7630b5',1,'GateSem.h']]],
+  ['gatespinlock_5fhandle',['GateSpinlock_Handle',['../_gate_spinlock_8h.html#a1c53105ceb2f522a866e958ffb5f97b7',1,'GateSpinlock.h']]],
+  ['gatespinlock_5fobject',['GateSpinlock_Object',['../_gate_spinlock_8h.html#a453a942cf44fa1811d83d46056e5e138',1,'GateSpinlock.h']]],
+  ['gatespinlock_5fparams',['GateSpinlock_Params',['../_gate_spinlock_8h.html#a3b90ca4c2f0a555908f920dcdf4b420e',1,'GateSpinlock.h']]]
+];

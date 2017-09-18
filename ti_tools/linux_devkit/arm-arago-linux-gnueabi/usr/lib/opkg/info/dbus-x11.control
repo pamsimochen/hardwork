@@ -1,0 +1,13 @@
+Package: dbus-x11
+Version: 1.4.1-r20.0-arago3.6
+Description: A message bus system for inter-process communication
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: dbus
+Homepage: http://dbus.freedesktop.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: dbus, libc6 (>= 2.12.2)
+Source: http://dbus.freedesktop.org/releases/dbus/dbus-1.4.1.tar.gz file://tmpdir.patch file://add-configurable-reply-timeouts.patch file://dbus-1.init

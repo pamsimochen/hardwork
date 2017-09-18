@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin
+    name="`this.productSchema.name` Target Content"
+    id="`this.productId`"
+    version="`this.productSchema.version`"
+    provider-name="`this.productSchema.companyName`">
+
+    <extension point="org.eclipse.rtsc.xdctools.ui.productInfo">
+%for (var i = 0; i < this.productSchema.repositoryArr.length; i++) {
+        <repository location="../../../`this.productSchema.repositoryArr[i]`"/>
+%}
+%for (var j = 0; j < this.productSchema.docsLocArr.length; j++) {
+        <docs location="../../../`this.productSchema.docsLocArr[j]`"/>
+%}
+%for (var k = 0; k < this.productSchema.targetArr.length; k++) {
+%   var target = this.productSchema.targetArr[k];
+%   var sourceFile = target.sourceFile;
+%   if (sourceFile != null) {
+        <rtscTarget
+             sourceFile="`sourceFile`"/>
+%       continue;
+%   }
+%   var namePat = target.deviceNamePattern == null ? ".*" : target.deviceNamePattern;
+%   var famPat = target.deviceFamilyPattern == null ? ".*" : target.deviceFamilyPattern;
+        <rtscTarget
+             deviceNamePattern="`namePat`"
+             deviceFamilyPattern="`famPat`"
+%   if (target.compilerOptsPattern != null) {
+             CompilerBuildOptionsPattern="`target.compilerOptsPattern`"
+%   }
+             packageName="`target.packageName`"
+             baseTargetName="`target.baseTargetName`"/>
+%}
+%for (var l = 0; l < this.platformArr.length; l++) {
+        <rtscPlatform name="`this.platformArr[l]`"/>
+%}
+        <info
+            installLocation="../../.."
+            productName="`this.productSchema.name`"
+            versionNumber="`this.productSchema.version`"
+%if (this.platformArr.length > 0) {
+            containsRTSCPlatforms="true"
+%}
+        />
+    </extension>
+%if (this.productSchema.productViewModule != undefined) {
+
+    <extension point="org.eclipse.rtsc.xdctools.model.productView">
+        <productview
+            moduleName="`this.productSchema.productViewModule`"
+         />
+    </extension>
+%}
+%/* omit xdctools; otherwise CCS 5.5 places xdctools in the available product list to be added to the package path _ahead_ of the xdctools at the end of the path.  This is almost always a mistake and certainly not one we want to encouracge in the GUI. */
+%/* omit DSP/BIOS; due to hard-coded CCS behavior related to tconf UI support and the fact that both DSP/BIOS and SYS/BIOS use the _same_ macro name, BIOS_CG_ROOT, for their root installation (even though they are different products) */
+%if (this.productSchema.id != "org.eclipse.rtsc.xdctools" && this.productSchema.id != "com.ti.rtsc.DSPBIOS") {
+
+    <extension point="org.eclipse.rtsc.xdctools.managedbuild.core.rtscProductTypes">
+        <productType
+            id="`this.productSchema.id`"
+            name="`this.productSchema.name`"
+            folderPrefix="`this.productSchema.bundleName`"
+            rootMacroName="`this.macro.name`"/>
+    </extension>
+
+    <extension point="org.eclipse.rtsc.xdctools.managedbuild.core.rtscProducts">
+        <product
+            productTypeId="`this.productSchema.id`"
+            version="`this.productSchema.version`">
+            <resources location="`this.productSchema.projectSpecPath`"/>
+        </product>
+    </extension>
+%}
+</plugin>

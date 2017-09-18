@@ -1,0 +1,13 @@
+Package: eggdbus
+Version: 0.6-r0.6
+Description: gobject dbus binding
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: eggdbus
+Homepage: http://cgit.freedesktop.org/~david/eggdbus
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libgio-2.0-0 (>= 2.24.1), libc6 (>= 2.12.2), libz1 (>= 1.2.3), libgmodule-2.0-0 (>= 2.24.1), libdbus-glib-1-2 (>= 0.86), libdbus-1-3 (>= 1.4.1), libgobject-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libglib-2.0-0 (>= 2.24.1)
+Source: http://cgit.freedesktop.org/~david/eggdbus/snapshot/eggdbus-0.6.tar.bz2;name=eggdbus file://gtk-doc.patch file://marshal.patch

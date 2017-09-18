@@ -1,0 +1,13 @@
+Package: libfaad2
+Version: 2.7-r1.6
+Description: Library for reading some sort of media format.
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: faad2
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://downloads.sourceforge.net/faac/faad2-src/faad2-2.7/faad2-2.7.tar.bz2;name=faad2

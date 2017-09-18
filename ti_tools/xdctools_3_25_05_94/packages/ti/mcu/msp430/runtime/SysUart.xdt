@@ -1,0 +1,86 @@
+%%{
+    Mod = this.$name.replace(/\./g, "_");
+
+    /* a hack to locate the MSP430 header file directory along package path */
+    var MSPI = xdc.findFile("ti/mcu/msp430/include")
+        || xdc.findFile("msp430/include");
+    if (MSPI == null) {
+        this.$logError("can't find msp430 header files", this);
+    }
+%%}
+#define USE_8MHZ    1
+
+#define __`Program.cpu.deviceName.toUpperCase()`__ 1
+
+/* standard header assumes linker command file definitions */
+#include  <`MSPI`/msp430.h>
+
+#if defined(__MSP430_HAS_USCI_A0__) || defined(__MSP430_HAS_EUSCI_A0__)
+#define RXVID       USCI_A0_VECTOR
+#define TXBUSY      (UCTXIFG & UCA0IFG)
+#define RXIENABLE() (UCA0IE |= UCRXIE)
+
+#elif defined(__MSP430_HAS_USCI__)
+#define RXVID       USCIAB0RX_VECTOR
+#define TXBUSY      (IFG2 & UCA0TXIFG)
+#define RXIENABLE() (IE2 |= UCA0RXIE)
+#else
+#error this device does not seem to support the USCI
+#endif
+
+/*
+ *  ======== `Mod`_rxtxInit ========
+ */
+void `Mod`_rxtxInit__I(void)
+{
+    /* init the UART (see Table 15-4, Section 15.3.13 MSP430 User's guide) */
+    P3SEL = 0x30;           /* P3.4,5 = USCI_A0 TXD/RXD */
+
+    UCA0CTL1 |= UCSWRST;            /* disable the USCI */
+    UCA0CTL1 = UCSSEL_2 | UCSWRST;  /* use SMCLK as USCI clock source */
+#if USE_8MHZ
+  #if defined(__MSP430_HAS_EUSCI_A0__)
+    UCA0BR0 = 0x34;         /* 8MHz DCO 9600 (8000000/(9600*16) = 0x0034) */
+    UCA0BR1 = 0x00;
+    UCA0MCTLW = 0x4911;     /* 8MHz DC0 Modulation (UCBRSx = 0x49: UCOS16 = 1, UCBRFx = 1) */
+  #else
+    UCA0BR0 = 0x41;         /* 8MHz DCO 9600 (UCBRx = 833) */
+    UCA0BR1 = 0x03;         /* 8MHz DC0 9600 */
+    UCA0MCTL = UCBRS_2;     /* 8MHz DC0 Modulation (UCBRSx = 2: UCOS16 = 0, UCBRFx = 0) */
+  #endif
+#else
+  #if defined(__MSP430_HAS_EUSCI_A0__)
+    UCA0BR0 = 0x06;         /* 1MHz DCO 9600 (1000000/(9600*16) = 0x0006) */
+    UCA0BR1 = 0x00;
+    UCA0MCTLW = 0x2081;     /* 1MHz DC0 Modulation (UCBRSx = 0x20: UCOS16 = 1, UCBRFx = 8) */
+  #else
+    UCA0BR0 = 104;          /* 1MHz DC0 9600 (@8MHz 9600, use 0x41) */
+    UCA0BR1 = 0;            /* 1MHz DC0 9600 (@8MHz 9600, use 0x03) */
+    UCA0MCTL = UCBRS0;      /* 1MHz DC0 Modulation (UCBRSx = 1: UCOS16 = 0, UCBRFx = 0) */
+  #endif
+#endif
+
+    UCA0CTL1 &= ~UCSWRST;   /* Initialize USCI state machine */
+    RXIENABLE();            /* Enable USCI_A0 RX interrupt */
+}
+
+/*
+ *  ======== `Mod`_tx ========
+ */
+void `Mod`_tx__I(char ch)
+{
+    while (!TXBUSY) {   /* USCI_A0 TX buffer ready? */
+        ;
+    }
+
+    UCA0TXBUF = ch;                 /* TX -> ch */
+}
+
+/*
+ *  ======== `Mod`_rxIsr ========
+ */
+#pragma vector=RXVID
+__interrupt void `Mod`_rxIsr(void)
+{
+    `Mod`_rx__I(UCA0RXBUF);  /* read the character */
+}

@@ -1,0 +1,13 @@
+Package: libcdaudio
+Version: 0.99.12p2-r1.6
+Description: Portable library for controlling audio CDs
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2+
+Architecture: armv7a
+OE: libcdaudio
+Homepage: http://libcdaudio.sourceforge.net/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://downloads.sourceforge.net/libcdaudio/libcdaudio-0.99.12p2.tar.gz

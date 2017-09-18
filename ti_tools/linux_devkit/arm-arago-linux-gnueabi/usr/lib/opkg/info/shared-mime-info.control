@@ -1,0 +1,13 @@
+Package: shared-mime-info
+Version: 0.51-r3.6
+Description: Version 0.51-r3 of package shared-mime-info
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: shared-mime-info
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libxml2 (>= 2.7.8), libglib-2.0-0 (>= 2.24.1), libc6 (>= 2.12.2)
+Source: http://freedesktop.org/~hadess/shared-mime-info-0.51.tar.bz2

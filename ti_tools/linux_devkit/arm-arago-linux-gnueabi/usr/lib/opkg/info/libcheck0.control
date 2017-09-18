@@ -1,0 +1,13 @@
+Package: libcheck0
+Version: 0.9.6-r0.6
+Description: a unit test framework for C
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: check
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://downloads.sourceforge.net/check/check-0.9.6.tar.gz

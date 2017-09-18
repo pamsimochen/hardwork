@@ -1,0 +1,13 @@
+Package: hicolor-icon-theme
+Version: 0.11-r2.6
+Description: Version 0.11-r2 of package hicolor-icon-theme
+Section: unknown
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: all
+OE: hicolor-icon-theme
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: hicolor-icon-theme
+Source: http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.11.tar.gz

@@ -1,0 +1,13 @@
+Package: librsvg-2-2
+Version: 2.26.2-r2.6
+Description: Library for rendering SVG files
+Section: x11/utils
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2+
+Architecture: armv7a
+OE: librsvg
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libcroco (>= 0.6.2), gtk+ (>= 2.20.1), libxml2 (>= 2.7.8), pango (>= 1.24.4), libcairo2 (>= 1.10.0), libpixman-1-0 (>= 0.21.6), libxrender1 (>= 0.9.6), libx11-6 (>= 1.4.1), libxcb1 (>= 1.6), libpthread-stubs0 (>= 0.2), libxau6 (>= 1.0.6), libxdmcp6 (>= 1.1.0), libpng12-0 (>= 1.2.44), libc6 (>= 2.12.2), libfontconfig1 (>= 2.8.0), libexpat1 (>= 2.0.1), libfreetype6 (>= 2.4.6), libgio-2.0-0 (>= 2.24.1), libz1 (>= 1.2.3), libgobject-2.0-0 (>= 2.24.1), libgmodule-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libglib-2.0-0 (>= 2.24.1)
+Source: http://ftp.gnome.org/pub/GNOME/sources/librsvg/2.26/librsvg-2.26.2.tar.bz2;name=archive

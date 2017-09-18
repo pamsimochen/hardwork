@@ -1,0 +1,13 @@
+Package: policykit
+Version: 0.96-r3.6
+Description: Version 0.96-r3 of package policykit
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2+
+Architecture: armv7a
+OE: policykit
+Homepage: http://www.packagekit.org/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: eggdbus (>= 0.6), libdbus-glib-1-2 (>= 0.86), libdbus-1-3 (>= 1.4.1), libgio-2.0-0 (>= 2.24.1), libc6 (>= 2.12.2), libz1 (>= 1.2.3), libgobject-2.0-0 (>= 2.24.1), libgmodule-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libglib-2.0-0 (>= 2.24.1), libexpat1 (>= 2.0.1), libpam (>= 1.1.1)
+Source: http://hal.freedesktop.org/releases/polkit-0.96.tar.gz;name=polkit

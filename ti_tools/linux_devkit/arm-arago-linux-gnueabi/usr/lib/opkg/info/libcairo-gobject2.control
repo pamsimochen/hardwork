@@ -1,0 +1,13 @@
+Package: libcairo-gobject2
+Version: 1.10.0-r3.6
+Description: Cairo graphics library
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MPL-1 LGPLv2.1
+Architecture: armv7a
+OE: cairo
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libcairo2 (>= 1.10.0), libpixman-1-0 (>= 0.21.6), libfontconfig1 (>= 2.8.0), libexpat1 (>= 2.0.1), libfreetype6 (>= 2.4.6), libpng12-0 (>= 1.2.44), libxrender1 (>= 0.9.6), libx11-6 (>= 1.4.1), libxcb1 (>= 1.6), libpthread-stubs0 (>= 0.2), libxau6 (>= 1.0.6), libxdmcp6 (>= 1.1.0), libc6 (>= 2.12.2), libz1 (>= 1.2.3), libgobject-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libglib-2.0-0 (>= 2.24.1)
+Source: http://cairographics.org/releases/cairo-1.10.0.tar.gz;name=cairo

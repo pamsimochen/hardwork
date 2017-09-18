@@ -1,0 +1,6 @@
+QMAKE_PRL_BUILD_DIR = /home/hudson/amsdk-nightly-build/cortex-A8/arago-tmp/work/armv7a-arago-linux-gnueabi/qt4-embedded-gles-4.7.2-r29.14-arago8/qt-everywhere-opensource-src-4.7.2/demos/shared/
+QMAKE_PRO_INPUT = shared.pro
+QMAKE_PRL_TARGET = libdemo_shared.a
+QMAKE_PRL_CONFIG = lex yacc warn_on uic resources qt warn_on release incremental link_prl rpath_libdirs def_files_disabled exceptions no_mocdepend release stl qt_no_framework silent release embedded largefile stl neon dylib create_prl link_prl depend_includepath fix_output_dirs QTDIR_build static staticlib static moc thread opengl
+QMAKE_PRL_VERSION = 1.0.0
+QMAKE_PRL_LIBS = -L/home/hudson/amsdk-nightly-build/cortex-A8/arago-tmp/sysroots/armv7a-arago-linux-gnueabi/usr/lib -L/home/hudson/amsdk-nightly-build/cortex-A8/arago-tmp/work/armv7a-arago-linux-gnueabi/qt4-embedded-gles-4.7.2-r29.14-arago8/qt-everywhere-opensource-src-4.7.2/lib  -L/home/hudson/amsdk-nightly-build/cortex-A8/arago-tmp/sysroots/armv7a-arago-linux-gnueabi/usr/lib -lQtOpenGLE -L/home/hudson/amsdk-nightly-build/cortex-A8/arago-tmp/work/armv7a-arago-linux-gnueabi/qt4-embedded-gles-4.7.2-r29.14-arago8/qt-everywhere-opensource-src-4.7.2/lib -lQtGuiE -lQtNetworkE -lQtCoreE -lGLESv2 -lpthread  

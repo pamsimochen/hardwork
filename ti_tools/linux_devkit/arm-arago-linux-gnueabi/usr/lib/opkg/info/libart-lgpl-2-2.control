@@ -1,0 +1,13 @@
+Package: libart-lgpl-2-2
+Version: 2.3.20-r6.1.6
+Description: Library of functions for 2D graphics
+Section: x11/gnome
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2
+Architecture: armv7a
+OE: libart-lgpl
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://ftp.gnome.org/pub/GNOME/sources/libart_lgpl/2.3/libart_lgpl-2.3.20.tar.bz2 file://arm/art_config.h file://Makefile.am.patch

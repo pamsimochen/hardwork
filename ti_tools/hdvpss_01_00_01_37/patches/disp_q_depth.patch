@@ -1,0 +1,76 @@
+diff --git a/packages/ti/psp/vps/drivers/display/src/vpsdrv_display.c b/packages/ti/psp/vps/drivers/display/src/vpsdrv_display.c
+index b0f52a9..7de4d22 100755
+--- a/packages/ti/psp/vps/drivers/display/src/vpsdrv_display.c
++++ b/packages/ti/psp/vps/drivers/display/src/vpsdrv_display.c
+@@ -829,6 +829,16 @@ static Int32 VpsDdrv_control(Fdrv_Handle handle,
+                 break;
+             }
+ 
++            case IOCTL_VPS_DISP_GET_QUEUE_DEPTH:
++            {
++                VpsDdrv_BufManObj           *bmObj;
++                bmObj = &instObj->bmObj;
++
++                retVal = VpsUtils_getNumQElem(bmObj->reqQ);
++                break;
++
++            }
++
+             default:
+                 GT_0trace(VpsDdrvDispTrace, GT_ERR,
+                     "UNSUPPORTED_CMD: IOCTL not supported\n");
+diff --git a/packages/ti/psp/vps/hal/src/vpshal_hdvenc.c b/packages/ti/psp/vps/hal/src/vpshal_hdvenc.c
+index 8c0ef17..58bebef 100755
+--- a/packages/ti/psp/vps/hal/src/vpshal_hdvenc.c
++++ b/packages/ti/psp/vps/hal/src/vpshal_hdvenc.c
+@@ -820,10 +820,6 @@ Int32 VpsHal_hdVencSetOutput(VpsHal_Handle handle, Vps_DcOutputInfo *output)
+     HdVenc_Obj                 *hdVencObj      = NULL;
+     HdVenc_OutputCfg           *outputCfg;
+ 
+-#if defined(TI_8107_BUILD) && defined(VPSHAL_VENC_SWAP_COLORS_FOR_VGA_OUT_ON_TI813X)
+-    VpsHal_HdVencCscCoeff       cscCoeff;
+-#endif
+-
+     GT_assert(VpsHalTrace, (NULL != handle));
+     GT_assert(VpsHalTrace, (NULL != output));
+ 
+@@ -957,11 +953,11 @@ Int32 VpsHal_hdVencSetOutput(VpsHal_Handle handle, Vps_DcOutputInfo *output)
+ #if defined(TI_8107_BUILD) && defined(VPSHAL_VENC_SWAP_COLORS_FOR_VGA_OUT_ON_TI813X)
+     if (VPSHAL_HDVENC_HDCOMP == hdVencObj->instId)
+     {
+-        outputCfg->cscCoefficients = &cscCoeff;
+-
+-        memset(&cscCoeff, 0, sizeof(cscCoeff));
++        memset(&outputCfg->cscCoeff, 0, sizeof(outputCfg->cscCoeff));
+ 
+-        cscCoeff.mulCoeff[2][1] = cscCoeff.mulCoeff[1][0] = cscCoeff.mulCoeff[0][2] = 0x400;
++        outputCfg->cscCoeff.mulCoeff[2][1] = 
++            outputCfg->cscCoeff.mulCoeff[1][0] = 
++                outputCfg->cscCoeff.mulCoeff[0][2] = 0x400;
+     }
+ #endif
+         hdVencProgramCscCoeff(hdVencObj, outputCfg);
+diff --git a/packages/ti/psp/vps/vps_display.h b/packages/ti/psp/vps/vps_display.h
+index ec5fa88..cc9bacf 100755
+--- a/packages/ti/psp/vps/vps_display.h
++++ b/packages/ti/psp/vps/vps_display.h
+@@ -100,6 +100,19 @@ extern "C" {
+  */
+ #define IOCTL_VPS_DISP_GET_DISP_MODE    (VPS_DISP_IOCTL_BASE + 0x0004u)
+ 
++/**
++ *  \brief Get the number of requests queued in the driver.
++ *
++ *  This IOCTL can be used to get the number of requests pending in the driver.
++ *  Please note that this will not return the number of frames.
++ *
++ *  \param cmdArgs       [IN] none
++ *
++ *  \return Postive or 0, in case of success. Negative number otherwise.
++ *
++ */
++#define IOCTL_VPS_DISP_GET_QUEUE_DEPTH  (VPS_DISP_IOCTL_BASE + 0x0005u)
++
+ /* @} */
+ 
+ /*

@@ -1,0 +1,573 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.timers.timer64.Timer</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> * Copyright (c) 2012, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Timer.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> *
+</span>    36    <span class="comment"> */</span>
+    37    
+    38    <span class=key>package</span> ti.sysbios.timers.timer64;
+    39    
+    40    import xdc.rov.ViewInfo;
+    41    
+    42    import xdc.runtime.Assert;
+    43    import xdc.runtime.Error;
+    44    import xdc.runtime.Types;
+    45    import ti.sysbios.interfaces.ITimer;
+    46    import ti.sysbios.hal.Hwi;
+    47    
+    48    <span class="xdoc">/*!
+</span>    49    <span class="xdoc"> *  ======== Timer ========
+</span>    50    <span class="xdoc"> *  Timer Peripheral Manager.
+</span>    51    <span class="xdoc"> *
+</span>    52    <span class="xdoc"> *  This Timer module manages the timer64 peripheral available on many devices.
+</span>    53    <span class="xdoc"> *  It is supported on the ARM and c64x+ DSP targets. This module supports the
+</span>    54    <span class="xdoc"> *  timer in '32-bit chained' and '32-bit unchained' mode.  In the
+</span>    55    <span class="xdoc"> *  '32-bit unchained' mode, specify the lower or upper half to be use.
+</span>    56    <span class="xdoc"> *  The physical timer being used will be taken out of reset, only when
+</span>    57    <span class="xdoc"> *  its specified to be the master.
+</span>    58    <span class="xdoc"> *
+</span>    59    <span class="xdoc"> *  For shared timers on a homogeneous multicore device (ie. c6472), each
+</span>    60    <span class="xdoc"> *  core can create the timer, but only one core will initialize the timer
+</span>    61    <span class="xdoc"> *  and take it out of reset.  The core that does the initialization can be
+</span>    62    <span class="xdoc"> *  specified by the module configuration parameter
+</span>    63    <span class="xdoc"> *  timerSettings[].ownerCoreId in the *.cfg file.
+</span>    64    <span class="xdoc"> *  By default, Core 0 is the owner for all shared timers.
+</span>    65    <span class="xdoc"> *
+</span>    66    <span class="xdoc"> *  Note:  Creating a timer with 'Timer.ANY' specified as the id will not
+</span>    67    <span class="xdoc"> *         return a shared timer on a homogeneous multicore device.  To use
+</span>    68    <span class="xdoc"> *         a shared timer, specify the timer id explicitly when creating it.
+</span>    69    <span class="xdoc"> *         On these devices Timer.ANY specifies the local timer id.  This
+</span>    70    <span class="xdoc"> *         allows a single image to run on multiple cores since each core
+</span>    71    <span class="xdoc"> *         will program a different local timer.
+</span>    72    <span class="xdoc"> *
+</span>    73    <span class="xdoc"> *  The following sample .cfg code sets core 1 to initialize a shared timer
+</span>    74    <span class="xdoc"> *  with id 4.
+</span>    75    <span class="xdoc"> *
+</span>    76    <span class="xdoc"> *  <b>@p(code)</b>
+</span>    77    <span class="xdoc"> *  var Timer = xdc.useModule('ti.sysbios.timers.timer64.Timer');
+</span>    78    <span class="xdoc"> *
+</span>    79    <span class="xdoc"> *  // sets core 1 to init and release Timer 4.
+</span>    80    <span class="xdoc"> *  Timer.timerSettings[4].ownerCoreId = 1;
+</span>    81    <span class="xdoc"> *  <b>@p</b>
+</span>    82    <span class="xdoc"> *
+</span>    83    <span class="xdoc"> *  The following sample .cfg code sets core 0 to initialize a shared timer
+</span>    84    <span class="xdoc"> *  with id 4.  It also configures the Clock module to use this timer.
+</span>    85    <span class="xdoc"> *  This allows multiple cores to share timer 4 for the Clock module's
+</span>    86    <span class="xdoc"> *  interrupt source.
+</span>    87    <span class="xdoc"> *
+</span>    88    <span class="xdoc"> *  <b>@p(code)</b>
+</span>    89    <span class="xdoc"> *  // sets core 0 to init and release Timer 4.
+</span>    90    <span class="xdoc"> *  var Timer = xdc.useModule('ti.sysbios.timers.timer64.Timer');
+</span>    91    <span class="xdoc"> *  Timer.timerSettings[4].ownerCoreId = 0;
+</span>    92    <span class="xdoc"> *
+</span>    93    <span class="xdoc"> *  var Clock = xdc.useModule('ti.sysbios.knl.Clock');
+</span>    94    <span class="xdoc"> *  Clock.timerId = 4;
+</span>    95    <span class="xdoc"> *  <b>@p</b>
+</span>    96    <span class="xdoc"> *
+</span>    97    <span class="xdoc"> *  <b>@p(html)</b>
+</span>    98    <span class="xdoc"> *  &lt;h3&gt; Calling Context &lt;/h3&gt;
+</span>    99    <span class="xdoc"> *  &lt;table border="1" cellpadding="3"&gt;
+</span>   100    <span class="xdoc"> *    &lt;colgroup span="1"&gt;&lt;/colgroup&gt; &lt;colgroup span="5" align="center"&gt;
+</span>   101    <span class="xdoc"> *    &lt;/colgroup&gt;
+</span>   102    <span class="xdoc"> *
+</span>   103    <span class="xdoc"> *    &lt;tr&gt;&lt;th&gt; Function                 &lt;/th&gt;&lt;th&gt;  Hwi   &lt;/th&gt;&lt;th&gt;  Swi   &lt;/th&gt;
+</span>   104    <span class="xdoc"> *    &lt;th&gt;  Task  &lt;/th&gt;&lt;th&gt;  Main  &lt;/th&gt;&lt;th&gt;  Startup  &lt;/th&gt;&lt;/tr&gt;
+</span>   105    <span class="xdoc"> *    &lt;!--                                                                --&gt;
+</span>   106    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getNumTimers}            &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   107    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   108    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getStatus}               &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   109    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   110    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #Params_init}             &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   111    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   112    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #construct}               &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   113    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   114    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #create}                  &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;
+</span>   115    <span class="xdoc"> *    &lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   116    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #delete}                  &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;
+</span>   117    <span class="xdoc"> *    &lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   118    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #destruct}                &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   119    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   120    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getCount}                &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   121    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   122    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getFreq}                 &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   123    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   124    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getFunc}                 &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   125    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   126    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getPeriod}               &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   127    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   128    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #reconfig}                &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   129    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   130    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #setFunc}                 &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   131    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   132    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #setPeriod}               &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   133    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   134    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #setPeriodMicroSecs}      &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   135    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   136    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #start}                   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   137    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   138    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #stop}                    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   139    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   140    <span class="xdoc"> *    &lt;tr&gt;&lt;td colspan="6"&gt; Definitions: &lt;br /&gt;
+</span>   141    <span class="xdoc"> *       &lt;ul&gt;
+</span>   142    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Hwi&lt;/b&gt;: API is callable from a Hwi thread. &lt;/li&gt;
+</span>   143    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Swi&lt;/b&gt;: API is callable from a Swi thread. &lt;/li&gt;
+</span>   144    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Task&lt;/b&gt;: API is callable from a Task thread. &lt;/li&gt;
+</span>   145    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Main&lt;/b&gt;: API is callable during any of these phases: &lt;/li&gt;
+</span>   146    <span class="xdoc"> *           &lt;ul&gt;
+</span>   147    <span class="xdoc"> *             &lt;li&gt; In your module startup after this module is started
+</span>   148    <span class="xdoc"> *    (e.g. Timer_Module_startupDone() returns TRUE). &lt;/li&gt;
+</span>   149    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.lastFxns. &lt;/li&gt;
+</span>   150    <span class="xdoc"> *             &lt;li&gt; During main().&lt;/li&gt;
+</span>   151    <span class="xdoc"> *             &lt;li&gt; During BIOS.startupFxns.&lt;/li&gt;
+</span>   152    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   153    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Startup&lt;/b&gt;: API is callable during any of these phases:&lt;/li&gt;
+</span>   154    <span class="xdoc"> *           &lt;ul&gt;
+</span>   155    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.firstFxns.&lt;/li&gt;
+</span>   156    <span class="xdoc"> *             &lt;li&gt; In your module startup before this module is started
+</span>   157    <span class="xdoc"> *   (e.g. Timer_Module_startupDone() returns FALSE).&lt;/li&gt;
+</span>   158    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   159    <span class="xdoc"> *       &lt;/ul&gt;
+</span>   160    <span class="xdoc"> *    &lt;/td&gt;&lt;/tr&gt;
+</span>   161    <span class="xdoc"> *
+</span>   162    <span class="xdoc"> *  &lt;/table&gt;
+</span>   163    <span class="xdoc"> *  <b>@p</b>
+</span>   164    <span class="xdoc"> *
+</span>   165    <span class="xdoc"> *  <b>@p(html)</b>
+</span>   166    <span class="xdoc"> *  &lt;h3&gt; Timer Mapping Tables &lt;/h3&gt;
+</span>   167    <span class="xdoc"> *  &lt;p&gt;
+</span>   168    <span class="xdoc"> *  The Timer module allows the user to use and configure the various timers
+</span>   169    <span class="xdoc"> *  that exist on a particular device.  This is achieved by specifying a timer
+</span>   170    <span class="xdoc"> *  ID when calling {<b>@link</b> ti.sysbios.hal.Timer#Timer_create}.
+</span>   171    <span class="xdoc"> *  However, the timer ID
+</span>   172    <span class="xdoc"> *  specified may not always map to that timer; for example, specifying an ID
+</span>   173    <span class="xdoc"> *  value of 1 does not necessarily mean that this will map to "GPTimer1".
+</span>   174    <span class="xdoc"> *  These tables are provided to show which timers map to which timer IDs.
+</span>   175    <span class="xdoc"> *  &lt;/p&gt;
+</span>   176    <span class="xdoc"> *  {<b>@link</b> ./doc-files/TimerTables.html Timer Mapping Tables}
+</span>   177    <span class="xdoc"> *  <b>@p</b>
+</span>   178    <span class="xdoc"> *
+</span>   179    <span class="xdoc"> */</span>
+   180    @InstanceFinalize       <span class="comment">/* To cleanup */</span>
+   181    @InstanceInitError      <span class="comment">/* To report unavailability of timer */</span>
+   182    @ModuleStartup                <span class="comment">/* to configure static timers */</span>
+   183    
+   184    <span class=key>module</span> Timer <span class=key>inherits</span> ti.sysbios.interfaces.ITimer
+   185    {
+   186        <span class="xdoc">/*! In 32-bit modes, used to specify which half of Timer to use */</span>
+   187        <span class=key>enum</span> Half {
+   188            Half_LOWER,
+   189            Half_UPPER,
+   190            Half_DEFAULT
+   191        };
+   192    
+   193        <span class="xdoc">/*!
+</span>   194    <span class="xdoc">     *  The different modes of the Timer. These values match the TIMMODE
+</span>   195    <span class="xdoc">     *  bit fields of the Timer Global Control Register.
+</span>   196    <span class="xdoc">     */</span>
+   197        <span class=key>enum</span> Mode {
+   198            Mode_64BITGPTIMER = 0,
+   199            Mode_UNCHAINED = 1,
+   200            Mode_WATCHDOG = 2,
+   201            Mode_CHAINED = 3
+   202        };
+   203    
+   204        <span class="xdoc">/*! Max value of Timer period for PeriodType_COUNTS*/</span>
+   205        <span class=key>const</span> UInt MAX_PERIOD = 0xffffffff;
+   206    
+   207        <span class="xdoc">/*! Timer Control Register struct. */</span>
+   208        <span class=key>struct</span> Control {
+   209            Bits8 tien;      <span class="xdoc">/*! 0=Clock not gated by TINP; 1=Clock gated */</span>
+   210            Bits8 invout;    <span class="xdoc">/*! 0=Uninverted TSTAT drives TOUT; 1=Inverted TSTAT */</span>
+   211            Bits8 invin;     <span class="xdoc">/*! 0=Uninverted TINP drives Timer; 1=Inverted TINP */</span>
+   212            UInt8 pwid;      <span class="xdoc">/*! TSTATx goes inactive after pwid cycles (CP=0) */</span>
+   213            Bits8 cp;        <span class="xdoc">/*! 0=pulse mode; 1=clock mode */</span>
+   214        };
+   215    
+   216        <span class="xdoc">/*! Timer Emulation Management Register struct. */</span>
+   217        <span class=key>struct</span> EmuMgt {
+   218            Bool free;        <span class="xdoc">/*! 0=suspend for emu halt; 1=don't suspend */</span>
+   219            Bool soft;        <span class="xdoc">/*! 0=stop immediately; 1=stop when count==period */</span>
+   220        };
+   221    
+   222        <span class="xdoc">/*! Timer GPIO interrupt control and enable Management Register struct. */</span>
+   223        <span class=key>struct</span> GpioIntEn {
+   224            Bits8 gpint12_eni;  <span class="xdoc">/*! 0=source by timer; 1=input to source event */</span>
+   225            Bits8 gpint12_eno;  <span class="xdoc">/*! 0=source by timer; 1=output to source event */</span>
+   226            Bits8 gpint12_invi; <span class="xdoc">/*! 0=don't invert invput; 1=invert input */</span>
+   227            Bits8 gpint12_invo; <span class="xdoc">/*! 0=don't invert output; 1=invert output */</span>
+   228            Bits8 gpint34_eni;  <span class="xdoc">/*! 0=source by timer; 1=input to source event */</span>
+   229            Bits8 gpint34_eno;  <span class="xdoc">/*! 0=source by timer; 1=output to source event */</span>
+   230            Bits8 gpint34_invi; <span class="xdoc">/*! 0=don't invert invput; 1=invert input */</span>
+   231            Bits8 gpint34_invo; <span class="xdoc">/*! 0=don't invert output; 1=invert output */</span>
+   232            Bits8 gpio_eni12;   <span class="xdoc">/*! 0=TINP12 as timer input; 1=TINP12 as GPIO */</span>
+   233            Bits8 gpio_eno12;   <span class="xdoc">/*! 0=TOUTP12 as timer output; 1=TOUTP12 as GPIO */</span>
+   234            Bits8 gpio_eni34;   <span class="xdoc">/*! 0=TINP34 as timer input; 1=TINP34 as GPIO */</span>
+   235            Bits8 gpio_eno34;   <span class="xdoc">/*! 0=TOUTP34 as timer output; 1=TOUTP12 as GPIO */</span>
+   236        };
+   237    
+   238        <span class="xdoc">/*! Timer GPIO Data and Direction Management Register struct. */</span>
+   239        <span class=key>struct</span> GpioDatDir {
+   240            Bits8 gpio_dati12; <span class="xdoc">/*! 0=TINP12 is input; 1=TINP12 is output */</span>
+   241            Bits8 gpio_dato12; <span class="xdoc">/*! 0=TOUTP12 is input; 1=TOUTP12 is output */</span>
+   242            Bits8 gpio_dati34; <span class="xdoc">/*! 0=TINP34 is input; 1=TINP34 is output */</span>
+   243            Bits8 gpio_dato34; <span class="xdoc">/*! 0=TOUTP34 is input; 1=TOUTP34 is output */</span>
+   244            Bits8 gpio_diri12; <span class="xdoc">/*! 0=input as GPIO input; 1=input as GPIO output */</span>
+   245            Bits8 gpio_diro12; <span class="xdoc">/*! 0=output as GPIO input;1=output as GPIO output */</span>
+   246            Bits8 gpio_diri34; <span class="xdoc">/*! 0=input as GPIO input; 1=input as GPIO output */</span>
+   247            Bits8 gpio_diro34; <span class="xdoc">/*! 0=output as GPIO input;1=output as GPIO output */</span>
+   248        };
+   249    
+   250        <span class="xdoc">/*! Timer Settings. */</span>
+   251        <span class=key>struct</span> TimerSetting {
+   252            Mode mode ;         <span class="xdoc">/*! mode to put each Timer into */</span>
+   253            Bool master;        <span class="xdoc">/*! for 'unchained' mode; 1=set mode and reset */</span>
+   254            UInt16 ownerCoreId; <span class="xdoc">/*! used only for homogeneous multicore DSPs */</span>
+   255        };
+   256    
+   257        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   258        @XmlDtd
+   259        <span class=key>metaonly</span> <span class=key>struct</span> BasicView {
+   260            Ptr         halTimerHandle;
+   261            String      label;
+   262            UInt        id;
+   263            String      startMode;
+   264            String      runMode;
+   265            UInt        period;
+   266            String      periodType;
+   267            String      half;
+   268            UInt        prescalar;
+   269            UInt        intNum;
+   270            String      tickFxn[];
+   271            UArg        arg;
+   272            String      extFreqLow;
+   273            String      extFreqHigh;
+   274            String      hwiHandle;
+   275        };
+   276    
+   277    
+   278        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   279        <span class=key>metaonly</span> <span class=key>struct</span> ModuleView {
+   280            String      availMask;      <span class="comment">/* avaliable 32-bit timer halves */</span>
+   281            String      intFrequency[];    <span class="comment">/* internal frequency in Hz */</span>
+   282        }
+   283    
+   284        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   285        <span class=key>metaonly</span> <span class=key>struct</span> Device_View {
+   286            UInt        id;
+   287            Bool        inUse;
+   288            UInt32      intFreq;
+   289            UInt        intNum;
+   290            UInt        eventId;
+   291            String      baseAddress;
+   292        };
+   293    
+   294        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   295        @Facet
+   296        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo =
+   297            ViewInfo.create({
+   298                viewMap: [
+   299                [
+   300                    <span class="string">'Basic'</span>,
+   301                    {
+   302                        type: ViewInfo.INSTANCE,
+   303                        viewInitFxn: <span class="string">'viewInitBasic'</span>,
+   304                        structName: <span class="string">'BasicView'</span>
+   305                    }
+   306                ],
+   307                [
+   308                    <span class="string">'Module'</span>,
+   309                    {
+   310                        type: ViewInfo.MODULE,
+   311                        viewInitFxn: <span class="string">'viewInitModule'</span>,
+   312                        structName: <span class="string">'ModuleView'</span>
+   313                    }
+   314                ],
+   315                ]
+   316            });
+   317    
+   318        <span class="xdoc">/*!
+</span>   319    <span class="xdoc">     *  Assert raised when static created timer is not available
+</span>   320    <span class="xdoc">     */</span>
+   321        <span class=key>config</span> xdc.runtime.Assert.Id A_notAvailable =
+   322            {msg: <span class="string">"A_notAvailable: static created timer not available"</span>};
+   323    
+   324        <span class="xdoc">/*!
+</span>   325    <span class="xdoc">     *  Error raised when timer id specified is not supported.
+</span>   326    <span class="xdoc">     */</span>
+   327        <span class=key>config</span> Error.Id E_invalidTimer = {
+   328            msg: <span class="string">"E_invalidTimer: Invalid Timer Id %d"</span>
+   329        };
+   330    
+   331        <span class="xdoc">/*!
+</span>   332    <span class="xdoc">     *  Error raised when timer requested is in use
+</span>   333    <span class="xdoc">     */</span>
+   334        <span class=key>config</span> Error.Id E_notAvailable  = {
+   335            msg: <span class="string">"E_notAvailable: Timer not available %d"</span>
+   336        };
+   337    
+   338        <span class="xdoc">/*!
+</span>   339    <span class="xdoc">     *  Error raised when period requested is not supported
+</span>   340    <span class="xdoc">     */</span>
+   341        <span class=key>config</span> Error.Id E_cannotSupport = {
+   342            msg: <span class="string">"E_cannotSupport: Timer cannot support requested period %d"</span>
+   343        };
+   344    
+   345        <span class="xdoc">/*!======== anyMask ========
+</span>   346    <span class="xdoc">     *  Available mask to be used when select = Timer_ANY. Set in xs file.
+</span>   347    <span class="xdoc">     */</span>
+   348        <span class=key>config</span> Bits32 anyMask;
+   349    
+   350        <span class="xdoc">/*!
+</span>   351    <span class="xdoc">     *  ======== defaultHalf ========
+</span>   352    <span class="xdoc">     *        The default 32-bit half of the timer to be used.
+</span>   353    <span class="xdoc">     */</span>
+   354        <span class=key>config</span> Half defaultHalf = Half_LOWER;
+   355    
+   356        <span class="xdoc">/*!
+</span>   357    <span class="xdoc">     *  ======== timerSettings ========
+</span>   358    <span class="xdoc">     *  Global Control configuration for each physical timer.
+</span>   359    <span class="xdoc">     *
+</span>   360    <span class="xdoc">     *  mode: Mode_UNCHAINED        32-bit unchained mode.
+</span>   361    <span class="xdoc">     *  master: TRUE                If TRUE, release Timer from reset.
+</span>   362    <span class="xdoc">     */</span>
+   363        <span class=key>config</span> TimerSetting timerSettings[] = [];
+   364    
+   365        <span class="xdoc">/*!
+</span>   366    <span class="xdoc">     *  ======== intFreq ========
+</span>   367    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   368    <span class="xdoc">     *  Internal frequency for Timer
+</span>   369    <span class="xdoc">     */</span>
+   370        <span class=key>metaonly</span> <span class=key>config</span> Types.FreqHz intFreq;
+   371    
+   372        <span class="xdoc">/*!
+</span>   373    <span class="xdoc">     *  ======== intFreq ========
+</span>   374    <span class="xdoc">     *  Internal frequency for Timers
+</span>   375    <span class="xdoc">     */</span>
+   376        <span class=key>metaonly</span> <span class=key>config</span> Types.FreqHz intFreqs[];
+   377    
+   378    <span class=key>instance</span>:
+   379    
+   380        <span class="xdoc">/*!
+</span>   381    <span class="xdoc">     *  ======== controlInit ========
+</span>   382    <span class="xdoc">     *  Control configuration. Default is all fields 0 or false except:
+</span>   383    <span class="xdoc">     *
+</span>   384    <span class="xdoc">     *      pwid: 1
+</span>   385    <span class="xdoc">     */</span>
+   386        <span class=key>config</span> Control controlInit = {tien: 0, invout: 0, invin: 0,
+   387                                      pwid: 1, cp: 0};
+   388    
+   389        <span class="xdoc">/*!
+</span>   390    <span class="xdoc">     *  ======== emuMgtInit ========
+</span>   391    <span class="xdoc">     *  Emulation Management configuration. Default is:
+</span>   392    <span class="xdoc">     *
+</span>   393    <span class="xdoc">     *      free: 0
+</span>   394    <span class="xdoc">     *      soft: 0
+</span>   395    <span class="xdoc">     */</span>
+   396        <span class=key>config</span> EmuMgt emuMgtInit = {free: 0, soft: 0};
+   397    
+   398        <span class="xdoc">/*!
+</span>   399    <span class="xdoc">     *  ======== gpioIntEn ========
+</span>   400    <span class="xdoc">     *  General Purpose IO interrupt control and enable Management
+</span>   401    <span class="xdoc">     *  configuration. The default for all fields is 0.
+</span>   402    <span class="xdoc">     */</span>
+   403        <span class=key>config</span> GpioIntEn gpioIntEn = {
+   404            gpint12_eni: 0, gpint12_eno: 0, gpint12_invi: 0, gpint12_invo: 0,
+   405            gpint34_eni: 0, gpint34_eno: 0, gpint34_invi: 0, gpint34_invo: 0,
+   406            gpio_eni12:  0, gpio_eno12:  0, gpio_eni34:   0, gpio_eno34:   0};
+   407    
+   408        <span class="xdoc">/*!
+</span>   409    <span class="xdoc">     *  ======== gpioDatDir ========
+</span>   410    <span class="xdoc">     *  General Purpose IO data and direction Management configuration
+</span>   411    <span class="xdoc">     *  The default is all fields is 0.
+</span>   412    <span class="xdoc">     */</span>
+   413        <span class=key>config</span> GpioDatDir gpioDatDir = {
+   414            gpio_dati12: 0, gpio_dato12: 0, gpio_dati34: 0, gpio_dato34: 0,
+   415            gpio_diri12: 0, gpio_diro12: 0, gpio_diri34: 0, gpio_diro34: 0};
+   416    
+   417        <span class="xdoc">/*!
+</span>   418    <span class="xdoc">     *  ======== half ========
+</span>   419    <span class="xdoc">     *  In 32-bit unchained mode, this field is used to specify which half
+</span>   420    <span class="xdoc">     *  of the timer to use.
+</span>   421    <span class="xdoc">     */</span>
+   422        <span class=key>config</span> Half half = Half_DEFAULT;
+   423    
+   424        <span class="xdoc">/*! Hwi Params for Hwi Object. Default is null. */</span>
+   425        <span class=key>config</span> Hwi.Params *hwiParams = <span class=key>null</span>;
+   426    
+   427        <span class="xdoc">/*! Hwi interrupt number to be used by Timer. */</span>
+   428        <span class=key>config</span> Int intNum = -1;
+   429    
+   430        <span class="xdoc">/*!
+</span>   431    <span class="xdoc">     *  ======== prescalar ========
+</span>   432    <span class="xdoc">     *  32-bit pre-scalar to TIM12 in '32-bit chained' mode.
+</span>   433    <span class="xdoc">     *  The default is 0.
+</span>   434    <span class="xdoc">     */</span>
+   435        <span class=key>config</span> UInt prescalar = 0;
+   436    
+   437        <span class="xdoc">/*!
+</span>   438    <span class="xdoc">     *  ======== reconfig ========
+</span>   439    <span class="xdoc">     *  Used to modify static timer instances at runtime.
+</span>   440    <span class="xdoc">     *
+</span>   441    <span class="xdoc">     *  <b>@param(timerParams)</b>     timer Params
+</span>   442    <span class="xdoc">     *  <b>@param(tickFxn)</b>                functions that runs when timer expires
+</span>   443    <span class="xdoc">     */</span>
+   444        @DirectCall
+   445        Void reconfig(FuncPtr tickFxn, <span class=key>const</span> Params *timerParams, Error.Block *eb);
+   446    
+   447    
+   448    <span class=key>internal</span>:   <span class="comment">/* not for client use */</span>
+   449    
+   450        <span class="xdoc">/*! Information about timer */</span>
+   451        <span class=key>struct</span> TimerDevice {
+   452            UInt intNum;
+   453            UInt eventId;
+   454            Ptr  baseAddr;
+   455        };
+   456    
+   457        <span class="xdoc">/*! Device-specific Timer implementation. */</span>
+   458        <span class=key>proxy</span> TimerSupportProxy <span class=key>inherits</span> ti.sysbios.interfaces.ITimerSupport;
+   459    
+   460        <span class="xdoc">/*!
+</span>   461    <span class="xdoc">     *  ======== staticAvailMask ========
+</span>   462    <span class="xdoc">     *  The number of statically available 32-bit timer halves
+</span>   463    <span class="xdoc">     *
+</span>   464    <span class="xdoc">     *  This is required for supporting timers that are local to a
+</span>   465    <span class="xdoc">     *  particular processor.  The module availMask keeps track of
+</span>   466    <span class="xdoc">     *  what timers are available at runtime.  The two mask are the
+</span>   467    <span class="xdoc">     *  same if there is no concept of local timers.
+</span>   468    <span class="xdoc">     */</span>
+   469        <span class=key>metaonly</span> <span class=key>config</span> Int staticAvailMask;
+   470    
+   471        <span class="xdoc">/*!
+</span>   472    <span class="xdoc">     *  ======== startupNeeded ========
+</span>   473    <span class="xdoc">     *  This flag is use to prevent Timer_startup code (includes postInit(),
+</span>   474    <span class="xdoc">     *  deviceConfig(), initDevice() to be brought in un-necessarily.
+</span>   475    <span class="xdoc">     */</span>
+   476        <span class=key>config</span> Bool startupNeeded = <span class=key>false</span>;
+   477    
+   478        <span class="xdoc">/*!
+</span>   479    <span class="xdoc">     *  ======== freqDivisor ========
+</span>   480    <span class="xdoc">     *  For some devices, the timer frequency is determined by the CPU
+</span>   481    <span class="xdoc">     *  frequency divided by a value.  This parameter captures that value
+</span>   482    <span class="xdoc">     *  and is used during runtime to re-calculate the timer frequency
+</span>   483    <span class="xdoc">     *  when the CPU frequency is changed and Timer_getFreq is called.
+</span>   484    <span class="xdoc">     *  For devices with a fix timer frequency, this value is 0.
+</span>   485    <span class="xdoc">     */</span>
+   486        <span class=key>config</span> UInt freqDivisor = 0;
+   487    
+   488        <span class="xdoc">/*!
+</span>   489    <span class="xdoc">     *  ======== numTimerDevices ========
+</span>   490    <span class="xdoc">     *  The number of logical timers on a device.
+</span>   491    <span class="xdoc">     */</span>
+   492        <span class=key>config</span> Int numTimerDevices;
+   493    
+   494        <span class="xdoc">/*!
+</span>   495    <span class="xdoc">     *  ======== numLocalTimers ========
+</span>   496    <span class="xdoc">     *  The number of physical local timers on a device.
+</span>   497    <span class="xdoc">     */</span>
+   498        <span class=key>config</span> Int numLocalTimers = 0;
+   499    
+   500        <span class="comment">/*
+</span>   501    <span class="comment">     *  ======== deviceConfig ========
+</span>   502    <span class="comment">     *  Configure the timer.
+</span>   503    <span class="comment">     */</span>
+   504        Int deviceConfig(Object *timer, Error.Block *eb);
+   505    
+   506        <span class="comment">/*
+</span>   507    <span class="comment">     *  ======== initDevice ========
+</span>   508    <span class="comment">     *  reset timer to its resting state
+</span>   509    <span class="comment">     */</span>
+   510        Void initDevice(Object *timer, Error.Block *eb);
+   511    
+   512        <span class="comment">/*
+</span>   513    <span class="comment">     *  ======== initObj ========
+</span>   514    <span class="comment">     *  Initialize the instance state object
+</span>   515    <span class="comment">     */</span>
+   516        Void initObj(Object *timer, FuncPtr tickFxn, <span class=key>const</span> Params *timerParams);
+   517    
+   518        <span class="comment">/*
+</span>   519    <span class="comment">     *  ======== postInit ========
+</span>   520    <span class="comment">     *  finish initializing static and dynamic Timers
+</span>   521    <span class="comment">     */</span>
+   522        Int postInit(Object *timer, Error.Block *eb);
+   523    
+   524        <span class="comment">/*
+</span>   525    <span class="comment">     *  ======== checkOverflow ========
+</span>   526    <span class="comment">     */</span>
+   527        Bool checkOverflow(UInt32 a, UInt32 b);
+   528    
+   529        <span class="xdoc">/*!
+</span>   530    <span class="xdoc">     *  ======== spinLoop ========
+</span>   531    <span class="xdoc">     *  used by trigger function.
+</span>   532    <span class="xdoc">     */</span>
+   533        Void spinLoop(UInt count);
+   534    
+   535        <span class="xdoc">/*! Instance state structure */</span>
+   536        <span class=key>struct</span> Instance_State {
+   537            Bool              staticInst;   <span class="comment">/* statically created or not */</span>
+   538            Int               id;           <span class="comment">/* logical timer id. */</span>
+   539            Half              half;         <span class="comment">/* which half */</span>
+   540            UInt              tcrInit;      <span class="comment">/* tcr  */</span>
+   541            UInt              emumgtInit;   <span class="comment">/* emu mgt */</span>
+   542            UInt              gpioIntEn;    <span class="comment">/* GPIO interrupt control */</span>
+   543            UInt              gpioDatDir;   <span class="comment">/* GPIO data and direction */</span>
+   544            ITimer.RunMode    runMode;      <span class="comment">/* timer mode */</span>
+   545            ITimer.StartMode  startMode;    <span class="comment">/* timer mode */</span>
+   546            UInt              period;       <span class="comment">/* period */</span>
+   547            ITimer.PeriodType periodType;   <span class="comment">/* type (microsecs, inst) */</span>
+   548            UInt              prescalar;    <span class="comment">/* pre-scalar for TIM12 */</span>
+   549            UInt              intNum;       <span class="comment">/* intr num */</span>
+   550            UArg              arg;          <span class="comment">/* isrFxn arg */</span>
+   551            Hwi.FuncPtr       tickFxn;      <span class="comment">/* Timer fxn plugged into Hwi */</span>
+   552            Types.FreqHz      extFreq;      <span class="comment">/* ext freq */</span>
+   553            Hwi.Handle        hwi;          <span class="comment">/* hwi inst */</span>
+   554        }
+   555    
+   556        <span class="xdoc">/*! Module state structure */</span>
+   557        <span class=key>struct</span> Module_State {
+   558            Bits32        availMask;    <span class="comment">/* avaliable 32-bit timer halves */</span>
+   559            Types.FreqHz  intFreqs[];   <span class="comment">/* internal frequency in Hz */</span>
+   560            TimerSetting  gctrl[];      <span class="comment">/* global control information */</span>
+   561            TimerDevice   device[];     <span class="comment">/* timer device information */</span>
+   562            Handle        handles[];    <span class="comment">/* handles based on logical id */</span>
+   563        }
+   564    }
+</pre>
+</body></html>

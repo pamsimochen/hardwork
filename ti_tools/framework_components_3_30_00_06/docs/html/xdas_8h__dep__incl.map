@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" href="$ires__edma3_chan_8h.html" title="IRES EDMA3CHAN PROTOCOL Interface Definitions &#45; Allows algorithms to request and receive handles repr..." alt="" coords="8,84,128,108" />
+<area shape="rect" href="$ires__hdvicp2_8h.html" title="IRES PROTOCOL HDVICP2 Interface Definitions &#45; Allows algorithms to request and receive handles repres..." alt="" coords="152,84,250,108" />
+<area shape="rect" href="$ires__tiledmemory_8h.html" title="IRES PROTOCOL TILEDMEMORY Interface Definitions (Beta) &#45; Allows algorithms to request and receive han..." alt="" coords="274,84,400,108" />
+<area shape="rect" href="$ecpy_8h.html" title="ECPY Definitions (C64P) &#45; Functional DMA Library for use with the EDMA3 DMA peripheral. Provides a comprehensive list of DMA operations an algorithm can perform on logical DMA channels it acquires through the IRES_EDMA3CHAN protocol." alt="" coords="8,158,64,182" />
+<area shape="rect" href="$edmamgr_8h.html" title="EdmaMgr Definitions &#45; Functional library for use with the EDMA3 DMA peripheral." alt="" coords="28,233,108,257" />
+</map>

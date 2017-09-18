@@ -1,0 +1,97 @@
+/*******************************************************************************
+ *                                                                             *
+ * Copyright (c) 2009 Texas Instruments Incorporated - http://www.ti.com/      *
+ *                        ALL RIGHTS RESERVED                                  *
+ *                                                                             *
+ ******************************************************************************/
+
+/** ============================================================================
+ *   @file  cslr_vps.h
+ *
+ *   @path  $(CSLPATH)\inc
+ *
+ *   @desc  This file contains the Register Desciptions for VPS
+ *  ============================================================================
+ */
+
+#ifndef _CSLR_VPS_H
+#define _CSLR_VPS_H
+
+
+#define VPS_INTC0_RAW_SET_REG0           (CSL_VPS_INTC_0_REGS + 0x20)
+#define VPS_INTC0_RAW_SET_REG1           (CSL_VPS_INTC_0_REGS + 0x24)
+#define VPS_INTC0_ENABLED_CLR_REG0       (CSL_VPS_INTC_0_REGS + 0x28)
+#define VPS_INTC0_ENABLED_CLR_REG1       (CSL_VPS_INTC_0_REGS + 0x2C)
+#define VPS_INTC0_ENABLE_SET_REG0        (CSL_VPS_INTC_0_REGS + 0x30)
+#define VPS_INTC0_ENABLE_SET_REG1        (CSL_VPS_INTC_0_REGS + 0x34)
+#define VPS_INTC0_ENABLE_CLR_REG0        (CSL_VPS_INTC_0_REGS + 0x38)
+#define VPS_INTC0_ENABLE_CLR_REG1        (CSL_VPS_INTC_0_REGS + 0x3C)
+
+#define VPS_INTC1_RAW_SET_REG0           (CSL_VPS_INTC_0_REGS + 0x40)
+#define VPS_INTC1_RAW_SET_REG1           (CSL_VPS_INTC_0_REGS + 0x44)
+#define VPS_INTC1_ENABLED_CLR_REG0       (CSL_VPS_INTC_0_REGS + 0x48)
+#define VPS_INTC1_ENABLED_CLR_REG1       (CSL_VPS_INTC_0_REGS + 0x4C)
+#define VPS_INTC1_ENABLE_SET_REG0        (CSL_VPS_INTC_0_REGS + 0x50)
+#define VPS_INTC1_ENABLE_SET_REG1        (CSL_VPS_INTC_0_REGS + 0x54)
+#define VPS_INTC1_ENABLE_CLR_REG0        (CSL_VPS_INTC_0_REGS + 0x58)
+#define VPS_INTC1_ENABLE_CLR_REG1        (CSL_VPS_INTC_0_REGS + 0x5C)
+
+#define VPS_INTC2_RAW_SET_REG0           (CSL_VPS_INTC_0_REGS + 0x60)
+#define VPS_INTC2_RAW_SET_REG1           (CSL_VPS_INTC_0_REGS + 0x64)
+#define VPS_INTC2_ENABLED_CLR_REG0       (CSL_VPS_INTC_0_REGS + 0x68)
+#define VPS_INTC2_ENABLED_CLR_REG1       (CSL_VPS_INTC_0_REGS + 0x6C)
+#define VPS_INTC2_ENABLE_SET_REG0        (CSL_VPS_INTC_0_REGS + 0x70)
+#define VPS_INTC2_ENABLE_SET_REG1        (CSL_VPS_INTC_0_REGS + 0x74)
+#define VPS_INTC2_ENABLE_CLR_REG0        (CSL_VPS_INTC_0_REGS + 0x78)
+#define VPS_INTC2_ENABLE_CLR_REG1        (CSL_VPS_INTC_0_REGS + 0x7C)
+
+#define VPS_INTC3_RAW_SET_REG0           (CSL_VPS_INTC_0_REGS + 0x80)
+#define VPS_INTC3_RAW_SET_REG1           (CSL_VPS_INTC_0_REGS + 0x84)
+#define VPS_INTC3_ENABLED_CLR_REG0       (CSL_VPS_INTC_0_REGS + 0x88)
+#define VPS_INTC3_ENABLED_CLR_REG1       (CSL_VPS_INTC_0_REGS + 0x8C)
+#define VPS_INTC3_ENABLE_SET_REG0        (CSL_VPS_INTC_0_REGS + 0x90)
+#define VPS_INTC3_ENABLE_SET_REG1        (CSL_VPS_INTC_0_REGS + 0x94)
+#define VPS_INTC3_ENABLE_CLR_REG0        (CSL_VPS_INTC_0_REGS + 0x98)
+#define VPS_INTC3_ENABLE_CLR_REG1        (CSL_VPS_INTC_0_REGS + 0x9C)
+
+
+#define VPDMA_INT0_CHANNEL0_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0x40)
+#define VPDMA_INT0_CHANNEL0_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0x44)
+#define VPDMA_INT0_CHANNEL1_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0x48)
+#define VPDMA_INT0_CHANNEL1_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0x4C)
+#define VPDMA_INT0_CHANNEL2_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0x50)
+#define VPDMA_INT0_CHANNEL2_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0x54)
+#define VPDMA_INT0_CHANNEL3_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0x58)
+#define VPDMA_INT0_CHANNEL3_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0x5C)
+#define VPDMA_INT0_CHANNEL4_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0x60)
+#define VPDMA_INT0_CHANNEL4_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0x64)
+#define VPDMA_INT0_CHANNEL5_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0x68)
+#define VPDMA_INT0_CHANNEL5_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0x6C)
+#define VPDMA_INT0_CLIENT0_INT_STAT     (CSL_VPS_VPDMA_0_REGS + 0x70)
+#define VPDMA_INT0_CLIENT0_INT_MASK     (CSL_VPS_VPDMA_0_REGS + 0x74)
+#define VPDMA_INT0_CLIENT1_INT_STAT     (CSL_VPS_VPDMA_0_REGS + 0x78)
+#define VPDMA_INT0_CLIENT1_INT_MASK     (CSL_VPS_VPDMA_0_REGS + 0x7C)
+#define VPDMA_INT0_LIST0_INT_STAT       (CSL_VPS_VPDMA_0_REGS + 0x80)
+#define VPDMA_INT0_LIST0_INT_MASK       (CSL_VPS_VPDMA_0_REGS + 0x84)
+
+#define VPDMA_INT2_CHANNEL0_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0xD0)
+#define VPDMA_INT2_CHANNEL0_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0xD4)
+#define VPDMA_INT2_CHANNEL1_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0xD8)
+#define VPDMA_INT2_CHANNEL1_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0xDC)
+#define VPDMA_INT2_CHANNEL2_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0xE0)
+#define VPDMA_INT2_CHANNEL2_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0xE4)
+#define VPDMA_INT2_CHANNEL3_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0xE8)
+#define VPDMA_INT2_CHANNEL3_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0xEC)
+#define VPDMA_INT2_CHANNEL4_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0xF0)
+#define VPDMA_INT2_CHANNEL4_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0xF4)
+#define VPDMA_INT2_CHANNEL5_INT_STAT    (CSL_VPS_VPDMA_0_REGS + 0xF8)
+#define VPDMA_INT2_CHANNEL5_INT_MASK    (CSL_VPS_VPDMA_0_REGS + 0xFC)
+#define VPDMA_INT2_CLIENT0_INT_STAT     (CSL_VPS_VPDMA_0_REGS + 0x100)
+#define VPDMA_INT2_CLIENT0_INT_MASK     (CSL_VPS_VPDMA_0_REGS + 0x104)
+#define VPDMA_INT2_CLIENT1_INT_STAT     (CSL_VPS_VPDMA_0_REGS + 0x108)
+#define VPDMA_INT2_CLIENT1_INT_MASK     (CSL_VPS_VPDMA_0_REGS + 0x10C)
+#define VPDMA_INT2_LIST0_INT_STAT       (CSL_VPS_VPDMA_0_REGS + 0x110)
+#define VPDMA_INT2_LIST0_INT_MASK       (CSL_VPS_VPDMA_0_REGS + 0x114)
+
+#endif /* End of #ifndef _CSLR_VPS_H */
+

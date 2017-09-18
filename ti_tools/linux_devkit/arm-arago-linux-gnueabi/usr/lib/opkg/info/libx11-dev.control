@@ -1,0 +1,14 @@
+Package: libx11-dev
+Version: 1:1.4.1-r9.0.6
+Description: Base X libs.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: libx11
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libx11-6 (= 1:1.4.1-r9.0.6), libx11-6, libx11-xcb1, libxcb-dev, xproto-dev, kbproto-dev
+Recommends: libxcb-dev, util-macros-dev, xtrans-dev, libxdmcp-dev, libxau-dev, bigreqsproto-dev, xproto-dev, xextproto-dev, xcmiscproto-dev, xf86bigfontproto-dev, kbproto-dev, inputproto-dev, libx11-dev, libpthread-stubs-dev, libc6-dev, libx11-xcb-dev
+Source: http://xorg.freedesktop.org/releases/individual/lib/libX11-1.4.1.tar.bz2;name=archive file://keysymdef_include.patch file://x11_disable_makekeys.patch

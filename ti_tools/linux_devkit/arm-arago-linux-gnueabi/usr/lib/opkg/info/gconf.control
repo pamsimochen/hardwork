@@ -1,0 +1,13 @@
+Package: gconf
+Version: 2.28.0-r2-arago1.6
+Description: GNOME configuration database system
+Section: x11/gnome
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2
+Architecture: armv7a
+OE: gconf
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: dbus-x11, orbit2 (>= 2.14.17), libgmodule-2.0-0 (>= 2.24.1), libc6 (>= 2.12.2), libdbus-glib-1-2 (>= 0.86), libdbus-1-3 (>= 1.4.1), libgobject-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libglib-2.0-0 (>= 2.24.1), libxml2 (>= 2.7.8), libz1 (>= 1.2.3), gtk+ (>= 2.20.1), libatk-1.0-0 (>= 1.30.0), libgio-2.0-0 (>= 2.24.1), pango (>= 1.24.4), libcairo2 (>= 1.10.0), libpixman-1-0 (>= 0.21.6), libpng12-0 (>= 1.2.44), libxrender1 (>= 0.9.6), libx11-6 (>= 1.4.1), libxcb1 (>= 1.6), libpthread-stubs0 (>= 0.2), libxau6 (>= 1.0.6), libxdmcp6 (>= 1.1.0), libfontconfig1 (>= 2.8.0), libfreetype6 (>= 2.4.6), libexpat1 (>= 2.0.1), policykit (>= 0.96), eggdbus (>= 0.6)
+Source: http://ftp.gnome.org/pub/GNOME/sources/GConf/2.28/GConf-2.28.0.tar.bz2;name=archive

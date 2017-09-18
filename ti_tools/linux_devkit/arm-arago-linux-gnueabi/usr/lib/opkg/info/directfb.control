@@ -1,0 +1,13 @@
+Package: directfb
+Version: 1.4.11-r1.0-arago1.6
+Description: DirectFB is a thin library that provides developers with hardware graphics acceleration, input device handling and abstraction, an integrated windowing system with support for translucent windows and multiple display layers on top of the Linux framebuffer device.
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: directfb
+Homepage: http://directfb.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libz1 (>= 1.2.3), libc6 (>= 2.12.2), libts-1.0-0 (>= 1.0+gitr0+5f48c7b878862b67ba61), libsysfs2 (>= 2.1.0), libjpeg8 (>= 8b), libpng12-0 (>= 1.2.44), libfreetype6 (>= 2.4.6), libstdc++6 (>= 4.5.3), libgcc1 (>= 4.5.3)
+Source: http://directfb.org/downloads/Core/DirectFB-1.4/DirectFB-1.4.11.tar.gz file://fix-pkgconfig-cflags.patch file://mkdfiff.patch file://dont-use-linux-config.patch

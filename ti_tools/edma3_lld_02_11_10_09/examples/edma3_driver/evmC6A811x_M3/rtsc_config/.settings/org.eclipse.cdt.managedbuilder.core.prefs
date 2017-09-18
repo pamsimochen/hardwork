@@ -1,0 +1,57 @@
+#Fri Oct 14 19:30:37 IST 2011
+com.ti.ccstudio.buildDefinitions.C6000.Default.1041023276/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Default.1041023276/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Default.1164666266/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Default.1164666266/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Default.1800299584/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Default.1800299584/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Default.1879506303/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Default.1879506303/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Default.31004543/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Default.31004543/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Default.359282260/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Default.359282260/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Default.497143829/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Default.497143829/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Default.507384710/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Default.507384710/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Debug.174970754/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Debug.174970754/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1052584213/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1052584213/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1173147605/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1173147605/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1237373949/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1237373949/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1335264938/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1335264938/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1406052921/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1406052921/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1497482439/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1497482439/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1550363809/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1550363809/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.180986758/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.180986758/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1974573103/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.1974573103/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.2019945117/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.2019945117/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.2072739702/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.2072739702/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.2125033867/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.2125033867/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.276019468/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.276019468/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.339659324/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.339659324/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.423789518/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.423789518/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.497040045/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.497040045/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.TMS470.Default.747748875/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.TMS470.Default.747748875/internalBuilder/ignoreErr=true
+eclipse.preferences.version=1
+environment/project=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<environment/>\r\n
+environment/project/com.ti.ccstudio.buildDefinitions.TMS470.Default.1173147605=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<environment/>\r\n
+environment/project/com.ti.ccstudio.buildDefinitions.TMS470.Default.1550363809=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<environment/>\r\n

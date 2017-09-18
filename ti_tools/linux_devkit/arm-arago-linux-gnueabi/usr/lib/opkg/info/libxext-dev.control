@@ -1,0 +1,14 @@
+Package: libxext-dev
+Version: 1:1.2.0-r9.1.6
+Description: X11 miscellaneous extension library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: libxext
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libxext6 (= 1:1.2.0-r9.1.6), libxext6, xextproto-dev
+Recommends: util-macros-dev, xproto-dev, xextproto-dev, libxau-dev, libx11-dev, libxcb-dev, libpthread-stubs-dev, libxdmcp-dev, libc6-dev, libxext-dev
+Source: http://xorg.freedesktop.org/releases/individual/lib/libXext-1.2.0.tar.bz2;name=archive file://xgeExtRegister.hidden.patch

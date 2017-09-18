@@ -1,0 +1,14 @@
+Package: alsa-lib-dev
+Version: 1.0.24.1-r0.6
+Description: Alsa sound library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: alsa-lib
+Homepage: http://www.alsa-project.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: alsa-lib (= 1.0.24.1-r0.6)
+Recommends: libasound-dev, libc6-dev
+Source: ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.0.24.1.tar.bz2 file://fix-tstamp-declaration.patch file://fix_libmath.patch

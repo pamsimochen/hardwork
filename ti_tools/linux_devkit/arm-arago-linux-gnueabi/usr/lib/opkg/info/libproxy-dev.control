@@ -1,0 +1,14 @@
+Package: libproxy-dev
+Version: 0.2.3-r2.6
+Description: A library handling all the details of proxy configuration
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1+
+Architecture: armv7a
+OE: libproxy
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libproxy (= 0.2.3-r2.6), libproxy
+Recommends: libxmu-dev, gconf-dev, libc6-dev, libxext-dev, libxt-dev, libsm-dev, libuuid-dev, libice-dev, libx11-dev, libxcb-dev, libpthread-stubs-dev, libxau-dev, libxdmcp-dev, orbit2-dev, gmodule-2.0-dev, libdbus-glib-1-dev, dbus-lib-dev, gobject-2.0-dev, gthread-2.0-dev, libglib-2.0-dev, libproxy-dev
+Source: http://libproxy.googlecode.com/files/libproxy-0.2.3.tar.gz file://libproxy-move-define-__USE_BSD.patch

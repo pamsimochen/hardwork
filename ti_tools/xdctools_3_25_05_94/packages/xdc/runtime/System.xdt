@@ -1,0 +1,280 @@
+%%{
+/* 
+ *  Copyright (c) 2008 Texas Instruments. All rights reserved. 
+ *  This program and the accompanying materials are made available under the 
+ *  terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+ *  v. 1.0 which accompanies this distribution. The Eclipse Public License is
+ *  available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+ *  Distribution License is available at 
+ *  http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ *  Contributors:
+ *      Texas Instruments - initial implementation
+ * */
+%%}
+%var System = xdc.module("xdc.runtime.System");
+
+#include <xdc/std.h>
+#include <limits.h>
+#include <xdc/runtime/Types.h>
+#include <xdc/runtime/Text.h>
+#include <xdc/runtime/Assert.h>
+
+/*
+ *  ======== System_printfExtend__I ========
+ *  This function processes optional extended formats of printf.
+ *  
+ *  It returns the number of characters added to the result.
+ *
+ *  Precision (maximum string length) is not supported for %$S.
+ *
+ *  Right-justified (which is default) minimum width is not supported
+ *  for %$L, %$S, or %$F.
+ */
+Int xdc_runtime_System_printfExtend__I(Char **pbuf, CString *pfmt, 
+    VaList *pva, xdc_runtime_System_ParseData *parse)
+{
+    CString fmt = *pfmt;
+    Int     res;
+    Char    c;
+    Bool    found = FALSE;
+    
+    /* 
+     * Create a local variable 'va' to ensure that the dereference of
+     * pva only occurs once.
+     */
+    va_list va = *pva;
+    
+    res = 0;
+
+    c = *fmt++;
+    *pfmt = *pfmt + 1;
+
+%/* Only include the code to check for '$' if the extendedFormats */
+%/* includes one of the $ format types. */
+%var regexp = /\$/;
+%if (System.extendedFormats && (System.extendedFormats.search(regexp) != -1)) {
+    
+    if (c == '$') {
+        c = *fmt++;
+        *pfmt = *pfmt + 1;
+        
+%    /* %$L - formats a Types.Label */
+%    var regexp = /%\$L/;
+%    if (System.extendedFormats && 
+%        (System.extendedFormats.search(regexp) != -1)) {
+%
+        if (c == 'L') {
+            xdc_runtime_Types_Label *lab = parse->aFlag ? 
+                (xdc_runtime_Types_Label *)iargToPtr(va_arg(va, IArg)) :
+                (xdc_runtime_Types_Label *)va_arg(va, void *);
+            
+            /* 
+             * Call Text_putLab to write out the label, taking the precision 
+             * into account.
+             */
+            res = xdc_runtime_Text_putLab(lab, pbuf, parse->precis);
+            
+            /*
+             * Set the length to 0 to indicate to 'doPrint' that nothing should
+             * be copied from parse.ptr.
+             */
+            parse->len = 0;
+            
+            /* Update the minimum width field. */
+            parse->width -= res;
+            
+            found = TRUE;
+        }
+        
+%    } /* end %$L */
+%
+%    /* %$F - formats a file name and optional line number */
+%    var regexp = /%\$F/;
+%    if (System.extendedFormats && 
+%        (System.extendedFormats.search(regexp) != -1)) {
+%
+        if (c == 'F') {
+            xdc_runtime_Types_Site site;
+            
+            /* Retrieve the file name string from the argument list */
+            site.file = parse->aFlag ? (Char *) iargToPtr(va_arg(va, IArg)) :
+                                       (Char *) va_arg(va, Char *);
+            
+            /* Retrieve the line number from the argument list. */
+            site.line = parse->aFlag ? (Int) va_arg(va, IArg) : 
+                                       (Int) va_arg(va, Int);
+            
+            /* 
+             * Omit the 'mod' field, set it to 0.
+             * '0' is a safe sentinel value - the IDs for named modules are 
+             * 0x8000 and higher, and the IDs for unnamed modules go from 0x1
+             * to 0x7fff.
+             */
+            site.mod = 0;
+            
+            /* 
+             * Call putSite to format the file and line number.
+             * If a precision was specified, it will be used as the maximum
+             * string lengrth.
+             */
+            res = xdc_runtime_Text_putSite(&site, pbuf, parse->precis);
+            
+            /*
+             * Set the length to 0 to indicate to 'doPrint' that nothing should
+             * be copied from parse.ptr.
+             */
+            parse->len = 0;
+       
+            /* Update the minimum width field */
+            parse->width -= res;
+            
+            found = TRUE;
+        }
+        
+%    } /* end %$F */
+%
+%    /* %$S - Recursively formats a string */
+%    var regexp = /%\$S/;
+%    if (System.extendedFormats && 
+%        (System.extendedFormats.search(regexp) != -1)) {
+% 
+        if (c == 'S') {
+            /* Retrieve the format string from the argument list */
+            parse->ptr = parse->aFlag ? 
+                (Char *) iargToPtr(va_arg(va, IArg)) :
+                (Char *) va_arg(va, Char *);
+            
+            /* Update pva before passing it to doPrint. */
+            *pva = va;
+            
+            /* Perform the recursive format. System_doPrint does not advance
+             * the buffer pointer, so it has to be done explicitly.
+             */
+            res = xdc_runtime_System_doPrint__I(*pbuf, parse->precis, 
+                                                parse->ptr, pva, parse->aFlag);
+
+            if (*pbuf) {
+                *pbuf += res;
+            }
+            
+            /* Update the temporary variable with any changes to *pva */
+            va = *pva;
+            
+            /*
+             * Set the length to 0 to indicate to 'doPrint' that nothing should
+             * be copied from parse.ptr
+             */
+            parse->len = 0;
+
+            /* Update the minimum width field */
+            parse->width -= res;
+            
+            /* Indicate that we were able to interpret the specifier */
+            found = TRUE;
+        }
+        
+%    } /* end %$S */
+    }
+
+%} /* end $ */
+%
+%var regexp = /%f/;
+%if (System.extendedFormats && (System.extendedFormats.search(regexp) != -1)) {
+%
+    if (c == 'f') {
+        Double d, tmp;
+        ULong  fract;
+        Int    negative;
+
+        if (parse->aFlag) {
+            xdc_runtime_Assert_isTrue((sizeof(Float) <= sizeof(IArg)), 
+                xdc_runtime_System_A_cannotFitIntoArg);
+
+            d = argToFloat(va_arg(va, IArg));
+        }
+        else {
+            d = va_arg(va, double);
+        }
+
+        if (d < 0.0) {
+            d = -d;
+            negative = TRUE;
+            parse->zpad--;
+        }
+        else {
+            negative = FALSE;
+        }
+
+        /*
+         * output (error) if we can't print correct value
+         */
+        if (d > (double) LONG_MAX) {
+            parse->ptr = "(error)";
+            parse->len = 7;                /* strlen("(error)"); */
+            goto end;
+        }
+
+        /* Assumes four digits after decimal point. We are using a temporary
+         * double variable to force double-precision computations without 
+         * using --fp_mode=strict flag. See the description of that flag in
+         * the compiler's doc for a further explanation.
+         */
+        tmp = (d - (Long)d) * 1e4;
+        fract = (ULong)tmp;
+
+        parse->ptr = xdc_runtime_System_formatNum__I(parse->end, fract, 4, 10);
+        *(--parse->ptr) = '.';
+
+#if 0
+        /* eliminate trailing zeros */
+        do {
+        } while (*(--parse->end) == '0');
+        ++parse->end;
+#endif
+        parse->len = parse->end - parse->ptr;
+        /* format integer part (right to left!) */
+        parse->ptr = xdc_runtime_System_formatNum__I(parse->ptr,
+            (Long)d, parse->zpad - parse->len, 10);
+        if (negative) {
+            *(--parse->ptr) = '-';
+        }
+
+        parse->len = parse->end - parse->ptr;
+        found = TRUE;
+    }
+%} else {
+    if (c == 'f') {
+        /* support arguments _after_ optional float support */
+        if (parse->aFlag) {
+            (void)va_arg(va, IArg);
+        }
+        else {
+            (void)va_arg(va, double);
+        }
+    }    
+%} /* %f */
+
+    if (found == FALSE) {
+        /* other character (like %) copy to output */
+        *(parse->ptr) = c;
+        parse->len = 1;
+    }
+
+    /*
+     * Before returning, we must update the value of pva. We use a label here
+     * so that all return points will go through this update.
+     * The 'goto end' is here to ensure that there is always a reference to the
+     * label (to avoid the compiler complaining). 
+     */
+    goto end; 
+end:
+    *pva = va;
+    return (res);
+}
+%%{
+/*
+ * @(#) xdc.runtime; 2, 1, 0,438; 12-19-2013 19:53:37; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+ */
+
+%%}

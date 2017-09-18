@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="google.targets.arm.rts" version="1, 0, 0" producerId="/db/ztree/library/trees/xdctargets/xdctargets-g41x/src/">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package.bld"/>
+        <srcFile name="package/package_google.targets.arm.rts.c"/>
+        <srcFile name="xdc/runtime/Assert.c"/>
+        <srcFile name="xdc/runtime/Core-mem.c"/>
+        <srcFile name="xdc/runtime/Core-smem.c"/>
+        <srcFile name="xdc/runtime/Core-label.c"/>
+        <srcFile name="xdc/runtime/Core-params.c"/>
+        <srcFile name="xdc/runtime/Diags.c"/>
+        <srcFile name="xdc/runtime/Error.c"/>
+        <srcFile name="xdc/runtime/Gate.c"/>
+        <srcFile name="xdc/runtime/GateNull.c"/>
+        <srcFile name="xdc/runtime/HeapMin.c"/>
+        <srcFile name="xdc/runtime/HeapStd.c"/>
+        <srcFile name="xdc/runtime/Log.c"/>
+        <srcFile name="xdc/runtime/LoggerBuf.c"/>
+        <srcFile name="xdc/runtime/LoggerCallback.c"/>
+        <srcFile name="xdc/runtime/LoggerSys.c"/>
+        <srcFile name="xdc/runtime/Memory.c"/>
+        <srcFile name="xdc/runtime/Registry.c"/>
+        <srcFile name="xdc/runtime/Rta.c"/>
+        <srcFile name="xdc/runtime/Startup.c"/>
+        <srcFile name="xdc/runtime/System.c"/>
+        <srcFile name="xdc/runtime/SysCallback.c"/>
+        <srcFile name="xdc/runtime/SysMin.c"/>
+        <srcFile name="xdc/runtime/SysStd.c"/>
+        <srcFile name="xdc/runtime/Text.c"/>
+        <srcFile name="xdc/runtime/Timestamp.c"/>
+        <srcFile name="xdc/runtime/TimestampNull.c"/>
+        <srcFile name="xdc/runtime/TimestampStd.c"/>
+        <srcFile name="xdc/runtime/xdc_init.cpp"/>
+        <srcFile name="xdc/runtime/knl/Cache.c"/>
+        <srcFile name="xdc/runtime/knl/GateThread.c"/>
+        <srcFile name="xdc/runtime/knl/Semaphore.c"/>
+        <srcFile name="xdc/runtime/knl/SyncNull.c"/>
+        <srcFile name="xdc/runtime/knl/GateH.c"/>
+        <srcFile name="xdc/runtime/knl/SemProcess.c"/>
+        <srcFile name="xdc/runtime/knl/Sync.c"/>
+        <srcFile name="xdc/runtime/knl/SyncSemThread.c"/>
+        <srcFile name="xdc/runtime/knl/GateProcess.c"/>
+        <srcFile name="xdc/runtime/knl/SemThread.c"/>
+        <srcFile name="xdc/runtime/knl/SyncGeneric.c"/>
+        <srcFile name="xdc/runtime/knl/Thread.c"/>
+        <srcFile name="xdc/runtime/knl/CacheSupportNull.c"/>
+        <srcFile name="xdc/runtime/knl/GateThreadSupportNull.c"/>
+        <srcFile name="xdc/runtime/knl/GateProcessSupportNull.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/google.targets.arm.rts.abnc.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/package/package_google.targets.arm.rts.obnc.dep" src="package/package_google.targets.arm.rts.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Assert.obnc.dep" src="xdc/runtime/Assert.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Core-mem.obnc.dep" src="xdc/runtime/Core-mem.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Core-smem.obnc.dep" src="xdc/runtime/Core-smem.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Core-label.obnc.dep" src="xdc/runtime/Core-label.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Core-params.obnc.dep" src="xdc/runtime/Core-params.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Diags.obnc.dep" src="xdc/runtime/Diags.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Error.obnc.dep" src="xdc/runtime/Error.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Gate.obnc.dep" src="xdc/runtime/Gate.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/GateNull.obnc.dep" src="xdc/runtime/GateNull.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/HeapMin.obnc.dep" src="xdc/runtime/HeapMin.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/HeapStd.obnc.dep" src="xdc/runtime/HeapStd.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Log.obnc.dep" src="xdc/runtime/Log.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/LoggerBuf.obnc.dep" src="xdc/runtime/LoggerBuf.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/LoggerCallback.obnc.dep" src="xdc/runtime/LoggerCallback.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/LoggerSys.obnc.dep" src="xdc/runtime/LoggerSys.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Memory.obnc.dep" src="xdc/runtime/Memory.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Registry.obnc.dep" src="xdc/runtime/Registry.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Rta.obnc.dep" src="xdc/runtime/Rta.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Startup.obnc.dep" src="xdc/runtime/Startup.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/System.obnc.dep" src="xdc/runtime/System.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/SysCallback.obnc.dep" src="xdc/runtime/SysCallback.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/SysMin.obnc.dep" src="xdc/runtime/SysMin.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/SysStd.obnc.dep" src="xdc/runtime/SysStd.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Text.obnc.dep" src="xdc/runtime/Text.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/Timestamp.obnc.dep" src="xdc/runtime/Timestamp.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/TimestampNull.obnc.dep" src="xdc/runtime/TimestampNull.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/TimestampStd.obnc.dep" src="xdc/runtime/TimestampStd.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/xdc_init.obnc.dep" src="xdc/runtime/xdc_init.cpp"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/Cache.obnc.dep" src="xdc/runtime/knl/Cache.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/GateThread.obnc.dep" src="xdc/runtime/knl/GateThread.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/Semaphore.obnc.dep" src="xdc/runtime/knl/Semaphore.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/SyncNull.obnc.dep" src="xdc/runtime/knl/SyncNull.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/GateH.obnc.dep" src="xdc/runtime/knl/GateH.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/SemProcess.obnc.dep" src="xdc/runtime/knl/SemProcess.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/Sync.obnc.dep" src="xdc/runtime/knl/Sync.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/SyncSemThread.obnc.dep" src="xdc/runtime/knl/SyncSemThread.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/GateProcess.obnc.dep" src="xdc/runtime/knl/GateProcess.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/SemThread.obnc.dep" src="xdc/runtime/knl/SemThread.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/SyncGeneric.obnc.dep" src="xdc/runtime/knl/SyncGeneric.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/Thread.obnc.dep" src="xdc/runtime/knl/Thread.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/CacheSupportNull.obnc.dep" src="xdc/runtime/knl/CacheSupportNull.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/GateThreadSupportNull.obnc.dep" src="xdc/runtime/knl/GateThreadSupportNull.c"/>
+        <srcFile name="package/lib/lib/google.targets.arm.rts/xdc/runtime/knl/GateProcessSupportNull.obnc.dep" src="xdc/runtime/knl/GateProcessSupportNull.c"/>
+        <srcFile name="package/rel/google_targets_arm_rts_purec.tar.gz.dep" src="package/rel/google_targets_arm_rts_purec.xdc.inc"/>
+        <srcFile name="package/rel/google_targets_arm_rts.tar.gz.dep" src="package/rel/google_targets_arm_rts.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="google.targets.arm.Bionic"
+            version="google.targets.arm.Bionic{1,0,4.4,3"
+            rawVersion="4.4.3"
+            platform="host.platforms.arm"
+            isa="v5T"
+            suffix="bnc"
+            rootDir="/db/toolsrc/library/tools/vendors/android/rowboat/ti814x/20111011/arm-eabi-4.4.3"
+            os="Linux"
+            rts="google.targets.arm.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/google.targets.arm.rts"
+        pname="lib/google.targets.arm.rts.abnc"
+        profile="release"
+        target="google.targets.arm.Bionic"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="google_targets_arm_rts_purec"
+        pname="../../../../../exports/google_targets_arm_rts_purec.tar.gz"
+        label="purec"
+        relScript="../../../../purec.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+    </release>
+    <release name="google_targets_arm_rts"
+        pname="../../../../../exports/google_targets_arm_rts.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/google.targets.arm.rts.abnc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

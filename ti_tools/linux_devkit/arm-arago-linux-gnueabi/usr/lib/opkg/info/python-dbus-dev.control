@@ -1,0 +1,14 @@
+Package: python-dbus-dev
+Version: 0.83.2-ml0.6
+Description: Python bindings for DBus, a socket-based message bus system for interprocess communication
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT
+Architecture: armv7a
+OE: python-dbus
+Homepage: http://www.freedesktop.org/Software/dbus
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: python-dbus (= 0.83.2-ml0.6)
+Recommends: libexpat-dev, dbus-dev, libdbus-glib-1-dev, python-dev, python-dbus-dev, python-io-dev, python-lang-dev, python-logging-dev, python-threading-dev, python-xml-dev, dbus-lib-dev, libc6-dev, gobject-2.0-dev, gthread-2.0-dev, libglib-2.0-dev
+Source: http://dbus.freedesktop.org/releases/dbus-python/dbus-python-0.83.2.tar.gz

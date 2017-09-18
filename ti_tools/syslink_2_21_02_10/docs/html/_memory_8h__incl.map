@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" href="$_memory_defs_8h.html" title="Definitions for Memory module." alt="" coords="210,158,392,182" />
+<area shape="rect" href="$_memory_o_s_8h.html" title="Memory abstraction APIs for local memory allocation." alt="" coords="50,84,224,108" />
+<area shape="rect" href="$_i_heap_8h.html" title="Defines Heap based memory allocator." alt="" coords="485,84,626,108" />
+<area shape="rect" href="$_trace_8h.html" title="Kernel Trace enabling/disabling/application interface." alt="" coords="485,158,626,182" />
+<area shape="rect" href="$_osal_print_8h.html" title="Kernel utils Print interface definitions." alt="" coords="476,240,636,264" />
+</map>

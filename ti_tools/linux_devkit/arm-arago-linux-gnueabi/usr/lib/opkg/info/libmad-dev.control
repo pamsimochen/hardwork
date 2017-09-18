@@ -1,0 +1,14 @@
+Package: libmad-dev
+Version: 0.15.1b-r6.6
+Description: MPEG Audio Decoder Library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: libmad
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libmad0 (= 0.15.1b-r6.6), libmad0
+Recommends: libid3tag-dev, libc6-dev, libmad-dev
+Source: http://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz file://add-pkgconfig.patch file://mad.diff file://mad-mips-h-constraint.patch

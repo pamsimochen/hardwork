@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/xsl" href="toc.xsl"?>
+
+<toc label="EDMA3" topic="packages.html">
+    <topic class="toc-id" label="EDMA3 Driver" href="packages/ti/sdo/edma3/drv/docs/html/index.html"
+            title="EDMA3 Driver">
+    </topic>
+    <topic class="toc-id" label="EDMA3 Resource Manager" href="packages/ti/sdo/edma3/rm/docs/html/index.html"
+            title="EDMA3 Resource Manager">
+    </topic>
+</toc>

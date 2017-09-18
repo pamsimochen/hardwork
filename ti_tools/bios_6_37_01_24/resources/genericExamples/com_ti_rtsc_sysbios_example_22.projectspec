@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+    <applicability>
+        <when>
+            <context
+                deviceFamily="ARM"
+            />
+        </when>
+        <except>
+            <context
+                deviceId=".*(Cortex A|TM4C|TM4E|TM4L|LM3|F28M3|LM4|RM4|TMS570LS|ARM7|ARM11|Generic|EVMDMRX45X|CC2538|TMS470M|DM350|DM357|DM368).*"
+            />
+        </except>
+    </applicability>
+
+    <project
+        title="Hello Example"
+        name="hello"
+        toolChain="TI"
+        linkerCommandFile=""
+        compilerBuildOptions=""
+        linkerBuildOptions=""
+        description="The hello example serves as a basic sanity check program for SYS/BIOS. It demonstrates how to print the string 'hello world' to stdout.">
+
+        <property name="type" value="rtsc"/>
+        <property name="products" value="com.ti.rtsc.SYSBIOS"/>
+        <property name="buildProfile" value="release"/>
+        <property name="isHybrid" value="true"/>
+        <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+        <group id="ti.sysbios.examples.root.generic"/>
+        <file path="ti/sysbios/examples/generic/hello/hello.c" openOnCreation="false" excludeFromBuild="false" action="copy" >
+        </file>
+        <file path="ti/sysbios/examples/generic/hello/hello.cfg" openOnCreation="false" excludeFromBuild="false" action="copy" >
+        </file>
+        <file path="ti/sysbios/examples/makefile.defs" openOnCreation="false" excludeFromBuild="false" action="copy" >
+        </file>
+    </project>
+</projectSpec>
+

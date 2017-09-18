@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gep name="Atomic" title="MSP430 Atomic Operations">
+
+<properties name="Advanced" title="All Configuration Options" enabled="true" visible="true" link="this"/>
+
+<page name="Basic" title="Basic Options">
+<html><body><table>
+  <tr><td colspan="2">
+    <control type="checkbox" label="Add Atomic functions to my configuration" value="value:this.$used" bold="true"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <h1>Description</h1>
+    <form><p>This module provides basic "atomic" operations that allows your applciation to easily and reliably coordinate with interrupt service routines via global variables.  For more information see the <a href="help:http:/help/topic/com.ti.mcu.radio.product.ui/cdoc/ti/mcu/msp430/runtime/utils/Atomic.html">Atomic reference</a> documentation.</p></form>
+    </td>
+  </tr>
+ </table></body></html>
+</page>
+
+</gep>

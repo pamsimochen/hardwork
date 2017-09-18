@@ -1,0 +1,12 @@
+Package: gst-plugins-bad
+Version: 0.10.20-r12.2-arago3.6
+Description: Plugins for GStreamer
+Section: multimedia
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2
+Architecture: armv7a
+OE: gst-plugins-bad
+Homepage: http://www.gstreamer.net/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Source: http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.20.tar.bz2;name=archive file://0001-gstfbdevsink-Fix-depth-value-for-GST_VIDEO_CAPS_RGB_.patch

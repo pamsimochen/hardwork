@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fileVersion 3.1.0?>
+
+<ManagedProjectBuildInfo>
+<project id="edma3_drv_bios6_tci6616be_st_sample_configuration.com.ti.ccstudio.buildDefinitions.C6000.ProjectType.637606372" name="C6000" projectType="com.ti.ccstudio.buildDefinitions.C6000.ProjectType">
+<configuration artifactExtension="cmd" artifactName="configPkg/linker" description="" id="com.ti.ccstudio.buildDefinitions.C6000.Default.818303754" name="Debug" parent="com.ti.ccstudio.buildDefinitions.C6000.Default">
+<toolChain id="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.DebugToolchain.2010627901" name="TI Code Generation Tools" superClass="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.DebugToolchain" targetTool="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.767241745">
+<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.912257569" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="6.1.11" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.1532518256" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=com.ti.ccstudio.deviceModel.C6000.GenericC64xPlusDevice"/>
+<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=big"/>
+<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE="/>
+<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=rts64pluse.lib"/>
+<listOptionValue builtIn="false" value="IS_ASSEMBLY_ONLY=false"/>
+<listOptionValue builtIn="false" value="CCS_MBS_VERSION=4.0.1"/>
+<listOptionValue builtIn="false" value="XDC_VERSION=3.15.02.62"/>
+<listOptionValue builtIn="false" value="RTSC_PRODUCTS=com.ti.rtsc.DSPBIOS:6.21.00.06.eng;"/>
+<listOptionValue builtIn="false" value="PROJECT_KIND=org.eclipse.rtsc.xdctools.buildDefinitions.XDC.ProjectKind_Configuration"/>
+</option>
+<tool id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.767241745" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool">
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.XDC_PATH.1128948338" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.XDC_PATH" valueType="includePath">
+<listOptionValue builtIn="false" value="&quot;${BIOS_CG_ROOT}/packages&quot;"/>
+<listOptionValue builtIn="false" value="&quot;../../../../../packages/&quot;"/>
+</option>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.OUTPUT_DIR.1652754745" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.OUTPUT_DIR" value="&quot;configPkg&quot;" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.TARGET.1267879973" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.TARGET" value="ti.targets.C64P_big_endian" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.PLATFORM.1641911520" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.PLATFORM" value="ti.platforms.simTCI6616" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.BUILD_PROFILE.1037670294" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.BUILD_PROFILE" value="debug" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.CODEGEN_TOOL_DIR.1265722300" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.CODEGEN_TOOL_DIR" value="&quot;${CG_TOOL_ROOT}&quot;" valueType="string"/>
+</tool>
+<macros/>
+</toolChain>
+</configuration>
+<configuration artifactExtension="cmd" artifactName="configPkg/linker" description="" id="com.ti.ccstudio.buildDefinitions.C6000.Default.1180814983" name="Release" parent="com.ti.ccstudio.buildDefinitions.C6000.Default">
+<toolChain id="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.DebugToolchain.557257468" name="TI Code Generation Tools" superClass="com.ti.ccstudio.buildDefinitions.C6000_6.1.exe.DebugToolchain" targetTool="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.1801068721">
+<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.1453482417" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="6.1.11" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.185181509" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=com.ti.ccstudio.deviceModel.C6000.GenericC64xPlusDevice"/>
+<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=big"/>
+<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE="/>
+<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=rts64pluse.lib"/>
+<listOptionValue builtIn="false" value="IS_ASSEMBLY_ONLY=false"/>
+<listOptionValue builtIn="false" value="CCS_MBS_VERSION=4.0.1"/>
+<listOptionValue builtIn="false" value="XDC_VERSION=3.15.02.62"/>
+<listOptionValue builtIn="false" value="RTSC_PRODUCTS=com.ti.rtsc.DSPBIOS:6.21.00.06.eng;"/>
+<listOptionValue builtIn="false" value="PROJECT_KIND=org.eclipse.rtsc.xdctools.buildDefinitions.XDC.ProjectKind_Configuration"/>
+</option>
+<tool id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.1801068721" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool">
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.XDC_PATH.597983079" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.XDC_PATH" valueType="includePath">
+<listOptionValue builtIn="false" value="&quot;${BIOS_CG_ROOT}/packages&quot;"/>
+<listOptionValue builtIn="false" value="&quot;../../../../../packages&quot;"/>
+</option>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.OUTPUT_DIR.2125256667" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.OUTPUT_DIR" value="&quot;configPkg&quot;" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.TARGET.61311076" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.TARGET" value="ti.targets.C64P_big_endian" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.PLATFORM.538887117" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.PLATFORM" value="ti.platforms.simTCI6616" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.CODEGEN_TOOL_DIR.684138018" superClass="com.ti.rtsc.buildDefinitions.XDC_3.15.tool.CODEGEN_TOOL_DIR" value="&quot;${CG_TOOL_ROOT}&quot;" valueType="string"/>
+</tool>
+<macros expandEnvironmentMacros="true"/>
+</toolChain>
+</configuration>
+<macros/>
+</project>
+</ManagedProjectBuildInfo>

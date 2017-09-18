@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Framework Components 3.30.00.06">
+  <topic label="Release Notes" href="framework_components_3_30_00_06_ReleaseNotes.html" />
+  <topic label="API Reference Guide" href="html/index.html">
+    <link toc="doxy_toc.xml" />
+  </topic>
+  <topic label="Package Reference Guide" href="xdoc/framework_components_3_30_00_06/package.html">
+    <link toc="eclipse_toc.xml" />
+  </topic>
+</toc>

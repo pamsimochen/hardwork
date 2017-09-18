@@ -1,0 +1,13 @@
+Package: libqtscripttoolse4
+Version: 4.7.2-r29.14-arago8.6
+Description: Version 4.7.2-r29.14-arago8 of package qt4-embedded-gles
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: qt4-embedded-gles
+Homepage: http://www.trolltech.com
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libqtscripte4 (>= 4.7.2), libqtguie4 (>= 4.7.2), libqtnetworke4 (>= 4.7.2), libqtcoree4 (>= 4.7.2), libc6 (>= 2.12.2), libstdc++6 (>= 4.5.3), libgcc1 (>= 4.5.3)
+Source: ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-4.7.2.tar.gz file://0004-no-qmake.patch file://hack-out-pg2-4.7.0.patch file://0006-freetype-host-includes.patch file://0001-Added-Openembedded-crossarch-option.patch file://0010-phonon-gstreamer-rgb-endianess.patch file://g++.conf file://linux.conf file://qte.sh file://cursor-hack.diff file://0001-wsegl2-support.patch file://0001-make-demos-maximized-for-TISDK-use.patch

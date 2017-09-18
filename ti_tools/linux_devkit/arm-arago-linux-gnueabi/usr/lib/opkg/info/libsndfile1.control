@@ -1,0 +1,13 @@
+Package: libsndfile1
+Version: 1.0.24-r1.6
+Description: An audio format Conversion library
+Section: libs/multimedia
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: libsndfile1
+Homepage: http://www.mega-nerd.com/libsndfile
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.24.tar.gz

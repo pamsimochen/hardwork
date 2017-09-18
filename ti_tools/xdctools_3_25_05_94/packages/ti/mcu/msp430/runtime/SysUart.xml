@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- 
+Copyright (c) 2011, Texas Instruments. All rights reserved.
+
+This program and the accompanying materials are made available under the 
+terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+v. 1.0 which accompanies this distribution. The Eclipse Public License is
+available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+Distribution License is available at 
+    http://www.eclipse.org/org/documents/edl-v10.php.
+
+Contributors:
+   Texas Instruments - initial implementation
+-->
+
+<gep name="XDC/SysUart" title="UART-based System Support" version="1">
+
+<page name="Basic" title="Basic Options">
+<html><body><table>
+  <tr><td colspan="2">
+    <control type="checkbox" label="Add SysUart to my configuration" value="value:this.$used" bold="true"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <h1>Description</h1>
+    <form><p>This module provides the support functions required by the System module by sending all character output to a UART.  This module also supports simple line input from the UART.  For more information see the <a href="help:http:/help/topic/com.ti.mcu.radio.product.ui/cdoc/ti/mcu/msp430/runtime/SysUart.html">SysUart reference</a> documentation.</p></form>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h1>Input Options</h1>
+        <table>
+        <tr>
+          <td><control type="label" label="Maximum line size (chars)"/></td>
+          <td><control type="editbox"
+               enabled="value:this.$used"
+               value="value:this.lineSize"
+               tooltip="this.lineSize.$summary"/></td>
+        </tr>
+        <tr>
+          <td><control type="label" label="Input callback function"/></td>
+          <td><control type="editbox"
+               enabled="value:this.$used"
+               value="value:this.getLineFxn" 
+               tooltip="this.getLineFxn.$summary"/></td>
+        </tr>
+        </table>
+    </td>
+  </tr>
+</table></body></html>
+</page>
+
+<properties name="Advanced" title="All Options" enabled="true" visible="true" link="this"/>
+
+</gep>

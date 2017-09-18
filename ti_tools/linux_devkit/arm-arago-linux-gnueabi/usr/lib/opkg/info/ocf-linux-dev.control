@@ -1,0 +1,14 @@
+Package: ocf-linux-dev
+Version: 20100325-r1.0.6
+Description: Install required headers to enable OCF Linux support
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: BSD
+Architecture: armv7a
+OE: ocf-linux
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: ocf-linux (= 20100325-r1.0.6)
+Recommends: ocf-linux-dev
+Source: http://sourceforge.net/projects/ocf-linux/files/ocf-linux/20100325/ocf-linux-20100325.tar.gz

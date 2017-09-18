@@ -1,0 +1,14 @@
+Package: libidl-2-dev
+Version: 0.8.13-r1.6
+Description: Library for parsing CORBA IDL files
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2+
+Architecture: armv7a
+OE: libidl
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libidl-2-0 (= 0.8.13-r1.6), libidl-2-0, libglib-2.0-dev
+Recommends: libglib-2.0-dev, libc6-dev, libidl-2-dev
+Source: http://ftp.gnome.org/pub/GNOME/sources/libIDL/0.8/libIDL-0.8.13.tar.bz2

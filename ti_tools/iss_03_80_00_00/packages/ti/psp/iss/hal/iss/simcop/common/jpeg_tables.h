@@ -1,0 +1,245 @@
+/** ==================================================================
+ *  @file   jpeg_tables.h                                                  
+ *                                                                    
+ *  @path   /ti/psp/iss/hal/iss/simcop/common/                                                  
+ *                                                                    
+ *  @desc   This  File contains.                                      
+ * ===================================================================
+ *  Copyright (c) Texas Instruments Inc 2011, 2012                    
+ *                                                                    
+ *  Use of this software is controlled by the terms and conditions found
+ *  in the license agreement under which this software has been supplied
+ * ===================================================================*/
+/******************************** TI Proprietary ****************************/
+/* ======================================================================== */
+/* */
+/* AUTHORS */
+/* Ching-Yu Hung */
+/* */
+/* CONTACT */
+/* cy-hung@ti.com, (214)480-3634 */
+/* Cellular Media System Solutions, WTBU */
+/* */
+/* FILE NAME */
+/* jpeg_tables.h */
+/* */
+/* DESCRIPTION */
+/* JPEG tables, used in Monica/OMAP4 VLCDJ C model */
+/* ------------------------------------------------------------------------ */
+/* Copyright (c) 2007 Texas Instruments, Incorporated.  */
+/* All Rights Reserved.  */
+/* ======================================================================== */
+
+/*************************************************************************
+  These are needed for JPEG header encode/decode 
+**************************************************************************/
+#ifndef _JPEG_TABLES_H
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+#define _JPEG_TABLES_H
+
+#define MARKER_MARKER 0xff
+#define MARKER_SOI    0xd8
+#define MARKER_EOI    0xd9
+#define MARKER_SOS    0xda
+#define MARKER_DQT    0xdb
+#define MARKER_DNL    0xdc
+#define MARKER_DRI    0xdd
+#define MARKER_DHP    0xde
+#define MARKER_EXP    0xdf
+#define MARKER_DHT    0xc4
+#define MARKER_SOF    0xc0
+#define MARKER_RSC    0xd0
+#define MARKER_APP0   0xe0
+#define MARKER_APP1  0xE1
+#define MARKER_JPG    0xf0
+#define MARKER_COM    0xfe
+
+#define HEADER2_OFST_HEIGHT  5
+#define HEADER2_OFST_H1V1   11
+#define HEADER2_OFST_H2V2   14
+#define HEADER2_OFST_H3V3   17
+
+#define HEADER1_LEN         20
+
+extern const unsigned char ExifHeader[];
+
+extern const unsigned char header_image[];
+
+#define APP0_JFIF_EXTENSION_1_LEN 2
+extern const unsigned char APP0_JFIF_Extension_header1[];
+
+/* 2 bytes to be inserted specifying Length which depends on Thumnail size */
+#define APP0_JFIF_EXTENSION_2_LEN 5
+extern const unsigned char APP0_JFIF_Extension_header2[];
+
+#define HEADER_DQT_LEN       5
+extern const unsigned char header_dqt0[];
+
+#define HEADER_DQT2_LEN       1
+extern const unsigned char header_dqt1[];
+
+#define HEADER_DRI_LEN       4
+extern const unsigned char header_dri[];
+
+#define HEADER_COM_LEN       2
+extern const unsigned char header_com[];
+
+#define HEADER_FRAME_LEN         19
+extern unsigned char header_frame[];
+
+#define HEADER_DHT_LEN       4
+extern unsigned char header_dht[];
+
+#define EOI_LEN         2
+extern const unsigned char eoi[];
+
+#define HEADER_SCAN_LEN         14
+extern const unsigned char header_scan[];
+
+#define HEADER3NI_LEN         10
+extern const unsigned char header_scan_ni1[];
+
+extern const unsigned char header_scan_ni2[];
+
+extern unsigned char const header_scan_ni3[];
+
+#define TOTAL_HDRL_LEN  629                                /* 0x275 */
+
+/* qmat, invqmat each has 64 elements for Y, 64 elements for CbCr */
+
+extern unsigned char const jpeg_qmat_std[128];
+
+extern unsigned char const jpeg_qmat_q0[128];
+
+extern unsigned short const jpeg_dc_y[24];
+
+extern unsigned short const jpeg_dc_uv[24];
+
+extern unsigned short const jpeg_ac_y[352];
+
+extern unsigned short const jpeg_ac_uv[352];
+
+#define DC_Y_DCDTBL_SIZE   14
+#define DC_UV_DCDTBL_SIZE  14
+#define AC_Y_DCDTBL_SIZE   182
+#define AC_UV_DCDTBL_SIZE  182
+
+#define DCDTBL_START        60
+#define DC_Y_DCDTBL_START   (DCDTBL_START)
+#define DC_UV_DCDTBL_START  (DC_Y_DCDTBL_START  + DC_Y_DCDTBL_SIZE)
+#define AC_Y_DCDTBL_START   (DC_UV_DCDTBL_START + DC_UV_DCDTBL_SIZE)
+#define AC_UV_DCDTBL_START  (AC_Y_DCDTBL_START  + AC_Y_DCDTBL_SIZE)
+
+extern unsigned short const jpeg_dc_y_ctl_tbl[13];
+
+extern unsigned short const jpeg_dc_uv_ctl_tbl[13];
+
+extern unsigned short const jpeg_ac_y_ctl_tbl[17];
+
+extern unsigned short const jpeg_ac_uv_ctl_tbl[17];
+
+extern unsigned short const jpeg_dc_y_dcd_tbl[14];
+
+extern unsigned short const jpeg_dc_uv_dcd_tbl[14];
+
+/* change EOB from 00 to 100, ZRL from F0 to 2F0, using reserved bits, top 5
+ * bits = len, bottom 8-bit = run/size */
+extern unsigned short const jpeg_ac_y_dcd_tbl[182];
+
+/* change EOB from 00 to 100, ZRL from F0 to 2F0, using reserved bits, top 5
+ * bits = len, bottom 8-bit = run/size */
+extern unsigned short const jpeg_ac_uv_dcd_tbl[182];
+
+static unsigned char const jpeg_dc_y_bits[16] = {
+    0x00, 0x01, 0x05, 0x01, 0x01, 0x01, 0x01, 0x01,
+    0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+
+static unsigned char const jpeg_dc_y_val[12] = {
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b
+};
+
+static unsigned char const jpeg_dc_uv_bits[16] = {
+    0x00, 0x03, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
+    0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+
+static unsigned char const jpeg_dc_uv_val[12] = {
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b
+};
+
+static unsigned char const jpeg_ac_y_bits[16] = {
+    0x00, 0x02, 0x01, 0x03, 0x03, 0x02, 0x04, 0x03,
+    0x05, 0x05, 0x04, 0x04, 0x00, 0x00, 0x01, 0x7d
+};
+
+static unsigned char const jpeg_ac_y_val[162] = {
+    0x01, 0x02, 0x03, 0x00, 0x04, 0x11, 0x05, 0x12,
+    0x21, 0x31, 0x41, 0x06, 0x13, 0x51, 0x61, 0x07,
+    0x22, 0x71, 0x14, 0x32, 0x81, 0x91, 0xa1, 0x08,
+    0x23, 0x42, 0xb1, 0xc1, 0x15, 0x52, 0xd1, 0xf0,
+    0x24, 0x33, 0x62, 0x72, 0x82, 0x09, 0x0a, 0x16,
+    0x17, 0x18, 0x19, 0x1a, 0x25, 0x26, 0x27, 0x28,
+    0x29, 0x2a, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
+    0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49,
+    0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59,
+    0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69,
+    0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79,
+    0x7a, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89,
+    0x8a, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98,
+    0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7,
+    0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4, 0xb5, 0xb6,
+    0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3, 0xc4, 0xc5,
+    0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xd2, 0xd3, 0xd4,
+    0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xe1, 0xe2,
+    0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea,
+    0xf1, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8,
+    0xf9, 0xfa
+};
+
+static unsigned char const jpeg_ac_uv_bits[16] = {
+    0x00, 0x02, 0x01, 0x02, 0x04, 0x04, 0x03, 0x04,
+    0x07, 0x05, 0x04, 0x04, 0x00, 0x01, 0x02, 0x77
+};
+
+static unsigned char const jpeg_ac_uv_val[162] = {
+    0x00, 0x01, 0x02, 0x03, 0x11, 0x04, 0x05, 0x21,
+    0x31, 0x06, 0x12, 0x41, 0x51, 0x07, 0x61, 0x71,
+    0x13, 0x22, 0x32, 0x81, 0x08, 0x14, 0x42, 0x91,
+    0xa1, 0xb1, 0xc1, 0x09, 0x23, 0x33, 0x52, 0xf0,
+    0x15, 0x62, 0x72, 0xd1, 0x0a, 0x16, 0x24, 0x34,
+    0xe1, 0x25, 0xf1, 0x17, 0x18, 0x19, 0x1a, 0x26,
+    0x27, 0x28, 0x29, 0x2a, 0x35, 0x36, 0x37, 0x38,
+    0x39, 0x3a, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48,
+    0x49, 0x4a, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58,
+    0x59, 0x5a, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68,
+    0x69, 0x6a, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78,
+    0x79, 0x7a, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87,
+    0x88, 0x89, 0x8a, 0x92, 0x93, 0x94, 0x95, 0x96,
+    0x97, 0x98, 0x99, 0x9a, 0xa2, 0xa3, 0xa4, 0xa5,
+    0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xb2, 0xb3, 0xb4,
+    0xb5, 0xb6, 0xb7, 0xb8, 0xb9, 0xba, 0xc2, 0xc3,
+    0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xd2,
+    0xd3, 0xd4, 0xd5, 0xd6, 0xd7, 0xd8, 0xd9, 0xda,
+    0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9,
+    0xea, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 0xf8,
+    0xf9, 0xfa
+};
+
+typedef struct {
+    unsigned short jpeg_dc_y[24];
+    unsigned short jpeg_ac_y[352];
+    unsigned short jpeg_dc_uv[24];
+    unsigned short jpeg_ac_uv[352];
+} CSL_STANDARD_HUFF_TABLE;
+
+extern /* typedef struct */ CSL_STANDARD_HUFF_TABLE stStandardHuff;
+
+/* this is the index in zigzag-scan order */
+extern const short zz_scan_idx[];
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+#endif

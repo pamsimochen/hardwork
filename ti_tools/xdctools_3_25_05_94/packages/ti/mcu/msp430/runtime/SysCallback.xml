@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- 
+Copyright (c) 2011, Texas Instruments. All rights reserved.
+
+This program and the accompanying materials are made available under the 
+terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+v. 1.0 which accompanies this distribution. The Eclipse Public License is
+available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+Distribution License is available at 
+    http://www.eclipse.org/org/documents/edl-v10.php.
+
+Contributors:
+   Texas Instruments - initial implementation
+-->
+
+<gep name="XDC/SysCallback" title="Callback-based System Support" version="1">
+
+<page name="Basic" title="Basic Options">
+<html><body><table>
+  <tr><td colspan="2">
+    <control type="checkbox" label="Add SysCallback to my configuration" value="value:this.$used" bold="true"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <h1>Description</h1>
+    <form><p>This module allows you to define your own C functions to support the low level character output required by System_printf.  For more information see the <a href="help:http:/help/topic/com.ti.mcu.radio.product.ui/cdoc/ti/mcu/msp430/runtime/SysCallback.html">SysCallback reference</a> documentation.</p></form>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h1>Output Options</h1>
+        <table>
+        <tr>
+          <td><control type="label" label="Character output function"/></td>
+          <td><control type="editbox"
+               enabled="value:this.$used"
+               value="value:this.putCharFxn" 
+               tooltip="this.putCharFxn.$summary"/></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <h1>Initialization and Terminiation Options</h1>
+        <table>
+        <tr>
+          <td><control type="label" label="System initialization function"/></td>
+          <td><control type="editbox"
+               enabled="value:this.$used"
+               value="value:this.initFxn"
+               tooltip="this.initFxn.$summary"/></td>
+        </tr>
+        <tr>
+          <td><control type="label" label="System atexit function"/></td>
+          <td><control type="editbox"
+               enabled="value:this.$used"
+               value="value:this.atExitFxn"
+               tooltip="this.atExitFxn.$summary"/></td>
+        </tr>
+
+        <tr>
+          <td><control type="label" label="System exit function"/></td>
+          <td><control type="editbox"
+               enabled="value:this.$used"
+               value="value:this.exitFxn"
+               tooltip="this.exitFxn.$summary"/></td>
+        </tr>
+        <tr>
+          <td><control type="label" label="System abort function"/></td>
+          <td><control type="editbox"
+               enabled="value:this.$used"
+               value="value:this.abortFxn"
+               tooltip="this.abortFxn.$summary"/></td>
+        </tr>
+        </table>
+    </td>
+  </tr>
+</table></body></html>
+</page>
+
+<properties name="Advanced" title="All Options" enabled="true" visible="true" link="this"/>
+
+</gep>

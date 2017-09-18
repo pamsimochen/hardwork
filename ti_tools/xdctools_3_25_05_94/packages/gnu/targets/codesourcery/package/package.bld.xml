@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="gnu.targets.codesourcery" version="1, 0, 0" producerId="/db/ztree/library/trees/xdctargets/xdctargets-g41x/src">
+    <units>
+        <module name="GCArmv5T"/>
+        <module name="GCArmv6"/>
+    </units>
+    <sources>
+        <srcFile name="linkcmd.xdt"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="package/rel/gnu_targets_codesourcery_purec.tar.gz.dep" src="package/rel/gnu_targets_codesourcery_purec.xdc.inc"/>
+        <srcFile name="package/rel/gnu_targets_codesourcery.tar.gz.dep" src="package/rel/gnu_targets_codesourcery.xdc.inc"/>
+    </makefiles>
+    <targets>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="gnu_targets_codesourcery_purec"
+        pname="../../../../exports/gnu_targets_codesourcery_purec.tar.gz"
+        label="purec"
+        relScript="../../../purec.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package/package.cfg.xdc.inc"/>
+    </release>
+    <release name="gnu_targets_codesourcery"
+        pname="../../../../exports/gnu_targets_codesourcery.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package/package.cfg.xdc.inc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

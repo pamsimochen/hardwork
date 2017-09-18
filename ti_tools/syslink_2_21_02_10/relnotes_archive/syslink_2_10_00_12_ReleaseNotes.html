@@ -1,0 +1,549 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- --COPYRIGHT--,BSD
+ *  Copyright (c) 2011, Texas Instruments Incorporated
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *  *  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *  *  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *  *  Neither the name of Texas Instruments Incorporated nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ *  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * --/COPYRIGHT--
+-->
+<html>
+<head>
+    <title>SysLink 2.10.00.12 Release Notes </title>
+    <!-- For now, we use the doxygen style sheet -->
+    <link type="text/css" rel="stylesheet" href="../docs/html/doxygen.css">
+    <!-- doxygen's css .memproto's all have tables for a little extra pad...
+         don't like tables, so give 'em a little extra left pad ourselves
+    --->
+    <style type="text/css">
+    body {
+        margin: 20px;
+    }
+    .memproto {
+        padding-left: 6px;
+    }
+    </style>
+</head>
+<body>
+<table width="100%">
+  <tbody>
+    <tr>
+      <td bgcolor="black" width="1">
+        <a href="http://www.ti.com">
+          <img border=0 src="../docs/html/tilogo.gif" alt="Texas Instruments">
+        </a>
+      </td>
+      <td bgcolor="red">
+        <img src="../docs/html/titagline.gif" alt="Technology for Innovators(tm)">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 align="center">SysLink 2.10.00.12 Release Notes </h1>
+<h2 align="center">November 2011</h2>
+
+<p>
+This SysLink Release is targeted to SYS/BIOS 6-based platforms.
+</p>
+<p align="center">
+<a href="#Introduction">Introduction</a>,
+<a href="#Documentation">Documentation</a>,
+<a href="#Whats_New">What's New</a>,
+<a href="#Upgrade_Info">Upgrade Info</a>,
+<a href="#Compatibility">Compatibility Information</a>,
+<a href="#Device_Support">Device Support</a>,
+<a href="#Validation">Validation Info</a>,
+<a href="#Known_Issues">Known Issues</a>,
+<a href="#Examples">Examples</a>,
+<a href="#Version">Version Information</a>,
+<a href="#Support">Technical Support</a>.
+</p>
+
+<hr>
+
+<h2><a name="Introduction">Introduction</a></h2>
+
+<p>
+SysLink is runtime software <!--and an associated porting kit--> that
+simplifies the development of embedded applications in which either
+General-Purpose microprocessors (GPP) or DSPs communicate with each other.
+The SysLink product provides software connectivity between multiple
+processors. Each processor may run either an HLOS (e.g. Linux)
+or an RTOS (e.g. SYS/BIOS).  In addition, a
+processor may also be designated as the master for another slave processor,
+and may be responsible for controlling the slave processor's execution
+(including boot-loading the slave).
+</p>
+<p>
+The SysLink product provides the following services to frameworks and applications:
+<ul>
+    <li>Processor Manager</li>
+    <li>Inter-Processor Communication</li>
+    <li>Utility modules</li>
+</ul>
+</p>
+<p>
+SYS/BIOS operating system is expected to be running on the slaves with all
+of these platforms.
+</p>
+<!-- not yet
+<p>
+This product includes a "redist" directory containing some dependent products
+for convenience.  Products included in this redist directory include are:
+<ul>
+  <li>IPC <b>1.23.01.26</b></li>
+</ul>
+</p>
+-->
+
+<hr>
+
+<h2><a name="Documentation">Documentation</a></h2>
+<p>
+The following documentation is available:
+</p>
+<ul>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_UserGuide">
+    SysLink Users' Guide</a>
+  </li>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_Install_Guide">
+    SysLink Install Guide</a>
+  </li>
+  <li>SysLink Application Programming Interface (API) Reference
+  Guide (HTML | CHM)</li>
+  <li>
+    Package Reference Guide - includes configuration details
+  </li>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_MigrationGuide">
+    SysLink Migration Guide</a>
+  </li>
+</ul>
+
+<p>
+In addition, users are encouraged to monitor (and contribute to!) the
+<a href="http://processors.wiki.ti.com">TI Embedded Processors Wiki</a>.
+</p>
+
+<p>
+Release notes from previous releases are also available in the
+relnotes_archive directory.
+</p>
+
+<hr>
+<h2><a name="Whats_New">What's New</a></h2>
+<p>The following significant changes have been made since 2.00</p>
+
+<div class="memitem">
+<div class="memproto">2.10.00.12 </div>
+
+<div class="memdoc">
+<ul>
+  <li>New features
+    <ul>
+      <li>Added initial support for QNX and Android on TI814X devices</li>
+    </ul>
+  </li>
+  <br />
+  <li>The following defects were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td>SDOCM00084067</td>
+      <td>SysLink crashes Linux kernel when ProcMgr_MAX_MEMORY_REGIONS > 45
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00086179</td>
+      <td>Kernel side MessageQ_get function must break when status is E_FAIL
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00080606</td>
+      <td>[RingIO] RingIO_registerNotifier should return error when a function has already been registered previously
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00083784</td>
+      <td>Detect when notify is enabled in the kernel and auto-assign USE_SYSLINK_NOTIFY
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00076425</td>
+      <td>[RingIO] RingIO_close() returns success even if handle passed is NULL
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00079441</td>
+      <td>[Samples] ringIO_gpp sample application hangs in Ipc_attach()
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00083749</td>
+      <td>ListMP_empty is not returning correct value
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00080114</td>
+      <td>[RingIO] Invalid gate delete assertion observed in RingIO delete
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00076871</td>
+      <td>[RingIO] Application crash is observed when RingIO instance is tried to open twice with same name in HLOS side.
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00080378</td>
+      <td>[RingIO] RingIOShm_delete() is closing and deleting the same clientNotifyMgrGate
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00084089</td>
+      <td>Caching of Shared Region (SR1 onwards) does not happen in user space
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00075737</td>
+      <td>ProcMgr ELF loader does not support argc/argv loading
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00084478</td>
+      <td>[FrameQ] FrameQ fails to initialize  'isRegistered' field for writer during FrameQ creation.
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00082706</td>
+      <td>ClientNotifyMgr_execCallBackFxn crashes upon receiving notifications to recently unregistered and deleted client
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00081803</td>
+      <td>Slaveloader fails on dsp internal memories
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00085776</td>
+      <td>Setting ProcMgr_map()'s addrInfo.isCached field to TRUE doesn't map the memory as cached
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00084014</td>
+      <td>ProcMgr_load() hangs while loading DSP image on TI814X PG 2.1
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00068875</td>
+      <td>[RingIO] RingIO create [RingIO_create() API] crashes if shared region is not set [SharedRegion_setEntry() API] on ARM
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00081563</td>
+      <td>[RingIO] RingIO error codes and  RingIOShm error codes are not matching
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+  <br />
+
+  <li>The following enhancements were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+    <tr>
+      <td>SDOCM00084285</td>
+      <td>Add Android support to SysLink on TI814x
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00082644</td>
+      <td>Enable users to modify SysLink_params via env var (SL_PARAMS) to avoid a rebuild
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00085767</td>
+      <td>SysLink should enable both GP Timer 3 and 4 for TI816x to support recent BIOS releases
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00081847</td>
+      <td>[RingIO] RingIO needs to support non-zero shared regions
+</td>
+    </tr>
+    <tr>
+      <td>SDOCM00085773</td>
+      <td>Add explicit dmtimer.Timer frequency assignment to sample config scripts
+</td>
+    </tr>
+
+  </tbody>
+</table>
+</li>
+
+</ul>
+</div>
+</div>
+
+<div class="memitem">
+<div class="memproto">2.00.00.78 </div>
+
+<div class="memdoc">
+<ul>
+  <li>See the
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_MigrationGuide">
+    SysLink Migration Guide</a> for new features in this initial SysLink
+    release
+  </li>
+  <br />
+
+</ul>
+</div>
+</div>
+
+<br />
+
+<hr>
+<h2><a name="Upgrade_Info">Upgrade Information</a></h2>
+<p>
+<b>This SysLink release is not suitable for BIOS 5-based DVSDKs.
+DVSDK users should continue to use the BIOS 5-based DSP Link 1.x
+releases.</b>
+</p>
+<p>
+The SysLink packages are available in the "packages/"
+subdirectory of the product.  If you have a previous release of the
+SysLink product, you can install this release next to it, and
+modify your build scripts/makefiles to use this newer release.</p>
+<h2><font color="red">Compatibility Breaks!</font></h2>
+<ul>
+  <li>SysLink 2.10.00.12 requires system integrators to update
+  the following dependencies:
+    <ul>
+      <li>XDC Tools 3.23.00.32 (or compatible)</li>
+      <li>SYS/BIOS 6.33.00.19 (or compatible)</li>
+<!-- not a break from 2.00
+      <li>IPC 1.23.01.26 (or compatible)</li>
+-->
+    </ul>
+  </li>
+  <li>The RTOS (BIOS) FrameQ library was reimplemented in Classic C,
+  and FrameQ users may require some changes.  <a
+  href="http://processors.wiki.ti.com/index.php/Reimplementing_FrameQ_in_Classic_C">See
+  this article for more details</a>.
+  </li>
+</ul>
+
+<p>
+Note, if you're upgrading from a release earlier than SysLink 2.00, be
+sure to review the <b>Upgrade</b> section for each of the releases between
+your current release and this one.  Previous release notes are
+available in the relnotes_archive directory.
+</p>
+
+
+<hr>
+<h2><a name="Device_Support">Device Support</a></h2>
+
+<p>
+This release supports the following devices:
+<ul>
+  <li>OMAP3530 EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP)</li>
+    </ul>
+  </li>
+  <li>OMAP-L138 EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (ARM 9)
+        and SYS/BIOS (DSP)</li>
+    </ul>
+  </li>
+  <li>TI816X EVM
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+  <li>TI814X EVM
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running QNX (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running Android (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running SYS/BIOS on all cores
+        (A8, DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+</ul>
+
+</p>
+
+
+<hr>
+<h2><a name="Validation">Validation</a></h2>
+<p>
+This release was built and validated against using the following software
+components:
+</p>
+
+<ul>
+  <li>XDCtools <b>3.23.00.32</b></li>
+  <li>SYS/BIOS <b>6.33.00.19</b></li>
+  <li>IPC <b>1.23.01.26</b></li>
+<!-- TODO - autogenerate these -->
+  <li>TI816X PSP <b>04.00.00.12</b></li>
+  <li>TI814X PSP <b>04.01.00.05.patch1</b></li>
+  <li>OMAP3 PSP <b>03.00.00.05</b></li>
+  <li>OMAP-L138 PSP <b>03.21.00.04</b></li>
+  <li>toolchains:
+    <ul>
+      <li>Linux GCC - <b>CodeSourcery 2009q1-203</b></li>
+      <li>ti.targets.arm.elf.A8F - <b>4.9.0</b></li>
+      <li>ti.targets.arm.elf.M3 - <b>4.9.0</b></li>
+      <li>ti.targets.elf.C64P - <b>7.2.2</b></li>
+      <li>ti.targets.C64P - <b>7.0.0</b></li>
+      <li>ti.targets.elf.C674 - <b>7.2.2</b></li>
+      <li>ti.targets.C674 - <b>7.0.0</b></li>
+    </ul>
+  </li>
+</ul>
+
+<p>
+This release was validated using the following hardware platforms:
+</p>
+
+<ul>
+  <li>OMAP3530 EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP)</li>
+    </ul>
+  </li>
+  <li>OMAP-L138 EVM:
+    <ul>
+      <li>multiprocessor configuration, running Linux (ARM 9)
+        and SYS/BIOS (DSP)</li>
+    </ul>
+  </li>
+  <li>TI816X EVM
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+  <li>TI814X EVM
+    <ul>
+      <li>multiprocessor configuration, running Linux (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running QNX (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running Android (A8)
+        and SYS/BIOS (DSP, VPSS-M3, VIDEO-M3)</li>
+      <li>multiprocessor configuration, running SYS/BIOS on all cores
+        (A8, DSP, VPSS-M3, VIDEO-M3)</li>
+    </ul>
+  </li>
+</ul>
+
+
+<hr>
+<h2><a name="Known_Issues">Known Issues</a></h2>
+<p>
+Consult the <a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&queryID=34483205&entityDefName=IncidentReport&username=readonly&password=readonly">SDOWP database</a> for open issues.
+</p>
+<p>
+<ul>
+   <li>The QNX samples sometimes fail to run back to back.  We suspect
+     an issue with incomplete shutdown or maybe some parts of the environment
+     aren't initialized correctly and incorrectly rely on board startup
+     values.
+   </li>
+   <li>The QNX <i>release</i> samples fail when using <i>dynamic</i>
+     libraries.
+   </li>
+   <li>The Android notify sample fails - seems to hang when starting the
+     slave.
+   </li>
+   <li>Kernel mode example apps are deprecated and not supported in this
+     release.  They are planned to be removed in a future release.
+   </li>
+</ul>
+</p>
+
+<hr>
+<h2><a name="Version">Version Information</a></h2>
+<p>
+This product's version follows a version format, <b>M.mm.pp.bb</b>,
+where <b>M</b> is a single digit Major number, <b>mm</b> is 2 digit
+minor number, <b>pp</b> is a 2 digit patch number, and <b>b</b> is an
+unrestricted set of digits used as an incrementing build counter.
+</p>
+
+<p>
+To support multiple side-by-side installations of the product, the
+product version is encoded in the top level directory,
+ex. <b>syslink_2_10_00_12</b>.
+</p>
+
+<p>
+Subsequent releases of patch upgrades will be identified by the patch
+number, ex. SysLink 2.10.01.XX with directory <b>syslink_2_10_01_XX</b>.
+Typically, these patches only include critical bug fixes.
+</p>
+
+<hr>
+<h2><a name="Support">Technical Support</a></h2>
+<p>For technical support, contact <a href="mailto:softwaresupport@ti.com">softwaresupport@ti.com</a></p>
+
+<p>
+Check the following web site for updates: <a href="http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/index.html">http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/index.html</a>
+</p>
+
+<hr>
+<p>
+Last updated: November 24, 2011
+</p>
+</body>
+</html>

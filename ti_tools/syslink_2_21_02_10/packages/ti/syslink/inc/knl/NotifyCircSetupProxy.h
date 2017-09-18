@@ -1,0 +1,144 @@
+/** 
+ *  @file   NotifyCircSetupProxy.h
+ *
+ *  @brief      Proxy to connect NotifyCirc setup to device specific
+ *              implementation
+ *
+ *
+ */
+/* 
+ *  ============================================================================
+ *
+ *  Copyright (c) 2008-2012, Texas Instruments Incorporated
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *  
+ *  *  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *  
+ *  *  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *  
+ *  *  Neither the name of Texas Instruments Incorporated nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *  
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ *  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *  Contact information for paper mail:
+ *  Texas Instruments
+ *  Post Office Box 655303
+ *  Dallas, Texas 75265
+ *  Contact information: 
+ *  http://www-k.ext.ti.com/sc/technical-support/product-information-centers.htm?
+ *  DCMP=TIHomeTracking&HQS=Other+OT+home_d_contact
+ *  ============================================================================
+ *  
+ */
+
+
+
+
+#if !defined (_NOTIFYCIRCSETUPPROXY_H_0x5f84)
+#define _NOTIFYCIRCSETUPPROXY_H_0x5f84
+
+
+#if defined (__cplusplus)
+extern "C" {
+#endif /* defined (__cplusplus) */
+
+
+/* =============================================================================
+ *  Macros and types
+ * =============================================================================
+ */
+
+
+/* =============================================================================
+ *  APIs
+ * =============================================================================
+ */
+#if defined (SYSLINK_PLATFORM_OMAPL1XX)
+/* Function that will be called in Notify_attach */
+extern Int NotifyCircSetupOmapl1xx_attach (UInt16 procId, Ptr sharedAddr);
+#define Notify_SetupProxy_attach(procId, sharedAddr) NotifyCircSetupOmapl1xx_attach(procId, sharedAddr)
+
+/* Function that will be called in Notify_detach */
+extern Int NotifyCircSetupOmapl1xx_detach (UInt16 procId);
+#define Notify_SetupProxy_detach NotifyCircSetupOmapl1xx_detach
+
+/* Shared Memory Required for Notify setup */
+extern SizeT NotifyCircSetupOmapl1xx_sharedMemReq (UInt16 procId, Ptr sharedAddr);
+#define Notify_SetupProxy_sharedMemReq(procId, sharedAddr) NotifyCircSetupOmapl1xx_sharedMemReq(procId, sharedAddr)
+
+/* Is interrupt line available? */
+extern Bool NotifyCircSetupOmapl1xx_intLineAvailable(UInt16 remoteProcId);
+#define Notify_SetupProxy_intLineAvailable(remoteProcId) NotifyCircSetupOmapl1xx_intLineAvailable(remoteProcId)
+
+/* numIntLines? */
+extern UInt16 NotifyCircSetupOmapl1xx_numIntLines(UInt16 remoteProcId);
+#define Notify_SetupProxy_numIntLines(remoteProcId) NotifyCircSetupOmapl1xx_numIntLines(remoteProcId)
+
+#elif defined (SYSLINK_PLATFORM_OMAP3530)
+/* Function that will be called in Notify_start */
+extern Int NotifyCircSetupOmap3530_attach (UInt16 procId, Ptr sharedAddr);
+#define Notify_SetupProxy_attach(procId, sharedAddr) NotifyCircSetupOmap3530_attach(procId, sharedAddr)
+
+/* Function that will be called in Notify_stop */
+extern Int NotifyCircSetupOmap3530_detach (UInt16 procId);
+#define Notify_SetupProxy_detach NotifyCircSetupOmap3530_detach
+
+/* Shared Memory Required for Notify setup */
+extern SizeT NotifyCircSetupOmap3530_sharedMemReq (UInt16 procId, Ptr sharedAddr);
+#define Notify_SetupProxy_sharedMemReq(procId, sharedAddr) NotifyCircSetupOmap3530_sharedMemReq(procId, sharedAddr)
+
+/* Is interrupt line available? */
+extern Bool NotifyCircSetupOmap3530_intLineAvailable(UInt16 remoteProcId);
+#define Notify_SetupProxy_intLineAvailable(remoteProcId) NotifyCircSetupOmap3530_intLineAvailable(remoteProcId)
+
+/* numIntLines? */
+extern UInt16 NotifyCircSetupOmap3530_numIntLines(UInt16 remoteProcId);
+#define Notify_SetupProxy_numIntLines(remoteProcId) NotifyCircSetupOmap3530_numIntLines(remoteProcId)
+
+#elif defined (SYSLINK_PLATFORM_TI81XX)
+extern Int NotifyCircSetupDm8168_attach (UInt16 procId, Ptr sharedAddr);
+#define Notify_SetupProxy_attach(procId, sharedAddr) NotifyCircSetupDm8168_attach(procId, sharedAddr)
+
+/* Function that will be called in Notify_stop */
+extern Int NotifyCircSetupDm8168_detach (UInt16 procId);
+#define Notify_SetupProxy_detach NotifyCircSetupDm8168_detach
+
+/* Shared Memory Required for Notify setup */
+extern SizeT NotifyCircSetupDm8168_sharedMemReq (UInt16 procId, Ptr sharedAddr);
+#define Notify_SetupProxy_sharedMemReq(procId, sharedAddr) NotifyCircSetupDm8168_sharedMemReq(procId, sharedAddr)
+
+/* Is interrupt line available? */
+extern Bool NotifyCircSetupDm8168_intLineAvailable(UInt16 remoteProcId);
+#define Notify_SetupProxy_intLineAvailable(remoteProcId) NotifyCircSetupDm8168_intLineAvailable(remoteProcId)
+
+/* numIntLines? */
+extern UInt16 NotifyCircSetupDm8168_numIntLines(UInt16 remoteProcId);
+#define Notify_SetupProxy_numIntLines(remoteProcId) NotifyCircSetupDm8168_numIntLines(remoteProcId)
+
+#else
+#error Unknown Platform
+#endif
+
+#if defined (__cplusplus)
+}
+#endif /* defined (__cplusplus) */
+
+
+#endif  /* !defined (_NOTIFYCIRCSETUPPROXY_H_0x5f84) */

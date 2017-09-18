@@ -1,0 +1,14 @@
+Package: libdrm-dev
+Version: 1:2.4.23-r7.0.6
+Description: Version 2.4.23-r7.0 of package libdrm
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT
+Architecture: armv7a
+OE: libdrm
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libdrm2 (= 1:2.4.23-r7.0.6), libdrm2, libkms1
+Recommends: libpthread-stubs-dev, libcairo-dev, libc6-dev, libdrm-dev, libdrm-kms-dev
+Source: http://dri.freedesktop.org/libdrm/libdrm-2.4.23.tar.bz2 file://glamo.patch

@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" href="$ires_8h.html" title="IRES Interface Definitions &#45; Allows algorithms to request and receive handles representing private lo..." alt="" coords="366,84,417,108" />
+<area shape="rect" href="$ires__hdvicp2_8h.html" title="IRES PROTOCOL HDVICP2 Interface Definitions &#45; Allows algorithms to request and receive handles repres..." alt="" coords="138,158,237,182" />
+<area shape="rect" href="$iresman_8h.html" title="Device specific Resource Manager Interface Definitions IRESMAN &#45; Interface that needs to be implement..." alt="" coords="445,158,517,182" />
+<area shape="rect" href="$ires__tiledmemory_8h.html" title="IRES PROTOCOL TILEDMEMORY Interface Definitions (Beta) &#45; Allows algorithms to request and receive han..." alt="" coords="541,158,666,182" />
+<area shape="rect" href="$ires__edma3_chan_8h.html" title="IRES EDMA3CHAN PROTOCOL Interface Definitions &#45; Allows algorithms to request and receive handles repr..." alt="" coords="41,84,161,108" />
+<area shape="rect" href="$ires__hdvicp_8h.html" title="IRES PROTOCOL HDVICP Interface Definitions &#45; Allows algorithms to request and receive handles represe..." alt="" coords="702,84,796,108" />
+<area shape="rect" href="$iresman__protocol_8h.html" title="IRES Resource Protocol Definitions (C64P) &#45; IRES Resource specific protocol interface to construct lo..." alt="" coords="556,84,678,108" />
+<area shape="rect" href="$ires__vicp_8h.html" title="IRES PROTOCOL VICP Interface Definitions &#45; Allows algorithms to request and receive handles represent..." alt="" coords="820,84,900,108" />
+<area shape="rect" href="$dskt2_8h.html" title="Provides services to support XDAIS algorithm instance objects." alt="" coords="362,158,421,182" />
+<area shape="rect" href="$edmamgr_8h.html" title="EdmaMgr Definitions &#45; Functional library for use with the EDMA3 DMA peripheral." alt="" coords="61,233,141,257" />
+<area shape="rect" href="$rman_8h.html" title="IRES generic Resource Manager RMAN Definitions &#45; Generic Resource Manager that manages resource alloc..." alt="" coords="216,233,274,257" />
+<area shape="rect" href="$iresman__edma3_chan_8h.html" title="IRESMAN EDMA3 specific Resource Manager Definitions &#45; EDMA3 resource manager implementation." alt="" coords="733,233,877,257" />
+<area shape="rect" href="$iresman__hdvicp_8h.html" title="IRESMAN." alt="" coords="424,233,538,257" />
+<area shape="rect" href="$iresman__tiledmemory_8h.html" title="IRESMAN." alt="" coords="562,233,709,257" />
+<area shape="rect" href="$iresman__vicp_8h.html" title="IRESMAN." alt="" coords="298,233,400,257" />
+<area shape="rect" href="$ecpy_8h.html" title="ECPY Definitions (C64P) &#45; Functional DMA Library for use with the EDMA3 DMA peripheral. Provides a comprehensive list of DMA operations an algorithm can perform on logical DMA channels it acquires through the IRES_EDMA3CHAN protocol." alt="" coords="8,158,64,182" />
+</map>

@@ -1,0 +1,13 @@
+Package: libffi5
+Version: 3.0.9-r0.6
+Description: Version 3.0.9-r0 of package libffi
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT
+Architecture: armv7a
+OE: libffi
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libgcc1 (>= 4.5.3), libc6 (>= 2.12.2)
+Source: ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz

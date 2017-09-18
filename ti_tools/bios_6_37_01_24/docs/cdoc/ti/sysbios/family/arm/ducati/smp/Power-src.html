@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.family.arm.ducati.smp.Power</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> * Copyright (c) 2012, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Power.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> *
+</span>    36    <span class="comment"> */</span>
+    37    
+    38    <span class=key>package</span> ti.sysbios.family.arm.ducati.smp;
+    39    
+    40    import ti.sysbios.knl.Task;
+    41    import ti.sysbios.knl.Semaphore;
+    42    import ti.sysbios.family.arm.ducati.GateSmp;
+    43    
+    44    <span class="xdoc">/*!
+</span>    45    <span class="xdoc"> *  ======== Power ========
+</span>    46    <span class="xdoc"> *  Power support for Ducati on OMAP4430.
+</span>    47    <span class="xdoc"> */</span>
+    48    <span class=key>module</span> Power
+    49    {
+    50        <span class="xdoc">/*! Suspend function hook. */</span>
+    51        <span class=key>typedef</span> Void (*SuspendFuncHookPtr)();
+    52    
+    53        <span class="xdoc">/*! Suspend arguments structure. */</span>
+    54        <span class=key>struct</span> SuspendArgs {
+    55            Bool pmMasterCore;     <span class="xdoc">/*! Master core for suspend/resume? */</span>
+    56            Bool rendezvousResume; <span class="xdoc">/*! Rendezvous before resume? */</span>
+    57            Int dmaChannel;        <span class="xdoc">/*! SDMA channel for L2 RAM save; -1=CPU copy */</span>
+    58            UInt intMask31_0;     <span class="xdoc">/*! Mask of interrupts (31-0) able to wake WFI */</span>
+    59            UInt intMask63_32;    <span class="xdoc">/*! Mask of interrupts (63-32) able to wake WFI */</span>
+    60            UInt intMask79_64;    <span class="xdoc">/*! Mask of interrupts (79-64) able to wake WFI */</span>
+    61        };
+    62    
+    63        <span class="xdoc">/*! Physical address of L2 RAM */</span>
+    64        <span class=key>const</span> Ptr L2RAM = 0x55020000;
+    65    
+    66        <span class="xdoc">/*! Base address of SDMA registers */</span>
+    67        <span class=key>config</span> Ptr sdmaRegs = 0x4A056000;
+    68    
+    69        <span class="xdoc">/*! Idle the CPUs when threads blocked waiting for interrupts? */</span>
+    70        <span class=key>config</span> Bool idle = <span class=key>false</span>;
+    71    
+    72        <span class="xdoc">/*! Segment to load Power's shared reset code and data */</span>
+    73        <span class=key>metaonly</span> <span class=key>config</span> String loadSegment = <span class="string">"EXT_RAM"</span>;
+    74    
+    75        <span class="xdoc">/*! 
+</span>    76    <span class="xdoc">     *  Pre-suspend function hooks.  Called on Core 0 (only), before beginning 
+</span>    77    <span class="xdoc">     *  context save.
+</span>    78    <span class="xdoc">     *
+</span>    79    <span class="xdoc">     *  To configure a function to run as Pre suspend hook, add a statement
+</span>    80    <span class="xdoc">     *  like the following to the application configuration script:
+</span>    81    <span class="xdoc">     * 
+</span>    82    <span class="xdoc">     *  <b>@p(code)</b>
+</span>    83    <span class="xdoc">     *  Power.preSuspendHooks.$add("&amp;myHook");
+</span>    84    <span class="xdoc">     *  <b>@p</b>
+</span>    85    <span class="xdoc">     *
+</span>    86    <span class="xdoc">     *  Multiple hook functions can be added following this same pattern.
+</span>    87    <span class="xdoc">     */</span>
+    88        <span class=key>config</span> SuspendFuncHookPtr preSuspendHooks[<span class=key>length</span>] = [];
+    89    
+    90        <span class="xdoc">/*! 
+</span>    91    <span class="xdoc">     *  Post-suspend function hooks.  Called on Core 0 (only), after context
+</span>    92    <span class="xdoc">     *  restore, immediately before returning from suspend.
+</span>    93    <span class="xdoc">     *
+</span>    94    <span class="xdoc">     *  To configure a function to run as Post suspend hook, add a statement
+</span>    95    <span class="xdoc">     *  like the following to the application configuration script:
+</span>    96    <span class="xdoc">     * 
+</span>    97    <span class="xdoc">     *  <b>@p(code)</b>
+</span>    98    <span class="xdoc">     *  Power.postSuspendHooks.$add("&amp;myHook");
+</span>    99    <span class="xdoc">     *  <b>@p</b>
+</span>   100    <span class="xdoc">     *
+</span>   101    <span class="xdoc">     *  Multiple hook functions can be added following this same pattern.
+</span>   102    <span class="xdoc">     */</span>
+   103        <span class=key>config</span> SuspendFuncHookPtr postSuspendHooks[<span class=key>length</span>] = [];
+   104    
+   105        <span class="xdoc">/*!
+</span>   106    <span class="xdoc">     *  ======== idleCPU ========
+</span>   107    <span class="xdoc">     *  Function used to automatically idle the CPU in the Idle loop.
+</span>   108    <span class="xdoc">     *
+</span>   109    <span class="xdoc">     *  When the 'idle' configuration parameter is set, this function will
+</span>   110    <span class="xdoc">     *  be added to the list of Idle loop functions.  When called from the
+</span>   111    <span class="xdoc">     *  Idle loop, it will invoke the wait for interrupt (WFI) instruction,
+</span>   112    <span class="xdoc">     *  to idle the CPU until the next interrupt occurs.
+</span>   113    <span class="xdoc">     */</span>
+   114        @DirectCall
+   115        Void idleCPU();
+   116    
+   117        <span class="xdoc">/*!
+</span>   118    <span class="xdoc">     *  ======== suspend ========
+</span>   119    <span class="xdoc">     *  Function used for suspend/resume of the M3 cores.
+</span>   120    <span class="xdoc">     *
+</span>   121    <span class="xdoc">     *  Precondition and usage constraints: 
+</span>   122    <span class="xdoc">     *   
+</span>   123    <span class="xdoc">     *  1) Before this function is called the application must disable all 
+</span>   124    <span class="xdoc">     *     interrupts that are not desired to wake the CPU from WFI while 
+</span>   125    <span class="xdoc">     *     waiting for the core domain to go off.  
+</span>   126    <span class="xdoc">     *
+</span>   127    <span class="xdoc">     *  2) For those interrupts that are desired to wake the CPU from WFI (for
+</span>   128    <span class="xdoc">     *     example, the mailbox interrupt), these interrupts cannot be generated
+</span>   129    <span class="xdoc">     *     until the Power_suspend API has reached the point of executing WFI.
+</span>   130    <span class="xdoc">     *     If the interrupts happen early, while this API is saving context,
+</span>   131    <span class="xdoc">     *     the resulting context may be stale, and the application may not 
+</span>   132    <span class="xdoc">     *     resume correctly.  Two global flags (one for each M3 core) are 
+</span>   133    <span class="xdoc">     *     assert immediately before invoking WFI; the wakeup interrupts 
+</span>   134    <span class="xdoc">     *     should not be asserted until these flags are asserted (non-zero):
+</span>   135    <span class="xdoc">     *          ti_sysbios_family_arm_ducati_smp_readyIdleCore0
+</span>   136    <span class="xdoc">     *          ti_sysbios_family_arm_ducati_smp_readyIdleCore1
+</span>   137    <span class="xdoc">     */</span>
+   138        @DirectCall
+   139        UInt suspend(SuspendArgs * args);
+   140    
+   141    <span class=key>internal</span>:
+   142    
+   143        <span class=key>struct</span> Struct8 {
+   144            UInt32 a0;
+   145            UInt32 a1;
+   146            UInt32 a2;
+   147            UInt32 a3;
+   148            UInt32 a4;
+   149            UInt32 a5;
+   150            UInt32 a6;
+   151            UInt32 a7;
+   152        }
+   153    
+   154        <span class=key>struct</span> Struct10 {
+   155            UInt32 a0;
+   156            UInt32 a1;
+   157            UInt32 a2;
+   158            UInt32 a3;
+   159            UInt32 a4;
+   160            UInt32 a5;
+   161            UInt32 a6;
+   162            UInt32 a7;
+   163            UInt32 a8;
+   164            UInt32 a9;
+   165        }
+   166    
+   167        <span class=key>struct</span> TablePIDS {
+   168            UInt32 PID1;
+   169            UInt32 PID2;
+   170        }
+   171    
+   172        <span class=key>struct</span> IPRxRegs {
+   173            UInt32 IPR0;
+   174            UInt32 IPR1;
+   175            UInt32 IPR2;
+   176            UInt32 IPR3;
+   177            UInt32 IPR4;
+   178            UInt32 IPR5;
+   179            UInt32 IPR6;
+   180            UInt32 IPR7;
+   181            UInt32 IPR8;
+   182            UInt32 IPR9;
+   183            UInt32 IPR10;
+   184            UInt32 IPR11;
+   185            UInt32 IPR12;
+   186            UInt32 IPR13;
+   187            UInt32 IPR14;
+   188            UInt32 IPR15;
+   189        }
+   190    
+   191        <span class=key>struct</span> CfgRegs {
+   192            UInt32 VTOR;
+   193            UInt32 AIRCR;
+   194            UInt32 SCR;
+   195            UInt32 CCR;
+   196            UInt32 SHPR0;
+   197            UInt32 SHPR4;
+   198            UInt32 SHPR8;
+   199            UInt32 SHCSR;
+   200        }
+   201    
+   202        <span class=key>struct</span> NVICContext {
+   203            UInt32 AUXCTRL;
+   204            UInt32 STCSR;
+   205            UInt32 STRVR;
+   206            UInt32 ISER0;
+   207            UInt32 ISER1;
+   208            UInt32 SCR;
+   209            IPRxRegs iprRegs;
+   210            CfgRegs cfgRegs;
+   211        }
+   212    
+   213        <span class=key>struct</span> ContextAMMU {
+   214            UInt32 largeAddr[4];
+   215            UInt32 largeXlteAddr[4];
+   216            UInt32 largePolicy[4];
+   217            UInt32 medAddr[2];
+   218            UInt32 medXlteAddr[2];
+   219            UInt32 medPolicy[2];
+   220            Struct10 smallAddr;
+   221            Struct10 smallXlteAddr;
+   222            Struct10 smallPolicy;
+   223            UInt32 mmuConfig;
+   224        }
+   225    
+   226        <span class=key>struct</span> ContextCTM {
+   227            UInt32 CNTL;
+   228            UInt32 STMCNTL;
+   229            UInt32 STMMSTID;
+   230            UInt32 STMINTVL;
+   231            UInt32 STMSEL0;
+   232            UInt32 TINTVLR0;
+   233            UInt32 TINTVLR1;
+   234            UInt32 GNBL0;
+   235            Struct8 control;
+   236        }
+   237    
+   238        <span class=key>struct</span> CpuRegs {
+   239            UInt32 R4;
+   240            UInt32 R5;
+   241            UInt32 R6;
+   242            UInt32 R7;
+   243            UInt32 R8;
+   244            UInt32 R9;
+   245            UInt32 R10;
+   246            UInt32 R11;
+   247            UInt32 LR;
+   248            UInt32 CONTROL;
+   249            UInt32 BASEPRI;
+   250            UInt32 MSP;
+   251            UInt32 pSP;
+   252        }
+   253    
+   254        <span class=key>struct</span> PrivateContext {
+   255            CpuRegs privateCPU;
+   256            NVICContext privateNVIC;
+   257            TablePIDS privatePIDS;
+   258        } 
+   259    
+   260        <span class=key>struct</span> UnicacheConfig {
+   261            UInt32 L1_CONFIG;
+   262            UInt32 L1_OCP;
+   263        }
+   264    
+   265        <span class=key>struct</span> SubsystemContext {
+   266            UInt32 WUGEN_MEVT0;
+   267            UInt32 WUGEN_MEVT1;
+   268            UnicacheConfig cacheConfig;
+   269            ContextAMMU ammuConfig;
+   270            ContextCTM ctmConfig;
+   271        }
+   272    
+   273        <span class=key>struct</span> DucatiContext {
+   274            PrivateContext masterContext;
+   275            PrivateContext slaveContext;
+   276            SubsystemContext ssContext;
+   277        }
+   278    
+   279        <span class=key>struct</span> SdmaRegs {
+   280            volatile UInt32 CCR;
+   281            UInt32 CLNK;
+   282            UInt32 CICR;
+   283            UInt32 CSR;
+   284            UInt32 CSDP;
+   285            UInt32 CEN;
+   286            UInt32 CFN;
+   287            UInt32 CSSA;
+   288            UInt32 CDSA;
+   289            UInt32 CSEI;
+   290            UInt32 CSFI;
+   291            UInt32 CDEI;
+   292            UInt32 CDFI;
+   293        }
+   294    
+   295        <span class=key>config</span> Bool enable = <span class=key>true</span>;
+   296    
+   297        <span class=key>config</span> GateSmp.Handle gate;
+   298    
+   299        <span class=key>config</span> Task.Handle taskCore0;
+   300        
+   301        <span class=key>config</span> Task.Handle taskCore1;
+   302    
+   303        <span class=key>config</span> Semaphore.Handle semCore0;
+   304    
+   305        <span class=key>config</span> Semaphore.Handle semCore1;
+   306    
+   307        <span class="xdoc">/*!
+</span>   308    <span class="xdoc">     *  ======== taskFxnCore0 ========
+</span>   309    <span class="xdoc">     *  Task function that will invoke Power_doSuspend() on Core 0.
+</span>   310    <span class="xdoc">     */</span>
+   311        @DirectCall
+   312        Void taskFxnCore0(UArg arg1, UArg arg2);
+   313    
+   314        <span class="xdoc">/*!
+</span>   315    <span class="xdoc">     *  ======== taskFxnCore1 ========
+</span>   316    <span class="xdoc">     *  Task function that will invoke Power_doSuspend() on Core 1.
+</span>   317    <span class="xdoc">     */</span>
+   318        @DirectCall
+   319        Void taskFxnCore1(UArg arg1, UArg arg2);
+   320    
+   321        <span class="xdoc">/*!
+</span>   322    <span class="xdoc">     *  ======== doSuspend ========
+</span>   323    <span class="xdoc">     *  Function to "do" the actual suspend/resume.
+</span>   324    <span class="xdoc">     */</span>
+   325        @DirectCall
+   326        UInt doSuspend(SuspendArgs * args);
+   327    
+   328        <span class="xdoc">/*!
+</span>   329    <span class="xdoc">     *  ======== saveCpuRegs ========
+</span>   330    <span class="xdoc">     *  Function used to save parent-preserved CPU register context, assert
+</span>   331    <span class="xdoc">     *  ready to idle flag, and invoke WFI.
+</span>   332    <span class="xdoc">     */</span>
+   333        UInt32 saveCpuRegs(Ptr saveAddress, Ptr readyFlag);
+   334    
+   335        <span class="comment">/*
+</span>   336    <span class="comment">     *  ======== Module_State ========
+</span>   337    <span class="comment">     */</span>
+   338        <span class=key>struct</span> Module_State {
+   339            UInt dmaChan0;
+   340            UInt resetFlag0;
+   341            UInt resetFlag1;
+   342            UInt intMask31_0;
+   343            UInt intMask63_32;
+   344            UInt intMask79_64;
+   345        }
+   346    }
+   347    
+</pre>
+</body></html>

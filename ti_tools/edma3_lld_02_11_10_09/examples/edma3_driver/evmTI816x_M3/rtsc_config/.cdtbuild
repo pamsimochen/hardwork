@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fileVersion 3.1.0?>
+
+<ManagedProjectBuildInfo>
+<project id="edma_drv_bios6_arm_ti816x_st_sample_configuration.com.ti.ccstudio.buildDefinitions.TMS470.ProjectType.331799526" name="ARM" projectType="com.ti.ccstudio.buildDefinitions.TMS470.ProjectType">
+<configuration artifactExtension="cmd" artifactName="configPkg/linker" description="" id="com.ti.ccstudio.buildDefinitions.TMS470.Default.1173147605" name="Debug" parent="com.ti.ccstudio.buildDefinitions.TMS470.Default">
+<toolChain id="com.ti.ccstudio.buildDefinitions.TMS470_4.9.exe.DebugToolchain.950889571" name="TI Code Generation Tools" superClass="com.ti.ccstudio.buildDefinitions.TMS470_4.9.exe.DebugToolchain" targetTool="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440">
+<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.1351575871" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=com.ti.ccstudio.deviceModel.TMS470.GenericCortexM3Device"/>
+<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
+<listOptionValue builtIn="false" value="OUTPUT_FORMAT=ELF"/>
+<listOptionValue builtIn="false" value="CCS_MBS_VERSION=4.2.4"/>
+<listOptionValue builtIn="false" value="XDC_VERSION=3.22.1.21"/>
+<listOptionValue builtIn="false" value="RTSC_PRODUCTS=com.ti.rtsc.SYSBIOS:6.32.4.49;"/>
+<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=libc.a"/>
+<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE="/>
+<listOptionValue builtIn="false" value="IS_ELF=true"/>
+<listOptionValue builtIn="false" value="PROJECT_KIND=org.eclipse.rtsc.xdctools.buildDefinitions.XDC.ProjectKind_Configuration"/>
+<listOptionValue builtIn="false" value="IS_ASSEMBLY_ONLY=false"/>
+<listOptionValue builtIn="false" value="OUTPUT_TYPE=rtscConfiguration"/>
+</option>
+<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.704360678" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="4.9.0" valueType="string"/>
+<tool id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool">
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.XDC_PATH.913996724" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.XDC_PATH" valueType="includePath">
+<listOptionValue builtIn="false" value="&quot;${BIOS_CG_ROOT}/packages&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${EDMA3LLD_BIOS6_INSTALLDIR}/packages&quot;"/>
+</option>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.OUTPUT_DIR.1098719414" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.OUTPUT_DIR" value="&quot;configPkg&quot;" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.TARGET.203464340" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.TARGET" value="ti.targets.arm.elf.M3" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM.21964902" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM" value="ti.platforms.evmTI816X" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.BUILD_PROFILE.253838281" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.BUILD_PROFILE" value="debug" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.CODEGEN_TOOL_DIR.801201832" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.CODEGEN_TOOL_DIR" value="&quot;${CG_TOOL_ROOT}&quot;" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM_RAW.1183779725" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM_RAW" value="ti.platforms.evmTI816X" valueType="string"/>
+</tool>
+<macros expandEnvironmentMacros="true"/>
+</toolChain>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.TMS470.Default.1173147605./edma_drv_bios6_arm_ti816x_st_sample_configuration/AmmuCfg.cfg" name="AmmuCfg.cfg" rcbsApplicability="disable" resourcePath="/edma_drv_bios6_arm_ti816x_st_sample_configuration/AmmuCfg.cfg" toolsToInvoke="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440./edma_drv_bios6_arm_ti816x_st_sample_configuration/AmmuCfg.cfg">
+<tool id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440./edma_drv_bios6_arm_ti816x_st_sample_configuration/AmmuCfg.cfg" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.TMS470.Default.1173147605./edma_drv_bios6_arm_ti816x_st_sample_configuration/edma3_drv_bios6_ti816x_m3video_st_sample.cfg" name="edma3_drv_bios6_ti816x_m3video_st_sample.cfg" rcbsApplicability="disable" resourcePath="/edma_drv_bios6_arm_ti816x_st_sample_configuration/edma3_drv_bios6_ti816x_m3video_st_sample.cfg" toolsToInvoke="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440./edma_drv_bios6_arm_ti816x_st_sample_configuration/edma3_drv_bios6_ti816x_m3video_st_sample.cfg">
+<tool id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440./edma_drv_bios6_arm_ti816x_st_sample_configuration/edma3_drv_bios6_ti816x_m3video_st_sample.cfg" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440"/>
+</resourceConfiguration>
+</configuration>
+<configuration artifactExtension="cmd" artifactName="edma_drv_bios6_arm_ti816x_st_sample_configuration" description="" id="com.ti.ccstudio.buildDefinitions.TMS470.Default.502815987" name="Release" parent="com.ti.ccstudio.buildDefinitions.TMS470.Default">
+<toolChain id="com.ti.ccstudio.buildDefinitions.TMS470.Default.ToolchainPlaceholder.480257511" superClass="com.ti.ccstudio.buildDefinitions.TMS470_4.9.exe.DebugToolchain" targetTool="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.622683440">
+<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.210142033" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=com.ti.ccstudio.deviceModel.TMS470.GenericCortexM3Device"/>
+<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
+<listOptionValue builtIn="false" value="OUTPUT_FORMAT=ELF"/>
+<listOptionValue builtIn="false" value="CCS_MBS_VERSION=4.2.4"/>
+<listOptionValue builtIn="false" value="XDC_VERSION=3.22.1.21"/>
+<listOptionValue builtIn="false" value="RTSC_PRODUCTS=com.ti.rtsc.SYSBIOS:6.32.4.49;"/>
+<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=libc.a"/>
+<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE="/>
+<listOptionValue builtIn="false" value="IS_ELF=true"/>
+<listOptionValue builtIn="false" value="PROJECT_KIND=org.eclipse.rtsc.xdctools.buildDefinitions.XDC.ProjectKind_Configuration"/>
+<listOptionValue builtIn="false" value="IS_ASSEMBLY_ONLY=false"/>
+<listOptionValue builtIn="false" value="OUTPUT_TYPE=rtscConfiguration"/>
+</option>
+<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.1543301905" name="Code Generation tools version" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="4.9.0" valueType="string"/>
+<tool id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.2036155923" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool">
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.XDC_PATH.36302609" name="RTSC package repositories (--xdcpath)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.XDC_PATH" valueType="includePath">
+<listOptionValue builtIn="false" value="&quot;${BIOS_CG_ROOT}/packages&quot;"/>
+</option>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.OUTPUT_DIR.428962496" name="Output directory (-o)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.OUTPUT_DIR" value="&quot;configPkg&quot;" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.TARGET.1352970868" name="RTSC target (-t)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.TARGET" value="ti.targets.arm.elf.M3" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM.572836225" name="RTSC platform (-p)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM" value="ti.platforms.evmTI816X" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.BUILD_PROFILE.396802997" name="Build profile (-r)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.BUILD_PROFILE" value="release" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.CODEGEN_TOOL_DIR.1811155145" name="Code generation tool directory (-c)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.CODEGEN_TOOL_DIR" value="&quot;${CG_TOOL_ROOT}&quot;" valueType="string"/>
+<option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM_RAW.64157889" name="RTSC platform (-p)" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.PLATFORM_RAW" value="ti.platforms.evmTI816X" valueType="string"/>
+</tool>
+<macros expandEnvironmentMacros="true"/>
+</toolChain>
+</configuration>
+<macros/>
+</project>
+</ManagedProjectBuildInfo>

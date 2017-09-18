@@ -1,0 +1,373 @@
+/*
+ *  Copyright (c) 2008-2013, Texas Instruments Incorporated
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *  *  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *  *  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *  *  Neither the name of Texas Instruments Incorporated nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ *  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ *  ======== config.bld ========
+ *  SysLink Build configuration script
+ *  DO *not* edit this config file unless specifically instructed
+ */
+
+/* initialize local vars with those set in makefile (via XDCARGS) */
+var device;
+var buildDevices;
+var C64P_rootDir;
+var C64Pelf_rootDir;
+var C674_rootDir;
+var C674elf_rootDir;
+var M3elf_rootDir;
+var A8elf_rootDir;
+var ARM_rootDir;
+var slOptimize;
+
+for (var x = 0; x < arguments.length; x++) {
+    if (arguments[x].match(/^DEVICE=/)) {
+        device = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^SYSLINK_BUILD_OPTIMIZE=/)) {
+        slOptimize = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^CGT_C64P_DIR=/)) {
+        C64P_rootDir = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^CGT_C64P_ELF_DIR=/)) {
+        C64Pelf_rootDir = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^CGT_C674_DIR=/)) {
+        C674_rootDir = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^CGT_C674_ELF_DIR=/)) {
+        C674elf_rootDir = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^CGT_M3_ELF_DIR=/)) {
+        M3elf_rootDir = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^CGT_A8_ELF_DIR=/)) {
+        A8elf_rootDir = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^CGT_ARM_DIR=/)) {
+        ARM_rootDir = arguments[x].split("=")[1];
+    } else if(arguments[x].match(/^DEVICE_VARIANT=/)) {
+        buildDevices = arguments[x].split("=")[1];
+    }
+}
+
+/* preprocessor defines enabled for debug libraries */
+var debugDefs = " -DSYSLINK_BUILD_DEBUG -DSYSLINK_TRACE_ENABLE ";
+
+//********************* Setup for C64P target for COFF*************************
+if ((C64P_rootDir != undefined) && (C64P_rootDir != "")) {
+    var C64P_COFF = xdc.useModule('ti.targets.C64P');
+    C64P_COFF.rootDir = C64P_rootDir;
+    C64P_COFF.ccOpts.suffix += " -mi10 -mo --gcc -DSYSLINK_BUILD_RTOS ";
+
+    C64P_COFF.profiles["debug"].compileOpts.defs += debugDefs;
+
+    if (slOptimize == "1") {
+        C64P_COFF.ccOpts.suffix += " -DSYSLINK_BUILD_OPTIMIZE ";
+    }
+
+    C64P_COFF.platforms = [
+        "ti.platforms.evm3530:dsp"
+    ];
+
+    Build.targets.$add(C64P_COFF);
+}
+
+//********************* Setup for C64P target for ELF *************************
+if ((C64Pelf_rootDir != undefined) && (C64Pelf_rootDir != "")) {
+    var C64P_ELF = xdc.useModule('ti.targets.elf.C64P');
+    C64P_ELF.rootDir = C64Pelf_rootDir;
+    C64P_ELF.ccOpts.suffix += " -mi10 -mo --gcc -DSYSLINK_BUILD_RTOS ";
+
+    C64P_ELF.profiles["debug"].compileOpts.defs += debugDefs;
+
+    if (slOptimize == "1") {
+	C64P_ELF.ccOpts.suffix += " -DSYSLINK_BUILD_OPTIMIZE ";
+    }
+
+    C64P_ELF.platforms = [
+        "ti.platforms.evm3530:dsp",
+    ];
+    Build.targets.$add(C64P_ELF);
+}
+
+
+//********************* Setup for C674 target for COFF *************************
+if ((C674_rootDir != undefined) && (C674_rootDir != "")) {
+    var C674_COFF = xdc.useModule('ti.targets.C674');
+    C674_COFF.rootDir = C674_rootDir;
+    C674_COFF.ccOpts.suffix += " -mi10 -mo --gcc -DSYSLINK_BUILD_RTOS ";
+
+    C674_COFF.profiles["debug"].compileOpts.defs += debugDefs;
+
+    if (slOptimize == "1") {
+        C674_COFF.ccOpts.suffix += " -DSYSLINK_BUILD_OPTIMIZE ";
+    }
+
+    if (buildDevices == "OMAPL138") {
+        C674_COFF.platforms = [ "ti.platforms.evmOMAPL138" ];
+    }
+    else {
+        C674_COFF.platforms = [
+            "ti.platforms.evmDA830:dsp"
+        ];
+    }
+    Build.targets.$add(C674_COFF);
+}
+
+/* ti.targets.elf.C674 */
+if ((C674elf_rootDir != undefined) && (C674elf_rootDir != "")) {
+    var C674_ELF = xdc.useModule('ti.targets.elf.C674');
+    C674_ELF.rootDir = C674elf_rootDir;
+    C674_ELF.ccOpts.suffix += " -mi10 -mo --gcc -DSYSLINK_BUILD_RTOS ";
+
+    C674_ELF.profiles["debug"].compileOpts.defs += debugDefs;
+
+    if (slOptimize == "1") {
+        C674_ELF.ccOpts.suffix += " -DSYSLINK_BUILD_OPTIMIZE ";
+    }
+
+    if (buildDevices == "TI816X") {
+        C674_ELF.platforms = [
+            "ti.syslink.samples.rtos.platforms.ti816x.dsp",
+            "ti.platforms.evmTI816X"
+        ];
+    }
+    else if (buildDevices == "TI814X") {
+        C674_ELF.platforms = [
+            "ti.syslink.samples.rtos.platforms.ti814x.dsp",
+            "ti.platforms.evmTI814X"
+        ];
+    }
+    else if (buildDevices == "TI811X") {
+        C674_ELF.platforms = [
+            "ti.syslink.samples.rtos.platforms.ti811x.dsp",
+            "ti.platforms.evmTI811X"
+        ];
+    }
+    else if (buildDevices == "OMAPL138") {
+        C674_ELF.platforms = [ "ti.platforms.evmOMAPL138" ];
+    }
+    else {
+        C674_ELF.platforms = [
+            "ti.platforms.evmDA830:dsp"
+        ];
+    }
+
+    Build.targets.$add(C674_ELF);
+}
+
+/* gnu.targets.arm.GCArmv5T */
+if ((ARM_rootDir != undefined) && (ARM_rootDir != "")) {
+    var GCArmv5T = xdc.useModule('gnu.targets.arm.GCArmv5T');
+    GCArmv5T.rootDir = ARM_rootDir;
+    GCArmv5T.LONGNAME = "bin/arm-none-linux-gnueabi-gcc";
+    GCArmv5T.lnkOpts.suffix = GCArmv5T.lnkOpts.suffix.replace("-lstdc++","");
+    GCArmv5T.lnkOpts.suffix = "-lpthread -lrt " + GCArmv5T.lnkOpts.suffix;
+
+    if (buildDevices == "OMAP3530") {
+        GCArmv5T.platforms = [ "ti.platforms.evm3530" ];
+    }
+    else if (buildDevices == "TI816X") {
+        GCArmv5T.platforms = [ "ti.platforms.evmTI816X" ];
+    }
+    else if (buildDevices == "TI814X") {
+        GCArmv5T.platforms = [ "ti.platforms.evmTI814X" ];
+    }
+    else if (buildDevices == "OMAPL138") {
+        GCArmv5T.platforms = [ "ti.platforms.evmOMAPL138" ];
+    }
+
+    Build.targets.$add(GCArmv5T);
+}
+
+//********************* Setup for M3 target (for ELF)*************************
+if ((M3elf_rootDir != undefined) && (M3elf_rootDir != "")) {
+    var M3_ELF = xdc.useModule('ti.targets.arm.elf.M3');
+    M3_ELF.rootDir =  M3elf_rootDir;
+    M3_ELF.ccOpts.suffix += " -ms ";
+    M3_ELF.ccOpts.suffix += " -DOS_DSPBIOS ";
+
+    // if ti.sdo.tiler is on the XDCPATH, we can enable tiler support
+    try {
+	var tiler = xdc.getPackageRepository('ti.sdo.tiler');
+
+	/* if we got here, we found tiler, else it's null */
+	M3_ELF.ccOpts.suffix += " -DSYSLINK_USE_TILER ";
+    }
+    catch (e) {
+	/*
+	 * Non-fatal remark.  If you expected to find tiler(!), you can print 'e'
+	 * for more details, and may want to make this more fatal
+	 */
+//        print("Remark:  ti.sdo.tiler package not found." /* + e */);
+    };
+
+    M3_ELF.ccOpts.suffix += " --gcc -s -DSYSLINK_BUILD_RTOS";
+
+    M3_ELF.profiles["debug"].compileOpts.defs += debugDefs;
+
+    if (slOptimize == "1") {
+        M3_ELF.ccOpts.suffix += " -DSYSLINK_BUILD_OPTIMIZE ";
+    }
+
+    if (buildDevices == "TI816X") {
+        M3_ELF.platforms = [
+            "ti.syslink.samples.rtos.platforms.ti816x.videom3",
+            "ti.syslink.samples.rtos.platforms.ti816x.vpssm3",
+            "ti.platforms.evmTI816X"
+        ];
+    }
+    else if (buildDevices == "TI814X") {
+        M3_ELF.platforms = [
+            "ti.syslink.samples.rtos.platforms.ti814x.videom3",
+            "ti.syslink.samples.rtos.platforms.ti814x.vpssm3",
+            "ti.platforms.evmTI814X"
+         ];
+    }
+    else if (buildDevices == "TI813X") {
+        M3_ELF.platforms = [
+            "ti.syslink.samples.rtos.platforms.ti813x.videom3",
+            "ti.syslink.samples.rtos.platforms.ti813x.vpssm3",
+            "ti.platforms.evmTI813X"
+         ];
+    }
+    else if (buildDevices == "TI811X") {
+        M3_ELF.platforms = [
+            "ti.syslink.samples.rtos.platforms.ti811x.videom3",
+            "ti.syslink.samples.rtos.platforms.ti811x.vpssm3",
+            "ti.platforms.evmTI811X"
+         ];
+    }
+
+    Build.targets.$add(M3_ELF);
+}
+
+//********************* Setup for A8 target (for ELF)*************************
+
+
+if ((A8elf_rootDir != undefined) && (A8elf_rootDir != "")) {
+    var A8_ELF = xdc.useModule('ti.targets.arm.elf.A8F');
+    A8_ELF.rootDir =  A8elf_rootDir;
+    A8_ELF.ccOpts.suffix = " --gcc -s -DSYSLINK_BUILD_RTOS -ms ";
+    A8_ELF.ccOpts.suffix += " -DUSE_PROCMGR -DC60_TARGET -DARM_TARGET";
+    A8_ELF.ccOpts.suffix += " -DOS_DSPBIOS ";
+
+    A8_ELF.profiles["debug"].compileOpts.defs += debugDefs;
+
+    if (slOptimize == "1") {
+        A8_ELF.ccOpts.suffix += " -DSYSLINK_BUILD_OPTIMIZE ";
+    }
+
+    A8_ELF.lnkOpts.suffix += " --zero_init=on ";
+
+    A8_ELF.platforms = [
+          "ti.syslink.samples.rtos.platforms.ti814x.arm",
+           ];
+
+    Build.targets.$add(A8_ELF);
+}
+
+/* OMAP3530 DSP memory map */
+/*  memory map options for slave1 */
+Build.platformTable["ti.platforms.evm3530:dsp"] =
+{   externalMemoryMap: [
+        [ "DDR2", {
+            name:"DDR2",
+            base:0x87D00000,
+            len :0x0FDB00,
+            space :"code/data",
+            },
+        ],
+        [ "HOST_DSP_NOTIFYMEM", {
+            name:"HOST_DSP_NOTIFYMEM",
+            base:0x87DFDB00,
+            len :0x002500,
+            space :"code/data",
+            },
+        ],
+        [ "SR0", {
+            name:"SR0",
+            base:0x87E00000,
+            len :0x00100000,
+            space :"data",
+            },
+        ],
+        [ "SR1", {
+            name:"SR1",
+            base:0x87F00000,
+            len :0x00100000,
+            space :"data",
+            },
+        ],
+    ],
+    l1DMode:"32k",
+    l1PMode:"32k",
+    l2Mode:"32k",
+    dataMemory : "DDR2",
+    codeMemory : "DDR2",
+    stackMemory : "DDR2",
+};
+
+/* DA830 DSP memory map */
+/*  memory map options for slave1 */
+Build.platformTable["ti.platforms.evmDA830:dsp"] =
+{   customMemoryMap: [
+        [ "SDRAM", {
+            name:"SDRAM",
+            base:0xC3D00000,
+            len :0x100000,
+            space :"code/data",
+            },
+        ],
+        [ "SR0", {
+            name:"SR0",
+            base:0xC3E00000,
+            len :0x00100000,
+            space :"data",
+            },
+        ],
+        [ "SR1", {
+            name:"SR1",
+            base:0xC3F00000,
+            len :0x00100000,
+            space :"data",
+            },
+        ],
+    ],
+    l1DMode:"32k",
+    l1PMode:"32k",
+    l2Mode:"32k",
+    dataMemory : "SDRAM",
+    codeMemory : "SDRAM",
+    stackMemory : "SDRAM",
+};
+
+/* delete unwanted profiles */
+for (var t = 0; t < Build.targets.length; t++) {
+    for (var prof in Build.targets[t].profiles) {
+        if (!prof.match(/^debug$|^release$/)) {
+            delete Build.targets[t].profiles[prof];
+        }
+    }
+}

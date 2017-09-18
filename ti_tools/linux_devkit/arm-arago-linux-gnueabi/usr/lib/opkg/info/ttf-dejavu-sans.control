@@ -1,0 +1,14 @@
+Package: ttf-dejavu-sans
+Version: 2.23-r3.6
+Description: DejaVu font - TTF Edition
+Section: fonts
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: Bitstream Vera
+Architecture: all
+OE: ttf-dejavu
+Homepage: http://dejavu.sourceforge.net/wiki/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: ttf-dejavu-common
+Recommends: font-update-common
+Source: http://downloads.sourceforge.net/dejavu/dejavu-fonts-ttf-2.23.tar.bz2 file://30-dejavu-aliases.conf

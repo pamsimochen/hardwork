@@ -1,0 +1,4 @@
+..\Out\mpeg4vdec_ti_hosttestapp.out : ..\..\..\..\lib\mpeg4vdec_ti_host.lib 
+..\Out\mpeg4vdec_ti_hosttestapp.out : C:\hdvicp20_22\lib\ivahd_ti_api_vm3.lib 
+..\Out\mpeg4vdec_ti_hosttestapp.out : ..\..\..\..\client\Test\Src\fileio.lib 
+..\Out\mpeg4vdec_ti_hosttestapp.out : ..\..\..\..\client\Test\Src\tiler.lib 

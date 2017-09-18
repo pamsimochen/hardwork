@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>interface xdc.runtime.knl.IThreadSupport</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> *  Copyright (c) 2008 Texas Instruments. All rights reserved. 
+</span>     3    <span class="comment"> *  This program and the accompanying materials are made available under the 
+</span>     4    <span class="comment"> *  terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+</span>     5    <span class="comment"> *  v. 1.0 which accompanies this distribution. The Eclipse Public License is
+</span>     6    <span class="comment"> *  available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+</span>     7    <span class="comment"> *  Distribution License is available at 
+</span>     8    <span class="comment"> *  http://www.eclipse.org/org/documents/edl-v10.php.
+</span>     9    <span class="comment"> *
+</span>    10    <span class="comment"> *  Contributors:
+</span>    11    <span class="comment"> *      Texas Instruments - initial implementation
+</span>    12    <span class="comment"> * */</span>
+    13    <span class="comment">/*
+</span>    14    <span class="comment"> *  ======== IThreadSupport.xdc ========
+</span>    15    <span class="comment"> */</span>
+    16    
+    17    import xdc.runtime.Error;
+    18    
+    19    <span class="xdoc">/*!
+</span>    20    <span class="xdoc"> *  ======== IThreadSupport ========
+</span>    21    <span class="xdoc"> *  Interface for OS specific back-end.
+</span>    22    <span class="xdoc"> *
+</span>    23    <span class="xdoc"> *  The {<b>@link</b> xdc.runtime.knl} package contains modules that provide typical
+</span>    24    <span class="xdoc"> *  OS services. These xdc.runtime.knl modules require proxies to be
+</span>    25    <span class="xdoc"> *  bound to an OS specific delegate. This specifies the interface to 
+</span>    26    <span class="xdoc"> *  be implemented by the OS specific delegate for 
+</span>    27    <span class="xdoc"> *  {<b>@link</b> xdc.runtime.knl.Thread} module.
+</span>    28    <span class="xdoc"> *
+</span>    29    <span class="xdoc"> *  Refer to {<b>@link</b> xdc.runtime.knl.Thread} for more details on the APIs.
+</span>    30    <span class="xdoc"> */</span>
+    31    <span class=key>interface</span> IThreadSupport
+    32    {
+    33        <span class="xdoc">/*! Thread priorities which are mapped to OS specific value by Proxy */</span>
+    34        <span class=key>enum</span> Priority {
+    35        Priority_INVALID,
+    36            Priority_LOWEST,
+    37            Priority_BELOW_NORMAL,
+    38            Priority_NORMAL,
+    39            Priority_ABOVE_NORMAL,
+    40            Priority_HIGHEST
+    41        };
+    42    
+    43        <span class="xdoc">/*! Invalid OS priority value */</span>
+    44        <span class=key>const</span> Int INVALID_OS_PRIORITY = 0;
+    45    
+    46        <span class="xdoc">/*! 
+</span>    47    <span class="xdoc">     *  The error status for {<b>@link</b> #getPriority} when an error is captured in 
+</span>    48    <span class="xdoc">     *  the  Error.Block.
+</span>    49    <span class="xdoc">     */</span>
+    50        <span class=key>const</span> Int GETPRI_FAILED = -2;
+    51    
+    52        <span class="xdoc">/*! Status returned by {<b>@link</b> #compareOsPriorities} when an error occurs */</span>
+    53        <span class=key>enum</span> CompStatus {
+    54            CompStatus_ERROR = -2,
+    55        CompStatus_LOWER = -1,
+    56        CompStatus_EQUAL = 0,
+    57        CompStatus_HIGHER = 1
+    58        };
+    59    
+    60        <span class="xdoc">/*! typedef for function that gets called when the Thread runs. */</span>
+    61        <span class=key>typedef</span> Void (*RunFxn)(IArg);
+    62    
+    63        <span class="xdoc">/*! Struct to hold thread statistics from {<b>@link</b> #stat} */</span>
+    64        <span class=key>struct</span> Stat {
+    65            SizeT stackSize;
+    66            SizeT stackUsed;
+    67        }
+    68    
+    69        <span class="xdoc">/*!
+</span>    70    <span class="xdoc">     *  ======== self ========
+</span>    71    <span class="xdoc">     *  Acquire the currently executing thread's handle.
+</span>    72    <span class="xdoc">     *
+</span>    73    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#self} for more details.
+</span>    74    <span class="xdoc">     *
+</span>    75    <span class="xdoc">     *  <b>@param(eb)</b>     Pointer to Error.Block
+</span>    76    <span class="xdoc">     *  <b>@a(returns)</b>    Handle in case of success; null for error;
+</span>    77    <span class="xdoc">     */</span>
+    78        Handle self(Error.Block* eb);
+    79    
+    80        <span class="xdoc">/*!
+</span>    81    <span class="xdoc">     *  ======== start ========
+</span>    82    <span class="xdoc">     *  Start threads running.
+</span>    83    <span class="xdoc">     *
+</span>    84    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#start} for more details.
+</span>    85    <span class="xdoc">     *
+</span>    86    <span class="xdoc">     *  <b>@param(eb)</b>     Pointer to Error.Block
+</span>    87    <span class="xdoc">     *  <b>@a(returns)</b>    true for success; false for failure
+</span>    88    <span class="xdoc">     */</span>
+    89        Bool start(Error.Block* eb);
+    90    
+    91        <span class="xdoc">/*!
+</span>    92    <span class="xdoc">     *  ======== yield ========
+</span>    93    <span class="xdoc">     *  Yield the currently scheduled thread.
+</span>    94    <span class="xdoc">     *
+</span>    95    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#yield} for more details.
+</span>    96    <span class="xdoc">     *
+</span>    97    <span class="xdoc">     *  <b>@param(eb)</b>     Pointer to Error.Block
+</span>    98    <span class="xdoc">     *  <b>@a(returns)</b>    true for success; false for failure
+</span>    99    <span class="xdoc">     */</span>
+   100        Bool yield(Error.Block* eb);
+   101    
+   102        <span class="xdoc">/*!
+</span>   103    <span class="xdoc">     *  ======== compareOsPriorities ========
+</span>   104    <span class="xdoc">     *  Compare two priority values and find out which one represents a
+</span>   105    <span class="xdoc">     *  higher priority.
+</span>   106    <span class="xdoc">     *
+</span>   107    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#compareOsPriorities} for more 
+</span>   108    <span class="xdoc">     *  details.
+</span>   109    <span class="xdoc">     *
+</span>   110    <span class="xdoc">     *  <b>@p(blist)</b>
+</span>   111    <span class="xdoc">     *  -{<b>@link</b> #CompStatus_ERROR} if an error occured
+</span>   112    <span class="xdoc">     *  -{<b>@link</b> #CompStatus_LOWER} if p1 is lower than p2
+</span>   113    <span class="xdoc">     *  -{<b>@link</b> #CompStatus_EQUAL} if p1=p2
+</span>   114    <span class="xdoc">     *  -{<b>@link</b> #CompStatus_HIGHER} if p1 is higher than p2
+</span>   115    <span class="xdoc">     *    details.
+</span>   116    <span class="xdoc">     *  <b>@p</b>
+</span>   117    <span class="xdoc">     *
+</span>   118    <span class="xdoc">     *  <b>@param(p1)</b>      priority one
+</span>   119    <span class="xdoc">     *  <b>@param(p2)</b>      priority two
+</span>   120    <span class="xdoc">     *  <b>@param(eb)</b>      Pointer to Error.Block
+</span>   121    <span class="xdoc">     *  <b>@a(returns)</b>     Refer to description above
+</span>   122    <span class="xdoc">     */</span>
+   123        Int compareOsPriorities(Int p1, Int p2, Error.Block *eb);
+   124        
+   125        <span class="xdoc">/*!
+</span>   126    <span class="xdoc">     *  ======== sleep ========
+</span>   127    <span class="xdoc">     *  Sleep for certain number of microseconds
+</span>   128    <span class="xdoc">     *
+</span>   129    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#sleep} for more details.
+</span>   130    <span class="xdoc">     *
+</span>   131    <span class="xdoc">     *  <b>@param(timeout)</b>     timeout in microseconds
+</span>   132    <span class="xdoc">     *  <b>@param(eb)</b>          Pointer to Error.Block
+</span>   133    <span class="xdoc">     *  <b>@a(returns)</b>         true for success; false for failure
+</span>   134    <span class="xdoc">     */</span>
+   135        Bool sleep(UInt timeout, Error.Block *eb);
+   136    
+   137    <span class=key>instance</span>:
+   138    
+   139        <span class="xdoc">/*! Thread function argument. Default is NULL. */</span>
+   140        <span class=key>config</span> IArg arg = <span class=key>null</span>;
+   141    
+   142        <span class="xdoc">/*!
+</span>   143    <span class="xdoc">     *  ======== priority ========
+</span>   144    <span class="xdoc">     *  Thread priority
+</span>   145    <span class="xdoc">     *
+</span>   146    <span class="xdoc">     *  Thread defines several constants which allows applications to select
+</span>   147    <span class="xdoc">     *  a priority in an OS independent way. Priority_LOWEST, 
+</span>   148    <span class="xdoc">     *  Priority_BELOW_NORMAL, Priority_NORMAL, Priority_ABOVE_NORMAL and 
+</span>   149    <span class="xdoc">     *  Priority_HIGHEST. These values get mapped to OS specific priorities 
+</span>   150    <span class="xdoc">     *  by the OS specific delegate.
+</span>   151    <span class="xdoc">     */</span>
+   152        <span class=key>config</span> Priority priority = Priority_NORMAL;
+   153    
+   154        <span class="xdoc">/*!
+</span>   155    <span class="xdoc">     *  ======== osPriority ========
+</span>   156    <span class="xdoc">     *  OS specific thread priority
+</span>   157    <span class="xdoc">     *
+</span>   158    <span class="xdoc">     *  Used to specify an OS specific value for priority. If set this value
+</span>   159    <span class="xdoc">     *  takes precedence over {<b>@link</b> #priority}.
+</span>   160    <span class="xdoc">     */</span>
+   161        <span class=key>config</span> Int osPriority = INVALID_OS_PRIORITY;
+   162    
+   163        <span class="xdoc">/*! Thread stack size. If left at zero, OS default is used */</span>
+   164        <span class=key>config</span> SizeT stackSize = 0;
+   165    
+   166        <span class="xdoc">/*! User-specified thread local storage data. */</span>
+   167        <span class=key>config</span> Ptr tls = <span class=key>null</span>;
+   168    
+   169        <span class="xdoc">/*!
+</span>   170    <span class="xdoc">     *  ======== create ========
+</span>   171    <span class="xdoc">     *  Create a Thread object.
+</span>   172    <span class="xdoc">     *
+</span>   173    <span class="xdoc">     *  This function spawns a new thread calling the function fxn.
+</span>   174    <span class="xdoc">     *
+</span>   175    <span class="xdoc">     *  <b>@param(fxn)</b> function for new thread to begin execution
+</span>   176    <span class="xdoc">     */</span>
+   177        create(RunFxn fxn);
+   178    
+   179        <span class="xdoc">/*!
+</span>   180    <span class="xdoc">     *  ======== join ========
+</span>   181    <span class="xdoc">     *  Join on a Thread.
+</span>   182    <span class="xdoc">     *
+</span>   183    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#join} for more details.
+</span>   184    <span class="xdoc">     *
+</span>   185    <span class="xdoc">     *  <b>@param(eb)</b>     Pointer to Error.Block
+</span>   186    <span class="xdoc">     *  <b>@a(returns)</b>    true for success; false for failure
+</span>   187    <span class="xdoc">     */</span>
+   188        Bool join(Error.Block* eb);
+   189    
+   190        <span class="xdoc">/*!
+</span>   191    <span class="xdoc">     *  ======== getPriority ========
+</span>   192    <span class="xdoc">     *  Obtain a thread's priority.
+</span>   193    <span class="xdoc">     *
+</span>   194    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#getPriority} for more details.
+</span>   195    <span class="xdoc">     *
+</span>   196    <span class="xdoc">     *  <b>@param(eb)</b>     Pointer to Error.Block
+</span>   197    <span class="xdoc">     *  <b>@a(returns)</b>    thread priority in case of success; Priority_INVALID in
+</span>   198    <span class="xdoc">     *                 case of error; 
+</span>   199    <span class="xdoc">     */</span>
+   200        Priority getPriority(Error.Block* eb);
+   201    
+   202        <span class="xdoc">/*!
+</span>   203    <span class="xdoc">     *  ======== setPriority ========
+</span>   204    <span class="xdoc">     *  Set a thread's priority.
+</span>   205    <span class="xdoc">     *
+</span>   206    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#setPriority} for more details.
+</span>   207    <span class="xdoc">     *
+</span>   208    <span class="xdoc">     *  <b>@param(newPri)</b>    new thread priority
+</span>   209    <span class="xdoc">     *  <b>@param(eb)</b>        Pointer to Error.Block
+</span>   210    <span class="xdoc">     *  <b>@a(returns)</b>       true for success; false for failure
+</span>   211    <span class="xdoc">     */</span>
+   212        Bool setPriority(Priority newPri, Error.Block* eb);
+   213    
+   214        <span class="xdoc">/*!
+</span>   215    <span class="xdoc">     *  ======== getOsPriority ========
+</span>   216    <span class="xdoc">     *  Obtain a thread's os specific priority.
+</span>   217    <span class="xdoc">     *
+</span>   218    <span class="xdoc">     *  For OSes that support dynamic priority boosting, the value returned 
+</span>   219    <span class="xdoc">     *  is the base priority of the thread.
+</span>   220    <span class="xdoc">     *
+</span>   221    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#getOsPriority} for more details.
+</span>   222    <span class="xdoc">     *
+</span>   223    <span class="xdoc">     *  <b>@param(eb)</b>      Pointer to Error.Block
+</span>   224    <span class="xdoc">     *  <b>@a(returns)</b>     thread priority in case of success; GETPRI_FAILED in
+</span>   225    <span class="xdoc">     *                  case of error;
+</span>   226    <span class="xdoc">     */</span>
+   227        Int getOsPriority(Error.Block *eb);
+   228    
+   229        <span class="xdoc">/*!
+</span>   230    <span class="xdoc">     *  ======== setOsPriority ========
+</span>   231    <span class="xdoc">     *  Set a thread's priority.
+</span>   232    <span class="xdoc">     *
+</span>   233    <span class="xdoc">     *  This API sets the base priority of the thread on OSes that
+</span>   234    <span class="xdoc">     *  support dynamic priority boosting
+</span>   235    <span class="xdoc">     *
+</span>   236    <span class="xdoc">     *  Refer to {<b>@link</b> xdc.runtime.knl.Thread#setOsPriority} for more details.
+</span>   237    <span class="xdoc">     *
+</span>   238    <span class="xdoc">     *  <b>@param(newPri)</b>  new thread priority
+</span>   239    <span class="xdoc">     *  <b>@param(eb)</b>      Pointer to Error.Block
+</span>   240    <span class="xdoc">     *  <b>@a(returns)</b>     true for success; false for failure
+</span>   241    <span class="xdoc">     */</span>
+   242        Bool setOsPriority(Int newPri, Error.Block *eb);
+   243    
+   244        <span class="xdoc">/*!
+</span>   245    <span class="xdoc">     *  ======== getOsHandle ========
+</span>   246    <span class="xdoc">     *  Get the OS thread handle
+</span>   247    <span class="xdoc">     *
+</span>   248    <span class="xdoc">     *   <b>@a(returns)</b>     null in case of error
+</span>   249    <span class="xdoc">     */</span>
+   250        Ptr getOsHandle();
+   251    
+   252        <span class="xdoc">/*!
+</span>   253    <span class="xdoc">     *  ======== getTls ========
+</span>   254    <span class="xdoc">     *  Obtain a thread's local storage pointer
+</span>   255    <span class="xdoc">     *
+</span>   256    <span class="xdoc">     *  <b>@a(returns)</b>     null in case of error
+</span>   257    <span class="xdoc">     */</span> 
+   258        Ptr getTls();
+   259    
+   260        <span class="xdoc">/*!
+</span>   261    <span class="xdoc">     *  ======== setTls ========
+</span>   262    <span class="xdoc">     *  Set a thread's local storage pointer.
+</span>   263    <span class="xdoc">     *
+</span>   264    <span class="xdoc">     *  <b>@param(tls)</b>     thread tls 
+</span>   265    <span class="xdoc">     */</span>
+   266        Void setTls(Ptr tls);
+   267    
+   268    
+   269        <span class="xdoc">/*!
+</span>   270    <span class="xdoc">     *  ======== stat ========
+</span>   271    <span class="xdoc">     *  Obtain a thread's stats
+</span>   272    <span class="xdoc">     *
+</span>   273    <span class="xdoc">     *  <b>@param(buf)</b>    Pointer to Stat
+</span>   274    <span class="xdoc">     *  <b>@param(eb)</b>     Pointer to Error.Block
+</span>   275    <span class="xdoc">     *  <b>@a(returns)</b>    true for success; false for failure
+</span>   276    <span class="xdoc">     */</span>
+   277        Bool stat(Stat* buf, Error.Block* eb);
+   278    
+   279    }
+   280    <span class="comment">/*
+</span>   281    <span class="comment"> *  @(#) xdc.runtime.knl; 1, 0, 0,248; 12-19-2013 19:53:41; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+</span>   282    <span class="comment"> */</span>
+   283    
+</pre>
+</body></html>

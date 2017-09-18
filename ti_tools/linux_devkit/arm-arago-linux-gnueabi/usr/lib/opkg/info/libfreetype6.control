@@ -1,0 +1,13 @@
+Package: libfreetype6
+Version: 2.4.6-r2-arago1.6
+Description: FreeType is a software font engine that is designed to be small, efficient, highly customizable, and portable while capable of producing high-quality output (glyph images). It can be used in graphics libraries, display servers, font conversion tools, text image generation tools, and many other products as well.
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+
+Architecture: armv7a
+OE: freetype
+Homepage: http://www.freetype.org/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://downloads.sourceforge.net/freetype/freetype-2.4.6.tar.bz2 file://no-hardcode.patch

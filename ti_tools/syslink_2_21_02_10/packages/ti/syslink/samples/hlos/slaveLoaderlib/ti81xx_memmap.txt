@@ -1,0 +1,34 @@
+# Comments are ok, with a '#' as the first char in a line
+# Addresses and masks are typically set in hexidecimal
+
+# Format is "procName, slaveVirt, slavePhys, mastPhys, size, mask, cache"
+# mask values can be a bitwise OR of these values:
+#    * 0x1 - MasterKnlVirt
+#    * 0x2 - MasterUsrVirt
+#    * 0x4 - SlaveVirt
+
+
+# DDR (code/data) - 8 MB, MasterKnlVirt | SlaveVirt, noncached
+VIDEO-M3, 0x8F000000, 0x8F000000, 0x8F000000, 0x700000, 0x5, 0
+
+# SR#0 - 16 MB, MasterKnlVirt | SlaveVirt, noncached
+VIDEO-M3, 0x8E000000, 0x8E000000, 0x8E000000, 0x1000000, 0x5, 0
+
+# SR#1 - 12 MB, MasterKnlVirt | SlaveVirt, noncached
+VIDEO-M3, 0x8D000000, 0x8D000000, 0x8D000000, 0xC00000, 0x5, 0
+
+# PRCM on L3 - 64 KB, MasterKnlVirt | SlaveVirt, noncached
+VIDEO-M3, 0x480C0000, 0x480C0000, 0x480C0000, 0x10000, 0x5, 0
+
+
+# DDR (code/data) - 8 MB, MasterKnlVirt | SlaveVirt, noncached
+VPSS-M3, 0x8F800000, 0x8F800000, 0x8F800000, 0x700000, 0x5, 0
+
+# SR#0 - 16 MB, MasterKnlVirt | SlaveVirt, noncached
+VPSS-M3, 0x8E000000, 0x8E000000, 0x8E000000, 0x1000000, 0x5, 0
+
+# SR#1 - 12 MB, MasterKnlVirt | SlaveVirt, noncached
+VPSS-M3, 0x8D000000, 0x8D000000, 0x8D000000, 0xC00000, 0x5, 0
+
+# PRCM on L3 - 64 KB, MasterKnlVirt | SlaveVirt, noncached
+VPSS-M3, 0x480C0000, 0x480C0000, 0x480C0000, 0x10000, 0x5, 0

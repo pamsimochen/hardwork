@@ -1,0 +1,14 @@
+Package: libdaemon-dev
+Version: 0.13-r1.6
+Description: libdaemon is a lightweight C library that eases the writing of UNIX daemons.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1+
+Architecture: armv7a
+OE: libdaemon
+Homepage: http://0pointer.de/lennart/projects/libdaemon/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libdaemon0 (= 0.13-r1.6), libdaemon0
+Recommends: libc6-dev, libdaemon-dev
+Source: http://0pointer.de/lennart/projects/libdaemon/libdaemon-0.13.tar.gz

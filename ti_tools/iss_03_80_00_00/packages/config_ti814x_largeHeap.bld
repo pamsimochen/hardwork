@@ -1,0 +1,376 @@
+/*
+ *  ======== config.bld ========
+ *  Build configuration script for HDVPSS drivers
+ */
+
+/* load the required modules for the configuration */
+
+var M3 = xdc.useModule('ti.targets.arm.elf.M3');
+
+var buildReleaseConfig = true;
+
+/* configure  the options for the M3 targets     */
+
+/* M3 compiler directory path                    */
+M3.rootDir = java.lang.System.getenv("CGTOOLS");
+
+/* linker options */
+
+M3.lnkOpts.suffix += " --zero_init=off ";
+M3.lnkOpts.suffix += " --dynamic --retain=_Ipc_ResetVector";
+
+/* compiler options                                */
+M3.ccOpts.suffix += " -DTI_814X_BUILD -DPLATFORM_EVM_SI ";
+
+/* set default platform and list of all interested
+ * platforms for M3
+ */
+M3.platforms = [
+                        "ti.platforms.evmDM8148:core0",
+                        "ti.platforms.evmDM8148:core1",
+               ];
+
+/* Select the default platform
+ *
+ * Making core1 as defualt core configuration to be used
+ *  Core 0 ==    Ducati.M3.VIDEO
+ *  Core 1 ==    Ducati.M3.VPS
+ */
+M3.platform = M3.platforms[1];
+
+/* list interested targets in Build.targets array  */
+Build.targets = [
+                    M3,
+                ];
+
+
+/*
+Memory map for both "evmSi" and "sim"
+
+DDR: 0x80000000 (Ist 256MB - Cached)
++-----------------+
+|                 |
+| Linux           | 130.625MB
+|                 |
++-----------------+
+| Syslink IPC     | 16MB - SHARED_CTRL
++-----------------+
+|                 |
+| DSS M3 Data     | 53MB
+|                 |
++-----------------+
+| DSS M3 Code     | 53MB
++-----------------+
+| Debug/NOT USED  | 3MB
++-----------------+
+
+
+DDR: 0xC0000000 (2nd 256MB - Non-Cached)
+
++-----------------+
+|   Tiler         | 1MB
++-----------------+
+|                 |
+| Frame Buffer    | 250MB
++-----------------+
+| Notify Shared   | 1MB
+|      Mem        |
++-----------------+
+| VPDMA Desc Mem  | 2MB
++-----------------+
+| HDVPSS Shared   | 2MB
+|      Mem        |
++-----------------+
+
+
+
+OCMC: 0x40300000
++-----------------+
+| OCMC0 (Not used)| 128KB
++-----------------+
+
+*/
+
+var KB=1024;
+var MB=KB*KB;
+
+var DDR3_ADDR_0;
+var DDR3_ADDR_1;
+var DDR3_SIZE;
+
+var OCMC0_ADDR;
+var OCMC1_ADDR;
+var OCMC_SIZE;
+
+var LINUX_ADDR;
+var LINUX_SIZE;
+
+var SYSLINK_IPC_ADDR;
+var SYSLINK_IPC_SIZE;
+
+var DSS_M3_DATA_ADDR;
+var DSS_M3_DATA_SIZE;
+
+var DSS_M3_CODE_ADDR;
+var DSS_M3_CODE_SIZE;
+
+var DEBUG_ADDR;
+var DEBUG_SIZE;
+
+var TILER_8BIT_ADDR;
+var TILER_8BIT_SIZE;
+
+var FRAME_BUFFER_ADDR;
+var FRAME_BUFFER_SIZE;
+
+var HDVPSS_DESC_ADDR;
+var HDVPSS_DESC_SIZE;
+
+var HDVPSS_SHARED_ADDR;
+var HDVPSS_SHARED_SIZE;
+
+DDR3_ADDR_0               = 0x80000000;
+DDR3_ADDR_1               = 0xC0000000;
+
+/* DDR size is only 512MB but 512MB is divided into two 256MB chunks
+ * first 256MB at address 0x80000000 and second at 0xC0000000. Thats why
+ * we are defining the size to be 2GB instead of 512MB
+ */
+DDR3_SIZE               = 2048*MB;
+
+OCMC0_ADDR              = 0x00300000;
+OCMC1_ADDR              = 0x00400000;
+OCMC_SIZE               = 128*KB;
+
+LINUX_SIZE              = 130.625*MB;
+SYSLINK_IPC_SIZE        = 16*MB;
+DSS_M3_DATA_SIZE        = 53*MB;
+DSS_M3_CODE_SIZE        = 53*MB;
+DEBUG_SIZE              = 3*MB;
+
+TILER_8BIT_SIZE         = 1*MB;
+FRAME_BUFFER_SIZE       = 250*MB;
+HDVPSS_DESC_SIZE        = 2*MB;
+HDVPSS_SHARED_SIZE      = 2*MB;
+NOTIFY_SHARED_SIZE      = 1*MB;
+
+
+LINUX_ADDR              = DDR3_ADDR_0;
+SYSLINK_IPC_ADDR        = LINUX_ADDR            + LINUX_SIZE;
+DSS_M3_DATA_ADDR        = SYSLINK_IPC_ADDR      + SYSLINK_IPC_SIZE;
+DSS_M3_CODE_ADDR        = DSS_M3_DATA_ADDR      + DSS_M3_DATA_SIZE;
+DEBUG_ADDR              = DSS_M3_CODE_ADDR      + DSS_M3_CODE_SIZE;
+
+TILER_8BIT_ADDR         = DDR3_ADDR_1;
+FRAME_BUFFER_ADDR       = TILER_8BIT_ADDR       + TILER_8BIT_SIZE;
+NOTIFY_SHARED_ADDR      = FRAME_BUFFER_ADDR     + FRAME_BUFFER_SIZE;
+HDVPSS_DESC_ADDR        = NOTIFY_SHARED_ADDR    + NOTIFY_SHARED_SIZE;
+HDVPSS_SHARED_ADDR      = HDVPSS_DESC_ADDR      + HDVPSS_DESC_SIZE;
+
+
+Build.platformTable["ti.platforms.evmDM8148:core1"] =
+{
+    externalMemoryMap:
+    [
+        ["DDR3_RAM", {
+            comment: "DDR3_RAM",
+            name: "DDR3_RAM",
+            base: DDR3_ADDR_0,
+            len:  DDR3_SIZE
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ],
+    customMemoryMap:
+    [
+        ["LINUX_MEM", {
+            comment : "LINUX_MEM",
+            name    : "LINUX_MEM",
+            base    : LINUX_ADDR,
+            len     : LINUX_SIZE
+        }],
+        ["SR0", {
+            comment : "SR0 - Shared Region 0 required by IPC",
+            name    : "SR0",
+            base    : SYSLINK_IPC_ADDR,
+            len     : SYSLINK_IPC_SIZE
+        }],
+        ["DSS_M3_CODE_MEM", {
+            comment : "DSS_M3_CODE_MEM",
+            name    : "DSS_M3_CODE_MEM",
+            base    : DSS_M3_CODE_ADDR,
+            len     : DSS_M3_CODE_SIZE
+        }],
+        ["DDR3_RAM", {
+            comment : "DDR3_RAM",
+            name    : "DDR3_RAM",
+            base    : DSS_M3_DATA_ADDR,
+            len     : DSS_M3_DATA_SIZE
+        }],
+        ["DEBUG_MEM", {
+            comment : "DEBUG_MEM",
+            name    : "DEBUG_MEM",
+            base    : DEBUG_ADDR,
+            len     : DEBUG_SIZE
+        }],
+        ["TILER_8BIT_MEM", {
+            comment : "TILER_8BIT_MEM",
+            name    : "TILER_8BIT_MEM",
+            base    : TILER_8BIT_ADDR,
+            len     : TILER_8BIT_SIZE
+        }],
+        ["HDVPSS_DESC_MEM", {
+            comment : "HDVPSS_DESC_MEM",
+            name    : "HDVPSS_DESC_MEM",
+            base    : HDVPSS_DESC_ADDR,
+            len     : HDVPSS_DESC_SIZE
+        }],
+        ["HDVPSS_SHARED_MEM", {
+            comment : "HDVPSS_SHARED_MEM",
+            name    : "HDVPSS_SHARED_MEM",
+            base    : HDVPSS_SHARED_ADDR,
+            len     : HDVPSS_SHARED_SIZE
+        }],
+        ["HOST_VPSS_NOITFYMEM", {
+            comment : "HOST_VPSS_NOITFYMEM",
+            name    : "HOST_VPSS_NOITFYMEM",
+            base    : NOTIFY_SHARED_ADDR,
+            len     : NOTIFY_SHARED_SIZE
+        }],
+        ["FRAME_BUFFER_MEM", {
+            comment : "FRAME_BUFFER_MEM",
+            name    : "FRAME_BUFFER_MEM",
+            base    : FRAME_BUFFER_ADDR,
+            len     : FRAME_BUFFER_SIZE
+        }],
+        ["L2_RAM", {
+            comment: "L2_RAM",
+            name: "L2_RAM",
+            base: 0x20004000,
+            len:  0x00010000
+        }],
+        ["L2_ROM", {
+            comment: "L2_ROM",
+            name: "L2_ROM",
+            base: 0x00000000,
+            len:  0x00004000
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ]
+};
+
+
+Build.platformTable["ti.platforms.evmDM8148:core0"] =
+{
+    externalMemoryMap:
+    [
+        ["DDR3_RAM", {
+            comment: "DDR3_RAM",
+            name: "DDR3_RAM",
+            base: DDR3_ADDR_0,
+            len:  DDR3_SIZE
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ],
+    customMemoryMap:
+    [
+        ["LINUX_MEM", {
+            comment : "LINUX_MEM",
+            name    : "LINUX_MEM",
+            base    : LINUX_ADDR,
+            len     : LINUX_SIZE
+        }],
+        ["SR0", {
+            comment : "SR0 - Shared Region 0 required by IPC",
+            name    : "SR0",
+            base    : SYSLINK_IPC_ADDR,
+            len     : SYSLINK_IPC_SIZE
+        }],
+        ["DSS_M3_CODE_MEM", {
+            comment : "DSS_M3_CODE_MEM",
+            name    : "DSS_M3_CODE_MEM",
+            base    : DSS_M3_CODE_ADDR,
+            len     : DSS_M3_CODE_SIZE
+        }],
+        ["DDR3_M3", {
+            comment : "DDR3_M3",
+            name    : "DDR3_M3",
+            base    : DSS_M3_DATA_ADDR,
+            len     : DSS_M3_DATA_SIZE
+        }],
+        ["DEBUG_MEM", {
+            comment : "DEBUG_MEM",
+            name    : "DEBUG_MEM",
+            base    : DEBUG_ADDR,
+            len     : DEBUG_SIZE
+        }],
+        ["TILER_8BIT_MEM", {
+            comment : "TILER_8BIT_MEM",
+            name    : "TILER_8BIT_MEM",
+            base    : TILER_8BIT_ADDR,
+            len     : TILER_8BIT_SIZE
+        }],
+        ["HDVPSS_DESC_MEM", {
+            comment : "HDVPSS_DESC_MEM",
+            name    : "HDVPSS_DESC_MEM",
+            base    : HDVPSS_DESC_ADDR,
+            len     : HDVPSS_DESC_SIZE
+        }],
+        ["HDVPSS_SHARED_MEM", {
+            comment : "HDVPSS_SHARED_MEM",
+            name    : "HDVPSS_SHARED_MEM",
+            base    : HDVPSS_SHARED_ADDR,
+            len     : HDVPSS_SHARED_SIZE
+        }],
+        ["FRAME_BUFFER_MEM", {
+            comment : "FRAME_BUFFER_MEM",
+            name    : "FRAME_BUFFER_MEM",
+            base    : FRAME_BUFFER_ADDR,
+            len     : FRAME_BUFFER_SIZE
+        }],
+        ["L2_RAM", {
+            comment : "L2_RAM",
+            name    : "L2_RAM",
+            base    : 0x20004000,
+            len     : 0x00010000
+        }],
+        ["L2_ROM", {
+            comment : "L2_ROM",
+            name    : "L2_ROM",
+            base    : 0x00000000,
+            len     : 0x00004000
+        }],
+    ]
+};

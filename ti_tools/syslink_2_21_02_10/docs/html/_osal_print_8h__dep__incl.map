@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" href="$_trace_8h.html" title="Kernel Trace enabling/disabling/application interface." alt="" coords="124,84,265,108" />
+<area shape="rect" href="$_i_gate_provider_8h.html" title="Interface implemented by all gate providers." alt="" coords="8,158,194,182" />
+<area shape="rect" href="$_i_heap_8h.html" title="Defines Heap based memory allocator." alt="" coords="218,158,360,182" />
+<area shape="rect" href="$_gate_8h.html" title="Critical section support." alt="" coords="33,233,169,257" />
+<area shape="rect" href="$_memory_8h.html" title="Memory manager interface definitions." alt="" coords="212,233,366,257" />
+</map>

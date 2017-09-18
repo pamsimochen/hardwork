@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gep name="Stack" title="MSP430 Stack Monitoring">
+
+<properties name="Advanced" title="All Configuration Options" enabled="true" visible="true" link="this"/>
+
+<page name="Basic" title="Basic Options">
+<html><body><table>
+  <tr><td colspan="2">
+    <control type="checkbox" label="Add Stack monitoring to my configuration" value="value:this.$used" bold="true"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <h1>Description</h1>
+    <form><p>This module provides functions to monitor your application's stack usage in real-time.  For more information see the <a href="help:http:/help/topic/com.ti.mcu.radio.product.ui/cdoc/ti/mcu/msp430/runtime/utils/Stack.html">Stack reference</a> documentation.</p></form>
+    </td>
+  </tr>
+ </table></body></html>
+</page>
+
+</gep>

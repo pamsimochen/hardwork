@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios.family.c64p.dm6437" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="TimerSupport"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sysbios.family.c64p.dm6437.c"/>
+        <srcFile name="TimerSupport.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64p.dm6437/package/package_ti.sysbios.family.c64p.dm6437.o64P.dep" src="package/package_ti.sysbios.family.c64p.dm6437.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64p.dm6437/TimerSupport.o64P.dep" src="TimerSupport.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64p.dm6437/package/package_ti.sysbios.family.c64p.dm6437.o64Pe.dep" src="package/package_ti.sysbios.family.c64p.dm6437.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64p.dm6437/TimerSupport.o64Pe.dep" src="TimerSupport.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64p.dm6437/package/package_ti.sysbios.family.c64p.dm6437.oe64P.dep" src="package/package_ti.sysbios.family.c64p.dm6437.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64p.dm6437/TimerSupport.oe64P.dep" src="TimerSupport.c"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64p.dm6437/package/package_ti.sysbios.family.c64p.dm6437.oe64Pe.dep" src="package/package_ti.sysbios.family.c64p.dm6437.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.c64p.dm6437/TimerSupport.oe64Pe.dep" src="TimerSupport.c"/>
+        <srcFile name="package/rel/ti_sysbios_family_c64p_dm6437.tar.gz.dep" src="package/rel/ti_sysbios_family_c64p_dm6437.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6472"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evm6472"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            rawVersion="7.2.0"
+            platform="ti.platforms.evmDM6437"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437"
+        pname="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437"
+        pname="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437"
+        pname="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437"
+        pname="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios_family_c64p_dm6437"
+        pname="../../../../..//../exports/ti_sysbios_family_c64p_dm6437.tar.gz"
+        label="default"
+        relScript="ti/sysbios/libFilter.xs">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.a64P"/>
+        <file name="package/package_ti.sysbios.family.c64p.dm6437.c"/>
+        <file name="TimerSupport.c"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.a64Pe"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.ae64P"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.c64p.dm6437.ae64Pe"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

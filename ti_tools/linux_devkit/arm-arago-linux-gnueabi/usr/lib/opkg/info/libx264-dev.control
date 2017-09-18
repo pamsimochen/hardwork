@@ -1,0 +1,14 @@
+Package: libx264-dev
+Version: r2245-r9.6
+Description: H.264 encoder
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+
+Architecture: armv7a
+OE: x264
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libx264-96 (= r2245-r9.6), libx264-96
+Recommends: libc6-dev, libx264-dev
+Source: http://download.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20100531-2245.tar.bz2

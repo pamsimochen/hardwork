@@ -1,0 +1,12 @@
+Package: xcb-proto
+Version: 1.6-r3.0.6
+Description: XCB: an X protocol C binding
+Section: x11/libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: xcb-proto
+Homepage: http://xcb.freedesktop.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Source: http://xcb.freedesktop.org/dist/xcb-proto-1.6.tar.bz2

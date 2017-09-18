@@ -1,0 +1,12 @@
+alg_create.obj: ..\..\..\..\Client\Test\Src\alg_create.c
+alg_create.obj: D:\cg_tools_5.0.3\include\stdlib.h
+alg_create.obj: D:\cg_tools_5.0.3\include\linkage.h
+alg_create.obj: D:\framework_components_3_20_00_22\fctools\packages\xdc/std.h
+alg_create.obj: D:\cg_tools_5.0.3\include\stdarg.h
+alg_create.obj: D:\cg_tools_5.0.3\include\stddef.h
+alg_create.obj: D:/xdctools_3_20_04_68\packages/ti\targets\std.h
+alg_create.obj: D:\xdctools_3_20_04_68\packages\ti\targets\TMS470.h
+alg_create.obj: D:\cg_tools_5.0.3\include\stdint.h
+alg_create.obj: D:\framework_components_3_20_00_22\fctools\packages\ti/xdais/ialg.h
+alg_create.obj: D:\framework_components_3_20_00_22\packages\ti/sdo/fc/utils/api/alg.h
+alg_create.obj: D:\framework_components_3_20_00_22\packages\ti/sdo/fc/utils/api/_alg.h

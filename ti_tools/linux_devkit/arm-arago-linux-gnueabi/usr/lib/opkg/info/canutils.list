@@ -1,0 +1,5 @@
+/usr/bin/cansend
+/usr/sbin/canconfig
+/usr/bin/canecho
+/usr/bin/candump
+/usr/bin/cansequence

@@ -1,0 +1,13 @@
+Package: task-arago-toolchain-base-tisdk-host
+Version: 1.0-r0.6
+Description: Host packages for a standalone Arago SDK or external toolchain
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: unknown
+Architecture: i686-armv7a-sdk
+OE: task-arago-toolchain-base-tisdk-host
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: task-arago-toolchain-host, signgp-sdk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-base-tisdk-host.bb

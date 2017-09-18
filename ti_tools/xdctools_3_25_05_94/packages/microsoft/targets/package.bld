@@ -1,0 +1,14 @@
+/*
+ *  Copyright 2013 by Texas Instruments Incorporated.
+ *
+ */
+
+Pkg.otherFiles = [
+    "vc_exec.xdt", "std.h", "link", "linkcmd.xdt", "_utils.xs"
+];
+Pkg.otherSrcs = Pkg.otherFiles;
+/*
+ *  @(#) microsoft.targets; 1, 0, 2, 0,630; 12-19-2013 15:12:17; /db/ztree/library/trees/xdctargets/xdctargets-g41x/src/ xlibrary
+
+ */
+

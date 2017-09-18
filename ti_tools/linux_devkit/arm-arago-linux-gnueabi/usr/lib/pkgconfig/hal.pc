@@ -1,0 +1,13 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+haluser=haldaemon
+halgroup=haldaemon
+
+Name: hal
+Description: Free desktop hardware abstraction layer
+Version: 0.5.15
+Requires: dbus-1
+Libs: -L${libdir} -lhal
+Cflags: -DDBUS_API_SUBJECT_TO_CHANGE -I${includedir}/hal

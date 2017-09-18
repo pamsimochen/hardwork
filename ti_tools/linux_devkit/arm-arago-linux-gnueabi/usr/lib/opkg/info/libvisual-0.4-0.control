@@ -1,0 +1,13 @@
+Package: libvisual-0.4-0
+Version: 0.4.0-r2.6
+Description: A cross platform audio visualization library
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1+ GPLv2
+Architecture: armv7a
+OE: libvisual
+Homepage: http://libvisual.sf.net
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://downloads.sourceforge.net/libvisual/libvisual-0.4.0.tar.gz file://no-libdir.patch

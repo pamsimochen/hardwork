@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.platforms.ez430_rf2500" version="1, 0, 1" producerId="/db/ztree/library/trees/gep/gep-g34x/src/">
+    <units>
+        <module name="Platform"/>
+    </units>
+    <sources>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="package/rel/ti_platforms_ez430_rf2500.zip.dep" src="package/rel/ti_platforms_ez430_rf2500.xdc.inc"/>
+    </makefiles>
+    <targets>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_platforms_ez430_rf2500"
+        pname="../../..//../exports/ti_platforms_ez430_rf2500.zip"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="linkcmd.xdt"/>
+        <file name="load.bat"/>
+        <file name="load.xs"/>
+        <file name="load_ccs.xs"/>
+        <file name="SystemSetup.xml"/>
+        <file name="TargetConfiguration.ccxml"/>
+        <file name="tload.xs"/>
+        <file name="./simpliciti"/>
+        <file name="package/package.cfg.xdc.inc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

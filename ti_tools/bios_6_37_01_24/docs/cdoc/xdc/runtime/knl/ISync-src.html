@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>interface xdc.runtime.knl.ISync</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> *  Copyright (c) 2008 Texas Instruments. All rights reserved. 
+</span>     3    <span class="comment"> *  This program and the accompanying materials are made available under the 
+</span>     4    <span class="comment"> *  terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+</span>     5    <span class="comment"> *  v. 1.0 which accompanies this distribution. The Eclipse Public License is
+</span>     6    <span class="comment"> *  available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+</span>     7    <span class="comment"> *  Distribution License is available at 
+</span>     8    <span class="comment"> *  http://www.eclipse.org/org/documents/edl-v10.php.
+</span>     9    <span class="comment"> *
+</span>    10    <span class="comment"> *  Contributors:
+</span>    11    <span class="comment"> *      Texas Instruments - initial implementation
+</span>    12    <span class="comment"> * */</span>
+    13    <span class="comment">/*
+</span>    14    <span class="comment"> *  ======== ISync.xdc ========
+</span>    15    <span class="comment"> */</span>
+    16    
+    17    import xdc.runtime.Error;
+    18    
+    19    <span class="xdoc">/*!
+</span>    20    <span class="xdoc"> *  ======== ISync ========
+</span>    21    <span class="xdoc"> *  OS independent synchronization
+</span>    22    <span class="xdoc"> *
+</span>    23    <span class="xdoc"> *  This interface allows clients to select method of synchronization in an OS
+</span>    24    <span class="xdoc"> *  independent way. 
+</span>    25    <span class="xdoc"> *
+</span>    26    <span class="xdoc"> *  Modules that require the user to pick a synchronization method, will
+</span>    27    <span class="xdoc"> *  request a `{<b>@link</b> #Handle}`. Clients of such modules can pick a blocking
+</span>    28    <span class="xdoc"> *  `ISync` implementation  or a non-blocking implementation.
+</span>    29    <span class="xdoc"> *  
+</span>    30    <span class="xdoc"> *  This interface specifies two main functions `{<b>@link</b> #signal}` and
+</span>    31    <span class="xdoc"> *  `{<b>@link</b> #wait}`. These two functions are always used in pairs in modules 
+</span>    32    <span class="xdoc"> *  that use `ISync` instances. The `signal()` function is used to signal
+</span>    33    <span class="xdoc"> *  completion of an activity. The `wait()` function will allow the module to
+</span>    34    <span class="xdoc"> *  block or poll for completion of the same activity.
+</span>    35    <span class="xdoc"> *
+</span>    36    <span class="xdoc"> *  `ISync` mandates that the sync mechanism be binary and not support counters.
+</span>    37    <span class="xdoc"> *  Although the `wait()` function seems meaningless in the case of
+</span>    38    <span class="xdoc"> *  non-blocking sync, it allows modules to be written generically and support
+</span>    39    <span class="xdoc"> *  all `ISync` implementations. For non-blocking `ISync` the `wait()` function
+</span>    40    <span class="xdoc"> *  will return `WaitStatus_TIMEOUT` to denote timeout.
+</span>    41    <span class="xdoc"> */</span>
+    42    
+    43    <span class=key>interface</span> ISync
+    44    {
+    45        <span class="xdoc">/*!
+</span>    46    <span class="xdoc">     *  ======== WaitStatus ========
+</span>    47    <span class="xdoc">     *  Error codes returned by ISync_wait
+</span>    48    <span class="xdoc">     */</span>
+    49        <span class=key>enum</span> WaitStatus {
+    50            WaitStatus_ERROR = -1,
+    51            WaitStatus_TIMEOUT = 0,
+    52            WaitStatus_SUCCESS = 1
+    53        };
+    54    
+    55        <span class="xdoc">/*!
+</span>    56    <span class="xdoc">     *  ======== Q_BLOCKING ========
+</span>    57    <span class="xdoc">     *  Blocking quality
+</span>    58    <span class="xdoc">     *
+</span>    59    <span class="xdoc">     *  Implementations with this "quality" may cause the calling thread to 
+</span>    60    <span class="xdoc">     *  block; 
+</span>    61    <span class="xdoc">     */</span>
+    62        <span class=key>const</span> Int Q_BLOCKING = 1;
+    63        
+    64        <span class="xdoc">/*! Used to wait forever */</span>
+    65        <span class=key>const</span> UInt WAIT_FOREVER = ~(0);
+    66    
+    67        <span class="xdoc">/*! Used to specify no waiting */</span>
+    68        <span class=key>const</span> UInt NO_WAIT = 0;
+    69    
+    70    <span class=key>instance</span>: 
+    71        <span class="xdoc">/*! 
+</span>    72    <span class="xdoc">     *  ======== create ========
+</span>    73    <span class="xdoc">     *  Create an ISync instance.
+</span>    74    <span class="xdoc">     */</span>
+    75        create();
+    76    
+    77        <span class="xdoc">/*!
+</span>    78    <span class="xdoc">     *  ======== query ========
+</span>    79    <span class="xdoc">     *  Query for a particular quality.
+</span>    80    <span class="xdoc">     *
+</span>    81    <span class="xdoc">     *  FALSE is returned if quality not supported.
+</span>    82    <span class="xdoc">     *
+</span>    83    <span class="xdoc">     *  <b>@param(qual)</b>    quality
+</span>    84    <span class="xdoc">     *  <b>@b(returns)</b>     TRUE or FALSE.
+</span>    85    <span class="xdoc">     */</span>
+    86        Bool query(Int qual);
+    87    
+    88        <span class="xdoc">/*!
+</span>    89    <span class="xdoc">     *  ======== signal ========
+</span>    90    <span class="xdoc">     *  Called at completion of an activity.
+</span>    91    <span class="xdoc">     *
+</span>    92    <span class="xdoc">     *  This function is non-blocking. It is also required that the underlying
+</span>    93    <span class="xdoc">     *  sync be binary in nature.
+</span>    94    <span class="xdoc">     *
+</span>    95    <span class="xdoc">     *  This function does not take an Error.Block intentionally because
+</span>    96    <span class="xdoc">     *  it can be called from ISR context.
+</span>    97    <span class="xdoc">     */</span>
+    98        Void signal();
+    99    
+   100        <span class="xdoc">/*!
+</span>   101    <span class="xdoc">     *  ======== wait ========
+</span>   102    <span class="xdoc">     *  Called to wait/poll for completion of an activity.
+</span>   103    <span class="xdoc">     *
+</span>   104    <span class="xdoc">     *  This function can block. Non-blocking implementations should return
+</span>   105    <span class="xdoc">     *  WaitStatus_TIMEOUT to indicate a timeout.
+</span>   106    <span class="xdoc">     *
+</span>   107    <span class="xdoc">     *  <b>@p(blist)</b>
+</span>   108    <span class="xdoc">     *  -{<b>@link</b> #WaitStatus_ERROR} if an error occured.
+</span>   109    <span class="xdoc">     *  -{<b>@link</b> #WaitStatus_TIMEOUT} denotes timeout.
+</span>   110    <span class="xdoc">     *  -{<b>@link</b> #WaitStatus_SUCCESS} semaphore was decremented. 
+</span>   111    <span class="xdoc">     *  <b>@p</b>
+</span>   112    <span class="xdoc">     *
+</span>   113    <span class="xdoc">     *  <b>@param(timeout)</b>     Timeout in microseconds
+</span>   114    <span class="xdoc">     *  <b>@param(eb)</b>Hist      Pointer to Error.Block
+</span>   115    <span class="xdoc">     *  <b>@b(returns)</b>         Refer to description above
+</span>   116    <span class="xdoc">     */</span>
+   117        Int wait(UInt timeout, Error.Block *eb);
+   118    }
+   119    <span class="comment">/*
+</span>   120    <span class="comment"> *  @(#) xdc.runtime.knl; 1, 0, 0,248; 12-19-2013 19:53:41; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+</span>   121    <span class="comment"> */</span>
+   122    
+</pre>
+</body></html>

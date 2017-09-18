@@ -1,0 +1,2 @@
+Pkg.otherSrcs = ["timer.h"];
+Pkg.otherFiles = Pkg.otherSrcs;

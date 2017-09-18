@@ -1,0 +1,11 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: S9fTzZinYeYnyDRSg9hvGyKtNUA=
+Created-By: 1.6.0_37 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: VcWvBGnpGnQTKAqVuNFBBpglSvg=
+
+Name: ti/targets/omf/elf/java/package.jar
+SHA1-Digest: pvX009odm6Ah9D7y4oV33KuvPFY=
+
+Name: ti/targets/omf/cof/java/package.jar
+SHA1-Digest: EEHy38w8zhPHck+7zeR331C/b+E=
+

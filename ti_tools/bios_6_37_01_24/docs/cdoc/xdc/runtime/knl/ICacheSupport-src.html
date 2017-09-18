@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>interface xdc.runtime.knl.ICacheSupport</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> *  Copyright (c) 2008 Texas Instruments. All rights reserved. 
+</span>     3    <span class="comment"> *  This program and the accompanying materials are made available under the 
+</span>     4    <span class="comment"> *  terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+</span>     5    <span class="comment"> *  v. 1.0 which accompanies this distribution. The Eclipse Public License is
+</span>     6    <span class="comment"> *  available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+</span>     7    <span class="comment"> *  Distribution License is available at 
+</span>     8    <span class="comment"> *  http://www.eclipse.org/org/documents/edl-v10.php.
+</span>     9    <span class="comment"> *
+</span>    10    <span class="comment"> *  Contributors:
+</span>    11    <span class="comment"> *      Texas Instruments - initial implementation
+</span>    12    <span class="comment"> * */</span>
+    13    <span class="comment">/*
+</span>    14    <span class="comment"> *  ======== ICacheSupport.xdc ========
+</span>    15    <span class="comment"> */</span>
+    16     
+    17    import xdc.runtime.Error;
+    18    
+    19    <span class="xdoc">/*!
+</span>    20    <span class="xdoc"> *  ======== ICacheSupport ========
+</span>    21    <span class="xdoc"> *  Interface for OS specific back-end.
+</span>    22    <span class="xdoc"> *
+</span>    23    <span class="xdoc"> *  The {<b>@link</b> xdc.runtime.knl} package contains modules that provide typical
+</span>    24    <span class="xdoc"> *  OS services. These xdc.runtime.knl modules require proxies to be
+</span>    25    <span class="xdoc"> *  bound to an OS specific delegate. This specifies the interface to 
+</span>    26    <span class="xdoc"> *  be implemented by the OS specific delegate for 
+</span>    27    <span class="xdoc"> *  {<b>@link</b> xdc.runtime.knl#Cache} module.
+</span>    28    <span class="xdoc"> * 
+</span>    29    <span class="xdoc"> */</span>
+    30    
+    31    <span class=key>interface</span> ICacheSupport
+    32    {
+    33        <span class="xdoc">/*!
+</span>    34    <span class="xdoc">     *  ======== inv ========
+</span>    35    <span class="xdoc">     *  Invalidates range of memory.
+</span>    36    <span class="xdoc">     *
+</span>    37    <span class="xdoc">     *  Invalidate the range of memory within the specified starting
+</span>    38    <span class="xdoc">     *  address and byte count.  The range of addresses operated on
+</span>    39    <span class="xdoc">     *  gets quantized to whole cache lines in each cache.  All lines
+</span>    40    <span class="xdoc">     *  in range are invalidated for all the 'type' caches.
+</span>    41    <span class="xdoc">     *
+</span>    42    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be invalidated
+</span>    43    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be invalidated
+</span>    44    <span class="xdoc">     *  <b>@param(wait)</b>     wait until the operation is completed
+</span>    45    <span class="xdoc">     *  <b>@param(eb)</b>       error block
+</span>    46    <span class="xdoc">     *  <b>@a(returns)</b>  true for success; false for error.
+</span>    47    <span class="xdoc">     */</span>
+    48        Bool inv(Ptr blockPtr, SizeT byteCnt, Bool wait, Error.Block *eb);
+    49    
+    50        <span class="xdoc">/*!
+</span>    51    <span class="xdoc">     *  ======== wb ========
+</span>    52    <span class="xdoc">     *  Writes a range of memory from all cache(s)
+</span>    53    <span class="xdoc">     *
+</span>    54    <span class="xdoc">     *  Writes the range of memory within the specified starting
+</span>    55    <span class="xdoc">     *  address and byte count.  The range of addresses operated on
+</span>    56    <span class="xdoc">     *  gets quantized to whole cache lines in each cache.  All lines
+</span>    57    <span class="xdoc">     *  within the range are left valid in the 'type' caches and the data
+</span>    58    <span class="xdoc">     *  within the range will be written      to the source memory.
+</span>    59    <span class="xdoc">     *
+</span>    60    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be invalidated
+</span>    61    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be invalidated
+</span>    62    <span class="xdoc">     *  <b>@param(wait)</b>     wait until the operation is completed
+</span>    63    <span class="xdoc">     *  <b>@param(eb)</b>       error block
+</span>    64    <span class="xdoc">     *  <b>@a(returns)</b>  true for success; false for error.
+</span>    65    <span class="xdoc">     */</span>
+    66        Bool wb(Ptr blockPtr, SizeT byteCnt, Bool wait, Error.Block *eb);
+    67    
+    68        <span class="xdoc">/*!
+</span>    69    <span class="xdoc">     *  ======== wbInv ========
+</span>    70    <span class="xdoc">     *  Writes back and invalidates range fo memory.
+</span>    71    <span class="xdoc">     *
+</span>    72    <span class="xdoc">     *  Writes and invalidates the range of memory within the
+</span>    73    <span class="xdoc">     *  specified starting address and byte count.  The range of
+</span>    74    <span class="xdoc">     *  addresses operated on gets quantized to whole cache lines in
+</span>    75    <span class="xdoc">     *  each cache.  All lines within the range are written      to the
+</span>    76    <span class="xdoc">     *  source memory and then invalidated for all 'type' caches.
+</span>    77    <span class="xdoc">     *
+</span>    78    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be invalidated
+</span>    79    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be invalidated
+</span>    80    <span class="xdoc">     *  <b>@param(wait)</b>     wait until the operation is completed
+</span>    81    <span class="xdoc">     *  <b>@param(eb)</b>       error block
+</span>    82    <span class="xdoc">     *  <b>@a(returns)</b>  true for success; false for error.
+</span>    83    <span class="xdoc">     */</span>
+    84        Bool wbInv(Ptr blockPtr, SizeT byteCnt, Bool wait, Error.Block *eb);
+    85    
+    86        <span class="xdoc">/*!
+</span>    87    <span class="xdoc">     *  ======== wait ========
+</span>    88    <span class="xdoc">     *  Wait for a previous cache operation to complete
+</span>    89    <span class="xdoc">     *
+</span>    90    <span class="xdoc">     *  Wait for the cache wb/wbInv/inv operation to complete.  A cache
+</span>    91    <span class="xdoc">     *  operation is not truly complete until it has worked its way
+</span>    92    <span class="xdoc">     *  through all buffering and all memory writes have landed in the
+</span>    93    <span class="xdoc">     *  source memory.
+</span>    94    <span class="xdoc">     *
+</span>    95    <span class="xdoc">     *  <b>@a(returns)</b>  true for success; false for error.
+</span>    96    <span class="xdoc">     */</span>
+    97        Bool wait(Error.Block *eb);
+    98    
+    99    }
+   100    <span class="comment">/*
+</span>   101    <span class="comment"> *  @(#) xdc.runtime.knl; 1, 0, 0,248; 12-19-2013 19:53:41; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+</span>   102    <span class="comment"> */</span>
+   103    
+</pre>
+</body></html>

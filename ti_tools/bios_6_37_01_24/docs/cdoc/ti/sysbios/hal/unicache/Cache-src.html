@@ -1,0 +1,501 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.hal.unicache.Cache</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> * Copyright (c) 2012, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Cache.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> */</span>
+    36    <span class=key>package</span> ti.sysbios.hal.unicache;
+    37    
+    38    import xdc.rov.ViewInfo;
+    39    import xdc.runtime.Error;
+    40    import xdc.runtime.Types;
+    41    
+    42    import ti.sysbios.interfaces.ICache;
+    43    import ti.sysbios.hal.Hwi;
+    44    
+    45    <span class="xdoc">/*!
+</span>    46    <span class="xdoc"> *  ======== Cache ========
+</span>    47    <span class="xdoc"> *  The unicache Cache module used by the omap4 Tesla and Ducati cores
+</span>    48    <span class="xdoc"> *
+</span>    49    <span class="xdoc"> *  The Tesla and Ducati UniCaches do not support separate program and 
+</span>    50    <span class="xdoc"> *  data caches. Therefore none of the unique Cache_Type L1P/L1D/L2P/L2D
+</span>    51    <span class="xdoc"> *  operations can be precisely supported. The APIs in this module ignore 
+</span>    52    <span class="xdoc"> *  the P/D and observe only the L1/L2 designations (ie Cache_Type_L1P 
+</span>    53    <span class="xdoc"> *  is functionally equivalent to Cache_Type_L1D and Cache_Type_L1).
+</span>    54    <span class="xdoc"> *
+</span>    55    <span class="xdoc"> *  <b>@a(Restrictions)</b>
+</span>    56    <span class="xdoc"> *  When used within a dual M3 core (Ducati arrangement), care must be
+</span>    57    <span class="xdoc"> *  taken when initializing this shared resource. 
+</span>    58    <span class="xdoc"> *  The "Shared Resources" note provided
+</span>    59    <span class="xdoc"> *  in the {<b>@link</b> ti.sysbios.family.arm.ducati ducati} package discusses
+</span>    60    <span class="xdoc"> *  the management of the various hardware and software resources
+</span>    61    <span class="xdoc"> *  shared by the two M3 cores.
+</span>    62    <span class="xdoc"> *
+</span>    63    <span class="xdoc"> *  As the unicache is shared between the two M3 cores, it should only
+</span>    64    <span class="xdoc"> *  be initialized and enabled once.
+</span>    65    <span class="xdoc"> *  It is intended that Core 0 will {<b>@link</b> #configureCache configure} 
+</span>    66    <span class="xdoc"> *  the unicache at startup and then either {<b>@link</b> #enableCache enable} 
+</span>    67    <span class="xdoc"> *  it at that time or later on by manually invoking 
+</span>    68    <span class="xdoc"> *  {<b>@link</b> #enable Cache_enable()}.
+</span>    69    <span class="xdoc"> *
+</span>    70    <span class="xdoc"> *  The unicache Cache module is a Gated module. In a dual M3 core (Ducati) 
+</span>    71    <span class="xdoc"> *  environment, the unicache Cache module employs a 
+</span>    72    <span class="xdoc"> *  {<b>@link</b> ti.sysbios.family.arm.ducati.GateDualCore GateDualCore} gate
+</span>    73    <span class="xdoc"> *  to arbitrate the usage of the shared unicache registers. In a non 
+</span>    74    <span class="xdoc"> *  shared environment such as the C64T core in an OMAP4 device, a 
+</span>    75    <span class="xdoc"> *  {<b>@link</b> ti.sysbios.gates.GateHwi GateHwi} gate is used to avoid multi
+</span>    76    <span class="xdoc"> *  thread conflicts.
+</span>    77    <span class="xdoc"> *
+</span>    78    <span class="xdoc"> *  <b>@a</b>
+</span>    79    <span class="xdoc"> *
+</span>    80    <span class="xdoc"> *  <b>@p(html)</b>
+</span>    81    <span class="xdoc"> *  &lt;h3&gt; Calling Context &lt;/h3&gt;
+</span>    82    <span class="xdoc"> *  &lt;table border="1" cellpadding="3"&gt;
+</span>    83    <span class="xdoc"> *    &lt;colgroup span="1"&gt;&lt;/colgroup&gt; &lt;colgroup span="5" align="center"&gt;
+</span>    84    <span class="xdoc"> *    &lt;/colgroup&gt;
+</span>    85    <span class="xdoc"> *
+</span>    86    <span class="xdoc"> *    &lt;tr&gt;&lt;th&gt; Function                 &lt;/th&gt;&lt;th&gt;  Hwi   &lt;/th&gt;&lt;th&gt;  Swi   &lt;/th&gt;
+</span>    87    <span class="xdoc"> *    &lt;th&gt;  Task  &lt;/th&gt;&lt;th&gt;  Main  &lt;/th&gt;&lt;th&gt;  Startup  &lt;/th&gt;&lt;/tr&gt;
+</span>    88    <span class="xdoc"> *    &lt;!--                                                                  --&gt;
+</span>    89    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #disable}     &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    90    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    91    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #enable}      &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    92    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    93    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #inv}         &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    94    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    95    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #wb}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    96    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    97    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #wbInv}       &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    98    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    99    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #wait}        &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>   100    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   101    <span class="xdoc"> *    &lt;tr&gt;&lt;td colspan="6"&gt; Definitions: &lt;br /&gt;
+</span>   102    <span class="xdoc"> *       &lt;ul&gt;
+</span>   103    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Hwi&lt;/b&gt;: API is callable from a Hwi thread. &lt;/li&gt;
+</span>   104    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Swi&lt;/b&gt;: API is callable from a Swi thread. &lt;/li&gt;
+</span>   105    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Task&lt;/b&gt;: API is callable from a Task thread. &lt;/li&gt;
+</span>   106    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Main&lt;/b&gt;: API is callable during any of these phases: &lt;/li&gt;
+</span>   107    <span class="xdoc"> *           &lt;ul&gt;
+</span>   108    <span class="xdoc"> *             &lt;li&gt; In your module startup after this module is started 
+</span>   109    <span class="xdoc"> *    (e.g. Cache_Module_startupDone() returns TRUE). &lt;/li&gt;
+</span>   110    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.lastFxns. &lt;/li&gt;
+</span>   111    <span class="xdoc"> *             &lt;li&gt; During main().&lt;/li&gt;
+</span>   112    <span class="xdoc"> *             &lt;li&gt; During BIOS.startupFxns.&lt;/li&gt;
+</span>   113    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   114    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Startup&lt;/b&gt;: API is callable during any of these phases:&lt;/li&gt;
+</span>   115    <span class="xdoc"> *           &lt;ul&gt;
+</span>   116    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.firstFxns.&lt;/li&gt;
+</span>   117    <span class="xdoc"> *             &lt;li&gt; In your module startup before this module is started 
+</span>   118    <span class="xdoc"> *    (e.g. Cache_Module_startupDone() returns FALSE).&lt;/li&gt;
+</span>   119    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   120    <span class="xdoc"> *       &lt;/ul&gt;
+</span>   121    <span class="xdoc"> *    &lt;/td&gt;&lt;/tr&gt;
+</span>   122    <span class="xdoc"> *
+</span>   123    <span class="xdoc"> *  &lt;/table&gt;
+</span>   124    <span class="xdoc"> *  <b>@p</b>
+</span>   125    <span class="xdoc"> */</span>
+   126    
+   127    @ModuleStartup
+   128    @Gated
+   129    
+   130    <span class=key>module</span> Cache <span class=key>inherits</span> ti.sysbios.interfaces.ICache 
+   131    {
+   132        
+   133        <span class=comment>// -------- Module Types --------</span>
+   134    
+   135        <span class="xdoc">/*!
+</span>   136    <span class="xdoc">     *  Runtime representation of the Cache registers
+</span>   137    <span class="xdoc">     */</span>
+   138        <span class=key>struct</span> CACHE {
+   139            UInt32 L1_INFO;         <span class="comment">/* 0000 */</span>
+   140            UInt32 L1_CONFIG;       <span class="comment">/* 0004 */</span>
+   141            UInt32 L1_INT;          <span class="comment">/* 0008 */</span>
+   142            UInt32 L1_OCP;          <span class="comment">/* 000C */</span>
+   143            UInt32 L1_MAINT;        <span class="comment">/* 0010 */</span>
+   144            Ptr    L1_MTSTART;      <span class="comment">/* 0014 */</span>
+   145            Ptr    L1_MTEND;        <span class="comment">/* 0018 */</span>
+   146            Ptr    L1_CTADDR;       <span class="comment">/* 001c */</span>
+   147            UInt32 L1_CTDATA;       <span class="comment">/* 0020 */</span>
+   148    
+   149            UInt32 Reserved[0x77];  <span class="comment">/* 0024 - 001fc */</span>
+   150    
+   151            UInt32 L2_INFO;         <span class="comment">/* 0200 */</span>
+   152            UInt32 L2_CONFIG;       <span class="comment">/* 0204 */</span>
+   153            UInt32 L2_INT;          <span class="comment">/* 0208 */</span>
+   154            UInt32 L2_OCP;          <span class="comment">/* 020C */</span>
+   155            UInt32 L2_MAINT;        <span class="comment">/* 0210 */</span>
+   156            Ptr    L2_MTSTART;      <span class="comment">/* 0214 */</span>
+   157            Ptr    L2_MTEND;        <span class="comment">/* 0218 */</span>
+   158            Ptr    L2_CTADDR;       <span class="comment">/* 021c */</span>
+   159            UInt32 L2_CTDATA;       <span class="comment">/* 0220 */</span>
+   160        };
+   161    
+   162        <span class="xdoc">/*! 
+</span>   163    <span class="xdoc">     *  This device's unicache register set address.
+</span>   164    <span class="xdoc">     *  Initialized internally according to build target/device.
+</span>   165    <span class="xdoc">     */</span>
+   166        <span class=key>extern</span> volatile CACHE cache;
+   167    
+   168        <span class="xdoc">/*!
+</span>   169    <span class="xdoc">     *  OCP Interface Configuration Register Settings.
+</span>   170    <span class="xdoc">     */</span>
+   171        <span class=key>struct</span> OCPConfig {
+   172            UInt8 wrap;
+   173            UInt8 wrbuffer;
+   174            UInt8 prefetch;
+   175            UInt8 cleanbuf;
+   176        }
+   177    
+   178        <span class="xdoc">/*!
+</span>   179    <span class="xdoc">     *  CONFIG Configuration Register Settings.
+</span>   180    <span class="xdoc">     */</span>
+   181        <span class=key>struct</span> SecurityConfig {
+   182            UInt8 secure;
+   183            UInt8 nbypass;
+   184            UInt8 secint;
+   185            UInt8 secport;
+   186            UInt8 secmain;
+   187        }
+   188    
+   189        <span class=comment>// -------- ROV view --------</span>
+   190        
+   191        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   192        <span class=key>metaonly</span> <span class=key>struct</span> ModuleView {
+   193            Bool        cacheEnabled;
+   194        };
+   195    
+   196        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   197        @Facet
+   198        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo = 
+   199            ViewInfo.create({
+   200                viewMap: [
+   201                    [<span class="string">'Module'</span>,   {type: ViewInfo.MODULE,   viewInitFxn: <span class="string">'viewInitModule'</span>,   structName: <span class="string">'ModuleView'</span>}],
+   202               ]
+   203           });
+   204    
+   205        <span class=comment>// Errors</span>
+   206    
+   207        <span class="xdoc">/*!
+</span>   208    <span class="xdoc">     *  Error raised when a Cache interrupt occurs
+</span>   209    <span class="xdoc">     *  Reason bits are contents of Cache Interrupt Register
+</span>   210    <span class="xdoc">     */</span>
+   211        <span class=key>config</span> Error.Id E_exception = {
+   212            msg: <span class="string">"E_exception: L%d reason: 0x%x"</span>
+   213        };
+   214    
+   215        <span class=comment>// -------- Configuration Parameters --------</span>
+   216    
+   217        <span class="xdoc">/*!
+</span>   218    <span class="xdoc">     *  L1_OCP register settings
+</span>   219    <span class="xdoc">     */</span>
+   220        <span class=key>metaonly</span> <span class=key>config</span> OCPConfig ocpL1 = {
+   221            wrap : 0, 
+   222            wrbuffer : 0, 
+   223            prefetch : 0
+   224        };
+   225    
+   226        <span class="xdoc">/*!
+</span>   227    <span class="xdoc">     *  L1_CONFIG register settings
+</span>   228    <span class="xdoc">     */</span>
+   229        <span class=key>metaonly</span> <span class=key>config</span> SecurityConfig configL1 = {
+   230            secure : 0, 
+   231            nbypass : 0, 
+   232            secint : 1, 
+   233            secport : 1, 
+   234            secmain : 1
+   235        };
+   236    
+   237        <span class="xdoc">/*!
+</span>   238    <span class="xdoc">     *  L2_OCP register settings
+</span>   239    <span class="xdoc">     */</span>
+   240        <span class=key>metaonly</span> <span class=key>config</span> OCPConfig ocpL2 = {
+   241            wrap : 0, 
+   242            wrbuffer : 0, 
+   243            prefetch : 0, 
+   244            cleanbuf : 0
+   245        };
+   246    
+   247        <span class="xdoc">/*!
+</span>   248    <span class="xdoc">     *  L2_CONFIG register settings
+</span>   249    <span class="xdoc">     */</span>
+   250        <span class=key>metaonly</span> <span class=key>config</span> SecurityConfig configL2 = {
+   251            secure : 0, 
+   252            nbypass : 0, 
+   253            secint : 1, 
+   254            secport : 1, 
+   255            secmain : 1
+   256        };
+   257    
+   258        <span class="xdoc">/*!
+</span>   259    <span class="xdoc">     *  Configure cache at startup?
+</span>   260    <span class="xdoc">     *
+</span>   261    <span class="xdoc">     *  It is possible to configure the Cache at startup and not 
+</span>   262    <span class="xdoc">     *  {<b>@link</b> #enableCache enable} it.
+</span>   263    <span class="xdoc">     *  However, it is not possible to enable the Cache at startup
+</span>   264    <span class="xdoc">     *  without configuring it. 
+</span>   265    <span class="xdoc">     *
+</span>   266    <span class="xdoc">     *  Enabling the Cache will automatically enable configuring
+</span>   267    <span class="xdoc">     *  the Cache.
+</span>   268    <span class="xdoc">     */</span>
+   269        <span class=key>config</span> Bool configureCache = <span class=key>false</span>;
+   270        
+   271        <span class="xdoc">/*!
+</span>   272    <span class="xdoc">     *  Enable cache at startup?
+</span>   273    <span class="xdoc">     *  
+</span>   274    <span class="xdoc">     *  Enabling the Cache at startup will force 
+</span>   275    <span class="xdoc">     *  {<b>@link</b> #configureCache configuring} the Cache at startup.
+</span>   276    <span class="xdoc">     */</span>
+   277        <span class=key>config</span> Bool enableCache = <span class=key>false</span>;
+   278        
+   279        <span class="xdoc">/*!
+</span>   280    <span class="xdoc">     *  Maximum buffer size to use discrete cache line operations with.
+</span>   281    <span class="xdoc">     *  
+</span>   282    <span class="xdoc">     *  For buffers below a certain size, cache maintenance operations are
+</span>   283    <span class="xdoc">     *  more efficient if performed on single cache lines at a time
+</span>   284    <span class="xdoc">     *  rather than on an entire region.
+</span>   285    <span class="xdoc">     *  
+</span>   286    <span class="xdoc">     *  For buffer sizes equal to or less than this setting, the {<b>@link</b> #inv},
+</span>   287    <span class="xdoc">     *  {<b>@link</b> #wb}, and {<b>@link</b> #wbInv} APIs will use a series of individual
+</span>   288    <span class="xdoc">     *  cache line operations. For buffer sizes large than this setting, a
+</span>   289    <span class="xdoc">     *  a single block mode operation will be performed.
+</span>   290    <span class="xdoc">     *
+</span>   291    <span class="xdoc">     *  For M3 cores, the default setting is 1024 bytes.
+</span>   292    <span class="xdoc">     *  For 64T cores, the default setting is 4096 bytes.
+</span>   293    <span class="xdoc">     */</span>
+   294        <span class=key>config</span> SizeT maxLineModeBufSize;
+   295        
+   296        <span class="xdoc">/*! 
+</span>   297    <span class="xdoc">     *  L1 Interrupt Handler. 
+</span>   298    <span class="xdoc">     *  Default is set to an internal L1 interrupt handler
+</span>   299    <span class="xdoc">     */</span>
+   300        <span class=key>metaonly</span> <span class=key>config</span> Hwi.FuncPtr l1InterruptHandler;
+   301    
+   302        <span class="xdoc">/*! 
+</span>   303    <span class="xdoc">     *  L1 Interrupt number. 
+</span>   304    <span class="xdoc">     *  Default is device unique but can be set in the user config file.
+</span>   305    <span class="xdoc">     */</span>
+   306        <span class=key>metaonly</span> <span class=key>config</span> UInt l1InterruptNumber;
+   307    
+   308        <span class="xdoc">/*! 
+</span>   309    <span class="xdoc">     *  L1 Interrupt priority. 
+</span>   310    <span class="xdoc">     *  Default is device unique but can be set in the user config file.
+</span>   311    <span class="xdoc">     */</span>
+   312        <span class=key>metaonly</span> <span class=key>config</span> UInt l1InterruptPriority;
+   313    
+   314        <span class="xdoc">/*! 
+</span>   315    <span class="xdoc">     *  L2 Interrupt Handler. 
+</span>   316    <span class="xdoc">     *  Default is set to an internal L2 interrupt handler
+</span>   317    <span class="xdoc">     */</span>
+   318        <span class=key>metaonly</span> <span class=key>config</span> Hwi.FuncPtr l2InterruptHandler;
+   319    
+   320        <span class="xdoc">/*! 
+</span>   321    <span class="xdoc">     *  L2 Interrupt number. 
+</span>   322    <span class="xdoc">     *  Default is device unique but can be set in the user config file.
+</span>   323    <span class="xdoc">     */</span>
+   324        <span class=key>metaonly</span> <span class=key>config</span> UInt l2InterruptNumber;
+   325    
+   326        <span class="xdoc">/*! 
+</span>   327    <span class="xdoc">     *  L2 Interrupt priority. 
+</span>   328    <span class="xdoc">     *  Default is device unique but can be set in the user config file.
+</span>   329    <span class="xdoc">     */</span>
+   330        <span class=key>metaonly</span> <span class=key>config</span> UInt l2InterruptPriority;
+   331    
+   332        <span class=comment>// -------- Module Functions --------</span>
+   333    
+   334        <span class="xdoc">/*!
+</span>   335    <span class="xdoc">     *  ======== lock ========
+</span>   336    <span class="xdoc">     *  Locks a memory block into the cache.
+</span>   337    <span class="xdoc">     *
+</span>   338    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be locked
+</span>   339    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be locked
+</span>   340    <span class="xdoc">     *  <b>@param(type)</b>     bit mask of Cache type
+</span>   341    <span class="xdoc">     *  <b>@param(wait)</b>     wait until the operation is completed
+</span>   342    <span class="xdoc">     */</span>
+   343        @DirectCall
+   344        Void lock(Ptr blockPtr, SizeT byteCnt, Bits16 type, Bool wait);
+   345    
+   346        <span class="xdoc">/*!
+</span>   347    <span class="xdoc">     *  ======== unlock ========
+</span>   348    <span class="xdoc">     *  Unlocks a cached memory block.
+</span>   349    <span class="xdoc">     *
+</span>   350    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be locked
+</span>   351    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be locked
+</span>   352    <span class="xdoc">     *  <b>@param(type)</b>     bit mask of Cache type
+</span>   353    <span class="xdoc">     *  <b>@param(wait)</b>     wait until the operation is completed
+</span>   354    <span class="xdoc">     */</span>
+   355        @DirectCall
+   356        Void unlock(Ptr blockPtr, SizeT byteCnt, Bits16 type, Bool wait);
+   357    
+   358        <span class="xdoc">/*!
+</span>   359    <span class="xdoc">     *  ======== preload ========
+</span>   360    <span class="xdoc">     *  Loads a memory block into the cache.
+</span>   361    <span class="xdoc">     *
+</span>   362    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be loaded
+</span>   363    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be loaded
+</span>   364    <span class="xdoc">     *  <b>@param(type)</b>     bit mask of Cache type
+</span>   365    <span class="xdoc">     *  <b>@param(wait)</b>     wait until the operation is completed
+</span>   366    <span class="xdoc">     */</span>
+   367        @DirectCall
+   368        Void preload(Ptr blockPtr, SizeT byteCnt, Bits16 type, Bool wait);
+   369    
+   370        <span class="xdoc">/*!
+</span>   371    <span class="xdoc">     *  ======== preloadLock ========
+</span>   372    <span class="xdoc">     *  Loads and locks a memory block into the cache.
+</span>   373    <span class="xdoc">     *
+</span>   374    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be loaded
+</span>   375    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be loaded
+</span>   376    <span class="xdoc">     *  <b>@param(type)</b>     bit mask of Cache type
+</span>   377    <span class="xdoc">     *  <b>@param(wait)</b>     wait until the operation is completed
+</span>   378    <span class="xdoc">     */</span>
+   379        @DirectCall
+   380        Void preloadLock(Ptr blockPtr, SizeT byteCnt, Bits16 type, Bool wait);
+   381    
+   382        <span class="xdoc">/*!
+</span>   383    <span class="xdoc">     *  ======== wbAll ========
+</span>   384    <span class="xdoc">     *  Write back all caches
+</span>   385    <span class="xdoc">     *
+</span>   386    <span class="xdoc">     *  Perform a global write back.
+</span>   387    <span class="xdoc">     *  All cache lines are left valid in L1 and L2 caches and the data in L1 
+</span>   388    <span class="xdoc">     *  cache is written back to L2 or external.  All cache lines are left 
+</span>   389    <span class="xdoc">     *  valid in L2 cache and the data in L2 cache is written back to 
+</span>   390    <span class="xdoc">     *  external.
+</span>   391    <span class="xdoc">     *  Waits for completion.
+</span>   392    <span class="xdoc">     */</span>
+   393        @DirectCall
+   394        <span class=key>override</span> Void wbAll();
+   395    
+   396        <span class="xdoc">/*!
+</span>   397    <span class="xdoc">     *  ======== invAll ========
+</span>   398    <span class="xdoc">     *  Invalidate all caches
+</span>   399    <span class="xdoc">     *
+</span>   400    <span class="xdoc">     *  Perform a global invalidate.  All cache lines are
+</span>   401    <span class="xdoc">     *  invalidated in L1 and L2 caches. 
+</span>   402    <span class="xdoc">     *  Waits for completion.
+</span>   403    <span class="xdoc">     */</span>
+   404        @DirectCall
+   405        Void invAll();
+   406    
+   407        <span class="xdoc">/*!
+</span>   408    <span class="xdoc">     *  ======== wbInvAll ========
+</span>   409    <span class="xdoc">     *  Write back invalidate all caches
+</span>   410    <span class="xdoc">     *
+</span>   411    <span class="xdoc">     *  Perform a global write back.
+</span>   412    <span class="xdoc">     *  Then perform a global invalidate.  
+</span>   413    <span class="xdoc">     *  All cache lines are invalidated in L1 and L2 caches.
+</span>   414    <span class="xdoc">     *  Waits for completion.
+</span>   415    <span class="xdoc">     */</span>
+   416        @DirectCall
+   417        <span class=key>override</span> Void wbInvAll();
+   418    
+   419        <span class="xdoc">/*!
+</span>   420    <span class="xdoc">     *  ======== read ========
+</span>   421    <span class="xdoc">     *  Read a block of memory from the cache.
+</span>   422    <span class="xdoc">     *  Only whole numbers of 32 bit words are transferred.
+</span>   423    <span class="xdoc">     *  byteCnt is divided by 4 to convert to number of words.
+</span>   424    <span class="xdoc">     *
+</span>   425    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be loaded
+</span>   426    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be loaded
+</span>   427    <span class="xdoc">     *  <b>@param(type)</b>     bit mask of Cache type
+</span>   428    <span class="xdoc">     *  <b>@param(destBuf)</b>  address of destination buffer
+</span>   429    <span class="xdoc">     */</span>
+   430        @DirectCall
+   431        Void read(Ptr blockPtr, SizeT byteCnt, Bits16 type, Ptr destBuf);
+   432    
+   433        <span class="xdoc">/*!
+</span>   434    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   435    <span class="xdoc">     *  ======== dumpRegs ========
+</span>   436    <span class="xdoc">     *  formatted dump of cache registers
+</span>   437    <span class="xdoc">     */</span>
+   438        Void dumpRegs();
+   439    
+   440    <span class=key>internal</span>:
+   441    
+   442        <span class="comment">/* initial L1 register settings */</span>
+   443        <span class=key>config</span> Bits32 l1ocpConfig;
+   444        <span class=key>config</span> Bits32 l1secConfig;
+   445    
+   446        <span class="comment">/* initial L2 register settings */</span>
+   447        <span class=key>config</span> Bits32 l2ocpConfig;
+   448        <span class=key>config</span> Bits32 l2secConfig;
+   449    
+   450        <span class="comment">/* device-specific L2 support enabled flag */</span>
+   451        <span class=key>readonly</span> <span class=key>config</span> Bool l2CacheSupported;
+   452    
+   453        <span class="comment">/* base address of Cache registers */</span>
+   454        <span class=key>metaonly</span> <span class=key>config</span> Ptr baseAddr;
+   455    
+   456        <span class="xdoc">/*!
+</span>   457    <span class="xdoc">     *  ======== seizeRegs ========
+</span>   458    <span class="xdoc">     *  seize the cache registers
+</span>   459    <span class="xdoc">     */</span>
+   460        UInt seizeRegs();
+   461    
+   462        <span class="xdoc">/*!
+</span>   463    <span class="xdoc">     *  ======== releaseRegs ========
+</span>   464    <span class="xdoc">     *  release the cache registers
+</span>   465    <span class="xdoc">     */</span>
+   466        Void releaseRegs(UInt key);
+   467      
+   468        <span class="comment">/*
+</span>   469    <span class="comment">     *  ======== ISR ========
+</span>   470    <span class="comment">     *  Cache Interrupt Service Routine
+</span>   471    <span class="comment">     */</span>
+   472        Void ISR(UArg level);
+   473      
+   474        <span class="xdoc">/*!
+</span>   475    <span class="xdoc">     *  ======== printInfo ========
+</span>   476    <span class="xdoc">     *  formatted dump of cache registers helper
+</span>   477    <span class="xdoc">     */</span>
+   478        Void printInfo(UInt info, UInt level);
+   479    
+   480        <span class="xdoc">/*!
+</span>   481    <span class="xdoc">     *  ======== printConfig ========
+</span>   482    <span class="xdoc">     *  formatted dump of cache registers helper
+</span>   483    <span class="xdoc">     */</span>
+   484        Void printConfig(UInt cfg, UInt level);
+   485    
+   486        <span class="xdoc">/*!
+</span>   487    <span class="xdoc">     *  ======== printOCP ========
+</span>   488    <span class="xdoc">     *  formatted dump of cache registers helper
+</span>   489    <span class="xdoc">     */</span>
+   490        Void printOCP(UInt cfg, UInt level);
+   491    }
+   492    
+</pre>
+</body></html>

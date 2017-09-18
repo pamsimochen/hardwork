@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module xdc.runtime.knl.Semaphore</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> *  Copyright (c) 2008 Texas Instruments. All rights reserved. 
+</span>     3    <span class="comment"> *  This program and the accompanying materials are made available under the 
+</span>     4    <span class="comment"> *  terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+</span>     5    <span class="comment"> *  v. 1.0 which accompanies this distribution. The Eclipse Public License is
+</span>     6    <span class="comment"> *  available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+</span>     7    <span class="comment"> *  Distribution License is available at 
+</span>     8    <span class="comment"> *  http://www.eclipse.org/org/documents/edl-v10.php.
+</span>     9    <span class="comment"> *
+</span>    10    <span class="comment"> *  Contributors:
+</span>    11    <span class="comment"> *      Texas Instruments - initial implementation
+</span>    12    <span class="comment"> * */</span>
+    13    <span class="comment">/*
+</span>    14    <span class="comment"> *  ======== Semaphore.xdc ========
+</span>    15    <span class="comment"> */</span>
+    16    
+    17    import xdc.runtime.Assert;
+    18    import xdc.runtime.Error;
+    19    import xdc.runtime.knl.ISemaphore;
+    20    
+    21    <span class="xdoc">/*!
+</span>    22    <span class="xdoc"> *  ======== Semaphore ========
+</span>    23    <span class="xdoc"> *  Provides semaphore services when an ISemaphore.Handle is available. 
+</span>    24    <span class="xdoc"> *  
+</span>    25    <span class="xdoc"> *  An application can isolate itself from ISemaphore implementations by using 
+</span>    26    <span class="xdoc"> *  this module. The application must first obtain an ISemaphore.Handle. 
+</span>    27    <span class="xdoc"> *  It make get such a handle by directly calling {<b>@link</b> SemThread#create} or 
+</span>    28    <span class="xdoc"> *  {<b>@link</b> SemProcess#create}. Then the application can use the generic 
+</span>    29    <span class="xdoc"> *  APIs provided by this module.
+</span>    30    <span class="xdoc"> */</span>
+    31    
+    32    <span class=key>module</span> Semaphore
+    33    {
+    34        <span class="xdoc">/*!
+</span>    35    <span class="xdoc">     *  ======== PendStatus ========
+</span>    36    <span class="xdoc">     *  Error codes returned by Semaphore_pend
+</span>    37    <span class="xdoc">     */</span>
+    38        <span class=key>enum</span> PendStatus {
+    39            PendStatus_ERROR = -1,
+    40            PendStatus_TIMEOUT = 0,
+    41            PendStatus_SUCCESS = 1
+    42        };
+    43    
+    44        <span class="xdoc">/*! Used as the timeout value to specify wait forever */</span>
+    45        <span class=key>const</span> UInt FOREVER = ISemaphore.FOREVER;
+    46        
+    47        <span class="xdoc">/*!
+</span>    48    <span class="xdoc">     *  Proxy used for optimization.
+</span>    49    <span class="xdoc">     *
+</span>    50    <span class="xdoc">     *  If ALL ISemaphore.Handles were created using the same module 
+</span>    51    <span class="xdoc">     *  (e.g SemProcess) then setting this Proxy to SemProcess and 
+</span>    52    <span class="xdoc">     *  setting Semaphore.Proxy.abstractInstances$ = false, 
+</span>    53    <span class="xdoc">     *  Semaphore APIs can have better performance.
+</span>    54    <span class="xdoc">     */</span>
+    55        <span class=key>proxy</span> Proxy <span class=key>inherits</span> ISemaphore;
+    56    
+    57        <span class="xdoc">/*!
+</span>    58    <span class="xdoc">     *  ======== pend ========
+</span>    59    <span class="xdoc">     *  Wait for the semaphore to have a nonzero count, then decrement it.
+</span>    60    <span class="xdoc">     *
+</span>    61    <span class="xdoc">     *  The function returns one of the following:
+</span>    62    <span class="xdoc">     *  <b>@p(blist)</b>
+</span>    63    <span class="xdoc">     *  -{<b>@link</b> #PendStatus_ERROR} if an error occured.
+</span>    64    <span class="xdoc">     *  -{<b>@link</b> #PendStatus_TIMEOUT} denotes timeout.
+</span>    65    <span class="xdoc">     *  -{<b>@link</b> #PendStatus_SUCCESS} semaphore was decremented. 
+</span>    66    <span class="xdoc">     * 
+</span>    67    <span class="xdoc">     *  <b>@p</b>
+</span>    68    <span class="xdoc">     *
+</span>    69    <span class="xdoc">     *  <b>@param(sem)</b>     ISemaphore.Handle to be used
+</span>    70    <span class="xdoc">     *  <b>@param(timeout)</b> timeout in microseconds or
+</span>    71    <span class="xdoc">     *  {<b>@link</b> #FOREVER Semaphore_FOREVER} to wait forever
+</span>    72    <span class="xdoc">     *  <b>@param(eb)</b>      Pointer to Error.Block
+</span>    73    <span class="xdoc">     *  <b>@a(returns)</b>     status returned. (refer to above description)
+</span>    74    <span class="xdoc">     */</span>
+    75        Int pend(ISemaphore.Handle sem, UInt timeout, Error.Block *eb);
+    76    
+    77        <span class="xdoc">/*!
+</span>    78    <span class="xdoc">     *  ======== post ========
+</span>    79    <span class="xdoc">     *  Increment the semaphore count.
+</span>    80    <span class="xdoc">     *
+</span>    81    <span class="xdoc">     *  <b>@param(sem)</b>     ISemaphore.Handle to be used
+</span>    82    <span class="xdoc">     *  <b>@param(eb)</b>      Pointer to Error.Block
+</span>    83    <span class="xdoc">     *  <b>@a(returns)</b>     true for success, false for error in Error block.  
+</span>    84    <span class="xdoc">     */</span>
+    85        Bool post(ISemaphore.Handle sem, Error.Block *eb);
+    86    }
+    87    <span class="comment">/*
+</span>    88    <span class="comment"> *  @(#) xdc.runtime.knl; 1, 0, 0,248; 12-19-2013 19:53:41; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+</span>    89    <span class="comment"> */</span>
+    90    
+</pre>
+</body></html>

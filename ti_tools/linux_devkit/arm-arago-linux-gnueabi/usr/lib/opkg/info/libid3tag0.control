@@ -1,0 +1,13 @@
+Package: libid3tag0
+Version: 0.15.1b-r4-arago1.6
+Description: Library for interacting with ID3 tags
+Section: libs/multimedia
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+
+Architecture: armv7a
+OE: libid3tag
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libz1 (>= 1.2.3), libc6 (>= 2.12.2)
+Source: ftp://ftp.mars.org/pub/mpeg/libid3tag-0.15.1b.tar.gz file://libid3tag-pkg-config.patch

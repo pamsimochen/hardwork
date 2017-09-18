@@ -1,0 +1,13 @@
+This directory contains a basic SimpliciTI board support package (BSP) for the 
+MSP430F5529 experimenter's board (exp430F5529).
+
+It differs from a 'typical' SimpliciTI BSP in the following ways:
+
+- It does not provide support for buttons
+- It does not provide support for flashing LEDs
+- It does not do any configuration of clocks or the core voltage; these are
+  left to the application domain
+
+It should support multiple radio types, but so far it has only been tested with
+a CC1100 radio module.
+

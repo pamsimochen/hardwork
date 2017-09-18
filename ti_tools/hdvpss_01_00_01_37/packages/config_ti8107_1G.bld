@@ -1,0 +1,462 @@
+/*
+ *  ======== config.bld ========
+ *  Build configuration script for HDVPSS drivers
+ */
+
+/* load the required modules for the configuration */
+var M3 = xdc.useModule('ti.targets.arm.elf.M3');
+/* M3 compiler directory path                    */
+M3.rootDir = java.lang.System.getenv("CGTOOLS");
+
+/*
+Memory map for both "evmSi" and "sim"
+
+DDR: 0x80000000 (Ist 512MB - Cached)
++-----------------+
+|                 |
+| Linux           | 256MB
+|                 |
++-----------------+
+| TILER 16-bit    | 64MB
++-----------------+
+| CMEM            | 10MB
++-----------------+
+|                 |
+| DSP             | 32MB
+|                 |
++-----------------+
+| SR1             | 12MB
++-----------------+
+| IPC SR0         | 16MB
++-----------------+
+| VPSS M3 Code    | 4MB
++-----------------+
+| VIDEO M3 Code   | 4MB
++-----------------+
+| VIDEO M3 Data   | 32MB
++-----------------+
+| VPSS M3 Data    | 60MB
++-----------------+
+| SHARED CTRL     |
+| DUCATI          | 11MB
++-----------------+
+| Shared Data     | 1MB
++-----------------+
+| Debug/NOT USED  | 10MB
++-----------------+
+
+DDR: 0xA0000000 (2nd 512MB - Non-Cached)
+
++-----------------+
+|  Notify Mem     | 2MB
++-----------------+
+| HDVPSS Sharded  | 3MB
+|      Mem        |
++-----------------+
+| VPDMA Desc Mem  | 3MB
++-----------------+
+| FrameBuffer     | 248MB
++-----------------+
+| Tiler PAGE      | 128MB
+|                 |
++-----------------+
+| Tiler 8-bit     | 128MB
+|                 |
++-----------------+
+
+OCMC: 0x40300000
++-----------------+
+| OCMC0 (Not used)| 256KB
++-----------------+
+
+OCMC: 0x40400000
++-----------------+
+| OCMC1 (Not used)| 256KB
++-----------------+
+
+*/
+
+var KB=1024;
+var MB=KB*KB;
+
+var DDR3_ADDR;
+var DDR3_SIZE;
+
+var OCMC0_ADDR;
+var OCMC1_ADDR;
+var OCMC_SIZE;
+
+var LINUX_ADDR;
+var LINUX_SIZE;
+
+var VIDEO_M3_CODE_ADDR;
+var VIDEO_M3_CODE_SIZE;
+
+var VIDEO_M3_DATA_ADDR;
+var VIDEO_M3_DATA_SIZE;
+
+var DSS_M3_CODE_ADDR;
+var DSS_M3_CODE_SIZE;
+
+var DSS_M3_DATA_ADDR;
+var DSS_M3_DATA_SIZE;
+
+var DEBUG_ADDR;
+var DEBUG_SIZE;
+
+var TILER_8BIT_ADDR;
+var TILER_8BIT_SIZE;
+
+var TILER_16BIT_ADDR;
+var TILER_16BIT_SIZE;
+
+var TILER_PAGED_ADDR;
+var TILER_PAGED_SIZE;
+
+var HDVPSS_DESC_ADDR;
+var HDVPSS_DESC_SIZE;
+
+var HDVPSS_SHARED_ADDR;
+var HDVPSS_SHARED_SIZE;
+
+var FRAME_BUFFER_ADDR;
+var FRAME_BUFFER_SIZE;
+
+/*
+var CMEM_DSP_SIZE;
+
+var IPC_SR0_SIZE;
+var IPC_SR0_ADDR;
+
+var IPC_SR1_SIZE;
+var SHARED_CTRL_DATA_SIZE;
+var NOTIFY_SHARED_ADDR;
+var NOTIFY_SHARED_SIZE;
+*/
+DDR3_ADDR               = 0x80000000;
+DDR3_SIZE               = 1024*MB;
+
+OCMC0_ADDR              = 0x00300000;
+OCMC1_ADDR              = 0x00400000;
+OCMC_SIZE               = 256*KB;
+
+LINUX_SIZE              = 256*MB;
+TILER_16BIT_SIZE        = 64*MB;
+CMEM_DSP_SIZE         = 42*MB;
+IPC_SR1_SIZE            = 12*MB;
+IPC_SR0_SIZE            = 16*MB;
+VIDEO_M3_CODE_SIZE      = 4*MB;
+VIDEO_M3_DATA_SIZE      = 32*MB;
+DSS_M3_CODE_SIZE        = 4*MB;
+DSS_M3_DATA_SIZE        = 60*MB;
+SHARED_CTRL_DATA_SIZE   = 12*MB;
+DEBUG_SIZE              = 10*MB;
+
+NOTIFY_SHARED_SIZE      = 2*MB;
+HDVPSS_SHARED_SIZE      = 3*MB;
+HDVPSS_DESC_SIZE        = 3*MB;
+TILER_8BIT_SIZE         = 128*MB;
+TILER_PAGED_SIZE        = 128*MB;
+FRAME_BUFFER_SIZE       = 512*MB-(TILER_8BIT_SIZE+TILER_PAGED_SIZE+HDVPSS_DESC_SIZE+HDVPSS_SHARED_SIZE+NOTIFY_SHARED_SIZE);
+
+LINUX_ADDR              = DDR3_ADDR;
+TILER_16BIT_ADDR        = LINUX_ADDR       + LINUX_SIZE;
+IPC_SR0_ADDR            = TILER_16BIT_ADDR + TILER_16BIT_SIZE + CMEM_DSP_SIZE + IPC_SR1_SIZE;
+DSS_M3_CODE_ADDR        = IPC_SR0_ADDR     + IPC_SR0_SIZE;
+VIDEO_M3_CODE_ADDR      = DSS_M3_CODE_ADDR      + DSS_M3_CODE_SIZE;
+VIDEO_M3_DATA_ADDR      = VIDEO_M3_CODE_ADDR    + VIDEO_M3_CODE_SIZE;
+DSS_M3_DATA_ADDR        = VIDEO_M3_DATA_ADDR    + VIDEO_M3_DATA_SIZE;
+DEBUG_ADDR              = DSS_M3_DATA_ADDR      + DSS_M3_DATA_SIZE + SHARED_CTRL_DATA_SIZE;
+
+
+NOTIFY_SHARED_ADDR      = 0xA0000000;
+HDVPSS_SHARED_ADDR      = NOTIFY_SHARED_ADDR  + NOTIFY_SHARED_SIZE;
+HDVPSS_DESC_ADDR        = HDVPSS_SHARED_ADDR  + HDVPSS_SHARED_SIZE;
+FRAME_BUFFER_ADDR       = HDVPSS_DESC_ADDR    + HDVPSS_DESC_SIZE;
+TILER_PAGED_ADDR        = FRAME_BUFFER_ADDR   + FRAME_BUFFER_SIZE;
+TILER_8BIT_ADDR         = TILER_PAGED_ADDR    + TILER_PAGED_SIZE;
+
+Build.platformTable["ti.platforms.evmDM8148:core1"] =
+{
+    externalMemoryMap:
+    [
+        ["DDR3_RAM", {
+            comment: "DDR3_RAM",
+            name: "DDR3_RAM",
+            base: DDR3_ADDR,
+            len:  DDR3_SIZE
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ],
+    customMemoryMap:
+    [
+        ["LINUX_MEM", {
+            comment : "LINUX_MEM",
+            name    : "LINUX_MEM",
+            base    : LINUX_ADDR,
+            len     : LINUX_SIZE
+        }],
+        ["SR0", {
+            comment : "SR0",
+            name    : "SR0",
+            base    : IPC_SR0_ADDR,
+            len     : IPC_SR0_SIZE
+        }],
+        ["VIDEO_M3_CODE_MEM", {
+            comment : "VIDEO_M3_CODE_MEM",
+            name    : "VIDEO_M3_CODE_MEM",
+            base    : VIDEO_M3_CODE_ADDR,
+            len     : VIDEO_M3_CODE_SIZE
+        }],
+        ["VIDEO_M3_DATA_MEM", {
+            comment : "VIDEO_M3_DATA_MEM",
+            name    : "VIDEO_M3_DATA_MEM",
+            base    : VIDEO_M3_DATA_ADDR,
+            len     : VIDEO_M3_DATA_SIZE
+        }],
+        ["DSS_M3_CODE_MEM", {
+            comment : "DSS_M3_CODE_MEM",
+            name    : "DSS_M3_CODE_MEM",
+            base    : DSS_M3_CODE_ADDR,
+            len     : DSS_M3_CODE_SIZE
+        }],
+        ["DDR3_RAM", {
+            comment : "DDR3_RAM",
+            name    : "DDR3_RAM",
+            base    : DSS_M3_DATA_ADDR,
+            len     : DSS_M3_DATA_SIZE
+        }],
+        ["DEBUG_MEM", {
+            comment : "DEBUG_MEM",
+            name    : "DEBUG_MEM",
+            base    : DEBUG_ADDR,
+            len     : DEBUG_SIZE
+        }],
+        ["TILER_8BIT_MEM", {
+            comment : "TILER_8BIT_MEM",
+            name    : "TILER_8BIT_MEM",
+            base    : TILER_8BIT_ADDR,
+            len     : TILER_8BIT_SIZE
+        }],
+        ["TILER_16BIT_MEM", {
+            comment : "TILER_16BIT_MEM",
+            name    : "TILER_16BIT_MEM",
+            base    : TILER_16BIT_ADDR,
+            len     : TILER_16BIT_SIZE
+        }],
+        ["TILER_PAGED_MEM", {
+            comment : "TILER_PAGED_MEM",
+            name    : "TILER_PAGED_MEM",
+            base    : TILER_PAGED_ADDR,
+            len     : TILER_PAGED_SIZE
+        }],
+        ["HDVPSS_DESC_MEM", {
+            comment : "HDVPSS_DESC_MEM",
+            name    : "HDVPSS_DESC_MEM",
+            base    : HDVPSS_DESC_ADDR,
+            len     : HDVPSS_DESC_SIZE
+        }],
+        ["HDVPSS_SHARED_MEM", {
+            comment : "HDVPSS_SHARED_MEM",
+            name    : "HDVPSS_SHARED_MEM",
+            base    : HDVPSS_SHARED_ADDR,
+            len     : HDVPSS_SHARED_SIZE
+        }],
+        ["HOST_VPSS_NOITFYMEM", {
+            comment : "HOST_VPSS_NOITFYMEM",
+            name    : "HOST_VPSS_NOITFYMEM",
+            base    : NOTIFY_SHARED_ADDR,
+            len     : NOTIFY_SHARED_SIZE
+        }],
+        ["FRAME_BUFFER_MEM", {
+            comment : "FRAME_BUFFER_MEM",
+            name    : "FRAME_BUFFER_MEM",
+            base    : FRAME_BUFFER_ADDR,
+            len     : FRAME_BUFFER_SIZE
+        }],
+        ["L2_RAM", {
+            comment: "L2_RAM",
+            name: "L2_RAM",
+            base: 0x20004000,
+            len:  0x00010000
+        }],
+        ["L2_ROM", {
+            comment: "L2_ROM",
+            name: "L2_ROM",
+            base: 0x00000000,
+            len:  0x00004000
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ]
+};
+
+
+Build.platformTable["ti.platforms.evmDM8148:core0"] =
+{
+    externalMemoryMap:
+    [
+        ["DDR3_RAM", {
+            comment: "DDR3_RAM",
+            name: "DDR3_RAM",
+            base: DDR3_ADDR,
+            len:  DDR3_SIZE
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ],
+    customMemoryMap:
+    [
+        ["LINUX_MEM", {
+            comment : "LINUX_MEM",
+            name    : "LINUX_MEM",
+            base    : LINUX_ADDR,
+            len     : LINUX_SIZE
+        }],
+        ["SR0", {
+            comment : "SR0",
+            name    : "SR0",
+            base    : IPC_SR0_ADDR,
+            len     : IPC_SR0_SIZE
+        }],
+        ["VIDEO_M3_CODE_MEM", {
+            comment : "VIDEO_M3_CODE_MEM",
+            name    : "VIDEO_M3_CODE_MEM",
+            base    : VIDEO_M3_CODE_ADDR,
+            len     : VIDEO_M3_CODE_SIZE
+        }],
+        ["DDR3_RAM", {
+            comment : "DDR3_RAM",
+            name    : "DDR3_RAM",
+            base    : VIDEO_M3_DATA_ADDR,
+            len     : VIDEO_M3_DATA_SIZE
+        }],
+        ["DSS_M3_CODE_MEM", {
+            comment : "DSS_M3_CODE_MEM",
+            name    : "DSS_M3_CODE_MEM",
+            base    : DSS_M3_CODE_ADDR,
+            len     : DSS_M3_CODE_SIZE
+        }],
+        ["DSS_M3_DATA_MEM", {
+            comment : "DSS_M3_DATA_MEM",
+            name    : "DSS_M3_DATA_MEM",
+            base    : DSS_M3_DATA_ADDR,
+            len     : DSS_M3_DATA_SIZE
+        }],
+        ["DEBUG_MEM", {
+            comment : "DEBUG_MEM",
+            name    : "DEBUG_MEM",
+            base    : DEBUG_ADDR,
+            len     : DEBUG_SIZE
+        }],
+        ["TILER_8BIT_MEM", {
+            comment : "TILER_8BIT_MEM",
+            name    : "TILER_8BIT_MEM",
+            base    : TILER_8BIT_ADDR,
+            len     : TILER_8BIT_SIZE
+        }],
+        ["TILER_16BIT_MEM", {
+            comment : "TILER_16BIT_MEM",
+            name    : "TILER_16BIT_MEM",
+            base    : TILER_16BIT_ADDR,
+            len     : TILER_16BIT_SIZE
+        }],
+        ["TILER_PAGED_MEM", {
+            comment : "TILER_PAGED_MEM",
+            name    : "TILER_PAGED_MEM",
+            base    : TILER_PAGED_ADDR,
+            len     : TILER_PAGED_SIZE
+        }],
+        ["HDVPSS_DESC_MEM", {
+            comment : "HDVPSS_DESC_MEM",
+            name    : "HDVPSS_DESC_MEM",
+            base    : HDVPSS_DESC_ADDR,
+            len     : HDVPSS_DESC_SIZE
+        }],
+        ["HDVPSS_SHARED_MEM", {
+            comment : "HDVPSS_SHARED_MEM",
+            name    : "HDVPSS_SHARED_MEM",
+            base    : HDVPSS_SHARED_ADDR,
+            len     : HDVPSS_SHARED_SIZE
+        }],
+        ["HOST_VPSS_NOITFYMEM", {
+            comment : "HOST_VPSS_NOITFYMEM",
+            name    : "HOST_VPSS_NOITFYMEM",
+            base    : NOTIFY_SHARED_ADDR,
+            len     : NOTIFY_SHARED_SIZE
+        }],
+        ["FRAME_BUFFER_MEM", {
+            comment : "FRAME_BUFFER_MEM",
+            name    : "FRAME_BUFFER_MEM",
+            base    : FRAME_BUFFER_ADDR,
+            len     : FRAME_BUFFER_SIZE
+        }],
+        ["L2_RAM", {
+            comment: "L2_RAM",
+            name: "L2_RAM",
+            base: 0x20004000,
+            len:  0x00010000
+        }],
+        ["L2_ROM", {
+            comment: "L2_ROM",
+            name: "L2_ROM",
+            base: 0x00000000,
+            len:  0x00004000
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC0_RAM", {
+            comment: "OCMC0_RAM",
+            name: "OCMC0_RAM",
+            base: OCMC0_ADDR,
+            len:  OCMC_SIZE
+        }],
+        ["OCMC1_RAM", {
+            comment: "OCMC1_RAM",
+            name: "OCMC1_RAM",
+            base: OCMC1_ADDR,
+            len:  OCMC_SIZE
+        }],
+    ]
+};

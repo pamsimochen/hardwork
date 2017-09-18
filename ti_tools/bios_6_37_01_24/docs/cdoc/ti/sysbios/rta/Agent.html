@@ -1,0 +1,520 @@
+<html>
+<head>
+<title>module ti.sysbios.rta.Agent</title>
+<meta name="description" content="This module is deprecated and will not be supported in a future release. Please use the UIA product for the equivalent functionality">
+<link rel="stylesheet" type="text/css" href="../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">module</span> <span class="xdoc-id">ti.sysbios.rta.</span><span class="xdoc-id">Agent</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/package.html" title="package ti.sysbios.rta"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html">index URL</a></div>
+<p class="xdocHdrSummary">This module is deprecated and will not be supported in a future release.
+  Please use the UIA product for the equivalent functionality</p>
+<ul class="xdocToc">
+<li class="xdocToc"><a class="xdocToc" href="#meta-synop">Configuration settings</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocMetaElems">Individual elements</a></li>
+</ul>
+<div class="xdocBrief">
+The Agent module provides target support for the CCS RTA tools.
+[&nbsp;<a class="xdocBrief" href="#xdoc-desc">more</a>&nbsp;...&nbsp;]
+</div>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../ti/sysbios/rta/Agent-src.html"><span class="xdocLabelFile">ti/sysbios/rta/Agent.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynM">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">var</span> Agent = <span class="xdoc-kw3">xdc.useModule</span>(<span class="xdoc-id">'ti.sysbios.rta.Agent'</span>);
+</div>
+<div class='xdocSynHdr'>module-wide config parameters</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#configure.System.Log">Agent.<span class="xdoc-id">configureSystemLog</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Deprecated</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#load.Logger.Buffer.Section">Agent.<span class="xdoc-id">loadLoggerBufferSection</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Section to place the Load LoggerBuf's buffer</span></span></a> = <i><span class="xdoc-kw2">String</span></i> "[Default]";
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#load.Logger.Size">Agent.<span class="xdoc-id">loadLoggerSize</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Size (in MAUs) of logger used for the Load module Log events</span></span></a> = <i><span class="xdoc-kw2">SizeT</span></i> 512;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#load.Logging">Agent.<span class="xdoc-id">loadLogging</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Enable the Load module event logging</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#load.Logging.Runtime.Control">Agent.<span class="xdoc-id">loadLoggingRuntimeControl</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Specify whether load logging can be enabled / disabled at runtime</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#main.Logger.Buffer.Section">Agent.<span class="xdoc-id">mainLoggerBufferSection</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Section to place the Main LoggerBuf's buffer</span></span></a> = <i><span class="xdoc-kw2">String</span></i> "[Default]";
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#main.Logger.Size">Agent.<span class="xdoc-id">mainLoggerSize</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Size (in MAUs) of logger used for main and non-XDC modules Log events</span></span></a> = <i><span class="xdoc-kw2">SizeT</span></i> 1024;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#main.Logging">Agent.<span class="xdoc-id">mainLogging</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Enable main and non-XDC modules event logging</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#main.Logging.Runtime.Control">Agent.<span class="xdoc-id">mainLoggingRuntimeControl</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Specify whether main logging can be enabled / disabled at runtime</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#sysbios.Hwi.Logging">Agent.<span class="xdoc-id">sysbiosHwiLogging</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Enable SYSBIOS Hwi module's event logging</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">false</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#sysbios.Hwi.Logging.Runtime.Control">Agent.<span class="xdoc-id">sysbiosHwiLoggingRuntimeControl</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Specify whether Hwi logging can be enabled / disabled at runtime</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">false</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#sysbios.Logger.Buffer.Section">Agent.<span class="xdoc-id">sysbiosLoggerBufferSection</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Section to place the SYS/BIOS LoggerBuf's buffer</span></span></a> = <i><span class="xdoc-kw2">String</span></i> "[Default]";
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#sysbios.Logger.Size">Agent.<span class="xdoc-id">sysbiosLoggerSize</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Size (in MAUs) of the logger used for the SYS/BIOS modules' Log events</span></span></a> = <i><span class="xdoc-kw2">SizeT</span></i> 4096;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#sysbios.Swi.Logging">Agent.<span class="xdoc-id">sysbiosSwiLogging</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Enable SYSBIOS Swi module's event logging</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">false</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#sysbios.Swi.Logging.Runtime.Control">Agent.<span class="xdoc-id">sysbiosSwiLoggingRuntimeControl</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Specify whether Swi logging can be enabled / disabled at runtime</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">false</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#sysbios.Task.Logging">Agent.<span class="xdoc-id">sysbiosTaskLogging</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Enable SYSBIOS Task module's event logging</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#sysbios.Task.Logging.Runtime.Control">Agent.<span class="xdoc-id">sysbiosTaskLoggingRuntimeControl</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Specify whether Task logging can be enabled / disabled at runtime</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+</div>
+<span id="xdoc-desc"></span>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">The Agent module provides target support for the CCS RTA tools.</div>
+<div class="xdocText">The Agent module includes configuration parameters to help set up the
+  SYS/BIOS logging on the target.</div>
+<div class="xdocText">Earlier versions of the Agent provided support for transfer of data
+  during runtime.   Runtime support has been removed and
+  the Agent now only supports "stop mode" updates.   Log data is stored
+  in buffers in RAM and only updated on the host with the target is halted.</div>
+<div class="xdocText">Runtime support is now handled via the System Analyzer and UIA products.</div>
+<div id="xdocSep">
+</div>
+<div id="xdocMetaElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="configure.System.Log"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">configureSystemLog</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#configure.System.Log">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Deprecated</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">configureSystemLog</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="load.Logger.Buffer.Section"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">loadLoggerBufferSection</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#load.Logger.Buffer.Section">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Section to place the Load LoggerBuf's buffer</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">loadLoggerBufferSection</span> = <i><span class="xdoc-kw2">String</span></i> "[Default]";
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="load.Logger.Size"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">loadLoggerSize</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#load.Logger.Size">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Size (in MAUs) of logger used for the Load module Log events</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">loadLoggerSize</span> = <i><span class="xdoc-kw2">SizeT</span></i> 512;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">To specify the size in number of records, instead of MAUs, use the
+  following code:</div>
+<div class="xdocText"><PRE class="Example">  var Agent = xdc.useModule('ti.sysbios.rta.Agent');
+  var LoggerBuf = xdc.useModule('xdc.runtime.LoggerBuf');
+  
+  // Set the load logger size to 50 records.
+  Agent.loadLoggerSize = 50 * LoggerBuf.Entry.$sizeof();
+
+  // Print the final size to see how much memory is used.
+  print("Load Logger Size (MAUs): " + Agent.loadLoggerSize);
+</PRE></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="load.Logging"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">loadLogging</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#load.Logging">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Enable the Load module event logging</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">loadLogging</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">If this is false, the events will be disabled and cannot be enabled
+  at runtime (ALWAYS_OFF).
+  If this is true, the events will be enabled and can also be modified
+  at runtime (RUNTIME_ON).</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="load.Logging.Runtime.Control"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">loadLoggingRuntimeControl</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#load.Logging.Runtime.Control">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Specify whether load logging can be enabled / disabled at runtime</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">loadLoggingRuntimeControl</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This determines what diags settings are applied to the module's diags
+  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="main.Logger.Buffer.Section"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">mainLoggerBufferSection</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#main.Logger.Buffer.Section">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Section to place the Main LoggerBuf's buffer</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">mainLoggerBufferSection</span> = <i><span class="xdoc-kw2">String</span></i> "[Default]";
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="main.Logger.Size"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">mainLoggerSize</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#main.Logger.Size">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Size (in MAUs) of logger used for main and non-XDC modules Log events</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">mainLoggerSize</span> = <i><span class="xdoc-kw2">SizeT</span></i> 1024;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">To specify the size in number of records, instead of MAUs, use the
+  following code:</div>
+<div class="xdocText"><PRE class="Example">  var Agent = xdc.useModule('ti.sysbios.rta.Agent');
+  var LoggerBuf = xdc.useModule('xdc.runtime.LoggerBuf');
+  
+  // Set the main logger size to 50 records.
+  Agent.mainLoggerSize = 50 * LoggerBuf.Entry.$sizeof();
+
+  // Print the final size to see how much memory is used.
+  print("Application Logger Size (MAUs): " + Agent.mainLoggerSize);
+</PRE></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="main.Logging"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">mainLogging</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#main.Logging">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Enable main and non-XDC modules event logging</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">mainLogging</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="main.Logging.Runtime.Control"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">mainLoggingRuntimeControl</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#main.Logging.Runtime.Control">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Specify whether main logging can be enabled / disabled at runtime</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">mainLoggingRuntimeControl</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This determines what diags settings are applied to the module's diags
+  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sysbios.Hwi.Logging"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">sysbiosHwiLogging</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#sysbios.Hwi.Logging">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Enable SYSBIOS Hwi module's event logging</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">sysbiosHwiLogging</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">false</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sysbios.Hwi.Logging.Runtime.Control"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">sysbiosHwiLoggingRuntimeControl</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#sysbios.Hwi.Logging.Runtime.Control">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Specify whether Hwi logging can be enabled / disabled at runtime</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">sysbiosHwiLoggingRuntimeControl</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">false</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This determines what diags settings are applied to the module's diags
+  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sysbios.Logger.Buffer.Section"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">sysbiosLoggerBufferSection</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#sysbios.Logger.Buffer.Section">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Section to place the SYS/BIOS LoggerBuf's buffer</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">sysbiosLoggerBufferSection</span> = <i><span class="xdoc-kw2">String</span></i> "[Default]";
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sysbios.Logger.Size"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">sysbiosLoggerSize</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#sysbios.Logger.Size">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Size (in MAUs) of the logger used for the SYS/BIOS modules' Log events</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">sysbiosLoggerSize</span> = <i><span class="xdoc-kw2">SizeT</span></i> 4096;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">To specify the size in number of records, instead of MAUs, use the
+  following code:</div>
+<div class="xdocText"><PRE class="Example">  var Agent = xdc.useModule('ti.sysbios.rta.Agent');
+  var LoggerBuf = xdc.useModule('xdc.runtime.LoggerBuf');
+  
+  // Set the SYS/BIOS logger size to 50 records.
+  Agent.sysbiosLoggerSize = 50 * LoggerBuf.Entry.$sizeof();
+
+  // Print the final size to see how much memory is used.
+  print("SYS/BIOS Logger Size (MAUs): " + Agent.sysbiosLoggerSize);
+</PRE></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sysbios.Swi.Logging"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">sysbiosSwiLogging</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#sysbios.Swi.Logging">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Enable SYSBIOS Swi module's event logging</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">sysbiosSwiLogging</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">false</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sysbios.Swi.Logging.Runtime.Control"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">sysbiosSwiLoggingRuntimeControl</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#sysbios.Swi.Logging.Runtime.Control">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Specify whether Swi logging can be enabled / disabled at runtime</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">sysbiosSwiLoggingRuntimeControl</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">false</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This determines what diags settings are applied to the module's diags
+  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sysbios.Task.Logging"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">sysbiosTaskLogging</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#sysbios.Task.Logging">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Enable SYSBIOS Task module's event logging</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">sysbiosTaskLogging</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sysbios.Task.Logging.Runtime.Control"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">Agent.</span><span class="xdoc-id">sysbiosTaskLoggingRuntimeControl</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../ti/sysbios/rta/Agent.html" title="module Agent"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#ti/sysbios/rta/Agent.html#sysbios.Task.Logging.Runtime.Control">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Specify whether Task logging can be enabled / disabled at runtime</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl"></span></tt>Configuration settings</td>
+<td class="xdocLabelRight"></td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>Agent.<span class="xdoc-id">sysbiosTaskLoggingRuntimeControl</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This determines what diags settings are applied to the module's diags
+  mask. If 'false', the diags bits will be configured as ALWAYS_OFF or 
+  ALWAYS_ON, meaning they can't be changed at runtime. If 'true', the 
+  bits will be configured as 'RUNTIME_OFF' or 'RUNTIME_ON'.</div>
+</div>
+<div id="xdocDate">generated on Sat, 21 Dec 2013 00:09:26 GMT</div>
+</div></div></body>
+</html>

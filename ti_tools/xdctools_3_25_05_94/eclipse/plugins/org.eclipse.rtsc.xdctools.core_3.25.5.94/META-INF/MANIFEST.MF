@@ -1,0 +1,47 @@
+Manifest-Version: 1.0
+Export-Package: xdc.services.global,xdc.services.spec,xdc.services.spe
+ c.views,xdc.services.intern.gen,config,org.mozilla.javascript,org.moz
+ illa.javascript.ast,org.mozilla.javascript.tools,org.mozilla.javascri
+ pt.json
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.rt
+ sc.xdctools.server;visibility:=reexport,org.eclipse.rtsc.xdctools.rta
+ ;visibility:=reexport,com.ti.targets.omf;visibility:=reexport;resolut
+ ion:=optional
+Bundle-Vendor: Texas Instruments
+Eclipse-LazyStart: true
+Bundle-ClassPath: packages/xdc/services/spec/java/package.jar,packages
+ /xdc/shelf/java/antlr.jar,packages/xdc/services/global/java/package.j
+ ar,packages/xdc/services/intern/gen/java/package.jar,config.jar,packa
+ ges/xdc/shelf/java/js.jar,packages/xdc/services/spec/views/java/packa
+ ge.jar,bin
+Bundle-Version: 3.25.5.94
+Bundle-Name: XDCtools core
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.eclipse.rtsc.xdctools.core.CorePlugin
+Created-By: 1.6.0_37 (Sun Microsystems Inc.)
+Bundle-SymbolicName: org.eclipse.rtsc.xdctools.core;singleton:=true
+
+Name: packages/xdc/services/intern/gen/java/package.jar
+SHA1-Digest: SPngRS/hgy+We+Z5S7knLXr2boM=
+
+Name: bin/org/eclipse/rtsc/xdctools/core/CorePlugin.class
+SHA1-Digest: DLoNyWptUUmB7OSUXffiNPFNhLk=
+
+Name: packages/xdc/shelf/java/antlr.jar
+SHA1-Digest: nG4yiVv9GNvSdsfRudgzmQWwOzw=
+
+Name: config.jar
+SHA1-Digest: Wh0xkAeK3g28/fl7IJ9H0mb9HWw=
+
+Name: packages/xdc/shelf/java/js.jar
+SHA1-Digest: yw80CwsQg+ZWN/8W2NEBYCXaVdA=
+
+Name: packages/xdc/services/global/java/package.jar
+SHA1-Digest: C1lba88c9lHrxf6YLNFHNb08JP4=
+
+Name: packages/xdc/services/spec/views/java/package.jar
+SHA1-Digest: TS4sybIJ798FyOIDZjMHVIEVD0E=
+
+Name: packages/xdc/services/spec/java/package.jar
+SHA1-Digest: ujBuMXlzaCrdn7GlL3Wu+AqrI+8=
+

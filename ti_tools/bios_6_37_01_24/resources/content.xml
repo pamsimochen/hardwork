@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resource.explorer version="1.0" name="%NAME%" dir="" href="http://processors.wiki.ti.com/index.php/Category:SYSBIOS">
+
+    <content name="Getting Started Guide" href="docs/Bios_Getting_Started_Guide.pdf">
+	<type>weblink</type>
+    </content>
+    <content name="Users Guide" href="docs/Bios_User_Guide.pdf">
+	<type>weblink</type>
+    </content>
+    <content name="Legacy Applications note" href="docs/Bios_Legacy_App_Note.pdf">
+	<type>weblink</type>
+    </content>
+    <!-- DEVICE-BASED-CONTENT -->
+
+</resource.explorer>

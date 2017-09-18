@@ -1,0 +1,14 @@
+Package: intltool-dev
+Version: 0.40.3-r5.0.6
+Description: Utility scripts for internationalizing XML
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: intltool
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: intltool (= 0.40.3-r5.0.6)
+Recommends: intltool-dev
+Source: http://ftp.gnome.org/pub/GNOME/sources/intltool/0.40/intltool-0.40.3.tar.bz2

@@ -1,0 +1,14 @@
+Package: libgpg-error-dev
+Version: 1.4-r7.2.6
+Description: GPG-Error library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2 LGPLv2.1
+Architecture: armv7a
+OE: libgpg-error
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libgpg-error0 (= 1.4-r7.2.6), libgpg-error0, libgpg-error0 (>= 1.4), libc6 (>= 2.12.2)
+Recommends: libc6-dev, libgpg-error-dev, virtual-locale-pl-dev, virtual-locale-de-dev, virtual-locale-fr-dev, virtual-locale-vi-dev, virtual-locale-ro-dev
+Source: ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-1.4.tar.gz file://pkgconfig.patch

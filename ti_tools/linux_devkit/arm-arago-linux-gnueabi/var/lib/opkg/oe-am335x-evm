@@ -1,0 +1,703 @@
+Package: amsdk-av-files
+Version: 1.1-r5.6
+Depends: matrix-gui-multimedia-demos
+Section: multimedia
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 47dffae9196e08e7522b64ce06acbe69
+Size: 49444382
+Filename: amsdk-av-files_1.1-r5.6_am335x-evm.ipk
+Source: https://gforge.ti.com/gf/download/frsrelease/564/5179/amsdk-av-files_1.1.tar.gz;name=avfilestarball
+Description: AMSDK multimedia support files
+OE: amsdk-av-files
+HomePage: https://gforge.ti.com/gf/project/am_multimedia/
+Priority: optional
+
+
+Package: bt-enable
+Version: 1.0-r30c.6
+Depends: kernel-3.2.0, update-modules
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: d7596a1bcdaa728a7ad08bda198adb28
+Size: 2396
+Filename: bt-enable_1.0-r30c.6_am335x-evm.ipk
+Source: git://github.com/TI-ECS/bt_enable.git;protocol=git file://0001-Makefile-Update-makefile-to-work-well-in-SDK.patch
+Description: BT GPIO Enable
+OE: bt-enable
+HomePage: unknown
+Priority: optional
+
+
+Package: bt-firmware
+Version: 1.0-r1+gitrdb43d1f05efda9777d7ac1ac366637e29e21f77f.6
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 040fdbc058cc02e708caa3a85ba541ae
+Size: 65866
+Filename: bt-firmware_1.0-r1+gitrdb43d1f05efda9777d7ac1ac366637e29e21f77f.6_am335x-evm.ipk
+Source: git://github.com/TI-ECS/bt-firmware.git;protocol=git file://0001-Makefile-allow-building-within-the-SDK.patch
+Description: Firmware files for Bluetooth
+OE: bt-firmware
+HomePage: unknown
+Priority: optional
+
+
+Package: gadget-init
+Version: 1.0-r7.6
+Depends: update-rc.d
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 73c3db21179bdcc54988d4890e3c46e5
+Size: 1232
+Filename: gadget-init_1.0-r7.6_am335x-evm.ipk
+Source: file://init
+Description: Scripts to initialize usb gadgets
+OE: gadget-init
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-3.2.0
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 559f3d9ceda0472e1e2d6af13fa9cbd3
+Size: 1226
+Filename: kernel-3.2.0_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: Linux kernel for TI33x EVM from PSP, based on am335x-kernel
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-image-3.2.0
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: c33c5d1f40d669a4f412b7085efc55b9
+Size: 3143330
+Filename: kernel-image-3.2.0_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: Linux kernel for TI33x EVM from PSP, based on am335x-kernel
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-module-g-ether
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Depends: update-modules, kernel-3.2.0
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: bf1fb506ceedc4db0673a68791853477
+Size: 37850
+Filename: kernel-module-g-ether_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: g-ether kernel module; RNDIS/Ethernet Gadget
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-module-g-file-storage
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Depends: update-modules, kernel-3.2.0
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 6a756a8d258fcba377d2707f8f6c0083
+Size: 25408
+Filename: kernel-module-g-file-storage_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: g-file-storage kernel module; File-backed Storage Gadget
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-module-g-mass-storage
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Depends: update-modules, kernel-3.2.0
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: cdbe91f38a42078d841e5dd9d45f1909
+Size: 33440
+Filename: kernel-module-g-mass-storage_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: g-mass-storage kernel module; Mass Storage Gadget
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-module-hid-logitech-dj
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Depends: update-modules, kernel-3.2.0
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 68ad1c234bea1a73bfa0df157fbc4d2a
+Size: 8832
+Filename: kernel-module-hid-logitech-dj_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: hid-logitech-dj kernel module
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-module-scsi-wait-scan
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Depends: update-modules, kernel-3.2.0
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 2ad0345304b283eeb69a97998f764682
+Size: 2580
+Filename: kernel-module-scsi-wait-scan_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: scsi-wait-scan kernel module; SCSI wait for scans
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-module-tcrypt
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Depends: update-modules, kernel-3.2.0
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 1e2f6386a114c13ebd1dd27644e8fa28
+Size: 13974
+Filename: kernel-module-tcrypt_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: tcrypt kernel module; Quick & dirty crypto testing module
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-modules
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Recommends: kernel-module-scsi-wait-scan, kernel-module-g-mass-storage, kernel-module-g-file-storage, kernel-module-g-ether, kernel-module-hid-logitech-dj, kernel-module-tcrypt
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 05aca578eeb7806fbc16fcb521debbec
+Size: 1264
+Filename: kernel-modules_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: Kernel modules meta package
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: kernel-vmlinux
+Version: 3.2.0-psp04.06.00.08.sdk-r30.6
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 1cbe38ec999b8776a2115ece17dd6c43
+Size: 3887868
+Filename: kernel-vmlinux_3.2.0-psp04.06.00.08.sdk-r30.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch file://0002-am33x-Add-crypto-device-and-resource-structures.patch file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch file://0007-am33x-Create-driver-for-AES-crypto-module.patch file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch file://0002-AM335x-OCF-Driver-for-Linux-3.patch file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch file://0001-am33xx-Add-SmartReflex-support.patch file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: Linux kernel for TI33x EVM from PSP, based on am335x-kernel
+OE: linux-am335x
+HomePage: unknown
+Priority: optional
+
+
+Package: libgl1
+Version: 2:7.6-r11.1.6
+Depends: libx11-6 (>= 1.4.1), libxext6 (>= 1.2.0), libxxf86vm1 (>= 1.1.1), libxdamage1 (>= 1.1.3), libxfixes3 (>= 4.0.5), libdrm2 (>= 2.4.23), libc6 (>= 2.12.2)
+Section: x11
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: df7df2f1f3cc5cc28f28e30cc15275ab
+Size: 143340
+Filename: libgl1_7.6-r11.1.6_am335x-evm.ipk
+Source: ftp://ftp.freedesktop.org/pub/mesa/7.6/MesaLib-7.6.tar.bz2;name=archive ftp://ftp.freedesktop.org/pub/mesa/7.6/MesaDemos-7.6.tar.bz2;name=demos
+Description: An open source implementation of the OpenGL spec
+OE: mesa
+HomePage: http://mesa3d.org
+Priority: optional
+
+
+Package: libglu1
+Version: 2:7.6-r11.1.6
+Depends: libgl1 (>= 7.6), libstdc++6 (>= 4.5.3), libc6 (>= 2.12.2), libgcc1 (>= 4.5.3)
+Section: x11
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 71b8eae7c6225bce51f2cdae40544c0e
+Size: 170646
+Filename: libglu1_7.6-r11.1.6_am335x-evm.ipk
+Source: ftp://ftp.freedesktop.org/pub/mesa/7.6/MesaLib-7.6.tar.bz2;name=archive ftp://ftp.freedesktop.org/pub/mesa/7.6/MesaDemos-7.6.tar.bz2;name=demos
+Description: An open source implementation of the OpenGL spec
+OE: mesa
+HomePage: http://mesa3d.org
+Priority: optional
+
+
+Package: linux-am335x-src
+Version: 3.2.0-psp04.06.00.08.sdk-r30
+Section: kernel
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 39d4800c581b6b6047adbc0d07b9bf07
+Size: 102542682
+Filename: linux-am335x-src_3.2.0-psp04.06.00.08.sdk-r30_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=v3.2-staging            file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch            file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch            file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch            file://defconfig file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch             file://0002-am33x-Add-crypto-device-and-resource-structures.patch             file://0003-am33x-Add-crypto-device-and-resource-structure-for-T.patch             file://0004-am33x-Add-crypto-drivers-to-Kconfig-and-Makefiles.patch             file://0005-am33x-Create-header-file-for-OMAP4-crypto-modules.patch             file://0006-am33x-Create-driver-for-TRNG-crypto-module.patch             file://0007-am33x-Create-driver-for-AES-crypto-module.patch             file://0008-am33x-Create-driver-for-SHA-MD5-crypto-module.patch             file://0002-AM335x-OCF-Driver-for-Linux-3.patch             file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch             file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch             file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch              file://0001-am33xx-Add-SmartReflex-support.patch             file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch             file://0001-omap-serial-add-delay-before-suspending.patch file://0001-am3358-sk-modified-WLAN-enable-and-irq-to-match-boar.patch file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch
+Description: Patched sources for linux-am335x
+Priority: Optional
+
+
+Package: ltp-ddt
+Version: 0.0.4-r2+gitr0+fb0695c713d505806dff67609ef2c6066b53f2dc.6
+Depends: libc6 (>= 2.12.2), libasound2 (>= 1.0.24.1)
+Section: console/utils
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: beb2702518c50ff95a015cd196532dd3
+Size: 6632466
+Filename: ltp-ddt_0.0.4-r2+gitr0+fb0695c713d505806dff67609ef2c6066b53f2dc.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/test-automation/ltp-ddt.git;protocol=git;branch=master
+Description: Embedded Linux Device Driver Tests based on Linux Test Project
+OE: ltp-ddt
+HomePage: http://arago-project.org/git/projects/test-automation/ltp-ddt.git
+Priority: optional
+
+
+Package: matrix-gui
+Version: 2.0-r33.6
+Depends: lighttpd, lighttpd-module-cgi, lighttpd-module-compress, lighttpd-module-expire, php, php-cgi, php-cli, matrix-gui-browser, refresh-screen, update-rc.d
+Section: multimedia
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: a63526969f054b23166e5d4de5889107
+Size: 132830
+Filename: matrix-gui_2.0-r33.6_am335x-evm.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2.git;protocol=git;branch=master file://init file://php.ini
+Description: Matrix GUI Application launcher
+OE: matrix-gui
+HomePage: https://gforge.ti.com/gf/project/matrix-gui-v2/
+Priority: optional
+
+
+Package: omap3-sgx-modules
+Version: 4.06.00.02-r30c.6
+Depends: kernel-3.2.0, update-modules
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 778c5fae925d6e7817b27e8739e97962
+Size: 768150
+Filename: omap3-sgx-modules_4.06.00.02-r30c.6_am335x-evm.ipk
+Source: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/4_06_00_02/exports/Graphics_SDK_setuplinux_4_06_00_02.bin
+Description: Kernel drivers for the PowerVR SGX chipset found in the omap3 SoCs
+OE: omap3-sgx-modules
+HomePage: unknown
+Priority: optional
+
+
+Package: pinmux-utility
+Version: 2.3.1.0-r1.0.6
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 018a84e4821f59062f8ab8038a518db0
+Size: 555600
+Filename: pinmux-utility_2.3.1.0-r1.0.6_am335x-evm.ipk
+Source: https://gforge.ti.com/gf/download/frsrelease/815/5471/PinMuxUtility_v2_03_01_00.zip;name=base
+Description: Texas Instruments Pinmux Utility
+OE: pinmux-utility
+HomePage: unknown
+Priority: optional
+
+
+Package: pointercal
+Version: 0.0-r22.6
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 50537b10c4aa8c75d85dff940324c588
+Size: 666
+Filename: pointercal_0.0-r22.6_am335x-evm.ipk
+Source: file://pointercal
+Description: Touchscreen calibration data
+OE: pointercal
+HomePage: unknown
+Priority: optional
+
+
+Package: softap-udhcpd-config
+Version: 1.0-r1.6
+Section: console/network
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 3600bef56ff5631a5d8fe90769cda886
+Size: 2086
+Filename: softap-udhcpd-config_1.0-r1.6_am335x-evm.ipk
+Source: file://udhcpd.conf
+Description: Configuration files for SoftAP with udhcpd
+OE: softap-udhcpd-config
+HomePage: http://udhcp.busybox.net/
+Priority: optional
+
+
+Package: task-arago-gst
+Version: 1.0-r21.6
+Depends: gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, gst-plugins-base-meta, gst-plugins-good-meta, gst-plugins-bad-meta, gst-plugins-ugly-meta
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: a06115989c2be37e25625d81f13151a8
+Size: 772
+Filename: task-arago-gst_1.0-r21.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-gst.bb
+Description: Task to add base gstreamer and TI plugins
+OE: task-arago-gst
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-tisdk-addons
+Version: 1.0-r21.6
+Depends: am-sysinfo, am-benchmarks, dt, task-arago-test, gdbserver, oprofile, nbench-byte, trace-cmd
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: f69b0bae409374b1d9e808ce340bf91a
+Size: 794
+Filename: task-arago-tisdk-addons_1.0-r21.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-tisdk-addons.bb
+Description: Task to install additional utilities/demos for SDKs
+OE: task-arago-tisdk-addons
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-tisdk-bsp
+Version: 1.0-r29.6
+Depends: u-boot-spl, gadget-init, ti-oobe-script, canutils, bluez4, bluez4-agent, libasound-module-bluez, bluez-hcidump, libopenobex1, openobex-apps, obexftp, ussp-push, mount-sdcard
+Recommends: kernel-modules, kernel-image-3.2.0, kernel-vmlinux, u-boot
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 512939f0f9a1df0b4c4c358036b3088b
+Size: 880
+Filename: task-arago-tisdk-bsp_1.0-r29.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-tisdk-bsp.bb
+Description: Task to install Board Support Package binaries on am335x-evm
+OE: task-arago-tisdk-bsp
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-tisdk-crypto
+Version: 1.0-r31.6
+Depends: openssl, wpa-supplicant, dropbear, openssh-sftp-server, openssl-misc, hostap-daemon, ti-wifi-utils, wireless-tools, htop, netperf, iw, linux-firmware-wl12xx, wpa-gui-e, crda, softap-udhcpd-config, oppserver, bt-obex, obexd, pulseaudio, pulseaudio-server, pulseaudio-module-loopback, pulseaudio-module-bluetooth-discover, pulseaudio-module-bluetooth-device, eventdump, battleship, wifi-direct-demo, ti-compat-wireless-wl12xx, ti-compat-bluetooth, bt-firmware, wl1271-demo, bt-enable, bluetooth-gui
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 4b21f6301b8a72a83cd94b4b4d07470f
+Size: 986
+Filename: task-arago-tisdk-crypto_1.0-r31.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-tisdk-crypto.bb
+Description: Task to install crypto packages into target FS
+OE: task-arago-tisdk-crypto
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-tisdk-graphics
+Version: 1.0-r36.6
+Depends: task-arago-qte, qt4-embedded-plugin-phonon-backend-gstreamer, qt4-embedded-plugin-imageformat-gif, qt4-embedded-plugin-imageformat-jpeg, qt4-embedded-qmlimports-particles, qt4-embedded-qmlimports-webkit, libxml2, matrix-gui, matrix-gui-crypto-demos, matrix-gui-qt4-demos, matrix-gui-usb-demos, matrix-gui-oprofile-demos, matrix-gui-submenus-ethernet, matrix-gui-3d-demos, matrix-gui-clocks-275mhz, matrix-gui-clocks-500mhz, matrix-gui-clocks-600mhz, matrix-gui-clocks-720mhz, matrix-gui-pm-demos-suspend, matrix-gui-wifi-demos, matrix-gui-submenus-multimedia, matrix-gui-submenus-power, matrix-gui-ethernet-demos, qt-tstat, qml-playground
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: c1d7993e793ab2cae54c24a0391179e9
+Size: 950
+Filename: task-arago-tisdk-graphics_1.0-r36.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-tisdk-graphics.bb
+Description: Task to install graphics binaries on am335x-evm
+OE: task-arago-tisdk-graphics
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-tisdk-multimedia
+Version: 1.0-r38.6
+Depends: task-arago-gst, gst-ffmpeg, amsdk-av-files
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 2fdcd7b798316addf4297aa0cab8e5f6
+Size: 758
+Filename: task-arago-tisdk-multimedia_1.0-r38.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-tisdk-multimedia.bb
+Description: Task to install multimedia binaries on am335x-evm
+OE: task-arago-tisdk-multimedia
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-addons-host
+Version: 1.0-r15.6
+Depends: am-sysinfo-src, am-benchmarks-src
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: ab09a83e6697ac5dd2aea63add9ecddc
+Size: 780
+Filename: task-arago-toolchain-tisdk-addons-host_1.0-r15.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-addons-host.bb
+Description: Task to install sources for additional utilities/demos for SDKs
+OE: task-arago-toolchain-tisdk-addons-host
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-bsp-host
+Version: 1.0-r50.6
+Recommends: ti-tisdk-licenses-src, u-boot-src, linux-am335x-src, board-port-labs-src, ti-tisdk-setup, pinmux-utility
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: def105eb2890577eb73810aa1ad3794a
+Size: 830
+Filename: task-arago-toolchain-tisdk-bsp-host_1.0-r50.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-bsp-host.bb
+Description: Task to build and install Board Support Package sources (or development header) packages on host
+OE: task-arago-toolchain-tisdk-bsp-host
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-crypto-host
+Version: 1.0-r6.6
+Depends: ti-compat-wireless-wl12xx-src, ti-compat-bluetooth-src, bt-firmware-src, bt-enable-src
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 209a662054c305af2dd7c8faa84fa4de
+Size: 792
+Filename: task-arago-toolchain-tisdk-crypto-host_1.0-r6.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-crypto-host.bb
+Description: Task to install crypto sources in SDK
+OE: task-arago-toolchain-tisdk-crypto-host
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-crypto-target
+Version: 1.0-r4.6
+Depends: openssl-dev, wpa-supplicant-dev, ocf-linux-dev
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: b98b544c7574208ad762692c23d0bfe3
+Size: 774
+Filename: task-arago-toolchain-tisdk-crypto-target_1.0-r4.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-crypto-target.bb
+Description: Task to install crypto dev packages in SDK
+OE: task-arago-toolchain-tisdk-crypto-target
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-graphics-host
+Version: 1.0-r12.6
+Depends: matrix-gui-src, matrix-gui-browser-src, refresh-screen-src, qt-tstat-src, qml-playground-src
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 6a36ed00e722792b9449f1a591002f4d
+Size: 804
+Filename: task-arago-toolchain-tisdk-graphics-host_1.0-r12.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-graphics-host.bb
+Description: Task to install graphics application sources on host
+OE: task-arago-toolchain-tisdk-graphics-host
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-graphics-target
+Version: 1.0-r7.6
+Depends: qt4-embedded-dev, qt4-embedded-mkspecs, libphonone-dev, libqt3supporte-dev, libqtclucenee-dev, libqtcoree-dev, libqtdbuse-dev, libqtdesignercomponentse-dev, libqtdesignere-dev, libqt-embeddeduitools4-dev, libqtguie-dev, libqthelpe-dev, libqtnetworke-dev, libqtscripte-dev, libqtscripttoolse-dev, libqtsvge-dev, libqtteste-dev, libqtwebkite-dev, libqtxmle-dev, libgles-omap3-dev
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 147ecabb928143a9581008417616286e
+Size: 880
+Filename: task-arago-toolchain-tisdk-graphics-target_1.0-r7.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-graphics-target.bb
+Description: Task to install graphics binaries on sdk target
+OE: task-arago-toolchain-tisdk-graphics-target
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-multimedia-host
+Version: 1.0-r26.6
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 8643081fdadc254e039356392057a178
+Size: 762
+Filename: task-arago-toolchain-tisdk-multimedia-host_1.0-r26.6_am335x-evm.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-multimedia-host.bb
+Description: Task to build and install multimedia source (or development header) packages on host
+OE: task-arago-toolchain-tisdk-multimedia-host
+HomePage: unknown
+Priority: optional
+
+
+Package: ti-compat-bluetooth
+Version: 0.20120522r518-r30f.6
+Depends: kernel-3.2.0, update-modules
+Section: kernel/modules
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: d64863124dc32680643475736818d58c
+Size: 3230770
+Filename: ti-compat-bluetooth_0.20120522r518-r30f.6_am335x-evm.ipk
+Source: https://gforge.ti.com/gf/download/frsrelease/865/5622/compat-bluetooth-wl12xx-2012-05-22-r5-18.tgz file://0001-compat-bluetooth-2.6-removed-unused-BT-modules-from-.patch file://0002-Bluetooth-Fix-l2cap-conn-failures-for-ssp-devices.patch file://0001-compat-bluetooth-fixing-kernel-panic-in-l2cap.patch
+Description: ti compat-bluetooth drivers
+OE: ti-compat-bluetooth
+HomePage: https://gforge.ti.com/gf/project/ecs_nlcp/
+Priority: optional
+
+
+Package: ti-compat-wireless-wl12xx
+Version: 0.20120515r518-r30d.6
+Depends: kernel-3.2.0, update-modules
+Section: kernel/modules
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: dff90d665e4988d2040515af4b3be0ce
+Size: 6953330
+Filename: ti-compat-wireless-wl12xx_0.20120515r518-r30d.6_am335x-evm.ipk
+Source: https://gforge.ti.com/gf/download/frsrelease/864/5621/ti-compat-wireless-wl12xx-2012-05-17-r5-18.tar.gz file://0001-compat-wireless-add-pm_runtime_enabled.patch file://0001-compat-wireless-exclude-BT-building.patch file://0002-compat-wireless-enable-test-mode.patch file://0004-added-driver-version.patch file://0002-ti-compat-wireless-enable-uapsd-configuration.patch file://0001-wl12xx-detect-between-wl1271-PG-3.0-and-lower.patch file://0001-wl12xx-additional-two-members-for-wl12xx_platform_da.patch file://0001-wl12xx-Decrease-number-of-RX-transactions.patch file://0002-wl12xx-Decrease-number-of-TX-transactions.patch
+Description: ti compat-wireless drivers
+OE: ti-compat-wireless-wl12xx
+HomePage: https://gforge.ti.com/gf/project/ecs_nlcp/
+Priority: optional
+
+
+Package: ti-oobe-script
+Version: 1.0-r1.6
+Depends: update-rc.d
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 4bb6c174ccbc015b45528e2cee70182f
+Size: 1212
+Filename: ti-oobe-script_1.0-r1.6_am335x-evm.ipk
+Source: file://init
+Description: Script to parse ip address during boot and make it available to the host system using shared partitions
+OE: ti-oobe-script
+HomePage: unknown
+Priority: optional
+
+
+Package: ti-tisdk-makefile
+Version: 1.0-r99.6
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 4c935c423615867a0727a779458e14e9
+Size: 2874
+Filename: ti-tisdk-makefile_1.0-r99.6_am335x-evm.ipk
+Source: file://Makefile file://Rules.make file://Makefile_linux file://Makefile_u-boot-legacy file://Makefile_matrix-gui file://Makefile_am-benchmarks file://Makefile_am-sysinfo file://Makefile_x-load file://Makefile_av-examples file://Makefile_u-boot-min-sd file://Makefile_u-boot-spl file://Makefile_matrix-gui-browser file://Makefile_refresh-screen file://Makefile_pru file://Makefile_ti-ocf-crypto-module file://Makefile_qt-tstat file://Makefile_qml-playground file://Makefile_wireless
+Description: Package containing Makefile and Rules.make file for TISDKs
+OE: ti-tisdk-makefile
+HomePage: unknown
+Priority: optional
+
+
+Package: ti-tisdk-setup
+Version: 1.0-r61.6
+Section: base
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 1149b0ec0615ceec233df83434bef311
+Size: 13182
+Filename: ti-tisdk-setup_1.0-r61.6_am335x-evm.ipk
+Source: file://setup.sh file://common.sh file://setup-host-check.sh file://setup-minicom.sh file://setup-package-install.sh file://setup-targetfs-nfs.sh file://setup-tftp.sh file://create-sdcard.sh file://setup-uboot-env-am335x.sh
+Description: Package containing scripts to setup the development host and target board
+OE: ti-tisdk-setup
+HomePage: unknown
+Priority: optional
+
+
+Package: u-boot-spl
+Version: 2011.09-psp04.06.00.08-r10.1+gitr0+1e4626f0d5f3bb04ec974e76a5d9029875269d31.6
+Section: bootloaders
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 38333fc2fde48a917086ed31f596fcd8
+Size: 46462
+Filename: u-boot-spl_2011.09-psp04.06.00.08-r10.1+gitr0+1e4626f0d5f3bb04ec974e76a5d9029875269d31.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;branch=AM335XPSP_04.06.00.08
+Description: u-boot bootloader for ARM MPU devices
+OE: u-boot-spl
+HomePage: http://www.denx.de/wiki/U-Boot/WebHome
+Priority: optional
+
+
+Package: u-boot-src
+Version: 2011.09-psp04.06.00.08-r10.1+gitr0+1e4626f0d5f3bb04ec974e76a5d9029875269d31
+Section: bootloaders
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 69b4c91edd49f31817b649a00ce87a81
+Size: 11684898
+Filename: u-boot-src_2011.09-psp04.06.00.08-r10.1+gitr0+1e4626f0d5f3bb04ec974e76a5d9029875269d31_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;branch=AM335XPSP_04.06.00.08
+Description: Patched sources for u-boot
+Priority: Optional
+
+
+Package: u-boot
+Version: 2011.09-psp04.06.00.08-r10.1+gitr0+1e4626f0d5f3bb04ec974e76a5d9029875269d31.6
+Section: bootloaders
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 75b2340014fb860861b8ca78c63a2cee
+Size: 115386
+Filename: u-boot_2011.09-psp04.06.00.08-r10.1+gitr0+1e4626f0d5f3bb04ec974e76a5d9029875269d31.6_am335x-evm.ipk
+Source: git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;branch=AM335XPSP_04.06.00.08
+Description: u-boot bootloader for ARM MPU devices
+OE: u-boot
+HomePage: http://www.denx.de/wiki/U-Boot/WebHome
+Priority: optional
+
+
+Package: wl1271-demo
+Version: 1.0-r0+gitrc7faa4cd2ef26b72ef2ae3d3d4854ea83a2ee636.6
+Depends: bluez4, libopenobex1, ussp-push, obexftp, bluez-hcidump
+Section: network
+Architecture: am335x-evm
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 5c63444d225648cf0a16a55e55d9b150
+Size: 24051404
+Filename: wl1271-demo_1.0-r0+gitrc7faa4cd2ef26b72ef2ae3d3d4854ea83a2ee636.6_am335x-evm.ipk
+Source: git://github.com/TI-ECS/wl1271-bluetooth.git;protocol=git
+Description: Initialization and demo application for bluetooth on WL1271 chipset
+OE: wl1271-demo
+HomePage: unknown
+Priority: optional
+
+

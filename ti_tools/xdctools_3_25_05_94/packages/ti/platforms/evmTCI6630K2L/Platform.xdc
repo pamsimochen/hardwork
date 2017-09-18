@@ -1,0 +1,78 @@
+/*
+ *  Copyright (c) 2013 by Texas Instruments and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *  Contributors:
+ *      Texas Instruments - initial implementation
+ *
+ * */
+
+/*
+ *  ======== Platform.xdc ========
+ *
+ */
+
+/*!
+ *  ======== Platform ========
+ *  Platform support for the evmTCI6630K2L
+ */
+metaonly module Platform inherits xdc.platform.IPlatform
+{
+    readonly config xdc.platform.IPlatform.Board BOARD = {      
+        id:             "0",
+        boardName:      "evmTCI6630K2L",
+        boardFamily:    "evmTCI6630K2L",
+        boardRevision:  null,
+    };
+        
+    readonly config xdc.platform.IExeContext.Cpu CPU = {        
+        id:             "0",
+        clockRate:      1220,
+        catalogName:    "ti.catalog.c6000",
+        deviceName:     "TMS320TCI6630K2L",
+        revision:       "1.2",
+    };
+    
+instance:
+
+    override readonly config xdc.platform.IPlatform.Memory
+        externalMemoryMap[string] = [
+            ["DDR3", {name: "DDR3", base: 0x80000000, len: 0x80000000}],
+    ];
+
+    override config string codeMemory  = "L2SRAM";
+    override config string dataMemory  = "L2SRAM";
+    override config string stackMemory = "L2SRAM";
+
+    /*
+     *  ======== l1PMode ========
+     *  Define the amount of L1P RAM used for L1 Program Cache.
+     *
+     *  Check the device documentation for valid values.
+     */
+    config String l1PMode = "32k";
+    
+    /*
+     *  ======== l1DMode ========
+     *  Define the amount of L1D RAM used for L1 Data Cache.
+     *
+     *  Check the device documentation for valid values.
+     */
+    config String l1DMode = "32k";
+    
+    /*
+     *  ======== l2Mode ========
+     *  Define the amount of L2 RAM used for L2 Cache.
+     *
+     *  Check the device documentation for valid values.
+     */
+    config String l2Mode = "0k";
+
+};
+/*
+ *  @(#) ti.platforms.evmTCI6630K2L; 1, 0, 0, 0,8; 12-20-2013 12:46:34; /db/ztree/library/trees/platform/platform-o37x/src/
+ */
+

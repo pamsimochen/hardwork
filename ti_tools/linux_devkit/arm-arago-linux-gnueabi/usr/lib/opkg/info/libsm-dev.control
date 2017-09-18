@@ -1,0 +1,14 @@
+Package: libsm-dev
+Version: 1:1.2.0-r9.0.6
+Description: X11 Session management library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: libsm
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libsm6 (= 1:1.2.0-r9.0.6), libsm6, libice-dev, xproto-dev
+Recommends: util-macros-dev, libice-dev, xproto-dev, xtrans-dev, util-linux-ng-dev, libuuid-dev, libc6-dev, libsm-dev
+Source: http://xorg.freedesktop.org/releases/individual/lib/libSM-1.2.0.tar.bz2;name=archive

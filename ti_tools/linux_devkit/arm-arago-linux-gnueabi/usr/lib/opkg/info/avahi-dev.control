@@ -1,0 +1,14 @@
+Package: avahi-dev
+Version: 0.6.25-r14.0.6
+Description: Avahi implements the DNS-SD over Multicast DNS
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+ LGPLv2.1
+Architecture: armv7a
+OE: avahi
+Homepage: http://avahi.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: avahi (= 0.6.25-r14.0.6), libavahi-common3, libavahi-core6, libavahi-client3, libavahi-gobject0, libavahi-glib1, libglib-2.0-dev
+Recommends: libcap-dev, libexpat-dev, libdaemon-dev, dbus-dev, libglib-2.0-dev, update-rc.d-dev, libavahi-client-dev, dbus-lib-dev, libc6-dev, libavahi-glib-dev, libavahi-common-dev, gobject-2.0-dev, gthread-2.0-dev, python-dbus-dev, sysvinit-pidof-dev, libavahi-core-dev, python-avahi-dev, python-pygtk-dev, avahi-dev, libavahi-gobject-dev, virtual-locale-sr-dev, virtual-locale-pl-dev, virtual-locale-ms-dev, virtual-locale-de-dev, virtual-locale-fi-dev, virtual-locale-it-dev, virtual-locale-ru-dev, virtual-locale-fr-dev, virtual-locale-el-dev, virtual-locale-sv-dev, virtual-locale-zh-cn-dev, virtual-locale-hu-dev, virtual-locale-ca-dev, virtual-locale-en-gb-dev, virtual-locale-en-nz-dev, virtual-locale-en-au-dev, virtual-locale-es-dev, virtual-locale-ro-dev, virtual-locale-sr+latin-dev, virtual-locale-en-ca-dev, virtual-locale-pt-br-dev
+Source: http://avahi.org/download/avahi-0.6.25.tar.gz file://00avahi-autoipd file://99avahi-autoipd file://disable-ipv6.patch file://fix-CVE-2011-1002.patch

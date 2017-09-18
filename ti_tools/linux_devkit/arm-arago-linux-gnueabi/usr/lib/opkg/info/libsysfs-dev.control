@@ -1,0 +1,14 @@
+Package: libsysfs-dev
+Version: 2.1.0-r3.6
+Description: System Utilities Based on Sysfs
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: sysfsutils
+Homepage: http://linux-diag.sourceforge.net/Sysfsutils.html
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libsysfs2
+Recommends: libc6-dev, libsysfs-dev
+Source: http://downloads.sourceforge.net/linux-diag/sysfsutils-2.1.0.tar.gz file://get_mnt_path_check.patch

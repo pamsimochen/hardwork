@@ -1,0 +1,13 @@
+Package: libmenuw5
+Version: 5.9-r0.6
+Description: ncurses menuw library
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT
+Architecture: armv7a
+OE: ncurses
+Homepage: http://www.gnu.org/software/ncurses/ncurses.html
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2), libncursesw5 (>= 5.9), libtinfo5 (>= 5.9)
+Source: ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz file://tic-hang.patch file://config.cache

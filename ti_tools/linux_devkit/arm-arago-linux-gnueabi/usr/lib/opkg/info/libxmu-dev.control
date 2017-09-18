@@ -1,0 +1,14 @@
+Package: libxmu-dev
+Version: 1:1.1.0-r9.0.6
+Description: X11 miscellaneous utility library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: libxmu
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libxmu6 (= 1:1.1.0-r9.0.6), libxmu6, xproto-dev, libx11-dev, libxt-dev
+Recommends: util-macros-dev, libxt-dev, libxext-dev, libsm-dev, libuuid-dev, libice-dev, libx11-dev, libxcb-dev, libpthread-stubs-dev, libxau-dev, libxdmcp-dev, libc6-dev
+Source: http://xorg.freedesktop.org/releases/individual/lib/libXmu-1.1.0.tar.bz2;name=archive

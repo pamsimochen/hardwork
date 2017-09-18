@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gep name="MSP430/Clock" title="MSP430 Clock Services">
+
+<properties name="Advanced" title="All Configuration Options" enabled="true" visible="true" link="this"/>
+
+<page name="Basic" title="Basic Options">
+<html><body><table>
+  <tr><td colspan="2">
+    <control type="checkbox" label="Add Clock services to my configuration" value="value:this.$used" bold="true"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <h1>Description</h1>
+    <form><p>This module provides functions to read "wall clock" times suitale for measuring elapsed time.  For more information see the <a href="help:http:/help/topic/com.ti.mcu.radio.product.ui/cdoc/ti/mcu/msp430/runtime/utils/Clock.html">Clock reference</a> documentation.  The configuration settings below are required to adjust this module to your specific platform.</p></form>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h1>Timer Selection</h1>
+      <form><p>These device-specific settings specify the memory map addresses required to configure and manipulate the timer used to measure time.</p></form>
+      <table>
+        <tr>
+          <td><control type="label" label="Timer base register"/></td>
+          <td><control type="editbox" 
+             value="value:this.TIMER"
+             tooltip="value:this.TIMER.$summary"/></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+    <h1>Timer Frequencies</h1>
+    <form><p>The following options specify the timer frequencies supported by the selected timer.</p></form>
+    <table>
+      <tr>
+        <td><control type="label" label="Master clock frequency (KHz)" align="left"/></td>
+        <td><control type="editbox" 
+             value="value:this.fastClockKHz"
+             tooltip="value:this.fastClockKHz.$summary"/></td>
+      </tr>
+      <tr>
+        <td><control type="label" label="Auxiliary clock frequency (Hz)" align="left"/></td>
+        <td><control type="editbox" 
+             value="value:this.slowClockHz"
+             tooltip="value:this.slowClockHz.$summary"/></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+ </table></body></html>
+</page>
+
+</gep>

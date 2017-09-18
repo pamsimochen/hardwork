@@ -1,0 +1,14 @@
+Package: canutils-dev
+Version: 4.0.6+gitr0+bab595e38295dcafcfc17a011d3d51f2df1618e6-r2.0.6
+Description: canutils (PTX flavour)
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: canutils
+Homepage: http://www.pengutronix.de
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: canutils (= 4.0.6+gitr0+bab595e38295dcafcfc17a011d3d51f2df1618e6-r2.0.6)
+Recommends: libsocketcan-dev, libc6-dev, canutils-dev
+Source: git://git.pengutronix.de/git/tools/canutils.git;protocol=git;tag=bab595e38295dcafcfc17a011d3d51f2df1618e6

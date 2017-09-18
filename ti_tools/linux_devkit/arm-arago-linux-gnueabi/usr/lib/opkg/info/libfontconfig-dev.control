@@ -1,0 +1,14 @@
+Package: libfontconfig-dev
+Version: 2.8.0-r0.6
+Description: A library for configuring and customizing font access.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: BSD
+Architecture: armv7a
+OE: fontconfig
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libfontconfig1 (= 2.8.0-r0.6), libfontconfig1
+Recommends: libexpat-dev, libfreetype-dev, libz-dev, libfontconfig-dev, libc6-dev
+Source: http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.8.0.tar.gz

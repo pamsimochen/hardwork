@@ -1,0 +1,14 @@
+Package: libgles-omap3
+Version: 4.06.00.02-r34.6
+Description: libGLES for the omap3
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: TI TSPA
+Architecture: armv7a
+OE: libgles-omap3
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: fbset, devmem2, update-rc.d, libgles-omap3-blitwsegl, libgles-omap3-linuxfbwsegl, libgles-omap3-flipwsegl, libgles-omap3-frontwsegl, libc6 (>= 2.12.2), libstdc++6 (>= 4.5.3), libgcc1 (>= 4.5.3), libpixman-1-0 (>= 0.21.6), libdrm2 (>= 2.4.23)
+Recommends: omap3-sgx-modules
+Source: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/4_06_00_02/exports/Graphics_SDK_setuplinux_4_06_00_02.bin file://cputype file://rc.pvr file://sample.desktop file://99-bufferclass.rules

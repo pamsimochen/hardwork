@@ -1,0 +1,20 @@
+# Comments are ok, with a '#' as the first char in a line
+# Addresses and masks are typically set in hexidecimal
+
+# Format is "procName, slaveVirt, slavePhys, mastPhys, size, mask, cache"
+# mask values can be a bitwise OR of these values:
+#    * 0x1 - MasterKnlVirt
+#    * 0x2 - MasterUsrVirt
+#    * 0x4 - SlaveVirt
+
+# DDR (code/data) - 1014.75 kB, MasterKnlVirt | SlaveVirt, noncached
+DSP, 0x87D00000, 0x87D00000, 0x87D00000, 0xFDB00, 0x5, 0
+
+# Notify Mem - 9.25 kB, MasterKnlVirt | SlaveVirt, noncached
+DSP, 0x87DFDB00, 0x87DFDB00, 0x87DFDB00, 0x2500, 0x5, 0
+
+# SR0 - 1MB , MasterKnlVirt | SlaveVirt, noncached
+DSP, 0x87E00000, 0x87E00000, 0x87E00000, 0x100000, 0x5, 0
+
+# SR1 - 1MB , MasterKnlVirt | SlaveVirt, noncached
+DSP, 0x87F00000, 0x87F00000, 0x87F00000, 0x100000, 0x5, 0

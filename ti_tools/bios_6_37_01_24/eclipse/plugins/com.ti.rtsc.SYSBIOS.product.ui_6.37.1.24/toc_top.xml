@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="SYS/BIOS 6.37.01.24"
+>
+    <topic label="Release Notes" href="Bios_6_33_00_14_eng_release_notes.html"/>            
+    <topic label="Getting Started Guide" href="Bios_Getting_Started_Guide.pdf"/>            
+    <topic label="Users Guide" href="Bios_User_Guide.pdf"/>            
+    <topic label="Legacy Applications note" href="Bios_Legacy_App_Note.pdf"/>            
+    <topic label="API reference">
+        <link toc="eclipse_toc.xml"/>
+    </topic>
+</toc>

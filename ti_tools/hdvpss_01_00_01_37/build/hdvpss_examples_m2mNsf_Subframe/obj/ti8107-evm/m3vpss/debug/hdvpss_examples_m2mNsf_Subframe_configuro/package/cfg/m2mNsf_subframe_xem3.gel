@@ -1,0 +1,13 @@
+XDC_open() {
+    GEL_ProjectLoad("/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/build/hdvpss_examples_m2mNsf_Subframe/obj/ti8107-evm/m3vpss/debug/hdvpss_examples_m2mNsf_Subframe_configuro/package/hdvpss_examples_m2mNsf_Subframe_configuro.pjt");
+    GEL_ProjectLoad("/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/build/hdvpss_examples_m2mNsf_Subframe/obj/ti8107-evm/m3vpss/debug/hdvpss_examples_m2mNsf_Subframe_configuro/package/cfg/m2mNsf_subframe_xem3.pjt");
+    GEL_ProjectSetActive("/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/build/hdvpss_examples_m2mNsf_Subframe/obj/ti8107-evm/m3vpss/debug/hdvpss_examples_m2mNsf_Subframe_configuro/package/cfg/m2mNsf_subframe_xem3.pjt");
+}
+XDC_close() {
+    GEL_ProjectClose("/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/build/hdvpss_examples_m2mNsf_Subframe/obj/ti8107-evm/m3vpss/debug/hdvpss_examples_m2mNsf_Subframe_configuro/package/hdvpss_examples_m2mNsf_Subframe_configuro.pjt");
+    GEL_ProjectClose("/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/build/hdvpss_examples_m2mNsf_Subframe/obj/ti8107-evm/m3vpss/debug/hdvpss_examples_m2mNsf_Subframe_configuro/package/cfg/m2mNsf_subframe_xem3.pjt");
+}
+menuitem "XDC Package"
+hotmenu load_executable () { GEL_Load("/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/build/hdvpss_examples_m2mNsf_Subframe/obj/ti8107-evm/m3vpss/debug/hdvpss_examples_m2mNsf_Subframe_configuro/m2mNsf_subframe.xem3"); }
+hotmenu open_project () { XDC_open(); }
+hotmenu close_project () { XDC_close(); }

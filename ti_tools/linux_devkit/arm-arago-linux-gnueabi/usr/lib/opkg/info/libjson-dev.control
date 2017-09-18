@@ -1,0 +1,14 @@
+Package: libjson-dev
+Version: 0.9-r0.6
+Description: json C library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT/X11
+Architecture: armv7a
+OE: libjson
+Homepage: http://oss.metaparadigm.com/json-c/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libjson0 (= 0.9-r0.6), libjson0
+Recommends: libc6-dev, libjson-dev
+Source: http://oss.metaparadigm.com/json-c/json-c-0.9.tar.gz

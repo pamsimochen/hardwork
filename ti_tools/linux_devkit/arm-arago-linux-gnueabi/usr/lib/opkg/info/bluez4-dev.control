@@ -1,0 +1,15 @@
+Package: bluez4-dev
+Version: 4.98-r8.4-arago2.6
+Description: Linux Bluetooth Stack Userland V4
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2/LGPLv2.1
+Architecture: armv7a
+OE: bluez4
+Homepage: http://www.bluez.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: bluez4 (= 4.98-r8.4-arago2.6), bluez4
+Recommends: gst-plugins-base-dev, alsa-lib-dev, libdbus-glib-1-dev, libcheck-dev, libsndfile-dev, update-rc.d-dev, dbus-lib-dev, libc6-dev, libgstaudio-0.10-dev, libgstinterfaces-0.10-dev, libgstrtp-0.10-dev, gstreamer-dev, gobject-2.0-dev, gmodule-2.0-dev, libxml2-dev, libz-dev, gthread-2.0-dev, libglib-2.0-dev, libasound-dev, libusb-0.1-dev, libusb-1.0-dev, libreadline-dev, bluez4-dev
+Provides: bluez-libs-dev
+Source: http://kernel.org/pub/linux/bluetooth/bluez-4.98.tar.gz file://bluetooth.conf file://bluez4-fix-synchronization-between-bluetoothd-and-dr.patch file://0001-socket-enable-for-bluez-4_98.patch file://0001-bluez-enable-source-interface.patch

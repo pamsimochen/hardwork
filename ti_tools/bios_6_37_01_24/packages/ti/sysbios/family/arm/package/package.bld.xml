@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios.family.arm" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="HwiCommon"/>
+        <module name="IntrinsicsSupport"/>
+        <module name="Settings"/>
+        <module name="TaskSupport"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sysbios.family.arm.c"/>
+        <srcFile name="IntrinsicsSupport.c"/>
+        <srcFile name="IntrinsicsSupport_asm.asm"/>
+        <srcFile name="TaskSupport.c"/>
+        <srcFile name="TaskSupport_asm.asm"/>
+        <srcFile name="HwiCommon.c"/>
+        <srcFile name="HwiCommon_asm.asm"/>
+        <srcFile name="IntrinsicsSupport_asm_gnu.asm"/>
+        <srcFile name="TaskSupport_asm_gnu.asm"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/package/package_ti.sysbios.family.arm.oe9.dep" src="package/package_ti.sysbios.family.arm.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport.oe9.dep" src="IntrinsicsSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport_asm.oe9.dep" src="IntrinsicsSupport_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport.oe9.dep" src="TaskSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport_asm.oe9.dep" src="TaskSupport_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/HwiCommon.oe9.dep" src="HwiCommon.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/HwiCommon_asm.oe9.dep" src="HwiCommon_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/package/package_ti.sysbios.family.arm.oea8f.dep" src="package/package_ti.sysbios.family.arm.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport.oea8f.dep" src="IntrinsicsSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport_asm.oea8f.dep" src="IntrinsicsSupport_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport.oea8f.dep" src="TaskSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport_asm.oea8f.dep" src="TaskSupport_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/HwiCommon.oea8f.dep" src="HwiCommon.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/HwiCommon_asm.oea8f.dep" src="HwiCommon_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/package/package_ti.sysbios.family.arm.oea8fnv.dep" src="package/package_ti.sysbios.family.arm.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport.oea8fnv.dep" src="IntrinsicsSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport_asm.oea8fnv.dep" src="IntrinsicsSupport_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport.oea8fnv.dep" src="TaskSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport_asm.oea8fnv.dep" src="TaskSupport_asm.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/HwiCommon.oea8fnv.dep" src="HwiCommon.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/HwiCommon_asm.oea8fnv.dep" src="HwiCommon_asm.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.aa9fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/package/package_ti.sysbios.family.arm.oa9fg.dep" src="package/package_ti.sysbios.family.arm.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport.oa9fg.dep" src="IntrinsicsSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport_asm_gnu.oa9fg.dep" src="IntrinsicsSupport_asm_gnu.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport.oa9fg.dep" src="TaskSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport_asm_gnu.oa9fg.dep" src="TaskSupport_asm_gnu.asm"/>
+        <srcFile name="lib/sysbios/debug/ti.sysbios.family.arm.aa15fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/package/package_ti.sysbios.family.arm.oa15fg.dep" src="package/package_ti.sysbios.family.arm.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport.oa15fg.dep" src="IntrinsicsSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/IntrinsicsSupport_asm_gnu.oa15fg.dep" src="IntrinsicsSupport_asm_gnu.asm"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport.oa15fg.dep" src="TaskSupport.c"/>
+        <srcFile name="package/lib/lib/sysbios/debug/ti.sysbios.family.arm/TaskSupport_asm_gnu.oa15fg.dep" src="TaskSupport_asm_gnu.asm"/>
+        <srcFile name="package/rel/ti_sysbios_family_arm.tar.gz.dep" src="package/rel/ti_sysbios_family_arm.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            rawVersion="5.0.1"
+            platform="ti.platforms.evmOMAPL138"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            rawVersion="5.0.1"
+            platform="ti.platforms.evmTI814X"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            rawVersion="5.0.1"
+            platform="ti.platforms.evmAM3359"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.A9F"
+            version="gnu.targets.arm.A9F{1,0,4.7,3"
+            rawVersion="4.7.3"
+            platform="ti.platforms.sdp4430"
+            isa="v7A9"
+            suffix="a9fg"
+            rootDir="/db/vendors/linaro/gcc-arm-none-eabi-4_7-2012q4"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7A">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.A15F"
+            version="gnu.targets.arm.A15F{1,0,4.7,3"
+            rawVersion="4.7.3"
+            platform="ti.platforms.evmDRA7XX"
+            isa="v7A15"
+            suffix="a15fg"
+            rootDir="/db/vendors/linaro/gcc-arm-none-eabi-4_7-2012q4"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7A">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.aa9fg"
+        profile="debug"
+        target="gnu.targets.arm.A9F"/>
+    <library name="lib/sysbios/debug/ti.sysbios.family.arm"
+        pname="lib/sysbios/debug/ti.sysbios.family.arm.aa15fg"
+        profile="debug"
+        target="gnu.targets.arm.A15F"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios_family_arm"
+        pname="../../../..//../exports/ti_sysbios_family_arm.tar.gz"
+        label="default"
+        relScript="ti/sysbios/libFilter.xs">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="linkcmd.xdt"/>
+        <file name="Hwi_link.xdt"/>
+        <file name="doc-files"/>
+        <file name="armSettings.xs"/>
+        <file name="Settings.xml"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.ae9"/>
+        <file name="package/package_ti.sysbios.family.arm.c"/>
+        <file name="IntrinsicsSupport.c"/>
+        <file name="IntrinsicsSupport_asm.asm"/>
+        <file name="TaskSupport.c"/>
+        <file name="TaskSupport_asm.asm"/>
+        <file name="HwiCommon.c"/>
+        <file name="HwiCommon_asm.asm"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.aea8f"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.aea8fnv"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.aa9fg"/>
+        <file name="IntrinsicsSupport_asm_gnu.asm"/>
+        <file name="TaskSupport_asm_gnu.asm"/>
+        <file name="lib/sysbios/debug/ti.sysbios.family.arm.aa15fg"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

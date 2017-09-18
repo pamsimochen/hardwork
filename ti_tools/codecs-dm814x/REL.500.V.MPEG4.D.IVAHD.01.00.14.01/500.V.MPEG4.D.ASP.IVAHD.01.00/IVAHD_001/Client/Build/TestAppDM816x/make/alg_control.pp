@@ -1,0 +1,9 @@
+alg_control.obj: ..\..\..\..\Client\Test\Src\alg_control.c
+alg_control.obj: D:\framework_components_3_20_00_22\fctools\packages\xdc/std.h
+alg_control.obj: D:\cg_tools_5.0.3\include\stdarg.h
+alg_control.obj: D:\cg_tools_5.0.3\include\stddef.h
+alg_control.obj: D:/xdctools_3_20_04_68\packages/ti\targets\std.h
+alg_control.obj: D:\xdctools_3_20_04_68\packages\ti\targets\TMS470.h
+alg_control.obj: D:\cg_tools_5.0.3\include\stdint.h
+alg_control.obj: D:\framework_components_3_20_00_22\fctools\packages\ti/xdais/ialg.h
+alg_control.obj: D:\framework_components_3_20_00_22\packages\ti/sdo/fc/utils/api/alg.h

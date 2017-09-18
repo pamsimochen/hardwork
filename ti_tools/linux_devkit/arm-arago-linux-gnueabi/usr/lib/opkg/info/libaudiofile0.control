@@ -1,0 +1,14 @@
+Package: libaudiofile0
+Version: 0.2.6-r9.6
+Description: The Audio File Library provides a uniform and elegant API for accessing a variety of audio file formats, such as AIFF/AIFF-C, WAVE, NeXT/Sun .snd/.au, Berkeley/IRCAM/CARL Sound File, Audio Visual Research, Amiga IFF/8SVX, and NIST SPHERE.
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2 GPLv2
+Architecture: armv7a
+OE: audiofile
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Provides: libaudiofile0
+Source: http://www.68k.org/~michael/audiofile/audiofile-0.2.6.tar.gz file://audiofile-m4_quote_fix.diff;striplevel=0 file://audiofile-oldstyle.patch;striplevel=0 file://audiofile-0.2.6.patch;striplevel=0 file://CVE-2008-5824.patch

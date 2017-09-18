@@ -1,0 +1,6 @@
+if [ -n "$D" ]; then
+	exit 1
+else
+	depmod -a 3.2.0
+	update-modules || true
+fi

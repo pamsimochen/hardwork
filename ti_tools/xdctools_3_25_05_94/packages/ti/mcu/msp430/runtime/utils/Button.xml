@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gep name="Button" title="MSP430 Button Input">
+
+<properties name="Advanced" title="All Configuration Options" enabled="true" visible="true" link="this"/>
+
+<page name="Basic" title="Basic Options">
+<html><body><table>
+  <tr><td colspan="2">
+    <control type="checkbox" label="Add Button input/output to my configuration" value="value:this.$used" bold="true"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <h1>Description</h1>
+    <form><p>This module provides functions to control your platform's buttons.  For more information see the <a href="help:http:/help/topic/com.ti.mcu.radio.product.ui/cdoc/ti/mcu/msp430/runtime/utils/Button.html">Button reference</a> documentation.  The configuration settings below are required to adjust this module to your specific platform.</p></form>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <h1>GPIO Address Settings</h1>
+    <form><p>These platform-specific settings specify the memory map addresses required to configure and manipulate the GPIO pins connected to your platform's buttons.</p></form>
+    <table>
+      <tr>
+        <td><control type="label" label="Output register"/></td>
+        <td><control type="editbox" 
+             value="value:this.PORT"
+             tooltip="value:this.PORT.$summary"/></td>
+      </tr>
+      <tr>
+        <td><control type="label" label="Port direction register" align="left"/></td>
+        <td><control type="editbox" 
+             value="value:this.PORT_OUT"
+             tooltip="value:this.PORT_OUT.$summary"/></td>
+      </tr>
+      <tr>
+        <td><control type="label" label="Port interrupt enable register" align="left"/></td>
+        <td><control type="editbox" 
+             value="value:this.PORT_IE"
+             tooltip="value:this.PORT_IE.$summary"/></td>
+      </tr>
+      <tr>
+        <td><control type="label" label="Port interrupt flag register" align="left"/></td>
+        <td><control type="editbox" 
+             value="value:this.PORT_IFG"
+             tooltip="value:this.PORT_IFG.$summary"/></td>
+      </tr>
+      <tr>
+        <td><control type="label" label="Port pullup/down register" align="left"/></td>
+        <td><control type="editbox" 
+             value="value:this.PORT_REN"
+             tooltip="value:this.PORT_REN.$summary"/></td>
+      </tr>
+    </table>
+    </td>
+    <td>
+    <h1>Button Locations</h1>
+    <form><p>The following options specify which ports are connect to various Buttons.</p></form>
+    <table>
+      <tr>
+        <td><control type="label" label="Button 1 port mask"/></td>
+        <td><control type="editbox" 
+             value="value:this.SWITCH1"
+             tooltip="value:this.SWITCH1.$summary"/></td>
+      </tr>
+      <tr>
+        <td><control type="label" label="Button 2 port mask"/></td>
+        <td><control type="editbox" 
+             value="value:this.SWITCH2"
+             tooltip="value:this.SWITCH2.$summary"/></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+ </table></body></html>
+</page>
+
+</gep>

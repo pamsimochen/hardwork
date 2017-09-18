@@ -1,0 +1,14 @@
+Package: libmms-dev
+Version: 0.6-r0.6
+Description: MMS stream protocol library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2+
+Architecture: armv7a
+OE: libmms
+Homepage: http://sourceforge.net/projects/libmms/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libmms0 (= 0.6-r0.6), libmms0, libglib-2.0-dev
+Recommends: libglib-2.0-dev, libc6-dev, libmms-dev
+Source: http://downloads.sourceforge.net/libmms/libmms-0.6.tar.gz

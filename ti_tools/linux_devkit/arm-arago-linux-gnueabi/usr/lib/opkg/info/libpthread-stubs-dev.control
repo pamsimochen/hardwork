@@ -1,0 +1,14 @@
+Package: libpthread-stubs-dev
+Version: 0.2-r2.0.6
+Description: This library provides weak aliases for pthread functions not provided in libc or otherwise available by default.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: libpthread-stubs
+Homepage: http://xcb.freedesktop.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libpthread-stubs0 (= 0.2-r2.0.6), libpthread-stubs0
+Recommends: libc6-dev, libpthread-stubs-dev
+Source: http://xcb.freedesktop.org/dist/libpthread-stubs-0.2.tar.bz2

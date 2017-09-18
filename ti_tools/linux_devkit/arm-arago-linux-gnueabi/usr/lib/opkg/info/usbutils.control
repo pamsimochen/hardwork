@@ -1,0 +1,13 @@
+Package: usbutils
+Version: 0.86-r1.6
+Description: Host side USB console utilities.
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: usbutils
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libusb-0.1-4 (>= 0.1.3), libz1 (>= 1.2.3), libc6 (>= 2.12.2)
+Source: http://downloads.sourceforge.net/linux-usb/usbutils-0.86.tar.gz

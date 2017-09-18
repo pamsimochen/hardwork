@@ -1,0 +1,8 @@
+Pkg.attrs.relScript = "xdc/release/filters/what.rel";
+
+Pkg.otherFiles = ['package.bld', 'Linux', 'Windows'];
+Pkg.otherSrcs = Pkg.otherFiles;
+/*
+ *  @(#) host.platforms.PC; 1, 0, 0,444; 12-19-2013 19:52:51; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+ */
+

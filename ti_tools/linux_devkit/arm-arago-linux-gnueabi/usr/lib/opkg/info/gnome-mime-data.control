@@ -1,0 +1,13 @@
+Package: gnome-mime-data
+Version: 2.18.0-r2.6
+Description: Version 2.18.0-r2 of package gnome-mime-data
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2 GPLv2+
+Architecture: armv7a
+OE: gnome-mime-data
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: shared-mime-info
+Source: http://ftp.gnome.org/pub/GNOME/sources/gnome-mime-data/2.18/gnome-mime-data-2.18.0.tar.bz2;name=archive

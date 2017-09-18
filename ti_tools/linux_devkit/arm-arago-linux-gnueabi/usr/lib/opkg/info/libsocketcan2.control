@@ -1,0 +1,13 @@
+Package: libsocketcan2
+Version: 0.0.8-r1.0.6
+Description: Control basic functions in socketcan from userspace
+Section: libs/network
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: libsocketcan
+Homepage: http://www.pengutronix.de
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: git://git.pengutronix.de/git/tools/libsocketcan.git;protocol=git;tag=v0.0.8

@@ -1,0 +1,2580 @@
+/* ======================================================================= *
+ * Texas Instruments OMAP(TM) Platform Software * (c) Copyright 2008 Texas
+ * Instruments Incorporated. All Rights Reserved. * * Use of this software is 
+ * controlled by the terms and conditions found * in the license agreement
+ * under which this software has been supplied. *
+ * ======================================================================== */
+/**
+* @file ipipe_reg.h
+*      This file contains the CSL register definition for the module
+* 
+*
+* @path Centaurus\drivers\drv_isp\inc\csl
+*
+* @rev 1.0
+*/
+/*========================================================================
+*!
+*! Revision History
+*! 
+*========================================================================= */
+#ifndef IPIPE_REG_H
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+#define IPIPE_REG_H
+
+/****************************************************************
+*  INCLUDE FILES                                                 
+*****************************************************************/
+#include "../../isp5_utils/isp5_sys_types.h"
+
+/* #########TODO CHANGE THIS........... */
+
+#include "../../common/inc/isp_common.h"
+
+#define HST_memory_0    (ISP5_BASE_ADDRESS + 0x2000)
+#define HST_memory_1    (ISP5_BASE_ADDRESS + 0x2800)
+#define HST_memory_2    (ISP5_BASE_ADDRESS + 0x3000)
+#define HST_memory_3    (ISP5_BASE_ADDRESS + 0x3800)
+
+#define BSC_memory_0    (ISP5_BASE_ADDRESS + 0x4000)
+#define BSC_memory_1    (ISP5_BASE_ADDRESS + 0x6000)
+
+#define IPIPE_DPCtable0	(0x8000+ISP5_BASE_ADDRESS)
+#define IPIPE_DPCtable1	(0x8400+ISP5_BASE_ADDRESS)
+#define IPIPE_YEEtable	(0x8800+ISP5_BASE_ADDRESS)
+#define IPIPE_GBCtable	(0x9000+ISP5_BASE_ADDRESS)
+#define IPIPE_3DLUTtable0	(0x9800+ISP5_BASE_ADDRESS)
+#define IPIPE_3DLUTtable1	(0x9C00+ISP5_BASE_ADDRESS)
+#define IPIPE_3DLUTtable2	(0xA000+ISP5_BASE_ADDRESS)
+#define IPIPE_3DLUTtable3	(0xA400+ISP5_BASE_ADDRESS)
+#define IPIPE_GAMRtable	(0xA800+ISP5_BASE_ADDRESS)
+#define IPIPE_GAMGtable	(0xB000+ISP5_BASE_ADDRESS)
+#define IPIPE_GAMBtable	(0xB800+ISP5_BASE_ADDRESS)
+
+/* ================================================================ */
+/* 
+ *================================================================== */
+typedef struct {
+    volatile uint32 SRC_EN;
+    volatile uint32 SRC_MODE;
+    volatile uint32 SRC_FMT;
+    volatile uint32 SRC_COL;
+    volatile uint32 SRC_VPS;
+    volatile uint32 SRC_VSZ;
+    volatile uint32 SRC_HPS;
+    volatile uint32 SRC_HSZ;
+    volatile uint32 SEL_SBU;
+    volatile uint32 DMA_STA;
+    volatile uint32 GCK_MMR;
+    volatile uint32 GCK_PIX;
+    volatile uint32 RESERVED0;
+    volatile uint32 DPC_LUT_EN;
+    volatile uint32 DPC_LUT_SEL;
+    volatile uint32 DPC_LUT_ADR;
+    volatile uint32 DPC_LUT_SIZ;
+    volatile uint32 DPC_OTF_EN;
+    volatile uint32 DPC_OTF_TYP;
+    volatile uint32 DPC_OTF_2_D_THR_R;
+    volatile uint32 DPC_OTF_2_D_THR_GR;
+    volatile uint32 DPC_OTF_2_D_THR_GB;
+    volatile uint32 DPC_OTF_2_D_THR_B;
+    volatile uint32 DPC_OTF_2_C_THR_R;
+    volatile uint32 DPC_OTF_2_C_THR_GR;
+    volatile uint32 DPC_OTF_2_C_THR_GB;
+    volatile uint32 DPC_OTF_2_C_THR_B;
+    volatile uint32 DPC_OTF_3_SHF;
+    volatile uint32 DPC_OTF_3_D_THR;
+    volatile uint32 DPC_OTF_3_D_SLP;
+    volatile uint32 DPC_OTF_3_D_MIN;
+    volatile uint32 DPC_OTF_3_D_MAX;
+    volatile uint32 DPC_OTF_3_C_THR;
+    volatile uint32 DPC_OTF_3_C_SLP;
+    volatile uint32 DPC_OTF_3_C_MIN;
+    volatile uint32 DPC_OTF_3_C_MAX;
+    volatile uint32 LSC_VOFT;
+    volatile uint32 LSC_VA2;
+    volatile uint32 LSC_VA1;
+    volatile uint32 LSC_VS;
+    volatile uint32 LSC_HOFT;
+    volatile uint32 LSC_HA2;
+    volatile uint32 LSC_HA1;
+    volatile uint32 LSC_HS;
+    volatile uint32 LSC_GAN_R;
+    volatile uint32 LSC_GAN_GR;
+    volatile uint32 LSC_GAN_GB;
+    volatile uint32 LSC_GAN_B;
+    volatile uint32 LSC_OFT_R;
+    volatile uint32 LSC_OFT_GR;
+    volatile uint32 LSC_OFT_GB;
+    volatile uint32 LSC_OFT_B;
+    volatile uint32 LSC_SHF;
+    volatile uint32 LSC_MAX;
+    volatile uint32 D2F_1ST_EN;
+    volatile uint32 D2F_1ST_TYP;
+    volatile uint32 D2F_1ST_THR[8];
+    volatile uint32 D2F_1ST_STR[8];
+    volatile uint32 D2F_1ST_SPR[8];
+    volatile uint32 D2F_1ST_EDG_MIN;
+    volatile uint32 D2F_1ST_EDG_MAX;
+    volatile uint32 D2F_2ND_EN;
+    volatile uint32 D2F_2ND_TYP;
+    volatile uint32 D2F_2ND_THR[8];
+    volatile uint32 D2F_2ND_STR[8];
+    volatile uint32 D2F_2ND_SPR[8];
+    volatile uint32 D2F_2ND_EDG_MIN;
+    volatile uint32 D2F_2ND_EDG_MAX;
+    volatile uint32 GIC_EN;
+    volatile uint32 GIC_TYP;
+    volatile uint32 GIC_GAN;
+    volatile uint32 GIC_NFGAN;
+    volatile uint32 GIC_THR;
+    volatile uint32 GIC_SLP;
+    volatile uint32 WB2_OFT_R;
+    volatile uint32 WB2_OFT_GR;
+    volatile uint32 WB2_OFT_GB;
+    volatile uint32 WB2_OFT_B;
+    volatile uint32 WB2_WGN_R;
+    volatile uint32 WB2_WGN_GR;
+    volatile uint32 WB2_WGN_GB;
+    volatile uint32 WB2_WGN_B;
+    volatile uint32 CFA_MODE;
+    volatile uint32 CFA_2DIR_HPF_THR;
+    volatile uint32 CFA_2DIR_HPF_SLP;
+    volatile uint32 CFA_2DIR_MIX_THR;
+    volatile uint32 CFA_2DIR_MIX_SLP;
+    volatile uint32 CFA_2DIR_DIR_THR;
+    volatile uint32 CFA_2DIR_DIR_SLP;
+    volatile uint32 CFA_2DIR_NDWT;
+    volatile uint32 CFA_MONO_HUE_FRA;
+    volatile uint32 CFA_MONO_EDG_THR;
+    volatile uint32 CFA_MONO_THR_MIN;
+    volatile uint32 CFA_MONO_THR_SLP;
+    volatile uint32 CFA_MONO_SLP_MIN;
+    volatile uint32 CFA_MONO_SLP_SLP;
+    volatile uint32 CFA_MONO_LPWT;
+    volatile int32 RGB1_MUL_RR;
+    volatile int32 RGB1_MUL_GR;
+    volatile int32 RGB1_MUL_BR;
+    volatile int32 RGB1_MUL_RG;
+    volatile int32 RGB1_MUL_GG;
+    volatile int32 RGB1_MUL_BG;
+    volatile int32 RGB1_MUL_RB;
+    volatile int32 RGB1_MUL_GB;
+    volatile int32 RGB1_MUL_BB;
+    volatile int32 RGB1_OFT_OR;
+    volatile int32 RGB1_OFT_OG;
+    volatile int32 RGB1_OFT_OB;
+    volatile uint32 GMM_CFG;
+    volatile int32 RGB2_MUL_RR;
+    volatile int32 RGB2_MUL_GR;
+    volatile int32 RGB2_MUL_BR;
+    volatile int32 RGB2_MUL_RG;
+    volatile int32 RGB2_MUL_GG;
+    volatile int32 RGB2_MUL_BG;
+    volatile int32 RGB2_MUL_RB;
+    volatile int32 RGB2_MUL_GB;
+    volatile int32 RGB2_MUL_BB;
+    volatile int32 RGB2_OFT_OR;
+    volatile int32 RGB2_OFT_OG;
+    volatile int32 RGB2_OFT_OB;
+    volatile uint32 D3LUT_EN;
+    volatile uint32 YUV_ADJ;
+    volatile uint32 YUV_MUL_RY;
+    volatile uint32 YUV_MUL_GY;
+    volatile uint32 YUV_MUL_BY;
+    volatile uint32 YUV_MUL_RCB;
+    volatile uint32 YUV_MUL_GCB;
+    volatile uint32 YUV_MUL_BCB;
+    volatile uint32 YUV_MUL_RCR;
+    volatile uint32 YUV_MUL_GCR;
+    volatile uint32 YUV_MUL_BCR;
+    volatile uint32 YUV_OFT_Y;
+    volatile uint32 YUV_OFT_CB;
+    volatile uint32 YUV_OFT_CR;
+    volatile uint32 YUV_PHS;
+    volatile uint32 GBCE_EN;
+    volatile uint32 GBCE_TYP;
+    volatile uint32 YEE_EN;
+    volatile uint32 YEE_TYP;
+    volatile uint32 YEE_SHF;
+    volatile uint32 YEE_MUL_00;
+    volatile uint32 YEE_MUL_01;
+    volatile uint32 YEE_MUL_02;
+    volatile uint32 YEE_MUL_10;
+    volatile uint32 YEE_MUL_11;
+    volatile uint32 YEE_MUL_12;
+    volatile uint32 YEE_MUL_20;
+    volatile uint32 YEE_MUL_21;
+    volatile uint32 YEE_MUL_22;
+    volatile uint32 YEE_THR;
+    volatile uint32 YEE_E_GAN;
+    volatile uint32 YEE_E_THR_1;
+    volatile uint32 YEE_E_THR_2;
+    volatile uint32 YEE_G_GAN;
+    volatile uint32 YEE_G_OFT;
+    volatile uint32 CAR_EN;
+    volatile uint32 CAR_TYP;
+    volatile uint32 CAR_SW;
+    volatile uint32 CAR_HPF_TYP;
+    volatile uint32 CAR_HPF_SHF;
+    volatile uint32 CAR_HPF_THR;
+    volatile uint32 CAR_GN1_GAN;
+    volatile uint32 CAR_GN1_SHF;
+    volatile uint32 CAR_GN1_MIN;
+    volatile uint32 CAR_GN2_GAN;
+    volatile uint32 CAR_GN2_SHF;
+    volatile uint32 CAR_GN2_MIN;
+    volatile uint32 CGS_EN;
+    volatile uint32 CGS_GN1_L_THR;
+    volatile uint32 CGS_GN1_L_GAN;
+    volatile uint32 CGS_GN1_L_SHF;
+    volatile uint32 CGS_GN1_L_MIN;
+    volatile uint32 CGS_GN1_H_THR;
+    volatile uint32 CGS_GN1_H_GAN;
+    volatile uint32 CGS_GN1_H_SHF;
+    volatile uint32 CGS_GN1_H_MIN;
+    volatile uint32 CGS_GN2_L_THR;
+    volatile uint32 CGS_GN2_L_GAN;
+    volatile uint32 CGS_GN2_L_SHF;
+    volatile uint32 CGS_GN2_L_MIN;
+    volatile uint32 BOX_EN;
+    volatile uint32 BOX_MODE;
+    volatile uint32 BOX_TYP;
+    volatile uint32 BOX_SHF;
+    volatile uint32 BOX_SDR_SAD_H;
+    volatile uint32 BOX_SDR_SAD_L;
+    volatile uint32 RESERVED1;
+    volatile uint32 HST_EN;
+    volatile uint32 HST_MODE;
+    volatile uint32 HST_SEL;
+    volatile uint32 HST_PARA;
+    volatile uint32 HST_0_VPS;
+    volatile uint32 HST_0_VSZ;
+    volatile uint32 HST_0_HPS;
+    volatile uint32 HST_0_HSZ;
+    volatile uint32 HST_1_VPS;
+    volatile uint32 HST_1_VSZ;
+    volatile uint32 HST_1_HPS;
+    volatile uint32 HST_1_HSZ;
+    volatile uint32 HST_2_VPS;
+    volatile uint32 HST_2_VSZ;
+    volatile uint32 HST_2_HPS;
+    volatile uint32 HST_2_HSZ;
+    volatile uint32 HST_3_VPS;
+    volatile uint32 HST_3_VSZ;
+    volatile uint32 HST_3_HPS;
+    volatile uint32 HST_3_HSZ;
+    volatile uint32 HST_TBL;
+    volatile uint32 HST_MUL_R;
+    volatile uint32 HST_MUL_GR;
+    volatile uint32 HST_MUL_GB;
+    volatile uint32 HST_MUL_B;
+    volatile uint32 BSC_EN;
+    volatile uint32 BSC_MODE;
+    volatile uint32 BSC_TYP;
+    volatile uint32 BSC_ROW_VCT;
+    volatile uint32 BSC_ROW_SHF;
+    volatile uint32 BSC_ROW_VPOS;
+    volatile uint32 BSC_ROW_VNUM;
+    volatile uint32 BSC_ROW_VSKIP;
+    volatile uint32 BSC_ROW_HPOS;
+    volatile uint32 BSC_ROW_HNUM;
+    volatile uint32 BSC_ROW_HSKIP;
+    volatile uint32 BSC_COL_VCT;
+    volatile uint32 BSC_COL_SHF;
+    volatile uint32 BSC_COL_VPOS;
+    volatile uint32 BSC_COL_VNUM;
+    volatile uint32 BSC_COL_VSKIP;
+    volatile uint32 BSC_COL_HPOS;
+    volatile uint32 BSC_COL_HNUM;
+    volatile uint32 BSC_COL_HSKIP;
+} CSL_IpipeRegs;
+
+/**************************************************************************\
+* Field Definition Macros
+\**************************************************************************/
+
+/* SRC_EN */
+
+#define CSL_IPIPE_SRC_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_SRC_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_SRC_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_SRC_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_SRC_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_SRC_EN_RESETVAL (0x0000u)
+
+/* SRC_MODE */
+
+#define CSL_IPIPE_SRC_MODE_WRT_MASK (0x0002u)
+#define CSL_IPIPE_SRC_MODE_WRT_SHIFT (0x0001u)
+#define CSL_IPIPE_SRC_MODE_WRT_RESETVAL (0x0000u)
+/*----WRT Tokens----*/
+#define CSL_IPIPE_SRC_MODE_WRT_DISABLE (0x0000u)
+#define CSL_IPIPE_SRC_MODE_WRT_ENABLE (0x0001u)
+
+#define CSL_IPIPE_SRC_MODE_OST_MASK (0x0001u)
+#define CSL_IPIPE_SRC_MODE_OST_SHIFT (0x0000u)
+#define CSL_IPIPE_SRC_MODE_OST_RESETVAL (0x0000u)
+/*----OST Tokens----*/
+#define CSL_IPIPE_SRC_MODE_OST_DISABLE (0x0000u)
+#define CSL_IPIPE_SRC_MODE_OST_ENABLE (0x0001u)
+
+#define CSL_IPIPE_SRC_MODE_RESETVAL (0x0000u)
+
+/* SRC_FMT */
+
+#define CSL_IPIPE_SRC_FMT_FMT_MASK (0x0003u)
+#define CSL_IPIPE_SRC_FMT_FMT_SHIFT (0x0000u)
+#define CSL_IPIPE_SRC_FMT_FMT_RESETVAL (0x0000u)
+/*----FMT Tokens----*/
+#define CSL_IPIPE_SRC_FMT_FMT_RAW2YUV (0x0000u)
+#define CSL_IPIPE_SRC_FMT_FMT_RAW2RAW (0x0001u)
+#define CSL_IPIPE_SRC_FMT_FMT_RAW2DIS (0x0002u)
+#define CSL_IPIPE_SRC_FMT_FMT_YUV2YUV (0x0003u)
+
+#define CSL_IPIPE_SRC_FMT_RESETVAL (0x0000u)
+
+/* SRC_COL */
+
+#define CSL_IPIPE_SRC_COL_OO_MASK (0x00C0u)
+#define CSL_IPIPE_SRC_COL_OO_SHIFT (0x0006u)
+#define CSL_IPIPE_SRC_COL_OO_RESETVAL (0x0003u)
+/*----OO Tokens----*/
+#define CSL_IPIPE_SRC_COL_OO_R (0x0000u)
+#define CSL_IPIPE_SRC_COL_OO_GR (0x0001u)
+#define CSL_IPIPE_SRC_COL_OO_GB (0x0002u)
+#define CSL_IPIPE_SRC_COL_OO_B (0x0003u)
+
+#define CSL_IPIPE_SRC_COL_OE_MASK (0x0030u)
+#define CSL_IPIPE_SRC_COL_OE_SHIFT (0x0004u)
+#define CSL_IPIPE_SRC_COL_OE_RESETVAL (0x0002u)
+/*----OE Tokens----*/
+#define CSL_IPIPE_SRC_COL_OE_R (0x0000u)
+#define CSL_IPIPE_SRC_COL_OE_GR (0x0001u)
+#define CSL_IPIPE_SRC_COL_OE_GB (0x0002u)
+#define CSL_IPIPE_SRC_COL_OE_B (0x0003u)
+
+#define CSL_IPIPE_SRC_COL_EO_MASK (0x000Cu)
+#define CSL_IPIPE_SRC_COL_EO_SHIFT (0x0002u)
+#define CSL_IPIPE_SRC_COL_EO_RESETVAL (0x0001u)
+/*----EO Tokens----*/
+#define CSL_IPIPE_SRC_COL_EO_R (0x0000u)
+#define CSL_IPIPE_SRC_COL_EO_GR (0x0001u)
+#define CSL_IPIPE_SRC_COL_EO_GB (0x0002u)
+#define CSL_IPIPE_SRC_COL_EO_B (0x0003u)
+
+#define CSL_IPIPE_SRC_COL_EE_MASK (0x0003u)
+#define CSL_IPIPE_SRC_COL_EE_SHIFT (0x0000u)
+#define CSL_IPIPE_SRC_COL_EE_RESETVAL (0x0000u)
+/*----EE Tokens----*/
+#define CSL_IPIPE_SRC_COL_EE_R (0x0000u)
+#define CSL_IPIPE_SRC_COL_EE_GR (0x0001u)
+#define CSL_IPIPE_SRC_COL_EE_GB (0x0002u)
+#define CSL_IPIPE_SRC_COL_EE_B (0x0003u)
+
+#define CSL_IPIPE_SRC_COL_RESETVAL (0x00E4u)
+
+/* SRC_VPS */
+
+#define CSL_IPIPE_SRC_VPS_VAL_MASK (0xFFFFu)
+#define CSL_IPIPE_SRC_VPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_SRC_VPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_SRC_VPS_RESETVAL (0x0000u)
+
+/* SRC_VSZ */
+
+#define CSL_IPIPE_SRC_VSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_SRC_VSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_SRC_VSZ_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_SRC_VSZ_RESETVAL (0x0000u)
+
+/* SRC_HPS */
+
+#define CSL_IPIPE_SRC_HPS_VAL_MASK (0xFFFFu)
+#define CSL_IPIPE_SRC_HPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_SRC_HPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_SRC_HPS_RESETVAL (0x0000u)
+
+/* SRC_HSZ */
+
+#define CSL_IPIPE_SRC_HSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_SRC_HSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_SRC_HSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_SRC_HSZ_RESETVAL (0x0001u)
+
+/* SEL_SBU */
+
+#define CSL_IPIPE_SEL_SBU_EDOF_MASK (0x0001u)
+#define CSL_IPIPE_SEL_SBU_EDOF_SHIFT (0x0000u)
+#define CSL_IPIPE_SEL_SBU_EDOF_RESETVAL (0x0000u)
+/*----EDOF Tokens----*/
+#define CSL_IPIPE_SEL_SBU_EDOF_DISABLE (0x0000u)
+#define CSL_IPIPE_SEL_SBU_EDOF_ENABLE (0x0001u)
+
+#define CSL_IPIPE_SEL_SBU_RESETVAL (0x0000u)
+
+/* DMA_STA */
+
+#define CSL_IPIPE_DMA_STA_HP_STATUS_MASK (0x0010u)
+#define CSL_IPIPE_DMA_STA_HP_STATUS_SHIFT (0x0004u)
+#define CSL_IPIPE_DMA_STA_HP_STATUS_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DMA_STA_HB_STATUS_MASK (0x0008u)
+#define CSL_IPIPE_DMA_STA_HB_STATUS_SHIFT (0x0003u)
+#define CSL_IPIPE_DMA_STA_HB_STATUS_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DMA_STA_BSC_STATUS_MASK (0x0004u)
+#define CSL_IPIPE_DMA_STA_BSC_STATUS_SHIFT (0x0002u)
+#define CSL_IPIPE_DMA_STA_BSC_STATUS_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DMA_STA_BP_STATUS_MASK (0x0002u)
+#define CSL_IPIPE_DMA_STA_BP_STATUS_SHIFT (0x0001u)
+#define CSL_IPIPE_DMA_STA_BP_STATUS_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DMA_STA_BE_STATUS_MASK (0x0001u)
+#define CSL_IPIPE_DMA_STA_BE_STATUS_SHIFT (0x0000u)
+#define CSL_IPIPE_DMA_STA_BE_STATUS_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DMA_STA_RESETVAL (0x0000u)
+
+/* GCK_MMR */
+
+#define CSL_IPIPE_GCK_MMR_REG_MASK (0x0001u)
+#define CSL_IPIPE_GCK_MMR_REG_SHIFT (0x0000u)
+#define CSL_IPIPE_GCK_MMR_REG_RESETVAL (0x0000u)
+/*----REG Tokens----*/
+#define CSL_IPIPE_GCK_MMR_REG_OFF (0x0000u)
+#define CSL_IPIPE_GCK_MMR_REG_ON (0x0001u)
+
+#define CSL_IPIPE_GCK_MMR_RESETVAL (0x0000u)
+
+/* GCK_PIX */
+
+#define CSL_IPIPE_GCK_PIX_G3_MASK (0x0008u)
+#define CSL_IPIPE_GCK_PIX_G3_SHIFT (0x0003u)
+#define CSL_IPIPE_GCK_PIX_G3_RESETVAL (0x0000u)
+/*----G3 Tokens----*/
+#define CSL_IPIPE_GCK_PIX_G3_OFF (0x0000u)
+#define CSL_IPIPE_GCK_PIX_G3_ON (0x0001u)
+
+#define CSL_IPIPE_GCK_PIX_G2_MASK (0x0004u)
+#define CSL_IPIPE_GCK_PIX_G2_SHIFT (0x0002u)
+#define CSL_IPIPE_GCK_PIX_G2_RESETVAL (0x0000u)
+/*----G2 Tokens----*/
+#define CSL_IPIPE_GCK_PIX_G2_OFF (0x0000u)
+#define CSL_IPIPE_GCK_PIX_G2_ON (0x0001u)
+
+#define CSL_IPIPE_GCK_PIX_G1_MASK (0x0002u)
+#define CSL_IPIPE_GCK_PIX_G1_SHIFT (0x0001u)
+#define CSL_IPIPE_GCK_PIX_G1_RESETVAL (0x0000u)
+/*----G1 Tokens----*/
+#define CSL_IPIPE_GCK_PIX_G1_OFF (0x0000u)
+#define CSL_IPIPE_GCK_PIX_G1_ON (0x0001u)
+
+#define CSL_IPIPE_GCK_PIX_G0_MASK (0x0001u)
+#define CSL_IPIPE_GCK_PIX_G0_SHIFT (0x0000u)
+#define CSL_IPIPE_GCK_PIX_G0_RESETVAL (0x0000u)
+/*----G0 Tokens----*/
+#define CSL_IPIPE_GCK_PIX_G0_OFF (0x0000u)
+#define CSL_IPIPE_GCK_PIX_G0_ON (0x0001u)
+
+#define CSL_IPIPE_GCK_PIX_RESETVAL (0x0000u)
+
+/* Reserved0 */
+
+#define CSL_IPIPE_RESERVED0_RESETVAL (0x0000u)
+
+/* DPC_LUT_EN */
+
+#define CSL_IPIPE_DPC_LUT_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_DPC_LUT_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_LUT_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_DPC_LUT_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_DPC_LUT_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_DPC_LUT_EN_RESETVAL (0x0000u)
+
+/* DPC_LUT_SEL */
+
+#define CSL_IPIPE_DPC_LUT_SEL_TBL_MASK (0x0002u)
+#define CSL_IPIPE_DPC_LUT_SEL_TBL_SHIFT (0x0001u)
+#define CSL_IPIPE_DPC_LUT_SEL_TBL_RESETVAL (0x0000u)
+/*----TBL Tokens----*/
+#define CSL_IPIPE_DPC_LUT_SEL_TBL_UPTO1024 (0x0000u)
+#define CSL_IPIPE_DPC_LUT_SEL_TBL_INFINITY (0x0001u)
+
+#define CSL_IPIPE_DPC_LUT_SEL_DOT_MASK (0x0001u)
+#define CSL_IPIPE_DPC_LUT_SEL_DOT_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_LUT_SEL_DOT_RESETVAL (0x0000u)
+/*----SEL Tokens----*/
+#define CSL_IPIPE_DPC_LUT_SEL_SEL_BLACKDOT (0x0000u)
+#define CSL_IPIPE_DPC_LUT_SEL_SEL_WHITEDOT (0x0001u)
+
+#define CSL_IPIPE_DPC_LUT_SEL_RESETVAL (0x0000u)
+
+/* DPC_LUT_ADR */
+
+#define CSL_IPIPE_DPC_LUT_ADR_ADR_MASK (0x03FFu)
+#define CSL_IPIPE_DPC_LUT_ADR_ADR_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_LUT_ADR_ADR_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_LUT_ADR_RESETVAL (0x0000u)
+
+/* DPC_LUT_SIZ */
+
+#define CSL_IPIPE_DPC_LUT_SIZ_SIZ_MASK (0x03FFu)
+#define CSL_IPIPE_DPC_LUT_SIZ_SIZ_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_LUT_SIZ_SIZ_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_LUT_SIZ_RESETVAL (0x0000u)
+
+/* DPC_OTF_EN */
+
+#define CSL_IPIPE_DPC_OTF_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_DPC_OTF_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_DPC_OTF_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_DPC_OTF_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_DPC_OTF_EN_RESETVAL (0x0000u)
+
+/* DPC_OTF_TYP */
+
+#define CSL_IPIPE_DPC_OTF_TYP_TYP_MASK (0x0002u)
+#define CSL_IPIPE_DPC_OTF_TYP_TYP_SHIFT (0x0001u)
+#define CSL_IPIPE_DPC_OTF_TYP_TYP_RESETVAL (0x0000u)
+/*----TYP Tokens----*/
+#define CSL_IPIPE_DPC_OTF_TYP_TYP_MAXMIN1 (0x0000u)
+#define CSL_IPIPE_DPC_OTF_TYP_TYP_MAXMIN2 (0x0001u)
+
+#define CSL_IPIPE_DPC_OTF_TYP_ALG_MASK (0x0001u)
+#define CSL_IPIPE_DPC_OTF_TYP_ALG_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_TYP_ALG_RESETVAL (0x0000u)
+/*----ALG Tokens----*/
+#define CSL_IPIPE_DPC_OTF_TYP_ALG_DPC2 (0x0000u)
+#define CSL_IPIPE_DPC_OTF_TYP_ALG_DPC3 (0x0001u)
+
+#define CSL_IPIPE_DPC_OTF_TYP_RESETVAL (0x0000u)
+
+/* DPC_OTF_2_D_THR_R */
+
+#define CSL_IPIPE_DPC_OTF_2_D_THR_R_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_2_D_THR_R_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_2_D_THR_R_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_2_D_THR_R_RESETVAL (0x0000u)
+
+/* DPC_OTF_2_D_THR_GR */
+
+#define CSL_IPIPE_DPC_OTF_2_D_THR_GR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_2_D_THR_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_2_D_THR_GR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_2_D_THR_GR_RESETVAL (0x0000u)
+
+/* DPC_OTF_2_D_THR_GB */
+
+#define CSL_IPIPE_DPC_OTF_2_D_THR_GB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_2_D_THR_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_2_D_THR_GB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_2_D_THR_GB_RESETVAL (0x0000u)
+
+/* DPC_OTF_2_D_THR_B */
+
+#define CSL_IPIPE_DPC_OTF_2_D_THR_B_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_2_D_THR_B_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_2_D_THR_B_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_2_D_THR_B_RESETVAL (0x0000u)
+
+/* DPC_OTF_2_C_THR_R */
+
+#define CSL_IPIPE_DPC_OTF_2_C_THR_R_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_2_C_THR_R_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_2_C_THR_R_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_2_C_THR_R_RESETVAL (0x0000u)
+
+/* DPC_OTF_2_C_THR_GR */
+
+#define CSL_IPIPE_DPC_OTF_2_C_THR_GR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_2_C_THR_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_2_C_THR_GR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_2_C_THR_GR_RESETVAL (0x0000u)
+
+/* DPC_OTF_2_C_THR_Gb */
+
+#define CSL_IPIPE_DPC_OTF_2_C_THR_GB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_2_C_THR_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_2_C_THR_GB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_2_C_THR_GB_RESETVAL (0x0000u)
+
+/* DPC_OTF_2_C_THR_B */
+
+#define CSL_IPIPE_DPC_OTF_2_C_THR_B_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_2_C_THR_B_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_2_C_THR_B_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_2_C_THR_B_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_SHF */
+
+#define CSL_IPIPE_DPC_OTF_3_SHF_SHF_MASK (0x000Fu)
+#define CSL_IPIPE_DPC_OTF_3_SHF_SHF_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_3_SHF_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_SHF_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_D_THR */
+
+#define CSL_IPIPE_DPC_OTF_3_D_THR_VAL_MASK (0x0FC0u)
+#define CSL_IPIPE_DPC_OTF_3_D_THR_VAL_SHIFT (0x0006u)
+#define CSL_IPIPE_DPC_OTF_3_D_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_D_THR_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_D_SLP */
+
+#define CSL_IPIPE_DPC_OTF_3_D_SLP_VAL_MASK (0x003Fu)
+#define CSL_IPIPE_DPC_OTF_3_D_SLP_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_3_D_SLP_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_D_SLP_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_D_MIN */
+
+#define CSL_IPIPE_DPC_OTF_3_D_MIN_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_3_D_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_3_D_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_D_MIN_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_D_MAX */
+
+#define CSL_IPIPE_DPC_OTF_3_D_MAX_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_3_D_MAX_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_3_D_MAX_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_D_MAX_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_C_THR */
+
+#define CSL_IPIPE_DPC_OTF_3_C_THR_VAL_MASK (0x0FC0u)
+#define CSL_IPIPE_DPC_OTF_3_C_THR_VAL_SHIFT (0x0006u)
+#define CSL_IPIPE_DPC_OTF_3_C_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_C_THR_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_C_SLP */
+
+#define CSL_IPIPE_DPC_OTF_3_C_SLP_VAL_MASK (0x003Fu)
+#define CSL_IPIPE_DPC_OTF_3_C_SLP_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_3_C_SLP_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_C_SLP_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_C_MIN */
+
+#define CSL_IPIPE_DPC_OTF_3_C_MIN_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_3_C_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_3_C_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_C_MIN_RESETVAL (0x0000u)
+
+/* DPC_OTF_3_C_MAX */
+
+#define CSL_IPIPE_DPC_OTF_3_C_MAX_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_DPC_OTF_3_C_MAX_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_DPC_OTF_3_C_MAX_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_DPC_OTF_3_C_MAX_RESETVAL (0x0000u)
+
+/* LSC_VOFT */
+
+#define CSL_IPIPE_LSC_VOFT_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_LSC_VOFT_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_VOFT_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_VOFT_RESETVAL (0x0000u)
+
+/* LSC_VA2 */
+
+#define CSL_IPIPE_LSC_VA2_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_LSC_VA2_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_VA2_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_VA2_RESETVAL (0x0000u)
+
+/* LSC_VA1 */
+
+#define CSL_IPIPE_LSC_VA1_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_LSC_VA1_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_VA1_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_VA1_RESETVAL (0x0000u)
+
+/* LSC_VS */
+
+#define CSL_IPIPE_LSC_VS_VS2_MASK (0x00F0u)
+#define CSL_IPIPE_LSC_VS_VS2_SHIFT (0x0004u)
+#define CSL_IPIPE_LSC_VS_VS2_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_VS_VS1_MASK (0x000Fu)
+#define CSL_IPIPE_LSC_VS_VS1_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_VS_VS1_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_VS_RESETVAL (0x0000u)
+
+/* LSC_HOFT */
+
+#define CSL_IPIPE_LSC_HOFT_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_LSC_HOFT_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_HOFT_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_HOFT_RESETVAL (0x0000u)
+
+/* LSC_HA2 */
+
+#define CSL_IPIPE_LSC_HA2_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_LSC_HA2_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_HA2_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_HA2_RESETVAL (0x0000u)
+
+/* LSC_HA1 */
+
+#define CSL_IPIPE_LSC_HA1_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_LSC_HA1_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_HA1_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_HA1_RESETVAL (0x0000u)
+
+/* LSC_HS */
+
+#define CSL_IPIPE_LSC_HS_HS2_MASK (0x00F0u)
+#define CSL_IPIPE_LSC_HS_HS2_SHIFT (0x0004u)
+#define CSL_IPIPE_LSC_HS_HS2_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_HS_HS1_MASK (0x000Fu)
+#define CSL_IPIPE_LSC_HS_HS1_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_HS_HS1_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_HS_RESETVAL (0x0000u)
+
+/* LSC_GAN_R */
+
+#define CSL_IPIPE_LSC_GAN_R_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_LSC_GAN_R_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_GAN_R_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_GAN_R_RESETVAL (0x0000u)
+
+/* LSC_GAN_GR */
+
+#define CSL_IPIPE_LSC_GAN_GR_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_LSC_GAN_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_GAN_GR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_GAN_GR_RESETVAL (0x0000u)
+
+/* LSC_GAN_GB */
+
+#define CSL_IPIPE_LSC_GAN_GB_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_LSC_GAN_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_GAN_GB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_GAN_GB_RESETVAL (0x0000u)
+
+/* LSC_GAN_B */
+
+#define CSL_IPIPE_LSC_GAN_B_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_LSC_GAN_B_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_GAN_B_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_GAN_B_RESETVAL (0x0000u)
+
+/* LSC_OFT_R */
+
+#define CSL_IPIPE_LSC_OFT_R_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_LSC_OFT_R_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_OFT_R_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_OFT_R_RESETVAL (0x0000u)
+
+/* LSC_OFT_GR */
+
+#define CSL_IPIPE_LSC_OFT_GR_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_LSC_OFT_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_OFT_GR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_OFT_GR_RESETVAL (0x0000u)
+
+/* LSC_OFT_GB */
+
+#define CSL_IPIPE_LSC_OFT_GB_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_LSC_OFT_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_OFT_GB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_OFT_GB_RESETVAL (0x0000u)
+
+/* LSC_OFT_B */
+
+#define CSL_IPIPE_LSC_OFT_B_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_LSC_OFT_B_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_OFT_B_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_OFT_B_RESETVAL (0x0000u)
+
+/* LSC_SHF */
+
+#define CSL_IPIPE_LSC_SHF_VAL_MASK (0x000Fu)
+#define CSL_IPIPE_LSC_SHF_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_SHF_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_SHF_RESETVAL (0x0000u)
+
+/* LSC_MAX */
+
+#define CSL_IPIPE_LSC_MAX_VAL_MASK (0x01FFu)
+#define CSL_IPIPE_LSC_MAX_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_LSC_MAX_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_LSC_MAX_RESETVAL (0x0000u)
+
+/* D2F_1ST_EN */
+
+#define CSL_IPIPE_D2F_1ST_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_D2F_1ST_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_1ST_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_D2F_1ST_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_D2F_1ST_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_D2F_1ST_EN_RESETVAL (0x0000u)
+
+/* D2F_1ST_TYP */
+
+#define CSL_IPIPE_D2F_1ST_TYP_SEL_MASK (0x0200u)
+#define CSL_IPIPE_D2F_1ST_TYP_SEL_SHIFT (0x0009u)
+#define CSL_IPIPE_D2F_1ST_TYP_SEL_RESETVAL (0x0000u)
+/*----SEL Tokens----*/
+#define CSL_IPIPE_D2F_1ST_TYP_SEL_SINGLE (0x0000u)
+#define CSL_IPIPE_D2F_1ST_TYP_SEL_LUT (0x0001u)
+
+#define CSL_IPIPE_D2F_1ST_TYP_LSC_MASK (0x0100u)
+#define CSL_IPIPE_D2F_1ST_TYP_LSC_SHIFT (0x0008u)
+#define CSL_IPIPE_D2F_1ST_TYP_LSC_RESETVAL (0x0000u)
+/*----LSC Tokens----*/
+#define CSL_IPIPE_D2F_1ST_TYP_LSC_DISABLE (0x0000u)
+#define CSL_IPIPE_D2F_1ST_TYP_LSC_ENABLE (0x0001u)
+
+#define CSL_IPIPE_D2F_1ST_TYP_TYP_MASK (0x0080u)
+#define CSL_IPIPE_D2F_1ST_TYP_TYP_SHIFT (0x0007u)
+#define CSL_IPIPE_D2F_1ST_TYP_TYP_RESETVAL (0x0000u)
+/*----TYP Tokens----*/
+#define CSL_IPIPE_D2F_1ST_TYP_TYP_BOX (0x0000u)
+#define CSL_IPIPE_D2F_1ST_TYP_TYP_DIAMOND (0x0001u)
+
+#define CSL_IPIPE_D2F_1ST_TYP_SHF_MASK (0x0060u)
+#define CSL_IPIPE_D2F_1ST_TYP_SHF_SHIFT (0x0005u)
+#define CSL_IPIPE_D2F_1ST_TYP_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_1ST_TYP_SPR_MASK (0x001Fu)
+#define CSL_IPIPE_D2F_1ST_TYP_SPR_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_1ST_TYP_SPR_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_1ST_TYP_RESETVAL (0x0000u)
+
+/* D2F_1ST_THR */
+
+#define CSL_IPIPE_D2F_1ST_THR_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_D2F_1ST_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_1ST_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_1ST_THR_RESETVAL (0x0000u)
+
+/* D2F_1ST_STR */
+
+#define CSL_IPIPE_D2F_1ST_STR_VAL_MASK (0x001Fu)
+#define CSL_IPIPE_D2F_1ST_STR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_1ST_STR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_1ST_STR_RESETVAL (0x0000u)
+
+/* D2F_1ST_SPR */
+
+#define CSL_IPIPE_D2F_1ST_SPR_VAL_MASK (0x001Fu)
+#define CSL_IPIPE_D2F_1ST_SPR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_1ST_SPR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_1ST_SPR_RESETVAL (0x0000u)
+
+/* D2F_1ST_EDG_MIN */
+
+#define CSL_IPIPE_D2F_1ST_EDG_MIN_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_D2F_1ST_EDG_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_1ST_EDG_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_1ST_EDG_MIN_RESETVAL (0x0000u)
+
+/* D2F_1ST_EDG_MAX */
+
+#define CSL_IPIPE_D2F_1ST_EDG_MAX_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_D2F_1ST_EDG_MAX_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_1ST_EDG_MAX_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_1ST_EDG_MAX_RESETVAL (0x0000u)
+
+/* D2F_2ND_EN */
+
+#define CSL_IPIPE_D2F_2ND_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_D2F_2ND_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_2ND_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_D2F_2ND_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_D2F_2ND_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_D2F_2ND_EN_RESETVAL (0x0000u)
+
+/* D2F_2ND_TYP */
+
+#define CSL_IPIPE_D2F_2ND_TYP_SEL_MASK (0x0200u)
+#define CSL_IPIPE_D2F_2ND_TYP_SEL_SHIFT (0x0009u)
+#define CSL_IPIPE_D2F_2ND_TYP_SEL_RESETVAL (0x0000u)
+/*----SEL Tokens----*/
+#define CSL_IPIPE_D2F_2ND_TYP_SEL_SINGLE (0x0000u)
+#define CSL_IPIPE_D2F_2ND_TYP_SEL_LUT (0x0001u)
+
+#define CSL_IPIPE_D2F_2ND_TYP_LSC_MASK (0x0100u)
+#define CSL_IPIPE_D2F_2ND_TYP_LSC_SHIFT (0x0008u)
+#define CSL_IPIPE_D2F_2ND_TYP_LSC_RESETVAL (0x0000u)
+/*----LSC Tokens----*/
+#define CSL_IPIPE_D2F_2ND_TYP_LSC_DISABLE (0x0000u)
+#define CSL_IPIPE_D2F_2ND_TYP_LSC_ENABLE (0x0001u)
+
+#define CSL_IPIPE_D2F_2ND_TYP_TYP_MASK (0x0080u)
+#define CSL_IPIPE_D2F_2ND_TYP_TYP_SHIFT (0x0007u)
+#define CSL_IPIPE_D2F_2ND_TYP_TYP_RESETVAL (0x0000u)
+/*----TYP Tokens----*/
+#define CSL_IPIPE_D2F_2ND_TYP_TYP_BOX (0x0000u)
+#define CSL_IPIPE_D2F_2ND_TYP_TYP_DIAMOND (0x0001u)
+
+#define CSL_IPIPE_D2F_2ND_TYP_SHF_MASK (0x0060u)
+#define CSL_IPIPE_D2F_2ND_TYP_SHF_SHIFT (0x0005u)
+#define CSL_IPIPE_D2F_2ND_TYP_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_2ND_TYP_SPR_MASK (0x001Fu)
+#define CSL_IPIPE_D2F_2ND_TYP_SPR_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_2ND_TYP_SPR_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_2ND_TYP_RESETVAL (0x0000u)
+
+/* D2F_2ND_THR */
+
+#define CSL_IPIPE_D2F_2ND_THR_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_D2F_2ND_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_2ND_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_2ND_THR_RESETVAL (0x0000u)
+
+/* D2F_2ND_STR */
+
+#define CSL_IPIPE_D2F_2ND_STR_VAL_MASK (0x001Fu)
+#define CSL_IPIPE_D2F_2ND_STR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_2ND_STR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_2ND_STR_RESETVAL (0x0000u)
+
+/* D2F_2ND_SPR */
+
+#define CSL_IPIPE_D2F_2ND_SPR_VAL_MASK (0x001Fu)
+#define CSL_IPIPE_D2F_2ND_SPR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_2ND_SPR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_2ND_SPR_RESETVAL (0x0000u)
+
+/* D2F_2ND_EDG_MIN */
+
+#define CSL_IPIPE_D2F_2ND_EDG_MIN_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_D2F_2ND_EDG_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_2ND_EDG_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_2ND_EDG_MIN_RESETVAL (0x0000u)
+
+/* D2F_2ND_EDG_MAX */
+
+#define CSL_IPIPE_D2F_2ND_EDG_MAX_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_D2F_2ND_EDG_MAX_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_D2F_2ND_EDG_MAX_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_D2F_2ND_EDG_MAX_RESETVAL (0x0000u)
+
+/* GIC_EN */
+
+#define CSL_IPIPE_GIC_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_GIC_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_GIC_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_GIC_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_GIC_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_GIC_EN_RESETVAL (0x0000u)
+
+/* GIC_TYP */
+
+#define CSL_IPIPE_GIC_TYP_LSC_MASK (0x0004u)
+#define CSL_IPIPE_GIC_TYP_LSC_SHIFT (0x0002u)
+#define CSL_IPIPE_GIC_TYP_LSC_RESETVAL (0x0000u)
+/*----LSC Tokens----*/
+#define CSL_IPIPE_GIC_TYP_LSC_DISABLE (0x0000u)
+#define CSL_IPIPE_GIC_TYP_LSC_ENABLE (0x0001u)
+
+#define CSL_IPIPE_GIC_TYP_SEL_MASK (0x0002u)
+#define CSL_IPIPE_GIC_TYP_SEL_SHIFT (0x0001u)
+#define CSL_IPIPE_GIC_TYP_SEL_RESETVAL (0x0000u)
+/*----SEL Tokens----*/
+#define CSL_IPIPE_GIC_TYP_SEL_FIXED (0x0000u)
+#define CSL_IPIPE_GIC_TYP_SEL_VARIABLE (0x0001u)
+
+#define CSL_IPIPE_GIC_TYP_TYP_MASK (0x0001u)
+#define CSL_IPIPE_GIC_TYP_TYP_SHIFT (0x0000u)
+#define CSL_IPIPE_GIC_TYP_TYP_RESETVAL (0x0000u)
+/*----TYP Tokens----*/
+#define CSL_IPIPE_GIC_TYP_TYP_DIFFERENCE (0x0000u)
+#define CSL_IPIPE_GIC_TYP_TYP_HPF1D (0x0001u)
+
+#define CSL_IPIPE_GIC_TYP_RESETVAL (0x0000u)
+
+/* GIC_GAN */
+
+#define CSL_IPIPE_GIC_GAN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_GIC_GAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_GIC_GAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_GIC_GAN_RESETVAL (0x0000u)
+
+/* GIC_NFGAN */
+
+#define CSL_IPIPE_GIC_NFGAN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_GIC_NFGAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_GIC_NFGAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_GIC_NFGAN_RESETVAL (0x0000u)
+
+/* GIC_THR */
+
+#define CSL_IPIPE_GIC_THR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_GIC_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_GIC_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_GIC_THR_RESETVAL (0x0000u)
+
+/* GIC_SLP */
+
+#define CSL_IPIPE_GIC_SLP_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_GIC_SLP_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_GIC_SLP_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_GIC_SLP_RESETVAL (0x0000u)
+
+/* WB2_OFT_R */
+
+#define CSL_IPIPE_WB2_OFT_R_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_WB2_OFT_R_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_WB2_OFT_R_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_WB2_OFT_R_RESETVAL (0x0000u)
+
+/* WB2_OFT_GR */
+
+#define CSL_IPIPE_WB2_OFT_GR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_WB2_OFT_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_WB2_OFT_GR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_WB2_OFT_GR_RESETVAL (0x0000u)
+
+/* WB2_OFT_GB */
+
+#define CSL_IPIPE_WB2_OFT_GB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_WB2_OFT_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_WB2_OFT_GB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_WB2_OFT_GB_RESETVAL (0x0000u)
+
+/* WB2_OFT_B */
+
+#define CSL_IPIPE_WB2_OFT_B_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_WB2_OFT_B_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_WB2_OFT_B_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_WB2_OFT_B_RESETVAL (0x0000u)
+
+/* WB2_WGN_R */
+
+#define CSL_IPIPE_WB2_WGN_R_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_WB2_WGN_R_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_WB2_WGN_R_VAL_RESETVAL (0x0200u)
+
+#define CSL_IPIPE_WB2_WGN_R_RESETVAL (0x0200u)
+
+/* WB2_WGN_GR */
+
+#define CSL_IPIPE_WB2_WGN_GR_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_WB2_WGN_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_WB2_WGN_GR_VAL_RESETVAL (0x0200u)
+
+#define CSL_IPIPE_WB2_WGN_GR_RESETVAL (0x0200u)
+
+/* WB2_WGN_GB */
+
+#define CSL_IPIPE_WB2_WGN_GB_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_WB2_WGN_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_WB2_WGN_GB_VAL_RESETVAL (0x0200u)
+
+#define CSL_IPIPE_WB2_WGN_GB_RESETVAL (0x0200u)
+
+/* WB2_WGN_B */
+
+#define CSL_IPIPE_WB2_WGN_B_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_WB2_WGN_B_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_WB2_WGN_B_VAL_RESETVAL (0x0200u)
+
+#define CSL_IPIPE_WB2_WGN_B_RESETVAL (0x0200u)
+
+/* CFA_MODE */
+
+#define CSL_IPIPE_CFA_MODE_MODE_MASK (0x0003u)
+#define CSL_IPIPE_CFA_MODE_MODE_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_MODE_MODE_RESETVAL (0x0000u)
+#define CSL_IPIPE_CFA_MODE_MODE_2DIR (0x0000u)
+#define CSL_IPIPE_CFA_MODE_MODE_2DIRANDDAA (0x0001u)
+#define CSL_IPIPE_CFA_MODE_MODE_DAA (0x0002u)
+
+#define CSL_IPIPE_CFA_MODE_RESETVAL (0x0000u)
+
+/* CFA_2DIR_HPF_THR */
+
+#define CSL_IPIPE_CFA_2DIR_HPF_THR_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_CFA_2DIR_HPF_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_2DIR_HPF_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_2DIR_HPF_THR_RESETVAL (0x0000u)
+
+/* CFA_2DIR_HPF_SLP */
+
+#define CSL_IPIPE_CFA_2DIR_HPF_SLP_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_CFA_2DIR_HPF_SLP_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_2DIR_HPF_SLP_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_2DIR_HPF_SLP_RESETVAL (0x0000u)
+
+/* CFA_2DIR_MIX_THR */
+
+#define CSL_IPIPE_CFA_2DIR_MIX_THR_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_CFA_2DIR_MIX_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_2DIR_MIX_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_2DIR_MIX_THR_RESETVAL (0x0000u)
+
+/* CFA_2DIR_MIX_SLP */
+
+#define CSL_IPIPE_CFA_2DIR_MIX_SLP_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_CFA_2DIR_MIX_SLP_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_2DIR_MIX_SLP_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_2DIR_MIX_SLP_RESETVAL (0x0000u)
+
+/* CFA_2DIR_DIR_THR */
+
+#define CSL_IPIPE_CFA_2DIR_DIR_THR_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_CFA_2DIR_DIR_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_2DIR_DIR_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_2DIR_DIR_THR_RESETVAL (0x0000u)
+
+/* CFA_2DIR_DIR_SLP */
+
+#define CSL_IPIPE_CFA_2DIR_DIR_SLP_VAL_MASK (0x007Fu)
+#define CSL_IPIPE_CFA_2DIR_DIR_SLP_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_2DIR_DIR_SLP_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_2DIR_DIR_SLP_RESETVAL (0x0000u)
+
+/* CFA_2DIR_NDWT */
+
+#define CSL_IPIPE_CFA_2DIR_NDWT_VAL_MASK (0x003Fu)
+#define CSL_IPIPE_CFA_2DIR_NDWT_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_2DIR_NDWT_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_2DIR_NDWT_RESETVAL (0x0000u)
+
+/* CFA_MONO_HUE_FRA */
+
+#define CSL_IPIPE_CFA_MONO_HUE_FRA_VAL_MASK (0x003Fu)
+#define CSL_IPIPE_CFA_MONO_HUE_FRA_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_MONO_HUE_FRA_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_MONO_HUE_FRA_RESETVAL (0x0000u)
+
+/* CFA_MONO_EDG_THR */
+
+#define CSL_IPIPE_CFA_MONO_EDG_THR_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CFA_MONO_EDG_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_MONO_EDG_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_MONO_EDG_THR_RESETVAL (0x0000u)
+
+/* CFA_MONO_THR_MIN */
+
+#define CSL_IPIPE_CFA_MONO_THR_MIN_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_CFA_MONO_THR_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_MONO_THR_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_MONO_THR_MIN_RESETVAL (0x0000u)
+
+/* CFA_MONO_THR_SLP */
+
+#define CSL_IPIPE_CFA_MONO_THR_SLP_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_CFA_MONO_THR_SLP_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_MONO_THR_SLP_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_MONO_THR_SLP_RESETVAL (0x0000u)
+
+/* CFA_MONO_SLP_MIN */
+
+#define CSL_IPIPE_CFA_MONO_SLP_MIN_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_CFA_MONO_SLP_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_MONO_SLP_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_MONO_SLP_MIN_RESETVAL (0x0000u)
+
+/* CFA_MONO_SLP_SLP */
+
+#define CSL_IPIPE_CFA_MONO_SLP_SLP_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_CFA_MONO_SLP_SLP_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_MONO_SLP_SLP_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_MONO_SLP_SLP_RESETVAL (0x0000u)
+
+/* CFA_MONO_LPWT */
+
+#define CSL_IPIPE_CFA_MONO_LPWT_VAL_MASK (0x003Fu)
+#define CSL_IPIPE_CFA_MONO_LPWT_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CFA_MONO_LPWT_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CFA_MONO_LPWT_RESETVAL (0x0000u)
+
+/* RGB1_MUL_RR */
+
+#define CSL_IPIPE_RGB1_MUL_RR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_RR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_RR_VAL_RESETVAL (0x0100u)
+
+#define CSL_IPIPE_RGB1_MUL_RR_RESETVAL (0x0100u)
+
+/* RGB1_MUL_GR */
+
+#define CSL_IPIPE_RGB1_MUL_GR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_GR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_MUL_GR_RESETVAL (0x0000u)
+
+/* RGB1_MUL_BR */
+
+#define CSL_IPIPE_RGB1_MUL_BR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_BR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_BR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_MUL_BR_RESETVAL (0x0000u)
+
+/* RGB1_MUL_RG */
+
+#define CSL_IPIPE_RGB1_MUL_RG_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_RG_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_RG_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_MUL_RG_RESETVAL (0x0000u)
+
+/* RGB1_MUL_GG */
+
+#define CSL_IPIPE_RGB1_MUL_GG_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_GG_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_GG_VAL_RESETVAL (0x0100u)
+
+#define CSL_IPIPE_RGB1_MUL_GG_RESETVAL (0x0100u)
+
+/* RGB1_MUL_BG */
+
+#define CSL_IPIPE_RGB1_MUL_BG_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_BG_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_BG_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_MUL_BG_RESETVAL (0x0000u)
+
+/* RGB1_MUL_RB */
+
+#define CSL_IPIPE_RGB1_MUL_RB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_RB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_RB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_MUL_RB_RESETVAL (0x0000u)
+
+/* RGB1_MUL_GB */
+
+#define CSL_IPIPE_RGB1_MUL_GB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_GB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_MUL_GB_RESETVAL (0x0000u)
+
+/* RGB1_MUL_BB */
+
+#define CSL_IPIPE_RGB1_MUL_BB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_RGB1_MUL_BB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_MUL_BB_VAL_RESETVAL (0x0100u)
+
+#define CSL_IPIPE_RGB1_MUL_BB_RESETVAL (0x0100u)
+
+/* RGB1_OFT_OR */
+
+#define CSL_IPIPE_RGB1_OFT_OR_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_RGB1_OFT_OR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_OFT_OR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_OFT_OR_RESETVAL (0x0000u)
+
+/* RGB1_OFT_OG */
+
+#define CSL_IPIPE_RGB1_OFT_OG_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_RGB1_OFT_OG_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_OFT_OG_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_OFT_OG_RESETVAL (0x0000u)
+
+/* RGB1_OFT_OB */
+
+#define CSL_IPIPE_RGB1_OFT_OB_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_RGB1_OFT_OB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB1_OFT_OB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB1_OFT_OB_RESETVAL (0x0000u)
+
+/* GMM_CFG */
+
+#define CSL_IPIPE_GMM_CFG_SIZ_MASK (0x0060u)
+#define CSL_IPIPE_GMM_CFG_SIZ_SHIFT (0x0005u)
+#define CSL_IPIPE_GMM_CFG_SIZ_RESETVAL (0x0003u)
+/*----SIZ Tokens----*/
+#define CSL_IPIPE_GMM_CFG_SIZ__64 (0x0000u)
+#define CSL_IPIPE_GMM_CFG_SIZ__128 (0x0001u)
+#define CSL_IPIPE_GMM_CFG_SIZ__256 (0x0002u)
+#define CSL_IPIPE_GMM_CFG_SIZ__512 (0x0003u)
+
+#define CSL_IPIPE_GMM_CFG_TBL_MASK (0x0010u)
+#define CSL_IPIPE_GMM_CFG_TBL_SHIFT (0x0004u)
+#define CSL_IPIPE_GMM_CFG_TBL_RESETVAL (0x0000u)
+/*----TBL Tokens----*/
+#define CSL_IPIPE_GMM_CFG_TBL_RAM (0x0000u)
+#define CSL_IPIPE_GMM_CFG_TBL_ROM (0x0001u)
+
+#define CSL_IPIPE_GMM_CFG_BYPB_MASK (0x0004u)
+#define CSL_IPIPE_GMM_CFG_BYPB_SHIFT (0x0002u)
+#define CSL_IPIPE_GMM_CFG_BYPB_RESETVAL (0x0001u)
+/*----BYPB Tokens----*/
+#define CSL_IPIPE_GMM_CFG_BYPB_ENABLE (0x0000u)
+#define CSL_IPIPE_GMM_CFG_BYPB_BYPASS (0x0001u)
+
+#define CSL_IPIPE_GMM_CFG_BYPG_MASK (0x0002u)
+#define CSL_IPIPE_GMM_CFG_BYPG_SHIFT (0x0001u)
+#define CSL_IPIPE_GMM_CFG_BYPG_RESETVAL (0x0001u)
+/*----BYPG Tokens----*/
+#define CSL_IPIPE_GMM_CFG_BYPG_ENABLE (0x0000u)
+#define CSL_IPIPE_GMM_CFG_BYPG_BYPASS (0x0001u)
+
+#define CSL_IPIPE_GMM_CFG_BYPR_MASK (0x0001u)
+#define CSL_IPIPE_GMM_CFG_BYPR_SHIFT (0x0000u)
+#define CSL_IPIPE_GMM_CFG_BYPR_RESETVAL (0x0001u)
+/*----BYPR Tokens----*/
+#define CSL_IPIPE_GMM_CFG_BYPR_ENABLE (0x0000u)
+#define CSL_IPIPE_GMM_CFG_BYPR_BYPASS (0x0001u)
+
+#define CSL_IPIPE_GMM_CFG_RESETVAL (0x0067u)
+
+/* RGB2_MUL_RR */
+
+#define CSL_IPIPE_RGB2_MUL_RR_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_RR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_RR_VAL_RESETVAL (0x0100u)
+
+#define CSL_IPIPE_RGB2_MUL_RR_RESETVAL (0x0100u)
+
+/* RGB2_MUL_GR */
+
+#define CSL_IPIPE_RGB2_MUL_GR_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_GR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_MUL_GR_RESETVAL (0x0000u)
+
+/* RGB2_MUL_BR */
+
+#define CSL_IPIPE_RGB2_MUL_BR_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_BR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_BR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_MUL_BR_RESETVAL (0x0000u)
+
+/* RGB2_MUL_RG */
+
+#define CSL_IPIPE_RGB2_MUL_RG_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_RG_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_RG_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_MUL_RG_RESETVAL (0x0000u)
+
+/* RGB2_MUL_GG */
+
+#define CSL_IPIPE_RGB2_MUL_GG_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_GG_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_GG_VAL_RESETVAL (0x0100u)
+
+#define CSL_IPIPE_RGB2_MUL_GG_RESETVAL (0x0100u)
+
+/* RGB2_MUL_BG */
+
+#define CSL_IPIPE_RGB2_MUL_BG_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_BG_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_BG_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_MUL_BG_RESETVAL (0x0000u)
+
+/* RGB2_MUL_RB */
+
+#define CSL_IPIPE_RGB2_MUL_RB_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_RB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_RB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_MUL_RB_RESETVAL (0x0000u)
+
+/* RGB2_MUL_GB */
+
+#define CSL_IPIPE_RGB2_MUL_GB_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_GB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_MUL_GB_RESETVAL (0x0000u)
+
+/* RGB2_MUL_BB */
+
+#define CSL_IPIPE_RGB2_MUL_BB_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_MUL_BB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_MUL_BB_VAL_RESETVAL (0x0100u)
+
+#define CSL_IPIPE_RGB2_MUL_BB_RESETVAL (0x0100u)
+
+/* RGB2_OFT_OR */
+
+#define CSL_IPIPE_RGB2_OFT_OR_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_OFT_OR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_OFT_OR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_OFT_OR_RESETVAL (0x0000u)
+
+/* RGB2_OFT_OG */
+
+#define CSL_IPIPE_RGB2_OFT_OG_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_OFT_OG_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_OFT_OG_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_OFT_OG_RESETVAL (0x0000u)
+
+/* RGB2_OFT_OB */
+
+#define CSL_IPIPE_RGB2_OFT_OB_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_RGB2_OFT_OB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_RGB2_OFT_OB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_RGB2_OFT_OB_RESETVAL (0x0000u)
+
+/* D3LUT_EN */
+
+#define CSL_IPIPE_D3LUT_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_D3LUT_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_D3LUT_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_D3LUT_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_D3LUT_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_D3LUT_EN_RESETVAL (0x0000u)
+
+/* YUV_ADJ */
+
+#define CSL_IPIPE_YUV_ADJ_BRT_MASK (0xFF00u)
+#define CSL_IPIPE_YUV_ADJ_BRT_SHIFT (0x0008u)
+#define CSL_IPIPE_YUV_ADJ_BRT_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YUV_ADJ_CTR_MASK (0x00FFu)
+#define CSL_IPIPE_YUV_ADJ_CTR_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_ADJ_CTR_RESETVAL (0x0010u)
+
+#define CSL_IPIPE_YUV_ADJ_RESETVAL (0x0010u)
+
+/* YUV_MUL_RY */
+
+#define CSL_IPIPE_YUV_MUL_RY_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_RY_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_RY_VAL_RESETVAL (0x004Du)
+
+#define CSL_IPIPE_YUV_MUL_RY_RESETVAL (0x004Du)
+
+/* YUV_MUL_GY */
+
+#define CSL_IPIPE_YUV_MUL_GY_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_GY_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_GY_VAL_RESETVAL (0x0096u)
+
+#define CSL_IPIPE_YUV_MUL_GY_RESETVAL (0x0096u)
+
+/* YUV_MUL_BY */
+
+#define CSL_IPIPE_YUV_MUL_BY_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_BY_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_BY_VAL_RESETVAL (0x001Du)
+
+#define CSL_IPIPE_YUV_MUL_BY_RESETVAL (0x001Du)
+
+/* YUV_MUL_RCB */
+
+#define CSL_IPIPE_YUV_MUL_RCB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_RCB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_RCB_VAL_RESETVAL (0xFFFFFFD5u)
+
+#define CSL_IPIPE_YUV_MUL_RCB_RESETVAL (0x0000u)
+
+/* YUV_MUL_GCB */
+
+#define CSL_IPIPE_YUV_MUL_GCB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_GCB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_GCB_VAL_RESETVAL (0xFFFFFFABu)
+
+#define CSL_IPIPE_YUV_MUL_GCB_RESETVAL (0x0000u)
+
+/* YUV_MUL_BCB */
+
+#define CSL_IPIPE_YUV_MUL_BCB_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_BCB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_BCB_VAL_RESETVAL (0x0080u)
+
+#define CSL_IPIPE_YUV_MUL_BCB_RESETVAL (0x0080u)
+
+/* YUV_MUL_RCR */
+
+#define CSL_IPIPE_YUV_MUL_RCR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_RCR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_RCR_VAL_RESETVAL (0x0080u)
+
+#define CSL_IPIPE_YUV_MUL_RCR_RESETVAL (0x0080u)
+
+/* YUV_MUL_GCR */
+
+#define CSL_IPIPE_YUV_MUL_GCR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_GCR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_GCR_VAL_RESETVAL (0xFFFFFF95u)
+
+#define CSL_IPIPE_YUV_MUL_GCR_RESETVAL (0x0000u)
+
+/* YUV_MUL_BCR */
+
+#define CSL_IPIPE_YUV_MUL_BCR_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YUV_MUL_BCR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_MUL_BCR_VAL_RESETVAL (0xFFFFFFEBu)
+
+#define CSL_IPIPE_YUV_MUL_BCR_RESETVAL (0x0000u)
+
+/* YUV_OFT_Y */
+
+#define CSL_IPIPE_YUV_OFT_Y_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_YUV_OFT_Y_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_OFT_Y_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YUV_OFT_Y_RESETVAL (0x0000u)
+
+/* YUV_OFT_CB */
+
+#define CSL_IPIPE_YUV_OFT_CB_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_YUV_OFT_CB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_OFT_CB_VAL_RESETVAL (0x0080u)
+
+#define CSL_IPIPE_YUV_OFT_CB_RESETVAL (0x0080u)
+
+/* YUV_OFT_CR */
+
+#define CSL_IPIPE_YUV_OFT_CR_VAL_MASK (0x07FFu)
+#define CSL_IPIPE_YUV_OFT_CR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_OFT_CR_VAL_RESETVAL (0x0080u)
+
+#define CSL_IPIPE_YUV_OFT_CR_RESETVAL (0x0080u)
+
+/* YUV_PHS */
+
+#define CSL_IPIPE_YUV_PHS_LPF_MASK (0x0002u)
+#define CSL_IPIPE_YUV_PHS_LPF_SHIFT (0x0001u)
+#define CSL_IPIPE_YUV_PHS_LPF_RESETVAL (0x0000u)
+/*----LPF Tokens----*/
+#define CSL_IPIPE_YUV_PHS_LPF_OFF (0x0000u)
+#define CSL_IPIPE_YUV_PHS_LPF_ON (0x0001u)
+
+#define CSL_IPIPE_YUV_PHS_POS_MASK (0x0001u)
+#define CSL_IPIPE_YUV_PHS_POS_SHIFT (0x0000u)
+#define CSL_IPIPE_YUV_PHS_POS_RESETVAL (0x0000u)
+/*----POS Tokens----*/
+#define CSL_IPIPE_YUV_PHS_POS_COSITING (0x0000u)
+#define CSL_IPIPE_YUV_PHS_POS_CENTERING (0x0001u)
+
+#define CSL_IPIPE_YUV_PHS_RESETVAL (0x0000u)
+
+/* GBCE_EN */
+
+#define CSL_IPIPE_GBCE_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_GBCE_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_GBCE_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_GBCE_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_GBCE_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_GBCE_EN_RESETVAL (0x0000u)
+
+/* GBCE_TYP */
+
+#define CSL_IPIPE_GBCE_TYP_TYP_MASK (0x0001u)
+#define CSL_IPIPE_GBCE_TYP_TYP_SHIFT (0x0000u)
+#define CSL_IPIPE_GBCE_TYP_TYP_RESETVAL (0x0000u)
+/*----TYP Tokens----*/
+#define CSL_IPIPE_GBCE_TYP_TYP_Y (0x0000u)
+#define CSL_IPIPE_GBCE_TYP_TYP_GAIN (0x0001u)
+
+#define CSL_IPIPE_GBCE_TYP_RESETVAL (0x0000u)
+
+/* YEE_EN */
+
+#define CSL_IPIPE_YEE_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_YEE_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_YEE_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_YEE_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_YEE_EN_RESETVAL (0x0000u)
+
+/* YEE_TYP */
+
+#define CSL_IPIPE_YEE_TYP_HAL_MASK (0x0002u)
+#define CSL_IPIPE_YEE_TYP_HAL_SHIFT (0x0001u)
+#define CSL_IPIPE_YEE_TYP_HAL_RESETVAL (0x0000u)
+/*----HAL Tokens----*/
+#define CSL_IPIPE_YEE_TYP_HAL_DISABLE (0x0000u)
+#define CSL_IPIPE_YEE_TYP_HAL_ENABLE (0x0001u)
+
+#define CSL_IPIPE_YEE_TYP_SEL_MASK (0x0001u)
+#define CSL_IPIPE_YEE_TYP_SEL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_TYP_SEL_RESETVAL (0x0000u)
+/*----SEL Tokens----*/
+#define CSL_IPIPE_YEE_TYP_SEL_SEL (0x0000u)
+#define CSL_IPIPE_YEE_TYP_SEL_SUM (0x0001u)
+
+#define CSL_IPIPE_YEE_TYP_RESETVAL (0x0000u)
+
+/* YEE_SHF */
+
+#define CSL_IPIPE_YEE_SHF_SHF_MASK (0x000Fu)
+#define CSL_IPIPE_YEE_SHF_SHF_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_SHF_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_SHF_RESETVAL (0x0000u)
+
+/* YEE_MUL_00 */
+
+#define CSL_IPIPE_YEE_MUL_00_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_00_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_00_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_00_RESETVAL (0x0000u)
+
+/* YEE_MUL_01 */
+
+#define CSL_IPIPE_YEE_MUL_01_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_01_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_01_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_01_RESETVAL (0x0000u)
+
+/* YEE_MUL_02 */
+
+#define CSL_IPIPE_YEE_MUL_02_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_02_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_02_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_02_RESETVAL (0x0000u)
+
+/* YEE_MUL_10 */
+
+#define CSL_IPIPE_YEE_MUL_10_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_10_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_10_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_10_RESETVAL (0x0000u)
+
+/* YEE_MUL_11 */
+
+#define CSL_IPIPE_YEE_MUL_11_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_11_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_11_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_11_RESETVAL (0x0000u)
+
+/* YEE_MUL_12 */
+
+#define CSL_IPIPE_YEE_MUL_12_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_12_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_12_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_12_RESETVAL (0x0000u)
+
+/* YEE_MUL_20 */
+
+#define CSL_IPIPE_YEE_MUL_20_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_20_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_20_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_20_RESETVAL (0x0000u)
+
+/* YEE_MUL_21 */
+
+#define CSL_IPIPE_YEE_MUL_21_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_21_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_21_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_21_RESETVAL (0x0000u)
+
+/* YEE_MUL_22 */
+
+#define CSL_IPIPE_YEE_MUL_22_VAL_MASK (0x03FFu)
+#define CSL_IPIPE_YEE_MUL_22_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_MUL_22_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_MUL_22_RESETVAL (0x0000u)
+
+/* YEE_THR */
+
+#define CSL_IPIPE_YEE_THR_VAL_MASK (0x003Fu)
+#define CSL_IPIPE_YEE_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_THR_RESETVAL (0x0000u)
+
+/* YEE_E_GAN */
+
+#define CSL_IPIPE_YEE_E_GAN_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YEE_E_GAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_E_GAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_E_GAN_RESETVAL (0x0000u)
+
+/* YEE_E_THR_1 */
+
+#define CSL_IPIPE_YEE_E_THR_1_VAL_MASK (0x0FFFu)
+#define CSL_IPIPE_YEE_E_THR_1_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_E_THR_1_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_E_THR_1_RESETVAL (0x0000u)
+
+/* YEE_E_THR_2 */
+
+#define CSL_IPIPE_YEE_E_THR_2_VAL_MASK (0x003Fu)
+#define CSL_IPIPE_YEE_E_THR_2_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_E_THR_2_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_E_THR_2_RESETVAL (0x0000u)
+
+/* YEE_G_GAN */
+
+#define CSL_IPIPE_YEE_G_GAN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_YEE_G_GAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_G_GAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_G_GAN_RESETVAL (0x0000u)
+
+/* YEE_G_OFT */
+
+#define CSL_IPIPE_YEE_G_OFT_VAL_MASK (0x003Fu)
+#define CSL_IPIPE_YEE_G_OFT_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_YEE_G_OFT_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_YEE_G_OFT_RESETVAL (0x0000u)
+
+/* CAR_EN */
+
+#define CSL_IPIPE_CAR_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_CAR_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_CAR_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_CAR_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_CAR_EN_RESETVAL (0x0000u)
+
+/* CAR_TYP */
+
+#define CSL_IPIPE_CAR_TYP_TYP_MASK (0x0001u)
+#define CSL_IPIPE_CAR_TYP_TYP_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_TYP_TYP_RESETVAL (0x0001u)
+/*----TYP Tokens----*/
+#define CSL_IPIPE_CAR_TYP_TYP_GAINCTRL (0x0000u)
+#define CSL_IPIPE_CAR_TYP_TYP_DYNAMICSW (0x0001u)
+
+#define CSL_IPIPE_CAR_TYP_RESETVAL (0x0001u)
+
+/* CAR_SW */
+
+#define CSL_IPIPE_CAR_SW_SW1_MASK (0xFF00u)
+#define CSL_IPIPE_CAR_SW_SW1_SHIFT (0x0008u)
+#define CSL_IPIPE_CAR_SW_SW1_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_SW_SW0_MASK (0x00FFu)
+#define CSL_IPIPE_CAR_SW_SW0_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_SW_SW0_RESETVAL (0x00FFu)
+
+#define CSL_IPIPE_CAR_SW_RESETVAL (0x00FFu)
+
+/* CAR_HPF_TYP */
+
+#define CSL_IPIPE_CAR_HPF_TYP_TYP_MASK (0x0007u)
+#define CSL_IPIPE_CAR_HPF_TYP_TYP_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_HPF_TYP_TYP_RESETVAL (0x0000u)
+/*----TYP Tokens----*/
+#define CSL_IPIPE_CAR_HPF_TYP_TYP_Y (0x0000u)
+#define CSL_IPIPE_CAR_HPF_TYP_TYP_HPF_HORZ (0x0001u)
+#define CSL_IPIPE_CAR_HPF_TYP_TYP_HPF_VERT (0x0002u)
+#define CSL_IPIPE_CAR_HPF_TYP_TYP_HPF_2D (0x0003u)
+#define CSL_IPIPE_CAR_HPF_TYP_TYP_HPF_2D_YEE (0x0004u)
+
+#define CSL_IPIPE_CAR_HPF_TYP_RESETVAL (0x0000u)
+
+/* CAR_HPF_SHF */
+
+#define CSL_IPIPE_CAR_HPF_SHF_SHF_MASK (0x0003u)
+#define CSL_IPIPE_CAR_HPF_SHF_SHF_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_HPF_SHF_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_HPF_SHF_RESETVAL (0x0000u)
+
+/* CAR_HPF_THR */
+
+#define CSL_IPIPE_CAR_HPF_THR_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CAR_HPF_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_HPF_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_HPF_THR_RESETVAL (0x0000u)
+
+/* CAR_GN1_GAN */
+
+#define CSL_IPIPE_CAR_GN1_GAN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CAR_GN1_GAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_GN1_GAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_GN1_GAN_RESETVAL (0x0000u)
+
+/* CAR_GN1_SHF */
+
+#define CSL_IPIPE_CAR_GN1_SHF_SHF_MASK (0x0007u)
+#define CSL_IPIPE_CAR_GN1_SHF_SHF_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_GN1_SHF_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_GN1_SHF_RESETVAL (0x0000u)
+
+/* CAR_GN1_MIN */
+
+#define CSL_IPIPE_CAR_GN1_MIN_VAL_MASK (0x01FFu)
+#define CSL_IPIPE_CAR_GN1_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_GN1_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_GN1_MIN_RESETVAL (0x0000u)
+
+/* CAR_GN2_GAN */
+
+#define CSL_IPIPE_CAR_GN2_GAN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CAR_GN2_GAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_GN2_GAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_GN2_GAN_RESETVAL (0x0000u)
+
+/* CAR_GN2_SHF */
+
+#define CSL_IPIPE_CAR_GN2_SHF_SHF_MASK (0x000Fu)
+#define CSL_IPIPE_CAR_GN2_SHF_SHF_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_GN2_SHF_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_GN2_SHF_RESETVAL (0x0000u)
+
+/* CAR_GN2_MIN */
+
+#define CSL_IPIPE_CAR_GN2_MIN_VAL_MASK (0x01FFu)
+#define CSL_IPIPE_CAR_GN2_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CAR_GN2_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CAR_GN2_MIN_RESETVAL (0x0000u)
+
+/* CGS_EN */
+
+#define CSL_IPIPE_CGS_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_CGS_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_CGS_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_CGS_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_CGS_EN_RESETVAL (0x0000u)
+
+/* CGS_GN1_L_THR */
+
+#define CSL_IPIPE_CGS_GN1_L_THR_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN1_L_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN1_L_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN1_L_THR_RESETVAL (0x0000u)
+
+/* CGS_GN1_L_GAN */
+
+#define CSL_IPIPE_CGS_GN1_L_GAN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN1_L_GAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN1_L_GAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN1_L_GAN_RESETVAL (0x0000u)
+
+/* CGS_GN1_L_SHF */
+
+#define CSL_IPIPE_CGS_GN1_L_SHF_SHF_MASK (0x0007u)
+#define CSL_IPIPE_CGS_GN1_L_SHF_SHF_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN1_L_SHF_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN1_L_SHF_RESETVAL (0x0000u)
+
+/* CGS_GN1_L_MIN */
+
+#define CSL_IPIPE_CGS_GN1_L_MIN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN1_L_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN1_L_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN1_L_MIN_RESETVAL (0x0000u)
+
+/* CGS_GN1_H_THR */
+
+#define CSL_IPIPE_CGS_GN1_H_THR_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN1_H_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN1_H_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN1_H_THR_RESETVAL (0x0000u)
+
+/* CGS_GN1_H_GAN */
+
+#define CSL_IPIPE_CGS_GN1_H_GAN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN1_H_GAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN1_H_GAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN1_H_GAN_RESETVAL (0x0000u)
+
+/* CGS_GN1_H_SHF */
+
+#define CSL_IPIPE_CGS_GN1_H_SHF_SHF_MASK (0x0007u)
+#define CSL_IPIPE_CGS_GN1_H_SHF_SHF_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN1_H_SHF_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN1_H_SHF_RESETVAL (0x0000u)
+
+/* CGS_GN1_H_MIN */
+
+#define CSL_IPIPE_CGS_GN1_H_MIN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN1_H_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN1_H_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN1_H_MIN_RESETVAL (0x0000u)
+
+/* CGS_GN2_L_THR */
+
+#define CSL_IPIPE_CGS_GN2_L_THR_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN2_L_THR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN2_L_THR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN2_L_THR_RESETVAL (0x0000u)
+
+/* CGS_GN2_L_GAN */
+
+#define CSL_IPIPE_CGS_GN2_L_GAN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN2_L_GAN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN2_L_GAN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN2_L_GAN_RESETVAL (0x0000u)
+
+/* CGS_GN2_L_SHF */
+
+#define CSL_IPIPE_CGS_GN2_L_SHF_SHF_MASK (0x0007u)
+#define CSL_IPIPE_CGS_GN2_L_SHF_SHF_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN2_L_SHF_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN2_L_SHF_RESETVAL (0x0000u)
+
+/* CGS_GN2_L_MIN */
+
+#define CSL_IPIPE_CGS_GN2_L_MIN_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_CGS_GN2_L_MIN_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_CGS_GN2_L_MIN_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_CGS_GN2_L_MIN_RESETVAL (0x0000u)
+
+/* BOX_EN */
+
+#define CSL_IPIPE_BOX_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_BOX_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_BOX_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_BOX_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_BOX_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_BOX_EN_RESETVAL (0x0000u)
+
+/* BOX_MODE */
+
+#define CSL_IPIPE_BOX_MODE_OST_MASK (0x0001u)
+#define CSL_IPIPE_BOX_MODE_OST_SHIFT (0x0000u)
+#define CSL_IPIPE_BOX_MODE_OST_RESETVAL (0x0000u)
+/*----OST Tokens----*/
+#define CSL_IPIPE_BOX_MODE_OST_CONTINUOUS (0x0000u)
+#define CSL_IPIPE_BOX_MODE_OST_ONESHOT (0x0001u)
+
+#define CSL_IPIPE_BOX_MODE_RESETVAL (0x0000u)
+
+/* BOX_TYP */
+
+#define CSL_IPIPE_BOX_TYP_SEL_MASK (0x0001u)
+#define CSL_IPIPE_BOX_TYP_SEL_SHIFT (0x0000u)
+#define CSL_IPIPE_BOX_TYP_SEL_RESETVAL (0x0000u)
+/*----SEL Tokens----*/
+#define CSL_IPIPE_BOX_TYP_SEL__8X8 (0x0000u)
+#define CSL_IPIPE_BOX_TYP_SEL__16X16 (0x0001u)
+
+#define CSL_IPIPE_BOX_TYP_RESETVAL (0x0000u)
+
+/* BOX_SHF */
+
+#define CSL_IPIPE_BOX_SHF_VAL_MASK (0x0007u)
+#define CSL_IPIPE_BOX_SHF_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BOX_SHF_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BOX_SHF_RESETVAL (0x0000u)
+
+/* BOX_SDR_SAD_H */
+
+#define CSL_IPIPE_BOX_SDR_SAD_H_VAL_MASK (0xFFFFu)
+#define CSL_IPIPE_BOX_SDR_SAD_H_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BOX_SDR_SAD_H_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BOX_SDR_SAD_H_RESETVAL (0x0000u)
+
+/* BOX_SDR_SAD_L */
+
+#define CSL_IPIPE_BOX_SDR_SAD_L_VAL_MASK (0xFFE0u)
+#define CSL_IPIPE_BOX_SDR_SAD_L_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BOX_SDR_SAD_L_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BOX_SDR_SAD_L_RESETVAL (0x0000u)
+
+/* Reserved1 */
+
+#define CSL_IPIPE_RESERVED1_RESETVAL (0x0000u)
+
+/* HST_EN */
+
+#define CSL_IPIPE_HST_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_HST_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_HST_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_EN_RESETVAL (0x0000u)
+
+/* HST_MODE */
+
+#define CSL_IPIPE_HST_MODE_OST_MASK (0x0001u)
+#define CSL_IPIPE_HST_MODE_OST_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_MODE_OST_RESETVAL (0x0000u)
+/*----OST Tokens----*/
+#define CSL_IPIPE_HST_MODE_OST_CONTINUOUS (0x0000u)
+#define CSL_IPIPE_HST_MODE_OST_ONESHOT (0x0001u)
+
+#define CSL_IPIPE_HST_MODE_RESETVAL (0x0000u)
+
+/* HST_SEL */
+
+#define CSL_IPIPE_HST_SEL_SEL_MASK (0x0004u)
+#define CSL_IPIPE_HST_SEL_SEL_SHIFT (0x0002u)
+#define CSL_IPIPE_HST_SEL_SEL_RESETVAL (0x0000u)
+/*----SEL Tokens----*/
+#define CSL_IPIPE_HST_SEL_SEL_FROMNF1 (0x0000u)
+#define CSL_IPIPE_HST_SEL_SEL_FROMRGB2YUV (0x0001u)
+
+#define CSL_IPIPE_HST_SEL_TYP_MASK (0x0003u)
+#define CSL_IPIPE_HST_SEL_TYP_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_SEL_TYP_RESETVAL (0x0000u)
+/*----TYP Tokens----*/
+#define CSL_IPIPE_HST_SEL_TYP_GR (0x0000u)
+#define CSL_IPIPE_HST_SEL_TYP_GB (0x0001u)
+#define CSL_IPIPE_HST_SEL_TYP_GAVG (0x0002u)
+
+#define CSL_IPIPE_HST_SEL_RESETVAL (0x0000u)
+
+/* HST_PARA */
+
+#define CSL_IPIPE_HST_PARA_BIN_MASK (0x3000u)
+#define CSL_IPIPE_HST_PARA_BIN_SHIFT (0x000Cu)
+#define CSL_IPIPE_HST_PARA_BIN_RESETVAL (0x0000u)
+/*----BIN Tokens----*/
+#define CSL_IPIPE_HST_PARA_BIN__32 (0x0000u)
+#define CSL_IPIPE_HST_PARA_BIN__64 (0x0001u)
+#define CSL_IPIPE_HST_PARA_BIN__128 (0x0002u)
+#define CSL_IPIPE_HST_PARA_BIN__256 (0x0003u)
+
+#define CSL_IPIPE_HST_PARA_SHF_MASK (0x0F00u)
+#define CSL_IPIPE_HST_PARA_SHF_SHIFT (0x0008u)
+#define CSL_IPIPE_HST_PARA_SHF_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_PARA_COL3_MASK (0x0080u)
+#define CSL_IPIPE_HST_PARA_COL3_SHIFT (0x0007u)
+#define CSL_IPIPE_HST_PARA_COL3_RESETVAL (0x0000u)
+/*----COL3 Tokens----*/
+#define CSL_IPIPE_HST_PARA_COL3_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_PARA_COL3_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_PARA_COL2_MASK (0x0040u)
+#define CSL_IPIPE_HST_PARA_COL2_SHIFT (0x0006u)
+#define CSL_IPIPE_HST_PARA_COL2_RESETVAL (0x0000u)
+/*----COL2 Tokens----*/
+#define CSL_IPIPE_HST_PARA_COL2_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_PARA_COL2_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_PARA_COL1_MASK (0x0020u)
+#define CSL_IPIPE_HST_PARA_COL1_SHIFT (0x0005u)
+#define CSL_IPIPE_HST_PARA_COL1_RESETVAL (0x0000u)
+/*----COL1 Tokens----*/
+#define CSL_IPIPE_HST_PARA_COL1_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_PARA_COL1_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_PARA_COL0_MASK (0x0010u)
+#define CSL_IPIPE_HST_PARA_COL0_SHIFT (0x0004u)
+#define CSL_IPIPE_HST_PARA_COL0_RESETVAL (0x0000u)
+/*----COL0 Tokens----*/
+#define CSL_IPIPE_HST_PARA_COL0_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_PARA_COL0_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_PARA_RGN3_MASK (0x0008u)
+#define CSL_IPIPE_HST_PARA_RGN3_SHIFT (0x0003u)
+#define CSL_IPIPE_HST_PARA_RGN3_RESETVAL (0x0000u)
+/*----RGN3 Tokens----*/
+#define CSL_IPIPE_HST_PARA_RGN3_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_PARA_RGN3_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_PARA_RGN2_MASK (0x0004u)
+#define CSL_IPIPE_HST_PARA_RGN2_SHIFT (0x0002u)
+#define CSL_IPIPE_HST_PARA_RGN2_RESETVAL (0x0000u)
+/*----RGN2 Tokens----*/
+#define CSL_IPIPE_HST_PARA_RGN2_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_PARA_RGN2_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_PARA_RGN1_MASK (0x0002u)
+#define CSL_IPIPE_HST_PARA_RGN1_SHIFT (0x0001u)
+#define CSL_IPIPE_HST_PARA_RGN1_RESETVAL (0x0000u)
+/*----RGN1 Tokens----*/
+#define CSL_IPIPE_HST_PARA_RGN1_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_PARA_RGN1_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_PARA_RGN0_MASK (0x0001u)
+#define CSL_IPIPE_HST_PARA_RGN0_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_PARA_RGN0_RESETVAL (0x0000u)
+/*----RGN0 Tokens----*/
+#define CSL_IPIPE_HST_PARA_RGN0_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_PARA_RGN0_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_PARA_RESETVAL (0x0000u)
+
+/* HST_0_VPS */
+
+#define CSL_IPIPE_HST_0_VPS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_0_VPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_0_VPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_0_VPS_RESETVAL (0x0000u)
+
+/* HST_0_VSZ */
+
+#define CSL_IPIPE_HST_0_VSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_0_VSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_0_VSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_HST_0_VSZ_RESETVAL (0x0001u)
+
+/* HST_0_HPS */
+
+#define CSL_IPIPE_HST_0_HPS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_0_HPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_0_HPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_0_HPS_RESETVAL (0x0000u)
+
+/* HST_0_HSZ */
+
+#define CSL_IPIPE_HST_0_HSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_0_HSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_0_HSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_HST_0_HSZ_RESETVAL (0x0001u)
+
+/* HST_1_VPS */
+
+#define CSL_IPIPE_HST_1_VPS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_1_VPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_1_VPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_1_VPS_RESETVAL (0x0000u)
+
+/* HST_1_VSZ */
+
+#define CSL_IPIPE_HST_1_VSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_1_VSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_1_VSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_HST_1_VSZ_RESETVAL (0x0001u)
+
+/* HST_1_HPS */
+
+#define CSL_IPIPE_HST_1_HPS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_1_HPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_1_HPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_1_HPS_RESETVAL (0x0000u)
+
+/* HST_1_HSZ */
+
+#define CSL_IPIPE_HST_1_HSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_1_HSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_1_HSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_HST_1_HSZ_RESETVAL (0x0001u)
+
+/* HST_2_VPS */
+
+#define CSL_IPIPE_HST_2_VPS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_2_VPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_2_VPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_2_VPS_RESETVAL (0x0000u)
+
+/* HST_2_VSZ */
+
+#define CSL_IPIPE_HST_2_VSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_2_VSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_2_VSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_HST_2_VSZ_RESETVAL (0x0001u)
+
+/* HST_2_HPS */
+
+#define CSL_IPIPE_HST_2_HPS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_2_HPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_2_HPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_2_HPS_RESETVAL (0x0000u)
+
+/* HST_2_HSZ */
+
+#define CSL_IPIPE_HST_2_HSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_2_HSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_2_HSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_HST_2_HSZ_RESETVAL (0x0001u)
+
+/* HST_3_VPS */
+
+#define CSL_IPIPE_HST_3_VPS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_3_VPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_3_VPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_3_VPS_RESETVAL (0x0000u)
+
+/* HST_3_VSZ */
+
+#define CSL_IPIPE_HST_3_VSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_3_VSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_3_VSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_HST_3_VSZ_RESETVAL (0x0001u)
+
+/* HST_3_HPS */
+
+#define CSL_IPIPE_HST_3_HPS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_3_HPS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_3_HPS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_3_HPS_RESETVAL (0x0000u)
+
+/* HST_3_HSZ */
+
+#define CSL_IPIPE_HST_3_HSZ_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_HST_3_HSZ_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_3_HSZ_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_HST_3_HSZ_RESETVAL (0x0001u)
+
+/* HST_TBL */
+
+#define CSL_IPIPE_HST_TBL_CLR_MASK (0x0002u)
+#define CSL_IPIPE_HST_TBL_CLR_SHIFT (0x0001u)
+#define CSL_IPIPE_HST_TBL_CLR_RESETVAL (0x0000u)
+/*----CLR Tokens----*/
+#define CSL_IPIPE_HST_TBL_CLR_DISABLE (0x0000u)
+#define CSL_IPIPE_HST_TBL_CLR_ENABLE (0x0001u)
+
+#define CSL_IPIPE_HST_TBL_SEL_MASK (0x0001u)
+#define CSL_IPIPE_HST_TBL_SEL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_TBL_SEL_RESETVAL (0x0000u)
+/*----SEL Tokens----*/
+#define CSL_IPIPE_HST_TBL_SEL_BANK0 (0x0000u)
+#define CSL_IPIPE_HST_TBL_SEL_BANK1 (0x0001u)
+
+#define CSL_IPIPE_HST_TBL_RESETVAL (0x0000u)
+
+/* HST_MUL_R */
+
+#define CSL_IPIPE_HST_MUL_R_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_HST_MUL_R_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_MUL_R_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_MUL_R_RESETVAL (0x0000u)
+
+/* HST_MUL_GR */
+
+#define CSL_IPIPE_HST_MUL_GR_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_HST_MUL_GR_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_MUL_GR_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_MUL_GR_RESETVAL (0x0000u)
+
+/* HST_MUL_GB */
+
+#define CSL_IPIPE_HST_MUL_GB_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_HST_MUL_GB_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_MUL_GB_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_MUL_GB_RESETVAL (0x0000u)
+
+/* HST_MUL_B */
+
+#define CSL_IPIPE_HST_MUL_B_VAL_MASK (0x00FFu)
+#define CSL_IPIPE_HST_MUL_B_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_HST_MUL_B_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_HST_MUL_B_RESETVAL (0x0000u)
+
+/* BSC_EN */
+
+#define CSL_IPIPE_BSC_EN_EN_MASK (0x0001u)
+#define CSL_IPIPE_BSC_EN_EN_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_EN_EN_RESETVAL (0x0000u)
+/*----EN Tokens----*/
+#define CSL_IPIPE_BSC_EN_EN_DISABLE (0x0000u)
+#define CSL_IPIPE_BSC_EN_EN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_BSC_EN_RESETVAL (0x0000u)
+
+/* BSC_MODE */
+
+#define CSL_IPIPE_BSC_MODE_OST_MASK (0x0001u)
+#define CSL_IPIPE_BSC_MODE_OST_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_MODE_OST_RESETVAL (0x0000u)
+/*----OST Tokens----*/
+#define CSL_IPIPE_BSC_MODE_OST_CONTINUOUS (0x0000u)
+#define CSL_IPIPE_BSC_MODE_OST_ONESHOT (0x0001u)
+
+#define CSL_IPIPE_BSC_MODE_RESETVAL (0x0000u)
+
+/* BSC_TYP */
+
+#define CSL_IPIPE_BSC_TYP_CEN_MASK (0x0008u)
+#define CSL_IPIPE_BSC_TYP_CEN_SHIFT (0x0003u)
+#define CSL_IPIPE_BSC_TYP_CEN_RESETVAL (0x0000u)
+/*----CEN Tokens----*/
+#define CSL_IPIPE_BSC_TYP_CEN_DISABLE (0x0000u)
+#define CSL_IPIPE_BSC_TYP_CEN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_BSC_TYP_REN_MASK (0x0004u)
+#define CSL_IPIPE_BSC_TYP_REN_SHIFT (0x0002u)
+#define CSL_IPIPE_BSC_TYP_REN_RESETVAL (0x0000u)
+/*----REN Tokens----*/
+#define CSL_IPIPE_BSC_TYP_REN_DISABLE (0x0000u)
+#define CSL_IPIPE_BSC_TYP_REN_ENABLE (0x0001u)
+
+#define CSL_IPIPE_BSC_TYP_COL_MASK (0x0003u)
+#define CSL_IPIPE_BSC_TYP_COL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_TYP_COL_RESETVAL (0x0000u)
+/*----COL Tokens----*/
+#define CSL_IPIPE_BSC_TYP_COL_Y (0x0000u)
+#define CSL_IPIPE_BSC_TYP_COL_CB (0x0001u)
+#define CSL_IPIPE_BSC_TYP_COL_CR (0x0002u)
+
+#define CSL_IPIPE_BSC_TYP_RESETVAL (0x0000u)
+
+/* BSC_ROW_VCT */
+
+#define CSL_IPIPE_BSC_ROW_VCT_ROWNUM_MASK (0x0003u)
+#define CSL_IPIPE_BSC_ROW_VCT_ROWNUM_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_ROW_VCT_ROWNUM_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_ROW_VCT_RESETVAL (0x0000u)
+
+/* BSC_ROW_SHF */
+
+#define CSL_IPIPE_BSC_ROW_SHF_VAL_MASK (0x0007u)
+#define CSL_IPIPE_BSC_ROW_SHF_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_ROW_SHF_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_ROW_SHF_RESETVAL (0x0000u)
+
+/* BSC_ROW_VPOS */
+
+#define CSL_IPIPE_BSC_ROW_VPOS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_BSC_ROW_VPOS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_ROW_VPOS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_ROW_VPOS_RESETVAL (0x0000u)
+
+/* BSC_ROW_VNUM */
+
+#define CSL_IPIPE_BSC_ROW_VNUM_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_BSC_ROW_VNUM_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_ROW_VNUM_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_BSC_ROW_VNUM_RESETVAL (0x0001u)
+
+/* BSC_ROW_VSKIP */
+
+#define CSL_IPIPE_BSC_ROW_VSKIP_ROWSKIPV_MASK (0x001Fu)
+#define CSL_IPIPE_BSC_ROW_VSKIP_ROWSKIPV_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_ROW_VSKIP_ROWSKIPV_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_ROW_VSKIP_RESETVAL (0x0000u)
+
+/* BSC_ROW_HPOS */
+
+#define CSL_IPIPE_BSC_ROW_HPOS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_BSC_ROW_HPOS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_ROW_HPOS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_ROW_HPOS_RESETVAL (0x0000u)
+
+/* BSC_ROW_HNUM */
+
+#define CSL_IPIPE_BSC_ROW_HNUM_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_BSC_ROW_HNUM_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_ROW_HNUM_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_ROW_HNUM_RESETVAL (0x0000u)
+
+/* BSC_ROW_HSKIP */
+
+#define CSL_IPIPE_BSC_ROW_HSKIP_ROWSKIPH_MASK (0x001Fu)
+#define CSL_IPIPE_BSC_ROW_HSKIP_ROWSKIPH_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_ROW_HSKIP_ROWSKIPH_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_ROW_HSKIP_RESETVAL (0x0000u)
+
+/* BSC_COL_VCT */
+
+#define CSL_IPIPE_BSC_COL_VCT_COLNUM_MASK (0x0003u)
+#define CSL_IPIPE_BSC_COL_VCT_COLNUM_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_COL_VCT_COLNUM_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_COL_VCT_RESETVAL (0x0000u)
+
+/* BSC_COL_SHF */
+
+#define CSL_IPIPE_BSC_COL_SHF_VAL_MASK (0x0007u)
+#define CSL_IPIPE_BSC_COL_SHF_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_COL_SHF_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_COL_SHF_RESETVAL (0x0000u)
+
+/* BSC_COL_VPOS */
+
+#define CSL_IPIPE_BSC_COL_VPOS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_BSC_COL_VPOS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_COL_VPOS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_COL_VPOS_RESETVAL (0x0000u)
+
+/* BSC_COL_VNUM */
+
+#define CSL_IPIPE_BSC_COL_VNUM_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_BSC_COL_VNUM_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_COL_VNUM_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_COL_VNUM_RESETVAL (0x0000u)
+
+/* BSC_COL_VSKIP */
+
+#define CSL_IPIPE_BSC_COL_VSKIP_COLSKIPV_MASK (0x001Fu)
+#define CSL_IPIPE_BSC_COL_VSKIP_COLSKIPV_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_COL_VSKIP_COLSKIPV_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_COL_VSKIP_RESETVAL (0x0000u)
+
+/* BSC_COL_HPOS */
+
+#define CSL_IPIPE_BSC_COL_HPOS_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_BSC_COL_HPOS_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_COL_HPOS_VAL_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_COL_HPOS_RESETVAL (0x0000u)
+
+/* BSC_COL_HNUM */
+
+#define CSL_IPIPE_BSC_COL_HNUM_VAL_MASK (0x1FFFu)
+#define CSL_IPIPE_BSC_COL_HNUM_VAL_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_COL_HNUM_VAL_RESETVAL (0x0001u)
+
+#define CSL_IPIPE_BSC_COL_HNUM_RESETVAL (0x0001u)
+
+/* BSC_COL_HSKIP */
+
+#define CSL_IPIPE_BSC_COL_HSKIP_COLSKIPH_MASK (0x001Fu)
+#define CSL_IPIPE_BSC_COL_HSKIP_COLSKIPH_SHIFT (0x0000u)
+#define CSL_IPIPE_BSC_COL_HSKIP_COLSKIPH_RESETVAL (0x0000u)
+
+#define CSL_IPIPE_BSC_COL_HSKIP_RESETVAL (0x0000u)
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+#endif

@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" href="$ires__common_8h.html" title="IRES Resource Protocol Definitions &#45; IRES Resource." alt="" coords="8,158,154,182" />
+<area shape="rect" href="$ires_8h.html" title="IRES Interface Definitions &#45; Allows algorithms to request and receive handles representing private lo..." alt="" coords="77,84,170,108" />
+<area shape="rect" href="$ialg_8h.html" title="This header defines all types, constants, and functions defined by XDAIS for algorithms." alt="" coords="56,233,106,257" />
+</map>

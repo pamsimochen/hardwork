@@ -1,0 +1,11 @@
+#!/bin/sh
+
+prefix=/usr
+datarootdir=${prefix}/share
+datadir=/usr/share
+codegendir=${datadir}/pygobject/2.0/codegen
+
+PYTHONPATH=$codegendir
+export PYTHONPATH
+
+exec /home/hudson/amsdk-nightly-build/cortex-A8/arago-tmp/sysroots/i686-linux/usr/bin/python $codegendir/codegen.py "$@"

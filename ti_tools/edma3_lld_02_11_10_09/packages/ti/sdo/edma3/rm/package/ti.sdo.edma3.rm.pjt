@@ -1,0 +1,26 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+[Project Settings]
+ProjectName="ti.sdo.edma3.rm"
+ProjectType=External
+CPUFamily=TMS320C64XX
+Tool="CustomBuilder"
+Config="Package"
+[Source Files]
+Source="../package/package_ti.sdo.edma3.rm.c"
+Source="../src/configs/edma3_c6472_cfg.c"
+Source="../src/edma3resmgr.c"
+Source="../src/edma3_rm_gbl_data.c"
+Source="../src/configs/edma3_tci6486_cfg.c"
+Source="../src/configs/edma3_da830_cfg.c"
+Source="../src/configs/edma3_c6748_cfg.c"
+Source="../src/configs/edma3_omapl138_cfg.c"
+Source="../src/configs/edma3_ti816x_cfg.c"
+Source="../src/configs/edma3_ti814x_cfg.c"
+Source="../src/configs/edma3_tci6608_cfg.c"
+Source="../src/configs/edma3_tci6616_cfg.c"
+Source="../src/configs/edma3_tci6614_cfg.c"
+Source="../src/configs/edma3_c6657_cfg.c"
+Source="../src/configs/edma3_tci6638k2k_cfg.c"
+Source="../src/configs/edma3_c6670_cfg.c"
+Source="../src/configs/edma3_c6678_cfg.c"
+Source="../src/configs/edma3_tci6636k2h_cfg.c"

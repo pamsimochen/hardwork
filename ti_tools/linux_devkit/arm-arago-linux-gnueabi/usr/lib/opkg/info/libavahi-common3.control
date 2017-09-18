@@ -1,0 +1,13 @@
+Package: libavahi-common3
+Version: 0.6.25-r14.0.6
+Description: Avahi implements the DNS-SD over Multicast DNS
+Section: network
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+ LGPLv2.1
+Architecture: armv7a
+OE: avahi
+Homepage: http://avahi.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://avahi.org/download/avahi-0.6.25.tar.gz file://00avahi-autoipd file://99avahi-autoipd file://disable-ipv6.patch file://fix-CVE-2011-1002.patch

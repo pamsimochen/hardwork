@@ -1,0 +1,870 @@
+Package: am-benchmarks-src
+Version: 1.3-r9+svnr75
+Section: system
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 4176f1518620f70db229f092de245e7a
+Size: 124236
+Filename: am-benchmarks-src_1.3-r9+svnr75_all.ipk
+Source: svn://gforge.ti.com/svn/am_benchmarks/;module=trunk;proto=https;user=anonymous;pswd=''
+Description: Patched sources for am-benchmarks
+Priority: Optional
+
+
+Package: am-sysinfo-src
+Version: 1.0-r2+svnr16-arago5
+Section: system
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 6ca6c760c770794f4d499b7f3cdd2b37
+Size: 14620
+Filename: am-sysinfo-src_1.0-r2+svnr16-arago5_all.ipk
+Source: svn://gforge.ti.com/svn/am_sysinfo/;module=trunk;proto=https;user=anonymous;pswd=''
+Description: Patched sources for am-sysinfo
+Priority: Optional
+
+
+Package: board-port-labs-src
+Version: git-r1
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 84b118f5cbc14e763c5a096ddba72de0
+Size: 244372370
+Filename: board-port-labs-src_git-r1_all.ipk
+Source: file://README.txt
+Description: Patched sources for board-port-labs
+Priority: Optional
+
+
+Package: bt-enable-src
+Version: 1.0-r115c
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: ef5e6e444eb2c6c523e1b65c6a46b74a
+Size: 4954
+Filename: bt-enable-src_1.0-r115c_all.ipk
+Source: git://github.com/TI-ECS/bt_enable.git;protocol=git            file://0001-Makefile-Update-makefile-to-work-well-in-SDK.patch
+Description: Patched sources for bt-enable
+Priority: Optional
+
+
+Package: bt-firmware-src
+Version: 1.0-r1+gitrdb43d1f05efda9777d7ac1ac366637e29e21f77f
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 591d947aecf6081f629ba2e447bd7f2d
+Size: 132312
+Filename: bt-firmware-src_1.0-r1+gitrdb43d1f05efda9777d7ac1ac366637e29e21f77f_all.ipk
+Source: git://github.com/TI-ECS/bt-firmware.git;protocol=git            file://0001-Makefile-allow-building-within-the-SDK.patch
+Description: Patched sources for bt-firmware
+Priority: Optional
+
+
+Package: fbset-modes
+Version: 0.1.0-r5.6
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: fdc73ab2c452e35fdecaabd3719f3302
+Size: 842
+Filename: fbset-modes_0.1.0-r5.6_all.ipk
+Source: file://fb.modes
+Description: Default display timings and resolutions for fbset
+OE: fbset-modes
+HomePage: unknown
+Priority: optional
+
+
+Package: font-update-common
+Version: 0.1-r1.6
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 520833e1ec32e393b8f8fc48214e98eb
+Size: 890
+Filename: font-update-common_0.1-r1.6_all.ipk
+Source: file://update-fonts
+Description: Scripts to be called when fonts are installed or removed to make them known to the WM, whether X11 or Opie
+OE: font-update-common
+HomePage: unknown
+Priority: optional
+
+
+Package: hal-info-dev
+Version: 20090414-r0-arago1.6
+Depends: hal-info (= 20090414-r0-arago1.6)
+Recommends: hal-info-dev
+Section: devel
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: ac03aa27ffc88de3abf8f4e47f53c1d9
+Size: 734
+Filename: hal-info-dev_20090414-r0-arago1.6_all.ipk
+Source: http://hal.freedesktop.org/releases/hal-info-20090414.tar.gz
+Description: Hardware Abstraction Layer device information
+OE: hal-info
+HomePage: http://hal.freedesktop.org/
+Priority: optional
+
+
+Package: hal-info
+Version: 20090414-r0-arago1.6
+Section: unknown
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: ddd23c554e4f23754e8ae770a7ce0f04
+Size: 21526
+Filename: hal-info_20090414-r0-arago1.6_all.ipk
+Source: http://hal.freedesktop.org/releases/hal-info-20090414.tar.gz
+Description: Hardware Abstraction Layer device information
+OE: hal-info
+HomePage: http://hal.freedesktop.org/
+Priority: optional
+
+
+Package: hicolor-icon-theme-dev
+Version: 0.11-r2.6
+Depends: hicolor-icon-theme (= 0.11-r2.6)
+Recommends: hicolor-icon-theme-dev
+Section: devel
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 673b3ead61661edbbc5a203f0c46cfa8
+Size: 720
+Filename: hicolor-icon-theme-dev_0.11-r2.6_all.ipk
+Source: http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.11.tar.gz
+Description: Version 0.11-r2 of package hicolor-icon-theme
+OE: hicolor-icon-theme
+HomePage: unknown
+Priority: optional
+
+
+Package: hicolor-icon-theme
+Version: 0.11-r2.6
+Depends: hicolor-icon-theme
+Section: unknown
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: c7dfd97549fcf6cb7de78a199eb955a2
+Size: 7694
+Filename: hicolor-icon-theme_0.11-r2.6_all.ipk
+Source: http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.11.tar.gz
+Description: Version 0.11-r2 of package hicolor-icon-theme
+OE: hicolor-icon-theme
+HomePage: unknown
+Priority: optional
+
+
+Package: linux-firmware-wl12xx
+Version: git-R5+gitr38e0dd7999b9087e00d1a59306a7c22fd23246cf.6
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: c5912339c0e2c94379fe3e9691a91e5a
+Size: 1843334
+Filename: linux-firmware-wl12xx_git-R5+gitr38e0dd7999b9087e00d1a59306a7c22fd23246cf.6_all.ipk
+Source: git://github.com/TI-ECS/ti-utils.git;protocol=git
+Description: Firmware files for use with TI wl12xx
+OE: linux-firmware
+HomePage: unknown
+Priority: optional
+
+
+Package: matrix-gui-apps-images
+Version: 1.0-r23.0.6
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: f9668a01960d186da08914fe5f586385
+Size: 283766
+Filename: matrix-gui-apps-images_1.0-r23.0.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Image package for Matrix GUI v2 Applications
+OE: matrix-gui-apps-images
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-armbenchmarks-demos
+Version: 1.0-r23.1.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-arm, am-benchmarks, lmbench, nbench-byte
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: beacc163928f544788d4db8b86bf4953
+Size: 21796
+Filename: matrix-gui-armbenchmarks-demos_1.0-r23.1.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Arm Benchmarks Applications for Matrix v2
+OE: matrix-gui-armbenchmarks-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-browser-src
+Version: 2.0-r4
+Section: multimedia
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: d9397f8c9195fb8ea6b53ca6e8dc3003
+Size: 2126
+Filename: matrix-gui-browser-src_2.0-r4_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix_browser.git;protocol=git;branch=master
+Description: Patched sources for matrix-gui-browser
+Priority: Optional
+
+
+Package: matrix-gui-clocks-275mhz
+Version: 1.0-r23.5.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-power, matrix-gui-generic-pm
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 62550b3ca5bff016e38dfd37447e65df
+Size: 1982
+Filename: matrix-gui-clocks-275mhz_1.0-r23.5.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Clock setting descriptions for Matrix v2
+OE: matrix-gui-clocks
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-clocks-500mhz
+Version: 1.0-r23.5.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-power, matrix-gui-generic-pm
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 47fbb38b3a75fe5828d1cf8cf5c941cf
+Size: 1978
+Filename: matrix-gui-clocks-500mhz_1.0-r23.5.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Clock setting descriptions for Matrix v2
+OE: matrix-gui-clocks
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-clocks-600mhz
+Version: 1.0-r23.5.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-power, matrix-gui-generic-pm
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: d692fd02bd113ca78c51c8120114a6e8
+Size: 1976
+Filename: matrix-gui-clocks-600mhz_1.0-r23.5.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Clock setting descriptions for Matrix v2
+OE: matrix-gui-clocks
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-clocks-720mhz
+Version: 1.0-r23.5.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-power, matrix-gui-generic-pm
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: f79b5fb0ad1c1dfea9cfaf334a54c6c5
+Size: 1984
+Filename: matrix-gui-clocks-720mhz_1.0-r23.5.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Clock setting descriptions for Matrix v2
+OE: matrix-gui-clocks
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-crypto-demos
+Version: 1.0-r23.5.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-cryptos, openssl
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 4d59cbd88ad59bdc3e35394fa3b05c9d
+Size: 4566
+Filename: matrix-gui-crypto-demos_1.0-r23.5.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Cryptography demo descriptions for Matrix v2
+OE: matrix-gui-crypto-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-ethernet-demos
+Version: 1.0-r23.0.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-ethernet
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: a519e7944c3f5d61fe3edd20e855e98a
+Size: 4238
+Filename: matrix-gui-ethernet-demos_1.0-r23.0.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master file://udhcpd_eth1.conf
+Description: Ethernet example applications
+OE: matrix-gui-ethernet-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-generic-pm
+Version: 1.0-r23.0.6
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 7cd5a18d715e7f0b218c6ae1b0456ee3
+Size: 4670
+Filename: matrix-gui-generic-pm_1.0-r23.0.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Power management helper scripts
+OE: matrix-gui-generic-pm
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-multimedia-demos
+Version: 1.0-r23.0.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-multimedia
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 8b50932fd7e4daec0a1b64020c1254ec
+Size: 3142
+Filename: matrix-gui-multimedia-demos_1.0-r23.0.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Multimedia demo descriptions for Matrix v2
+OE: matrix-gui-multimedia-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-oprofile-demos
+Version: 1.0-r23.5.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-oprofile
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 54c9e12982ac9d3f538891c229f58e5b
+Size: 3864
+Filename: matrix-gui-oprofile-demos_1.0-r23.5.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Oprofile demo applications for Matrix v2
+OE: matrix-gui-oprofile-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-pm-demos-suspend
+Version: 1.0-r23.6.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-power, matrix-gui-generic-pm
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 60d6c0a719a4d97cb2133522ca339358
+Size: 2556
+Filename: matrix-gui-pm-demos-suspend_1.0-r23.6.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Power management demo descriptions for Matrix v2
+OE: matrix-gui-pm-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-qt4-demos
+Version: 1.1-r23.4.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-qt4
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 4e692bf17c9088568c78a8612c7ce61e
+Size: 1732
+Filename: matrix-gui-qt4-demos_1.1-r23.4.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Qt4 demo descriptions for Matrix v2
+OE: matrix-gui-qt4-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-settings-demos
+Version: 1.0-r23.0.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-settings
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: beb72df4e992644f4e3e4e7ac9403990
+Size: 3430
+Filename: matrix-gui-settings-demos_1.0-r23.0.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Settings demo descriptions for Matrix v2
+OE: matrix-gui-settings-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-src
+Version: 2.0-r33
+Section: multimedia
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 3ffbacf319d9de977c5876edab3a5c1c
+Size: 113422
+Filename: matrix-gui-src_2.0-r33_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2.git;protocol=git;branch=master            file://init            file://php.ini
+Description: Patched sources for matrix-gui
+Priority: Optional
+
+
+Package: matrix-gui-submenus-3d
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: a0d61d344e310695889abc372377f1a5
+Size: 1028
+Filename: matrix-gui-submenus-3d_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-arm
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 5c9285bcc3f5235e9e831adfb63fb609
+Size: 1032
+Filename: matrix-gui-submenus-arm_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-cryptos
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 2d59f8b876fe838c2bd7711614d3d0b7
+Size: 1012
+Filename: matrix-gui-submenus-cryptos_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-ethernet
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: bc2a633fb28e4cbf9323c8aed7f02be0
+Size: 1016
+Filename: matrix-gui-submenus-ethernet_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-multimedia
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 5e14ab50832effaca8b322ddcb92d2c7
+Size: 1008
+Filename: matrix-gui-submenus-multimedia_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-oprofile
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: caa1f932a71bc34735f8cbdfaedf7704
+Size: 1032
+Filename: matrix-gui-submenus-oprofile_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-power
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 01156dd76c1e047905cddafd95a34833
+Size: 1006
+Filename: matrix-gui-submenus-power_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-qt4
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 8ca12d7df6063fb7f323639e3297f50c
+Size: 1010
+Filename: matrix-gui-submenus-qt4_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-settings
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: a9ac526c4f293d65a7a41063714e09cf
+Size: 1014
+Filename: matrix-gui-submenus-settings_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-usb
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 29b0728a320aa498b94bd660f05a50ab
+Size: 1014
+Filename: matrix-gui-submenus-usb_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-submenus-wifi
+Version: 1.0-r23.8.6
+Depends: matrix-gui-apps-images
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 37f9d0e4e1424076d786df43ec35b172
+Size: 1012
+Filename: matrix-gui-submenus-wifi_1.0-r23.8.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Submenu packages for Matrix GUI v2
+OE: matrix-gui-submenus
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-usb-demos
+Version: 1.0-r23.4.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-usb, bonnie++
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 3d550facb9a7865c228364c581a479ef
+Size: 1868
+Filename: matrix-gui-usb-demos_1.0-r23.4.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: USB demo descriptions for Matrix v2
+OE: matrix-gui-usb-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: matrix-gui-wifi-demos
+Version: 1.0-r23.2.6
+Depends: matrix-gui-apps-images, matrix-gui-submenus-wifi
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 9532f658a5e684e780f3546b0cde433b
+Size: 2088
+Filename: matrix-gui-wifi-demos_1.0-r23.2.6_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps.git;protocol=git;branch=master
+Description: Wifi demo descriptions for Matrix v2
+OE: matrix-gui-wifi-demos
+HomePage: https://gitorious.org/matrix-gui-v2/matrix-gui-v2-apps
+Priority: optional
+
+
+Package: mount-sdcard
+Version: 1.0-r0.6
+Depends: update-rc.d
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: d9f3f171a5ac46ae6dd338f13f23faba
+Size: 1162
+Filename: mount-sdcard_1.0-r0.6_all.ipk
+Source: file://init
+Description: Script to mount SD card partitions when available
+OE: mount-sdcard
+HomePage: unknown
+Priority: optional
+
+
+Package: qml-playground-src
+Version: 1.0-r2.0
+Section: multimedia
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: a73bd9694c8b4da5923f2ca1cf9b9c51
+Size: 27378278
+Filename: qml-playground-src_1.0-r2.0_all.ipk
+Source: git://arago-project.org/git/projects/qt4-demos.git;protocol=git;branch=master
+Description: Patched sources for qml-playground
+Priority: Optional
+
+
+Package: qt-tstat-src
+Version: 1.0-r2.0
+Section: multimedia
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: fa408f54d4dc6f9875699ac5496f75ba
+Size: 3470454
+Filename: qt-tstat-src_1.0-r2.0_all.ipk
+Source: git://arago-project.org/git/projects/qt4-demos.git;protocol=git;branch=master
+Description: Patched sources for qt-tstat
+Priority: Optional
+
+
+Package: refresh-screen-src
+Version: 1.0-r1
+Section: multimedia
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: ad66dca4ab82ecf39a8bf08165a22740
+Size: 3556
+Filename: refresh-screen-src_1.0-r1_all.ipk
+Source: git://gitorious.org/matrix-gui-v2/refresh-screen.git;protocol=git;branch=master
+Description: Patched sources for refresh-screen
+Priority: Optional
+
+
+Package: task-arago-qte
+Version: 1.0-r8.6
+Depends: qt4-embedded, qt4-embedded-plugin-mousedriver-tslib, qt4-embedded-plugin-gfxdriver-gfxtransformed, qt4-embedded-plugin-gfxdriver-gfxpvregl
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 436bbf46e9465dc832b3d73cb234b5cc
+Size: 776
+Filename: task-arago-qte_1.0-r8.6_all.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-qte.bb
+Description: Task to add Qt/Embedded and basic plugins
+OE: task-arago-qte
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-test
+Version: 1.0-r6.6
+Depends: bonnie++, hdparm, iozone3, iperf, lmbench, rt-tests, evtest, bc, file, powertop, ltp-ddt
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 421f40c7fe9b703040a1ce617d9331b9
+Size: 788
+Filename: task-arago-test_1.0-r6.6_all.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-test.bb
+Description: Extended task to get System Test specific apps
+OE: task-arago-test
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-bsp-target
+Version: 1.0-r7.6
+Recommends: canutils-dev, bluez4-dev, libopenobex-dev
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 38226bfcdf5c883dfe3a5d4ce1951613
+Size: 792
+Filename: task-arago-toolchain-tisdk-bsp-target_1.0-r7.6_all.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-bsp-target.bb
+Description: Task to build and install corresponding development packages for Board Support Package
+OE: task-arago-toolchain-tisdk-bsp-target
+HomePage: unknown
+Priority: optional
+
+
+Package: task-arago-toolchain-tisdk-multimedia-target
+Version: 1.0-r3.6
+Depends: gstreamer-dev, gst-plugins-base-dev, gst-plugins-good-dev, gst-plugins-ugly-dev, gst-plugins-bad-dev
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 8900c14fe248fab7101d14f0612ab6fe
+Size: 782
+Filename: task-arago-toolchain-tisdk-multimedia-target_1.0-r3.6_all.ipk
+Source: file:///home/hudson/amsdk-nightly-build/cortex-A8/arago/recipes/tasks/task-arago-toolchain-tisdk-multimedia-target.bb
+Description: Task to build and install header and libs in sdk
+OE: task-arago-toolchain-tisdk-multimedia-target
+HomePage: unknown
+Priority: optional
+
+
+Package: ti-compat-bluetooth-src
+Version: 0.20120522r518-r115f
+Section: kernel/modules
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: b022c2efb0c0bee4cb0d3c189148ab9c
+Size: 7237416
+Filename: ti-compat-bluetooth-src_0.20120522r518-r115f_all.ipk
+Source: https://gforge.ti.com/gf/download/frsrelease/865/5622/compat-bluetooth-wl12xx-2012-05-22-r5-18.tgz            file://0001-compat-bluetooth-2.6-removed-unused-BT-modules-from-.patch            file://0002-Bluetooth-Fix-l2cap-conn-failures-for-ssp-devices.patch            file://0001-compat-bluetooth-fixing-kernel-panic-in-l2cap.patch
+Description: Patched sources for ti-compat-bluetooth
+Priority: Optional
+
+
+Package: ti-compat-wireless-wl12xx-src
+Version: 0.20120515r518-r115d
+Section: kernel/modules
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: e96d380a0d800383ea4a6735021e2749
+Size: 7323488
+Filename: ti-compat-wireless-wl12xx-src_0.20120515r518-r115d_all.ipk
+Source: https://gforge.ti.com/gf/download/frsrelease/864/5621/ti-compat-wireless-wl12xx-2012-05-17-r5-18.tar.gz            file://0001-compat-wireless-add-pm_runtime_enabled.patch            file://0001-compat-wireless-exclude-BT-building.patch            file://0002-compat-wireless-enable-test-mode.patch            file://0004-added-driver-version.patch            file://0002-ti-compat-wireless-enable-uapsd-configuration.patch            file://0001-wl12xx-detect-between-wl1271-PG-3.0-and-lower.patch            file://0001-wl12xx-additional-two-members-for-wl12xx_platform_da.patch
+Description: Patched sources for ti-compat-wireless-wl12xx
+Priority: Optional
+
+
+Package: ti-tisdk-licenses-src
+Version: 1.0-r3
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: 92ebe2e1515de4716e59ef46580c2467
+Size: 56946
+Filename: ti-tisdk-licenses-src_1.0-r3_all.ipk
+Source: file://ti-tisdk-licenses/APACHEv2.txt     file://ti-tisdk-licenses/ECLIPSEv1.txt     file://ti-tisdk-licenses/GPLv2.txt     file://ti-tisdk-licenses/GPLv3.txt     file://ti-tisdk-licenses/LGPLv2.1.txt     file://ti-tisdk-licenses/LGPLv3.txt     file://ti-tisdk-licenses/MPLv1.1.txt     file://ti-tisdk-licenses/TI_TSPA.txt     file://ti-tisdk-licenses/BSD.txt     file://ti-tisdk-licenses/MIT.txt     file://ti-tisdk-licenses/creativecommons.txt     file://ti-tisdk-licenses/openssl.txt     file://ti-tisdk-licenses/CC-BY-NC-ND-3.0.txt     file://ti-tisdk-licenses/lmbench.txt
+Description: Patched sources for ti-tisdk-licenses
+Priority: Optional
+
+
+Package: ttf-dejavu-common
+Version: 2.23-r3.6
+Recommends: font-update-common
+Section: fonts
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: ed76009d47d61be5d2b7ffc23423dc3d
+Size: 1058
+Filename: ttf-dejavu-common_2.23-r3.6_all.ipk
+Source: http://downloads.sourceforge.net/dejavu/dejavu-fonts-ttf-2.23.tar.bz2 file://30-dejavu-aliases.conf
+Description: DejaVu font - TTF Edition
+OE: ttf-dejavu
+HomePage: http://dejavu.sourceforge.net/wiki/
+Priority: optional
+
+
+Package: ttf-dejavu-sans
+Version: 2.23-r3.6
+Depends: ttf-dejavu-common
+Recommends: font-update-common
+Section: fonts
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: dbe1c7ad12848dfd5e4582cb0bf3357a
+Size: 1317860
+Filename: ttf-dejavu-sans_2.23-r3.6_all.ipk
+Source: http://downloads.sourceforge.net/dejavu/dejavu-fonts-ttf-2.23.tar.bz2 file://30-dejavu-aliases.conf
+Description: DejaVu font - TTF Edition
+OE: ttf-dejavu
+HomePage: http://dejavu.sourceforge.net/wiki/
+Priority: optional
+
+
+Package: update-modules
+Version: 1.0-r10.6
+Depends: module-init-tools-depmod
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: e8bc50897417b309e65ee5c58747d2d2
+Size: 2544
+Filename: update-modules_1.0-r10.6_all.ipk
+Source: file://update-modules
+Description: Script to manage module configuration files
+OE: update-modules
+HomePage: unknown
+Priority: optional
+
+
+Package: update-rc.d-dev
+Version: 0.7-r2.6
+Depends: update-rc.d (= 0.7-r2.6)
+Recommends: update-rc.d-dev
+Section: devel
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: f71ee8c3cda9976e08b628aa24a31c67
+Size: 716
+Filename: update-rc.d-dev_0.7-r2.6_all.ipk
+Source: file://update-rc.d file://add-verbose.patch
+Description: Manage symlinks in /etc/rcN.d
+OE: update-rc.d
+HomePage: unknown
+Priority: standard
+
+
+Package: update-rc.d
+Version: 0.7-r2.6
+Section: base
+Architecture: all
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+MD5Sum: a2a512ad5b52ee95b8591cd6bdf1702d
+Size: 2586
+Filename: update-rc.d_0.7-r2.6_all.ipk
+Source: file://update-rc.d file://add-verbose.patch
+Description: Manage symlinks in /etc/rcN.d
+OE: update-rc.d
+HomePage: unknown
+Priority: standard
+
+

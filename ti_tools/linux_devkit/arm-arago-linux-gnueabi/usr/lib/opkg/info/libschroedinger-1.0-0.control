@@ -1,0 +1,13 @@
+Package: libschroedinger-1.0-0
+Version: 1.0.9-r1.1.6
+Description: Version 1.0.9-r1.1 of package schroedinger
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MPL-1.1 | LGPLv2 | GPLv2 | MIT
+Architecture: armv7a
+OE: schroedinger
+Homepage: http://schrodinger.sourceforge.net/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: liborc-0.4-0 (>= 0.4.10), libc6 (>= 2.12.2), libstdc++6 (>= 4.5.3), libgcc1 (>= 4.5.3)
+Source: http://www.diracvideo.org/download/schroedinger/schroedinger-1.0.9.tar.gz;name=schroedingertargz file://configure.ac.patch

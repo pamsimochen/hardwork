@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" href="$_i_heap_8h.html" title="Defines Heap based memory allocator." alt="" coords="7,84,149,108" />
+<area shape="rect" href="$_memory_8h.html" title="Memory manager interface definitions." alt="" coords="109,158,263,182" />
+<area shape="rect" href="$_memory_o_s_8h.html" title="Memory abstraction APIs for local memory allocation." alt="" coords="223,84,397,108" />
+</map>

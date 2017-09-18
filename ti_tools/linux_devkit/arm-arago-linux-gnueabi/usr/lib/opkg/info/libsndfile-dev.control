@@ -1,0 +1,14 @@
+Package: libsndfile-dev
+Version: 1.0.24-r1.6
+Description: An audio format Conversion library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: libsndfile1
+Homepage: http://www.mega-nerd.com/libsndfile
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libsndfile1 (= 1.0.24-r1.6), libsndfile1
+Recommends: sqlite3-dev, libc6-dev, libsndfile-dev, libasound-dev, libsqlite3-dev
+Source: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.24.tar.gz

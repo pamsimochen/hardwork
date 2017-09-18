@@ -1,0 +1,65 @@
+%%{
+/* --COPYRIGHT--,EPL
+ *  Copyright (c) 2008 Texas Instruments and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *      Texas Instruments - initial implementation
+ * 
+ * --/COPYRIGHT--*/
+%%}
+%/*
+% *  ======== Boot.xdt ========
+% *
+% *! Revision History
+% *! ================
+% *! 17-Nov-2009 sg     Added WDT address and DCO configuration.
+% *! 20-Oct-2009 sg     Initial.
+% */
+% /* Don't generate Boot_init if this is a romimage */
+% if (!Program.$$isrom && (Program.build.rtsName !== null)) {
+%var Boot = xdc.module("ti.catalog.msp430.init.Boot");
+    extern Void ti_catalog_msp430_init_Boot_disableWatchdog(UInt address);
+    extern Void ti_catalog_msp430_init_Boot_configureDCO(Void);
+    extern Void ti_catalog_msp430_init_Boot_configureDCO_CS_A(Void);
+    extern Void ti_catalog_msp430_init_Boot_configureDCO_CS_A_useLFXT(Void);
+
+#if defined(__ti__)
+#pragma CODE_SECTION(ti_catalog_msp430_init_Boot_init, ".text:.bootCodeSection")
+#endif
+
+/*
+ *  ======== ti_catalog_msp430_init_Boot_init ========
+ */
+#if defined(__ICC430__)
+    #pragma location="CSTART"
+#endif
+Void ti_catalog_msp430_init_Boot_init(Void)
+{
+%if (Boot.disableWatchdog == true) {
+    ti_catalog_msp430_init_Boot_disableWatchdog(`Boot.watchdogAddress`);
+%}
+
+%if (Boot.configureDCO == true) {
+
+%if (Program.cpu.attrs.peripherals["clock"].$module.$name == "ti.catalog.msp430.peripherals.clock.UCS") {
+    ti_catalog_msp430_init_Boot_configureDCO();
+%}
+
+%if (Program.cpu.attrs.peripherals["clock"].$module.$name == "ti.catalog.msp430.peripherals.clock.CS_A") {
+%if (Boot.useLFXT == true) {
+    ti_catalog_msp430_init_Boot_configureDCO_CS_A_useLFXT();
+%}
+%else {
+    ti_catalog_msp430_init_Boot_configureDCO_CS_A();
+%}
+%}
+
+%}
+}
+
+%}
+

@@ -1,0 +1,14 @@
+Package: bluez4
+Version: 4.98-r8.4-arago2.6
+Description: Linux Bluetooth Stack Userland V4
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2/LGPLv2.1
+Architecture: armv7a
+OE: bluez4
+Homepage: http://www.bluez.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: update-rc.d, libc6 (>= 2.12.2), libglib-2.0-0 (>= 2.24.1), libdbus-1-3 (>= 1.4.1), libusb-0.1-4 (>= 0.1.3), libusb-1.0-0 (>= 1.0.8), libreadline5 (>= 5.2)
+Provides: bluez-utils, bluez-libs, bluez-utils-dbus
+Source: http://kernel.org/pub/linux/bluetooth/bluez-4.98.tar.gz file://bluetooth.conf file://bluez4-fix-synchronization-between-bluetoothd-and-dr.patch file://0001-socket-enable-for-bluez-4_98.patch file://0001-bluez-enable-source-interface.patch

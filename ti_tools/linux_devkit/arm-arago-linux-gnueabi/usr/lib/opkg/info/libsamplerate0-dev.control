@@ -1,0 +1,14 @@
+Package: libsamplerate0-dev
+Version: 0.1.7-r3.6
+Description: An audio Sample Rate Conversion library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+
+Architecture: armv7a
+OE: libsamplerate0
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libsamplerate0 (= 0.1.7-r3.6), libsamplerate0
+Recommends: libc6-dev, libsndfile-dev, libsamplerate0-dev
+Source: http://www.mega-nerd.com/SRC/libsamplerate-0.1.7.tar.gz file://libsamplerate-0.1.7-macro-quoting.patch;striplevel=0 file://libsamplerate-0.1.7-tests.patch

@@ -1,0 +1,7 @@
+Pkg.generatedFiles = ["lib/"];
+
+for (var i = 0; i < Build.targets.length; i++) {
+    var targ = Build.targets[i];
+    var lib = Pkg.addLibrary("lib/" + Pkg.name, targ);
+    lib.addObjects(Pkg.modules);
+}

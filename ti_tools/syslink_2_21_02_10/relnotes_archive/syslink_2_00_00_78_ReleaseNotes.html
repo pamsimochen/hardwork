@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- --COPYRIGHT--,BSD
+ *  Copyright (c) 2011, Texas Instruments Incorporated
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *  *  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *  *  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *  *  Neither the name of Texas Instruments Incorporated nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ *  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * --/COPYRIGHT--
+-->
+<html>
+<head>
+    <title>SysLink 2.00.00.78 Release Notes </title>
+    <!-- For now, we use the doxygen style sheet -->
+    <link type="text/css" rel="stylesheet" href="../docs/html/doxygen.css">
+    <!-- doxygen's css .memproto's all have tables for a little extra pad...
+         don't like tables, so give 'em a little extra left pad ourselves
+    --->
+    <style type="text/css">
+    body {
+        margin: 20px;
+    }
+    .memproto {
+        padding-left: 6px;
+    }
+    </style>
+</head>
+<body>
+<table width="100%">
+  <tbody>
+    <tr>
+      <td bgcolor="black" width="1">
+        <a href="http://www.ti.com">
+          <img border=0 src="../docs/html/tilogo.gif" alt="Texas Instruments">
+        </a>
+      </td>
+      <td bgcolor="red">
+        <img src="../docs/html/titagline.gif" alt="Technology for Innovators(tm)">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 align="center">SysLink 2.00.00.78 Release Notes </h1>
+<h2 align="center">June 2011</h2>
+
+<p>
+This SysLink Release is targetted to SYS/BIOS 6-based platforms.
+</p>
+<p align="center">
+<a href="#Introduction">Introduction</a>,
+<a href="#Documentation">Documentation</a>,
+<a href="#Whats_New">What's New</a>,
+<a href="#Upgrade_Info">Upgrade Info</a>,
+<a href="#Compatibility">Compatibility Information</a>,
+<a href="#Device_Support">Device Support</a>,
+<a href="#Validation">Validation Info</a>,
+<a href="#Known_Issues">Known Issues</a>,
+<a href="#Examples">Examples</a>,
+<a href="#Version">Version Information</a>,
+<a href="#Support">Technical Support</a>.
+</p>
+
+<hr>
+
+<h2><a name="Introduction">Introduction</a></h2>
+
+<p>
+SysLink is runtime software <!--and an associated porting kit--> that
+simplifies the development of embedded applications in which either
+General-Purpose microprocessors (GPP) or DSPs communicate with each other.
+The SysLink product provides software connectivity between multiple
+processors. Each processor may run either an HLOS (e.g. Linux)
+or an RTOS (e.g. SYS/BIOS).  In addition, a
+processor may also be designated as the master for another slave processor,
+and may be responsible for controlling the slave processor's execution
+(including boot-loading the slave).
+</p>
+<p>
+The SysLink product provides the following services to frameworks and applications:
+<ul>
+    <li>Processor Manager</li>
+    <li>Inter-Processor Communication</li>
+    <li>Utility modules</li>
+</ul>
+</p>
+<p>
+SYS/BIOS operating system is expected to be running on the slaves with all
+of these platforms.
+</p>
+<!-- not yet
+<p>
+This product includes a "redist" directory containing some dependent products
+for convenience.  Products included in this redist directory include are:
+<ul>
+  <li>IPC <b>1.23.01.26</b></li>
+</ul>
+</p>
+-->
+
+<hr>
+
+<h2><a name="Documentation">Documentation</a></h2>
+<p>
+The following documentation is available:
+</p>
+<ul>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_UserGuide">
+    SysLink Users' Guide</a>
+  </li>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_Install_Guide">
+    SysLink Install Guide</a>
+  </li>
+  <li>SysLink Application Programming Interface (API) Reference
+  Guide (HTML | CHM)</li>
+  <li>
+    Package Reference Guide - includes configuration details
+  </li>
+  <li>
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_MigrationGuide">
+    SysLink Migration Guide</a>
+  </li>
+</ul>
+
+<p>
+In addition, users are encouraged to monitor (and contribute to!) the
+<a href="http://processors.wiki.ti.com">TI Embedded Processors Wiki</a>.
+</p>
+
+<!--
+<p>
+Release notes from previous releases are also available in the <a
+href="relnotes_archive">relnotes_archive</a> directory.
+</p>
+-->
+
+<hr>
+<h2><a name="Whats_New">What's New</a></h2>
+
+<div class="memitem">
+<div class="memproto">2.00.00.78 </div>
+
+<div class="memdoc">
+<ul>
+  <li>See the
+    <a href="http://processors.wiki.ti.com/index.php/SysLink_MigrationGuide">
+    SysLink Migration Guide</a> for new features in this initial SysLink
+    release
+  </li>
+  <br />
+
+<!--
+  <li>Removed features
+    <ul>
+      <li>Removed support for multicore devices</li>
+      <li>Removed support for BIOS 5</li>
+      <li>Removed support for WinCE</li>
+    </ul>
+  </li>
+  <br />
+-->
+<!--
+  <li>Updated Dependencies
+    <ul>
+      <li>DSP/BIOS 6.21</li>
+      <li>XDC 3.20</li>
+      <li>IPC 1.22</li>
+    </ul>
+  </li>
+-->
+  <br />
+<!--
+  <li>The following defects were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+  </tbody>
+</table>
+</li>
+  <br />
+-->
+<!--
+  <li>The following enhancements were resolved:
+<table width="100%">
+  <colgroup width="20%">
+  <tbody>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Headline</b></td>
+    </tr>
+  </tbody>
+</table>
+</li>
+-->
+</ul>
+</div>
+</div>
+
+<br />
+<hr>
+<h2><a name="Upgrade_Info">Upgrade Information</a></h2>
+<p>
+<b>This SysLink release is not suitable for BIOS 5-based DVSDKs.
+DVSDK users should continue to use the BIOS 5-based DSP Link 1.x
+releases.</b>
+</p>
+<p>
+The SysLink packages are available in the "packages/"
+subdirectory of the product.  If you have a previous release of the
+SysLink product, you can install this release next to it, and
+modify your build scripts/makefiles to use this newer release.</p>
+<h2><font color="red">Compatibility Breaks!</font></h2>
+<ul>
+  <li>SysLink 2.00.00.78 requires system integrators to update to XDC Tools
+    3.22.01.21 (or newer).
+  </li>
+  <li>SysLink 2.00.00.78 requires system integrators update to SYS/BIOS
+    6.32.01.38 (or compatible).
+  <li>SysLink 2.00.00.78 requires system integrators update to IPC
+    1.23.01.26 (or compatible).
+  </li>
+</ul>
+
+<p>
+Note, if you're upgrading from a release earlier than SysLink 2.00, be
+sure to review the <b>Upgrade</b> section for each of the releases between
+your current release and this one.<!--  Previous release notes are
+available in the <a href="relnotes_archive">relnotes_archive</a> directory. -->
+</p>
+
+
+<hr>
+<h2><a name="Device_Support">Device Support</a></h2>
+
+<p>
+This release supports the following devices:
+<ul>
+  <li>OMAP3530 EVM</li>
+  <li>TI816X EVM</li>
+  <li>TI814X EVM</li>
+</ul>
+
+</p>
+
+
+<hr>
+<h2><a name="Validation">Validation</a></h2>
+<p>
+This release was built and validated against using the following software
+components:
+</p>
+
+<ul>
+  <li>XDCtools <b>3.22.01.21</b></li>
+  <li>SYS/BIOS <b>6.32.01.38</b></li>
+  <li>IPC <b>1.23.01.26</b></li>
+<!-- TODO - autogenerate these -->
+  <li>TI816X PSP <b>04.00.00.10</b></li>
+  <li>TI814X PSP <b>04.01.00.03</b></li>
+  <li>toolchains:
+    <ul>
+      <li>Linux GCC - <b>CodeSourcery 2009q1-203</b></li>
+      <li>ti.targets.arm.elf.A8F - <b>4.9.0</b></li>
+      <li>ti.targets.arm.elf.M3 - <b>4.9.0</b></li>
+      <li>ti.targets.elf.C64P - <b>7.2.2</b></li>
+      <li>ti.targets.C64P - <b>7.0.0</b></li>
+      <li>ti.targets.elf.C674 - <b>7.2.2</b></li>
+      <li>ti.targets.C674 - <b>7.0.0</b></li>
+    </ul>
+  </li>
+</ul>
+
+<p>
+This release was validated using the following hardware platforms:
+</p>
+
+<ul>
+  <li>OMAP3530 EVM</li>
+  <li>TI816X EVM</li>
+  <li>TI814X EVM</li>
+</ul>
+
+
+<hr>
+<h2><a name="Known_Issues">Known Issues</a></h2>
+<p>
+Consult the <a href="https://cqweb.ext.ti.com/cqweb/main?command=GenerateMainFrame&service=CQ&schema=SDO-Web&contextid=SDOWP&queryID=34483205&entityDefName=IncidentReport&username=readonly&password=readonly">SDOWP database</a> for open issues.
+</p>
+<p>
+<ul>
+   <li>ProcMgr with SYS/BIOS on HOST processor is not validated in this release.</li>
+   <li>OMAP-L13x is not validated in this release.</li>
+   <li>The RingIO interface has many known issues and is not GA qualified
+     in this release.  Critical issues will be resolved over the next few
+     few months and provided in a subseqent release.
+   </li>
+   <li>Kernel mode example apps are deprecated and not supported in this
+     release.  They are planned to be removed in a future release.
+</ul>
+</p>
+
+<hr>
+<h2><a name="Version">Version Information</a></h2>
+<p>
+This product's version follows a version format, <b>M.mm.pp.bb</b>,
+where <b>M</b> is a single digit Major number, <b>mm</b> is 2 digit
+minor number, <b>pp</b> is a 2 digit patch number, and <b>b</b> is an
+unrestricted set of digits used as an incrementing build counter.
+</p>
+
+<p>
+To support multiple side-by-side installations of the product, the
+product version is encoded in the top level directory,
+ex. <b>syslink_2_00_00_78</b>.
+</p>
+
+<p>
+Subsequent releases of patch upgrades will be identified by the patch
+number, ex. SysLink 2.00.01.XX with directory <b>syslink_2_00_01_XX</b>.
+Typically, these patches only include critical bug fixes.
+</p>
+
+<hr>
+<h2><a name="Support">Technical Support</a></h2>
+<p>For technical support, contact <a href="mailto:softwaresupport@ti.com">softwaresupport@ti.com</a></p>
+
+<p>
+Check the following web site for updates: <a href="http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/index.html">http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/index.html</a>
+</p>
+
+<hr>
+<p>
+Last updated: June 20, 2011
+</p>
+</body>
+</html>

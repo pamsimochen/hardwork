@@ -1,0 +1,148 @@
+/*
+ *  Copyright 2013 by Texas Instruments Incorporated.
+ *
+ */
+
+/*
+ *  ======== config.bld ========
+ *
+ */
+
+var tools   = environment["TOOLS"];
+var vtools  = environment["TOOLS"] + "/vendors";
+var os      = environment["xdc.hostOS"];
+
+var armTargets = xdc.loadPackage('ti.targets.arm');
+armTargets.Arm7.rootDir         = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.Arm9.rootDir         = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.Arm11.rootDir         = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.Arm11_big_endian.rootDir = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.M3.rootDir           = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.M3_big_endian.rootDir = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.R4.rootDir           = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.R4_big_endian.rootDir = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.R4t.rootDir           = vtools + "/ti/arm/4.5.0/" + os;
+armTargets.R4t_big_endian.rootDir = vtools + "/ti/arm/4.5.0/" + os;
+
+var elfTargets = xdc.loadPackage('ti.targets.elf');
+elfTargets.C64P.rootDir         = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.C64T.rootDir         = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.C674.rootDir         = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.C64P_big_endian.rootDir = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.C64T_big_endian.rootDir = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.C674_big_endian.rootDir = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.C67P.rootDir         = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.C66.rootDir          = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.C66_big_endian.rootDir = vtools + "/ti/c6x/7.2.0B2/" + os;
+elfTargets.TMS470.rootDir       = vtools + "/ti/arm/4.6.3/" + os;
+elfTargets.T16.rootDir          = vtools + "/ti/t16/1.0.0A10308/" + os;
+
+var armElfTargets = xdc.loadPackage('ti.targets.arm.elf');
+armElfTargets.Arm7.rootDir      = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.Arm7_big_endian.rootDir = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.Arm9.rootDir      = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.Arm9t.rootDir     = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.A8F.rootDir       = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.A8Ft.rootDir      = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.M3.rootDir        = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.M3_big_endian.rootDir = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.R4.rootDir    = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.R4_big_endian.rootDir = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.R4t.rootDir   = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.R4t_big_endian.rootDir = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.R4F.rootDir    = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.R4F_big_endian.rootDir = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.R4Ft.rootDir   = vtools + "/ti/arm/4.6.3/" + os;
+armElfTargets.R4Ft_big_endian.rootDir = vtools + "/ti/arm/4.6.3/" + os;
+
+var gccTargets = xdc.loadPackage('gnu.targets');
+gccTargets.Sparc.rootDir        = tools + "/default/gcc5";
+gccTargets.Sparc.dllExt         = ".so";
+gccTargets.Sparc.includeOpts    = "-isystem " + vtools
+    + "/sun/solaris/SUNWhea-11.6.0/include " + gccTargets.Sparc.includeOpts;
+
+if (os != "Solaris") {
+    gccTargets.Sparc.remoteHost = "bollay";
+}
+gccTargets.Linux86.rootDir = tools + "/gcc86U";
+gccTargets.Linux86.dllExt  = ".so";
+// gccTargets.Linux86.ccOpts.prefix += "  -Wstrict-prototypes ";
+//gccTargets.Linux86.rootDir  = 
+//    "/db/toolsrc/library/vendors2005/opensource/gcc/4.3.4-2.9glibc-2.6.9headers/Linux/";
+
+gccTargets.MVArm9.rootDir = vtools
+    + "/mvl/arm/mvl4.0/Linux/montavista/pro/devkit/arm/v5t_le";
+
+gccTargets.UCArm9.rootDir = vtools
+    + "/opensource/buildroot/10122007/build_arm/staging_dir/usr";
+
+var gccarmTargets = xdc.loadPackage('gnu.targets.arm');
+gccarmTargets.GCArmv5T.rootDir = vtools
+    + "/mvl/arm/mvl4.0/Linux/montavista/pro/devkit/arm/v5t_le";
+gccarmTargets.GCArmv5T.LONGNAME = "bin/arm_v5t_le-gcc";
+gccarmTargets.GCArmv6.rootDir = vtools + "/cs/arm/arm-2010q1";
+gccarmTargets.GCArmv6.LONGNAME = "bin/arm-none-linux-gnueabi-gcc";
+gccarmTargets.GCArmv7A.rootDir = vtools + "/cs/arm/arm-2010q1";
+gccarmTargets.GCArmv7A.LONGNAME = "bin/arm-none-linux-gnueabi-gcc";
+
+if (os != "Linux") {
+    gccTargets.Linux86.remoteHost = "tarpine";
+
+    /* only have Linux development tools for MV and UCArm9 */
+    gccTargets.UCArm9.remoteHost = "tarpine";
+    gccTargets.MVArm9.remoteHost = "tarpine";
+    gccarmTargets.GCArmv5T.remoteHost = "tarpine";
+    gccarmTargets.GCArmv6.remoteHost = "tarpine";
+    gccarmTargets.GCArmv7A.remoteHost = "tarpine";
+}
+
+if (os == "Linux") {
+
+    gccTargets.Mingw.rootDir = vtools + "/opensource/mingw/4.4.0/Windows";
+
+    /* When using runw32 , we have to setup PATH so that the compiler can
+     * find DLLs. Without runw32, make files that run on the same host as
+     * the compiler take care of setting PATH correctly.
+     *
+     */
+    gccTargets.Mingw.cmdPrefix = tools + "/bin86U/runw32 " + "set PATH="
+        + gccTargets.Mingw.rootDir + "/bin\\;" + environment['xdc.root']
+        + "/bin \\&";
+}
+
+// Pkg.attrs.profile = "debug";
+
+Build.targets = [
+// NOT TESTED!!!!!!!!
+//        armElfTargets.Arm7, armElfTargets.Arm7_big_endian,
+//        armElfTargets.A8Ft,
+//        gccTargets.Mingw,
+        armElfTargets.A8F,
+        armElfTargets.Arm9, armElfTargets.Arm9t,
+        armElfTargets.M3, armElfTargets.M3_big_endian,
+        armElfTargets.R4, armElfTargets.R4_big_endian,
+        armElfTargets.R4t, armElfTargets.R4t_big_endian,
+        armElfTargets.R4Ft,
+        armElfTargets.R4F_big_endian, armElfTargets.R4Ft_big_endian,
+        elfTargets.C64P, elfTargets.C64T, elfTargets.C674, elfTargets.TMS470,
+        elfTargets.C64P_big_endian, elfTargets.C64T_big_endian,
+        elfTargets.C674_big_endian, elfTargets.C67P,
+        elfTargets.C66, elfTargets.C66_big_endian,
+        elfTargets.T16,
+        gccTargets.Linux86, 
+        gccTargets.MVArm9, gccTargets.UCArm9,
+        gccarmTargets.GCArmv5T, gccarmTargets.GCArmv6, gccarmTargets.GCArmv7A,
+];
+
+//gccTargets.Linux86.profiles["release"].filters = common.coverityFilter;
+//gccTargets.Linux86.profiles["debug"].filters = common.coverityFilter;
+
+//tiTargets.C64P.profiles["release"].filters = common.coverityFilter;
+//tiTargets.C64P.profiles["debug"].filters = common.coverityFilter;
+
+//Build.targets = [tiTargets.C64P];
+/*
+ *  @(#) ti.targets.omf.elf; 1,0,0,139; 12-20-2013 16:13:35; /db/ztree/library/trees/xdctargets/xdctargets-g41x/src/ xlibrary
+
+ */
+

@@ -1,0 +1,14 @@
+Package: consolekit-dev
+Version: 0.4.1-r2.6
+Description: ConsoleKit is a framework for defining and tracking users, login sessions, and seats.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: consolekit
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: consolekit (= 0.4.1-r2.6), consolekit, dbus-dev
+Recommends: policykit-dev, dbus-dev, libpam-dev, gnome-common-dev, gconf-dev, shared-mime-info-dev, consolekit-dev, libc6-dev, dbus-lib-dev, eggdbus-dev, libdbus-glib-1-dev, gio-2.0-dev, libz-dev, gobject-2.0-dev, gmodule-2.0-dev, gthread-2.0-dev, libglib-2.0-dev, libx11-dev, libxcb-dev, libpthread-stubs-dev, libxau-dev, libxdmcp-dev
+Source: http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-0.4.1.tar.bz2;name=archive

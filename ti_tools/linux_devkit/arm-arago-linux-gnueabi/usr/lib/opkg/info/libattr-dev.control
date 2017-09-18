@@ -1,0 +1,14 @@
+Package: libattr-dev
+Version: 2.4.44-r4.6
+Description: Commands for Manipulating Filesystem Extended Attributes
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: attr
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libattr1 (= 2.4.44-r4.6), libattr1
+Recommends: libc6-dev, libattr-dev, virtual-locale-gl-dev, virtual-locale-cs-dev, virtual-locale-pl-dev, virtual-locale-de-dev, virtual-locale-fr-dev, virtual-locale-sv-dev, virtual-locale-nl-dev, virtual-locale-es-dev
+Source: http://mirror.its.uidaho.edu/pub/savannah/attr/attr-2.4.44.src.tar.gz

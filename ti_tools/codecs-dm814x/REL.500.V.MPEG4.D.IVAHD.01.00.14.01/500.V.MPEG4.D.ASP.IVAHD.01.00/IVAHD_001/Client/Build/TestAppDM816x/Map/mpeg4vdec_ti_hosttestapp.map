@@ -1,0 +1,1099 @@
+******************************************************************************
+                  TI ARM Linker PC v5.0.3                      
+******************************************************************************
+>> Linked Wed Nov 27 18:58:35 2013
+
+OUTPUT FILE NAME:   <..\Out\mpeg4vdec_ti_hosttestapp.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 8e85f325
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  I_MEM                 00000000   00000100  000000b8  00000048  RWIX
+  INTMEM                00300000   00040000  00000000  00040000  RWIX
+  SL2MEM                59000000   00080000  00000000  00080000  RWIX
+  EXTMEM_PCI            8c000000   00000100  00000008  000000f8  RWIX
+  EXTMEM_SYS            8c000100   02000000  02000000  00000000  RWIX
+  INPUTBUF              8e000100   00400000  00400000  00000000  RWIX
+  EXTMEM                8e400100   01c00000  0046d6a8  01792958  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000000b8   000000b8    r--
+  00000000    00000000    000000b8   000000b8    r-- .intvecs
+8c000000    8c000000    00000008   00000000    rw-
+  8c000000    8c000000    00000008   00000000    rw- .pci_stat
+8c000100    8c000100    02806d28   00000000    rw-
+  8c000100    8c000100    02000000   00000000    rw- .sysmem
+  8e000100    8e000100    00400000   00000000    rw- .input
+  8e400100    8e400100    00406d28   00000000    rw- .bss
+8e806e28    8e806e28    0005cd96   0005cd96    r-x
+  8e806e28    8e806e28    00053f24   00053f24    r-- .const
+  8e85ad4c    8e85ad4c    000047d2   000047d2    r-x .rts_lib
+  8e85f520    8e85f520    0000469e   0000469e    r-x .text
+8e863bc0    8e863bc0    00004000   00000000    rw-
+  8e863bc0    8e863bc0    00004000   00000000    rw- .stack
+8e867bc0    8e867bc0    00003ef4   00003ef4    r-x
+  8e867bc0    8e867bc0    00003ef4   00003ef4    r-x .mpeg4vdec_ti_text
+8e86bab4    8e86bab4    00001160   00000000    rw-
+  8e86bab4    8e86bab4    00001160   00000000    rw- .fileIOSys
+8e86cc14    8e86cc14    000006c8   000006c8    rw-
+  8e86cc14    8e86cc14    000006c8   000006c8    rw- .data
+8e86d2e0    8e86d2e0    000004d0   000004d0    r--
+  8e86d2e0    8e86d2e0    000004d0   000004d0    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000b8     
+                  00000000    000000b8     InterruptVecTable.obj (.intvecs)
+
+.pci_stat 
+*          0    8c000000    00000008     UNINITIALIZED
+                  8c000000    00000008     fileio.lib : mpeg4vdec_ti_pci.obj (.pci_stat)
+
+.sysmem    0    8c000100    02000000     UNINITIALIZED
+                  8c000100    00000008     rtsv7M3_T_le_eabi.lib : memory.obj (.sysmem)
+                  8c000108    01fffff8     --HOLE--
+
+.input     0    8e000100    00400000     UNINITIALIZED
+                  8e000100    00400000     TestAppDecoder.obj (.input)
+
+.bss       0    8e400100    00406d28     UNINITIALIZED
+                  8e400100    00400000     TestApp_fileIO.obj (.bss:Chroma_separate)
+                  8e800100    00004e20     Testapp_configparser.obj (.bss:buf)
+                  8e804f20    0000084c     TestAppDecoder.obj (.bss:appControlPrms)
+                  8e80576c    00000400     crc0.obj (.bss:crcTable)
+                  8e805b6c    00000320     TestApp_rmanConfig.obj (.bss:iresTiledMemoryObjects)
+                  8e805e8c    000002bc     TestAppDecoder.obj (.bss:outArgs)
+                  8e806148    000002bc     TestApp_rmanConfig.obj (.bss:protocolArgsBackUp)
+                  8e806404    00000240     TestAppDecoder.obj (.bss:status)
+                  8e806644    0000021c     TestAppDecoder.obj (.bss:tilerParams)
+                  8e806860    00000200     TestApp_fileIO.obj (.bss:paramsFile)
+                  8e806a60    00000120     rtsv7M3_T_le_eabi.lib : trgmsg.obj (.bss:__CIOBUF_)
+                  8e806b80    000000b0     TestApp_bufmanager.obj (.bss:buffArray)
+                  8e806c30    000000a0     rtsv7M3_T_le_eabi.lib : defs.obj (.bss:_tmpnams)
+                  8e806cd0    0000006c     TestAppDecoder.obj (.bss:params)
+                  8e806d3c    00000063     TestAppDecoder.obj (.bss)
+                  8e806d9f    00000001     --HOLE--
+                  8e806da0    0000003c     TestAppDecoder.obj (.bss:dynamicParams)
+                  8e806ddc    00000028     TestApp_rmanConfig.obj (.bss)
+                  8e806e04    00000014     TestApp_bufmanager.obj (.bss)
+                  8e806e18    00000008     TestAppDecSupport.obj (.bss)
+                  8e806e20    00000008     rtsv7M3_T_le_eabi.lib : trgdrv.obj (.bss)
+
+.const     0    8e806e28    00053f24     
+                  8e806e28    0000aa30     mpeg4vdec_ti_host.lib : mpeg4vdec_ti_table.obj (.const:statictable)
+                  8e811858    00007f58                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DEBUGTRACELEVEL2_DataSect3)
+                  8e8197b0    00007f4c                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DataSect3)
+                  8e8216fc    00007ed8                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DEBUGTRACELEVEL2_DataSect1)
+                  8e8295d4    00007ddc                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DataSect1)
+                  8e8313b0    00007bb0                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DEBUGTRACELEVEL1_DataSect1)
+                  8e838f60    00007580                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DEBUGTRACELEVEL1_DataSect3)
+                  8e8404e0    00006a88                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT2_DEBUGTRACELEVEL2_DataSect1)
+                  8e846f68    000069e4                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT2_DEBUGTRACELEVEL1_DataSect1)
+                  8e84d94c    00006974                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT2_DataSect1)
+                  8e8542c0    000058f0                           : mpeg4vdec_ti_errconceal.obj (.const:MPEG4VDEC_TI_EC_DataSect1)
+                  8e859bb0    0000055c                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DataSect2)
+                  8e85a10c    00000432     TestApp_fileIO.obj (.const:.string)
+                  8e85a53e    00000002     --HOLE-- [fill = 0]
+                  8e85a540    00000376     TestAppDecSupport.obj (.const:.string)
+                  8e85a8b6    00000002     --HOLE-- [fill = 0]
+                  8e85a8b8    00000101     rtsv7M3_T_le_eabi.lib : ctype.obj (.const:.string:_ctypes_)
+                  8e85a9b9    00000007     --HOLE-- [fill = 0]
+                  8e85a9c0    00000098                           : strtod.obj (.const)
+                  8e85aa58    00000098                           : strtold.obj (.const)
+                  8e85aaf0    0000006a     TestAppDecoder.obj (.const:.string)
+                  8e85ab5a    00000002     --HOLE-- [fill = 0]
+                  8e85ab5c    0000003c     TestApp_rmanConfig.obj (.const)
+                  8e85ab98    00000038     TestApp_rmanConfig.obj (.const:IVAHD_memory_wfi)
+                  8e85abd0    00000035     mpeg4vdec_ti_host.lib : mpeg4vdec_ti_control.obj (.const:.string:$P$T0$1)
+                  8e85ac05    00000003     --HOLE-- [fill = 0]
+                  8e85ac08    0000002b     TestAppDecoder.obj (.const:.string:$P$T0$1)
+                  8e85ac33    00000001     --HOLE-- [fill = 0]
+                  8e85ac34    00000026     TestAppDecoder.obj (.const:.string:$P$T1$2)
+                  8e85ac5a    00000002     --HOLE-- [fill = 0]
+                  8e85ac5c    00000020     mpeg4vdec_ti_host.lib : mpeg4vdec_ti_errconceal.obj (.const:MPEG4VDEC_TI_EC_DataSect0)
+                  8e85ac7c    00000020                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DEBUGTRACELEVEL1_DataSect0)
+                  8e85ac9c    00000020                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DEBUGTRACELEVEL2_DataSect0)
+                  8e85acbc    00000020                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT1_DataSect0)
+                  8e85acdc    00000020                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT2_DEBUGTRACELEVEL1_DataSect0)
+                  8e85acfc    00000020                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT2_DEBUGTRACELEVEL2_DataSect0)
+                  8e85ad1c    00000020                           : mpeg4vdec_ti_datatransfer.obj (.const:MPEG4VDEC_TI_ICONT2_DataSect0)
+                  8e85ad3c    00000010     rtsv7M3_T_le_eabi.lib : _scanfi.obj (.const)
+
+.rts_lib   0    8e85ad4c    000047d2     
+                  8e85ad4c    00000e7a     rtsv7M3_T_le_eabi.lib : _printfi.obj (.text)
+                  8e85bbc6    00000002     --HOLE-- [fill = 0]
+                  8e85bbc8    00000930                           : _scanfi.obj (.text)
+                  8e85c4f8    000003d8                           : memory.obj (.text)
+                  8e85c8d0    00000378                           : lowlev.obj (.text)
+                  8e85cc48    000002e4                           : trgdrv.obj (.text)
+                  8e85cf2c    0000020c                           : strtod.obj (.text)
+                  8e85d138    00000208                           : strtold.obj (.text)
+                  8e85d340    000001f4                           : ull_div_t2.obj (.text)
+                  8e85d534    000001e8                           : strtoll.obj (.text)
+                  8e85d71c    000001d4                           : fscanf.obj (.text)
+                  8e85d8f0    000001c0                           : fopen.obj (.text)
+                  8e85dab0    000001b6                           : fd_add_t2.obj (.text)
+                  8e85dc66    00000002     --HOLE-- [fill = 0]
+                  8e85dc68    0000016c                           : strtoull.obj (.text)
+                  8e85ddd4    00000164                           : fwrite.obj (.text)
+                  8e85df38    00000138                           : fgets.obj (.text)
+                  8e85e070    00000136                           : fd_div_t2.obj (.text)
+                  8e85e1a6    00000002     --HOLE-- [fill = 0]
+                  8e85e1a8    00000130                           : fputs.obj (.text)
+                  8e85e2d8    00000130                           : strtol.obj (.text)
+                  8e85e408    00000110                           : strtoul.obj (.text)
+                  8e85e518    000000fc                           : fd_mul_t2.obj (.text)
+                  8e85e614    000000ec                           : fread.obj (.text)
+                  8e85e700    000000cc                           : setvbuf.obj (.text)
+                  8e85e7cc    000000cc                           : sscanf.obj (.text)
+                  8e85e898    000000ac                           : _io_perm.obj (.text)
+                  8e85e944    000000a8                           : fflush.obj (.text)
+                  8e85e9ec    0000009c                           : fputc.obj (.text)
+                  8e85ea88    0000009c                           : memcpy_t2.obj (.text)
+                  8e85eb24    00000094                           : auto_init.obj (.text)
+                  8e85ebb8    00000094                           : fgetc.obj (.text)
+                  8e85ec4c    00000084                           : fclose.obj (.text)
+                  8e85ecd0    00000080                           : ungetc.obj (.text)
+                  8e85ed50    0000007e                           : fd_cmp_t2.obj (.text)
+                  8e85edce    00000002     --HOLE-- [fill = 0]
+                  8e85edd0    00000078                           : _bufread.obj (.text)
+                  8e85ee48    00000078                           : memset_t2.obj (.text)
+                  8e85eec0    00000070                           : printf.obj (.text)
+                  8e85ef30    0000006c                           : fprintf.obj (.text)
+                  8e85ef9c    00000068                           : ftell.obj (.text)
+                  8e85f004    00000064                           : fseek.obj (.text)
+                  8e85f068    00000060                           : trgmsg.obj (.text)
+                  8e85f0c8    0000005e                           : copy_decompress_rle.obj (.text)
+                  8e85f126    00000056                           : ltoa.obj (.text)
+                  8e85f17c    0000004c                           : atoi.obj (.text)
+                  8e85f1c8    0000004a                           : fd_tos_t2.obj (.text)
+                  8e85f212    00000048                           : fd_toi_t2.obj (.text)
+                  8e85f25a    00000002     --HOLE-- [fill = 0]
+                  8e85f25c    00000044                           : cpy_tbl.obj (.text)
+                  8e85f2a0    00000044                           : xdtest.obj (.text)
+                  8e85f2e4    00000040                           : exit.obj (.text)
+                  8e85f324    00000034                           : boot.obj (.text)
+                  8e85f358    00000030                           : strncpy.obj (.text)
+                  8e85f388    0000002e                           : i_tofd_t2.obj (.text)
+                  8e85f3b6    00000002     --HOLE-- [fill = 0]
+                  8e85f3b8    00000024                           : feof.obj (.text)
+                  8e85f3dc    00000022                           : memcmp.obj (.text)
+                  8e85f3fe    0000001a                           : memccpy.obj (.text)
+                  8e85f418    00000018                           : args_main.obj (.text)
+                  8e85f430    00000018                           : ll_mul_t2.obj (.text)
+                  8e85f448    00000018                           : strcmp.obj (.text)
+                  8e85f460    00000018                           : strrchr.obj (.text)
+                  8e85f478    00000016                           : memchr.obj (.text)
+                  8e85f48e    00000016                           : strchr.obj (.text)
+                  8e85f4a4    00000014                           : _lock.obj (.text)
+                  8e85f4b8    00000014                           : strlen.obj (.text)
+                  8e85f4cc    00000012                           : copy_zero_init.obj (.text:decompress:ZI)
+                  8e85f4de    00000012                           : strcpy.obj (.text)
+                  8e85f4f0    0000000e                           : copy_decompress_none.obj (.text:decompress:none)
+                  8e85f4fe    0000000e                           : xdclass.obj (.text)
+                  8e85f50c    00000006                           : copy_decompress_rle.obj (.text:decompress:rle24)
+                  8e85f512    00000002     --HOLE-- [fill = 0]
+                  8e85f514    0000000a     TestAppDecoder.obj (.tramp.main.1)
+
+.text      0    8e85f520    0000469e     
+                  8e85f520    000010c8     TestAppDecoder.obj (.text)
+                  8e8605e8    00000d14     TestApp_fileIO.obj (.text)
+                  8e8612fc    00000854     TestApp_rmanConfig.obj (.text)
+                  8e861b50    00000608     TestApp_bufmanager.obj (.text)
+                  8e862158    000005fc     TestAppDecSupport.obj (.text)
+                  8e862754    000003b0     Testapp_configparser.obj (.text)
+                  8e862b04    00000308     crc0.obj (.text)
+                  8e862e0c    000001bc     tiler.lib : tilerBuf.obj (.text:tiler_init)
+                  8e862fc8    000000f8     fileio.lib : mpeg4vdec_ti_hostAx.obj (.text:HostOpen)
+                  8e8630c0    000000f6     alg_create.obj (.text)
+                  8e8631b6    00000002     --HOLE-- [fill = 0]
+                  8e8631b8    000000ec     fileio.lib : mpeg4vdec_ti_pci.obj (.text:PCIread)
+                  8e8632a4    000000d0                : mpeg4vdec_ti_pci.obj (.text:PCIwrite)
+                  8e863374    000000c4                : mpeg4vdec_ti_ivaClk.obj (.text:dpll_lock_board)
+                  8e863438    000000c2     alg_malloc.obj (.text)
+                  8e8634fa    00000002     --HOLE-- [fill = 0]
+                  8e8634fc    00000090     fileio.lib : mpeg4vdec_ti_hostAx.obj (.text:HostRead)
+                  8e86358c    00000090                : mpeg4vdec_ti_hostAx.obj (.text:HostWrite)
+                  8e86361c    0000008e     mpeg4vdec.obj (.text)
+                  8e8636aa    00000002     --HOLE-- [fill = 0]
+                  8e8636ac    00000084     fileio.lib : mpeg4vdec_ti_ivaClk.obj (.text:Init_IVAHD_Clks)
+                  8e863730    00000064     ivahd_ti_api_vm3.lib : hdvicp20_ti_datamover_host.obj (.text:HDVICP20_TI_DM_Prepare_SL2_TCM)
+                  8e863794    00000060     InterruptVecTable.obj (.text:retain)
+                  8e8637f4    00000057     fileio.lib : mpeg4vdec_ti_pci.obj (.text:PCIopen)
+                  8e86384b    00000001     --HOLE-- [fill = 0]
+                  8e86384c    0000004e                : TestAppFileIoApi.obj (.text:my_fread)
+                  8e86389a    0000004e                : TestAppFileIoApi.obj (.text:my_fwrite)
+                  8e8638e8    0000004a                : mpeg4vdec_ti_hostAx.obj (.text:HostSeek)
+                  8e863932    00000002     --HOLE-- [fill = 0]
+                  8e863934    0000004a                : mpeg4vdec_ti_pci.obj (.text:PCIseek)
+                  8e86397e    00000002     --HOLE-- [fill = 0]
+                  8e863980    00000044     ivahd_ti_api_vm3.lib : hdvicp20_ti_vdma_host.obj (.text:HDVICP20_TI_VDMA_Prepare_Extmem_SL2)
+                  8e8639c4    00000040     fileio.lib : TestAppFileIoApi.obj (.text:my_fopen)
+                  8e863a04    00000040                : TestAppFileIoApi.obj (.text:my_fseek)
+                  8e863a44    0000003c     ivahd_ti_api_vm3.lib : hdvicp20_ti_vdma_host.obj (.text:HDVICP20_TI_VDMA_Open_Extmem_SL2)
+                  8e863a80    0000002c     fileio.lib : mpeg4vdec_ti_hostAx.obj (.text:InitHostFileIO)
+                  8e863aac    0000002a                : TestAppFileIoApi.obj (.text:my_fclose)
+                  8e863ad6    00000002     --HOLE-- [fill = 0]
+                  8e863ad8    00000024                : mpeg4vdec_ti_hostAx.obj (.text:HostClose)
+                  8e863afc    00000020     ivahd_ti_api_vm3.lib : hdvicp20_ti_datamover_host.obj (.text:HDVICP20_TI_DM_WaitForData_SL2_TCM)
+                  8e863b1c    0000001c                          : hdvicp20_ti_datamover_host.obj (.text:HDVICP20_TI_DM_Trigger_SL2_TCM)
+                  8e863b38    00000018                          : hdvicp20_ti_vdma_host.obj (.text:HDVICP20_TI_VDMA_WaitForData_Extmem_SL2)
+                  8e863b50    00000018     fileio.lib : mpeg4vdec_ti_pci.obj (.text:PCIclose)
+                  8e863b68    00000014                : TestAppFileIoApi.obj (.text:my_initFileIO)
+                  8e863b7c    00000010     ivahd_ti_api_vm3.lib : hdvicp20_ti_vdma_host.obj (.text:HDVICP20_TI_VDMA_Trigger_Extmem_SL2)
+                  8e863b8c    0000000e     TestAppProfile.obj (.text)
+                  8e863b9a    0000000c     fileio.lib : mpeg4vdec_ti_pci.obj (.text:PCIwait)
+                  8e863ba6    00000002     --HOLE-- [fill = 0]
+                  8e863ba8    0000000a     mpeg4vdec_ti_host.lib : mpeg4vdec_ti_ires.obj (.tramp.MPEG4VDEC_TI_deactivateResource.1)
+                  8e863bb2    00000002     --HOLE-- [fill = 0]
+                  8e863bb4    0000000a                           : mpeg4vdec_ti_ires.obj (.tramp.MPEG4VDEC_TI_activateResource.1)
+
+.stack     0    8e863bc0    00004000     UNINITIALIZED
+                  8e863bc0    00004000     InterruptVecTable.obj (.stack)
+
+.mpeg4vdec_ti_text 
+*          0    8e867bc0    00003ef4     
+                  8e867bc0    00000c2a     mpeg4vdec_ti_host.lib : mpeg4vdec_ti_decode.obj (.text:MPEG4VDEC_TI_Decode)
+                  8e8687ea    000008e4                           : mpeg4vdec_ti_decsupport.obj (.text:MPEG4VDEC_TI_DisplayPic)
+                  8e8690ce    00000544                           : mpeg4vdec_ti_control.obj (.text:MPEG4VDEC_TI_Control)
+                  8e869612    000004bc                           : mpeg4vdec_ti_decode.obj (.text:MPEG4VDEC_TI_DecodePreProcess)
+                  8e869ace    00000460                           : mpeg4vdec_ti_decode.obj (.text:MPEG4VDEC_TI_AcquireAndConfigureHDVICP2)
+                  8e869f2e    000003fc                           : mpeg4vdec_ti_ialg.obj (.text:MPEG4VDEC_TI_Init)
+                  8e86a32a    00000372                           : mpeg4vdec_ti_decsupport.obj (.text:MPEG4VDEC_TI_FillDecodedBuf)
+                  8e86a69c    0000034b                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_getResourceDescriptors)
+                  8e86a9e7    00000001     --HOLE-- [fill = 0]
+                  8e86a9e8    0000025a                           : mpeg4vdec_ti_datatransfer.obj (.text:MPEG4VDEC_TI_CodeLoadIvaHd)
+                  8e86ac42    00000220                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_initResources)
+                  8e86ae62    00000204                           : mpeg4vdec_ti_errconceal.obj (.text:MPEG4VDEC_TI_ErrorConceal)
+                  8e86b066    000001da                           : mpeg4vdec_ti_control.obj (.text:MPEG4VDEC_TI_Set_Decode_Status)
+                  8e86b240    0000012c                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_deactivateAllResources)
+                  8e86b36c    00000100                           : mpeg4vdec_ti_decode.obj (.text:MPEG4VDEC_TI_TranslateBuffAddr_To_SL2)
+                  8e86b46c    000000f2                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_deactivateResource)
+                  8e86b55e    000000b8                           : mpeg4vdec_ti_errconceal.obj (.text:MPEG4VDEC_TI_ActivateErrorConceal)
+                  8e86b616    0000009a                           : mpeg4vdec_ti_ialg.obj (.text:MPEG4VDEC_TI_Init_Decoder)
+                  8e86b6b0    00000072                           : mpeg4vdec_ti_decsupport.obj (.text:MPEG4VDEC_TI_turnOnClocks_M3Host)
+                  8e86b722    00000070                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_ActivateInternal)
+                  8e86b792    0000006e                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_CallBack_ISR)
+                  8e86b800    0000006e                           : mpeg4vdec_ti_datatransfer.obj (.text:MPEG4VDEC_TI_DataLoadIvaHd)
+                  8e86b86e    00000060                           : mpeg4vdec_ti_ialg.obj (.text:MPEG4VDEC_TI_ResetNewResolutionDecoder)
+                  8e86b8ce    00000046                           : mpeg4vdec_ti_datatransfer.obj (.text:MPEG4VDEC_TI_CopyMBData)
+                  8e86b914    00000044                           : mpeg4vdec_ti_decsupport.obj (.text:MPEG4VDEC_TI_CheckForIVAHDStandby)
+                  8e86b958    00000042                           : mpeg4vdec_ti_ialg.obj (.text:MPEG4VDEC_TI_Free)
+                  8e86b99a    0000003e                           : mpeg4vdec_ti_ialg.obj (.text:MPEG4VDEC_TI_Alloc)
+                  8e86b9d8    0000003a                           : mpeg4vdec_ti_decsupport.obj (.text:MPEG4VDEC_TI_Configure_Mailbox)
+                  8e86ba12    0000003a                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_memcpyDoubleWord)
+                  8e86ba4c    00000028                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_codecParsDeActivate)
+                  8e86ba74    00000022                           : mpeg4vdec_ti_decsupport.obj (.text:MPEG4VDEC_TI_WaitForIVAHDStandby)
+                  8e86ba96    00000006                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_numResourceDescriptors)
+                  8e86ba9c    00000004                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_activateAllResources)
+                  8e86baa0    00000004                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_activateResource)
+                  8e86baa4    00000004                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_deinitResources)
+                  8e86baa8    00000004                           : mpeg4vdec_ti_ialg.obj (.text:MPEG4VDEC_TI_numAlloc)
+                  8e86baac    00000004                           : mpeg4vdec_ti_ires.obj (.text:MPEG4VDEC_TI_reinitResources)
+                  8e86bab0    00000002                           : mpeg4vdec_ti_ialg.obj (.text:MPEG4VDEC_TI_Activate)
+                  8e86bab2    00000002                           : mpeg4vdec_ti_ialg.obj (.text:MPEG4VDEC_TI_Deactivate)
+
+.fileIOSys 
+*          0    8e86bab4    00001160     UNINITIALIZED
+                  8e86bab4    00001160     fileio.lib : mpeg4vdec_ti_hostAx.obj (.fileIOSys)
+
+.data      0    8e86cc14    000006c8     
+                  8e86cc14    000002b8     TestAppDecSupport.obj (.data:sTokenMap)
+                  8e86cecc    000000f0     rtsv7M3_T_le_eabi.lib : defs.obj (.data:_ftable)
+                  8e86cfbc    000000cc                           : lowlev.obj (.data)
+                  8e86d088    00000080     TestApp_fileIO.obj (.data:gErrorStrings)
+                  8e86d108    0000006c     mpeg4vdec_ti_host.lib : impeg4vdec.obj (.data:IMPEG4VDEC_PARAMS)
+                  8e86d174    0000003c                           : impeg4vdec.obj (.data:IMPEG4VDEC_TI_DYNAMICPARAMS)
+                  8e86d1b0    00000038     TestApp_rmanConfig.obj (.data:MPEG4IresHdvicp2_handle)
+                  8e86d1e8    0000002c     mpeg4vdec_ti_host.lib : mpeg4vdec_ti_vt.obj (.data:MPEG4VDEC_TI_IMPEG4VDEC)
+                  8e86d214    00000028                           : mpeg4vdec_ti_ires.obj (.data:MPEG4VDEC_TI_IRES)
+                  8e86d23c    00000024                           : mpeg4vdec_ti_vt.obj (.data:MPEG4VDEC_TI_IALG)
+                  8e86d260    0000001c     TestAppDecoder.obj (.data)
+                  8e86d27c    00000018     mpeg4vdec_ti_host.lib : mpeg4vdec_ti_ires.obj (.data)
+                  8e86d294    00000010     TestApp_fileIO.obj (.data)
+                  8e86d2a4    00000010     rtsv7M3_T_le_eabi.lib : defs.obj (.data)
+                  8e86d2b4    0000000c                           : memory.obj (.data)
+                  8e86d2c0    00000008                           : _lock.obj (.data)
+                  8e86d2c8    00000008                           : exit.obj (.data)
+                  8e86d2d0    00000004                           : errno.obj (.data)
+                  8e86d2d4    00000004                           : fopen.obj (.data)
+                  8e86d2d8    00000004                           : stkdepth_vars.obj (.data)
+
+.cinit     0    8e86d2e0    000004d0     
+                  8e86d2e0    00000476     (.cinit..data.load) [load image, compression = rle]
+                  8e86d756    00000002     --HOLE-- [fill = 0]
+                  8e86d758    0000000c     (__TI_handler_table)
+                  8e86d764    00000004     --HOLE-- [fill = 0]
+                  8e86d768    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  8e86d770    00000008     (.cinit..fileIOSys.load) [load image, compression = zero_init]
+                  8e86d778    00000008     (.cinit..input.load) [load image, compression = zero_init]
+                  8e86d780    00000008     (.cinit..pci_stat.load) [load image, compression = zero_init]
+                  8e86d788    00000028     (__TI_cinit_table)
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 8e86d788 records: 5, size/record: 8, table size: 40
+	.data: load addr=8e86d2e0, load size=00000476 bytes, run addr=8e86cc14, run size=000006c8 bytes, compression=rle
+	.bss: load addr=8e86d768, load size=00000008 bytes, run addr=8e400100, run size=00406d28 bytes, compression=zero_init
+	.fileIOSys: load addr=8e86d770, load size=00000008 bytes, run addr=8e86bab4, run size=00001160 bytes, compression=zero_init
+	.input: load addr=8e86d778, load size=00000008 bytes, run addr=8e000100, run size=00400000 bytes, compression=zero_init
+	.pci_stat: load addr=8e86d780, load size=00000008 bytes, run addr=8c000000, run size=00000008 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 8e86d758 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_rle24
+	index: 2, handler: __TI_decompress_none
+
+
+FAR CALL TRAMPOLINES
+
+callee name               trampoline name
+   callee addr  tramp addr   call addr  call info
+--------------  -----------  ---------  ----------------
+main                      $Tramp$TT$S$$main
+   8e85f521     8e85f514     8e85f428   rtsv7M3_T_le_eabi.lib : args_main.obj (.text)
+MPEG4VDEC_TI_deactivateResource  $Tramp$TT$S$$MPEG4VDEC_TI_deactivateResource
+   8e86b46d     8e863ba8     8e8619ac   TestApp_rmanConfig.obj (.text)
+                             8e861a70   TestApp_rmanConfig.obj (.text)
+MPEG4VDEC_TI_activateResource  $Tramp$TT$S$$MPEG4VDEC_TI_activateResource
+   8e86baa1     8e863bb4     8e861a7e   TestApp_rmanConfig.obj (.text)
+
+[3 trampolines]
+[4 trampoline calls]
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+8e863439   ALG_activate
+8e8630c1   ALG_create
+8e863451   ALG_deactivate
+8e863159   ALG_delete
+8e863469   ALG_exit
+8e86346b   ALG_init
+8e862025   BUFFMGR_DeInit
+8e861f47   BUFFMGR_GetFreeBuffer
+8e861b51   BUFFMGR_Init
+8e861cd5   BUFFMGR_ReInit
+8e861ff5   BUFFMGR_ReleaseAllBuffers
+8e861fad   BUFFMGR_ReleaseBuffer
+8e85f2e5   C$$EXIT
+8e85f093   C$$IO$$
+8e806e08   ChromaBufPtr
+8e806e14   ChromaBufWidth
+8e400100   Chroma_separate
+8e863b8d   ConfigureProfile
+8e863731   HDVICP20_TI_DM_Prepare_SL2_TCM
+8e863b1d   HDVICP20_TI_DM_Trigger_SL2_TCM
+8e863afd   HDVICP20_TI_DM_WaitForData_SL2_TCM
+8e863a45   HDVICP20_TI_VDMA_Open_Extmem_SL2
+8e863981   HDVICP20_TI_VDMA_Prepare_Extmem_SL2
+8e863b7d   HDVICP20_TI_VDMA_Trigger_Extmem_SL2
+8e863b39   HDVICP20_TI_VDMA_WaitForData_Extmem_SL2
+8e86130f   HDVICP_Acquire
+8e8613ab   HDVICP_Configure
+8e861515   HDVICP_Done
+8e861427   HDVICP_Release
+8e8615ad   HDVICP_Reset
+8e8614c3   HDVICP_Wait
+8e861451   HDVICP_reacquireIfOwner
+8e863799   HFHandler
+8e85cedf   HOSTclock
+8e85cea5   HOSTclose
+8e85ce67   HOSTgetenv
+8e85ce0b   HOSTlseek
+8e85cdbb   HOSTopen
+8e85cd6d   HOSTread
+8e85cd0d   HOSTrename
+8e85ccd1   HOSTtime
+8e85cc97   HOSTunlink
+8e85cc49   HOSTwrite
+8e863ad9   HostClose
+8e862fc9   HostOpen
+8e8634fd   HostRead
+8e8638e9   HostSeek
+8e86358d   HostWrite
+8e86d108   IMPEG4VDEC_PARAMS
+8e86d174   IMPEG4VDEC_TI_DYNAMICPARAMS
+8e8612fd   ISR_Function
+8e862645   IVAHD_Standby_power_on_uboot
+8e85ab98   IVAHD_memory_wfi
+8e863a81   InitHostFileIO
+8e8636ad   Init_IVAHD_Clks
+8e806e04   LumaBufPtr
+8e806e10   LumaBufWidth
+8e862449   MEMUTILS_getPhysicalAddr
+8e86d1b0   MPEG4IresHdvicp2_handle
+8e869acf   MPEG4VDEC_TI_AcquireAndConfigureHDVICP2
+8e86bab1   MPEG4VDEC_TI_Activate
+8e86b55f   MPEG4VDEC_TI_ActivateErrorConceal
+8e86b723   MPEG4VDEC_TI_ActivateInternal
+8e86b99b   MPEG4VDEC_TI_Alloc
+8e86b793   MPEG4VDEC_TI_CallBack_ISR
+8e86b915   MPEG4VDEC_TI_CheckForIVAHDStandby
+8e86a9e9   MPEG4VDEC_TI_CodeLoadIvaHd
+8e86b9d9   MPEG4VDEC_TI_Configure_Mailbox
+8e8690cf   MPEG4VDEC_TI_Control
+8e86b8cf   MPEG4VDEC_TI_CopyMBData
+8e86b801   MPEG4VDEC_TI_DataLoadIvaHd
+8e86bab3   MPEG4VDEC_TI_Deactivate
+8e867bc1   MPEG4VDEC_TI_Decode
+8e869613   MPEG4VDEC_TI_DecodePreProcess
+8e8687eb   MPEG4VDEC_TI_DisplayPic
+8e86ae63   MPEG4VDEC_TI_ErrorConceal
+8e86a32b   MPEG4VDEC_TI_FillDecodedBuf
+8e86b959   MPEG4VDEC_TI_Free
+8e86d23c   MPEG4VDEC_TI_IALG
+8e86d1e8   MPEG4VDEC_TI_IMPEG4VDEC
+8e86d214   MPEG4VDEC_TI_IRES
+8e869f2f   MPEG4VDEC_TI_Init
+8e86b617   MPEG4VDEC_TI_Init_Decoder
+8e86b86f   MPEG4VDEC_TI_ResetNewResolutionDecoder
+8e86b067   MPEG4VDEC_TI_Set_Decode_Status
+8e86b36d   MPEG4VDEC_TI_TranslateBuffAddr_To_SL2
+8e86ba75   MPEG4VDEC_TI_WaitForIVAHDStandby
+8e86ba9d   MPEG4VDEC_TI_activateAllResources
+8e86baa1   MPEG4VDEC_TI_activateResource
+8e86ba4d   MPEG4VDEC_TI_codecParsDeActivate
+8e86b241   MPEG4VDEC_TI_deactivateAllResources
+8e86b46d   MPEG4VDEC_TI_deactivateResource
+8e86baa5   MPEG4VDEC_TI_deinitResources
+8e86a69d   MPEG4VDEC_TI_getResourceDescriptors
+8e86ac43   MPEG4VDEC_TI_initResources
+8e86ba13   MPEG4VDEC_TI_memcpyDoubleWord
+8e86baa9   MPEG4VDEC_TI_numAlloc
+8e86ba97   MPEG4VDEC_TI_numResourceDescriptors
+8e86baad   MPEG4VDEC_TI_reinitResources
+8e86b6b1   MPEG4VDEC_TI_turnOnClocks_M3Host
+8e863643   MPEG4VDEC_control
+8e86361d   MPEG4VDEC_create
+8e863675   MPEG4VDEC_decodeFrame
+8e863633   MPEG4VDEC_delete
+8e863641   MPEG4VDEC_exit
+8e8637c3   MemManageHandler
+8e863797   NMIHandler
+8e806e0c   NextBufPtr
+8c000000   PCI_STAT
+8c000004   PCI_STAT_SIZE
+8e863b51   PCIclose
+8e8637f5   PCIopen
+8e8631b9   PCIread
+8e863935   PCIseek
+8e863b9b   PCIwait
+8e8632a5   PCIwrite
+8e806d9e   ParsedHeader
+8e861a77   RMAN_ActivateAllResources
+8e86167d   RMAN_AssignResources
+8e861a69   RMAN_DeactivateAllResources
+8e8619a1   RMAN_FreeResources
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+8e8637a9   SVCallISR
+8e862077   SetPATViewMapBase
+8e86bab4   SharedFileIOSys
+8e861ee3   TestAppMetaDataBuf
+8e860cdf   TestApp_CompareOutputCRCData
+8e860dfd   TestApp_CompareOutputData
+8e8605e9   TestApp_ReadByteStream
+8e8623f1   TestApp_SetDynamicParams
+8e862345   TestApp_SetInitParams
+8e8606bf   TestApp_WriteOutputData
+8e863b91   TestApp_captureTime
+8e86110d   TestApp_checkErr
+8e8610c5   TestApp_errorReport
+8e862529   TestApp_flushCheck
+8e860fa5   TestApp_ioFilePtrInit
+8e860e9d   TestApp_outputDataXfr
+8e862159   TestApp_updateIObufDesc
+8e8634a9   _ALG_allocMemory
+8e86346d   _ALG_freeMemory
+8e85f4ff   _Dclass
+8e85f2a1   _Dtest
+8e86d2d0   _Errno
+8e806a60   __CIOBUF_
+8e867bc0   __STACK_END
+00004000   __STACK_SIZE
+02000000   __SYSMEM_SIZE
+8e86d788   __TI_CINIT_Base
+8e86d7b0   __TI_CINIT_Limit
+8e86d758   __TI_Handler_Table_Base
+8e86d764   __TI_Handler_Table_Limit
+00000001   __TI_args_main
+8e85eb25   __TI_auto_init
+8e85f4f1   __TI_decompress_none
+8e85f50d   __TI_decompress_rle24
+00000000   __TI_static_base__
+8e85f4cd   __TI_zero_init
+8e85ed51   __aeabi_cdcmpeq
+8e85ed51   __aeabi_cdcmple
+8e85f1c9   __aeabi_d2f
+8e85f213   __aeabi_d2iz
+8e85dabb   __aeabi_dadd
+8e85e071   __aeabi_ddiv
+8e85e519   __aeabi_dmul
+8e85dab1   __aeabi_dsub
+8e85f389   __aeabi_i2d
+8e85f431   __aeabi_lmul
+8e85ee49   __aeabi_memclr
+8e85ee49   __aeabi_memclr4
+8e85ee49   __aeabi_memclr8
+8e85ea89   __aeabi_memcpy
+8e85ea89   __aeabi_memcpy4
+8e85ea89   __aeabi_memcpy8
+8e85ee4b   __aeabi_memset
+8e85ee4b   __aeabi_memset4
+8e85ee4b   __aeabi_memset8
+8e86d2b0   __aeabi_stderr
+8e86d2a8   __aeabi_stdin
+8e86d2ac   __aeabi_stdout
+8e85d341   __aeabi_uldivmod
+ffffffff   __binit__
+ffffffff   __c_args__
+8e863bc0   __stack
+8e85f419   _args_main
+8e85edd1   _buff_read
+8e85f325   _c_int00
+8e85d9b9   _cleanup
+8e86d2c8   _cleanup_ptr
+8e85ec4d   _closefile
+8e85a8b8   _ctypes_
+8e85e945   _doflush
+8e86d2cc   _dtors_ptr
+8e86d2a4   _ft_end
+8e86cecc   _ftable
+8e86d2c0   _lock
+8e85f4b3   _nop
+8e85b8bf   _printfi
+8e85e8fb   _rd_ok
+8e85f4ab   _register_lock
+8e85f4a5   _register_unlock
+8e85c021   _scanfi
+8c000100   _sys_memory
+8e806c30   _tmpnams
+8e86d2c4   _unlock
+8e85e899   _wrt_ok
+8e85f2e9   abort
+8e85cbb5   add_device
+8e806d9d   algCreated
+8e804f20   appControlPrms
+8e806d7c   appIvahdId
+8e85f17d   atoi
+ffffffff   binit
+8e86d298   bitMismatchDetected
+8e806b80   buffArray
+8e806d74   buffEle
+8e806d40   bufferDisplayed
+8e806d3c   bufferFreed
+8e806d80   bytesConsumed
+8e85c891   calloc
+8e85cb61   close
+8e806d9c   configStatus
+8e85f25d   copy_in
+8e806d78   countConfigSet
+8e862c4b   crcFast
+8e862d59   crcFastC
+8e862caf   crcFastY
+8e862be1   crcInit
+8e862b59   crcSlow
+8e80576c   crcTable
+8e806d88   decodeMode
+8e806d6c   displayCount
+8e863375   dpll_lock_board
+8e806da0   dynamicParams
+8e85f2f1   exit
+8e806d44   fCycles
+8e806d98   fLogFile
+8e806d5c   fatalErrorDetected
+8e85eca7   fclose
+8e85f3b9   feof
+8e85e991   fflush
+8e85ebb9   fgetc
+8e85e05f   fgets
+8e806d70   fieldBuf
+8e806d4c   filePtrs
+8e85da0f   fopen
+8e85ef39   fprintf
+8e85e9ed   fputc
+8e85e1a9   fputs
+8e806d64   frameCount
+8e86d294   frameSizeOffset
+8e85e615   fread
+8e85c5e7   free
+8e85d9e5   freopen
+8e85d87f   fscanf
+8e85f005   fseek
+8e85ef9d   ftell
+8e85ddd5   fwrite
+8e806de4   gIvahdDoneFlag
+8e806df0   g_cbArgs
+8e806df8   g_fnPtr
+8e806de8   g_handle
+8e85ec37   getc
+8e85ec3b   getchar
+8e85e055   gets
+8e806d8c   inArgs
+8e000100   inputData
+8e805b6c   iresTiledMemoryObjects
+8e806e00   isAcquireCallMade
+8e806de0   ivaCodeLoadDone
+8e85cb13   lseek
+8e85f127   ltoa
+8e85f521   main
+8e86d2d8   main_func_sp
+8e85c585   malloc
+8e85c7bb   memalign
+8e85f3ff   memccpy
+8e85f479   memchr
+8e85f3dd   memcmp
+8e85ea89   memcpy
+8e85ee51   memset
+8e806e1c   metaDataEnable
+8e806e18   metaDataIndex
+8e85c4f9   minit
+8e86363f   mp4VDEC_init
+8e806d48   mpeg4decHandle
+8e863aad   my_fclose
+8e8639c5   my_fopen
+8e86384d   my_fread
+8e863a05   my_fseek
+8e86389b   my_fwrite
+8e863b69   my_initFileIO
+8e806d60   nonFatalErrorDetected
+8e806ddc   numResourcesBackUp
+8e85ca87   open
+8e805e8c   outArgs
+8e8609f5   outputDisplayField
+8e8607c9   outputDisplayFrame
+8e86246d   paramBoundaryCheck
+8e806cd0   params
+8e806860   paramsFile
+8e806d68   picture_count
+8e863b8f   printProfileNums
+8e85eec9   printf
+8e806148   protocolArgsBackUp
+8e85ea73   putc
+8e85ea77   putchar
+8e85e2af   puts
+8e85ca0f   read
+8e85f097   readmsg
+8e862a61   readparamfile
+8e85c6b1   realloc
+8e85c987   remove
+8e85c9e7   remove_device
+8e85c9ab   rename
+8e863795   resetHandler
+8e86cc14   sTokenMap
+8e85d82f   scanf
+8e85e701   setvbuf
+8e85e7df   sscanf
+8e863bc0   stack_base
+8e806404   status
+8e85f48f   strchr
+8e85f449   strcmp
+8e85f4df   strcpy
+8e806d84   streamEnd
+8e85f4b9   strlen
+8e85f359   strncpy
+8e85f461   strrchr
+8e85cf2d   strtod
+8e85e2d9   strtol
+8e85d139   strtold
+8e85d535   strtoll
+8e85e409   strtoul
+8e85dc69   strtoull
+8e86257d   testAppFlushFrames
+8e862089   testAppTilerInit
+8e806644   tilerParams
+8e862e0d   tiler_init
+8e80ce58   uiStaticDeblockAnnexJ
+8e808458   uiStaticDeblockMP4
+8e806e28   uiStaticLseCmds
+8e807258   uiStaticvDmaTableInt
+8e807b58   uiStaticvDmaTableNonInt
+8e85ecd1   ungetc
+8e85c987   unlink
+8e8611a1   updateConfigStatusFile
+00000000   vector_table
+8e85d7ef   vfscanf
+8e85d7b1   vscanf
+8e85e7cd   vsscanf
+8e85c8d1   write
+8e85f069   writemsg
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000000   __TI_static_base__
+00000000   vector_table
+00000001   __TI_args_main
+00004000   __STACK_SIZE
+02000000   __SYSMEM_SIZE
+8c000000   PCI_STAT
+8c000004   PCI_STAT_SIZE
+8c000100   _sys_memory
+8e000100   inputData
+8e400100   Chroma_separate
+8e804f20   appControlPrms
+8e80576c   crcTable
+8e805b6c   iresTiledMemoryObjects
+8e805e8c   outArgs
+8e806148   protocolArgsBackUp
+8e806404   status
+8e806644   tilerParams
+8e806860   paramsFile
+8e806a60   __CIOBUF_
+8e806b80   buffArray
+8e806c30   _tmpnams
+8e806cd0   params
+8e806d3c   bufferFreed
+8e806d40   bufferDisplayed
+8e806d44   fCycles
+8e806d48   mpeg4decHandle
+8e806d4c   filePtrs
+8e806d5c   fatalErrorDetected
+8e806d60   nonFatalErrorDetected
+8e806d64   frameCount
+8e806d68   picture_count
+8e806d6c   displayCount
+8e806d70   fieldBuf
+8e806d74   buffEle
+8e806d78   countConfigSet
+8e806d7c   appIvahdId
+8e806d80   bytesConsumed
+8e806d84   streamEnd
+8e806d88   decodeMode
+8e806d8c   inArgs
+8e806d98   fLogFile
+8e806d9c   configStatus
+8e806d9d   algCreated
+8e806d9e   ParsedHeader
+8e806da0   dynamicParams
+8e806ddc   numResourcesBackUp
+8e806de0   ivaCodeLoadDone
+8e806de4   gIvahdDoneFlag
+8e806de8   g_handle
+8e806df0   g_cbArgs
+8e806df8   g_fnPtr
+8e806e00   isAcquireCallMade
+8e806e04   LumaBufPtr
+8e806e08   ChromaBufPtr
+8e806e0c   NextBufPtr
+8e806e10   LumaBufWidth
+8e806e14   ChromaBufWidth
+8e806e18   metaDataIndex
+8e806e1c   metaDataEnable
+8e806e28   uiStaticLseCmds
+8e807258   uiStaticvDmaTableInt
+8e807b58   uiStaticvDmaTableNonInt
+8e808458   uiStaticDeblockMP4
+8e80ce58   uiStaticDeblockAnnexJ
+8e85a8b8   _ctypes_
+8e85ab98   IVAHD_memory_wfi
+8e85b8bf   _printfi
+8e85c021   _scanfi
+8e85c4f9   minit
+8e85c585   malloc
+8e85c5e7   free
+8e85c6b1   realloc
+8e85c7bb   memalign
+8e85c891   calloc
+8e85c8d1   write
+8e85c987   remove
+8e85c987   unlink
+8e85c9ab   rename
+8e85c9e7   remove_device
+8e85ca0f   read
+8e85ca87   open
+8e85cb13   lseek
+8e85cb61   close
+8e85cbb5   add_device
+8e85cc49   HOSTwrite
+8e85cc97   HOSTunlink
+8e85ccd1   HOSTtime
+8e85cd0d   HOSTrename
+8e85cd6d   HOSTread
+8e85cdbb   HOSTopen
+8e85ce0b   HOSTlseek
+8e85ce67   HOSTgetenv
+8e85cea5   HOSTclose
+8e85cedf   HOSTclock
+8e85cf2d   strtod
+8e85d139   strtold
+8e85d341   __aeabi_uldivmod
+8e85d535   strtoll
+8e85d7b1   vscanf
+8e85d7ef   vfscanf
+8e85d82f   scanf
+8e85d87f   fscanf
+8e85d9b9   _cleanup
+8e85d9e5   freopen
+8e85da0f   fopen
+8e85dab1   __aeabi_dsub
+8e85dabb   __aeabi_dadd
+8e85dc69   strtoull
+8e85ddd5   fwrite
+8e85e055   gets
+8e85e05f   fgets
+8e85e071   __aeabi_ddiv
+8e85e1a9   fputs
+8e85e2af   puts
+8e85e2d9   strtol
+8e85e409   strtoul
+8e85e519   __aeabi_dmul
+8e85e615   fread
+8e85e701   setvbuf
+8e85e7cd   vsscanf
+8e85e7df   sscanf
+8e85e899   _wrt_ok
+8e85e8fb   _rd_ok
+8e85e945   _doflush
+8e85e991   fflush
+8e85e9ed   fputc
+8e85ea73   putc
+8e85ea77   putchar
+8e85ea89   __aeabi_memcpy
+8e85ea89   __aeabi_memcpy4
+8e85ea89   __aeabi_memcpy8
+8e85ea89   memcpy
+8e85eb25   __TI_auto_init
+8e85ebb9   fgetc
+8e85ec37   getc
+8e85ec3b   getchar
+8e85ec4d   _closefile
+8e85eca7   fclose
+8e85ecd1   ungetc
+8e85ed51   __aeabi_cdcmpeq
+8e85ed51   __aeabi_cdcmple
+8e85edd1   _buff_read
+8e85ee49   __aeabi_memclr
+8e85ee49   __aeabi_memclr4
+8e85ee49   __aeabi_memclr8
+8e85ee4b   __aeabi_memset
+8e85ee4b   __aeabi_memset4
+8e85ee4b   __aeabi_memset8
+8e85ee51   memset
+8e85eec9   printf
+8e85ef39   fprintf
+8e85ef9d   ftell
+8e85f005   fseek
+8e85f069   writemsg
+8e85f093   C$$IO$$
+8e85f097   readmsg
+8e85f127   ltoa
+8e85f17d   atoi
+8e85f1c9   __aeabi_d2f
+8e85f213   __aeabi_d2iz
+8e85f25d   copy_in
+8e85f2a1   _Dtest
+8e85f2e5   C$$EXIT
+8e85f2e9   abort
+8e85f2f1   exit
+8e85f325   _c_int00
+8e85f359   strncpy
+8e85f389   __aeabi_i2d
+8e85f3b9   feof
+8e85f3dd   memcmp
+8e85f3ff   memccpy
+8e85f419   _args_main
+8e85f431   __aeabi_lmul
+8e85f449   strcmp
+8e85f461   strrchr
+8e85f479   memchr
+8e85f48f   strchr
+8e85f4a5   _register_unlock
+8e85f4ab   _register_lock
+8e85f4b3   _nop
+8e85f4b9   strlen
+8e85f4cd   __TI_zero_init
+8e85f4df   strcpy
+8e85f4f1   __TI_decompress_none
+8e85f4ff   _Dclass
+8e85f50d   __TI_decompress_rle24
+8e85f521   main
+8e8605e9   TestApp_ReadByteStream
+8e8606bf   TestApp_WriteOutputData
+8e8607c9   outputDisplayFrame
+8e8609f5   outputDisplayField
+8e860cdf   TestApp_CompareOutputCRCData
+8e860dfd   TestApp_CompareOutputData
+8e860e9d   TestApp_outputDataXfr
+8e860fa5   TestApp_ioFilePtrInit
+8e8610c5   TestApp_errorReport
+8e86110d   TestApp_checkErr
+8e8611a1   updateConfigStatusFile
+8e8612fd   ISR_Function
+8e86130f   HDVICP_Acquire
+8e8613ab   HDVICP_Configure
+8e861427   HDVICP_Release
+8e861451   HDVICP_reacquireIfOwner
+8e8614c3   HDVICP_Wait
+8e861515   HDVICP_Done
+8e8615ad   HDVICP_Reset
+8e86167d   RMAN_AssignResources
+8e8619a1   RMAN_FreeResources
+8e861a69   RMAN_DeactivateAllResources
+8e861a77   RMAN_ActivateAllResources
+8e861b51   BUFFMGR_Init
+8e861cd5   BUFFMGR_ReInit
+8e861ee3   TestAppMetaDataBuf
+8e861f47   BUFFMGR_GetFreeBuffer
+8e861fad   BUFFMGR_ReleaseBuffer
+8e861ff5   BUFFMGR_ReleaseAllBuffers
+8e862025   BUFFMGR_DeInit
+8e862077   SetPATViewMapBase
+8e862089   testAppTilerInit
+8e862159   TestApp_updateIObufDesc
+8e862345   TestApp_SetInitParams
+8e8623f1   TestApp_SetDynamicParams
+8e862449   MEMUTILS_getPhysicalAddr
+8e86246d   paramBoundaryCheck
+8e862529   TestApp_flushCheck
+8e86257d   testAppFlushFrames
+8e862645   IVAHD_Standby_power_on_uboot
+8e862a61   readparamfile
+8e862b59   crcSlow
+8e862be1   crcInit
+8e862c4b   crcFast
+8e862caf   crcFastY
+8e862d59   crcFastC
+8e862e0d   tiler_init
+8e862fc9   HostOpen
+8e8630c1   ALG_create
+8e863159   ALG_delete
+8e8631b9   PCIread
+8e8632a5   PCIwrite
+8e863375   dpll_lock_board
+8e863439   ALG_activate
+8e863451   ALG_deactivate
+8e863469   ALG_exit
+8e86346b   ALG_init
+8e86346d   _ALG_freeMemory
+8e8634a9   _ALG_allocMemory
+8e8634fd   HostRead
+8e86358d   HostWrite
+8e86361d   MPEG4VDEC_create
+8e863633   MPEG4VDEC_delete
+8e86363f   mp4VDEC_init
+8e863641   MPEG4VDEC_exit
+8e863643   MPEG4VDEC_control
+8e863675   MPEG4VDEC_decodeFrame
+8e8636ad   Init_IVAHD_Clks
+8e863731   HDVICP20_TI_DM_Prepare_SL2_TCM
+8e863795   resetHandler
+8e863797   NMIHandler
+8e863799   HFHandler
+8e8637a9   SVCallISR
+8e8637c3   MemManageHandler
+8e8637f5   PCIopen
+8e86384d   my_fread
+8e86389b   my_fwrite
+8e8638e9   HostSeek
+8e863935   PCIseek
+8e863981   HDVICP20_TI_VDMA_Prepare_Extmem_SL2
+8e8639c5   my_fopen
+8e863a05   my_fseek
+8e863a45   HDVICP20_TI_VDMA_Open_Extmem_SL2
+8e863a81   InitHostFileIO
+8e863aad   my_fclose
+8e863ad9   HostClose
+8e863afd   HDVICP20_TI_DM_WaitForData_SL2_TCM
+8e863b1d   HDVICP20_TI_DM_Trigger_SL2_TCM
+8e863b39   HDVICP20_TI_VDMA_WaitForData_Extmem_SL2
+8e863b51   PCIclose
+8e863b69   my_initFileIO
+8e863b7d   HDVICP20_TI_VDMA_Trigger_Extmem_SL2
+8e863b8d   ConfigureProfile
+8e863b8f   printProfileNums
+8e863b91   TestApp_captureTime
+8e863b9b   PCIwait
+8e863bc0   __stack
+8e863bc0   stack_base
+8e867bc0   __STACK_END
+8e867bc1   MPEG4VDEC_TI_Decode
+8e8687eb   MPEG4VDEC_TI_DisplayPic
+8e8690cf   MPEG4VDEC_TI_Control
+8e869613   MPEG4VDEC_TI_DecodePreProcess
+8e869acf   MPEG4VDEC_TI_AcquireAndConfigureHDVICP2
+8e869f2f   MPEG4VDEC_TI_Init
+8e86a32b   MPEG4VDEC_TI_FillDecodedBuf
+8e86a69d   MPEG4VDEC_TI_getResourceDescriptors
+8e86a9e9   MPEG4VDEC_TI_CodeLoadIvaHd
+8e86ac43   MPEG4VDEC_TI_initResources
+8e86ae63   MPEG4VDEC_TI_ErrorConceal
+8e86b067   MPEG4VDEC_TI_Set_Decode_Status
+8e86b241   MPEG4VDEC_TI_deactivateAllResources
+8e86b36d   MPEG4VDEC_TI_TranslateBuffAddr_To_SL2
+8e86b46d   MPEG4VDEC_TI_deactivateResource
+8e86b55f   MPEG4VDEC_TI_ActivateErrorConceal
+8e86b617   MPEG4VDEC_TI_Init_Decoder
+8e86b6b1   MPEG4VDEC_TI_turnOnClocks_M3Host
+8e86b723   MPEG4VDEC_TI_ActivateInternal
+8e86b793   MPEG4VDEC_TI_CallBack_ISR
+8e86b801   MPEG4VDEC_TI_DataLoadIvaHd
+8e86b86f   MPEG4VDEC_TI_ResetNewResolutionDecoder
+8e86b8cf   MPEG4VDEC_TI_CopyMBData
+8e86b915   MPEG4VDEC_TI_CheckForIVAHDStandby
+8e86b959   MPEG4VDEC_TI_Free
+8e86b99b   MPEG4VDEC_TI_Alloc
+8e86b9d9   MPEG4VDEC_TI_Configure_Mailbox
+8e86ba13   MPEG4VDEC_TI_memcpyDoubleWord
+8e86ba4d   MPEG4VDEC_TI_codecParsDeActivate
+8e86ba75   MPEG4VDEC_TI_WaitForIVAHDStandby
+8e86ba97   MPEG4VDEC_TI_numResourceDescriptors
+8e86ba9d   MPEG4VDEC_TI_activateAllResources
+8e86baa1   MPEG4VDEC_TI_activateResource
+8e86baa5   MPEG4VDEC_TI_deinitResources
+8e86baa9   MPEG4VDEC_TI_numAlloc
+8e86baad   MPEG4VDEC_TI_reinitResources
+8e86bab1   MPEG4VDEC_TI_Activate
+8e86bab3   MPEG4VDEC_TI_Deactivate
+8e86bab4   SharedFileIOSys
+8e86cc14   sTokenMap
+8e86cecc   _ftable
+8e86d108   IMPEG4VDEC_PARAMS
+8e86d174   IMPEG4VDEC_TI_DYNAMICPARAMS
+8e86d1b0   MPEG4IresHdvicp2_handle
+8e86d1e8   MPEG4VDEC_TI_IMPEG4VDEC
+8e86d214   MPEG4VDEC_TI_IRES
+8e86d23c   MPEG4VDEC_TI_IALG
+8e86d294   frameSizeOffset
+8e86d298   bitMismatchDetected
+8e86d2a4   _ft_end
+8e86d2a8   __aeabi_stdin
+8e86d2ac   __aeabi_stdout
+8e86d2b0   __aeabi_stderr
+8e86d2c0   _lock
+8e86d2c4   _unlock
+8e86d2c8   _cleanup_ptr
+8e86d2cc   _dtors_ptr
+8e86d2d0   _Errno
+8e86d2d8   main_func_sp
+8e86d758   __TI_Handler_Table_Base
+8e86d764   __TI_Handler_Table_Limit
+8e86d788   __TI_CINIT_Base
+8e86d7b0   __TI_CINIT_Limit
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   binit
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+
+[354 symbols]

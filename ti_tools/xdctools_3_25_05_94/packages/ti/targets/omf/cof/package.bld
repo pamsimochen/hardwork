@@ -1,0 +1,40 @@
+/*
+ *  Copyright 2013 by Texas Instruments Incorporated.
+ *
+ */
+
+/*
+ *  ======== package.bld ========
+ *
+ */
+
+Pkg.makeEpilogue = "include custom.mak";
+Pkg.otherFiles = ['cof.h', 'java/package.jar'];
+
+var SOURCES   = ["cof.c", "cof_syms.c", "cof_std.c"];
+
+for (var i = 0; i < Build.targets.length; i++) {
+    var targ = Build.targets[i];
+    
+    if (hostTargets[targ.$name]){
+        if (targ.$name == "microsoft.targets.VC98") {
+            var tilibd = Pkg.addLibrary("lib/debug/cof_ti", targ, {
+                         profile: "debug", suffix: ".lib", defs:"-D_TI_"});
+            tilibd.addObjects(SOURCES);
+
+            var tilibr = Pkg.addLibrary("lib/release/cof_ti", targ, {
+                         profile: "release", suffix: ".lib", defs: "-D_TI_"});
+            tilibr.addObjects(SOURCES);
+        } 
+        else {
+            var tilib = Pkg.addLibrary("lib/cof_ti", targ, {
+                            profile: "debug", defs: "-D_TI_"});
+            tilib.addObjects(SOURCES);
+        }
+    }
+}
+/*
+ *  @(#) ti.targets.omf.cof; 1,0,0,132; 12-20-2013 16:13:27; /db/ztree/library/trees/xdctargets/xdctargets-g41x/src/ xlibrary
+
+ */
+

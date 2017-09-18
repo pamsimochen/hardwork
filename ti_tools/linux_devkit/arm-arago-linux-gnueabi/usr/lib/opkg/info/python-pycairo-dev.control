@@ -1,0 +1,14 @@
+Package: python-pycairo-dev
+Version: 1.8.0-ml5.6
+Description: Python Bindings for the Cairo canvas library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1 MPL-1.1
+Architecture: armv7a
+OE: python-pycairo
+Homepage: http://cairographics.org/pycairo
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: python-pycairo (= 1.8.0-ml5.6), libcairo-dev
+Recommends: libcairo-dev, python-dev, python-pycairo-dev, python-core-dev, libpython2-dev, libc6-dev
+Source: http://cairographics.org/releases/pycairo-1.8.0.tar.gz file://fix-setup-py.patch

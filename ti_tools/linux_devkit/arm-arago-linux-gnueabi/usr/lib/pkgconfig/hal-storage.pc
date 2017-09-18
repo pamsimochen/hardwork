@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: hal-storage
+Description: hal library for storage devices and volumes
+Version: 0.5.15
+Requires: dbus-1 hal
+Libs: -L${libdir} -lhal-storage
+Cflags: -DDBUS_API_SUBJECT_TO_CHANGE -I${includedir}/hal

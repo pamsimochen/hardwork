@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" href="$struct_frame_q_buf_mgr___frame_buf_params___tag.html" title="Frame buffer param structure." alt="" coords="8,9,242,142" />
+<area shape="rect" href="$struct_frame_q_buf_mgr___create_params___tag.html" title="Common parameters required to create FrameQBufMgr instance of any implementation." alt="" coords="266,15,482,135" />
+</map>

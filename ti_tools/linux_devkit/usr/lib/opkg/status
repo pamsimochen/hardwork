@@ -1,0 +1,80 @@
+Package: pkgconfig-sdk
+Version: 0.23-r8.1.6
+Provides:
+Status: install ok installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403096
+Auto-Installed: yes
+
+Package: gcc-cross-sdk
+Version: 4.5.3-r3.6
+Provides:
+Status: install ok installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403106
+Auto-Installed: yes
+
+Package: gdb-cross-sdk
+Version: 7.2-r9.0-arago0.6
+Provides:
+Status: install ok installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403107
+Auto-Installed: yes
+
+Package: signgp-sdk
+Version: 1.0-r4.6
+Provides:
+Status: install ok installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403107
+Auto-Installed: yes
+
+Package: libtool-sdk
+Version: 2.2.6b-r28.1.6
+Provides:
+Status: install ok installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403096
+Auto-Installed: yes
+
+Package: task-arago-toolchain-base-tisdk-host
+Version: 1.0-r0.6
+Depends: task-arago-toolchain-host, signgp-sdk
+Provides:
+Status: install user installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403107
+
+Package: qt4-tools-sdk
+Version: 4.7.2-r3.0-arago2.6
+Provides:
+Status: install user installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343405640
+
+Package: opkg-sdk
+Version: 0.1.8+svnr609-r5-arago2.6
+Provides:
+Status: install ok installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403096
+Auto-Installed: yes
+
+Package: task-arago-toolchain-host
+Version: 1.0-r1.6
+Depends: pkgconfig-sdk, opkg-sdk, libtool-sdk, binutils-cross-sdk, gcc-cross-sdk, gdb-cross-sdk
+Provides:
+Status: install ok installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403096
+Auto-Installed: yes
+
+Package: binutils-cross-sdk
+Version: 2.20.1-r3.6
+Provides:
+Status: install ok installed
+Architecture: i686-armv7a-sdk
+Installed-Time: 1343403098
+Auto-Installed: yes
+

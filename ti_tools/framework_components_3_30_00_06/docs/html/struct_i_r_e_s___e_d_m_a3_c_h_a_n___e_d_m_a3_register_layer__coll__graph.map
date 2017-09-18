@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" href="$struct_i_r_e_s___e_d_m_a3_c_h_a_n___pa_ram_struct.html" title="Representation of actual PaRam hardware registers." alt="" coords="7,9,223,260" />
+<area shape="rect" href="$struct_i_r_e_s___e_d_m_a3_c_h_a_n___e_d_m_a3_shadow_register.html" title="Defines the shadow register part of the EDMA3 CC Register Layer." alt="" coords="247,16,482,253" />
+<area shape="rect" href="$struct_i_r_e_s___e_d_m_a3_c_h_a_n___e_d_m_a3_drae_register.html" title="Defines the Region Enable register part of the EDMA3 CC Register Layer." alt="" coords="506,82,725,186" />
+</map>

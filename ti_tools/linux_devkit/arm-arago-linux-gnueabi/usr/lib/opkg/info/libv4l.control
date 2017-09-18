@@ -1,0 +1,13 @@
+Package: libv4l
+Version: 0.8.1-r0.6
+Description: v4l2 and IR applications
+Section: base
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2/LGPLv2.1
+Architecture: armv7a
+OE: v4l-utils
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: git://linuxtv.org/v4l-utils.git;protocol=git

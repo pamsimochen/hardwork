@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+datarootdir=${prefix}/share
+datadir=/usr/share
+sysconfdir=/etc
+
+Name: gcr
+Description: GObject and GUI library for high level crypto parsing and display
+Version: 2.28.2
+Requires: glib-2.0 gtk+-2.0 libtasn1 gp11-0
+Libs: -L${libdir} -lgcr
+Cflags: -I${includedir}/gcr

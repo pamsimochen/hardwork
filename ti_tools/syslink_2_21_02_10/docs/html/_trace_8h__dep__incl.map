@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" href="$_i_gate_provider_8h.html" title="Interface implemented by all gate providers." alt="" coords="8,84,194,108" />
+<area shape="rect" href="$_i_heap_8h.html" title="Defines Heap based memory allocator." alt="" coords="218,84,360,108" />
+<area shape="rect" href="$_gate_8h.html" title="Critical section support." alt="" coords="33,158,169,182" />
+<area shape="rect" href="$_memory_8h.html" title="Memory manager interface definitions." alt="" coords="212,158,366,182" />
+</map>

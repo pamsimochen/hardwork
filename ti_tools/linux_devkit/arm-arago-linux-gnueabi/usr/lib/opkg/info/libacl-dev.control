@@ -1,0 +1,14 @@
+Package: libacl-dev
+Version: 2.2.49-r5.6
+Description: Commands for Manipulating POSIX Access Control Lists
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: acl
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libacl1 (= 2.2.49-r5.6), libacl1
+Recommends: libattr-dev, libc6-dev, libacl-dev, virtual-locale-gl-dev, virtual-locale-pl-dev, virtual-locale-de-dev, virtual-locale-fr-dev, virtual-locale-sv-dev, virtual-locale-es-dev
+Source: http://mirror.its.uidaho.edu/pub/savannah/acl/acl-2.2.49.src.tar.gz file://nolargefile.patch

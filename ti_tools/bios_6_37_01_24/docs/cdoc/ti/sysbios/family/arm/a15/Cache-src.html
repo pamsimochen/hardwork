@@ -1,0 +1,396 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.family.arm.a15.Cache</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> * Copyright (c) 2013, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Cache.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> */</span>
+    36    
+    37    <span class=key>package</span> ti.sysbios.family.arm.a15;
+    38    
+    39    import xdc.rov.ViewInfo;
+    40    
+    41    import xdc.runtime.Assert;
+    42    
+    43    <span class="xdoc">/*!
+</span>    44    <span class="xdoc"> *  ======== Cache ========
+</span>    45    <span class="xdoc"> *  ARM Cache Module
+</span>    46    <span class="xdoc"> *
+</span>    47    <span class="xdoc"> *  This module manages the data and instruction caches on Cortex A15 
+</span>    48    <span class="xdoc"> *  processors.
+</span>    49    <span class="xdoc"> *  It provides a list of functions that perform cache operations.  The
+</span>    50    <span class="xdoc"> *  functions operate on a per cache line except for the 'All' functions
+</span>    51    <span class="xdoc"> *  which operate on the entire cache specified.  Any Address that is not
+</span>    52    <span class="xdoc"> *  aligned to a cache line gets rounded down to the address of
+</span>    53    <span class="xdoc"> *  the nearest cache line.
+</span>    54    <span class="xdoc"> *
+</span>    55    <span class="xdoc"> *  The L1 data and program caches as well as the L2 cache are enabled 
+</span>    56    <span class="xdoc"> *  by default early during the startup sequence (prior to any 
+</span>    57    <span class="xdoc"> *  Module_startup()s).  
+</span>    58    <span class="xdoc"> *  Data caching requires the MMU to be enabled and the cacheable 
+</span>    59    <span class="xdoc"> *  attribute of the section/page descriptor for a corresponding
+</span>    60    <span class="xdoc"> *  memory region to be enabled.  
+</span>    61    <span class="xdoc"> *  Program caching does not require the MMU to be enabled and therefore 
+</span>    62    <span class="xdoc"> *  occurs when the L1 program cache is enabled.
+</span>    63    <span class="xdoc"> *
+</span>    64    <span class="xdoc"> *  Note: See the {<b>@link</b> ti.sysbios.family.arm.a15.Mmu} module for 
+</span>    65    <span class="xdoc"> *        information about the MMU.
+</span>    66    <span class="xdoc"> *
+</span>    67    <span class="xdoc"> *  Unconstrained Functions
+</span>    68    <span class="xdoc"> *  All functions
+</span>    69    <span class="xdoc"> *
+</span>    70    <span class="xdoc"> *  <b>@p(html)</b>
+</span>    71    <span class="xdoc"> *  &lt;h3&gt; Calling Context &lt;/h3&gt;
+</span>    72    <span class="xdoc"> *  &lt;table border="1" cellpadding="3"&gt;
+</span>    73    <span class="xdoc"> *    &lt;colgroup span="1"&gt;&lt;/colgroup&gt; &lt;colgroup span="5" align="center"&gt;
+</span>    74    <span class="xdoc"> *    &lt;/colgroup&gt;
+</span>    75    <span class="xdoc"> *
+</span>    76    <span class="xdoc"> *    &lt;tr&gt;&lt;th&gt; Function                 &lt;/th&gt;&lt;th&gt;  Hwi   &lt;/th&gt;&lt;th&gt;  Swi   &lt;/th&gt;
+</span>    77    <span class="xdoc"> *    &lt;th&gt;  Task  &lt;/th&gt;&lt;th&gt;  Main  &lt;/th&gt;&lt;th&gt;  Startup  &lt;/th&gt;&lt;/tr&gt;
+</span>    78    <span class="xdoc"> *    &lt;!--                               --&gt;
+</span>    79    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #disable}     &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    80    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    81    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #enable}      &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    82    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    83    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #inv}         &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    84    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    85    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #invL1dAll}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    86    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    87    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #invL1pAll}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    88    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    89    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #wait}        &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    90    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    91    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #wb}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    92    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    93    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #wbInv}       &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    94    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    95    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #wbInvL1dAll} &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    96    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    97    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #wbL1dAll}    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;
+</span>    98    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>    99    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #load}       &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y     &lt;/td&gt;
+</span>   100    <span class="xdoc"> *    &lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   101    <span class="xdoc"> *    &lt;tr&gt;&lt;td colspan="6"&gt; Definitions: &lt;br /&gt;
+</span>   102    <span class="xdoc"> *       &lt;ul&gt;
+</span>   103    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Hwi&lt;/b&gt;: API is callable from a Hwi thread. &lt;/li&gt;
+</span>   104    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Swi&lt;/b&gt;: API is callable from a Swi thread. &lt;/li&gt;
+</span>   105    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Task&lt;/b&gt;: API is callable from a Task thread. &lt;/li&gt;
+</span>   106    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Main&lt;/b&gt;: API is callable during any of these phases: &lt;/li&gt;
+</span>   107    <span class="xdoc"> *           &lt;ul&gt;
+</span>   108    <span class="xdoc"> *             &lt;li&gt; In your module startup after this module is started 
+</span>   109    <span class="xdoc"> *   (e.g. Cache_Module_startupDone() returns TRUE). &lt;/li&gt;
+</span>   110    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.lastFxns. &lt;/li&gt;
+</span>   111    <span class="xdoc"> *             &lt;li&gt; During main().&lt;/li&gt;
+</span>   112    <span class="xdoc"> *             &lt;li&gt; During BIOS.startupFxns.&lt;/li&gt;
+</span>   113    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   114    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Startup&lt;/b&gt;: API is callable during any of these phases:&lt;/li&gt;
+</span>   115    <span class="xdoc"> *           &lt;ul&gt;
+</span>   116    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.firstFxns.&lt;/li&gt;
+</span>   117    <span class="xdoc"> *             &lt;li&gt; In your module startup before this module is started 
+</span>   118    <span class="xdoc"> *   (e.g. Cache_Module_startupDone() returns FALSE).&lt;/li&gt;
+</span>   119    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   120    <span class="xdoc"> *       &lt;/ul&gt;
+</span>   121    <span class="xdoc"> *    &lt;/td&gt;&lt;/tr&gt;
+</span>   122    <span class="xdoc"> *
+</span>   123    <span class="xdoc"> *  &lt;/table&gt;
+</span>   124    <span class="xdoc"> *  <b>@p</b>
+</span>   125    <span class="xdoc"> */</span>
+   126    
+   127    <span class=key>module</span> Cache <span class=key>inherits</span> ti.sysbios.interfaces.ICache
+   128    {
+   129        <span class="xdoc">/*!
+</span>   130    <span class="xdoc">     *  Size of L1 data cache Line in bytes
+</span>   131    <span class="xdoc">     */</span>
+   132        <span class=key>const</span> UInt sizeL1dCacheLine = 64;
+   133    
+   134        <span class="xdoc">/*!
+</span>   135    <span class="xdoc">     *  Size of L1 program cache Line in bytes
+</span>   136    <span class="xdoc">     */</span>
+   137        <span class=key>const</span> UInt sizeL1pCacheLine = 64;
+   138        
+   139        <span class="xdoc">/*!
+</span>   140    <span class="xdoc">     *  Size of L2 cache Line in bytes
+</span>   141    <span class="xdoc">     */</span>
+   142        <span class=key>const</span> UInt sizeL2CacheLine = 64;
+   143    
+   144        <span class="xdoc">/*!
+</span>   145    <span class="xdoc">     *  ======== ModView ========
+</span>   146    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   147    <span class="xdoc">     */</span>
+   148        <span class=key>metaonly</span> <span class=key>struct</span> CacheInfoView {
+   149            String      cache;
+   150            SizeT       cacheSize;
+   151            SizeT       lineSize;
+   152            UInt        ways;
+   153            SizeT       waySize;
+   154        };
+   155    
+   156        <span class="xdoc">/*!
+</span>   157    <span class="xdoc">     *  ======== rovViewInfo ========
+</span>   158    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   159    <span class="xdoc">     */</span>
+   160        @Facet
+   161        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo = 
+   162            ViewInfo.create({
+   163                viewMap: [
+   164                    [<span class="string">'Cache Info'</span>,  { type: ViewInfo.MODULE_DATA,   
+   165                                      viewInitFxn: <span class="string">'viewInitCacheInfo'</span>,  
+   166                                      structName: <span class="string">'CacheInfoView'</span>}]
+   167                ]
+   168            });
+   169    
+   170        <span class="xdoc">/*! Asserted in Cache_lock */</span>
+   171        <span class=key>config</span> Assert.Id A_badBlockLength = {
+   172            msg: <span class="string">"A_badBlockLength: Block length too large. Must be &lt;= L2 way size."</span>
+   173        };
+   174    
+   175        <span class="xdoc">/*! Asserted in Cache_lock */</span>
+   176        <span class=key>config</span> Assert.Id A_blockCrossesPage = {
+   177            msg: <span class="string">"A_blockCrossesPage: Memory block crosses L2 way page boundary."</span>
+   178        };
+   179    
+   180        <span class="xdoc">/*!
+</span>   181    <span class="xdoc">     *  Enable L1 and L2 data and program caches.
+</span>   182    <span class="xdoc">     *
+</span>   183    <span class="xdoc">     *  To enable a subset of the caches, set this parameter
+</span>   184    <span class="xdoc">     *  to 'false' and call Cache_enable() within main, passing it only 
+</span>   185    <span class="xdoc">     *  the {<b>@link</b> Cache#Type Cache_Type(s)} to be enabled.
+</span>   186    <span class="xdoc">     *
+</span>   187    <span class="xdoc">     *  Data caching requires the MMU and the memory section/page
+</span>   188    <span class="xdoc">     *  descriptor cacheable attribute to be enabled.
+</span>   189    <span class="xdoc">     */</span>
+   190        <span class=key>config</span> Bool enableCache = <span class=key>true</span>;
+   191        
+   192        <span class="xdoc">/*!
+</span>   193    <span class="xdoc">     *  Enable Branch Prediction at startup, default is true.
+</span>   194    <span class="xdoc">     *
+</span>   195    <span class="xdoc">     *  This flag controls whether Branch Prediction should be automatically
+</span>   196    <span class="xdoc">     *  enabled or disabled during system startup.
+</span>   197    <span class="xdoc">     *
+</span>   198    <span class="xdoc">     *  <b>@a(NOTE)</b>
+</span>   199    <span class="xdoc">     *  Upon reset, the A15's Program Flow Prediction (Branch Prediction) 
+</span>   200    <span class="xdoc">     *  feature is disabled.
+</span>   201    <span class="xdoc">     */</span>
+   202        <span class=key>config</span> Bool branchPredictionEnabled = <span class=key>true</span>;
+   203        
+   204        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   205    <span class="xdoc">     *  ======== getEnabled ========
+</span>   206    <span class="xdoc">     *  Get the 'type' bitmask of cache(s) enabled.
+</span>   207    <span class="xdoc">     */</span>
+   208        @DirectCall
+   209        Bits16 getEnabled();
+   210    
+   211        <span class="xdoc">/*!
+</span>   212    <span class="xdoc">     *  ======== invL1dAll ========
+</span>   213    <span class="xdoc">     *  Invalidate all of L1 data cache.
+</span>   214    <span class="xdoc">     *
+</span>   215    <span class="xdoc">     *  This function should be used with caution.  In general, the
+</span>   216    <span class="xdoc">     *  L1 data cache may contain some stack variable or valid data
+</span>   217    <span class="xdoc">     *  that should not be invalidated.  This function should be used
+</span>   218    <span class="xdoc">     *  only when all contents of L1 data cache is unwanted.
+</span>   219    <span class="xdoc">     */</span>
+   220        @DirectCall
+   221        Void invL1dAll();
+   222    
+   223        <span class="xdoc">/*!
+</span>   224    <span class="xdoc">     *  ======== invL1pAll ========
+</span>   225    <span class="xdoc">     *  Invalidate all of L1 program cache.
+</span>   226    <span class="xdoc">     */</span>
+   227        @DirectCall
+   228        Void invL1pAll();
+   229     
+   230        <span class="xdoc">/*!
+</span>   231    <span class="xdoc">     *  ======== preLoad ========
+</span>   232    <span class="xdoc">     *  Loads a memory block into the L2 cache.
+</span>   233    <span class="xdoc">     *
+</span>   234    <span class="xdoc">     *  A block of memory is loaded into the L2 cache.
+</span>   235    <span class="xdoc">     *
+</span>   236    <span class="xdoc">     *  The memory block is loaded into cache one L2 cache line at time.
+</span>   237    <span class="xdoc">     *
+</span>   238    <span class="xdoc">     *  The byteCnt argument must be less than or equal to an L2 cache
+</span>   239    <span class="xdoc">     *  size. An assert is generated if this rule is violated.
+</span>   240    <span class="xdoc">     *
+</span>   241    <span class="xdoc">     *  Except for the normal L1 instruction cache behavior 
+</span>   242    <span class="xdoc">     *  during code execution, the L1 instruction cache is
+</span>   243    <span class="xdoc">     *  unaffected by this API.
+</span>   244    <span class="xdoc">     *  The L1 data cache will be temporarily polluted by the contents
+</span>   245    <span class="xdoc">     *  of the referenced memory block.
+</span>   246    <span class="xdoc">     *
+</span>   247    <span class="xdoc">     *  <b>@a(NOTE)</b>
+</span>   248    <span class="xdoc">     *  Interrupts are disabled for the entire time the memory block 
+</span>   249    <span class="xdoc">     *  is being loaded into cache. For this reason, use of this API 
+</span>   250    <span class="xdoc">     *  is probably best at system intialization time 
+</span>   251    <span class="xdoc">     *  (ie: within 'main()').
+</span>   252    <span class="xdoc">     *
+</span>   253    <span class="xdoc">     *  <b>@param(blockPtr)</b> start address of range to be loaded
+</span>   254    <span class="xdoc">     *  <b>@param(byteCnt)</b>  number of bytes to be loaded
+</span>   255    <span class="xdoc">     */</span>
+   256        @DirectCall
+   257        Void preLoad(Ptr blockPtr, SizeT byteCnt);
+   258     
+   259        <span class="xdoc">/*!
+</span>   260    <span class="xdoc">     *  ======== enableBP ========
+</span>   261    <span class="xdoc">     *  Enable Branch Prediction
+</span>   262    <span class="xdoc">     *
+</span>   263    <span class="xdoc">     *  Calling this API will enable branch prediction.
+</span>   264    <span class="xdoc">     *
+</span>   265    <span class="xdoc">     *  <b>@a(NOTE)</b>
+</span>   266    <span class="xdoc">     *  Upon reset, the A15's Program Flow Prediction (Branch Prediction) 
+</span>   267    <span class="xdoc">     *  feature is disabled.
+</span>   268    <span class="xdoc">     */</span>
+   269        @DirectCall
+   270        Void enableBP();
+   271    
+   272        <span class="xdoc">/*!
+</span>   273    <span class="xdoc">     *  ======== disableBP ========
+</span>   274    <span class="xdoc">     *  Disable Branch Prediction
+</span>   275    <span class="xdoc">     *
+</span>   276    <span class="xdoc">     *  Calling this API will disable branch prediction.
+</span>   277    <span class="xdoc">     *
+</span>   278    <span class="xdoc">     *  <b>@a(NOTE)</b>
+</span>   279    <span class="xdoc">     *  Upon reset, the A15's Program Flow Prediction (Branch Prediction) 
+</span>   280    <span class="xdoc">     *  feature is disabled.
+</span>   281    <span class="xdoc">     */</span>
+   282        @DirectCall
+   283        Void disableBP();
+   284    
+   285    <span class=key>internal</span>:
+   286    
+   287        <span class="xdoc">/*!
+</span>   288    <span class="xdoc">     *  ======== startup ========
+</span>   289    <span class="xdoc">     *  startup function to enable cache early during climb-up
+</span>   290    <span class="xdoc">     */</span>
+   291        Void startup();
+   292    
+   293        <span class="xdoc">/*!
+</span>   294    <span class="xdoc">     *  ======== disableD ========
+</span>   295    <span class="xdoc">     *  Disable data cache
+</span>   296    <span class="xdoc">     *
+</span>   297    <span class="xdoc">     *  This function disables the L1 data cache before performing
+</span>   298    <span class="xdoc">     *  a "write back invalidate all" of data and instruction caches.
+</span>   299    <span class="xdoc">     *
+</span>   300    <span class="xdoc">     *  The L2 unified cache cannot be disabled on Cortex-A15.
+</span>   301    <span class="xdoc">     *  Disabling the L1 data cache effectively disables the L2 unified
+</span>   302    <span class="xdoc">     *  cache for all data caching purposes (on the current core in a
+</span>   303    <span class="xdoc">     *  Cortex-A15 multi-core system).
+</span>   304    <span class="xdoc">     */</span>
+   305        Void disableD();
+   306     
+   307        <span class="xdoc">/*!
+</span>   308    <span class="xdoc">     *  ======== disableP ========
+</span>   309    <span class="xdoc">     *  Disable instruction cache
+</span>   310    <span class="xdoc">     *
+</span>   311    <span class="xdoc">     *  This function disables the L1 instruction cache before 
+</span>   312    <span class="xdoc">     *  performing a "invalidate all" of the whole instruction
+</span>   313    <span class="xdoc">     *  cache.
+</span>   314    <span class="xdoc">     *
+</span>   315    <span class="xdoc">     *  The L2 unified cache cannot be disabled on Cortex-A15.
+</span>   316    <span class="xdoc">     *  Disabling the L1 instruction cache effectively disables the
+</span>   317    <span class="xdoc">     *  L2 unified cache for all instruction caching purposes (on
+</span>   318    <span class="xdoc">     *  the current core in a Cortex-A15 multi-core system).
+</span>   319    <span class="xdoc">     */</span>
+   320        Void disableP();
+   321    
+   322        <span class="xdoc">/*!
+</span>   323    <span class="xdoc">     *  ======== enableD ========
+</span>   324    <span class="xdoc">     *  Enable data cache.
+</span>   325    <span class="xdoc">     *
+</span>   326    <span class="xdoc">     *  This function enables the L1 data cache.
+</span>   327    <span class="xdoc">     *
+</span>   328    <span class="xdoc">     *  Enabling the L1 data cache effectively enables the L2 unified
+</span>   329    <span class="xdoc">     *  cache for all data caching purposes (on the current core in a
+</span>   330    <span class="xdoc">     *  Cortex-A15 multi-core system).
+</span>   331    <span class="xdoc">     */</span>
+   332        Void enableD();
+   333    
+   334        <span class="xdoc">/*!
+</span>   335    <span class="xdoc">     *  ======== enableP ========
+</span>   336    <span class="xdoc">     *  Enable instruction cache.
+</span>   337    <span class="xdoc">     *
+</span>   338    <span class="xdoc">     *  This function enables the L1 instruction cache.
+</span>   339    <span class="xdoc">     *
+</span>   340    <span class="xdoc">     *  Enabling the L1 instruction cache effectively enables the
+</span>   341    <span class="xdoc">     *  L2 unified cache for all instruction caching purposes (on
+</span>   342    <span class="xdoc">     *  the current core in a Cortex-A15 multi-core system).
+</span>   343    <span class="xdoc">     *
+</span>   344    <span class="xdoc">     *  If the MMU is disabled and the L1 instruction cache is enabled,
+</span>   345    <span class="xdoc">     *  no new instructions will be cached in the L2 unified cache.
+</span>   346    <span class="xdoc">     *  However, code already cached in the L2 cache will be fetched.
+</span>   347    <span class="xdoc">     */</span>
+   348        Void enableP();
+   349    
+   350        <span class="xdoc">/*!
+</span>   351    <span class="xdoc">     *  ======== invL1d ========
+</span>   352    <span class="xdoc">     *  Invalidates range in L1 data cache.
+</span>   353    <span class="xdoc">     */</span>
+   354        Void invL1d(Ptr blockPtr, SizeT byteCnt, Bool wait);
+   355    
+   356        <span class="xdoc">/*!
+</span>   357    <span class="xdoc">     *  ======== invL1p ========
+</span>   358    <span class="xdoc">     *  Invalidates range in L1 program cache.
+</span>   359    <span class="xdoc">     */</span>
+   360        Void invL1p(Ptr blockPtr, SizeT byteCnt, Bool wait);
+   361    
+   362        <span class="xdoc">/*!
+</span>   363    <span class="xdoc">     *  ======== preFetch ========
+</span>   364    <span class="xdoc">     *  load a block of memory into the L2 cache.
+</span>   365    <span class="xdoc">     */</span>
+   366        Void preFetch(Ptr blockPtr, SizeT byteCnt);
+   367    
+   368        <span class="xdoc">/*!
+</span>   369    <span class="xdoc">     *  ======== getCacheLevelInfo ========
+</span>   370    <span class="xdoc">     *  returns Cache Size Id Register of corresponding Cache level
+</span>   371    <span class="xdoc">     *
+</span>   372    <span class="xdoc">     *  level values
+</span>   373    <span class="xdoc">     *      0 = L1D
+</span>   374    <span class="xdoc">     *      1 = L1P
+</span>   375    <span class="xdoc">     *      2 = L2
+</span>   376    <span class="xdoc">     */</span>
+   377        Bits32 getCacheLevelInfo(UInt level);
+   378    
+   379        Void exit(Int status);
+   380    
+   381        <span class=key>struct</span> Module_State {
+   382            Bits32  l1dInfo;
+   383            Bits32  l1pInfo;
+   384            Bits32  l2Info;
+   385            SizeT   l2WaySize;
+   386        }
+   387    }
+</pre>
+</body></html>

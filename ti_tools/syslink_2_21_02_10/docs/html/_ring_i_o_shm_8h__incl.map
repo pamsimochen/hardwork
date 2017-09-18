@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" href="$_gate_m_p_8h.html" title="Multiple processor gate that provides local and remote context protection." alt="" coords="8,84,114,108" />
+<area shape="rect" href="$_ring_i_o_8h.html" title="RingIO module." alt="" coords="138,84,261,108" />
+<area shape="rect" href="$_sys_link_8h.html" title="This module contains common definitions, types, structures and functions used by SysLink." alt="" coords="136,158,264,182" />
+</map>

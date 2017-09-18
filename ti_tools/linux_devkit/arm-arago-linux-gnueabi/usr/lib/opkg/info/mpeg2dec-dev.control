@@ -1,0 +1,14 @@
+Package: mpeg2dec-dev
+Version: 0.4.0b-r6.6
+Description: Libraries and test programs for decoding mpeg-2 and mpeg-1 video streams
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+
+Architecture: armv7a
+OE: mpeg2dec
+Homepage: http://libmpeg2.sourceforge.net/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: mpeg2dec (= 0.4.0b-r6.6), libmpeg2convert0, libmpeg2-0
+Recommends: libc6-dev, libsm-dev, libuuid-dev, libice-dev, libxv-dev, libxext-dev, libx11-dev, libxcb-dev, libpthread-stubs-dev, libxau-dev, libxdmcp-dev, libsdl-1.2-dev, libts-1.0-dev, libmpeg2-dev, libmpeg2convert-dev
+Source: http://libmpeg2.sourceforge.net/files/mpeg2dec-0.4.0b.tar.gz

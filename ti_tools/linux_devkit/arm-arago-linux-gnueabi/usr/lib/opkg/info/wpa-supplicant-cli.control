@@ -1,0 +1,13 @@
+Package: wpa-supplicant-cli
+Version: 0.7.3+0.8.0-rc-r2-arago2+gitr0+ol_R5.00.18.6
+Description: A Client for Wi-Fi Protected Access (WPA).
+Section: network
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2 | BSD
+Architecture: armv7a
+OE: wpa-supplicant
+Homepage: http://hostap.epitest.fi/wpa_supplicant/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: git://github.com/TI-OpenLink/hostap.git;protocol=git file://defconfig file://defaults-sane file://wpa-supplicant.sh file://wpa_supplicant.conf file://wpa_supplicant.conf-sane file://99_wpa_supplicant file://0001-wpa_supplicant-dbus-AP-Add-support-for-WPS-Internal-.patch;patchdir=.. file://wpa_supplicant.conf file://fi.epitest.hostap.WPASupplicant.service file://fi.w1.wpa_supplicant1.service

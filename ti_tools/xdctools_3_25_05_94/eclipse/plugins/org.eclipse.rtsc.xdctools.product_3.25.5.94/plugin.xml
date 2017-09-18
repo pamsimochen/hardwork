@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin
+    name="XDCtools Target Content"
+    id="org.eclipse.rtsc.xdctools.product_3.25.5.94"
+    version="3.25.5.94"
+    provider-name="Texas Instruments">
+
+    <extension point="org.eclipse.rtsc.xdctools.ui.productInfo">
+        <repository location="../../../packages"/>
+        <docs location="../../../."/>
+        <docs location="../../../docs"/>
+        <docs location="../../../docs/docs.zip"/>
+        <rtscTarget
+             sourceFile="packages/xdc/targetsccs.json"/>
+        <rtscPlatform name="ti.platforms.sim28xx"/>
+        <rtscPlatform name="ti.platforms.simCM3"/>
+        <rtscPlatform name="ti.platforms.evmTCI6484"/>
+        <rtscPlatform name="ti.platforms.evm6678"/>
+        <rtscPlatform name="ti.platforms.evm6614"/>
+        <rtscPlatform name="ti.platforms.evmDA850"/>
+        <rtscPlatform name="ti.platforms.evmDM6437"/>
+        <rtscPlatform name="ti.platforms.simDM8168"/>
+        <rtscPlatform name="ti.platforms.simArctic"/>
+        <rtscPlatform name="ti.platforms.evmTI811X"/>
+        <rtscPlatform name="ti.platforms.evmC6A8149"/>
+        <rtscPlatform name="ti.platforms.load6x"/>
+        <rtscPlatform name="ti.platforms.evm6472"/>
+        <rtscPlatform name="ti.platforms.evmTCI6636K2H"/>
+        <rtscPlatform name="ti.platforms.evm6657"/>
+        <rtscPlatform name="ti.platforms.sim470xx"/>
+        <rtscPlatform name="ti.platforms.gccLM3S9B90RAM"/>
+        <rtscPlatform name="ti.platforms.evmLM3S8962"/>
+        <rtscPlatform name="ti.platforms.evmTCI6630K2L"/>
+        <rtscPlatform name="ti.platforms.ez430_chronos"/>
+        <rtscPlatform name="ti.platforms.ezdsp28235"/>
+        <rtscPlatform name="ti.platforms.evm3530"/>
+        <rtscPlatform name="ti.platforms.evmAM3359"/>
+        <rtscPlatform name="ti.platforms.evmTNETV2685"/>
+        <rtscPlatform name="ti.platforms.tiva"/>
+        <rtscPlatform name="host.platforms.arm"/>
+        <rtscPlatform name="ti.platforms.evmDM365"/>
+        <rtscPlatform name="ti.platforms.stellaris"/>
+        <rtscPlatform name="ti.platforms.evmAM3517"/>
+        <rtscPlatform name="ti.platforms.simKepler"/>
+        <rtscPlatform name="host.platforms.SUN"/>
+        <rtscPlatform name="ti.platforms.evmDRA7XX"/>
+        <rtscPlatform name="ti.platforms.evm6424"/>
+        <rtscPlatform name="ti.platforms.dskTCI6482"/>
+        <rtscPlatform name="ti.platforms.evmTMS570LS20216"/>
+        <rtscPlatform name="ti.platforms.evmAM437X"/>
+        <rtscPlatform name="ti.platforms.evmTMS570"/>
+        <rtscPlatform name="ti.platforms.sim64Pxx"/>
+        <rtscPlatform name="ti.platforms.simTesla"/>
+        <rtscPlatform name="ti.platforms.evmTI813X"/>
+        <rtscPlatform name="host.platforms.PC"/>
+        <rtscPlatform name="ti.platforms.generic"/>
+        <rtscPlatform name="ti.platforms.evmC66AK2E"/>
+        <rtscPlatform name="ti.platforms.control28346"/>
+        <rtscPlatform name="ti.platforms.evmLM3S9B92"/>
+        <rtscPlatform name="ti.platforms.arm"/>
+        <rtscPlatform name="ti.platforms.evmDM8148"/>
+        <rtscPlatform name="ti.platforms.evm6457"/>
+        <rtscPlatform name="ti.platforms.evmOMAPL137"/>
+        <rtscPlatform name="ti.platforms.evmTI816X"/>
+        <rtscPlatform name="ti.platforms.simTCI6608"/>
+        <rtscPlatform name="ti.platforms.msp430"/>
+        <rtscPlatform name="ti.platforms.evmAM3505"/>
+        <rtscPlatform name="ti.platforms.sdp5430"/>
+        <rtscPlatform name="ti.platforms.evmOMAPL138"/>
+        <rtscPlatform name="ti.platforms.tms320x28"/>
+        <rtscPlatform name="ti.platforms.sdp3430"/>
+        <rtscPlatform name="ti.platforms.sim6xxx"/>
+        <rtscPlatform name="ti.platforms.c6000"/>
+        <rtscPlatform name="ti.platforms.evmDA830"/>
+        <rtscPlatform name="ti.platforms.sdp4430"/>
+        <rtscPlatform name="ti.platforms.ezdsp28335"/>
+        <rtscPlatform name="ti.platforms.evm6747"/>
+        <rtscPlatform name="ti.platforms.evm6452"/>
+        <rtscPlatform name="ti.platforms.evmDM355"/>
+        <rtscPlatform name="ti.platforms.concertoC28"/>
+        <rtscPlatform name="ti.platforms.evmTCI6486"/>
+        <rtscPlatform name="ti.platforms.beaglebone"/>
+        <rtscPlatform name="ti.platforms.simVayu"/>
+        <rtscPlatform name="ti.platforms.evmTNETV107X"/>
+        <rtscPlatform name="ti.platforms.ts430F5529"/>
+        <rtscPlatform name="ti.platforms.simTCI6616"/>
+        <rtscPlatform name="ti.platforms.simARP32"/>
+        <rtscPlatform name="ti.platforms.evm6474"/>
+        <rtscPlatform name="ti.platforms.arp32"/>
+        <rtscPlatform name="ti.platforms.control28027"/>
+        <rtscPlatform name="ti.platforms.evmTCI6638K2K"/>
+        <rtscPlatform name="ti.platforms.concertoM3"/>
+        <rtscPlatform name="ti.platforms.exp430F5529"/>
+        <rtscPlatform name="ti.platforms.ez430_rf2500"/>
+        <rtscPlatform name="ti.platforms.evmTCI6488"/>
+        <rtscPlatform name="ti.platforms.evm6748"/>
+        <rtscPlatform name="ti.platforms.control28335"/>
+        <rtscPlatform name="xdc.platform.generic"/>
+        <rtscPlatform name="ti.platforms.evmDM648"/>
+        <rtscPlatform name="ti.platforms.dsk6455"/>
+        <rtscPlatform name="ti.platforms.evmDM8168"/>
+        <rtscPlatform name="ti.platforms.evm6670"/>
+        <rtscPlatform name="ti.platforms.control28069"/>
+        <rtscPlatform name="ti.platforms.evmTI814X"/>
+        <rtscPlatform name="ti.platforms.control28035"/>
+        <rtscPlatform name="ti.platforms.evmTMS570PSF762"/>
+        <rtscPlatform name="ti.platforms.exp430F5438"/>
+        <info
+            installLocation="../../.."
+            productName="XDCtools"
+            versionNumber="3.25.5.94"
+            containsRTSCPlatforms="true"
+        />
+    </extension>
+
+    <extension point="org.eclipse.rtsc.xdctools.model.productView">
+        <productview
+            moduleName="xdc.productview.ProductView"
+         />
+    </extension>
+</plugin>

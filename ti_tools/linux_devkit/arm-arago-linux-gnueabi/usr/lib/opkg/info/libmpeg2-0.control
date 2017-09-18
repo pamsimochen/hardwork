@@ -1,0 +1,13 @@
+Package: libmpeg2-0
+Version: 0.4.0b-r6.6
+Description: Libraries and test programs for decoding mpeg-2 and mpeg-1 video streams
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+
+Architecture: armv7a
+OE: mpeg2dec
+Homepage: http://libmpeg2.sourceforge.net/
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: http://libmpeg2.sourceforge.net/files/mpeg2dec-0.4.0b.tar.gz

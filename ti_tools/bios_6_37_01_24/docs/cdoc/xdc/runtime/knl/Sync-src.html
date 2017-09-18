@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module xdc.runtime.knl.Sync</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* 
+</span>     2    <span class="comment"> *  Copyright (c) 2008 Texas Instruments. All rights reserved. 
+</span>     3    <span class="comment"> *  This program and the accompanying materials are made available under the 
+</span>     4    <span class="comment"> *  terms of the Eclipse Public License v1.0 and Eclipse Distribution License
+</span>     5    <span class="comment"> *  v. 1.0 which accompanies this distribution. The Eclipse Public License is
+</span>     6    <span class="comment"> *  available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
+</span>     7    <span class="comment"> *  Distribution License is available at 
+</span>     8    <span class="comment"> *  http://www.eclipse.org/org/documents/edl-v10.php.
+</span>     9    <span class="comment"> *
+</span>    10    <span class="comment"> *  Contributors:
+</span>    11    <span class="comment"> *      Texas Instruments - initial implementation
+</span>    12    <span class="comment"> * */</span>
+    13    <span class="comment">/*
+</span>    14    <span class="comment"> *  ======== Sync.xdc ========
+</span>    15    <span class="comment"> */</span>
+    16    import xdc.runtime.Error;
+    17    import xdc.runtime.Assert;
+    18    import xdc.runtime.knl.ISync;
+    19    
+    20    <span class="xdoc">/*!
+</span>    21    <span class="xdoc"> *  ======== Sync ========
+</span>    22    <span class="xdoc"> *  Provides synchronization APIs when an ISync.Handle is available
+</span>    23    <span class="xdoc"> *
+</span>    24    <span class="xdoc"> *  The application must first obtain an ISync.Handle. 
+</span>    25    <span class="xdoc"> *  It can get such a handle by directly calling {<b>@link</b> SyncGeneric#create} or 
+</span>    26    <span class="xdoc"> *  {<b>@link</b> SyncSemThread#create}. Then the application can use the generic 
+</span>    27    <span class="xdoc"> *  APIs provided by this module.
+</span>    28    <span class="xdoc"> */</span>
+    29    
+    30    <span class=key>module</span> Sync
+    31    {
+    32        <span class="xdoc">/*!
+</span>    33    <span class="xdoc">     *  ======== WaitStatus ========
+</span>    34    <span class="xdoc">     *  Error codes returned by Sync_wait
+</span>    35    <span class="xdoc">     */</span>
+    36        <span class=key>enum</span> WaitStatus {
+    37            WaitStatus_ERROR = -1,
+    38            WaitStatus_TIMEOUT = 0,
+    39            WaitStatus_SUCCESS = 1
+    40        };
+    41        
+    42        <span class="xdoc">/*!
+</span>    43    <span class="xdoc">     *  ======== WAIT_FOREVER ========
+</span>    44    <span class="xdoc">     *  Used to wait forever
+</span>    45    <span class="xdoc">     */</span>
+    46        <span class=key>const</span> UInt WAIT_FOREVER = ISync.WAIT_FOREVER;
+    47    
+    48        <span class="xdoc">/*!
+</span>    49    <span class="xdoc">     *  ======== NO_WAIT ========
+</span>    50    <span class="xdoc">     *  Used to specify no waiting 
+</span>    51    <span class="xdoc">     */</span>
+    52        <span class=key>const</span> UInt NO_WAIT = ISync.NO_WAIT;
+    53    
+    54        <span class="xdoc">/*!
+</span>    55    <span class="xdoc">     *  ======== Proxy ========
+</span>    56    <span class="xdoc">     *  Platform-specific implementation
+</span>    57    <span class="xdoc">     *
+</span>    58    <span class="xdoc">     *  If ALL `ISync.Handles` were created using the same module 
+</span>    59    <span class="xdoc">     *  (e.g SyncSemProcess), then setting `Proxy` to `SyncSemProcess` and 
+</span>    60    <span class="xdoc">     *  `Sync.Proxy.abstractInstances$` to `false` will improve the
+</span>    61    <span class="xdoc">     *  performance of the `Sync` APIs.
+</span>    62    <span class="xdoc">     */</span>
+    63        <span class=key>proxy</span> Proxy <span class=key>inherits</span> ISync;
+    64    
+    65        <span class="xdoc">/*!
+</span>    66    <span class="xdoc">     *  ======== query ========
+</span>    67    <span class="xdoc">     *  Query for a particular quality
+</span>    68    <span class="xdoc">     *
+</span>    69    <span class="xdoc">     *  FALSE is returned if quality not supported.
+</span>    70    <span class="xdoc">     *
+</span>    71    <span class="xdoc">     *  <b>@param(sync)</b>    sync handle
+</span>    72    <span class="xdoc">     *  <b>@param(qual)</b>    quality
+</span>    73    <span class="xdoc">     *
+</span>    74    <span class="xdoc">     *  <b>@a(returns)</b>     TRUE or FALSE.
+</span>    75    <span class="xdoc">     */</span>
+    76        Bool query(ISync.Handle sync, Int qual);
+    77    
+    78        <span class="xdoc">/*!
+</span>    79    <span class="xdoc">     *  ======== signal ========
+</span>    80    <span class="xdoc">     *  Called at completion of an activity.
+</span>    81    <span class="xdoc">     *
+</span>    82    <span class="xdoc">     *  This function is non-blocking. It is also required that the underlying
+</span>    83    <span class="xdoc">     *  sync be binary in nature.
+</span>    84    <span class="xdoc">     *
+</span>    85    <span class="xdoc">     *  <b>@param(sync)</b>    sync handle
+</span>    86    <span class="xdoc">     */</span>
+    87        Void signal(ISync.Handle sync);
+    88    
+    89        <span class="xdoc">/*!
+</span>    90    <span class="xdoc">     *  ======== wait ========
+</span>    91    <span class="xdoc">     *  Called to wait/poll for completion of an activity.
+</span>    92    <span class="xdoc">     *
+</span>    93    <span class="xdoc">     *  This function can block and typically waits for a semaphore to become
+</span>    94    <span class="xdoc">     *  available.
+</span>    95    <span class="xdoc">     *
+</span>    96    <span class="xdoc">     *  Non-blocking implementations should return {<b>@link</b> #WaitStatus_TIMEOUT}.
+</span>    97    <span class="xdoc">     *
+</span>    98    <span class="xdoc">     *  <b>@param(sync)</b>        sync handle
+</span>    99    <span class="xdoc">     *  <b>@param(timeout)</b>     timeout in microseconds
+</span>   100    <span class="xdoc">     *
+</span>   101    <span class="xdoc">     *  <b>@a(returns)</b>
+</span>   102    <span class="xdoc">     *  <b>@p(blist)</b>
+</span>   103    <span class="xdoc">     *  -{<b>@link</b> #WaitStatus_ERROR} if an error occured.
+</span>   104    <span class="xdoc">     *  -{<b>@link</b> #WaitStatus_TIMEOUT} denotes timeout.
+</span>   105    <span class="xdoc">     *  -{<b>@link</b> #WaitStatus_SUCCESS} semaphore was decremented. 
+</span>   106    <span class="xdoc">     *  <b>@p</b>
+</span>   107    <span class="xdoc">     */</span>
+   108        Int wait(ISync.Handle sync, UInt timeout, Error.Block *eb);
+   109    }
+   110    <span class="comment">/*
+</span>   111    <span class="comment"> *  @(#) xdc.runtime.knl; 1, 0, 0,248; 12-19-2013 19:53:42; /db/ztree/library/trees/xdc/xdc-z63x/src/packages/
+</span>   112    <span class="comment"> */</span>
+   113    
+</pre>
+</body></html>

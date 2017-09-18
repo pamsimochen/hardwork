@@ -1,0 +1,13 @@
+Package: libgdbm3
+Version: 1.8.3-r6.6
+Description: GNU dbm is a set of database routines that use extensible hashing.
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+
+Architecture: armv7a
+OE: gdbm
+Homepage: http://www.gnu.org/software/gdbm/gdbm.html
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libc6 (>= 2.12.2)
+Source: ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.8.3.tar.gz file://makefile.patch file://libtool-mode.patch file://chmod.patch

@@ -1,0 +1,13 @@
+Package: libflac++6
+Version: 1.2.1-r2.3.6
+Description: FLAC is a Free Lossless Audio Codec.
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GFDL-1.2 GPLv2+ LGPLv2.1 BSD
+Architecture: armv7a
+OE: flac
+Homepage: http://flac.sourceforge.net
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libflac8 (>= 1.2.1), libogg0 (>= 1.1.4), libstdc++6 (>= 4.5.3), libc6 (>= 2.12.2), libgcc1 (>= 4.5.3)
+Source: http://downloads.sourceforge.net/flac/flac-1.2.1.tar.gz file://xmms.m4 file://flac-gcc43-fixes.diff;striplevel=0 file://flac-printf-format-fix.diff;striplevel=0

@@ -1,0 +1,6 @@
+/usr/bin/intltool-extract
+/usr/share/intltool/Makefile.in.in
+/usr/bin/intltool-prepare
+/usr/bin/intltool-merge
+/usr/bin/intltoolize
+/usr/bin/intltool-update

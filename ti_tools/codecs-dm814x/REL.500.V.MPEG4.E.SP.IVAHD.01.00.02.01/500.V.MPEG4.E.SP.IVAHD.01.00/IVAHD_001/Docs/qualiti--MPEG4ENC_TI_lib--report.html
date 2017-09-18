@@ -1,0 +1,756 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD><TITLE>Compliance and Performance Test Report</TITLE></HEAD>
+<BODY>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 25pt;
+   padding-right: 25pt;
+   }
+-->
+</STYLE>
+
+<a name="Top of Page"></a>
+
+<TABLE BORDER="1" WIDTH="100%">
+  <TR>
+    <TD COLSPAN="2">
+      <CENTER><FONT SIZE="+2"><B>TMS320 DSP Algorithm Interoperability Standard</B></FONT></CENTER><BR>
+      <CENTER><FONT SIZE="+1"><B>QualiTI <a href="#compliance">Compliance</a> and <a href="#performance">Performance</a> Testing</B></font></CENTER><BR>
+    </TD>
+  </TR>
+  <TR>
+    <TD><B>Date</B></TD><TD>Thu May 02 2013 11:34:44 GMT+0530 (IST)</TD>
+  </TR>
+
+  <TR>
+    <TD><B>Vendor</B></TD><TD>TI</TD>
+  </TR>
+
+  <TR>
+    <TD><B>Algorithm</B></TD><TD>MPEG4ENC</TD>
+  </TR>
+
+  <TR>
+    <TD><B>Architecture</B></TD><TD>470</TD>
+  </TR>
+
+  <TR>
+    <TD><B>TI Compiler</B></TD><TD>false</TD>
+  </TR>
+  
+  <TR>
+    <TD><B>Library Format</B></TD><TD>ELF</TD>
+  </TR>
+  
+  <TR>
+    <TD><B>Compiler Version</B></TD><TD>UNKNOWN</TD>
+  </TR>
+  <TR>
+    <TD><B>Test Execution Log</B></TD><TD><a href="#Compiler Info">Test execution log for compiler info</a></TD>
+  </TR>
+  <TR>
+    <TD COLSPAN="2">
+
+      <B>Algorithm Base Directory:</B><BR>
+
+      &nbsp;&nbsp;&nbsp;F:\Quality_TI\xdais_6_23<BR>
+
+<BR>
+      <B>Algorithm Archive(s):</B><BR>
+
+      &nbsp;&nbsp;&nbsp;mpeg4 enc - 01.00.02.01\Lib\mpeg4venc_ti_host.lib<BR>
+<BR>
+      <B>Header File(s):</B><BR>
+      &nbsp;&nbsp;&nbsp;.\mpeg4 enc - 01.00.02.01\Inc\mpeg4enc_ti.h<BR>
+      &nbsp;&nbsp;&nbsp;.\mpeg4 enc - 01.00.02.01\Inc\impeg4enc.h<BR>
+<BR>
+    </TD>
+
+  </TR>
+
+
+      <TR>
+        <TD COLSPAN="2">
+        <a name=compliance>
+          <FONT SIZE="+1"><BR><br><CENTER><B>Compliance Test Report</B></CENTER><BR><br></font>
+        </a>
+        </TD>
+      </TR>
+
+      <TR>
+        <TD><B>Test Results</B></TD>
+        <td>
+        <font color="#00A000">PASS: 3</font><br>
+        <font color="#FF0000"><B>FAIL: 0</b></font>
+        &nbsp;&nbsp;&nbsp; 
+        
+        <br>
+        Skipped: 0<br>
+        Not apply: 2<br>
+        <b>Total: 5</b><br>
+        </td>
+      </TR>
+      <TR>
+
+        <TD COLSPAN="2">
+            <B>Test Notes</B><BR>
+            &nbsp;&nbsp;&nbsp;This report has been generated with QualiTI Version 6.23 - the XDAIS compliance and performance test suite. <BR><BR>
+
+
+        </TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rules 8, 9 and 10">XDAIS Rules 8, 9, 10: Namespace compliance</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">(Rule 8) All external definitions must be either API identifiers or API and vendor prefixed.<br><br>(Rule 9) All undefined references must refer either to the operations specified in Appendix B (a subset of C runtime support library functions and a subset of the DSP/BIOS HWI API functions), or TI's DSPLIB or IMGLIB functions or other XDAIS-compliant modules.<br><br>(Rule 10) All modules must follow the eXpressDSP naming conventions for those external declarations disclosed to the client.</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Test passed.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rules 8, 9 and 10">XDAIS Rules 8, 9 and 10 execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 12">XDAIS Rule 12: IALG interface implementation</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All algorithms must implement the IALG interface.</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Test passed.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 12">XDAIS Rule 12 execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 13+">XDAIS Rule 13+: correct linker section names</a></b><br><br>
+
+          <B>Report: </B>Test does not apply</font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">Each of the IALG methods implemented by an algorithm must be independently relocatable.<br><br>Additional rule: there should be no non-standard linker sections. (Standard linker sections are: ".cinit", ".switch", ".far", ".text", ".const", ".bss", ".pinit".)</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Currently, this test cannot be run on non-TI compiled libraries.  This rule is not relevant for ARM libraries since sections should be placed properly.<br><BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 13+">XDAIS Rule 13+ execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 25">XDAIS Rule 25: All C6x algorithms must be supplied in little-endian format</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All C6x algorithms must be supplied in little-endian format.</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Test passed.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 25">XDAIS Rule 25 execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 26">XDAIS Rule 26: All static/global data must be far on c6x</a></b><br><br>
+
+          <B>Report: </B>Test does not apply</font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All C6x algorithms must access all static and global data as far data.</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">This test does not apply since this is not a C6x architecture.<br><BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 26">XDAIS Rule 26 execution log</a><br>
+        </TD>
+      </TR>
+      <TR>
+        <TD COLSPAN="2">
+        <a name=performance>
+          <FONT SIZE="+1"><BR><br><CENTER><B>Performance Test Report</B></CENTER><BR><br></font>
+        </a>
+        </TD>
+      </TR>
+
+      <TR>
+        <TD><B>Test Results</B></TD>
+        <td>
+        <font color="#00A000">PASS: 1</font><br>
+        <font color="#FF0000"><B>FAIL: 0</b></font>
+        &nbsp;&nbsp;&nbsp; 
+        
+        <br>
+        Skipped: 0<br>
+        Not apply: 1<br>
+        <b>Total: 2</b><br>
+        </td>
+      </TR>
+      <TR>
+
+        <TD COLSPAN="2">
+            <B>Test Notes</B><BR>
+            &nbsp;&nbsp;&nbsp;This report has been generated with QualiTI Version 6.23 - the XDAIS compliance and performance test suite. <BR><BR>
+
+
+        </TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 20">XDAIS Rule 20: must declare worst-case stack requirements</a></b><br><br>
+
+          <B>Report: </B>Test does not apply</font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All algorithms must characterize their worst-case stack space memory requirements (including alignment).</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Currently, this test cannot be run on non-TI compiled libraries.  The test requires DWARF information that was not detected in this library.  You will need to calculate the worst case stack size using other means and report this in the data sheet.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 20">XDAIS Rule 20 execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rules 21, 22">XDAIS Rules 21, 22: must characterize static data & program memory requirements</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All algorithms must characterize their static data & program memory requirements</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Performance test completed. CODE, DATA & UDATA sections characterized<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rules 21, 22">XDAIS Rules 21, 22 execution log</a><br>
+        </TD>
+      </TR>
+</TABLE>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<a name="Compiler Info">Test execution log for <b>Compiler Info:</b></a><br>
+<PRE>
+Determining compiler info.
+
+Chcking if this library was created with a TI compiler...
+ Running command:&gt; "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none "F:\Quality_TI\xdais_6_23\mpeg4 enc - 01.00.02.01\Lib\mpeg4venc_ti_host.lib" | "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" "&lt;ti_coff&gt;"
+                   (from "C:\Documents and Settings\sreeju-laptop\Local Settings\Temp\qualiti_runcmd_3933876012629693596.sh"
+This library was not  created with a TI compiler.
+
+Attempting to determine library format...
+ Running command:&gt; "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none "F:\Quality_TI\xdais_6_23\mpeg4 enc - 01.00.02.01\Lib\mpeg4venc_ti_host.lib" | "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" -E "&lt;.*coff&gt;|&lt;.*elf&gt;"
+                   (from "C:\Documents and Settings\sreeju-laptop\Local Settings\Temp\qualiti_runcmd_4823413040102443491.sh"
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+  &lt;elf&gt;
+  &lt;/elf&gt;
+The library is in ELF format.
+
+Attempting to determine the compiler version...
+ Running command:&gt; "find.exe" "GCC:" "F:\Quality_TI\xdais_6_23\mpeg4 enc - 01.00.02.01\Lib\mpeg4venc_ti_host.lib"|"F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" "GCC:"
+                   (from "C:\Documents and Settings\sreeju-laptop\Local Settings\Temp\qualiti_runcmd_9084486343300314322.sh"
+  File not found - GCC:
+The compiler is UNKNOWN.
+
+</PRE>
+<a href="#Top of Page">back</a><br>
+<hr>
+<a name="log XDAIS Rules 8, 9 and 10">Test execution log for <b>XDAIS Rules 8, 9 and 10:</b></a><br>
+<PRE>
+Running test 'XDAIS Rules 8, 9 and 10'
+Extracting names of global symbols defined by the algorithm...
+ Running command:&gt; "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\nm6x.exe" -g "F:\Quality_TI\xdais_6_23\mpeg4 enc - 01.00.02.01\Lib\mpeg4venc_ti_host.lib" | "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" " [TBCU] "
+                   (from "C:\Documents and Settings\sreeju-laptop\Local Settings\Temp\qualiti_runcmd_3081272309620093218.sh"
+  00000001 T MP4VENC_TI_FillCaptureBuffer
+  00000001 T MP4VENC_TI_GetCaptureBuffer
+  00000001 T MP4VENC_TI_IsEmpty
+  00000001 T MP4VENC_TI_IsFull
+  00000001 T MPEG4ENC_TI_CaptureBufferInit
+  00000000 U MPEG4ENC_TI_Activate
+  00000000 U MPEG4ENC_TI_Deactivate
+  00000000 U MPEG4ENC_TI_alloc
+  00000000 U MPEG4ENC_TI_control
+  00000000 U MPEG4ENC_TI_encode
+  00000000 U MPEG4ENC_TI_free
+  00000000 U MPEG4ENC_TI_initObj
+  00000000 U MPEG4ENC_TI_numAlloc
+  00000000 U MP4VENC_TI_CheckForIVAHDStandby
+  00000001 T MPEG4ENC_TI_Activate
+  00000000 U MPEG4ENC_TI_CpyDynamicParamstoHandle
+  00000000 U MPEG4ENC_TI_DYNAMICPARAMS
+  00000001 T MPEG4ENC_TI_Deactivate
+  00000000 U MPEG4ENC_TI_PARAMS
+  00000000 U MPEG4ENC_TI_ReleaseHDVICP2
+  00000000 U MPEG4ENC_TI_ValidateCreateParams
+  00000000 U MPEG4ENC_TI_ValidateEncodeParams
+  00000001 T MPEG4ENC_TI_alloc
+  00000001 T MPEG4ENC_TI_control
+  00000000 U MPEG4ENC_TI_deactivateResource
+  00000001 T MPEG4ENC_TI_free
+  00000001 T MPEG4ENC_TI_init
+  00000001 T MPEG4ENC_TI_initObj
+  00000001 T MPEG4ENC_TI_numAlloc
+  00000001 T MPEG4ENC_TI_reset
+  00000000 U MPEG4ENC_TI_turnOnAllClocks
+  00000000 U memcpy
+  00000000 U strncpy
+  00000000 U MEMUTILS_getPhysicalAddr
+  00000000 U MPEG4ENC_TI_ActivateHDVICP2
+  00000001 T MPEG4ENC_TI_ActivateInternal
+  00000001 T MPEG4ENC_TI_BootHDVICP
+  00000000 U MPEG4ENC_TI_DeActivateHDVICP2
+  00000001 T MPEG4ENC_TI_HDVICP2_ISR
+  00000000 U MPEG4ENC_TI_UpdateSL2
+  00000000 U MPEG4ENC_TI_WaitForIVAHDStandby
+  00000001 T MPEG4ENC_TI_activateAllResources
+  00000001 T MPEG4ENC_TI_activateResource
+  00000000 U MPEG4ENC_TI_dataTransfer
+  00000001 T MPEG4ENC_TI_deactivateAllResources
+  00000001 T MPEG4ENC_TI_deactivateResource
+  00000001 T MPEG4ENC_TI_deinitResources
+  00000001 T MPEG4ENC_TI_getResourceDescriptors
+  00000001 T MPEG4ENC_TI_initResources
+  00000001 T MPEG4ENC_TI_numResourceDescriptors
+  00000001 T MPEG4ENC_TI_reinitResources
+  00000000 U HDVICP20_TI_DM_Prepare_SL2_TCM
+  00000000 U HDVICP20_TI_DM_Trigger_SL2_TCM
+  00000000 U HDVICP20_TI_DM_WaitForData_SL2_TCM
+  00000000 U HDVICP20_TI_VDMA_Open_Extmem_SL2
+  00000000 U HDVICP20_TI_VDMA_Prepare_Extmem_SL2
+  00000000 U HDVICP20_TI_VDMA_Trigger_Extmem_SL2
+  00000000 U HDVICP20_TI_VDMA_WaitForData_Extmem_SL2
+  00000000 U MEMUTILS_getPhysicalAddr
+  00000001 T MP4VENC_TI_CheckForIVAHDStandby
+  00000000 U MP4VENC_TI_FillCaptureBuffer
+  00000000 U MP4VENC_TI_GetCaptureBuffer
+  00000000 U MP4VENC_TI_IsEmpty
+  00000001 T MP4VENC_TI_Poll_Icont1_for_FrameEncodeCompletion
+  00000001 T MP4VENC_TI_Set_Icont1_for_FrameEncodeStart
+  00000001 T MPEG4ENC_TI_ActivateHDVICP2
+  00000000 U MPEG4ENC_TI_BootHDVICP
+  00000001 T MPEG4ENC_TI_Configure_Mailbox
+  00000001 T MPEG4ENC_TI_DSFixedLengthInterface
+  00000001 T MPEG4ENC_TI_DSFixedRowsInterface
+  00000001 T MPEG4ENC_TI_DSSliceModeInterface
+  00000001 T MPEG4ENC_TI_DeActivateHDVICP2
+  00000001 T MPEG4ENC_TI_DecideBufferToProcess
+  00000001 T MPEG4ENC_TI_EarlyExit
+  00000001 T MPEG4ENC_TI_GetBufferInterface
+  00000000 U MPEG4ENC_TI_HDVICP2_ISR
+  00000000 U MPEG4ENC_TI_LSECmdTable
+  00000000 U MPEG4ENC_TI_MBInfoTable
+  00000000 U MPEG4ENC_TI_MEFastME01PFrame1MVAlgo
+  00000000 U MPEG4ENC_TI_MEFastME01PFrame4MVAlgo
+  00000000 U MPEG4ENC_TI_RecNonDeterministicDescriptors
+  00000001 T MPEG4ENC_TI_ReleaseHDVICP2
+  00000001 T MPEG4ENC_TI_TransferAnalyticInfo
+  00000001 T MPEG4ENC_TI_UpdateSL2
+  00000001 T MPEG4ENC_TI_WaitForIVAHDStandby
+  00000001 T MPEG4ENC_TI_dataTransfer
+  00000001 T MPEG4ENC_TI_encode
+  00000001 T MPEG4ENC_TI_turnOffAllClocks
+  00000001 T MPEG4ENC_TI_turnOnAllClocks
+  00000000 U memcpy
+  00000000 U memset
+  00000001 T MPEG4ENC_TI_CpyDynamicParamstoHandle
+  00000000 U MPEG4ENC_TI_DYNAMICPARAMS
+  00000001 T MPEG4ENC_TI_GetLevelLimitParams
+  00000000 U MPEG4ENC_TI_PARAMS
+  00000001 T MPEG4ENC_TI_ValidateCreateParams
+  00000001 T MPEG4ENC_TI_ValidateEncodeParams
+  00000001 T MPEG4ENC_TI_ValidateInterCodingParams
+  00000001 T MPEG4ENC_TI_ValidateRateControlParams
+  00000001 T MPEG4ENC_TI_ValidateSliceCodingParams
+  00000000 U memcpy
+Verifying that all global symbols are named XXX_TI_xxx ...
+and that no blacklisted external references are made
+
+</PRE>
+<a href="#XDAIS Rules 8, 9 and 10">back</a>
+<hr>
+<a name="log XDAIS Rule 12">Test execution log for <b>XDAIS Rule 12:</b></a><br>
+<PRE>
+Running test 'XDAIS Rule 12'
+Extracting names of global BSS data symbols...
+ Running command:&gt; "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\nm6x.exe" -g "F:\Quality_TI\xdais_6_23\mpeg4 enc - 01.00.02.01\Lib\mpeg4venc_ti_host.lib" | "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" " [BD] "
+                   (from "C:\Documents and Settings\sreeju-laptop\Local Settings\Temp\qualiti_runcmd_3279759247729572623.sh"
+  00000000 D MPEG4ENC_TI_DYNAMICPARAMS
+  00000000 D MPEG4ENC_TI_PARAMS
+  00000000 D __TI_DW.debug_info.$base_types.d7ccefc0429ac195d089e6c4aa0427a0
+  00000000 D __TI_DW.debug_info...\..\..\..\inc\impeg4enc.h.0582af814e08123663cac2a1b7ddf6ca
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/dm/ividenc2.h.abcde80e6bdf6e766ca15bda6c610d77
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/xdas.h.711bb2d105941c1ecd63bf9ab17e399b
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\xdm.h.83da4dfc92430b83be17c4a4bc6eb2df
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_soc\tistdtypes.h.5484bf0151232dfd1bed832629963aac
+  00000000 D MPEG4ENC_TI_MEFastME01PFrame4MVAlgo
+  00000000 D __TI_DW.debug_info.$base_types.4a215ca0c6557155347a216754eeb0ea
+  00000000 D MPEG4ENC_TI_MEFastME01PFrame1MVAlgo
+  00000000 D __TI_DW.debug_info.$base_types.4a215ca0c6557155347a216754eeb0ea
+  00000000 D __TI_DW.debug_info.$base_types.21763a213e2795423dd83c1124a08350
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\GenericComDataType.h.fe9b0d49041c6f40bcd701b855be7a2e
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_inbuf_control.h.67be62e149330200e106c2b39daa6814
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/xdas.h.a136cd4118c347b7dddbb3f33c7225c0
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\ivideo.h.6e576656035da708d09033e81a18d340
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\xdm.h.746ef29ba109c3268be130ace5114aa5
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_soc\tistdtypes.h.f32b61f8d8735099d69f47d47c6c29a9
+  00000000 D MPEG4ENC_TI_LSECmdTable
+  00000000 D __TI_DW.debug_info.$base_types.4a215ca0c6557155347a216754eeb0ea
+  00000000 D MPEG4ENC_TI_MBInfoTable
+  00000000 D __TI_DW.debug_info.$base_types.4a215ca0c6557155347a216754eeb0ea
+  00000000 D MPEG4ENC_TI_RecNonDeterministicDescriptors
+  00000000 D __TI_DW.debug_info.$base_types.4a215ca0c6557155347a216754eeb0ea
+  00000000 D MPEG4ENC_TI_IALG
+  00000000 D MPEG4ENC_TI_IMPEG4ENC
+  00000000 D __TI_DW.debug_info.$base_types.d7ccefc0429ac195d089e6c4aa0427a0
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/dm/ividenc2.h.45e9430fffba7da5a2fef99c1b60ec12
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/ialg.h.e9d2ef01e8e8dc1d6e3c3af48d9229f8
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/xdas.h.e871a64bef58c44847ef0eb7cde3fcb5
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\ivideo.h.4c1dbf5f529e153e4e7197cffcd484d2
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\xdm.h.79e5837d21580b7a42c33bb37c35bcda
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_soc\tistdtypes.h.69fd2094f78dfc29f8b3f74f4fd03cc8
+  00000000 D __TI_DW.debug_info.$base_types.d0cddc0a638320a93f6a410ac9dedebc
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\GenericComDataType.h.9e435737f444951245d91ed4f6812771
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_inbuf_control.h.da1e686d6189d2b357f740d4b8fe293f
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_priv.h.257650314480eeb13eda3b38bbb80133
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormatMpeg4EIvahd.h.fef1a08813ba24d5b012bfbac84223df
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_data_synch.h.937aff124519e3ab87715519bbaf017c
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_h263_interface.h.263c213235a80f58d8703fe4dc37f83f
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_mp4_interface.h.f459a8458ce3dd1a77b40ab721ffe2b5
+  00000000 D __TI_DW.debug_info...\..\..\..\inc\impeg4enc.h.923e5222ebec8f879d68cb0c51f4a1d6
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/dm/ividenc2.h.3e482c3fb852fb9e56ddaef55eb83527
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/ialg.h.4a99c8e9ea569cd401ba55e8d93e9dd4
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/ires.h.4e50ef0f8af3895116a6afa0e3230fc4
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/xdas.h.5b91d2b60b734504957e62d29c680fb0
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\xdm.h.2c212f8caeb2752dfe0546c8c1c4aa87
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\ires_common.h.c9c8117677e310b2609f6c3f81bfc44a
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\packages\ti/sdo/fc/ires/hdvicp/ires_hdvicp2.h.d8c37dca9ed2076a2e3e580f61760c40
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\packages\ti/sdo/fc/ires/tiledmemory/ires_tiledmemory.h.9bff6f9a805966b67bf5afda9793e95c
+  00000000 D __TI_DW.debug_info.F:\CGT_5.0.3\include\string.h.54c23b1129e0b4aad0f3919b3305edcd
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_soc\tistdtypes.h.faa3aef9631a0ac04e3230c710b0899c
+  00000000 D ps32LevelLimitTab
+  00000000 D MPEG4ENC_TI_IRES
+  00000000 D __TI_DW.debug_info.$base_types.d0cddc0a638320a93f6a410ac9dedebc
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\GenericComDataType.h.65ab4a68d1d9775810da4f728b04b1e6
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_debugtrace.h.46ffb4e0c7ab0a39b2271dcfc420814d
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_inbuf_control.h.da1e686d6189d2b357f740d4b8fe293f
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_priv.h.a523edfcab8d7e61be144f11f4186122
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormat.h.8c5641dc6ef433a8725886988475b473
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormatIME.h.3b926b980d1365f745332f3f9907903e
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormatMpeg4.h.47682c6de3687ad756b68a6850e24a77
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormatMpeg4EIvahd.h.4538270db4d6f8201c20ff5fb8cab7c0
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\ipeFormat.h.efa4b9116d58bbe33ed807c010a64fc8
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mcFormat.h.6a06b0f605c1ca11e05d3cbc637af7a4
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_data_synch.h.c0b84e1b605000b37aec02927f87e3a0
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_h263_interface.h.263c213235a80f58d8703fe4dc37f83f
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_mp4_interface.h.9ac6432cee2b4645b6894224e29e944d
+  00000000 D __TI_DW.debug_info...\..\..\..\inc\impeg4enc.h.0582af814e08123663cac2a1b7ddf6ca
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/dm/ividenc2.h.abcde80e6bdf6e766ca15bda6c610d77
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/ires.h.4b26814631a64ad2fac7a3f2a85d2141
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/xdas.h.0b118b0e335f14355ebf7b7a5d6014d8
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\xdm.h.83da4dfc92430b83be17c4a4bc6eb2df
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\ialg.h.48ebcc812a448e59c317627cac39e268
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\ires_common.h.65daa92314de536674e9260e5b7832d5
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\packages\ti/sdo/fc/ires/hdvicp/ires_hdvicp2.h.b4076fa8605dc26f24c35782a71fda0c
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\packages\ti/sdo/fc/ires/tiledmemory/ires_tiledmemory.h.459326e9740f40d7d12ac196db584199
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_ivahd\cslr_mlb.h.1d8d1323f7df84694bbc031f54c57480
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_soc\tistdtypes.h.f952271cf97bc481a7fcff36efbf5ee5
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\HDVICP2.0\inc\hdvicp20_ti_vdma.h.067c03075278dfb6252d5981f70bd987
+  00000000 D __TI_DW.debug_info.$base_types.d0cddc0a638320a93f6a410ac9dedebc
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\GenericComDataType.h.c55e779d3ea94239b724f314890d9693
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_debugtrace.h.46ffb4e0c7ab0a39b2271dcfc420814d
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_ialg.h.39c4fa8dffd50e1e075965fe2b161da9
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_inbuf_control.h.986ce42e9cbb3a5e0819d42393138618
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_priv.h.ee66c3e0171e16946022f1bc28ae04e7
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormat.h.550b199fd8db57d56e46cd631d7be5cc
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormatIME.h.6d2d2badb999a0947265aeff2093bff4
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormatMpeg4.h.9240d2cdcf53601969e478c64a7af69f
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormatMpeg4EIvahd.h.83fbcfb82bf6c70d42673fefd9d82c5f
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\ipeFormat.h.dfdd0369f31293cc1a8e738418e11e91
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mcFormat.h.891cf95e0d53b2099ad3b3980bd58d4f
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_data_synch.h.36dbab420a46338949bd1da401478a38
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_h263_interface.h.263c213235a80f58d8703fe4dc37f83f
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_mp4_interface.h.8934567d7cc14ad605874d364e015a60
+  00000000 D __TI_DW.debug_info...\..\..\..\inc\impeg4enc.h.5c384ef17cb73c571af91a5692b63534
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/dm/ividenc2.h.9dd8f52be2cfdd17c78fc13a8821555d
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/ialg.h.6767c0a1c6c239d5d71fc8584e5ed081
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/ires.h.493703e0ac9a3ebe003c72f3ae26148d
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/xdas.h.775a67e703af2efab178f06a06b4a888
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\ivideo.h.0d17c5b0108c8c43c32623b28b4fffef
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\xdm.h.dbb3a429ff494d0b0134bfd466576236
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\ires_common.h.2a0c4c20659e5f9c975b89cdcdea600a
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\packages\ti/sdo/fc/ires/hdvicp/ires_hdvicp2.h.b4076fa8605dc26f24c35782a71fda0c
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\packages\ti/sdo/fc/ires/tiledmemory/ires_tiledmemory.h.9bff6f9a805966b67bf5afda9793e95c
+  00000000 D __TI_DW.debug_info.F:\CGT_5.0.3\include\string.h.54c23b1129e0b4aad0f3919b3305edcd
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_ivahd\cslr_calc3_ipgw.h.0a3936dc96fb91decd1eb4d1ddeebe50
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_ivahd\cslr_ecd3_ipgw.h.8623ec105007f49377f00dd56a81f272
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_ivahd\cslr_ilf3.h.4609046a77d9e6cf71118eb02923c564
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_ivahd\cslr_ipe3_ipgw.h.dd80b42f7c46c7d25275e62b35a81ce5
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_ivahd\cslr_mc3_ipgw.h.8e72abcb6a94b138b3032f58ab095b2c
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_ivahd\cslr_mlb.h.dc6ecc21054c6a8d522a01aff51340d8
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_ivahd\cslr_sysctrl.h.f4fe6dcc4988de2ddb52b39bdcd544b0
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_soc\tistdtypes.h.5d02aa55bff9da071fa2ac33b4f00380
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\HDVICP2.0\inc\hdvicp20_ti_vdma.h.067c03075278dfb6252d5981f70bd987
+  00000000 D __TI_DW.debug_info.$base_types.d0cddc0a638320a93f6a410ac9dedebc
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\GenericComDataType.h.fe9b0d49041c6f40bcd701b855be7a2e
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_inbuf_control.h.e4ec184bc4473b90528ff987efeb436d
+  00000000 D __TI_DW.debug_info...\..\..\..\algsrc\inc\mpeg4enc_ti_priv.h.44a87d8544c1c9375f3f64afc5f7eece
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\dataFormatMpeg4EIvahd.h.9670744270b62cda2a53eb371e354fa9
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_data_synch.h.d6ecf32ba6a2c091b1a511ff50fb1c12
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_h263_interface.h.263c213235a80f58d8703fe4dc37f83f
+  00000000 D __TI_DW.debug_info...\..\..\..\icont\inc\mpeg4enc_ti_mp4_interface.h.c1adeafa420a681e3aa2c26ac23aa633
+  00000000 D __TI_DW.debug_info...\..\..\..\inc\impeg4enc.h.0582af814e08123663cac2a1b7ddf6ca
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/dm/ividenc2.h.abcde80e6bdf6e766ca15bda6c610d77
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti/xdais/xdas.h.711bb2d105941c1ecd63bf9ab17e399b
+  00000000 D __TI_DW.debug_info.D:\rtsc\framework_components_3_20_00_22\fctools\packages\ti\xdais\dm\xdm.h.83da4dfc92430b83be17c4a4bc6eb2df
+  00000000 D __TI_DW.debug_info.F:\CGT_5.0.3\include\string.h.54c23b1129e0b4aad0f3919b3305edcd
+  00000000 D __TI_DW.debug_info.F:\VC-1_Decoder_IVA-HD\Work_Space\CSP\csl_soc\tistdtypes.h.5484bf0151232dfd1bed832629963aac
+Verifying that objects 'MPEG4ENC_TI_IALG' and 'MPEG4ENC_TI_IMPEG4ENC' are defined...
+Data object 'MPEG4ENC_TI_IALG' found.
+Data object 'MPEG4ENC_TI_IMPEG4ENC' found.
+
+</PRE>
+<a href="#XDAIS Rule 12">back</a>
+<hr>
+<a name="log XDAIS Rule 13+">Test execution log for <b>XDAIS Rule 13+:</b></a><br>
+<PRE>
+Currently, this test cannot be run on non-TI compiled libraries.
+
+</PRE>
+<a href="#XDAIS Rule 13+">back</a>
+<hr>
+<a name="log XDAIS Rule 20">Test execution log for <b>XDAIS Rule 20:</b></a><br>
+<PRE>
+Currently, this test cannot be run on non-TI compiled libraries.
+</PRE>
+<a href="#XDAIS Rule 20">back</a>
+<hr>
+<a name="log XDAIS Rules 21, 22">Test execution log for <b>XDAIS Rules 21, 22:</b></a><br>
+<PRE>
+Running test 'XDAIS Rules 21, 22'
+Using sectti on ofd output to find static data & program memory requirements...
+ Running command:&gt; "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none,sections,header "F:\Quality_TI\xdais_6_23\mpeg4 enc - 01.00.02.01\Lib\mpeg4venc_ti_host.lib" | "F:\Quality_TI\cg_xml\bin\sectti.exe"
+                   (from "C:\Documents and Settings\sreeju-laptop\Local Settings\Temp\qualiti_runcmd_2923796690854026954.sh"
+  Reading from stdin ...
+  ====================================================================
+  REPORT FOR LIBRARY: F:/Quality_TI/xdais_6_23/mpeg4 enc - 01.00.02.01/Lib/mpeg4venc_ti_host.lib
+  ====================================================================
+  
+  
+  ************************************************************
+  REPORT FOR FILE: impeg4enc.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+        .data:MPEG4ENC_TI_PARAMS :        256  0x00000100  DATA 
+  .data:MPEG4ENC_TI_DYNAMICPARAMS :        192  0x000000c0  DATA 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_ime3_pgm.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+  .const:MPEG4ENC_TI_StaticTableSection :       1352  0x00000548  DATA 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_ime3_pgm_1mv.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+  .const:MPEG4ENC_TI_StaticTableSection :       1328  0x00000530  DATA 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_inbuf_control.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+  .text:MPEG4ENC_TI_CaptureBufferInit :         52  0x00000034  CODE 
+         .text:MP4VENC_TI_IsFull :         20  0x00000014  CODE 
+        .text:MP4VENC_TI_IsEmpty :         14  0x0000000e  CODE 
+  .text:MP4VENC_TI_GetCaptureBuffer :         74  0x0000004a  CODE 
+  .text:MP4VENC_TI_FillCaptureBuffer :         72  0x00000048  CODE 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_lse_tables.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+  .const:MPEG4ENC_TI_StaticTableSection :       1440  0x000005a0  DATA 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_mbInfo_tables.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+  .const:MPEG4ENC_TI_StaticTableSection :       1792  0x00000700  DATA 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_reconvdmadescriptors.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+  .const:MPEG4ENC_TI_StaticTableSection :        256  0x00000100  DATA 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_vt.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+     .data:MPEG4ENC_TI_IMPEG4ENC :         44  0x0000002c  DATA 
+          .data:MPEG4ENC_TI_IALG :         36  0x00000024  DATA 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_ialg.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+        .const:ps32LevelLimitTab :        288  0x00000120  DATA 
+         .text:MPEG4ENC_TI_reset :        116  0x00000074  CODE 
+      .text:MPEG4ENC_TI_numAlloc :          4  0x00000004  CODE 
+          .text:MPEG4ENC_TI_init :        868  0x00000364  CODE 
+       .text:MPEG4ENC_TI_initObj :        368  0x00000170  CODE 
+         .text:MPEG4ENC_TI_alloc :         20  0x00000014  CODE 
+          .text:MPEG4ENC_TI_free :         36  0x00000024  CODE 
+       .text:MPEG4ENC_TI_control :       1464  0x000005b8  CODE 
+    .text:MPEG4ENC_TI_Deactivate :          2  0x00000002  CODE 
+      .text:MPEG4ENC_TI_Activate :          2  0x00000002  CODE 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_ires.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+         .const:MPEG4ENC_TI_IRES :         40  0x00000028  DATA 
+                           .data :         24  0x00000018  DATA 
+  .text:MPEG4ENC_TI_reinitResources :          4  0x00000004  CODE 
+  .text:MPEG4ENC_TI_numResourceDescriptors :          4  0x00000004  CODE 
+  .text:MPEG4ENC_TI_initResources :        352  0x00000160  CODE 
+  .text:MPEG4ENC_TI_getResourceDescriptors :        508  0x000001fc  CODE 
+  .text:MPEG4ENC_TI_deinitResources :         38  0x00000026  CODE 
+  .text:MPEG4ENC_TI_deactivateResource :        116  0x00000074  CODE 
+  .text:MPEG4ENC_TI_deactivateAllResources :          4  0x00000004  CODE 
+  .text:MPEG4ENC_TI_activateResource :         78  0x0000004e  CODE 
+  .text:MPEG4ENC_TI_activateAllResources :         28  0x0000001c  CODE 
+   .text:MPEG4ENC_TI_HDVICP2_ISR :        120  0x00000078  CODE 
+  .text:MPEG4ENC_TI_ActivateInternal :        130  0x00000082  CODE 
+    .text:MPEG4ENC_TI_BootHDVICP :        138  0x0000008a  CODE 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_process.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+  .const:MPEG4VENC_TI_ICONT1_DataSect0 :         32  0x00000020  DATA 
+  .const:MPEG4VENC_TI_ICONT1_DataSect1 :      32576  0x00007f40  DATA 
+  .const:MPEG4VENC_TI_ICONT1_DataSect2 :        544  0x00000220  DATA 
+  .const:MPEG4VENC_TI_ICONT2_DataSect0 :         32  0x00000020  DATA 
+  .const:MPEG4VENC_TI_ICONT2_DataSect1 :      32692  0x00007fb4  DATA 
+  .const:MPEG4VENC_TI_ICONT2_DataSect2 :        416  0x000001a0  DATA 
+  .const:MPEG4VENC_TI_ICONT2_DataSect3 :       3312  0x00000cf0  DATA 
+  .const:MPEG4VENC_TI_ICONT1_DEBUGTRACE_LEVEL1_DataSect0 :         32  0x00000020  DATA 
+  .const:MPEG4VENC_TI_ICONT1_DEBUGTRACE_LEVEL1_DataSect1 :      32716  0x00007fcc  DATA 
+  .const:MPEG4VENC_TI_ICONT2_DEBUGTRACE_LEVEL1_DataSect0 :         32  0x00000020  DATA 
+  .const:MPEG4VENC_TI_ICONT2_DEBUGTRACE_LEVEL1_DataSect1 :      32432  0x00007eb0  DATA 
+  .const:MPEG4VENC_TI_ICONT2_DEBUGTRACE_LEVEL1_DataSect3 :       3564  0x00000dec  DATA 
+  .text:MPEG4ENC_TI_turnOnAllClocks :        220  0x000000dc  CODE 
+  .text:MPEG4ENC_TI_turnOffAllClocks :         96  0x00000060  CODE 
+  .text:MP4VENC_TI_CheckForIVAHDStandby :         64  0x00000040  CODE 
+  .text:MPEG4ENC_TI_ReleaseHDVICP2 :         54  0x00000036  CODE 
+     .text:MPEG4ENC_TI_EarlyExit :         52  0x00000034  CODE 
+  .text:MPEG4ENC_TI_Configure_Mailbox :         52  0x00000034  CODE 
+  .text:MP4VENC_TI_Set_Icont1_for_FrameEncodeStart :         10  0x0000000a  CODE 
+  .text:MPEG4ENC_TI_DSFixedRowsInterface :         62  0x0000003e  CODE 
+  .text:MPEG4ENC_TI_DSFixedLengthInterface :        154  0x0000009a  CODE 
+  .text:MPEG4ENC_TI_DSSliceModeInterface :        348  0x0000015c  CODE 
+  .text:MPEG4ENC_TI_GetBufferInterface :        422  0x000001a6  CODE 
+  .text:MPEG4ENC_TI_TransferAnalyticInfo :        288  0x00000120  CODE 
+        .text:MPEG4ENC_TI_encode :       3356  0x00000d1c  CODE 
+  .text:MPEG4ENC_TI_dataTransfer :         48  0x00000030  CODE 
+  .text:MPEG4ENC_TI_WaitForIVAHDStandby :         32  0x00000020  CODE 
+     .text:MPEG4ENC_TI_UpdateSL2 :         84  0x00000054  CODE 
+  .text:MPEG4ENC_TI_DecideBufferToProcess :         70  0x00000046  CODE 
+  .text:MPEG4ENC_TI_DeActivateHDVICP2 :        236  0x000000ec  CODE 
+  .text:MPEG4ENC_TI_ActivateHDVICP2 :        812  0x0000032c  CODE 
+  .text:MP4VENC_TI_Poll_Icont1_for_FrameEncodeCompletion :         14  0x0000000e  CODE 
+  
+  ************************************************************
+  REPORT FOR FILE: mpeg4enc_ti_ialg_support.obj
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+  .text:MPEG4ENC_TI_ValidateSliceCodingParams :         52  0x00000034  CODE 
+  .text:MPEG4ENC_TI_ValidateRateControlParams :        152  0x00000098  CODE 
+  .text:MPEG4ENC_TI_ValidateInterCodingParams :         94  0x0000005e  CODE 
+  .text:MPEG4ENC_TI_GetLevelLimitParams :         74  0x0000004a  CODE 
+  .text:MPEG4ENC_TI_ValidateEncodeParams :        982  0x000003d6  CODE 
+  .text:MPEG4ENC_TI_ValidateCreateParams :       1160  0x00000488  CODE 
+  .text:MPEG4ENC_TI_CpyDynamicParamstoHandle :        576  0x00000240  CODE 
+  
+  ------------------------------------------------------------
+  Totals by section type
+  ------------------------------------------------------------
+      Initialized Data :     145428  0x00023814
+                  Code :      14196  0x00003774
+
+</PRE>
+<a href="#XDAIS Rules 21, 22">back</a>
+<hr>
+<a name="log XDAIS Rule 25">Test execution log for <b>XDAIS Rule 25:</b></a><br>
+<PRE>
+Running test 'XDAIS Rule 25'
+Using ofd output to parse for endianness attribute...
+ Running command:&gt; "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none,header "F:\Quality_TI\xdais_6_23\mpeg4 enc - 01.00.02.01\Lib\mpeg4venc_ti_host.lib" | "F:\Quality_TI\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" "&lt;ei_data&gt;"
+                   (from "C:\Documents and Settings\sreeju-laptop\Local Settings\Temp\qualiti_runcmd_487746675727428655.sh"
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+  &lt;ei_data&gt;ELFDATA2LSB&lt;/ei_data&gt;
+
+</PRE>
+<a href="#XDAIS Rule 25">back</a>
+<hr>
+<a name="log XDAIS Rule 26">Test execution log for <b>XDAIS Rule 26:</b></a><br>
+<PRE>
+This test does not apply since this is not a C6x architecture.
+
+</PRE>
+<a href="#XDAIS Rule 26">back</a>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</BODY>
+</HTML>
+
+
+
+

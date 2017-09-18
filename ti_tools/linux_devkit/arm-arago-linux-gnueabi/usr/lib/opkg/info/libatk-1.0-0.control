@@ -1,0 +1,13 @@
+Package: libatk-1.0-0
+Version: 1.30.0-r2.6
+Description: An accessibility toolkit for GNOME.
+Section: x11/libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2+ LGPLv2+
+Architecture: armv7a
+OE: atk
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libgobject-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libc6 (>= 2.12.2), libglib-2.0-0 (>= 2.24.1)
+Source: http://ftp.gnome.org/pub/GNOME/sources/atk/1.30/atk-1.30.0.tar.bz2;name=archive

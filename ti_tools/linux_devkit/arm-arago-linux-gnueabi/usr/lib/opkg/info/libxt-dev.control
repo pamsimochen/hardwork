@@ -1,0 +1,14 @@
+Package: libxt-dev
+Version: 1:1.0.9-r9.0.6
+Description: X11 toolkit intrinsics library
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: libxt
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libxt6 (= 1:1.0.9-r9.0.6), libxt6, xproto-dev, libx11-dev
+Recommends: util-macros-dev, libsm-dev, kbproto-dev, libuuid-dev, libice-dev, libx11-dev, libxcb-dev, libpthread-stubs-dev, libxau-dev, libxdmcp-dev, libc6-dev, libxt-dev, xproto-dev
+Source: http://xorg.freedesktop.org/releases/individual/lib/libXt-1.0.9.tar.bz2;name=archive

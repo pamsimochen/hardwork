@@ -1,0 +1,14 @@
+Package: randrproto-dev
+Version: 1:1.3.2-r2.0.6
+Description: X protocol headers: randrproto
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: randrproto
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: randrproto (= 1:1.3.2-r2.0.6)
+Recommends: util-macros-dev, randrproto-dev
+Source: http://xorg.freedesktop.org/releases/individual/proto/randrproto-1.3.2.tar.bz2;name=archive

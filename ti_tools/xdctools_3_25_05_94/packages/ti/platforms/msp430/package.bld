@@ -1,0 +1,1 @@
+Pkg.otherFiles = ["linkcmd.xdt", "linkcmd_iar.xdt", "linkUtils_iar.xs"];

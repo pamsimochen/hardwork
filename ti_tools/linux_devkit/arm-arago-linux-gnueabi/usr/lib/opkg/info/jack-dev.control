@@ -1,0 +1,14 @@
+Package: jack-dev
+Version: 0.118.0-r3.6
+Description: JACK is a low-latency audio server. It can connect a number of different applications to an audio device, as well as allowing them to share audio between themselves.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2 LGPLv2.1
+Architecture: armv7a
+OE: jack
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: jack (= 0.118.0-r3.6), libjack
+Recommends: alsa-lib-dev, libc6-dev, libasound-dev, libsamplerate0-dev, libjack-dev, libreadline-dev, libsndfile-dev, jack-dev
+Source: svn://subversion.jackaudio.org/jack/tags;module=RELEASE_0_118_0;proto=http file://remove-wrong-host-test.patch

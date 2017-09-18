@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" href="$ecpy_8h.html" title="ECPY Definitions (C64P) &#45; Functional DMA Library for use with the EDMA3 DMA peripheral. Provides a comprehensive list of DMA operations an algorithm can perform on logical DMA channels it acquires through the IRES_EDMA3CHAN protocol." alt="" coords="178,90,311,114" />
+<area shape="rect" href="$ires__edma3_chan_8h.html" title="IRES EDMA3CHAN PROTOCOL Interface Definitions &#45; Allows algorithms to request and receive handles repr..." alt="" coords="177,170,329,210" />
+<area shape="rect" href="$ires_8h.html" title="IRES Interface Definitions &#45; Allows algorithms to request and receive handles representing private lo..." alt="" coords="353,178,446,202" />
+<area shape="rect" href="$xdas_8h.html" title="This header defines all types and constants used in the XDAS interfaces." alt="" coords="203,260,302,284" />
+<area shape="rect" href="$ires__common_8h.html" title="IRES Resource Protocol Definitions &#45; IRES Resource." alt="" coords="326,260,473,284" />
+<area shape="rect" href="$ialg_8h.html" title="This header defines all types, constants, and functions defined by XDAIS for algorithms." alt="" coords="374,334,425,358" />
+</map>

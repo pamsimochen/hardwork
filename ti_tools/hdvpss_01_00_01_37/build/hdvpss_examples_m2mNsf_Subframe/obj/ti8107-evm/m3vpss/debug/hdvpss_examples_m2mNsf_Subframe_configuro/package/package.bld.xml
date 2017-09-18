@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="hdvpss_examples_m2mNsf_Subframe_configuro" version="" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/cfg/m2mNsf_subframe_pem3.c"/>
+    </sources>
+    <configscripts>
+        <srcFile name="/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/packages/ti/psp/examples/common/vps/m2m/m2mNsf_Subframe/m2mNsf_subframe.cfg"/>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/cfg/m2mNsf_subframe_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/m2mNsf_subframe_pem3.oem3.dep" src="package/cfg/m2mNsf_subframe_pem3.c"/>
+        <srcFile name="package/cfg/m2mNsf_subframe_pem3.dep" src="package/cfg/m2mNsf_subframe_pem3.cfg"/>
+        <srcFile name="package/cfg/m2mNsf_subframe.xem3.mak" src="package.bld"/>
+        <srcFile name="package/rel/hdvpss_examples_m2mNsf_Subframe_configuro.tar.dep" src="package/rel/hdvpss_examples_m2mNsf_Subframe_configuro.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,4.9,5"
+            platform="ti.platforms.simDM8168"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/data/datalocal_videoapps01/ipnc_tools/basic_tools/cgt470_4_9_5/"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    <configuration name="m2mNsf_subframe"
+        pname="m2mNsf_subframe.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.platforms.evmDM8148:core1"
+        profile="debug"
+        isPartial="false"
+        xCfgScript="package/cfg/m2mNsf_subframe_pem3.cfg"
+        xCfgPrefix="package/cfg/m2mNsf_subframe_pem3"
+        cfgScript="/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/packages/ti/psp/examples/common/vps/m2m/m2mNsf_Subframe/m2mNsf_subframe.cfg"
+        cfgArgs="null"
+        />
+    </configurations>
+    <executables>
+    <executable name="m2mNsf_subframe"
+        pname="m2mNsf_subframe.xem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.platforms.evmDM8148:core1"
+        profile="debug"
+        xCfgScript="package/cfg/m2mNsf_subframe_pem3.cfg"
+        xCfgPrefix="package/cfg/m2mNsf_subframe_pem3"
+        cfgScript="/proj/vsi/users/anith/DM812x/IPNetCam/Release/ti_tools/hdvpss_01_00_01_37_patched/packages/ti/psp/examples/common/vps/m2m/m2mNsf_Subframe/m2mNsf_subframe.cfg"
+        cfgArgs="null"
+        />
+    </executables>
+    <tests>
+    <test exeName="m2mNsf_subframe.xem3"
+        args=""
+        groupName="m2mNsf_subframe.xem3"
+        refOutput="undefined"
+        refExitCode="0"
+        execArgs=""
+        />
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="hdvpss_examples_m2mNsf_Subframe_configuro"
+        pname="hdvpss_examples_m2mNsf_Subframe_configuro.tar"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/package.ext.xml"/>
+        <file name="package/package.rel.dot"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

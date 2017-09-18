@@ -1,0 +1,14 @@
+Package: flex-dev
+Version: 2.5.35-r7.1.6
+Description: Flex is a tool for generating programs that recognize lexical patterns in text.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: BSD
+Architecture: armv7a
+OE: flex
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: flex (= 2.5.35-r7.1.6)
+Recommends: libc6-dev, flex-dev, virtual-locale-ko-dev, virtual-locale-pl-dev, virtual-locale-da-dev, virtual-locale-ga-dev, virtual-locale-de-dev, virtual-locale-ru-dev, virtual-locale-fr-dev, virtual-locale-sv-dev, virtual-locale-zh-cn-dev, virtual-locale-nl-dev, virtual-locale-ca-dev, virtual-locale-tr-dev, virtual-locale-vi-dev, virtual-locale-es-dev, virtual-locale-ro-dev, virtual-locale-pt-br-dev
+Source: http://downloads.sourceforge.net/flex/flex-2.5.35.tar.bz2;name=flex

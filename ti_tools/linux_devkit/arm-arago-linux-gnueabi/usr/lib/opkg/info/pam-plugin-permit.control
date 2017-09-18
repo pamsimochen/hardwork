@@ -1,0 +1,13 @@
+Package: pam-plugin-permit
+Version: 1.1.1-r2.6
+Description: PAM plugin for -permit
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: libpam
+Homepage: http://kernel.org/pub/linux/libs/pam
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libpam (>= 1.1.1), libc6 (>= 2.12.2)
+Source: http://kernel.org/pub/linux/libs/pam/library/Linux-PAM-1.1.1.tar.bz2 file://pam-nodocs.patch file://define-HAVE_DBM.patch

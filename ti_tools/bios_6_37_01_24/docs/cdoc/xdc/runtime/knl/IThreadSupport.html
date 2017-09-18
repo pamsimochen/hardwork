@@ -1,0 +1,1007 @@
+<html>
+<head>
+<title>interface xdc.runtime.knl.IThreadSupport</title>
+<meta name="description" content="Interface for OS specific back-end">
+<link rel="stylesheet" type="text/css" href="../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">interface</span> <span class="xdoc-id">xdc.runtime.knl.</span><span class="xdoc-id">IThreadSupport</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/ISync.html" title="interface ISync"><img class="xdocHdrArrow" src="../../../Arrow_left.png"/></a></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/package.html" title="package xdc.runtime.knl"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/Cache.html" title="module Cache"><img class="xdocHdrArrow" src="../../../Arrow_right.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html">index URL</a></div>
+<p class="xdocHdrSummary">Interface for OS specific back-end</p>
+<ul class="xdocToc">
+<li class="xdocToc"><a class="xdocToc" href="#targ-synop">C synopsis</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocElems">Individual elements</a></li>
+</ul>
+<div class="xdocBrief">
+The <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html" title="xdc.runtime.knl">xdc.runtime.knl</a> package contains modules that provide typical
+  OS services. These xdc.runtime.knl modules require proxies to be
+  bound to an OS specific delegate. This specifies the interface to 
+  be implemented by the OS specific delegate for 
+  <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html" title="xdc.runtime.knl.Thread">xdc.runtime.knl.Thread</a> module.
+[&nbsp;<a class="xdocBrief" href="#xdoc-desc">more</a>&nbsp;...&nbsp;]
+</div>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id">XDCspec</span></tt> summary</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynX">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">interface</span> <span class="xdoc-id">IThreadSupport</span> {<b>&nbsp;&nbsp;...</b>
+</div>
+<div class='xdocSynSum'><tt></tt>//&nbsp;inherits <a class="xdoc-link" href="../../../xdc/runtime/IModule.html" title="xdc.runtime.IModule">xdc.runtime.IModule</a></div>
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">instance</span>:<b>&nbsp;&nbsp;...</b>
+</div>
+</div>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynX">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">package</span> <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html" title="xdc.runtime.knl">xdc.runtime.knl</a>;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">interface</span> <span class="xdoc-id">IThreadSupport</span> {
+</div>
+<div class='xdocSynHdr'>module-wide constants & types</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <span class="xdoc-kw2">Int</span>&nbsp;<a class="xdocSynGo" href="#.G.E.T.P.R.I_.F.A.I.L.E.D"><span class="xdoc-id">GETPRI_FAILED</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The error status for <span class="xdoc-link" href="IThreadSupport.html#get.Priority" title="getPriority">getPriority</span> when an error is captured in 
+  the  Error.Block</span></span></a> = -2;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <span class="xdoc-kw2">Int</span>&nbsp;<a class="xdocSynGo" href="#.I.N.V.A.L.I.D_.O.S_.P.R.I.O.R.I.T.Y"><span class="xdoc-id">INVALID_OS_PRIORITY</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Invalid OS priority value</span></span></a> = 0;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">enum</span> <a class="xdocSynGo" href="#.Comp.Status"><span class="xdoc-id">CompStatus</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Status returned by <span class="xdoc-link" href="IThreadSupport.html#compare.Os.Priorities" title="compareOsPriorities">compareOsPriorities</span> when an error occurs</span></span></a> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Comp.Status" title="xdc.runtime.knl.IThreadSupport.CompStatus"><span class="xdoc-id">CompStatus_ERROR</span></a>, 
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Comp.Status" title="xdc.runtime.knl.IThreadSupport.CompStatus"><span class="xdoc-id">CompStatus_LOWER</span></a>, 
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Comp.Status" title="xdc.runtime.knl.IThreadSupport.CompStatus"><span class="xdoc-id">CompStatus_EQUAL</span></a>, 
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Comp.Status" title="xdc.runtime.knl.IThreadSupport.CompStatus"><span class="xdoc-id">CompStatus_HIGHER</span></a>
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">enum</span> <a class="xdocSynGo" href="#.Priority"><span class="xdoc-id">Priority</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Thread priorities which are mapped to OS specific value by Proxy</span></span></a> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority"><span class="xdoc-id">Priority_INVALID</span></a>, 
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority"><span class="xdoc-id">Priority_LOWEST</span></a>, 
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority"><span class="xdoc-id">Priority_BELOW_NORMAL</span></a>, 
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority"><span class="xdoc-id">Priority_NORMAL</span></a>, 
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority"><span class="xdoc-id">Priority_ABOVE_NORMAL</span></a>, 
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><a class="xdocSynGo" href="#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority"><span class="xdoc-id">Priority_HIGHEST</span></a>
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">typedef</span> <span class="xdoc-kw2">Void</span>&nbsp;(*<a class="xdocSynGo" href="#.Run.Fxn"><span class="xdoc-id">RunFxn</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;typedef for function that gets called when the Thread runs</span></span></a>)(<span class="xdoc-kw2">IArg</span>);
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">struct</span> <a class="xdocSynGo" href="#.Stat"><span class="xdoc-id">Stat</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Struct to hold thread statistics from <span class="xdoc-link" href="IThreadSupport.html#stat" title="stat">stat</span></span></span></a> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw2">SizeT</span>&nbsp;<a class="xdocSynGo" href="#.Stat" title="xdc.runtime.knl.IThreadSupport.Stat"><span class="xdoc-id">stackSize</span></a>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw2">SizeT</span>&nbsp;<a class="xdocSynGo" href="#.Stat" title="xdc.runtime.knl.IThreadSupport.Stat"><span class="xdoc-id">stackUsed</span></a>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class='xdocSynHdr'>module-wide config parameters</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <a class="xdoc-link" href="../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a>&nbsp;<a class="xdocSynGo" href="#common$"><span class="xdoc-id">common$</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Common module configuration parameters</span></span></a>;
+</div>
+<div class='xdocSynHdr'>module-wide functions</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Int</span>&nbsp;<a class="xdocSynGo" href="#compare.Os.Priorities"><span class="xdoc-id">compareOsPriorities</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Compare two priority values and find out which one represents a
+  higher priority</span></span></a>(<span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">p1</span>, <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">p2</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#per-instance_object_types" title="xdc.runtime.knl.IThreadSupport.Handle">IThreadSupport.Handle</a>&nbsp;<a class="xdocSynGo" href="#self"><span class="xdoc-id">self</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Acquire the currently executing thread's handle</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#sleep"><span class="xdoc-id">sleep</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Sleep for certain number of microseconds</span></span></a>(<span class="xdoc-kw2">UInt</span>&nbsp;<span class="xdoc-id">timeout</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#start"><span class="xdoc-id">start</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Start threads running</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#yield"><span class="xdoc-id">yield</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Yield the currently scheduled thread</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">instance</span>:
+</div>
+<div class='xdocSynHdr'>per-instance config parameters</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">config</span> <span class="xdoc-kw2">IArg</span>&nbsp;<a class="xdocSynGo" href="#arg"><span class="xdoc-id">arg</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Thread function argument. Default is NULL</span></span></a> = <span class="xdoc-kw2">null</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">config</span> <span class="xdoc-kw2">Int</span>&nbsp;<a class="xdocSynGo" href="#os.Priority"><span class="xdoc-id">osPriority</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;OS specific thread priority</span></span></a> = <a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.I.N.V.A.L.I.D_.O.S_.P.R.I.O.R.I.T.Y" title="xdc.runtime.knl.IThreadSupport.INVALID_OS_PRIORITY">IThreadSupport.INVALID_OS_PRIORITY</a>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">config</span> <a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority">IThreadSupport.Priority</a>&nbsp;<a class="xdocSynGo" href="#priority"><span class="xdoc-id">priority</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Thread priority</span></span></a> = <a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Priority_.N.O.R.M.A.L" title="xdc.runtime.knl.IThreadSupport.Priority_NORMAL">IThreadSupport.Priority_NORMAL</a>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">config</span> <span class="xdoc-kw2">SizeT</span>&nbsp;<a class="xdocSynGo" href="#stack.Size"><span class="xdoc-id">stackSize</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Thread stack size. If left at zero, OS default is used</span></span></a> = 0;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">config</span> <span class="xdoc-kw2">Ptr</span>&nbsp;<a class="xdocSynGo" href="#tls"><span class="xdoc-id">tls</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;User-specified thread local storage data</span></span></a> = <span class="xdoc-kw2">null</span>;
+</div>
+<div class='xdocSynHdr'>per-instance creation</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#per-instance_creation"><span class="xdoc-id">create</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Create an instance-object</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Run.Fxn" title="xdc.runtime.knl.IThreadSupport.RunFxn">IThreadSupport.RunFxn</a>&nbsp;<span class="xdoc-id">fxn</span>);
+</div>
+<div class='xdocSynHdr'>per-instance functions</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Ptr</span>&nbsp;<a class="xdocSynGo" href="#get.Os.Handle"><span class="xdoc-id">getOsHandle</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Get the OS thread handle</span></span></a>();
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Int</span>&nbsp;<a class="xdocSynGo" href="#get.Os.Priority"><span class="xdoc-id">getOsPriority</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Obtain a thread's os specific priority</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority">IThreadSupport.Priority</a>&nbsp;<a class="xdocSynGo" href="#get.Priority"><span class="xdoc-id">getPriority</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Obtain a thread's priority</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Ptr</span>&nbsp;<a class="xdocSynGo" href="#get.Tls"><span class="xdoc-id">getTls</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Obtain a thread's local storage pointer</span></span></a>();
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#join"><span class="xdoc-id">join</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Join on a Thread</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#set.Os.Priority"><span class="xdoc-id">setOsPriority</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Set a thread's priority</span></span></a>(<span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">newPri</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#set.Priority"><span class="xdoc-id">setPriority</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Set a thread's priority</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority">IThreadSupport.Priority</a>&nbsp;<span class="xdoc-id">newPri</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;<a class="xdocSynGo" href="#set.Tls"><span class="xdoc-id">setTls</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Set a thread's local storage pointer</span></span></a>(<span class="xdoc-kw2">Ptr</span>&nbsp;<span class="xdoc-id">tls</span>);
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#stat"><span class="xdoc-id">stat</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Obtain a thread's stats</span></span></a>(<a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Stat" title="xdc.runtime.knl.IThreadSupport.Stat">IThreadSupport.Stat</a>&nbsp;*<span class="xdoc-id">buf</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+<div class="xdocSynCode">
+<tt></tt>}
+</div>
+</div>
+<span id="xdoc-desc"></span>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">The <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html" title="xdc.runtime.knl">xdc.runtime.knl</a> package contains modules that provide typical
+  OS services. These xdc.runtime.knl modules require proxies to be
+  bound to an OS specific delegate. This specifies the interface to 
+  be implemented by the OS specific delegate for 
+  <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html" title="xdc.runtime.knl.Thread">xdc.runtime.knl.Thread</a> module.</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html" title="xdc.runtime.knl.Thread">xdc.runtime.knl.Thread</a> for more details on the APIs.</div>
+<div id="xdocSep">
+</div>
+<div id="xdocElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".G.E.T.P.R.I_.F.A.I.L.E.D"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">GETPRI_FAILED</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#.G.E.T.P.R.I_.F.A.I.L.E.D">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The error status for <a class="xdoc-link" href="IThreadSupport.html#get.Priority" title="getPriority">getPriority</a> when an error is captured in 
+  the  Error.Block</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">GETPRI_FAILED</span> = -2;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".I.N.V.A.L.I.D_.O.S_.P.R.I.O.R.I.T.Y"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">INVALID_OS_PRIORITY</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#.I.N.V.A.L.I.D_.O.S_.P.R.I.O.R.I.T.Y">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Invalid OS priority value</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">INVALID_OS_PRIORITY</span> = 0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".Comp.Status"></a>
+<a class="xdocAnchor" id=".Comp.Status_.E.R.R.O.R"></a>
+<a class="xdocAnchor" id=".Comp.Status_.L.O.W.E.R"></a>
+<a class="xdocAnchor" id=".Comp.Status_.E.Q.U.A.L"></a>
+<a class="xdocAnchor" id=".Comp.Status_.H.I.G.H.E.R"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">enum</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">CompStatus</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#.Comp.Status">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Status returned by <a class="xdoc-link" href="IThreadSupport.html#compare.Os.Priorities" title="compareOsPriorities">compareOsPriorities</a> when an error occurs</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">enum</span> <span class="xdoc-id">CompStatus</span> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">CompStatus_ERROR</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">CompStatus_LOWER</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">CompStatus_EQUAL</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">CompStatus_HIGHER</span>
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".Priority"></a>
+<a class="xdocAnchor" id=".Priority_.I.N.V.A.L.I.D"></a>
+<a class="xdocAnchor" id=".Priority_.L.O.W.E.S.T"></a>
+<a class="xdocAnchor" id=".Priority_.B.E.L.O.W_.N.O.R.M.A.L"></a>
+<a class="xdocAnchor" id=".Priority_.N.O.R.M.A.L"></a>
+<a class="xdocAnchor" id=".Priority_.A.B.O.V.E_.N.O.R.M.A.L"></a>
+<a class="xdocAnchor" id=".Priority_.H.I.G.H.E.S.T"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">enum</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">Priority</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#.Priority">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Thread priorities which are mapped to OS specific value by Proxy</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">enum</span> <span class="xdoc-id">Priority</span> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Priority_INVALID</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Priority_LOWEST</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Priority_BELOW_NORMAL</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Priority_NORMAL</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Priority_ABOVE_NORMAL</span>, 
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-id">Priority_HIGHEST</span>
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".Run.Fxn"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">typedef</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">RunFxn</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#.Run.Fxn">index URL</a></div>
+<p class="xdocHdrSummaryDcl">typedef for function that gets called when the Thread runs</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">typedef</span> <span class="xdoc-kw2">Void</span>&nbsp;(*<span class="xdoc-id">RunFxn</span>)(<span class="xdoc-kw2">IArg</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".Stat"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">struct</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">Stat</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#.Stat">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Struct to hold thread statistics from <a class="xdoc-link" href="IThreadSupport.html#stat" title="stat">stat</a></p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">struct</span> <span class="xdoc-id">Stat</span> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw2">SizeT</span>&nbsp;<span class="xdoc-id">stackSize</span>;
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><span class="xdoc-kw2">SizeT</span>&nbsp;<span class="xdoc-id">stackUsed</span>;
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="common$"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">common$</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#common$">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Common module configuration parameters</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <a class="xdoc-link" href="../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a>&nbsp;<span class="xdoc-id">common$</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">All modules have this configuration parameter.  Its name
+  contains the '$' character to ensure it does not conflict with
+  configuration parameters declared by the module.  This allows
+  new configuration parameters to be added in the future without
+  any chance of breaking existing modules.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="compare.Os.Priorities"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">compareOsPriorities</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#compare.Os.Priorities">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Compare two priority values and find out which one represents a
+  higher priority</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">compareOsPriorities</span>(<span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">p1</span>, <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">p2</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">p1</span>
+<span class="xdocChildSum">&#151;&nbsp;priority one</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">p2</span>
+<span class="xdocChildSum">&#151;&nbsp;priority two</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#compare.Os.Priorities" title="xdc.runtime.knl.Thread.compareOsPriorities">xdc.runtime.knl.Thread.compareOsPriorities</a> for more 
+  details.</div>
+<div class="xdocText"><UL><LI><a class="xdoc-link" href="IThreadSupport.html#.Comp.Status_.E.R.R.O.R" title="CompStatus_ERROR">CompStatus_ERROR</a> if an error occured
+</LI><LI><a class="xdoc-link" href="IThreadSupport.html#.Comp.Status_.L.O.W.E.R" title="CompStatus_LOWER">CompStatus_LOWER</a> if p1 is lower than p2
+</LI><LI><a class="xdoc-link" href="IThreadSupport.html#.Comp.Status_.E.Q.U.A.L" title="CompStatus_EQUAL">CompStatus_EQUAL</a> if p1=p2
+</LI><LI><a class="xdoc-link" href="IThreadSupport.html#.Comp.Status_.H.I.G.H.E.R" title="CompStatus_HIGHER">CompStatus_HIGHER</a> if p1 is higher than p2
+    details.
+</LI></UL></div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">Refer to description above</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="self"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">self</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#self">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Acquire the currently executing thread's handle</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#per-instance_object_types" title="xdc.runtime.knl.IThreadSupport.Handle">IThreadSupport.Handle</a>&nbsp;<span class="xdoc-id">self</span>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#self" title="xdc.runtime.knl.Thread.self">xdc.runtime.knl.Thread.self</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">Handle in case of success; null for error;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="sleep"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">sleep</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#sleep">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Sleep for certain number of microseconds</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">sleep</span>(<span class="xdoc-kw2">UInt</span>&nbsp;<span class="xdoc-id">timeout</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">timeout</span>
+<span class="xdocChildSum">&#151;&nbsp;timeout in microseconds</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#sleep" title="xdc.runtime.knl.Thread.sleep">xdc.runtime.knl.Thread.sleep</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">true for success; false for failure</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="start"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">start</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#start">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Start threads running</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">start</span>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#start" title="xdc.runtime.knl.Thread.start">xdc.runtime.knl.Thread.start</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">true for success; false for failure</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="yield"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">yield</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#yield">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Yield the currently scheduled thread</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">yield</span>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#yield" title="xdc.runtime.knl.Thread.yield">xdc.runtime.knl.Thread.yield</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">true for success; false for failure</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="arg"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">arg</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#arg">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Thread function argument. Default is NULL</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">config</span> <span class="xdoc-kw2">IArg</span>&nbsp;<span class="xdoc-id">arg</span> = <span class="xdoc-kw2">null</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="os.Priority"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">osPriority</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#os.Priority">index URL</a></div>
+<p class="xdocHdrSummaryDcl">OS specific thread priority</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">config</span> <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">osPriority</span> = <a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.I.N.V.A.L.I.D_.O.S_.P.R.I.O.R.I.T.Y" title="xdc.runtime.knl.IThreadSupport.INVALID_OS_PRIORITY">IThreadSupport.INVALID_OS_PRIORITY</a>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Used to specify an OS specific value for priority. If set this value
+  takes precedence over <a class="xdoc-link" href="IThreadSupport.html#priority" title="priority">priority</a>.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="priority"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">priority</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#priority">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Thread priority</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">config</span> <a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority">IThreadSupport.Priority</a>&nbsp;<span class="xdoc-id">priority</span> = <a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Priority_.N.O.R.M.A.L" title="xdc.runtime.knl.IThreadSupport.Priority_NORMAL">IThreadSupport.Priority_NORMAL</a>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Thread defines several constants which allows applications to select
+  a priority in an OS independent way. Priority_LOWEST, 
+  Priority_BELOW_NORMAL, Priority_NORMAL, Priority_ABOVE_NORMAL and 
+  Priority_HIGHEST. These values get mapped to OS specific priorities 
+  by the OS specific delegate.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="stack.Size"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">stackSize</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#stack.Size">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Thread stack size. If left at zero, OS default is used</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">config</span> <span class="xdoc-kw2">SizeT</span>&nbsp;<span class="xdoc-id">stackSize</span> = 0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="tls"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">tls</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#tls">index URL</a></div>
+<p class="xdocHdrSummaryDcl">User-specified thread local storage data</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">config</span> <span class="xdoc-kw2">Ptr</span>&nbsp;<span class="xdoc-id">tls</span> = <span class="xdoc-kw2">null</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="per-instance_creation"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdocSynSum">Instance Creation</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#per-instance_creation">index URL</a></div>
+<p class="xdocHdrSummary"></p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-id">create</span>(<a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Run.Fxn" title="xdc.runtime.knl.IThreadSupport.RunFxn">IThreadSupport.RunFxn</a>&nbsp;<span class="xdoc-id">fxn</span>);
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Create an instance-object</div>
+</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">fxn</span>
+<span class="xdocChildSum">&#151;&nbsp;function for new thread to begin execution</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This function spawns a new thread calling the function fxn.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="get.Os.Handle"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">getOsHandle</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#get.Os.Handle">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Get the OS thread handle</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Ptr</span>&nbsp;<span class="xdoc-id">getOsHandle</span>();
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">null in case of error</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="get.Os.Priority"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">getOsPriority</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#get.Os.Priority">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Obtain a thread's os specific priority</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">getOsPriority</span>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">For OSes that support dynamic priority boosting, the value returned 
+  is the base priority of the thread.</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#get.Os.Priority" title="xdc.runtime.knl.Thread.getOsPriority">xdc.runtime.knl.Thread.getOsPriority</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">thread priority in case of success; GETPRI_FAILED in
+                  case of error;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="get.Priority"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">getPriority</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#get.Priority">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Obtain a thread's priority</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority">IThreadSupport.Priority</a>&nbsp;<span class="xdoc-id">getPriority</span>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#get.Priority" title="xdc.runtime.knl.Thread.getPriority">xdc.runtime.knl.Thread.getPriority</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">thread priority in case of success; Priority_INVALID in
+                 case of error;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="get.Tls"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">getTls</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#get.Tls">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Obtain a thread's local storage pointer</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Ptr</span>&nbsp;<span class="xdoc-id">getTls</span>();
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">null in case of error</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="join"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">join</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#join">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Join on a Thread</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">join</span>(<a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#join" title="xdc.runtime.knl.Thread.join">xdc.runtime.knl.Thread.join</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">true for success; false for failure</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="set.Os.Priority"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">setOsPriority</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#set.Os.Priority">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Set a thread's priority</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">setOsPriority</span>(<span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">newPri</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">newPri</span>
+<span class="xdocChildSum">&#151;&nbsp;new thread priority</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This API sets the base priority of the thread on OSes that
+  support dynamic priority boosting</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#set.Os.Priority" title="xdc.runtime.knl.Thread.setOsPriority">xdc.runtime.knl.Thread.setOsPriority</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">true for success; false for failure</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="set.Priority"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">setPriority</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#set.Priority">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Set a thread's priority</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">setPriority</span>(<a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Priority" title="xdc.runtime.knl.IThreadSupport.Priority">IThreadSupport.Priority</a>&nbsp;<span class="xdoc-id">newPri</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">newPri</span>
+<span class="xdocChildSum">&#151;&nbsp;new thread priority</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Refer to <a class="xdoc-link" href="../../../xdc/runtime/knl/Thread.html#set.Priority" title="xdc.runtime.knl.Thread.setPriority">xdc.runtime.knl.Thread.setPriority</a> for more details.</div>
+<span id="xdoc-sect-3"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">true for success; false for failure</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="set.Tls"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">setTls</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#set.Tls">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Set a thread's local storage pointer</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;<span class="xdoc-id">setTls</span>(<span class="xdoc-kw2">Ptr</span>&nbsp;<span class="xdoc-id">tls</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">tls</span>
+<span class="xdocChildSum">&#151;&nbsp;thread tls</span>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="stat"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IThreadSupport.</span><span class="xdoc-id">stat</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IThreadSupport.html" title="interface IThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IThreadSupport.html#stat">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Obtain a thread's stats</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">stat</span>(<a class="xdoc-link" href="../../../xdc/runtime/knl/IThreadSupport.html#.Stat" title="xdc.runtime.knl.IThreadSupport.Stat">IThreadSupport.Stat</a>&nbsp;*<span class="xdoc-id">buf</span>, <a class="xdoc-link" href="../../../xdc/runtime/Error.html#.Block" title="xdc.runtime.Error.Block">Error.Block</a>&nbsp;*<span class="xdoc-id">eb</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">buf</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Stat</span>
+</div>
+<div class="xdocChild"><span class="xdocChildId">eb</span>
+<span class="xdocChildSum">&#151;&nbsp;Pointer to Error.Block</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">true for success; false for failure</div>
+</div>
+<div id="xdocDate">generated on Sat, 21 Dec 2013 00:09:48 GMT</div>
+</div></div></body>
+</html>

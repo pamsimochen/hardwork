@@ -1,0 +1,342 @@
+<html>
+<head>
+<title>interface xdc.runtime.knl.IGateThreadSupport</title>
+<meta name="description" content="Interface for OS specific back-end">
+<link rel="stylesheet" type="text/css" href="../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">interface</span> <span class="xdoc-id">xdc.runtime.knl.</span><span class="xdoc-id">IGateThreadSupport</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateProcessSupport.html" title="interface IGateProcessSupport"><img class="xdocHdrArrow" src="../../../Arrow_left.png"/></a></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/package.html" title="package xdc.runtime.knl"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/ISemProcessSupport.html" title="interface ISemProcessSupport"><img class="xdocHdrArrow" src="../../../Arrow_right.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html">index URL</a></div>
+<p class="xdocHdrSummary">Interface for OS specific back-end</p>
+<ul class="xdocToc">
+<li class="xdocToc"><a class="xdocToc" href="#targ-synop">C synopsis</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocElems">Individual elements</a></li>
+</ul>
+<div class="xdocBrief">
+The <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html" title="xdc.runtime.knl">xdc.runtime.knl</a> package contains modules that provide typical
+  OS services. These xdc.runtime.knl modules require proxies to be
+  bound to an OS specific delegate. This specifies the interface to 
+  be implemented by the OS specific delegate for 
+  <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html#.Gate.Thread" title="xdc.runtime.knl.GateThread">xdc.runtime.knl.GateThread</a> module.
+[&nbsp;<a class="xdocBrief" href="#xdoc-desc">more</a>&nbsp;...&nbsp;]
+</div>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id">XDCspec</span></tt> summary</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynX">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">interface</span> <span class="xdoc-id">IGateThreadSupport</span> {<b>&nbsp;&nbsp;...</b>
+</div>
+<div class='xdocSynSum'><tt></tt>//&nbsp;inherits <a class="xdoc-link" href="../../../xdc/runtime/IGateProvider.html" title="xdc.runtime.IGateProvider">xdc.runtime.IGateProvider</a></div>
+<div class='xdocSynSum'><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>//&nbsp;inherits <a class="xdoc-link" href="../../../xdc/runtime/IModule.html" title="xdc.runtime.IModule">xdc.runtime.IModule</a></div>
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">instance</span>:<b>&nbsp;&nbsp;...</b>
+</div>
+</div>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynX">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">package</span> <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html" title="xdc.runtime.knl">xdc.runtime.knl</a>;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">interface</span> <span class="xdoc-id">IGateThreadSupport</span><span class="xdoc-kw1"> inherits </span><a class="xdoc-link" href="../../../xdc/runtime/IGateProvider.html" title="xdc.runtime.IGateProvider">IGateProvider</a> {
+</div>
+<div class='xdocSynHdr'>module-wide constants & types</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <span class="xdoc-kw2">Int</span>&nbsp;<a class="xdocSynGo" href="#.Q_.B.L.O.C.K.I.N.G"><span class="xdoc-id">Q_BLOCKING</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Blocking quality</span></span></a> = 1;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <span class="xdoc-kw2">Int</span>&nbsp;<a class="xdocSynGo" href="#.Q_.P.R.E.E.M.P.T.I.N.G"><span class="xdoc-id">Q_PREEMPTING</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Preempting quality</span></span></a> = 2;
+</div>
+<div class='xdocSynHdr'>module-wide config parameters</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <a class="xdoc-link" href="../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a>&nbsp;<a class="xdocSynGo" href="#common$"><span class="xdoc-id">common$</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Common module configuration parameters</span></span></a>;
+</div>
+<div class='xdocSynHdr'>module-wide functions</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#query"><span class="xdoc-id">query</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Runtime test for a particular gate quality</span></span></a>(<span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">qual</span>);
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw2">Bool</span>&nbsp;<a class="xdocSynGo" href="#query.Meta"><span class="xdoc-id">queryMeta</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Configuration time test for a particular gate quality</span></span></a>(<span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">qual</span>);
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">instance</span>:
+</div>
+<div class='xdocSynHdr'>per-instance creation</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#per-instance_creation"><span class="xdoc-id">create</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Create an instance-object</span></span></a>();
+</div>
+<div class='xdocSynHdr'>per-instance functions</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">IArg</span>&nbsp;<a class="xdocSynGo" href="#enter"><span class="xdoc-id">enter</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Enter this gate</span></span></a>();
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;<a class="xdocSynGo" href="#leave"><span class="xdoc-id">leave</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Leave this gate</span></span></a>(<span class="xdoc-kw2">IArg</span>&nbsp;<span class="xdoc-id">key</span>);
+</div>
+<div class="xdocSynCode">
+<tt></tt>}
+</div>
+</div>
+<span id="xdoc-desc"></span>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">The <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html" title="xdc.runtime.knl">xdc.runtime.knl</a> package contains modules that provide typical
+  OS services. These xdc.runtime.knl modules require proxies to be
+  bound to an OS specific delegate. This specifies the interface to 
+  be implemented by the OS specific delegate for 
+  <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html#.Gate.Thread" title="xdc.runtime.knl.GateThread">xdc.runtime.knl.GateThread</a> module.</div>
+<div class="xdocText">The implementation of IGateThreadSupport should try to implement a gate
+  that supports priority inversion.</div>
+<div class="xdocText">See <a class="xdoc-link" href="../../../xdc/runtime/knl/package.html" title="xdc.runtime.knl">xdc.runtime.knl</a> for more details.</div>
+<div id="xdocSep">
+</div>
+<div id="xdocElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".Q_.B.L.O.C.K.I.N.G"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IGateThreadSupport.</span><span class="xdoc-id">Q_BLOCKING</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateThreadSupport.html" title="interface IGateThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html#.Q_.B.L.O.C.K.I.N.G">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Blocking quality</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">Q_BLOCKING</span> = 1;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Gates with this "quality" may cause the calling thread to block; 
+  i.e., suspend execution until another thread leaves the gate.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".Q_.P.R.E.E.M.P.T.I.N.G"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IGateThreadSupport.</span><span class="xdoc-id">Q_PREEMPTING</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateThreadSupport.html" title="interface IGateThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html#.Q_.P.R.E.E.M.P.T.I.N.G">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Preempting quality</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> <span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">Q_PREEMPTING</span> = 2;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Gates with this "quality" allow other threads to preempt the thread
+  that has already entered the gate.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="common$"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <span class="xdoc-id">IGateThreadSupport.</span><span class="xdoc-id">common$</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateThreadSupport.html" title="interface IGateThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html#common$">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Common module configuration parameters</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <a class="xdoc-link" href="../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a>&nbsp;<span class="xdoc-id">common$</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">All modules have this configuration parameter.  Its name
+  contains the '$' character to ensure it does not conflict with
+  configuration parameters declared by the module.  This allows
+  new configuration parameters to be added in the future without
+  any chance of breaking existing modules.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="query"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IGateThreadSupport.</span><span class="xdoc-id">query</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateThreadSupport.html" title="interface IGateThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html#query">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Runtime test for a particular gate quality</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">query</span>(<span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">qual</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">qual</span>
+<span class="xdocChildSum">&#151;&nbsp;constant describing a quality</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">Returns <tt>TRUE</tt> if the gate has the given quality,
+  and <tt>FALSE</tt> otherwise, which includes the case when the gate does not
+  recognize the constant describing the quality.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="query.Meta"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-id">IGateThreadSupport.</span><span class="xdoc-id">queryMeta</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateThreadSupport.html" title="interface IGateThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html#query.Meta">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Configuration time test for a particular gate quality</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw2">Bool</span>&nbsp;<span class="xdoc-id">queryMeta</span>(<span class="xdoc-kw2">Int</span>&nbsp;<span class="xdoc-id">qual</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">qual</span>
+<span class="xdocChildSum">&#151;&nbsp;constant describing a quality</span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">Returns <tt>TRUE</tt> if the gate has the given quality,
+  and <tt>FALSE</tt> otherwise, which includes the case when the gate does not
+  recognize the constant describing the quality.</div>
+<a class="xdocAnchor" id="per-instance_creation"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdocSynSum">Instance Creation</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateThreadSupport.html" title="interface IGateThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html#per-instance_creation">index URL</a></div>
+<p class="xdocHdrSummary"></p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-id">create</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Create an instance-object</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="enter"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IGateThreadSupport.</span><span class="xdoc-id">enter</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateThreadSupport.html" title="interface IGateThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html#enter">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Enter this gate</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">IArg</span>&nbsp;<span class="xdoc-id">enter</span>();
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Each gate provider can implement mutual exclusion using different
+  algorithms; e.g., disabling all scheduling, disabling the scheduling
+  of all threads below a specified "priority level", suspending the
+  caller when the gate has been entered by another thread and
+  re-enabling it when the the other thread leaves the gate.  However,
+  in all cases, after this method returns that caller has exclusive
+  access to the data protected by this gate.</div>
+<div class="xdocText">A thread may reenter a gate without blocking or failing.</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">RETURNS</div>
+<div class="xdocText">Returns a "key" that is used to <tt><a class="xdoc-link" href="IGateThreadSupport.html#leave" title="leave">leave</a></tt> this gate; this 
+  value is used to restore thread preemption to the state that
+  existed just prior to entering this gate.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="leave"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-id">IGateThreadSupport.</span><span class="xdoc-id">leave</span>()&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;instance</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../xdc/runtime/knl/IGateThreadSupport.html" title="interface IGateThreadSupport"><img class="xdocHdrArrow" src="../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../index.html#xdc/runtime/knl/IGateThreadSupport.html#leave">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Leave this gate</p>
+<span id='spec-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-iddcl">XDCspec</span></tt> declarations</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../xdc/runtime/knl/IGateThreadSupport-src.html"><span class="xdocLabelFile">xdc/runtime/knl/IGateThreadSupport.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynXdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Void</span>&nbsp;<span class="xdoc-id">leave</span>(<span class="xdoc-kw2">IArg</span>&nbsp;<span class="xdoc-id">key</span>);
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">ARGUMENTS</div>
+<div class="xdocChild"><span class="xdocChildId">key</span>
+<span class="xdocChildSum">&#151;&nbsp;the value returned by a matching call to
+              <tt><a class="xdoc-link" href="IGateThreadSupport.html#enter" title="enter">enter</a></tt></span>
+</div>
+<span id="xdoc-sect-2"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This method is only called by threads that have previously entered 
+  this gate via <tt><a class="xdoc-link" href="IGateThreadSupport.html#enter" title="enter">enter</a></tt>.  After this method returns, the
+  caller must not access the data structure protected by this gate
+  (unless the caller has entered the gate more than once and other
+  calls to <tt>leave</tt> remain to balance the number of previous
+  calls to <tt>enter</tt>).</div>
+</div>
+<div id="xdocDate">generated on Sat, 21 Dec 2013 00:09:48 GMT</div>
+</div></div></body>
+</html>

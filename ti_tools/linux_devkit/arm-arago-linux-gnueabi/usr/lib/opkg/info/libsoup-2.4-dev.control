@@ -1,0 +1,14 @@
+Package: libsoup-2.4-dev
+Version: 2.32.2-r1.6
+Description: An HTTP library implementation in C
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2
+Architecture: armv7a
+OE: libsoup-2.4
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libsoup-2.4-1 (= 2.32.2-r1.6), libsoup-2.4-1, libsoup-gnome-2.4-1, libglib-2.0-dev
+Recommends: libproxy-dev, libglib-2.0-dev, libgnutls-dev, libxml2-dev, sqlite3-dev, gnome-keyring-dev, gnome-common-dev, gconf-dev, shared-mime-info-dev, libsoup-2.4-dev, libgcrypt-dev, libgpg-error-dev, gio-2.0-dev, libc6-dev, libz-dev, orbit2-dev, gmodule-2.0-dev, libdbus-glib-1-dev, gobject-2.0-dev, gthread-2.0-dev, libsqlite3-dev, dbus-lib-dev, libsoup-gnome-dev
+Source: http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.32/libsoup-2.32.2.tar.bz2;name=libsoup

@@ -1,0 +1,30 @@
+#Sat Sep 12 13:39:19 IST 2009
+com.ti.ccstudio.buildDefinitions.C6000.Debug.113456611/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Debug.113456611/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Debug.1831950688/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Debug.1831950688/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Debug.329256125/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Debug.329256125/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Debug.348160522/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Debug.348160522/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Debug.766962715/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Debug.766962715/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Debug.880090332/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Debug.880090332/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Release.1052936504/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Release.1052936504/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Release.1689121304/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Release.1689121304/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Release.1771625523/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Release.1771625523/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Release.1914376102/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Release.1914376102/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Release.2093499111/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Release.2093499111/internalBuilder/ignoreErr=true
+com.ti.ccstudio.buildDefinitions.C6000.Release.943131545/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.C6000.Release.943131545/internalBuilder/ignoreErr=true
+eclipse.preferences.version=1
+environment/project=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<environment/>\r\n
+environment/project/com.ti.ccstudio.buildDefinitions.C6000.Debug.113456611=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<environment/>\r\n
+environment/project/com.ti.ccstudio.buildDefinitions.C6000.Debug.1831950688=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<environment/>\r\n
+environment/project/com.ti.ccstudio.buildDefinitions.C6000.Release.943131545=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<environment/>\r\n

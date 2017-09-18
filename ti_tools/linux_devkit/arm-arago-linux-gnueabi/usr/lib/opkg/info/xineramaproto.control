@@ -1,0 +1,12 @@
+Package: xineramaproto
+Version: 1:1.2.1-r2.0.6
+Description: X protocol headers: xineramaproto
+Section: x11/libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: MIT-X
+Architecture: armv7a
+OE: xineramaproto
+Homepage: http://www.x.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Source: http://xorg.freedesktop.org/releases/individual/proto/xineramaproto-1.2.1.tar.bz2;name=archive

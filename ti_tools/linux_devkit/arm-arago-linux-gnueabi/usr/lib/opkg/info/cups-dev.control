@@ -1,0 +1,14 @@
+Package: cups-dev
+Version: 1.2.12-r9.6
+Description: An Internet printing system for Unix.
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2 LGPLv2
+Architecture: armv7a
+OE: cups
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: cups (= 1.2.12-r9.6), libcups2, libcupsimage2
+Recommends: libgnutls-dev, libjpeg-dev, dbus-dev, libdbus-glib-1-dev, libpng-dev, libz-dev, libc6-dev, libpng12-dev, cups-lib-dev, libpam-dev, dbus-lib-dev, cups-libimage-dev, libstdc++-dev, libgcc1-dev, cups-dev, virtual-locale-pl-dev, virtual-locale-et-dev, virtual-locale-de-dev, virtual-locale-it-dev, virtual-locale-fr-dev, virtual-locale-sv-dev, virtual-locale-zh-tw-dev, virtual-locale-es-dev, virtual-locale-ja-dev
+Source: ftp://ftp.easysw.com/pub/cups/1.2.12/cups-1.2.12-source.tar.bz2 file://0001-cups-desktop-fix-cups-desktop-file.patch

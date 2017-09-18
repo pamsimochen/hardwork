@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/release.dtd -->
+<release name="ti_sdo_fc_memutils" label="default" date="1389730596141" buildCount="1" producerId="undefined">
+<package name="ti.sdo.fc.memutils"
+    version="1, 0, 0"/>
+<imports>
+</imports>
+<references>
+    <package name="xdc"
+        version="1, 1, 1, 1362023697602"
+        providerId="xdccore">
+        <file name="IPackage.xdc"/>
+        <file name="IPackage.xs"/>
+        <file name="Warnings.xs"/>
+        <file name="om2.xs"/>
+        <file name="package.xs"/>
+        <file name="std.h"/>
+        <file name="template.xs"/>
+        <file name="utils.js"/>
+        <file name="xdc.tci"/>
+        <file name="xmlgen.xs"/>
+        <file name="xmlgen2.xs"/>
+    </package>
+    <package name="xdc.services.global"
+        version="1, 0, 0, 1362023713005"
+        providerId="xdccore">
+        <file name="Clock.xs"/>
+        <file name="Trace.xs"/>
+        <file name="java/package.jar"/>
+    </package>
+    <package name="xdc.bld"
+        version="1, 0, 2, 1362023700862"
+        providerId="xdccore">
+        <file name="BuildEnvironment.xs"/>
+        <file name="Configuration.xs"/>
+        <file name="Executable.xs"/>
+        <file name="ITarget.xs"/>
+        <file name="ITarget2.xs"/>
+        <file name="ITarget3.xs"/>
+        <file name="ITargetFilter.xs"/>
+        <file name="Library.xs"/>
+        <file name="Manifest.xs"/>
+        <file name="PackageContents.xs"/>
+        <file name="Repository.xs"/>
+        <file name="Script.xs"/>
+        <file name="Utils.xs"/>
+        <file name="_gen.xs"/>
+        <file name="bld.js"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="ti.targets"
+        version="1, 0, 3, 1363125897303"
+        providerId="xdccore">
+        <file name="C28_float.xs"/>
+        <file name="C28_large.xs"/>
+        <file name="ITarget.xs"/>
+        <file name="package.xs"/>
+        <file name="select.h"/>
+        <file name="std.h"/>
+    </package>
+    <package name="ti.targets.arm.elf"
+        version="1, 0, 0, 1363125899822"
+        providerId="xdccore">
+        <file name="IArm.xs"/>
+        <file name="package.xs"/>
+        <file name="std.h"/>
+    </package>
+    <package name="ti.targets.elf"
+        version="1, 0, 0, 1363125905024"
+        providerId="xdccore">
+        <file name="ITarget.xs"/>
+        <file name="package.xs"/>
+        <file name="std.h"/>
+    </package>
+    <package name="tisb.coverity.filters"
+        version="1, 0, 0, 1389045108583"
+        providerId="/db/toolsrc/library/toolsE43/packages">
+        <file name="TisbDefaults.xs"/>
+    </package>
+    <package name="tisb.misra.filters"
+        version="1, 0, 0, 1389045108590"
+        providerId="/db/toolsrc/library/toolsE43/packages">
+        <file name="Misra.xs"/>
+        <file name="TisbDefaults.xs"/>
+    </package>
+    <package name="xdc.services.intern.gen"
+        version="1, 0, 0, 0, 1362023716508"
+        providerId="xdccore">
+        <file name="java/package.jar"/>
+    </package>
+    <package name="xdc.shelf"
+        version="1, 0, 0, 1362023724405"
+        providerId="xdccore">
+        <file name="java/antlr.jar"/>
+        <file name="java/ecj.jar"/>
+        <file name="java/js.jar"/>
+        <file name="java/tar.jar"/>
+    </package>
+    <package name="xdc.services.intern.xsr"
+        version="1, 0, 0, 1362023716929"
+        providerId="xdccore">
+        <file name="java/package.jar"/>
+    </package>
+    <package name="xdc.services.intern.cmd"
+        version="1, 0, 0, 0, 1362023716253"
+        providerId="xdccore">
+        <file name="java/package.jar"/>
+    </package>
+    <package name="xdc.services.spec"
+        version="1, 0, 0, 0, 1362023719065"
+        providerId="xdccore">
+        <file name="java/package.jar"/>
+    </package>
+    <targetRoot base="/db/vendors/ti/c6x/7.2.0/Linux/"
+        trgs="ti.targets.C64P,ti.targets.C674,ti.targets.elf.C64P,ti.targets.elf.C64T,ti.targets.elf.C66,ti.targets.elf.C66_big_endian,ti.targets.elf.C674">
+        <file name="include/assert.h"/>
+        <file name="include/linkage.h"/>
+        <file name="include/stdarg.h"/>
+        <file name="include/stddef.h"/>
+        <file name="include/stdint.h"/>
+        <file name="include/stdlib.h"/>
+        <file name="include/string.h"/>
+    </targetRoot>
+    <package name="xdc.runtime"
+        version="2, 1, 0, 1362023710757"
+        providerId="xdccore">
+        <file name="Assert.h"/>
+        <file name="Assert__epilogue.h"/>
+        <file name="Assert__prologue.h"/>
+        <file name="Diags.h"/>
+        <file name="Diags__epilogue.h"/>
+        <file name="Diags__prologue.h"/>
+        <file name="Error.h"/>
+        <file name="Error__epilogue.h"/>
+        <file name="Error__prologue.h"/>
+        <file name="IGateProvider.h"/>
+        <file name="IHeap.h"/>
+        <file name="IInstance.h"/>
+        <file name="IModule.h"/>
+        <file name="Log.h"/>
+        <file name="Log__epilogue.h"/>
+        <file name="Log__prologue.h"/>
+        <file name="Main.h"/>
+        <file name="Memory.h"/>
+        <file name="Registry.h"/>
+        <file name="Registry__epilogue.h"/>
+        <file name="Registry__prologue.h"/>
+        <file name="Text.h"/>
+        <file name="Types.h"/>
+        <file name="Types__epilogue.h"/>
+        <file name="Types__prologue.h"/>
+        <file name="package/Main_Module_GateProxy.h"/>
+        <file name="package/Memory_HeapProxy.h"/>
+        <file name="package/package.defs.h"/>
+        <file name="xdc.h"/>
+    </package>
+    <package name="ti.sdo.fc.global"
+        version="1, 0, 0, 1389727482000"
+        providerId="/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages">
+        <file name="FCSettings.h"/>
+        <file name="Settings.h"/>
+    </package>
+    <package name="ti.sysbios.hal"
+        version="2, 0, 0, 0, 1363283663589"
+        providerId="/db/vtree/library/trees/avalaprod/avalaprod-k29/exports/bios_6_35_01_29/packages">
+        <file name="Cache.h"/>
+        <file name="package/Cache_CacheProxy.h"/>
+        <file name="package/package.defs.h"/>
+    </package>
+    <package name="ti.sysbios.interfaces"
+        version="2, 0, 0, 0, 1363283666503"
+        providerId="/db/vtree/library/trees/avalaprod/avalaprod-k29/exports/bios_6_35_01_29/packages">
+        <file name="ICache.h"/>
+        <file name="package/package.defs.h"/>
+    </package>
+    <targetRoot base="/db/vendors/ti/arm/5.0.1/Linux/"
+        trgs="ti.targets.arm.elf.M3,ti.targets.arm.elf.M4">
+        <file name="include/assert.h"/>
+        <file name="include/linkage.h"/>
+        <file name="include/stdarg.h"/>
+        <file name="include/stddef.h"/>
+        <file name="include/stdint.h"/>
+        <file name="include/stdlib.h"/>
+        <file name="include/string.h"/>
+    </targetRoot>
+    <xdcRoot base="/db/rtree/library/trees/xdcprod/xdcprod-r48/product/Linux/xdctools_3_25_00_48/">
+        <file name="/packages/xdc/package.xdc"/>
+        <xdcCorePkg version="16, 0, 2, 0, 1362023701420" producerId="/db/ztree/library/trees/xdc/xdc-z44x/src/packages" buildCount="403" releaseName="xdc_corevers" label="default" date="1362023701420"/>
+    </xdcRoot>
+</references>
+<orphans>
+    <file name="/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/fc.bld"/>
+    <file name="/db/atree/library/trees/fc/fc-u06/src/misra.xs"/>
+</orphans>
+</release>

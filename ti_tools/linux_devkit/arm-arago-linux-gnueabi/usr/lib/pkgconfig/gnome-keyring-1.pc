@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: gnome-keyring
+Description: The GNOME keyring libraries
+Version: 2.28.2
+Requires: glib-2.0
+Libs: -L${libdir} -lgnome-keyring
+Cflags: -I${includedir}/gnome-keyring-1

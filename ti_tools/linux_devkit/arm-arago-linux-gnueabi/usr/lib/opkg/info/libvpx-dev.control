@@ -1,0 +1,14 @@
+Package: libvpx-dev
+Version: 0.9.5-r6.0.6
+Description: vpx Multi-Format Codec SDK
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: BSD
+Architecture: armv7a
+OE: libvpx
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libvpx (= 0.9.5-r6.0.6)
+Recommends: libc6-dev, libvpx-dev
+Source: http://webm.googlecode.com/files/libvpx-v0.9.5.tar.bz2 file://libvpx-configure-support-blank-prefix.patch file://CVE-2010-4203.patch

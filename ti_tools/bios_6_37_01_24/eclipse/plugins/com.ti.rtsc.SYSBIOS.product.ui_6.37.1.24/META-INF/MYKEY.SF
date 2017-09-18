@@ -1,0 +1,44 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: KichOBp1qZr0XIKah0bLsu4pomM=
+Created-By: 1.6.0_37 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: I9g//wTtpIemCLyVbKJVvaiT3Z8=
+
+Name: resources/generic/typical/main.c
+SHA1-Digest: /9jcF98qt+dgm1/vVc2ezRVFMGE=
+
+Name: resources/generic/minimal/c28/app.cfg
+SHA1-Digest: 9frzqwCey+ldKtwzIAzj211X3+8=
+
+Name: resources/makefile.defs
+SHA1-Digest: gOcanvLkZ8VxhALgi2bhN9GFm00=
+
+Name: resources/generic/minimal/msp430/app.cfg
+SHA1-Digest: IR+wEPUBy/oR773SMpq3QQPaFO8=
+
+Name: plugin.properties
+SHA1-Digest: FwYPizEFeGiKu4Fr1E8DrVbOCtM=
+
+Name: resources/generic/minimal/app.cfg
+SHA1-Digest: 2z7MUeuRsB6MsmWZ2kFQUTrDxMI=
+
+Name: resources/generic/typical/app.cfg
+SHA1-Digest: 9EVXQuTjut6+Gzw5VdO+6jO40Sc=
+
+Name: resources/generic/typical/msp430/app.cfg
+SHA1-Digest: riK6aZFgn6a/WdN4XufFODyq+Pk=
+
+Name: toc_top.xml
+SHA1-Digest: O7Cjs4pCukxrchkZqox0/2Yj2Cg=
+
+Name: eclipse_toc.xml
+SHA1-Digest: jNTJurXer/HE0k7JGDWntFx8G9w=
+
+Name: plugin.xml
+SHA1-Digest: Oo9TIcc71KwQaKtoKmWDtLcpHKI=
+
+Name: resources/generic/minimal/main.c
+SHA1-Digest: xpt7/TsiOnQ+XvJncoxn0QjqZTA=
+
+Name: resources/generic/typical/c28/app.cfg
+SHA1-Digest: yqjR7cqTxqtjjX+e1vCKjDYqiRw=
+

@@ -1,0 +1,4 @@
+Pkg.otherFiles = ["linkcmd.xdt", "load.bat", "load.xs", "load_ccs.xs",
+    "SystemSetup.xml", "TargetConfiguration.ccxml", "tload.xs",
+    "./simpliciti"
+];

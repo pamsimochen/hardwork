@@ -1,0 +1,5 @@
+/usr/include/can_netlink.h
+/usr/lib/libsocketcan.la
+/usr/lib/pkgconfig/libsocketcan.pc
+/usr/lib/libsocketcan.so
+/usr/include/libsocketcan.h

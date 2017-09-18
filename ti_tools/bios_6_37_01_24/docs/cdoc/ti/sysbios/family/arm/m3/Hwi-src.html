@@ -1,0 +1,1207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.family.arm.m3.Hwi</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> * Copyright (c) 2013, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> */</span>
+    32    
+    33    <span class="comment">/*
+</span>    34    <span class="comment"> *  ======== Hwi.xdc ========
+</span>    35    <span class="comment"> *
+</span>    36    <span class="comment"> */</span>
+    37    <span class=key>package</span> ti.sysbios.family.arm.m3;
+    38    
+    39    import xdc.rov.ViewInfo;
+    40    import xdc.runtime.Diags;
+    41    import xdc.runtime.Log;
+    42    import xdc.runtime.Assert;
+    43    import xdc.runtime.Error;
+    44    
+    45    import ti.sysbios.BIOS;
+    46    import ti.sysbios.interfaces.IHwi;
+    47    
+    48    <span class="xdoc">/*!
+</span>    49    <span class="xdoc"> *  ======== Hwi ========
+</span>    50    <span class="xdoc"> *  Cortex M3 Hardware Interrupt Manager
+</span>    51    <span class="xdoc"> *
+</span>    52    <span class="xdoc"> *  The Cortex M3's Nested Vectored Interrupt Controller (NVIC)
+</span>    53    <span class="xdoc"> *  supports up to 256 interrupts/exceptions. In practice, most
+</span>    54    <span class="xdoc"> *  devices support much fewer (ie the Stellaris family of devices
+</span>    55    <span class="xdoc"> *  have only 80 total interrupts defined).
+</span>    56    <span class="xdoc"> *
+</span>    57    <span class="xdoc"> *  SYS/BIOS Interrupt IDs or interrupt numbers correspond
+</span>    58    <span class="xdoc"> *  to an interrupt's position in the interrupt vector table.
+</span>    59    <span class="xdoc"> *
+</span>    60    <span class="xdoc"> *  ID 0 corresponds to vector 0 which is used by the NVIC
+</span>    61    <span class="xdoc"> *  to hold the initial (reset) stack pointer value.
+</span>    62    <span class="xdoc"> *
+</span>    63    <span class="xdoc"> *  ID 1 corresponds to vector 1 which is the reset vector (ie _c_int00)
+</span>    64    <span class="xdoc"> *
+</span>    65    <span class="xdoc"> *  IDs 2-14 are hardwired to exceptions.
+</span>    66    <span class="xdoc"> *
+</span>    67    <span class="xdoc"> *  ID 15 is the SysTick timer interrupt.
+</span>    68    <span class="xdoc"> *
+</span>    69    <span class="xdoc"> *  ID's 16-255 are mapped to the NVIC's user interrupts 0-239
+</span>    70    <span class="xdoc"> *  which are tied to platform specific interrupt sources.
+</span>    71    <span class="xdoc"> *
+</span>    72    <span class="xdoc"> *  The M3 Hwi module supports "zero latency" interrupts.
+</span>    73    <span class="xdoc"> *  Interrupts configured with priority greater (in priority,
+</span>    74    <span class="xdoc"> *  lower in number) than {<b>@link</b> #disablePriority}
+</span>    75    <span class="xdoc"> *  are NOT disabled by {<b>@link</b> #disable}.
+</span>    76    <span class="xdoc"> *
+</span>    77    <span class="xdoc"> *  Zero latency interrupts are not handled by the SYS/BIOS interrupt
+</span>    78    <span class="xdoc"> *  dispatcher. Instead, they are vectored to directly.
+</span>    79    <span class="xdoc"> *  As such, and because they are not masked by {<b>@link</b> #disable},
+</span>    80    <span class="xdoc"> *  these interrupt handlers are severely restricted in terms of the
+</span>    81    <span class="xdoc"> *  SYS/BIOS APIs they can invoke and THREAD SAFETY MUST BE CAREFULLY
+</span>    82    <span class="xdoc"> *  CONSIDERED!
+</span>    83    <span class="xdoc"> *
+</span>    84    <span class="xdoc"> *  Due to the M3's native automatic stacking of saved-by-caller C
+</span>    85    <span class="xdoc"> *  context on the way to an ISR, zero latency interrupt handlers
+</span>    86    <span class="xdoc"> *  are implemented using regular C functions (ie no 'interrupt'
+</span>    87    <span class="xdoc"> *  keyword is required).
+</span>    88    <span class="xdoc"> *
+</span>    89    <span class="xdoc"> *  Zero latency interrupts are distinguished from regular dispatched
+</span>    90    <span class="xdoc"> *  interrupts at create time by their priority being greater than
+</span>    91    <span class="xdoc"> *  {<b>@link</b> #disablePriority}.
+</span>    92    <span class="xdoc"> *
+</span>    93    <span class="xdoc"> *  Note that since zero latency interrupts don't use the dispatcher,
+</span>    94    <span class="xdoc"> *  the {<b>@link</b> ti.sysbios.interfaces.IHwi#arg arg} parameter is not
+</span>    95    <span class="xdoc"> *  functional.
+</span>    96    <span class="xdoc"> *
+</span>    97    <span class="xdoc"> *  <b>@a(Interrupt Masking Options)</b>
+</span>    98    <span class="xdoc"> *
+</span>    99    <span class="xdoc"> *  The NVIC interrupt controller is designed for priority based
+</span>   100    <span class="xdoc"> *  interrupts.
+</span>   101    <span class="xdoc"> *
+</span>   102    <span class="xdoc"> *  No support is provided for anything but {<b>@link</b> #MaskingOption_LOWER}.
+</span>   103    <span class="xdoc"> *
+</span>   104    <span class="xdoc"> *  <b>@a(Interrupt Priorities)</b>
+</span>   105    <span class="xdoc"> *
+</span>   106    <span class="xdoc"> *  In general, the NVIC supports priority values of 0 thru 255.
+</span>   107    <span class="xdoc"> *
+</span>   108    <span class="xdoc"> *  In practice valid priorities values are device dependent and their
+</span>   109    <span class="xdoc"> *  nesting behaviors depend on the {<b>@link</b> #priGroup} setting.
+</span>   110    <span class="xdoc"> *
+</span>   111    <span class="xdoc"> *  Priority 0 is the highest priority and by default is
+</span>   112    <span class="xdoc"> *  reserved for zero latency interrupts
+</span>   113    <span class="xdoc"> *  (see {<b>@link</b> #disablePriority}).
+</span>   114    <span class="xdoc"> *
+</span>   115    <span class="xdoc"> *  See the Cortex M3 architecture reference manual for details
+</span>   116    <span class="xdoc"> *  on the behavior of interrupt priorities and their relationship
+</span>   117    <span class="xdoc"> *  to the {<b>@link</b> #priGroup} setting.
+</span>   118    <span class="xdoc"> *
+</span>   119    <span class="xdoc"> *  <b>@a(Interrupt Vector Tables)</b>
+</span>   120    <span class="xdoc"> *  Stellaris devices:
+</span>   121    <span class="xdoc"> *
+</span>   122    <span class="xdoc"> *  By default, two vector tables are created for Stellaris devices:
+</span>   123    <span class="xdoc"> *
+</span>   124    <span class="xdoc"> *  A 16 entry boot vector table is placed at address 0x00000000 in
+</span>   125    <span class="xdoc"> *  FLASH.
+</span>   126    <span class="xdoc"> *
+</span>   127    <span class="xdoc"> *  An 80 entry vector table is placed at address 0x20000000 in RAM.
+</span>   128    <span class="xdoc"> *
+</span>   129    <span class="xdoc"> *  The FLASH boot vector table contains the reset vector and exception
+</span>   130    <span class="xdoc"> *  handler vectors used until the RAM based vector table is initialized.
+</span>   131    <span class="xdoc"> *
+</span>   132    <span class="xdoc"> *  The RAM vector table contains the 16 exception vectors as well as all
+</span>   133    <span class="xdoc"> *  the 64 user interrupt vectors.
+</span>   134    <span class="xdoc"> *
+</span>   135    <span class="xdoc"> *  During system startup, the NVIC Vector Table Offset Registor is
+</span>   136    <span class="xdoc"> *  intialized to point to this vector table after the table has been
+</span>   137    <span class="xdoc"> *  initialized.
+</span>   138    <span class="xdoc"> *
+</span>   139    <span class="xdoc"> *  <b>@a( )</b>
+</span>   140    <span class="xdoc"> *  Dual M3 Core ('Ducati') devices:
+</span>   141    <span class="xdoc"> *
+</span>   142    <span class="xdoc"> *  By default, Ducati core 0 places its runtime vector table at address
+</span>   143    <span class="xdoc"> *  0x00000400 and core 1 places its runtime vector table at address
+</span>   144    <span class="xdoc"> *  0x00000800.
+</span>   145    <span class="xdoc"> *
+</span>   146    <span class="xdoc"> *  Additionally, a boot vector table is placed at address
+</span>   147    <span class="xdoc"> *  0x00000000 which is shared by both cores.
+</span>   148    <span class="xdoc"> *
+</span>   149    <span class="xdoc"> *  The boot reset vector function determines which core it is being
+</span>   150    <span class="xdoc"> *  executed on and jumps to the reset vector contained in its corresponding
+</span>   151    <span class="xdoc"> *  runtime vector table.
+</span>   152    <span class="xdoc"> *
+</span>   153    <span class="xdoc"> *  The generation and placement of these vector tables is made
+</span>   154    <span class="xdoc"> *  automatically when the
+</span>   155    <span class="xdoc"> *  {<b>@link</b> ti.sysbios.family.arm.ducati.Core} module is used.
+</span>   156    <span class="xdoc"> *
+</span>   157    <span class="xdoc"> *  Although STRONGLY discouraged, this default behavior can be overridden
+</span>   158    <span class="xdoc"> *  by explicitly setting the
+</span>   159    <span class="xdoc"> *  {<b>@link</b> #resetVectorAddress Hwi.resetVectorAddress} and
+</span>   160    <span class="xdoc"> *  {<b>@link</b> #vectorTableAddress Hwi.vectorTableAddress} config parameters.
+</span>   161    <span class="xdoc"> *
+</span>   162    <span class="xdoc"> *  <b>@a(Restrictions)</b>
+</span>   163    <span class="xdoc"> *  When used within a dual M3 core (Ducati) arrangement, care must be
+</span>   164    <span class="xdoc"> *  taken when initializing this shared resource.
+</span>   165    <span class="xdoc"> *  The "Shared Resources" note provided
+</span>   166    <span class="xdoc"> *  in the {<b>@link</b> ti.sysbios.family.arm.ducati ducati} package discusses
+</span>   167    <span class="xdoc"> *  the management of the various hardware and software resources
+</span>   168    <span class="xdoc"> *  shared by the two M3 cores.
+</span>   169    <span class="xdoc"> *  <b>@a</b>
+</span>   170    <span class="xdoc"> *
+</span>   171    <span class="xdoc"> *  <b>@p(html)</b>
+</span>   172    <span class="xdoc"> *  &lt;h3&gt; Calling Context &lt;/h3&gt;
+</span>   173    <span class="xdoc"> *  &lt;table border="1" cellpadding="3"&gt;
+</span>   174    <span class="xdoc"> *    &lt;colgroup span="1"&gt;&lt;/colgroup&gt; &lt;colgroup span="5" align="center"&gt;&lt;/colgroup&gt;
+</span>   175    <span class="xdoc"> *
+</span>   176    <span class="xdoc"> *    &lt;tr&gt;&lt;th&gt; Function                 &lt;/th&gt;&lt;th&gt;  Hwi   &lt;/th&gt;&lt;th&gt;  Swi   &lt;/th&gt;&lt;th&gt;  Task  &lt;/th&gt;&lt;th&gt;  Main  &lt;/th&gt;&lt;th&gt;  Startup  &lt;/th&gt;&lt;/tr&gt;
+</span>   177    <span class="xdoc"> *    &lt;!--                                                                                                                 --&gt;
+</span>   178    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #clearInterrupt}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   179    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #create}           &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   180    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #disable}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   181    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #disableInterrupt} &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   182    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #enable}           &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   183    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #enableInterrupt}  &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   184    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #Params_init}      &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   185    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #restore}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   186    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #restoreInterrupt} &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   187    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #construct}        &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   188    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #delete}           &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   189    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #destruct}         &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   190    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getHookContext}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   191    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #setFunc}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   192    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #setHookContext}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   193    <span class="xdoc"> *    &lt;tr&gt;&lt;td colspan="6"&gt; Definitions: &lt;br /&gt;
+</span>   194    <span class="xdoc"> *       &lt;ul&gt;
+</span>   195    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Hwi&lt;/b&gt;: API is callable from a Hwi thread. &lt;/li&gt;
+</span>   196    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Swi&lt;/b&gt;: API is callable from a Swi thread. &lt;/li&gt;
+</span>   197    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Task&lt;/b&gt;: API is callable from a Task thread. &lt;/li&gt;
+</span>   198    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Main&lt;/b&gt;: API is callable during any of these phases: &lt;/li&gt;
+</span>   199    <span class="xdoc"> *           &lt;ul&gt;
+</span>   200    <span class="xdoc"> *             &lt;li&gt; In your module startup after this module is started (e.g. Hwi_Module_startupDone() returns TRUE). &lt;/li&gt;
+</span>   201    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.lastFxns. &lt;/li&gt;
+</span>   202    <span class="xdoc"> *             &lt;li&gt; During main().&lt;/li&gt;
+</span>   203    <span class="xdoc"> *             &lt;li&gt; During BIOS.startupFxns.&lt;/li&gt;
+</span>   204    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   205    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Startup&lt;/b&gt;: API is callable during any of these phases:&lt;/li&gt;
+</span>   206    <span class="xdoc"> *           &lt;ul&gt;
+</span>   207    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.firstFxns.&lt;/li&gt;
+</span>   208    <span class="xdoc"> *             &lt;li&gt; In your module startup before this module is started (e.g. Hwi_Module_startupDone() returns FALSE).&lt;/li&gt;
+</span>   209    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   210    <span class="xdoc"> *       &lt;/ul&gt;
+</span>   211    <span class="xdoc"> *    &lt;/td&gt;&lt;/tr&gt;
+</span>   212    <span class="xdoc"> *
+</span>   213    <span class="xdoc"> *  &lt;/table&gt;
+</span>   214    <span class="xdoc"> *  <b>@p</b>
+</span>   215    <span class="xdoc"> */</span>
+   216    
+   217    
+   218    @Template(<span class="string">"./Hwi.xdt"</span>)  <span class="comment">/* generates the vector table and the dispatcher */</span>
+   219    @ModuleStartup      <span class="comment">/* generate a call to startup function */</span>
+   220    
+   221    <span class=key>module</span> Hwi <span class=key>inherits</span> ti.sysbios.interfaces.IHwi
+   222    {
+   223        <span class=comment>// -------- Module Constants --------</span>
+   224    
+   225        <span class="xdoc">/*!
+</span>   226    <span class="xdoc">     *  The Cortex M3 NVIC supports up to 256 interrupts/exceptions.
+</span>   227    <span class="xdoc">     *
+</span>   228    <span class="xdoc">     *  The actual number supported is device specific and provided by
+</span>   229    <span class="xdoc">     *  the catalog device specification.
+</span>   230    <span class="xdoc">     */</span>
+   231        <span class=key>config</span> Int NUM_INTERRUPTS;
+   232    
+   233        <span class="xdoc">/*!
+</span>   234    <span class="xdoc">     *  The Cortex M3 NVIC supports up to 256 interrupt priorities.
+</span>   235    <span class="xdoc">     *
+</span>   236    <span class="xdoc">     *  The actual number supported is device specific and provided by
+</span>   237    <span class="xdoc">     *  the catalog device specification.
+</span>   238    <span class="xdoc">     */</span>
+   239        <span class=key>config</span> Int NUM_PRIORITIES;
+   240    
+   241        <span class=comment>// -------- Module Types --------</span>
+   242    
+   243        <span class="xdoc">/*! Hwi vector function type definition. */</span>
+   244        <span class=key>typedef</span> Void (*VectorFuncPtr)(<span class=key>void</span>);
+   245    
+   246        <span class="xdoc">/*! Exception hook function type definition. */</span>
+   247        <span class=key>typedef</span> Void (*ExceptionHookFuncPtr)(ExcContext *);
+   248    
+   249        <span class="xdoc">/*! NVIC Configuration Control Register (CCR). */</span>
+   250        <span class=key>struct</span> CCR {
+   251            Bits8 STKALIGN;         <span class="xdoc">/*! Auto stack alignment in exception */</span>
+   252            Bits8 BFHFNMIGN;        <span class="xdoc">/*! All faults ignore BUS Faults */</span>
+   253            Bits8 DIV_0_TRP;        <span class="xdoc">/*! Trap on divide by zero */</span>
+   254            Bits8 UNALIGN_TRP;      <span class="xdoc">/*! Trap on all unaligned accesses */</span>
+   255            Bits8 USERSETMPEND;     <span class="xdoc">/*! Allow user to trigger interrupts */</span>
+   256            Bits8 NONEBASETHRDENA;  <span class="xdoc">/*! Allow entering thread mode anytime */</span>
+   257        };
+   258    
+   259        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   260    <span class="xdoc">     * Nested Vectored Interrupt Controller.
+</span>   261    <span class="xdoc">     */</span>
+   262        <span class=key>struct</span> NVIC {
+   263            UInt32 RES_00;       <span class="xdoc">/*! 0xE000E000 reserved */</span>
+   264            UInt32 ICTR;         <span class="xdoc">/*! 0xE000E004 Interrupt Control Type */</span>
+   265            UInt32 RES_08;       <span class="xdoc">/*! 0xE000E008 reserved */</span>
+   266            UInt32 RES_0C;       <span class="xdoc">/*! 0xE000E00C reserved */</span>
+   267            UInt32 STCSR;        <span class="xdoc">/*! 0xE000E010 SysTick Control &amp; Status Register */</span>
+   268            UInt32 STRVR;        <span class="xdoc">/*! 0xE000E014 SysTick Reload Value Register */</span>
+   269            UInt32 STCVR;        <span class="xdoc">/*! 0xE000E018 SysTick Current Value Register */</span>
+   270            UInt32 STCALIB;      <span class="xdoc">/*! 0xE000E01C SysTick Calibration Value Register */</span>
+   271            UInt32 RES_20 [56];  <span class="xdoc">/*! 0xE000E020-0xE000E0FC reserved */</span>
+   272            UInt32 ISER [8];     <span class="xdoc">/*! 0xE000E100-0xE000E11C Interrupt Set Enable Registers */</span>
+   273            UInt32 RES_120 [24]; <span class="xdoc">/*! 0xE000E120-0xE000E17C reserved */</span>
+   274            UInt32 ICER [8];     <span class="xdoc">/*! 0xE000E180-0xE000E19C Interrupt Clear Enable Registers */</span>
+   275            UInt32 RES_1A0 [24]; <span class="xdoc">/*! 0xE000E1A0-0xE000E1FC reserved */</span>
+   276            UInt32 ISPR [8];     <span class="xdoc">/*! 0xE000E200-0xE000E21C Interrupt Set Pending Registers */</span>
+   277            UInt32 RES_220 [24]; <span class="xdoc">/*! 0xE000E220-0xE000E7C reserved */</span>
+   278            UInt32 ICPR [8];     <span class="xdoc">/*! 0xE000E280-0xE000E29C Interrupt Clear Pending Registers */</span>
+   279            UInt32 RES_2A0 [24]; <span class="xdoc">/*! 0xE000E2A0-0xE000E2FC reserved */</span>
+   280            UInt32 IABR [8];     <span class="xdoc">/*! 0xE000E300-0xE000E31C Interrupt Active Bit Registers */</span>
+   281            UInt32 RES_320 [56]; <span class="xdoc">/*! 0xE000E320-0xE000E3FC reserved */</span>
+   282            UInt8  IPR [240];    <span class="xdoc">/*! 0xE000E400-0xE000E4EF Interrupt Priority Registers */</span>
+   283            UInt32 RES_4F0 [516];<span class="xdoc">/*! 0xE000E4F0-0xE000ECFC reserved */</span>
+   284            UInt32 CPUIDBR;      <span class="xdoc">/*! 0xE000ED00 CPUID Base Register */</span>
+   285            UInt32 ICSR;         <span class="xdoc">/*! 0xE000ED04 Interrupt Control State Register */</span>
+   286            UInt32 VTOR;         <span class="xdoc">/*! 0xE000ED08 Vector Table Offset Register */</span>
+   287            UInt32 AIRCR;        <span class="xdoc">/*! 0xE000ED0C Application Interrupt/Reset Control Register */</span>
+   288            UInt32 SCR;          <span class="xdoc">/*! 0xE000ED10 System Control Register */</span>
+   289            UInt32 CCR;          <span class="xdoc">/*! 0xE000ED14 Configuration Control Register */</span>
+   290            UInt8  SHPR[12];     <span class="xdoc">/*! 0xE000ED18 System Handlers 4-15 Priority Registers */</span>
+   291            UInt32 SHCSR;        <span class="xdoc">/*! 0xE000ED24 System Handler Control &amp; State Register */</span>
+   292            UInt8  MMFSR;        <span class="xdoc">/*! 0xE000ED28 Memory Manage Fault Status Register */</span>
+   293            UInt8  BFSR;         <span class="xdoc">/*! 0xE000ED29 Bus Fault Status Register */</span>
+   294            UInt16 UFSR;         <span class="xdoc">/*! 0xE000ED2A Usage Fault Status Register */</span>
+   295            UInt32 HFSR;         <span class="xdoc">/*! 0xE000ED2C Hard Fault Status Register */</span>
+   296            UInt32 DFSR;         <span class="xdoc">/*! 0xE000ED30 Debug Fault Status Register */</span>
+   297            UInt32 MMAR;         <span class="xdoc">/*! 0xE000ED34 Memory Manager Address Register */</span>
+   298            UInt32 BFAR;         <span class="xdoc">/*! 0xE000ED38 Bus Fault Address Register */</span>
+   299            UInt32 AFSR;         <span class="xdoc">/*! 0xE000ED3C Auxiliary Fault Status Register */</span>
+   300            UInt32 PFR0;         <span class="xdoc">/*! 0xE000ED40 Processor Feature Register */</span>
+   301            UInt32 PFR1;         <span class="xdoc">/*! 0xE000ED44 Processor Feature Register */</span>
+   302            UInt32 DFR0;         <span class="xdoc">/*! 0xE000ED48 Debug Feature Register */</span>
+   303            UInt32 AFR0;         <span class="xdoc">/*! 0xE000ED4C Auxiliary Feature Register */</span>
+   304            UInt32 MMFR0;        <span class="xdoc">/*! 0xE000ED50 Memory Model Fault Register0 */</span>
+   305            UInt32 MMFR1;        <span class="xdoc">/*! 0xE000ED54 Memory Model Fault Register1 */</span>
+   306            UInt32 MMFR2;        <span class="xdoc">/*! 0xE000ED58 Memory Model Fault Register2 */</span>
+   307            UInt32 MMFR3;        <span class="xdoc">/*! 0xE000ED5C Memory Model Fault Register3 */</span>
+   308            UInt32 ISAR0;        <span class="xdoc">/*! 0xE000ED60 ISA Feature Register0 */</span>
+   309            UInt32 ISAR1;        <span class="xdoc">/*! 0xE000ED64 ISA Feature Register1 */</span>
+   310            UInt32 ISAR2;        <span class="xdoc">/*! 0xE000ED68 ISA Feature Register2 */</span>
+   311            UInt32 ISAR3;        <span class="xdoc">/*! 0xE000ED6C ISA Feature Register3 */</span>
+   312            UInt32 ISAR4;        <span class="xdoc">/*! 0xE000ED70 ISA Feature Register4 */</span>
+   313            UInt32 RES_D74[5];   <span class="xdoc">/*! 0xE000ED74-0xE000ED84 reserved */</span>
+   314            UInt32 CPACR;        <span class="xdoc">/*! 0xE000ED88 Coprocessor Access Control Register */</span>
+   315            UInt32 RES_D8C[93];  <span class="xdoc">/*! 0xE000ED8C-0xE000EEFC reserved */</span>
+   316            UInt32 STI;          <span class="xdoc">/*! 0xE000EF00 Software Trigger Interrupt Register */</span>
+   317            UInt32 RES_F04[12];  <span class="xdoc">/*! 0xE000EF04-0xE000EF30 reserved */</span>
+   318            UInt32 FPCCR;        <span class="xdoc">/*! 0xE000EF34 FP Context Control Register */</span>
+   319            UInt32 FPCAR;        <span class="xdoc">/*! 0xE000EF38 FP Context Address Register */</span>
+   320            UInt32 FPDSCR;       <span class="xdoc">/*! 0xE000EF3C FP Default Status Control Register */</span>
+   321            UInt32 MVFR0;        <span class="xdoc">/*! 0xE000EF40 Media &amp; FP Feature Register0 */</span>
+   322            UInt32 MVFR1;        <span class="xdoc">/*! 0xE000EF44 Media &amp; FP Feature Register1 */</span>
+   323            UInt32 RES_F48[34];  <span class="xdoc">/*! 0xE000EF48-0xE000EFCC reserved */</span>
+   324            UInt32 PID4;         <span class="xdoc">/*! 0xE000EFD0 Peripheral ID Register4 */</span>
+   325            UInt32 PID5;         <span class="xdoc">/*! 0xE000EFD4 Peripheral ID Register5 */</span>
+   326            UInt32 PID6;         <span class="xdoc">/*! 0xE000EFD8 Peripheral ID Register6 */</span>
+   327            UInt32 PID7;         <span class="xdoc">/*! 0xE000EFDC Peripheral ID Register7 */</span>
+   328            UInt32 PID0;         <span class="xdoc">/*! 0xE000EFE0 Peripheral ID Register0 */</span>
+   329            UInt32 PID1;         <span class="xdoc">/*! 0xE000EFE4 Peripheral ID Register1 */</span>
+   330            UInt32 PID2;         <span class="xdoc">/*! 0xE000EFE8 Peripheral ID Register2 */</span>
+   331            UInt32 PID3;         <span class="xdoc">/*! 0xE000EFEC Peripheral ID Register3 */</span>
+   332            UInt32 CID0;         <span class="xdoc">/*! 0xE000EFF0 Component ID Register0 */</span>
+   333            UInt32 CID1;         <span class="xdoc">/*! 0xE000EFF4 Component ID Register1 */</span>
+   334            UInt32 CID2;         <span class="xdoc">/*! 0xE000EFF8 Component ID Register2 */</span>
+   335            UInt32 CID3;         <span class="xdoc">/*! 0xE000EFFC Component ID Register3 */</span>
+   336        }
+   337    
+   338        <span class="xdoc">/*!
+</span>   339    <span class="xdoc">     * Physical Nested Vectored Interrupt Controller Device.
+</span>   340    <span class="xdoc">     * Short name is "Hwi_nvic"
+</span>   341    <span class="xdoc">     * Long name is "ti_sysbios_family_arm_m3_Hwi_nvic"
+</span>   342    <span class="xdoc">     */</span>
+   343        <span class=key>extern</span> volatile NVIC nvic;
+   344    
+   345        <span class="xdoc">/*!
+</span>   346    <span class="xdoc">     * Virtual Nested Vectored Interrupt Controller structure
+</span>   347    <span class="xdoc">     * written to by both cores for SMP.
+</span>   348    <span class="xdoc">     * Short name is "Hwi_vnvic"
+</span>   349    <span class="xdoc">     * Long name is "ti_sysbios_family_arm_m3_Hwi_vnvic"
+</span>   350    <span class="xdoc">     */</span>
+   351        <span class=key>extern</span> volatile NVIC vnvic;
+   352    
+   353        <span class="xdoc">/*!
+</span>   354    <span class="xdoc">     *  Exception Context - Register contents at the time of an exception.
+</span>   355    <span class="xdoc">     */</span>
+   356        <span class=key>struct</span> ExcContext {
+   357            <span class="comment">/* Thread Context */</span>
+   358            BIOS.ThreadType threadType; <span class="comment">/* Type of thread executing at */</span>
+   359                                        <span class="comment">/* the time the exception occurred */</span>
+   360            Ptr     threadHandle;       <span class="comment">/* Handle to thread executing at */</span>
+   361                                        <span class="comment">/* the time the exception occurred */</span>
+   362            Ptr     threadStack;        <span class="comment">/* Address of stack contents of thread */</span>
+   363                                        <span class="comment">/* executing at the time the exception */</span>
+   364                                        <span class="comment">/* occurred */</span>
+   365            SizeT   threadStackSize;    <span class="comment">/* size of thread stack */</span>
+   366    
+   367            <span class="comment">/* Internal Registers */</span>
+   368            Ptr     r0;
+   369            Ptr     r1;
+   370            Ptr     r2;
+   371            Ptr     r3;
+   372            Ptr     r4;
+   373            Ptr     r5;
+   374            Ptr     r6;
+   375            Ptr     r7;
+   376            Ptr     r8;
+   377            Ptr     r9;
+   378            Ptr     r10;
+   379            Ptr     r11;
+   380            Ptr     r12;
+   381            Ptr     sp;
+   382            Ptr     lr;
+   383            Ptr     pc;
+   384            Ptr     psr;
+   385    
+   386            <span class="comment">/* NVIC registers */</span>
+   387            Ptr     ICSR;
+   388            Ptr     MMFSR;
+   389            Ptr     BFSR;
+   390            Ptr     UFSR;
+   391            Ptr     HFSR;
+   392            Ptr     DFSR;
+   393            Ptr     MMAR;
+   394            Ptr     BFAR;
+   395            Ptr     AFSR;
+   396        }
+   397    
+   398        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   399        <span class=key>metaonly</span> <span class=key>struct</span> BasicView {
+   400            Ptr         halHwiHandle;
+   401            String      label;
+   402            String      type;
+   403            Int         intNum;
+   404            Int         priority;
+   405            Int         group;
+   406            Int         subPriority;
+   407            String      fxn;
+   408            UArg        arg;
+   409        };
+   410    
+   411        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   412        <span class=key>metaonly</span> <span class=key>struct</span> DetailedView {
+   413            Ptr         halHwiHandle;
+   414            String      label;
+   415            String      type;
+   416            Int         intNum;
+   417            Int         priority;
+   418            Int         group;
+   419            Int         subPriority;
+   420            String      fxn;
+   421            UArg        arg;
+   422            Ptr         irp;
+   423            String      status;
+   424            Int         coreId;
+   425        };
+   426    
+   427        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   428        <span class=key>metaonly</span> <span class=key>struct</span> ModuleView {
+   429            String      options[4];
+   430            String      activeInterrupt;
+   431            String      pendingInterrupt;
+   432            String      exception;
+   433            String      hwiStackPeak;
+   434            SizeT       hwiStackSize;
+   435            Ptr         hwiStackBase;
+   436        };
+   437    
+   438        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   439        @Facet
+   440        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo =
+   441            ViewInfo.create({
+   442                viewMap: [
+   443                    [<span class="string">'Basic'</span>,
+   444                        {
+   445                            type: ViewInfo.INSTANCE,
+   446                            viewInitFxn: <span class="string">'viewInitBasic'</span>,
+   447                            structName: <span class="string">'BasicView'</span>
+   448                        }
+   449                    ],
+   450                    [<span class="string">'Detailed'</span>,
+   451                        {
+   452                            type: ViewInfo.INSTANCE,
+   453                            viewInitFxn: <span class="string">'viewInitDetailed'</span>,
+   454                            structName: <span class="string">'DetailedView'</span>
+   455                        }
+   456                    ],
+   457                    [<span class="string">'Module'</span>,
+   458                        {
+   459                            type: ViewInfo.MODULE,
+   460                            viewInitFxn: <span class="string">'viewInitModule'</span>,
+   461                            structName: <span class="string">'ModuleView'</span>
+   462                        }
+   463                    ],
+   464                    [<span class="string">'Exception'</span>,
+   465                        {
+   466                            type: ViewInfo.TREE,
+   467                            viewInitFxn: <span class="string">'viewInitException'</span>,
+   468                            structName: <span class="string">'ExcContext'</span>
+   469                        }
+   470                    ]
+   471                ]
+   472            });
+   473    
+   474        <span class=comment>// -------- Module Parameters --------</span>
+   475    
+   476        <span class=comment>// Logs</span>
+   477    
+   478        <span class="xdoc">/*!
+</span>   479    <span class="xdoc">     *  Issued just prior to Hwi function invocation (with interrupts disabled)
+</span>   480    <span class="xdoc">     */</span>
+   481        <span class=key>config</span> Log.Event LM_begin = {
+   482            mask: Diags.USER1 | Diags.USER2,
+   483            msg: <span class="string">"LM_begin: hwi: 0x%x, func: 0x%x, preThread: %d, intNum: %d, irp: 0x%x"</span>
+   484        };
+   485    
+   486        <span class="xdoc">/*!
+</span>   487    <span class="xdoc">     *  Issued just after return from Hwi function (with interrupts disabled)
+</span>   488    <span class="xdoc">     */</span>
+   489        <span class=key>config</span> Log.Event LD_end = {
+   490            mask: Diags.USER2,
+   491            msg: <span class="string">"LD_end: hwi: 0x%x"</span>
+   492        };
+   493    
+   494        <span class=comment>// Asserts</span>
+   495    
+   496        <span class="xdoc">/*! Assert when bad maskSetting parameter provided */</span>
+   497        <span class=key>config</span> Assert.Id A_unsupportedMaskingOption = {
+   498            msg: <span class="string">"A_unsupportedMaskingOption: unsupported maskSetting."</span>
+   499        };
+   500    
+   501        <span class=comment>// Errors</span>
+   502    
+   503        <span class="xdoc">/*!
+</span>   504    <span class="xdoc">     *  Error raised when Hwi is already defined
+</span>   505    <span class="xdoc">     */</span>
+   506        <span class=key>config</span> Error.Id E_alreadyDefined = {
+   507            msg: <span class="string">"E_alreadyDefined: Hwi already defined: intr# %d"</span>
+   508        };
+   509    
+   510        <span class="xdoc">/*!
+</span>   511    <span class="xdoc">     *  Error raised when an exception occurs
+</span>   512    <span class="xdoc">     */</span>
+   513        <span class=key>config</span> Error.Id E_exception = {
+   514            msg: <span class="string">"E_exception: id = %d, pc = %08x.\nTo see more exception detail, set ti.sysbios.family.arm.m3.Hwi.enableException = true or,\nexamine the Exception view for the ti.sysbios.family.arm.m3.Hwi module using ROV."</span>
+   515        };
+   516    
+   517        <span class="xdoc">/*!
+</span>   518    <span class="xdoc">     *  Error raised when an uninitialized interrupt occurs
+</span>   519    <span class="xdoc">     */</span>
+   520        <span class=key>config</span> Error.Id E_noIsr = {
+   521            msg: <span class="string">"E_noIsr: id = %d, pc = %08x"</span>
+   522        };
+   523    
+   524        <span class="xdoc">/*!
+</span>   525    <span class="xdoc">     *  Error raised when NMI exception occurs
+</span>   526    <span class="xdoc">     */</span>
+   527        <span class=key>config</span> Error.Id E_NMI = {
+   528            msg: <span class="string">"E_NMI: %s"</span>
+   529        };
+   530    
+   531        <span class="xdoc">/*!
+</span>   532    <span class="xdoc">     *  Error raised when hard fault exception occurs
+</span>   533    <span class="xdoc">     */</span>
+   534        <span class=key>config</span> Error.Id E_hardFault = {
+   535            msg: <span class="string">"E_hardFault: %s"</span>
+   536        };
+   537    
+   538        <span class="xdoc">/*!
+</span>   539    <span class="xdoc">     *  Error raised when memory fault exception occurs
+</span>   540    <span class="xdoc">     */</span>
+   541        <span class=key>config</span> Error.Id E_memFault = {
+   542            msg: <span class="string">"E_memFault: %s, address: %08x"</span>
+   543        };
+   544    
+   545        <span class="xdoc">/*!
+</span>   546    <span class="xdoc">     *  Error raised when bus fault exception occurs
+</span>   547    <span class="xdoc">     */</span>
+   548        <span class=key>config</span> Error.Id E_busFault = {
+   549            msg: <span class="string">"E_busFault: %s, address: %08x"</span>
+   550        };
+   551    
+   552        <span class="xdoc">/*!
+</span>   553    <span class="xdoc">     *  Error raised when usage fault exception occurs
+</span>   554    <span class="xdoc">     */</span>
+   555        <span class=key>config</span> Error.Id E_usageFault = {
+   556            msg: <span class="string">"E_usageFault: %s"</span>
+   557        };
+   558    
+   559        <span class="xdoc">/*!
+</span>   560    <span class="xdoc">     *  Error raised when svCall exception occurs
+</span>   561    <span class="xdoc">     */</span>
+   562        <span class=key>config</span> Error.Id E_svCall = {
+   563            msg: <span class="string">"E_svCall: svNum = %d"</span>
+   564        };
+   565    
+   566        <span class="xdoc">/*!
+</span>   567    <span class="xdoc">     *  Error raised when debugMon exception occurs
+</span>   568    <span class="xdoc">     */</span>
+   569        <span class=key>config</span> Error.Id E_debugMon = {
+   570            msg: <span class="string">"E_debugMon: %s"</span>
+   571        };
+   572    
+   573        <span class="xdoc">/*!
+</span>   574    <span class="xdoc">     *  Error raised when reserved exception occurs
+</span>   575    <span class="xdoc">     */</span>
+   576        <span class=key>config</span> Error.Id E_reserved = {
+   577            msg: <span class="string">"E_reserved: %s %d"</span>
+   578        };
+   579    
+   580        <span class=comment>// configs</span>
+   581    
+   582        <span class="xdoc">/*!
+</span>   583    <span class="xdoc">     *  Location of the Interrupt Vector Table
+</span>   584    <span class="xdoc">     *
+</span>   585    <span class="xdoc">     *  This parameter allows the user to override the default placement
+</span>   586    <span class="xdoc">     *  of the interrupt vector table. The NVIC's Vector Table Offset
+</span>   587    <span class="xdoc">     *  Register (VTOR) is also programmed to this value.
+</span>   588    <span class="xdoc">     *
+</span>   589    <span class="xdoc">     *  By default, the interrupt vector table will be placed at
+</span>   590    <span class="xdoc">     *  address 0x00000000.
+</span>   591    <span class="xdoc">     *
+</span>   592    <span class="xdoc">     *  Some systems require the vector table to be placed at an address
+</span>   593    <span class="xdoc">     *  other than 0 but still need a copy of the two M3 boot vectors
+</span>   594    <span class="xdoc">     *  (SP and reset PC), located there. To achieve this, a separate
+</span>   595    <span class="xdoc">     *  parameter {<b>@link</b> #resetVectorAdress} is provided. If the
+</span>   596    <span class="xdoc">     *  resetVectorAddress has a different value then the vectorTableAddress
+</span>   597    <span class="xdoc">     *  then a separate 2 vector table is generated and placed at that
+</span>   598    <span class="xdoc">     *  address.
+</span>   599    <span class="xdoc">     *
+</span>   600    <span class="xdoc">     *  The vector table must be placed at an address at or lower than
+</span>   601    <span class="xdoc">     *  0x3FFFFC00 and must be aligned on an even 64 word boundary.
+</span>   602    <span class="xdoc">     */</span>
+   603        <span class=key>metaonly</span> <span class=key>config</span> Ptr vectorTableAddress = 0x00000000;
+   604    
+   605        <span class="xdoc">/*!
+</span>   606    <span class="xdoc">     *  Alternate reset vector address. Default is 0x00000000
+</span>   607    <span class="xdoc">     *
+</span>   608    <span class="xdoc">     *  if initialized by the user then an additional reset vector
+</span>   609    <span class="xdoc">     *  is created and placed in the ".resetVecs" section.
+</span>   610    <span class="xdoc">     *  To place the .resetVecs section into a specific memory section,
+</span>   611    <span class="xdoc">     *  add the following command to your config script:
+</span>   612    <span class="xdoc">     *  <b>@p(code)</b>
+</span>   613    <span class="xdoc">     *  Program.sectMap[".resetVecs"] = YourMemorySection;
+</span>   614    <span class="xdoc">     *  <b>@p</b>
+</span>   615    <span class="xdoc">     */</span>
+   616        <span class=key>metaonly</span> <span class=key>config</span> Ptr resetVectorAddress = 0x00000000;
+   617    
+   618        <span class="xdoc">/*! Reset Handler. Default is c_int00 */</span>
+   619        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr resetFunc;
+   620    
+   621        <span class="xdoc">/*! NMI Handler. Default is set to an internal exception handler */</span>
+   622        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr nmiFunc;
+   623    
+   624        <span class="xdoc">/*! Hard Fault Handler. Default is set to an internal exception handler */</span>
+   625        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr hardFaultFunc;
+   626    
+   627        <span class="xdoc">/*! Hard Mem Handler. Default is set to an internal exception handler */</span>
+   628        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr memFaultFunc;
+   629    
+   630        <span class="xdoc">/*! Bus Fault Handler. Default is set to an internal exception handler */</span>
+   631        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr busFaultFunc;
+   632    
+   633        <span class="xdoc">/*! Usage Fault Handler. Default is set to an internal exception handler */</span>
+   634        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr usageFaultFunc;
+   635    
+   636        <span class="xdoc">/*! SVCall Handler. Default is set to an internal exception handler */</span>
+   637        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr svCallFunc;
+   638    
+   639        <span class="xdoc">/*! Debug Mon Handler. Default is set to an internal exception handler */</span>
+   640        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr debugMonFunc;
+   641    
+   642        <span class="xdoc">/*! Reserved Exception Handler. Default is set to an internal exception handler */</span>
+   643        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr reservedFunc;
+   644    
+   645        <span class="xdoc">/*! Uninitialized ISR Handler. Default is set to an internal exception handler */</span>
+   646        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr nullIsrFunc;
+   647    
+   648        <span class="comment">/*
+</span>   649    <span class="comment">     *  SMP Interrupt affinity mappings
+</span>   650    <span class="comment">     *
+</span>   651    <span class="comment">     *  In SMP mode, this array maps an interrupt number to the
+</span>   652    <span class="comment">     *  coreId it is to be tied to. By default, all ints are mapped to
+</span>   653    <span class="comment">     *  core 0.
+</span>   654    <span class="comment">     *
+</span>   655    <span class="comment">     *  For example, to make Timer 1 from the
+</span>   656    <span class="comment">     *  ti.sysbios.family.arm.ducati.Timer
+</span>   657    <span class="comment">     *  module interrupt on core 1 rather than core 0, add the following to
+</span>   658    <span class="comment">     *  your config file:
+</span>   659    <span class="comment">     *
+</span>   660    <span class="comment">     *  @p(code)
+</span>   661    <span class="comment">     *     var m3Hwi = xdc.useModule('ti.sysbios.family.arm.m3.Hwi');
+</span>   662    <span class="comment">     *     m3Hwi.intAffinity[22] = 1;
+</span>   663    <span class="comment">     *  @p
+</span>   664    <span class="comment">     *
+</span>   665    <span class="comment">     *  @a(constraints)
+</span>   666    <span class="comment">     *  Valid core Ids are 0 and 1 for Ducati/Benelli SMP applications.
+</span>   667    <span class="comment">     *
+</span>   668    <span class="comment">     *  Interrupt numbers below 16 are ignored.
+</span>   669    <span class="comment">     *  Only interrupt numbers greater than or equal to #16 can be routed to
+</span>   670    <span class="comment">     *  either Ducati/Benelli core.
+</span>   671    <span class="comment">     *
+</span>   672    <span class="comment">     *  Interrupt #19, the Ducati inter-core interrupt, is reserved for
+</span>   673    <span class="comment">     *  exclusive use within the SMP kernel.
+</span>   674    <span class="comment">     */</span>
+   675        <span class=key>metaonly</span> <span class=key>config</span> UInt8 intAffinity[];
+   676    
+   677        <span class="xdoc">/*!
+</span>   678    <span class="xdoc">     *  Enable full exception decoding
+</span>   679    <span class="xdoc">     *
+</span>   680    <span class="xdoc">     *  When this is enabled, the exception handler will fully
+</span>   681    <span class="xdoc">     *  decode an exception and dump the registers to the
+</span>   682    <span class="xdoc">     *  system console.
+</span>   683    <span class="xdoc">     */</span>
+   684        <span class=key>metaonly</span> <span class=key>config</span> Bool enableException = <span class=key>true</span>;
+   685    
+   686        <span class="xdoc">/*!
+</span>   687    <span class="xdoc">     *  User Exception Context Buffer Address
+</span>   688    <span class="xdoc">     *
+</span>   689    <span class="xdoc">     *  By default, when an exception occurs, an {<b>@link</b> #ExcContext}
+</span>   690    <span class="xdoc">     *  structure is allocated on the ISR stack and filled in within the
+</span>   691    <span class="xdoc">     *  exception handler.
+</span>   692    <span class="xdoc">     *
+</span>   693    <span class="xdoc">     *  If {<b>@link</b> #excContextBuffer} is initialized by the user, the
+</span>   694    <span class="xdoc">     *  {<b>@link</b> #ExcContext} structure will be placed at that address instead.
+</span>   695    <span class="xdoc">     *
+</span>   696    <span class="xdoc">     *  The buffer must be large enough to contain an {<b>@link</b> #ExcContext}
+</span>   697    <span class="xdoc">     *  structure.
+</span>   698    <span class="xdoc">     */</span>
+   699        <span class=key>metaonly</span> <span class=key>config</span> Ptr excContextBuffer;
+   700        <span class=key>metaonly</span> <span class=key>config</span> Ptr excContextBuffers[];
+   701    
+   702        <span class="xdoc">/*!
+</span>   703    <span class="xdoc">     *  User Exception Stack Buffer Address
+</span>   704    <span class="xdoc">     *
+</span>   705    <span class="xdoc">     *  By default, when an exception occurs, a pointer to the base address
+</span>   706    <span class="xdoc">     *  of the stack being used by the thread causing the exception is placed
+</span>   707    <span class="xdoc">     *
+</span>   708    <span class="xdoc">     *  If {<b>@link</b> #excStackBuffer} is initialized by the user, the
+</span>   709    <span class="xdoc">     *  stack contents of the thread causing the exception will be
+</span>   710    <span class="xdoc">     *  copied to that address instead.
+</span>   711    <span class="xdoc">     *
+</span>   712    <span class="xdoc">     *  The buffer must be large enough to contain the largest task stack
+</span>   713    <span class="xdoc">     *  or ISR stack defined in the application.
+</span>   714    <span class="xdoc">     */</span>
+   715        <span class=key>metaonly</span> <span class=key>config</span> Ptr excStackBuffer;
+   716        <span class=key>metaonly</span> <span class=key>config</span> Ptr excStackBuffers[];
+   717    
+   718    
+   719        <span class="xdoc">/*!
+</span>   720    <span class="xdoc">     *  User Exception hook function.
+</span>   721    <span class="xdoc">     *
+</span>   722    <span class="xdoc">     *  Called just after the exception context has been initialized.
+</span>   723    <span class="xdoc">     *
+</span>   724    <span class="xdoc">     *  This function will be run on the ISR stack.
+</span>   725    <span class="xdoc">     *
+</span>   726    <span class="xdoc">     *  This function must run to completion.
+</span>   727    <span class="xdoc">     *
+</span>   728    <span class="xdoc">     *  It is called without any Task or Swi scheduling protection
+</span>   729    <span class="xdoc">     *  and therefore can not call any functions that may cause a Swi or Task
+</span>   730    <span class="xdoc">     *  scheduling operation (Swi_post(), Semaphore_post(), Event_post(), etc).
+</span>   731    <span class="xdoc">     */</span>
+   732        <span class=key>config</span> ExceptionHookFuncPtr excHookFunc = <span class=key>null</span>;
+   733        <span class=key>config</span> ExceptionHookFuncPtr excHookFuncs[];
+   734    
+   735        <span class="xdoc">/*!
+</span>   736    <span class="xdoc">     *  NVIC CCR register settings
+</span>   737    <span class="xdoc">     *
+</span>   738    <span class="xdoc">     *  These setting are written to Hwi_nvic.CCR at startup time.
+</span>   739    <span class="xdoc">     *
+</span>   740    <span class="xdoc">     *  See the Cortex M3 architecture reference manual for details
+</span>   741    <span class="xdoc">     *  on the meanings of these parameters.
+</span>   742    <span class="xdoc">     */</span>
+   743        <span class=key>metaonly</span> <span class=key>config</span> CCR nvicCCR = {
+   744            STKALIGN: 1,
+   745            BFHFNMIGN: 0,
+   746            DIV_0_TRP: 0,
+   747            UNALIGN_TRP: 0,
+   748            USERSETMPEND: 0,
+   749            NONEBASETHRDENA: 0
+   750        };
+   751    
+   752        <span class="xdoc">/*!
+</span>   753    <span class="xdoc">     *  The priority that BASEPRI is set to by Hwi_disable().
+</span>   754    <span class="xdoc">     *
+</span>   755    <span class="xdoc">     *  All interrupts configured with equal or less priority (equal or
+</span>   756    <span class="xdoc">     *  higher number) than disablePriority are disabled by Hwi_disable.
+</span>   757    <span class="xdoc">     *  Interrupts configured with higher priority (smaller number) than
+</span>   758    <span class="xdoc">     *  disablePriority are non-maskable (ie zero-latency).
+</span>   759    <span class="xdoc">     *
+</span>   760    <span class="xdoc">     *  The default setting is the second highest interrupt priority
+</span>   761    <span class="xdoc">     *  defined for the device. This results in priority 0 (and all
+</span>   762    <span class="xdoc">     *  other values in the same priority group) being
+</span>   763    <span class="xdoc">     *  the non-maskable interrupt priority. All other priorities
+</span>   764    <span class="xdoc">     *  are disabled with Hwi_disable().
+</span>   765    <span class="xdoc">     */</span>
+   766        <span class=key>config</span> UInt disablePriority;
+   767    
+   768        <span class="xdoc">/*!
+</span>   769    <span class="xdoc">     *  The PRIGROUP setting. Default is 0.
+</span>   770    <span class="xdoc">     *
+</span>   771    <span class="xdoc">     *  This value will be written to the PRIGROUP field
+</span>   772    <span class="xdoc">     *  within the NVIC's Application Interrupt and Reset Control
+</span>   773    <span class="xdoc">     *  Register (Hwi_nvic.AIRCR). It defines how the 8 bit priority
+</span>   774    <span class="xdoc">     *  values are interpreted by the hardware.
+</span>   775    <span class="xdoc">     *
+</span>   776    <span class="xdoc">     *  Valid settings are 0-7.
+</span>   777    <span class="xdoc">     *
+</span>   778    <span class="xdoc">     *  The default setting of 0 causes bits 7-1 of an interrupt's
+</span>   779    <span class="xdoc">     *  priority value to be used to as a pre-emption priority, and bit 0
+</span>   780    <span class="xdoc">     *  is used to determine which of two simultaneous interrupts with
+</span>   781    <span class="xdoc">     *  the same pre-emption priority will be serviced first.
+</span>   782    <span class="xdoc">     */</span>
+   783        <span class=key>config</span> UInt priGroup = 0;
+   784    
+   785        <span class=comment>// -------- Module Functions --------</span>
+   786    
+   787        <span class="xdoc">/*!
+</span>   788    <span class="xdoc">     *  ======== disable ========
+</span>   789    <span class="xdoc">     */</span>
+   790        @Macro
+   791        <span class=key>override</span> UInt disable();
+   792    
+   793        <span class="xdoc">/*!
+</span>   794    <span class="xdoc">     *  ======== enable ========
+</span>   795    <span class="xdoc">     */</span>
+   796        @Macro
+   797        <span class=key>override</span> UInt enable();
+   798    
+   799        <span class="xdoc">/*!
+</span>   800    <span class="xdoc">     *  ======== restore ========
+</span>   801    <span class="xdoc">     */</span>
+   802        @Macro
+   803        <span class=key>override</span> Void restore(UInt key);
+   804    
+   805        <span class="xdoc">/*!
+</span>   806    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   807    <span class="xdoc">     *  ======== disableFxn ========
+</span>   808    <span class="xdoc">     *  function call implementation
+</span>   809    <span class="xdoc">     */</span>
+   810        @DirectCall
+   811        UInt disableFxn();
+   812    
+   813        <span class="xdoc">/*!
+</span>   814    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   815    <span class="xdoc">     *  ======== enableFxn ========
+</span>   816    <span class="xdoc">     *  function call implementation
+</span>   817    <span class="xdoc">     */</span>
+   818        @DirectCall
+   819        UInt enableFxn();
+   820    
+   821        <span class="xdoc">/*!
+</span>   822    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   823    <span class="xdoc">     *  ======== restoreFxn ========
+</span>   824    <span class="xdoc">     *  function call implementation
+</span>   825    <span class="xdoc">     */</span>
+   826        @DirectCall
+   827        Void restoreFxn(UInt key);
+   828    
+   829        <span class="xdoc">/*!
+</span>   830    <span class="xdoc">     *  ======== inUseMeta ========
+</span>   831    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   832    <span class="xdoc">     *  Check for Hwi already in use.
+</span>   833    <span class="xdoc">     *  For internal SYS/BIOS use only.
+</span>   834    <span class="xdoc">     *  Should be called prior to any internal Hwi.create().
+</span>   835    <span class="xdoc">     *
+</span>   836    <span class="xdoc">     *  <b>@param(intNum)</b>  interrupt number
+</span>   837    <span class="xdoc">     */</span>
+   838        <span class=key>metaonly</span> Bool inUseMeta(UInt intNum);
+   839    
+   840        <span class="xdoc">/*!
+</span>   841    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   842    <span class="xdoc">     *  ======== plug ========
+</span>   843    <span class="xdoc">     *  Plug a non dispatched interrupt vector with an ISR address.
+</span>   844    <span class="xdoc">     *
+</span>   845    <span class="xdoc">     *  <b>@param(intNum)</b>  interrupt number
+</span>   846    <span class="xdoc">     *  <b>@param(fxn)</b>     pointer to ISR function
+</span>   847    <span class="xdoc">     */</span>
+   848        @DirectCall
+   849        Void plug(UInt intNum, VectorFuncPtr fxn);
+   850    
+   851        <span class="xdoc">/*!
+</span>   852    <span class="xdoc">     *  ======== getHandle ========
+</span>   853    <span class="xdoc">     *  Returns Hwi_handle associated with intNum
+</span>   854    <span class="xdoc">     *
+</span>   855    <span class="xdoc">     *  <b>@param(intNum)</b>  interrupt number
+</span>   856    <span class="xdoc">     */</span>
+   857        @DirectCall
+   858        Handle getHandle(UInt intNum);
+   859    
+   860        <span class="xdoc">/*!
+</span>   861    <span class="xdoc">     *  ======== setPriority ========
+</span>   862    <span class="xdoc">     *  Set an interrupt's relative priority.
+</span>   863    <span class="xdoc">     *
+</span>   864    <span class="xdoc">     *  Valid priorities are 0 - 255. 0 is highest priority.
+</span>   865    <span class="xdoc">     *
+</span>   866    <span class="xdoc">     *  <b>@param(intNum)</b>      ID of interrupt
+</span>   867    <span class="xdoc">     *  <b>@param(priority)</b>    priority
+</span>   868    <span class="xdoc">     */</span>
+   869        @DirectCall
+   870        Void setPriority(UInt intNum, UInt priority);
+   871    
+   872        <span class="xdoc">/*!
+</span>   873    <span class="xdoc">     *  ======== excSetBuffers ========
+</span>   874    <span class="xdoc">     *  Set the exception context and stack buffer pointers
+</span>   875    <span class="xdoc">     *
+</span>   876    <span class="xdoc">     *  <b>@param(excContextBuffer)</b>        Address to place ExcContext
+</span>   877    <span class="xdoc">     *  <b>@param(excStackBuffer)</b>          Address to place ExcStack
+</span>   878    <span class="xdoc">     */</span>
+   879        @DirectCall
+   880        Void excSetBuffers(Ptr excContextBuffer, Ptr excStackBuffer);
+   881    
+   882        <span class="xdoc">/*!
+</span>   883    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   884    <span class="xdoc">     *  ======== initNVIC ========
+</span>   885    <span class="xdoc">     *  initialize everything but leave ints disabled
+</span>   886    <span class="xdoc">     */</span>
+   887        @DirectCall
+   888        Void initNVIC();
+   889    
+   890        <span class="xdoc">/*!
+</span>   891    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   892    <span class="xdoc">     *  ======== initStacks ========
+</span>   893    <span class="xdoc">     * set up M3 split stacks
+</span>   894    <span class="xdoc">     */</span>
+   895        @DirectCall
+   896        Void initStacks(Ptr hwiStack);
+   897    
+   898        <span class="xdoc">/*!
+</span>   899    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   900    <span class="xdoc">     *  ======== flushVnvic ========
+</span>   901    <span class="xdoc">     *  Reconfigure a dispatched interrupt.
+</span>   902    <span class="xdoc">     *
+</span>   903    <span class="xdoc">     *  Called by the internal function "Hwi_updateNvic()".
+</span>   904    <span class="xdoc">     *
+</span>   905    <span class="xdoc">     *  This is a public API because it is also called by "Core_hwiFunc()".
+</span>   906    <span class="xdoc">     */</span>
+   907        @DirectCall
+   908        Void flushVnvic();
+   909    
+   910    <span class=key>instance</span>:
+   911    
+   912        <span class="xdoc">/*!
+</span>   913    <span class="xdoc">     *  Interrupt priority.
+</span>   914    <span class="xdoc">     *  The default is 255 which is the lowest priority.
+</span>   915    <span class="xdoc">     *
+</span>   916    <span class="xdoc">     *  Priority 0 is the highest priority and by default is
+</span>   917    <span class="xdoc">     *  reserved for zero latency interrupts
+</span>   918    <span class="xdoc">     *  (see {<b>@link</b> #disablePriority}).
+</span>   919    <span class="xdoc">     *
+</span>   920    <span class="xdoc">     *  Valid priorities values are device dependent and their
+</span>   921    <span class="xdoc">     *  nesting behaviors depend on the {<b>@link</b> #priGroup} setting.
+</span>   922    <span class="xdoc">     *
+</span>   923    <span class="xdoc">     *  See the Cortex M3 architecture reference manual for details
+</span>   924    <span class="xdoc">     *  on the meanings of these parameters.
+</span>   925    <span class="xdoc">     */</span>
+   926        <span class=key>override</span> <span class=key>config</span> Int priority = 255;
+   927    
+   928        <span class="xdoc">/*!
+</span>   929    <span class="xdoc">     * Interrupt Masking Option. Only MaskingOption_LOWER is supported.
+</span>   930    <span class="xdoc">     *
+</span>   931    <span class="xdoc">     * The NVIC interrupt controller is designed for priority based
+</span>   932    <span class="xdoc">     * interrupts. No support is provided for anything but
+</span>   933    <span class="xdoc">     * Hwi.MaskingOption_LOWER.
+</span>   934    <span class="xdoc">     */</span>
+   935        <span class=key>override</span> <span class=key>config</span> IHwi.MaskingOption maskSetting = IHwi.MaskingOption_LOWER;
+   936    
+   937        <span class="xdoc">/*!
+</span>   938    <span class="xdoc">     *  Use the interrupt dispatcher with this interrupt. Default is true.
+</span>   939    <span class="xdoc">     *
+</span>   940    <span class="xdoc">     *  If set to false, the interrupt dispatcher is NOT used. Instead,
+</span>   941    <span class="xdoc">     *  the configured Hwi function address is placed directly in the
+</span>   942    <span class="xdoc">     *  vector table, which results in the dispatcher being bypassed.
+</span>   943    <span class="xdoc">     *
+</span>   944    <span class="xdoc">     *  <b>@a(Warning)</b>
+</span>   945    <span class="xdoc">     *  Interrupts configured to bupass the dispatcher are not allowed
+</span>   946    <span class="xdoc">     *  to call ANY SYS/BIOS APIs that effect thread scheduling. Examples
+</span>   947    <span class="xdoc">     *  of API that should no be invoked are:
+</span>   948    <span class="xdoc">     *
+</span>   949    <span class="xdoc">     *  <b>@p(dlist)</b>
+</span>   950    <span class="xdoc">     *    - Swi_post(),
+</span>   951    <span class="xdoc">     *    - Semaphore_post(),
+</span>   952    <span class="xdoc">     *    - Event_post(),
+</span>   953    <span class="xdoc">     *    - Task_yield()
+</span>   954    <span class="xdoc">     *  <b>@p</b>
+</span>   955    <span class="xdoc">     *
+</span>   956    <span class="xdoc">     *  Additionally, although the signature for a non-dispatched interrupt
+</span>   957    <span class="xdoc">     *  function is the same as that for a dispatched interrupt
+</span>   958    <span class="xdoc">     *  (see {<b>@link</b> #FuncPtr}), no argument is actually passed
+</span>   959    <span class="xdoc">     *  to the non-dispatched ISR handler.
+</span>   960    <span class="xdoc">     */</span>
+   961        <span class=key>config</span> Bool useDispatcher = <span class=key>true</span>;
+   962    
+   963        <span class="xdoc">/*!
+</span>   964    <span class="xdoc">     *  ======== reconfig ========
+</span>   965    <span class="xdoc">     *  Reconfigure a dispatched interrupt.
+</span>   966    <span class="xdoc">     */</span>
+   967        @DirectCall
+   968        Void reconfig(FuncPtr fxn, <span class=key>const</span> Params *params);
+   969    
+   970    <span class=key>internal</span>:   <span class="comment">/* not for client use */</span>
+   971    
+   972        <span class="comment">/* const dispatchTable */</span>
+   973        <span class=key>config</span> Handle dispatchTable[];
+   974    
+   975        <span class="comment">/* const array of statically created Hwi priorities */</span>
+   976        <span class=key>config</span> UInt8 priorities[];
+   977    
+   978        <span class="comment">/*
+</span>   979    <span class="comment">     *  Boolean to indicate whether the current target is being
+</span>   980    <span class="comment">     *  built using tiva platform.
+</span>   981    <span class="comment">     */</span>
+   982        <span class=key>metaonly</span> <span class=key>config</span> Bool isTiva = <span class=key>false</span>;
+   983    
+   984        <span class="comment">/*
+</span>   985    <span class="comment">     *  The omap4430 ES1 devices have a nasty bug in the unicache
+</span>   986    <span class="comment">     *  that locks the bus up when an interrupt occurs at a specific
+</span>   987    <span class="comment">     *  time during an internal cache operation.
+</span>   988    <span class="comment">     *  The flag below, when set to true, activates special
+</span>   989    <span class="comment">     *  code in the Hwi module to work around this bug.
+</span>   990    <span class="comment">     *  "WA1_1" comes from "WorkAround 1.1" from a list of potential
+</span>   991    <span class="comment">     *  solutions to the problem developed by the design team.
+</span>   992    <span class="comment">     */</span>
+   993        <span class=key>metaonly</span> <span class=key>config</span> Bool enableWA1_1 = <span class=key>false</span>;
+   994    
+   995        <span class="comment">/*
+</span>   996    <span class="comment">     * Swi and Task module function pointers.
+</span>   997    <span class="comment">     * Used to decouple Hwi from Swi and Task when
+</span>   998    <span class="comment">     * dispatcherSwiSupport or
+</span>   999    <span class="comment">     * dispatcherTaskSupport is false.
+</span>  1000    <span class="comment">     */</span>
+  1001        <span class=key>config</span> UInt (*swiDisable)();
+  1002        <span class=key>config</span> Void (*swiRestoreHwi)(UInt);
+  1003        <span class=key>config</span> UInt (*taskDisable)();
+  1004        <span class=key>config</span> Void (*taskRestoreHwi)(UInt);
+  1005    
+  1006        <span class="comment">/* initial Hwi_nvic.CCR value */</span>
+  1007        <span class=key>config</span> UInt32 ccr;
+  1008    
+  1009        <span class="xdoc">/*!
+</span>  1010    <span class="xdoc">     *  const array to hold all HookSet objects.
+</span>  1011    <span class="xdoc">     */</span>
+  1012        <span class=key>config</span> HookSet hooks[<span class=key>length</span>] = [];
+  1013    
+  1014        <span class="comment">/*
+</span>  1015    <span class="comment">     *  ======== postInit ========
+</span>  1016    <span class="comment">     *  finish initializing static and dynamic Hwis
+</span>  1017    <span class="comment">     */</span>
+  1018        Int postInit(Object *hwi, Error.Block *eb);
+  1019    
+  1020        <span class="xdoc">/*!
+</span>  1021    <span class="xdoc">     *  ======== updateNvic ========
+</span>  1022    <span class="xdoc">     *  Internal SMP function to cause the virtual NVIC to be flushed to the
+</span>  1023    <span class="xdoc">     *  actual NVIC.
+</span>  1024    <span class="xdoc">     *
+</span>  1025    <span class="xdoc">     *  This function is called by the various user APIs that manipulate
+</span>  1026    <span class="xdoc">     *  individual NVIC register bits
+</span>  1027    <span class="xdoc">     *  (ie Hwi_enable/disable/restore/clearInterrupt())
+</span>  1028    <span class="xdoc">     *
+</span>  1029    <span class="xdoc">     *  If the current core is the owner of "intNum", flushVnvic() is called
+</span>  1030    <span class="xdoc">     *  immediately.
+</span>  1031    <span class="xdoc">     *
+</span>  1032    <span class="xdoc">     *  Otherwise an intercore interrupt is generated to force the other core
+</span>  1033    <span class="xdoc">     *  to perform the flushVnvic().
+</span>  1034    <span class="xdoc">     *
+</span>  1035    <span class="xdoc">     */</span>
+  1036        Void updateNvic(UInt intNum);
+  1037    
+  1038        <span class="xdoc">/*!
+</span>  1039    <span class="xdoc">     *  ======== initEnables ========
+</span>  1040    <span class="xdoc">     *  initialize the enables
+</span>  1041    <span class="xdoc">     */</span>
+  1042        Void initEnables();
+  1043    
+  1044        <span class="xdoc">/*!
+</span>  1045    <span class="xdoc">     *  ======== excHandlerAsm ========
+</span>  1046    <span class="xdoc">     *  asm code exception handler
+</span>  1047    <span class="xdoc">     */</span>
+  1048        Void excHandlerAsm();
+  1049    
+  1050        <span class="xdoc">/*!
+</span>  1051    <span class="xdoc">     *  ======== excHandler ========
+</span>  1052    <span class="xdoc">     *  exception Handler routes to
+</span>  1053    <span class="xdoc">     *  either min or max exception handler
+</span>  1054    <span class="xdoc">     */</span>
+  1055        Void excHandler(UInt *excStack, UInt lr);
+  1056    
+  1057        <span class="xdoc">/*!
+</span>  1058    <span class="xdoc">     *  ======== excHandlerMin ========
+</span>  1059    <span class="xdoc">     *  Minimal Exception Handler
+</span>  1060    <span class="xdoc">     */</span>
+  1061        Void excHandlerMin(UInt *excStack, UInt lr);
+  1062    
+  1063        <span class="xdoc">/*!
+</span>  1064    <span class="xdoc">     *  ======== excHandlerMax ========
+</span>  1065    <span class="xdoc">     *  Full Featured Exception Handler
+</span>  1066    <span class="xdoc">     */</span>
+  1067        Void excHandlerMax(UInt *excStack, UInt lr);
+  1068    
+  1069        <span class="xdoc">/*! Hwi exception handler function type definition. */</span>
+  1070        <span class=key>typedef</span> Void (*ExcHandlerFuncPtr)(UInt *, UInt);
+  1071    
+  1072        <span class=key>config</span> ExcHandlerFuncPtr excHandlerFunc = excHandlerMin;
+  1073    
+  1074        <span class="xdoc">/*!
+</span>  1075    <span class="xdoc">     *  ======== excFillContext ========
+</span>  1076    <span class="xdoc">     */</span>
+  1077        Void excFillContext();
+  1078    
+  1079        <span class="xdoc">/*!
+</span>  1080    <span class="xdoc">     *  ======== excNmi ========
+</span>  1081    <span class="xdoc">     */</span>
+  1082        Void excNmi(UInt *excStack);
+  1083    
+  1084        <span class="xdoc">/*!
+</span>  1085    <span class="xdoc">     *  ======== excHardFault ========
+</span>  1086    <span class="xdoc">     */</span>
+  1087        Void excHardFault(UInt *excStack);
+  1088    
+  1089        <span class="xdoc">/*!
+</span>  1090    <span class="xdoc">     *  ======== excMemFault ========
+</span>  1091    <span class="xdoc">     */</span>
+  1092        Void excMemFault(UInt *excStack);
+  1093    
+  1094        <span class="xdoc">/*!
+</span>  1095    <span class="xdoc">     *  ======== excBusFault ========
+</span>  1096    <span class="xdoc">     */</span>
+  1097        Void excBusFault(UInt *excStack);
+  1098    
+  1099        <span class="xdoc">/*!
+</span>  1100    <span class="xdoc">     *  ======== excUsageFault ========
+</span>  1101    <span class="xdoc">     */</span>
+  1102        Void excUsageFault(UInt *excStack);
+  1103    
+  1104        <span class="xdoc">/*!
+</span>  1105    <span class="xdoc">     *  ======== excSvCall ========
+</span>  1106    <span class="xdoc">     */</span>
+  1107        Void excSvCall(UInt *excStack);
+  1108    
+  1109        <span class="xdoc">/*!
+</span>  1110    <span class="xdoc">     *  ======== excDebugMon ========
+</span>  1111    <span class="xdoc">     */</span>
+  1112        Void excDebugMon(UInt *excStack);
+  1113    
+  1114        <span class="xdoc">/*!
+</span>  1115    <span class="xdoc">     *  ======== excReserved ========
+</span>  1116    <span class="xdoc">     */</span>
+  1117        Void excReserved(UInt *excStack, UInt excNum);
+  1118    
+  1119        <span class="xdoc">/*!
+</span>  1120    <span class="xdoc">     *  ======== excNoIsr ========
+</span>  1121    <span class="xdoc">     */</span>
+  1122        Void excNoIsr(UInt *excStack, UInt excNum);
+  1123    
+  1124        <span class="xdoc">/*!
+</span>  1125    <span class="xdoc">     *  ======== excDumpRegs ========
+</span>  1126    <span class="xdoc">     */</span>
+  1127        Void excDumpRegs(UInt lr);
+  1128    
+  1129        <span class="xdoc">/*!
+</span>  1130    <span class="xdoc">     *  ======== pendSV ========
+</span>  1131    <span class="xdoc">     * Used by dispatcher
+</span>  1132    <span class="xdoc">     */</span>
+  1133        Void pendSV();
+  1134    
+  1135        <span class="xdoc">/*! Hwi vector function type definition. */</span>
+  1136        <span class=key>typedef</span> Void (*HandlerFuncPtr)(Handle, UInt);
+  1137    
+  1138        <span class="comment">/* Low Level Interrupt Dispatcher Wrapper */</span>
+  1139        Void dispatch();
+  1140    
+  1141        <span class="comment">/*
+</span>  1142    <span class="comment">     * "Top Half" of Interrupt Dispatcher
+</span>  1143    <span class="comment">     *  Does not include Swi_restore() and Task_restore()
+</span>  1144    <span class="comment">     */</span>
+  1145        UInt dispatchC(Irp irp);
+  1146    
+  1147        <span class="comment">/* "Bottom half", run swi scheduler */</span>
+  1148        Void doSwiRestore(UInt tskKey);
+  1149    
+  1150        <span class="comment">/* "Bottom half", run task scheduler */</span>
+  1151        Void doTaskRestore(UInt tskKey);
+  1152    
+  1153        <span class="xdoc">/*! Meta World Only Hwi Configuration Object. */</span>
+  1154        <span class=key>metaonly</span> <span class=key>struct</span> InterruptObj {
+  1155            String name;            <span class="comment">/* symbol used for vector table entry */</span>
+  1156            Bool used;              <span class="comment">/* Interrupt already defined? */</span>
+  1157            Bool useDispatcher;     <span class="comment">/* Should dispatcher handle this Int? */</span>
+  1158            UInt priority;          <span class="comment">/* priority */</span>
+  1159            FuncPtr fxn;            <span class="comment">/* Dispatched ISR function */</span>
+  1160        };
+  1161    
+  1162        <span class="xdoc">/*!
+</span>  1163    <span class="xdoc">     * Meta-only array of interrupt objects.
+</span>  1164    <span class="xdoc">     * This meta-only array of Hwi config objects is initialized
+</span>  1165    <span class="xdoc">     * in Hwi.xs:module$meta$init().
+</span>  1166    <span class="xdoc">     */</span>
+  1167        <span class=key>metaonly</span> <span class=key>config</span> InterruptObj interrupt[];
+  1168    
+  1169        <span class=key>struct</span> Instance_State {
+  1170            UArg            arg;            <span class=comment>// Argument to Hwi function.</span>
+  1171            FuncPtr         fxn;            <span class=comment>// Hwi function.</span>
+  1172            Int             intNum;         <span class=comment>// Interrupt number</span>
+  1173            Irp             irp;            <span class=comment>// current IRP</span>
+  1174            Ptr             hookEnv[];
+  1175        };
+  1176    
+  1177        <span class=key>struct</span> Module_State {
+  1178            Bits16          enables;            <span class=comment>// Bit 15 = SysTick IE,</span>
+  1179                                                <span class=comment>// Bit 0 = WA1.1</span>
+  1180            Bits32          iser[8];            <span class=comment>// Initial Interrupt Set Enable Reg values</span>
+  1181            UInt8           priorities[];       <span class=comment>// table of interrupt priorities</span>
+  1182            Char            *taskSP;            <span class=comment>// Temporary storage of interrupted</span>
+  1183                                                <span class=comment>// Task's SP during ISR execution</span>
+  1184            Bool            excActive[];        <span class=comment>// TRUE if an exception has occurred</span>
+  1185            ExcContext      *excContext[];      <span class=comment>// Exception context</span>
+  1186            Ptr             excStack[];         <span class=comment>// Exception thread stack</span>
+  1187            Ptr             isrStack;           <span class=comment>// Points to isrStack address</span>
+  1188            Ptr             isrStackBase;       <span class=comment>// = __TI_STACK_BASE</span>
+  1189            SizeT           isrStackSize;       <span class=comment>// = Program.stack</span>
+  1190            Ptr             vectorTableBase;    <span class=comment>// Points to base of vector table</span>
+  1191            UInt            swiTaskKeys;        <span class=comment>// dispatcher Swi and Task key storage</span>
+  1192            volatile Bool   vnvicFlushRequired; <span class=comment>// if TRUE, Hwi_vnvicFlush will copy</span>
+  1193                                                <span class=comment>// changed vnvic regs to nvic</span>
+  1194            Handle          dispatchTable[];    <span class=comment>// dispatch table</span>
+  1195            UInt8           intAffinity[];      <span class=comment>// smp int-to-coreId mappings</span>
+  1196            UInt32          intAffinityMasks[][]; <span class=comment>// smp per-core NVIC register masks</span>
+  1197        };
+  1198    }
+</pre>
+</body></html>

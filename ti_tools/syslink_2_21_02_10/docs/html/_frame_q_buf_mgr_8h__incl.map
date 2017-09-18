@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" href="$_frame_q_defs_8h.html" title="Defines configurable elements for FrameQ module. (Deprecated)" alt="" coords="8,83,160,107" />
+<area shape="rect" href="$_sys_link_8h.html" title="This module contains common definitions, types, structures and functions used by SysLink." alt="" coords="184,83,312,107" />
+<area shape="rect" href="$_notify_8h.html" title="Notification manager for IPC." alt="" coords="336,83,432,107" />
+</map>

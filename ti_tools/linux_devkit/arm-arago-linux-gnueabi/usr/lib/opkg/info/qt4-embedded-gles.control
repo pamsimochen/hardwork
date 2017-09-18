@@ -1,0 +1,14 @@
+Package: qt4-embedded-gles
+Version: 4.7.2-r29.14-arago8.6
+Description: Version 4.7.2-r29.14-arago8 of package qt4-embedded-gles
+Section: libs
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: qt4-embedded-gles
+Homepage: http://www.trolltech.com
+Build: amsdk-05.05.00.00-integration/a9551ab
+Recommends: libqt3supporte4, libqt-embeddedassistantclient4, libqtclucenee4, libqtcoree4, libqtdbuse4, libqtdesignere4, libqtdesignercomponentse4, libqtguie4, libqthelpe4, libqtnetworke4, libqtopengle4, libqtscripte4, libqtscripttoolse4, libqtsqle4, libqtsvge4, libqtteste4, libqt-embeddeduitools4, libqtwebkite4, libqtxmle4, libqtxmlpatternse4, libphonone4, libqtmultimediae4, libqt-embeddedopenvg4, libqt-embeddedmediaservices4, libqtdeclarativee4, libpvrqwswsegl1, qt4-embedded-tools, qt4-embedded-assistant, qt4-embedded-common, qt4-embedded-dbus, qt4-embedded-demos, qt4-embedded-designer, qt4-embedded-examples, qt4-embedded-fonts, qt4-embedded-fonts-ttf-vera, qt4-embedded-fonts-ttf-dejavu, qt4-embedded-fonts-pfa, qt4-embedded-fonts-pfb, qt4-embedded-fonts-qpf, qt4-embedded-linguist, qt4-embedded-makeqpf, qt4-embedded-mkspecs, qt4-embedded-pixeltool, qt4-embedded-qmlviewer, qt4-embedded-xmlpatterns, qt4-embedded-qt3to4
+Provides: qt4-embedded
+Source: ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-4.7.2.tar.gz file://0004-no-qmake.patch file://hack-out-pg2-4.7.0.patch file://0006-freetype-host-includes.patch file://0001-Added-Openembedded-crossarch-option.patch file://0010-phonon-gstreamer-rgb-endianess.patch file://g++.conf file://linux.conf file://qte.sh file://cursor-hack.diff file://0001-wsegl2-support.patch file://0001-make-demos-maximized-for-TISDK-use.patch

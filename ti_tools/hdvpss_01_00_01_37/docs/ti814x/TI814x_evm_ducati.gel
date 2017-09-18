@@ -1,0 +1,36 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Project        : TI816xevm
+  File            : TI816x_evm_ducati.gel
+  Author        : TI
+  Purpose        : Enables/Disables the cache for ducati sub-system.
+  Desciption    : Enables/Disables the cache for ducati sub-system.
+
+*/
+menuitem "UniCacheEnableDisable"
+
+#define WR_MEM_32(addr, data)    *(unsigned int*)(addr) =(unsigned int)(data)
+#define RD_MEM_32(addr)          *(unsigned int*)(addr)
+
+
+#define DUCATI_MMU_CFG                  0x55080000
+
+OnTargetConnect()
+{
+    GEL_TextOut( "\nConnecting Target...\n" );
+
+    Ducati_Cache_Enable();
+
+    GEL_TextOut( "Connecting Target... Done.\n\n" );
+}
+
+hotmenu Ducati_Cache_Enable()
+{
+    WR_MEM_32(DUCATI_MMU_CFG+0x004,       0x0000001E);
+    GEL_TextOut("\t Ducati Cache Enabled\n");
+}
+
+hotmenu Ducati_Cache_Disable()
+{
+    WR_MEM_32(DUCATI_MMU_CFG+0x004,       0x0000001C);
+    GEL_TextOut("\t Ducati Cache Disabled\n");
+}

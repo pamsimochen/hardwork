@@ -1,0 +1,777 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sdo.ipc.MessageQ</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* --COPYRIGHT--,BSD
+</span>     2    <span class="comment"> * Copyright (c) $(CPYYEAR), Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> * --/COPYRIGHT--*/</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== MessageQ.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> *! Revision History
+</span>    36    <span class="comment"> *! ================
+</span>    37    <span class="comment"> *! 26-Feb-2010 skp     Fixed SDOCM00067176 (QueueId defined in MessageQ.xdc)
+</span>    38    <span class="comment"> *! 16-Feb-2010 jv      Fix a couple of issues from SDOCM00066822 here.
+</span>    39    <span class="comment"> *! 04-Feb-2010 skp     Removed 'name' from Instance state
+</span>    40    <span class="comment"> *! 07-Aug-2008 skp     cdoc cleanup
+</span>    41    <span class="comment"> *! 04-Jun-2008 agd     cdoc cleanup
+</span>    42    <span class="comment"> *! 14-Dec-2007 connell updated call context table
+</span>    43    <span class="comment"> *! 06-Jun-2007 toddm   nodoc'd the whole module. Not supported in BIOS 6.0.
+</span>    44    <span class="comment"> *! 11-May-2007 agd     Addressed SDSCM00016616
+</span>    45    <span class="comment"> *! 16-Apr-2007 cmcc    Added calling context table
+</span>    46    <span class="comment"> *! 29-Sep-2006 toddm   Added error block into MessageQ_alloc
+</span>    47    <span class="comment"> *! 10-Apr-2006 toddm   created
+</span>    48    <span class="comment"> */</span>
+    49    
+    50    <span class=key>package</span> ti.sdo.ipc;
+    51    
+    52    import xdc.runtime.IHeap;
+    53    import xdc.runtime.Assert;
+    54    import xdc.runtime.Error;
+    55    import xdc.runtime.Diags;
+    56    import xdc.runtime.Log;
+    57    import xdc.runtime.IGateProvider;
+    58    import xdc.runtime.knl.ISync;
+    59    
+    60    import ti.sysbios.syncs.SyncSem;
+    61    
+    62    import ti.sdo.ipc.interfaces.IMessageQTransport;
+    63    import ti.sdo.utils.NameServer;
+    64    import ti.sdo.utils.List;
+    65    
+    66    import xdc.rov.ViewInfo;
+    67    
+    68    <span class="xdoc">/*!
+</span>    69    <span class="xdoc"> *  ======== MessageQ ========
+</span>    70    <span class="xdoc"> *  Message-passing with queuing
+</span>    71    <span class="xdoc"> *
+</span>    72    <span class="xdoc"> *  The MessageQ module supports the structured sending and receiving of
+</span>    73    <span class="xdoc"> *  variable length messages. This module can be used for homogeneous
+</span>    74    <span class="xdoc"> *  (DSP to DSP)  or heterogeneous (Arm to DSP) multi-processor messaging.
+</span>    75    <span class="xdoc"> *
+</span>    76    <span class="xdoc"> *  MessageQ provides more sophisticated messaging than other modules. It is
+</span>    77    <span class="xdoc"> *  typically used for complex situations such as multi-processor messaging.
+</span>    78    <span class="xdoc"> *
+</span>    79    <span class="xdoc"> *  The following are key features of the MessageQ module:
+</span>    80    <span class="xdoc"> *  <b>@p(blist)</b>
+</span>    81    <span class="xdoc"> *  -Writers and readers can be relocated to another processor with no
+</span>    82    <span class="xdoc"> *   runtime code changes.
+</span>    83    <span class="xdoc"> *  -Timeouts are allowed when receiving messages.
+</span>    84    <span class="xdoc"> *  -Readers can determine the writer and reply back.
+</span>    85    <span class="xdoc"> *  -Receiving a message is deterministic when the timeout is zero.
+</span>    86    <span class="xdoc"> *  -Messages can reside on any message queue.
+</span>    87    <span class="xdoc"> *  -Supports zero-copy transfers.
+</span>    88    <span class="xdoc"> *  -Can send and receive from any type of thread.
+</span>    89    <span class="xdoc"> *  -Notification mechanism is specified by application.
+</span>    90    <span class="xdoc"> *  -Allows QoS (quality of service) on message buffer pools. For example,
+</span>    91    <span class="xdoc"> *   using specific buffer pools for specific message queues.
+</span>    92    <span class="xdoc"> *  <b>@p</b>
+</span>    93    <span class="xdoc"> *
+</span>    94    <span class="xdoc"> *  Messages are sent and received by being placed on and removed from a
+</span>    95    <span class="xdoc"> *  message queue. A reader is a thread that gets (reads) messages from a
+</span>    96    <span class="xdoc"> *  message queue. A writer is a thread that puts (writes) a message to a
+</span>    97    <span class="xdoc"> *  message queue. Each message queue has one reader and can have many writers.
+</span>    98    <span class="xdoc"> *  A thread may read from or write to multiple message queues.
+</span>    99    <span class="xdoc"> *
+</span>   100    <span class="xdoc"> *  Conceptually, the reader thread owns a message queue. The reader thread
+</span>   101    <span class="xdoc"> *  creates a message queue. The writer threads open a created message queue
+</span>   102    <span class="xdoc"> *  to get access to them.
+</span>   103    <span class="xdoc"> *
+</span>   104    <span class="xdoc"> *  Message queues are identified by a system-wide unique name. Internally,
+</span>   105    <span class="xdoc"> *  MessageQ uses the {<b>@link</b> ti.sdo.utils.NameServer} module for managing
+</span>   106    <span class="xdoc"> *  these names. The names are used for opening a message queue.
+</span>   107    <span class="xdoc"> *
+</span>   108    <span class="xdoc"> *  Messages must be allocated from the MessageQ module. Once a message is
+</span>   109    <span class="xdoc"> *  allocated, it can be sent to any message queue. Once a message is sent, the
+</span>   110    <span class="xdoc"> *  writer loses ownership of the message and should not attempt to modify the
+</span>   111    <span class="xdoc"> *  message. Once the reader receives the message, it owns the message. It
+</span>   112    <span class="xdoc"> *  may either free the message or re-use the message.
+</span>   113    <span class="xdoc"> *
+</span>   114    <span class="xdoc"> *  Messages in a message queue can be of variable length. The only
+</span>   115    <span class="xdoc"> *  requirement is that the first field in the definition of a message must be a
+</span>   116    <span class="xdoc"> *  {<b>@link</b> #MsgHeader} structure. For example:
+</span>   117    <span class="xdoc"> *  <b>@p(code)</b>
+</span>   118    <span class="xdoc"> *  typedef struct MyMsg {
+</span>   119    <span class="xdoc"> *      MessageQ_MsgHeader header;
+</span>   120    <span class="xdoc"> *      ...
+</span>   121    <span class="xdoc"> *  } MyMsg;
+</span>   122    <span class="xdoc"> *  <b>@p</b>
+</span>   123    <span class="xdoc"> *
+</span>   124    <span class="xdoc"> *  The MessageQ API uses the MessageQ_MsgHeader internally. Your application
+</span>   125    <span class="xdoc"> *  should not modify or directly access the fields in the MessageQ_MsgHeader.
+</span>   126    <span class="xdoc"> *
+</span>   127    <span class="xdoc"> *  All messages sent via the MessageQ module must be allocated from a
+</span>   128    <span class="xdoc"> *  {<b>@link</b> xdc.runtime.IHeap} implementation. The heap can also be used for
+</span>   129    <span class="xdoc"> *  other memory allocation not related to MessageQ.
+</span>   130    <span class="xdoc"> *
+</span>   131    <span class="xdoc"> *  An application can use multiple heaps. The purpose of having multiple
+</span>   132    <span class="xdoc"> *  heaps is to allow an application to regulate its message usage. For
+</span>   133    <span class="xdoc"> *  example, an application can allocate critical messages from one heap of fast
+</span>   134    <span class="xdoc"> *  on-chip memory and non-critical messages from another heap of slower
+</span>   135    <span class="xdoc"> *  external memory.
+</span>   136    <span class="xdoc"> *
+</span>   137    <span class="xdoc"> *  The {<b>@link</b> #registerHeap} and {<b>@link</b> #registerHeapMeta} are APIs used to
+</span>   138    <span class="xdoc"> *  assign a MessageQ heapId to a heap. When allocating a message, the heapId
+</span>   139    <span class="xdoc"> *  is used, not the heap handle. This heapId is actually placed into the
+</span>   140    <span class="xdoc"> *  message (part of the {<b>@link</b> #MsgHeader}). Care must be taken when assigning
+</span>   141    <span class="xdoc"> *  heapIds. Refer to the {<b>@link</b> #registerHeap} and {<b>@link</b> #registerHeapMeta}
+</span>   142    <span class="xdoc"> *  descriptions for more details.
+</span>   143    <span class="xdoc"> *
+</span>   144    <span class="xdoc"> *  MessageQ also supports the usage of messages that are not allocated via the
+</span>   145    <span class="xdoc"> *  {<b>@link</b> #alloc} function. Please refer to the {<b>@link</b> #staticMsgInit}
+</span>   146    <span class="xdoc"> *  function description for more details.
+</span>   147    <span class="xdoc"> *
+</span>   148    <span class="xdoc"> *  MessageQ supports reads/writes of different thread models. This is
+</span>   149    <span class="xdoc"> *  accomplished by having the creator of the message queue specify a
+</span>   150    <span class="xdoc"> *  {<b>@link</b> xdc.runtime.knl.ISync#Object} via the {<b>@link</b> #synchronizer}
+</span>   151    <span class="xdoc"> *  configuration parameter. The {<b>@link</b> xdc.runtime.knl.ISync#signal}
+</span>   152    <span class="xdoc"> *  portion of the ISync instance is called whenever the {<b>@link</b> #put}
+</span>   153    <span class="xdoc"> *  is called. The {<b>@link</b> xdc.runtime.knl.ISync#wait} portion is
+</span>   154    <span class="xdoc"> *  called in the {<b>@link</b> #get} if and only if there are no messages.
+</span>   155    <span class="xdoc"> *
+</span>   156    <span class="xdoc"> *  Since ISyncs are binary, the reader must drain the message queue of all
+</span>   157    <span class="xdoc"> *  messages before waiting for another signal. For example, if the reader
+</span>   158    <span class="xdoc"> *  was a SYSBIOS Swi, the {<b>@link</b> xdc.runtime.knl.ISync} instance
+</span>   159    <span class="xdoc"> *  could be a SyncSwi. If a {<b>@link</b> #put} was called, the Swi_post() would
+</span>   160    <span class="xdoc"> *  be called. The Swi would run and it must call {<b>@link</b> #get} until no
+</span>   161    <span class="xdoc"> *  messages are returned.
+</span>   162    <span class="xdoc"> *
+</span>   163    <span class="xdoc"> *  In a multiple processor system, MessageQ communicates to other
+</span>   164    <span class="xdoc"> *  processors via {<b>@link</b> ti.sdo.ipc.interfaces.IMessageQTransport} instances.
+</span>   165    <span class="xdoc"> *  MessageQ supports a high priority and a normal priority transport between
+</span>   166    <span class="xdoc"> *  any two processors. The IMessageQTransport instances are created via the
+</span>   167    <span class="xdoc"> *  {<b>@link</b> #SetupTransportProxy}. The instances are responsible for
+</span>   168    <span class="xdoc"> *  registering themselves with MessageQ. This is accomplished via the
+</span>   169    <span class="xdoc"> * {<b>@link</b> #registerTransport} function.
+</span>   170    <span class="xdoc"> */</span>
+   171    
+   172    @ModuleStartup
+   173    @InstanceInitError
+   174    @InstanceFinalize
+   175    
+   176    <span class=key>module</span> MessageQ
+   177    {
+   178        <span class="xdoc">/*!
+</span>   179    <span class="xdoc">     *  ======== QueuesView ========
+</span>   180    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   181    <span class="xdoc">     */</span>
+   182        <span class=key>metaonly</span> <span class=key>struct</span> QueuesView {
+   183            String  name;
+   184            UInt    queueId;
+   185        }
+   186    
+   187        <span class="xdoc">/*!
+</span>   188    <span class="xdoc">     *  ======== MessagesView ========
+</span>   189    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   190    <span class="xdoc">     */</span>
+   191        <span class=key>metaonly</span> <span class=key>struct</span> MessagesView {
+   192            Int          seqNum;
+   193            Int          msgSize;
+   194            String       priority;
+   195            String       srcProc;
+   196            String       replyProc;
+   197            String       replyId;
+   198            Int          msgId;
+   199            String       heap;
+   200            Bool         traceEnabled;
+   201            Int          version;
+   202        }
+   203    
+   204        <span class="xdoc">/*!
+</span>   205    <span class="xdoc">     *  ======== ModuleView ========
+</span>   206    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   207    <span class="xdoc">     */</span>
+   208        <span class=key>metaonly</span> <span class=key>struct</span> ModuleView {
+   209            String               heaps[];
+   210            String               gate;
+   211            UInt16               nextSeqNum;
+   212            String               freeHookFxn[];
+   213        }
+   214    
+   215        <span class="xdoc">/*!
+</span>   216    <span class="xdoc">     *  ======== rovViewInfo ========
+</span>   217    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   218    <span class="xdoc">     */</span>
+   219        @Facet
+   220        <span class=key>metaonly</span> <span class=key>config</span> xdc.rov.ViewInfo.Instance rovViewInfo =
+   221            xdc.rov.ViewInfo.create({
+   222                viewMap: [
+   223                    [<span class="string">'Queues'</span>,
+   224                        {
+   225                            type: xdc.rov.ViewInfo.INSTANCE,
+   226                            viewInitFxn: <span class="string">'viewInitQueues'</span>,
+   227                            structName: <span class="string">'QueuesView'</span>
+   228                        }
+   229                    ],
+   230                    [<span class="string">'Messages'</span>,
+   231                        {
+   232                            type: xdc.rov.ViewInfo.INSTANCE_DATA,
+   233                            viewInitFxn: <span class="string">'viewInitMessages'</span>,
+   234                            structName: <span class="string">'MessagesView'</span>
+   235                        }
+   236                    ],
+   237                    [<span class="string">'Module'</span>,
+   238                        {
+   239                            type: xdc.rov.ViewInfo.MODULE,
+   240                            viewInitFxn: <span class="string">'viewInitModule'</span>,
+   241                            structName: <span class="string">'ModuleView'</span>
+   242                        }
+   243                    ]
+   244                ]
+   245            });
+   246    
+   247        <span class="xdoc">/*!
+</span>   248    <span class="xdoc">     *  ======== LM_setTrace ========
+</span>   249    <span class="xdoc">     *  Logged when setting the trace flag on a message
+</span>   250    <span class="xdoc">     *
+</span>   251    <span class="xdoc">     *  This is logged when tracing on a message is set via
+</span>   252    <span class="xdoc">     *  {<b>@link</b> #setMsgTrace}.
+</span>   253    <span class="xdoc">     */</span>
+   254        <span class=key>config</span> Log.Event LM_setTrace = {
+   255            mask: Diags.USER1,
+   256            msg: <span class="string">"LM_setTrace: Message 0x%x (seqNum = %d, srcProc = %d) traceFlag = %d"</span>
+   257        };
+   258    
+   259        <span class="xdoc">/*!
+</span>   260    <span class="xdoc">     *  ======== LM_alloc ========
+</span>   261    <span class="xdoc">     *  Logged when allocating a message
+</span>   262    <span class="xdoc">     *
+</span>   263    <span class="xdoc">     *  When the {<b>@link</b> #traceFlag} is true, all message allocations
+</span>   264    <span class="xdoc">     *  are logged.
+</span>   265    <span class="xdoc">     */</span>
+   266        <span class=key>config</span> Log.Event LM_alloc = {
+   267            mask: Diags.USER1,
+   268            msg: <span class="string">"LM_alloc: Message 0x%x (seqNum = %d, srcProc = %d) was allocated"</span>
+   269        };
+   270    
+   271        <span class="xdoc">/*!
+</span>   272    <span class="xdoc">     *  ======== LM_staticMsgInit ========
+</span>   273    <span class="xdoc">     *  Logged when statically initializing a message
+</span>   274    <span class="xdoc">     *
+</span>   275    <span class="xdoc">     *  When the {<b>@link</b> #traceFlag} is true, all messages that
+</span>   276    <span class="xdoc">     *  are statically initialized via {<b>@link</b> #staticMsgInit} are logged.
+</span>   277    <span class="xdoc">     */</span>
+   278        <span class=key>config</span> Log.Event LM_staticMsgInit = {
+   279            mask: Diags.USER1,
+   280            msg: <span class="string">"LM_staticMsgInit: Message 0x%x (seqNum = %d, srcProc = %d) was set in MessageQ_staticMsgInit"</span>
+   281        };
+   282    
+   283        <span class="xdoc">/*!
+</span>   284    <span class="xdoc">     *  ======== LM_free ========
+</span>   285    <span class="xdoc">     *  Logged when freeing a message
+</span>   286    <span class="xdoc">     *
+</span>   287    <span class="xdoc">     *  When the {<b>@link</b> #traceFlag} is true, all freeing of messages
+</span>   288    <span class="xdoc">     *  are logged. If an individual message's tracing was enabled
+</span>   289    <span class="xdoc">     *  via {<b>@link</b> #setMsgTrace}, the MessageQ_free is also logged.
+</span>   290    <span class="xdoc">     */</span>
+   291        <span class=key>config</span> Log.Event LM_free = {
+   292            mask: Diags.USER1,
+   293            msg: <span class="string">"LM_free: Message 0x%x (seqNum = %d, srcProc = %d) was freed"</span>
+   294        };
+   295    
+   296        <span class="xdoc">/*!
+</span>   297    <span class="xdoc">     *  ======== LM_putLocal ========
+</span>   298    <span class="xdoc">     *  Logged when a message is placed onto a local queue
+</span>   299    <span class="xdoc">     *
+</span>   300    <span class="xdoc">     *  When the {<b>@link</b> #traceFlag} is true, all putting of messages
+</span>   301    <span class="xdoc">     *  are logged. If an individual message's tracing was enabled
+</span>   302    <span class="xdoc">     *  via {<b>@link</b> #setMsgTrace}, the MessageQ_put is also logged.
+</span>   303    <span class="xdoc">     */</span>
+   304        <span class=key>config</span> Log.Event LM_putLocal = {
+   305            mask: Diags.USER1,
+   306            msg: <span class="string">"LM_putLocal: Message 0x%x (seqNum = %d, srcProc = %d) was placed onto queue 0x%x"</span>
+   307        };
+   308    
+   309        <span class="xdoc">/*!
+</span>   310    <span class="xdoc">     *  ======== LM_putRemote ========
+</span>   311    <span class="xdoc">     *  Logged when a message is given to a transport
+</span>   312    <span class="xdoc">     *
+</span>   313    <span class="xdoc">     *  When the {<b>@link</b> #traceFlag} is true, all putting of messages
+</span>   314    <span class="xdoc">     *  to a transport are logged. If an individual message's tracing
+</span>   315    <span class="xdoc">     *  was enabled  via {<b>@link</b> #setMsgTrace}, the MessageQ_put is
+</span>   316    <span class="xdoc">     *  also logged.
+</span>   317    <span class="xdoc">     */</span>
+   318        <span class=key>config</span> Log.Event LM_putRemote = {
+   319            mask: Diags.USER1,
+   320            msg: <span class="string">"LM_putRemote: Message 0x%x (seqNum = %d, srcProc = %d) was given to processor %d transport"</span>
+   321        };
+   322    
+   323        <span class="xdoc">/*!
+</span>   324    <span class="xdoc">     *  ======== LM_rcvByTransport ========
+</span>   325    <span class="xdoc">     *  Logged when a transport receives an incoming message
+</span>   326    <span class="xdoc">     *
+</span>   327    <span class="xdoc">     *  When the {<b>@link</b> #traceFlag} is true, all incoming messages
+</span>   328    <span class="xdoc">     *  are logged. If an individual message's tracing
+</span>   329    <span class="xdoc">     *  was enabled  via {<b>@link</b> #setMsgTrace}, the receiving of a message is
+</span>   330    <span class="xdoc">     *  also logged.
+</span>   331    <span class="xdoc">     */</span>
+   332        <span class=key>config</span> Log.Event LM_rcvByTransport = {
+   333            mask: Diags.USER1,
+   334            msg: <span class="string">"LM_rcvByTransport: Message 0x%x (seqNum = %d, srcProc = %d) was received"</span>
+   335        };
+   336    
+   337        <span class="xdoc">/*!
+</span>   338    <span class="xdoc">     *  ======== LM_get ========
+</span>   339    <span class="xdoc">     *  Logged when a message is received off the queue
+</span>   340    <span class="xdoc">     *
+</span>   341    <span class="xdoc">     *  When the {<b>@link</b> #traceFlag} is true, all getting of messages
+</span>   342    <span class="xdoc">     *  are logged. If an individual message's tracing
+</span>   343    <span class="xdoc">     *  was enabled  via {<b>@link</b> #setMsgTrace}, the MessageQ_get is
+</span>   344    <span class="xdoc">     *  also logged.
+</span>   345    <span class="xdoc">     */</span>
+   346        <span class=key>config</span> Log.Event LM_get = {
+   347            mask: Diags.USER1,
+   348            msg: <span class="string">"LM_get: Message 0x%x (seqNum = %d, srcProc = %d) was received by queue 0x%x"</span>
+   349        };
+   350    
+   351        <span class="xdoc">/*!
+</span>   352    <span class="xdoc">     *  ======== FreeHookFxn ========
+</span>   353    <span class="xdoc">     *  Function prototype for the MessageQ_free callback
+</span>   354    <span class="xdoc">     *
+</span>   355    <span class="xdoc">     *  <b>@param(Bits16)</b>  heapId of message that was freed
+</span>   356    <span class="xdoc">     *  <b>@param(Bits16)</b>  msgId of message that was freed
+</span>   357    <span class="xdoc">     */</span>
+   358        <span class=key>typedef</span> Void (*FreeHookFxn)(Bits16, Bits16);
+   359    
+   360        <span class="xdoc">/*! MessageQ ID */</span>
+   361        <span class=key>typedef</span> UInt32 QueueId;
+   362    
+   363        <span class="xdoc">/*!
+</span>   364    <span class="xdoc">     *  ======== SetupTransportProxy ========
+</span>   365    <span class="xdoc">     *  MessageQ transport setup proxy
+</span>   366    <span class="xdoc">     */</span>
+   367        <span class=key>proxy</span> SetupTransportProxy <span class=key>inherits</span> ti.sdo.ipc.interfaces.ITransportSetup;
+   368    
+   369        <span class="xdoc">/*!
+</span>   370    <span class="xdoc">     *  Message priority values. These must match the values defined in
+</span>   371    <span class="xdoc">     *  ti/ipc/MessageQ.h but are needed here for ROV.
+</span>   372    <span class="xdoc">     */</span>
+   373        <span class=key>const</span> UInt NORMALPRI   = 0;
+   374        <span class=key>const</span> UInt HIGHPRI     = 1;
+   375        <span class=key>const</span> UInt RESERVEDPRI = 2;
+   376        <span class=key>const</span> UInt URGENTPRI   = 3;
+   377    
+   378        <span class="xdoc">/*!
+</span>   379    <span class="xdoc">     *  Denotes any queueId is acceptable
+</span>   380    <span class="xdoc">     *
+</span>   381    <span class="xdoc">     *  This constant is the default for the {<b>@link</b> #queueId} parameter.
+</span>   382    <span class="xdoc">     *  This value must match ti/ipc/MessageQ.h but is needed to initialize
+</span>   383    <span class="xdoc">     *  queueId.
+</span>   384    <span class="xdoc">     */</span>
+   385        <span class=key>const</span> Bits16 ANY = ~(0);
+   386    
+   387        <span class="xdoc">/*!
+</span>   388    <span class="xdoc">     *  Assert raised when calling API with wrong handle
+</span>   389    <span class="xdoc">     *
+</span>   390    <span class="xdoc">     *  Some APIs can only be called with an opened handle (e.g.
+</span>   391    <span class="xdoc">     *  {<b>@link</b> #close}. Some can only be called with a created handle
+</span>   392    <span class="xdoc">     *  (e.g. {<b>@link</b> #get}).
+</span>   393    <span class="xdoc">     */</span>
+   394        <span class=key>config</span> Assert.Id A_invalidContext  = {
+   395            msg: <span class="string">"A_invalidContext: Cannot call with an open/create handle"</span>
+   396        };
+   397    
+   398        <span class="xdoc">/*!
+</span>   399    <span class="xdoc">     *  Assert raised when attempting to free a static message
+</span>   400    <span class="xdoc">     */</span>
+   401        <span class=key>config</span> Assert.Id A_cannotFreeStaticMsg  = {
+   402            msg: <span class="string">"A_cannotFreeStaticMsg: Cannot call MessageQ_free with static msg"</span>
+   403        };
+   404    
+   405        <span class="xdoc">/*!
+</span>   406    <span class="xdoc">     *  Assert raised when an invalid message is supplied
+</span>   407    <span class="xdoc">     */</span>
+   408        <span class=key>config</span> Assert.Id A_invalidMsg  = {
+   409            msg: <span class="string">"A_invalidMsg: Invalid message"</span>
+   410        };
+   411    
+   412        <span class="xdoc">/*!
+</span>   413    <span class="xdoc">     *  Assert raised when an invalid queueId is supplied
+</span>   414    <span class="xdoc">     */</span>
+   415        <span class=key>config</span> Assert.Id A_invalidQueueId  = {
+   416            msg: <span class="string">"A_invalidQueueId: Invalid queueId is used"</span>
+   417        };
+   418    
+   419        <span class="xdoc">/*!
+</span>   420    <span class="xdoc">     *  Assert raised when using an invalid heapId
+</span>   421    <span class="xdoc">     */</span>
+   422        <span class=key>config</span> Assert.Id A_heapIdInvalid  = {
+   423            msg: <span class="string">"A_heapIdInvalid: heapId is invalid"</span>
+   424        };
+   425    
+   426        <span class="xdoc">/*!
+</span>   427    <span class="xdoc">     *  Assert raised when using an invalid procId
+</span>   428    <span class="xdoc">     */</span>
+   429        <span class=key>config</span> Assert.Id A_procIdInvalid  = {
+   430            msg: <span class="string">"A_procIdInvalid: procId is invalid"</span>
+   431        };
+   432    
+   433        <span class="xdoc">/*!
+</span>   434    <span class="xdoc">     *  Assert raised for an invalid MessageQ object
+</span>   435    <span class="xdoc">     */</span>
+   436        <span class=key>config</span> Assert.Id A_invalidObj  = {
+   437            msg: <span class="string">"A_invalidObj: an invalid obj is used"</span>
+   438        };
+   439    
+   440        <span class="xdoc">/*!
+</span>   441    <span class="xdoc">     *  Assert raised for an invalid parameter
+</span>   442    <span class="xdoc">     */</span>
+   443        <span class=key>config</span> Assert.Id A_invalidParam  = {
+   444            msg: <span class="string">"A_invalidParam: an invalid parameter was passed in"</span>
+   445        };
+   446    
+   447        <span class="xdoc">/*!
+</span>   448    <span class="xdoc">     *  Assert raised when attempting to send a message to a core
+</span>   449    <span class="xdoc">     *  where a transport has not been registered.
+</span>   450    <span class="xdoc">     */</span>
+   451        <span class=key>config</span> Assert.Id A_unregisteredTransport  = {
+   452            msg: <span class="string">"A_unregisteredTransport: transport is not registered"</span>
+   453        };
+   454    
+   455        <span class="xdoc">/*!
+</span>   456    <span class="xdoc">     *  Assert raised when attempting to unblock a remote MessageQ or one that
+</span>   457    <span class="xdoc">     *  has been configured with a non-blocking synchronizer
+</span>   458    <span class="xdoc">     */</span>
+   459        <span class=key>config</span> Assert.Id A_invalidUnblock  = {
+   460            msg: <span class="string">"A_invalidUnblock: Trying to unblock a remote MessageQ or a queue with non-blocking synchronizer"</span>
+   461        };
+   462    
+   463        <span class="xdoc">/*!
+</span>   464    <span class="xdoc">     *  Error raised if all the message queue objects are taken
+</span>   465    <span class="xdoc">     */</span>
+   466        <span class=key>config</span> Error.Id E_maxReached  = {
+   467            msg: <span class="string">"E_maxReached: All objects in use. MessageQ.maxRuntimeEntries is %d"</span>
+   468        };
+   469    
+   470        <span class="xdoc">/*!
+</span>   471    <span class="xdoc">     *  Error raised when heapId has not been registered
+</span>   472    <span class="xdoc">     */</span>
+   473        <span class=key>config</span> Error.Id E_unregisterHeapId  = {
+   474            msg: <span class="string">"E_unregisterHeapId: Heap id %d not registered"</span>
+   475        };
+   476    
+   477        <span class="xdoc">/*!
+</span>   478    <span class="xdoc">     *  Error raised in a create call when a name fails to be added
+</span>   479    <span class="xdoc">     *  to the NameServer table.  This can be because the name already
+</span>   480    <span class="xdoc">     *  exists, the table has reached its max length, or out of memory.
+</span>   481    <span class="xdoc">     */</span>
+   482        <span class=key>config</span> Error.Id E_nameFailed  = {
+   483            msg: <span class="string">"E_nameFailed: '%s' name failed to be added to NameServer"</span>
+   484        };
+   485    
+   486        <span class="xdoc">/*!
+</span>   487    <span class="xdoc">     *  Error raised if the requested queueIndex is not available
+</span>   488    <span class="xdoc">     */</span>
+   489        <span class=key>config</span> Error.Id E_indexNotAvailable  = {
+   490            msg: <span class="string">"E_indexNotAvailable: queueIndex %d not available"</span>
+   491        };
+   492    
+   493        <span class="xdoc">/*!
+</span>   494    <span class="xdoc">     *  Trace setting
+</span>   495    <span class="xdoc">     *
+</span>   496    <span class="xdoc">     *  This flag allows the configuration of the default module trace
+</span>   497    <span class="xdoc">     *  settings.
+</span>   498    <span class="xdoc">     */</span>
+   499        <span class=key>config</span> Bool traceFlag = <span class=key>false</span>;
+   500    
+   501        <span class="xdoc">/*!
+</span>   502    <span class="xdoc">     *  Number of heapIds in the system
+</span>   503    <span class="xdoc">     *
+</span>   504    <span class="xdoc">     *  This allows MessageQ to pre-allocate the heaps table.
+</span>   505    <span class="xdoc">     *  The heaps table is used when registering heaps.
+</span>   506    <span class="xdoc">     *
+</span>   507    <span class="xdoc">     *  There is no default heap, so unless the system is only using
+</span>   508    <span class="xdoc">     *  {<b>@link</b> #staticMsgInit}, the application must register a heap.
+</span>   509    <span class="xdoc">     */</span>
+   510        <span class=key>config</span> UInt16 numHeaps = 8;
+   511    
+   512        <span class="xdoc">/*!
+</span>   513    <span class="xdoc">     *  Maximum number of MessageQs that can be dynamically created
+</span>   514    <span class="xdoc">     */</span>
+   515        <span class=key>config</span> UInt maxRuntimeEntries = NameServer.ALLOWGROWTH;
+   516    
+   517        <span class="xdoc">/*!
+</span>   518    <span class="xdoc">     *  Number of reserved MessageQ indexes
+</span>   519    <span class="xdoc">     *
+</span>   520    <span class="xdoc">     *  An application can request the first N message queue indexes be
+</span>   521    <span class="xdoc">     *  reserved to be used by MessageQ_create2. MessageQ_create will
+</span>   522    <span class="xdoc">     *  not use these slots. The application can use any index less than
+</span>   523    <span class="xdoc">     *  the value of numReservedEntries for the queueIndex field in the
+</span>   524    <span class="xdoc">     *  MessageQ_Params2 structure.
+</span>   525    <span class="xdoc">     *
+</span>   526    <span class="xdoc">     *  numReservedEntries must be equal or less than
+</span>   527    <span class="xdoc">     *  {<b>@link</b> #maxRuntimeEntries}.
+</span>   528    <span class="xdoc">     */</span>
+   529        <span class=key>config</span> UInt numReservedEntries = 0;
+   530    
+   531        <span class="xdoc">/*!
+</span>   532    <span class="xdoc">     *  Gate used to make the name table thread safe
+</span>   533    <span class="xdoc">     *
+</span>   534    <span class="xdoc">     *  This gate is used when accessing the name table during
+</span>   535    <span class="xdoc">     *  a {<b>@link</b> #create}, {<b>@link</b> #delete}, and {<b>@link</b> #open}.
+</span>   536    <span class="xdoc">     *
+</span>   537    <span class="xdoc">     *  This gate is also used to protect MessageQ when growing
+</span>   538    <span class="xdoc">     *  internal tables in the {<b>@link</b> #create}.
+</span>   539    <span class="xdoc">     *
+</span>   540    <span class="xdoc">     *  The table is in local memory, not shared memory. So a
+</span>   541    <span class="xdoc">     *  single processor gate will work.
+</span>   542    <span class="xdoc">     *
+</span>   543    <span class="xdoc">     *  The default will be {<b>@link</b> xdc.runtime.knl.GateThread}
+</span>   544    <span class="xdoc">     *  instance.
+</span>   545    <span class="xdoc">     */</span>
+   546        <span class=key>config</span> IGateProvider.Handle nameTableGate = <span class=key>null</span>;
+   547    
+   548        <span class="xdoc">/*!
+</span>   549    <span class="xdoc">     *  Maximum length for Message queue names
+</span>   550    <span class="xdoc">     */</span>
+   551        <span class=key>config</span> UInt maxNameLen = 32;
+   552    
+   553        <span class="xdoc">/*!
+</span>   554    <span class="xdoc">     *  Section name is used to place the names table
+</span>   555    <span class="xdoc">     */</span>
+   556        <span class=key>metaonly</span> <span class=key>config</span> String tableSection = <span class=key>null</span>;
+   557    
+   558        <span class="xdoc">/*!
+</span>   559    <span class="xdoc">     *  ======== freeHookFxn ========
+</span>   560    <span class="xdoc">     *  Free function in MessageQ_free after message was freed back to the heap
+</span>   561    <span class="xdoc">     */</span>
+   562        <span class=key>config</span> FreeHookFxn freeHookFxn = <span class=key>null</span>;
+   563    
+   564        <span class="xdoc">/*!
+</span>   565    <span class="xdoc">     *  ======== registerHeapMeta ========
+</span>   566    <span class="xdoc">     *  Statically register a heap with MessageQ
+</span>   567    <span class="xdoc">     *
+</span>   568    <span class="xdoc">     *  Build error if heapId is in use.
+</span>   569    <span class="xdoc">     *
+</span>   570    <span class="xdoc">     *  <b>@param(heap)</b>        Heap to register
+</span>   571    <span class="xdoc">     *  <b>@param(heapId)</b>      heapId associated with the heap
+</span>   572    <span class="xdoc">     */</span>
+   573        <span class=key>metaonly</span> Void registerHeapMeta(IHeap.Handle heap, UInt16 heapId);
+   574    
+   575         <span class="xdoc">/*!
+</span>   576    <span class="xdoc">     *  ======== registerTransportMeta ========
+</span>   577    <span class="xdoc">     *  Statically register a transport with MessageQ
+</span>   578    <span class="xdoc">     *
+</span>   579    <span class="xdoc">     *  Build error if remote processor already has a transport
+</span>   580    <span class="xdoc">     *  registered.
+</span>   581    <span class="xdoc">     *
+</span>   582    <span class="xdoc">     *  <b>@param(transport)</b>   transport to register
+</span>   583    <span class="xdoc">     *  <b>@param(procId)</b>      procId that transport communicaties with
+</span>   584    <span class="xdoc">     *  <b>@param(priority)</b>    priority of transport
+</span>   585    <span class="xdoc">     */</span>
+   586         <span class=key>metaonly</span> Void registerTransportMeta(IMessageQTransport.Handle transport, UInt16 procId, UInt priority);
+   587    
+   588        <span class="xdoc">/*!
+</span>   589    <span class="xdoc">     *  ======== registerTransport ========
+</span>   590    <span class="xdoc">     *  Register a transport with MessageQ
+</span>   591    <span class="xdoc">     *
+</span>   592    <span class="xdoc">     *  This API is called by the transport when it is created.
+</span>   593    <span class="xdoc">     *
+</span>   594    <span class="xdoc">     *  <b>@param(transport)</b>   transport to register
+</span>   595    <span class="xdoc">     *  <b>@param(procId)</b>      MultiProc id that transport communicates with
+</span>   596    <span class="xdoc">     *  <b>@param(priority)</b>    priority of transport
+</span>   597    <span class="xdoc">     *
+</span>   598    <span class="xdoc">     *  <b>@b(returns)</b>         Whether the register was successful.
+</span>   599    <span class="xdoc">     */</span>
+   600        Bool registerTransport(IMessageQTransport.Handle transport, UInt16 procId,
+   601            UInt priority);
+   602    
+   603        <span class="xdoc">/*!
+</span>   604    <span class="xdoc">     *  ======== unregisterTransport ========
+</span>   605    <span class="xdoc">     *  Unregister a transport with MessageQ
+</span>   606    <span class="xdoc">     *
+</span>   607    <span class="xdoc">     *  <b>@param(procId)</b>      unregister transport that communicates with
+</span>   608    <span class="xdoc">     *                      this remote processor
+</span>   609    <span class="xdoc">     *  <b>@param(priority)</b>    priority of transport
+</span>   610    <span class="xdoc">     */</span>
+   611        Void unregisterTransport(UInt16 procId, UInt priority);
+   612    
+   613    <span class=key>instance</span>:
+   614    
+   615        <span class="xdoc">/*!
+</span>   616    <span class="xdoc">     *  ISync handle used to signal IO completion
+</span>   617    <span class="xdoc">     *
+</span>   618    <span class="xdoc">     *  The ISync instance is used in the {<b>@link</b> #get} and {<b>@link</b> #put}.
+</span>   619    <span class="xdoc">     *  The {<b>@link</b> xdc.runtime.knl.ISync#signal} is called as part
+</span>   620    <span class="xdoc">     *  of the {<b>@link</b> #put} call.  The {<b>@link</b> xdc.runtime.knl.ISync#wait} is
+</span>   621    <span class="xdoc">     *  called in the {<b>@link</b> #get} if there are no messages present.
+</span>   622    <span class="xdoc">     */</span>
+   623        <span class=key>config</span> ISync.Handle synchronizer = <span class=key>null</span>;
+   624    
+   625        <span class="xdoc">/*!
+</span>   626    <span class="xdoc">     *  Requested MessageQ_QueueIndex
+</span>   627    <span class="xdoc">     *
+</span>   628    <span class="xdoc">     *  This parameter allows an application to specify the queueIndex to
+</span>   629    <span class="xdoc">     *  be used for a message queue. To use this functionality, the
+</span>   630    <span class="xdoc">     *  MessageQ.numReservedEntries static configuration parameter must be set to
+</span>   631    <span class="xdoc">     *  a specific value.
+</span>   632    <span class="xdoc">     *
+</span>   633    <span class="xdoc">     *  The default is {<b>@link</b> #ANY}. This means do that you are not asking for
+</span>   634    <span class="xdoc">     *  an explicit index. MessageQ will find the first available one which is
+</span>   635    <span class="xdoc">     *  equal or greater than MessageQ.numReservedEntries.
+</span>   636    <span class="xdoc">     */</span>
+   637        <span class=key>config</span> UInt16 queueIndex = ANY;
+   638    
+   639        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   640    <span class="xdoc">     *  ======== create ========
+</span>   641    <span class="xdoc">     *  Create a message queue
+</span>   642    <span class="xdoc">     *
+</span>   643    <span class="xdoc">     *  <b>@param(name)</b>         Name of the message queue.
+</span>   644    <span class="xdoc">     */</span>
+   645        create(String name);
+   646    
+   647    <span class=key>internal</span>:
+   648        <span class="comment">/*
+</span>   649    <span class="comment">     *  The following describes the usage of the flag field
+</span>   650    <span class="comment">     *  ---------------------------------
+</span>   651    <span class="comment">     *  |V V V|T|     reserved      |P P|
+</span>   652    <span class="comment">     *  ---------------------------------
+</span>   653    <span class="comment">     *   E D C B A 0 9 8 7 6 5 4 3 2 1 0
+</span>   654    <span class="comment">     *
+</span>   655    <span class="comment">     *  V = version
+</span>   656    <span class="comment">     *  P = priority
+</span>   657    <span class="comment">     *  T = trace flag
+</span>   658    <span class="comment">     */</span>
+   659    
+   660        <span class="xdoc">/*! Mask to extract version setting */</span>
+   661        <span class=key>const</span> UInt VERSIONMASK = 0xE000;
+   662    
+   663        <span class="xdoc">/*! Version setting */</span>
+   664        <span class=key>const</span> UInt HEADERVERSION = 0x2000;
+   665    
+   666        <span class="xdoc">/*! Mask to extract Trace setting */</span>
+   667        <span class=key>const</span> UInt TRACEMASK = 0x1000;
+   668    
+   669        <span class="xdoc">/*! Shift for Trace setting */</span>
+   670        <span class=key>const</span> UInt TRACESHIFT = 12;
+   671    
+   672        <span class="xdoc">/*!
+</span>   673    <span class="xdoc">     *  Mask to extract priority setting.
+</span>   674    <span class="xdoc">     *  This is needed here for ROV but must match
+</span>   675    <span class="xdoc">     *  the value defined in ti/ipc/MessageQ.h
+</span>   676    <span class="xdoc">     */</span>
+   677        <span class=key>const</span> UInt PRIORITYMASK = 0x3;
+   678    
+   679        <span class="xdoc">/*! Mask to extract priority setting */</span>
+   680        <span class=key>const</span> UInt TRANSPORTPRIORITYMASK = 0x1;
+   681    
+   682         <span class="xdoc">/*! return code for Instance_init */</span>
+   683        <span class=key>const</span> Int PROXY_FAILURE = 1;
+   684    
+   685        <span class="comment">/*
+</span>   686    <span class="comment">     *  Used to denote a message that was initialized
+</span>   687    <span class="comment">     *  with the MessageQ_staticMsgInit function.
+</span>   688    <span class="comment">     */</span>
+   689        <span class=key>const</span> UInt16 STATICMSG = 0xFFFF;
+   690    
+   691        <span class="xdoc">/*! Required first field in every message */</span>
+   692        @Opaque <span class=key>struct</span> MsgHeader {
+   693            Bits32       reserved0;         <span class="comment">/* reserved for List.elem-&gt;next */</span>
+   694            Bits32       reserved1;         <span class="comment">/* reserved for List.elem-&gt;prev */</span>
+   695            Bits32       msgSize;           <span class="comment">/* message size                 */</span>
+   696            Bits16       flags;             <span class="comment">/* bitmask of different flags   */</span>
+   697            Bits16       msgId;             <span class="comment">/* message id                   */</span>
+   698            Bits16       dstId;             <span class="comment">/* destination processor id     */</span>
+   699            Bits16       dstProc;           <span class="comment">/* destination processor        */</span>
+   700            Bits16       replyId;           <span class="comment">/* reply id                     */</span>
+   701            Bits16       replyProc;         <span class="comment">/* reply processor              */</span>
+   702            Bits16       srcProc;           <span class="comment">/* source processor             */</span>
+   703            Bits16       heapId;            <span class="comment">/* heap id                      */</span>
+   704            Bits16       seqNum;            <span class="comment">/* sequence number              */</span>
+   705            Bits16       reserved;          <span class="comment">/* reserved                     */</span>
+   706        };
+   707    
+   708        <span class=key>struct</span> HeapEntry {
+   709            IHeap.Handle  heap;
+   710            UInt16        heapId;
+   711        };
+   712    
+   713        <span class=key>struct</span> TransportEntry {
+   714            IMessageQTransport.Handle  transport;
+   715            UInt16             procId;
+   716        };
+   717    
+   718        <span class="xdoc">/*!
+</span>   719    <span class="xdoc">     *  ======== nameSrvPrms ========
+</span>   720    <span class="xdoc">     *  This Params object is used for temporary storage of the
+</span>   721    <span class="xdoc">     *  module wide parameters that are for setting the NameServer instance.
+</span>   722    <span class="xdoc">     */</span>
+   723        <span class=key>metaonly</span> <span class=key>config</span> NameServer.Params nameSrvPrms;
+   724    
+   725        <span class="xdoc">/*!
+</span>   726    <span class="xdoc">     *  Statically registered heaps
+</span>   727    <span class="xdoc">     *
+</span>   728    <span class="xdoc">     *  This configuration parameter allows the static registeration
+</span>   729    <span class="xdoc">     *  of heaps. The index of the array corresponds to the heapId.
+</span>   730    <span class="xdoc">     */</span>
+   731        <span class=key>metaonly</span> <span class=key>config</span> HeapEntry staticHeaps[];
+   732    
+   733        <span class="xdoc">/*!
+</span>   734    <span class="xdoc">     *  Statically registered transports
+</span>   735    <span class="xdoc">     *
+</span>   736    <span class="xdoc">     *  This configuration parameter allows the static registeration
+</span>   737    <span class="xdoc">     *  of transports. The index of the array corresponds to the procId.
+</span>   738    <span class="xdoc">     */</span>
+   739        <span class=key>metaonly</span> <span class=key>config</span> TransportEntry staticTransports[];
+   740    
+   741        <span class="xdoc">/*!
+</span>   742    <span class="xdoc">     *  Allows for the number of dynamically created message queues to grow.
+</span>   743    <span class="xdoc">     */</span>
+   744        UInt16 grow(Object *obj, Error.Block *eb);
+   745    
+   746        <span class=key>struct</span> Instance_State {
+   747            QueueId         queue;        <span class="comment">/* Unique id                     */</span>
+   748            ISync.Handle    synchronizer; <span class="comment">/* completion synchronizer       */</span>
+   749            List.Object     normalList;   <span class="comment">/* Embedded List objects         */</span>
+   750            List.Object     highList;     <span class="comment">/* Embedded List objects         */</span>
+   751            Ptr             nsKey;        <span class="comment">/* unique NameServer key         */</span>
+   752            SyncSem.Handle  syncSemHandle;<span class="comment">/* for use in finalize           */</span>
+   753            Bool            unblocked;    <span class="comment">/* Whether MessageQ is unblocked */</span>
+   754        };
+   755    
+   756        <span class=key>struct</span> Module_State {
+   757            IMessageQTransport.Handle transports[][2];
+   758            Handle               queues[];
+   759            IHeap.Handle         heaps[];
+   760            IGateProvider.Handle gate;
+   761            UInt16               numQueues;
+   762            UInt16               numHeaps;
+   763            NameServer.Handle    nameServer;
+   764            FreeHookFxn          freeHookFxn;
+   765            Bool                 canFreeQueues;
+   766            UInt16               seqNum;
+   767        };
+   768    }
+</pre>
+</body></html>

@@ -1,0 +1,26 @@
+/* 
+ *  Copyright (c) 2012 Texas Instruments and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *  Contributors:
+ *      Texas Instruments - initial implementation
+ *
+ * 
+ */
+
+Pkg.otherFiles = [
+    "package.bld",
+    "Qnx.xdc",
+    "std.h",
+    "linkcmd.xdt"
+];
+
+Pkg.otherSrcs = ["linkcmd.xdt"];
+/*
+ *  @(#) qnx.targets.arm; 1, 0, 0,128; 12-19-2013 15:12:23; /db/ztree/library/trees/xdctargets/xdctargets-g41x/src/ xlibrary
+
+ */
+

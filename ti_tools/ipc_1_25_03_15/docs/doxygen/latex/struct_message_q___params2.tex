@@ -1,0 +1,51 @@
+\subsection{Message\-Q\-\_\-\-Params2 Struct Reference}
+\label{struct_message_q___params2}\index{Message\-Q\-\_\-\-Params2@{Message\-Q\-\_\-\-Params2}}
+
+
+Structure defining parameters for Message\-Q\-\_\-create2.  
+
+
+
+
+{\ttfamily \#include $<$Message\-Q.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+Void $\ast$ \hyperlink{struct_message_q___params2_a021c1136ab8e33fb20d473756842d5c1}{synchronizer}
+\item 
+\hyperlink{_message_q_8h_a22a5f41fd82f03f7c14f45dab647bada}{Message\-Q\-\_\-\-Queue\-Index} \hyperlink{struct_message_q___params2_a17e609ce59bab5020ae5d180a3df0130}{queue\-Index}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure defining parameters for Message\-Q\-\_\-create2. 
+
+\hyperlink{struct_message_q___params2}{Message\-Q\-\_\-\-Params2} is a superset of \hyperlink{struct_message_q___params}{Message\-Q\-\_\-\-Params}. It is used with Message\-Q\-\_\-create2. 
+
+\subsubsection{Field Documentation}
+\index{Message\-Q\-\_\-\-Params2@{Message\-Q\-\_\-\-Params2}!synchronizer@{synchronizer}}
+\index{synchronizer@{synchronizer}!MessageQ_Params2@{Message\-Q\-\_\-\-Params2}}
+\paragraph[{synchronizer}]{\setlength{\rightskip}{0pt plus 5cm}Void$\ast$ Message\-Q\-\_\-\-Params2\-::synchronizer}\label{struct_message_q___params2_a021c1136ab8e33fb20d473756842d5c1}
+Synchronizer instance used to signal I\-O completion \begin{DoxyVerb}   The synchronizer is used in MessageQ_put() and MessageQ_get().
+   The synchronizer signal is called as part of MessageQ_put().
+   The synchronizer waits in MessageQ_get() if there are no messages
+   present.\end{DoxyVerb}
+ \index{Message\-Q\-\_\-\-Params2@{Message\-Q\-\_\-\-Params2}!queue\-Index@{queue\-Index}}
+\index{queue\-Index@{queue\-Index}!MessageQ_Params2@{Message\-Q\-\_\-\-Params2}}
+\paragraph[{queue\-Index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\-Q\-\_\-\-Queue\-Index} Message\-Q\-\_\-\-Params2\-::queue\-Index}\label{struct_message_q___params2_a17e609ce59bab5020ae5d180a3df0130}
+Value used to specify the index in the Message\-Q array \begin{DoxyVerb}    This parameter allows an application to specify a queueIndex to
+    be used for a message queue. To use this functionality, the
+    MessageQ.numReservedEntries static configuration parameter must be
+    set to one more than the highest requested queueIndex. The
+    MessageQ.numReservedEntries parameter reserves that number of
+    message queue slots starting at 0 and proceeding to
+    (MessageQ.numReservedEntries - 1).
+
+    The default is MessageQ_ANY, which means it is not taken from the
+    reserved slots.\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_message_q_8h}{Message\-Q.\-h}\end{DoxyCompactItemize}

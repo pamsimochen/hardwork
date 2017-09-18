@@ -1,0 +1,1127 @@
+******************************************************************************
+                  TI ARM Linker PC v5.0.5                      
+******************************************************************************
+>> Linked Thu Jan 16 19:15:22 2014
+
+OUTPUT FILE NAME:   <..\Out\TestAppMCTNF.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 9a4c634d
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  VECS                  00000000   00000100  000000b8  00000048  RWIX
+  ITCM                  00000100   0002ff00  00000000  0002ff00  RWIX
+  DTCM                  00400000   00800000  00000000  00800000  RWIX
+  EXTMEM_SHARED         94000000   00100000  00000000  00100000  RWIX
+  EXTMEM_IO             94100000   04000000  03c20120  003dfee0  RWIX
+  EXTMEM                98100000   03000000  023d0eb2  00c2f14e  RWIX
+  EXTMEM2               9b100000   01000000  00012322  00fedcde  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000000b8   000000b8    r--
+  00000000    00000000    000000b8   000000b8    r-- .intvecs
+94100000    94100000    03c20120   00000000    rw-
+  94100000    94100000    03600120   00000000    rw- .inputbuffer_mem
+  97700120    97700120    00620000   00000000    rw- .bitStream_sect
+98100000    98100000    023c1e00   00000000    rw-
+  98100000    98100000    02000000   00000000    rw- .sysmem
+  9a100000    9a100000    003ae000   00000000    rw- .RawInput
+  9a4ae000    9a4ae000    00013e00   00000000    rw- .bss
+9a4c1e00    9a4c1e00    00008bdc   00008bdc    r-x
+  9a4c1e00    9a4c1e00    000047b2   000047b2    r-x .rts_lib
+  9a4c65b4    9a4c65b4    00004428   00004428    r-x .text
+9a4ca9dc    9a4ca9dc    00003500   00000000    rw-
+  9a4ca9dc    9a4ca9dc    00003500   00000000    rw- .stack
+9a4cdedc    9a4cdedc    00001b48   00001b48    rw-
+  9a4cdedc    9a4cdedc    00001b48   00001b48    rw- .data
+9a4cfa28    9a4cfa28    00000830   00000830    r--
+  9a4cfa28    9a4cfa28    00000830   00000830    r-- .const
+9a4d0260    9a4d0260    00000800   00000000    rw-
+  9a4d0260    9a4d0260    00000800   00000000    rw- .InternalMemory
+9a4d0a60    9a4d0a60    00000460   00000460    r--
+  9a4d0a60    9a4d0a60    00000460   00000460    r-- .cinit
+9b100000    9b100000    0001230a   0001230a    r-x
+  9b100000    9b100000    0000f834   0000f834    r-- .mctnf_const
+  9b10f834    9b10f834    00002ad6   00002ad6    r-x .mctnf_lib
+9b11230c    9b11230c    00000018   00000018    rw-
+  9b11230c    9b11230c    00000018   00000018    rw- .mctnf_data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000b8     
+                  00000000    000000b8     InterruptVecTable.obj (.intvecs)
+
+.inputbuffer_mem 
+*          0    94100000    03600120     UNINITIALIZED
+                  94100000    03600120     buffermanager.obj (.inputbuffer_mem)
+
+.bitStream_sect 
+*          0    97700120    00620000     UNINITIALIZED
+                  97700120    00620000     MCTNFTest.obj (.bitStream_sect)
+
+.sysmem    0    98100000    02000000     UNINITIALIZED
+                  98100000    00000008     rtsv7M3_T_le_eabi.lib : memory.obj (.sysmem)
+                  98100008    01fffff8     --HOLE--
+
+.RawInput 
+*          0    9a100000    003ae000     UNINITIALIZED
+                  9a100000    003ae000     MCTNFTest.obj (.RawInput)
+
+.bss       0    9a4ae000    00013e00     UNINITIALIZED
+                  9a4ae000    0000d400     InterruptVecTable.obj (.bss:stack_base)
+                  9a4bb400    00002760     buffermanager.obj (.bss:inBufArray)
+                  9a4bdb60    00002760     buffermanager.obj (.bss:outBufArray)
+                  9a4c02c0    00000fa4     mctnf_ti_config.obj (.bss:profileData)
+                  9a4c1264    00000344     mctnf_ti_config.obj (.bss:gConfig)
+                  9a4c15a8    0000021c     MCTNFTest.obj (.bss:TilerParams)
+                  9a4c17c4    00000120     rtsv7M3_T_le_eabi.lib : trgmsg.obj (.bss:__CIOBUF_)
+                  9a4c18e4    000000fc     mctnf_ti_config.obj (.bss:gInputBufDesc)
+                  9a4c19e0    000000fc     mctnf_ti_config.obj (.bss:gOutputBufDesc)
+                  9a4c1adc    000000b0     mctnf_ti_rman_config.obj (.bss)
+                  9a4c1b8c    000000a0     rtsv7M3_T_le_eabi.lib : defs.obj (.bss:_tmpnams)
+                  9a4c1c2c    00000098     mctnf_ti_config.obj (.bss:gDynamicParams)
+                  9a4c1cc4    00000070     mctnf_ti_rman_config.obj (.bss:protocolArgsBackUp)
+                  9a4c1d34    00000050     mctnf_ti_config.obj (.bss:gParams)
+                  9a4c1d84    00000030     mctnf_ti_config.obj (.bss:profileTimeStamps)
+                  9a4c1db4    00000028     MCTNFTest.obj (.bss)
+                  9a4c1ddc    0000001c     mctnf_ti_config.obj (.bss)
+                  9a4c1df8    00000008     rtsv7M3_T_le_eabi.lib : trgdrv.obj (.bss)
+
+.rts_lib   0    9a4c1e00    000047b2     
+                  9a4c1e00    00000e7a     rtsv7M3_T_le_eabi.lib : _printfi.obj (.text)
+                  9a4c2c7a    00000002     --HOLE-- [fill = 0]
+                  9a4c2c7c    00000930                           : _scanfi.obj (.text)
+                  9a4c35ac    000003d8                           : memory.obj (.text)
+                  9a4c3984    00000378                           : lowlev.obj (.text)
+                  9a4c3cfc    000002e4                           : trgdrv.obj (.text)
+                  9a4c3fe0    0000020c                           : strtod.obj (.text)
+                  9a4c41ec    00000208                           : strtold.obj (.text)
+                  9a4c43f4    000001f4                           : ull_div_t2.obj (.text)
+                  9a4c45e8    000001e8                           : strtoll.obj (.text)
+                  9a4c47d0    000001d4                           : fscanf.obj (.text)
+                  9a4c49a4    000001c0                           : fopen.obj (.text)
+                  9a4c4b64    000001b6                           : fd_add_t2.obj (.text)
+                  9a4c4d1a    00000002     --HOLE-- [fill = 0]
+                  9a4c4d1c    0000016c                           : strtoull.obj (.text)
+                  9a4c4e88    00000164                           : fwrite.obj (.text)
+                  9a4c4fec    00000136                           : fd_div_t2.obj (.text)
+                  9a4c5122    00000002     --HOLE-- [fill = 0]
+                  9a4c5124    00000130                           : fputs.obj (.text)
+                  9a4c5254    00000130                           : strtol.obj (.text)
+                  9a4c5384    00000110                           : strtoul.obj (.text)
+                  9a4c5494    000000fc                           : fd_mul_t2.obj (.text)
+                  9a4c5590    000000ec                           : fread.obj (.text)
+                  9a4c567c    000000cc                           : setvbuf.obj (.text)
+                  9a4c5748    000000cc                           : sscanf.obj (.text)
+                  9a4c5814    000000ac                           : _io_perm.obj (.text)
+                  9a4c58c0    000000a8                           : fflush.obj (.text)
+                  9a4c5968    0000009c                           : fputc.obj (.text)
+                  9a4c5a04    0000009c                           : memcpy_t2.obj (.text)
+                  9a4c5aa0    00000094                           : auto_init.obj (.text)
+                  9a4c5b34    00000094                           : fgetc.obj (.text)
+                  9a4c5bc8    00000084                           : fclose.obj (.text)
+                  9a4c5c4c    00000080                           : ungetc.obj (.text)
+                  9a4c5ccc    0000007e                           : fd_cmp_t2.obj (.text)
+                  9a4c5d4a    00000002     --HOLE-- [fill = 0]
+                  9a4c5d4c    00000078                           : _bufread.obj (.text)
+                  9a4c5dc4    00000078                           : memset_t2.obj (.text)
+                  9a4c5e3c    00000070                           : printf.obj (.text)
+                  9a4c5eac    0000006c                           : fprintf.obj (.text)
+                  9a4c5f18    00000068                           : ftell.obj (.text)
+                  9a4c5f80    00000064                           : fseek.obj (.text)
+                  9a4c5fe4    00000060                           : i_divt2.obj (.text)
+                  9a4c6044    00000060                           : trgmsg.obj (.text)
+                  9a4c60a4    0000005e                           : copy_decompress_rle.obj (.text)
+                  9a4c6102    00000056                           : ltoa.obj (.text)
+                  9a4c6158    0000004c                           : atoi.obj (.text)
+                  9a4c61a4    0000004c                           : rand.obj (.text)
+                  9a4c61f0    0000004a                           : fd_tos_t2.obj (.text)
+                  9a4c623a    00000048                           : fd_toi_t2.obj (.text)
+                  9a4c6282    00000002     --HOLE-- [fill = 0]
+                  9a4c6284    00000044                           : cpy_tbl.obj (.text)
+                  9a4c62c8    00000044                           : xdtest.obj (.text)
+                  9a4c630c    00000040                           : exit.obj (.text)
+                  9a4c634c    00000034                           : boot.obj (.text)
+                  9a4c6380    00000030                           : assert.obj (.text)
+                  9a4c63b0    00000030                           : strncpy.obj (.text)
+                  9a4c63e0    0000002e                           : i_tofd_t2.obj (.text)
+                  9a4c640e    00000002     --HOLE-- [fill = 0]
+                  9a4c6410    00000024                           : feof.obj (.text)
+                  9a4c6434    00000022                           : memcmp.obj (.text)
+                  9a4c6456    00000020                           : u_tofd_t2.obj (.text)
+                  9a4c6476    0000001c                           : strcat.obj (.text)
+                  9a4c6492    0000001a                           : memccpy.obj (.text)
+                  9a4c64ac    00000018                           : args_main.obj (.text)
+                  9a4c64c4    00000018                           : ll_mul_t2.obj (.text)
+                  9a4c64dc    00000018                           : strcmp.obj (.text)
+                  9a4c64f4    00000018                           : strrchr.obj (.text)
+                  9a4c650c    00000016                           : memchr.obj (.text)
+                  9a4c6522    00000016                           : strchr.obj (.text)
+                  9a4c6538    00000014                           : _lock.obj (.text)
+                  9a4c654c    00000014                           : strlen.obj (.text)
+                  9a4c6560    00000012                           : copy_zero_init.obj (.text:decompress:ZI)
+                  9a4c6572    00000012                           : strcpy.obj (.text)
+                  9a4c6584    0000000e                           : copy_decompress_none.obj (.text:decompress:none)
+                  9a4c6592    0000000e                           : xdclass.obj (.text)
+                  9a4c65a0    00000006                           : copy_decompress_rle.obj (.text:decompress:rle24)
+                  9a4c65a6    00000002     --HOLE-- [fill = 0]
+                  9a4c65a8    0000000a     MCTNFTest.obj (.tramp.main.1)
+
+.text      0    9a4c65b4    00004428     
+                  9a4c65b4    000012c0     MCTNFTest.obj (.text:main)
+                  9a4c7874    000003b0     mctnf_ti_config.obj (.text:ParseContent)
+                  9a4c7c24    0000032c     buffermanager.obj (.text:BUFFMGR_Init)
+                  9a4c7f50    0000027c     MCTNFTest.obj (.text:TestApp_ReadInputYUVData)
+                  9a4c81cc    00000220     mctnf_ti_updateMCTNFParams.lib : mctnf_ti_updateMCTNFParams.obj (.text:MCTNF_TI_updateMCTNFParams)
+                  9a4c83ec    00000218     mctnf_ti_config.obj (.text:MCTNF_TI_Capture_time)
+                  9a4c8604    00000208     mctnf_ti_config.obj (.text:MCTNF_TI_Print_Log)
+                  9a4c880c    000001fc     MCTNFTest.obj (.text:MCTNF_TI_initInputBufDesc)
+                  9a4c8a08    000001e4     MCTNFTest.obj (.text:MCTNF_TI_initOutputBufDesc)
+                  9a4c8bec    000001de     MCTNFTest.obj (.text:ConvertFrame_Field_Out)
+                  9a4c8dca    00000002     InterruptVecTable.obj (.text:NMIHandler)
+                  9a4c8dcc    000001d8     mctnf_ti_rman_config.obj (.text:RMAN_AssignResources)
+                  9a4c8fa4    000001be     tiler.lib : tilerBuf.obj (.text:tiler_init)
+                  9a4c9162    00000002     fileio.lib : h264enc_ti_file_io.obj (.text:init_file_io)
+                  9a4c9164    000001b0     mctnf_ti_config.obj (.text:TestApp_SetInitParams)
+                  9a4c9314    0000017c     mctnf_ti_rman_config.obj (.text:RMAN_FreeResources)
+                  9a4c9490    0000014c     mctnf_ti_rman_config.obj (.text:HDVICP_Acquire)
+                  9a4c95dc    0000011c     mctnf_ti_rman_config.obj (.text:HDVICP_Configure)
+                  9a4c96f8    00000108     mctnf_ti_rman_config.obj (.text:MCTNFTest_DataSyncGetBufFxn)
+                  9a4c9800    00000108     mctnf_ti_config.obj (.text:MCTNF_TI_Init_Log)
+                  9a4c9908    000000d4     mctnf_ti_rman_config.obj (.text:HDVICP_reacquireIfOwner)
+                  9a4c99dc    000000d0     mctnf_ti_rman_config.obj (.text:MCTNFTest_DataSyncPutDataFxn)
+                  9a4c9aac    000000c0     mctnf_ti_rman_config.obj (.text:HDVICP_Release)
+                  9a4c9b6c    000000c0     MCTNFTest.obj (.text:TestApp_WriteOutputData)
+                  9a4c9c2c    000000a4     buffermanager.obj (.text:BUFFMGR_GetFreeBuffer)
+                  9a4c9cd0    000000a4     mctnf_ti_rman_config.obj (.text:HDVICP_Wait)
+                  9a4c9d74    00000098     alg_create.obj (.text:ALG_create)
+                  9a4c9e0c    00000098     mctnf_ti_config.obj (.text:GetConfigFileContent)
+                  9a4c9ea4    00000094     mctnf_ti_rman_config.obj (.text:HDVICP_Done)
+                  9a4c9f38    00000094     mctnf_ti_rman_config.obj (.text:MCTNFTest_DataSyncGetDataFxn1)
+                  9a4c9fcc    00000094     mctnf_ti_config.obj (.text:MCTNF_TI_InitDynamicParams)
+                  9a4ca060    0000008c     buffermanager.obj (.text:BUFFMGR_ReleaseBuffer)
+                  9a4ca0ec    00000089     mctnf_ti_config.obj (.text:readparamfile)
+                  9a4ca175    00000001     --HOLE-- [fill = 0]
+                  9a4ca176    00000084     alg_malloc.obj (.text:_ALG_allocMemory)
+                  9a4ca1fa    00000002     InterruptVecTable.obj (.text:resetHandler)
+                  9a4ca1fc    00000080     MCTNFTest.obj (.text:IVAHD_Standby_power_on_uboot)
+                  9a4ca27c    0000007c     tiler.lib : tilerBuf.obj (.text:Tiler_DataMove)
+                  9a4ca2f8    00000070     mctnf_ti_rman_config.obj (.text:MCTNFTest_DataSyncGetDataFxn2)
+                  9a4ca368    0000006c     mctnf_ti_rman_config.obj (.text:allignMalloc)
+                  9a4ca3d4    00000064     ivahd_ti_api_vm3.lib : hdvicp20_ti_datamover_host.obj (.text:HDVICP20_TI_DM_Prepare_SL2_TCM)
+                  9a4ca438    00000064     alg_malloc.obj (.text:_ALG_freeMemory)
+                  9a4ca49c    0000005e     alg_create.obj (.text:ALG_delete)
+                  9a4ca4fa    00000002     --HOLE-- [fill = 0]
+                  9a4ca4fc    0000005c     mctnf_ti_config.obj (.text:MCTNF_TI_Report_Error)
+                  9a4ca558    0000004c     mctnf_ti_rman_config.obj (.text:Init_IVAHDAddrSpace)
+                  9a4ca5a4    00000044     buffermanager.obj (.text:BUFFMGR_ReleaseAllBuffers)
+                  9a4ca5e8    00000044     ivahd_ti_api_vm3.lib : hdvicp20_ti_vdma_host.obj (.text:HDVICP20_TI_VDMA_Prepare_Extmem_SL2)
+                  9a4ca62c    00000044     mctnf_ti_config.obj (.text:ParameterNameToMapIndex)
+                  9a4ca670    00000044     MCTNFTest.obj (.text:WriteReconOut)
+                  9a4ca6b4    00000040     mctnf.obj (.text:MCTNF_control)
+                  9a4ca6f4    00000040     mctnf.obj (.text:MCTNF_processFrame)
+                  9a4ca734    00000040     alg_malloc.obj (.text:myMemInternal)
+                  9a4ca774    0000003c     ivahd_ti_api_vm3.lib : hdvicp20_ti_vdma_host.obj (.text:HDVICP20_TI_VDMA_Open_Extmem_SL2)
+                  9a4ca7b0    0000002c     fileio.lib : h264enc_ti_file_io.obj (.text:TestApp_FileLength)
+                  9a4ca7dc    00000024     InterruptVecTable.obj (.text:MemManageHandler)
+                  9a4ca800    00000020     ivahd_ti_api_vm3.lib : hdvicp20_ti_datamover_host.obj (.text:HDVICP20_TI_DM_WaitForData_SL2_TCM)
+                  9a4ca820    00000020     mctnf_ti_rman_config.obj (.text:ISR_Function)
+                  9a4ca840    00000020     InterruptVecTable.obj (.text:SVCallISR)
+                  9a4ca860    0000001e     fileio.lib : h264enc_ti_file_io.obj (.text:my_fread)
+                  9a4ca87e    0000001e                : h264enc_ti_file_io.obj (.text:my_fwrite)
+                  9a4ca89c    0000001c     ivahd_ti_api_vm3.lib : hdvicp20_ti_datamover_host.obj (.text:HDVICP20_TI_DM_Trigger_SL2_TCM)
+                  9a4ca8b8    0000001a     InterruptVecTable.obj (.text:HFHandler)
+                  9a4ca8d2    00000018     ivahd_ti_api_vm3.lib : hdvicp20_ti_vdma_host.obj (.text:HDVICP20_TI_VDMA_WaitForData_Extmem_SL2)
+                  9a4ca8ea    00000002     --HOLE-- [fill = 0]
+                  9a4ca8ec    00000018     mctnf_ti_rman_config.obj (.text:RMAN_activateHDVICP2Resource)
+                  9a4ca904    00000018     mctnf_ti_rman_config.obj (.text:RMAN_deactivateHDVICP2Resource)
+                  9a4ca91c    00000014     mctnf_ti_rman_config.obj (.text:RMAN_activateAllResources)
+                  9a4ca930    00000014     mctnf_ti_rman_config.obj (.text:RMAN_deactivateAllResources)
+                  9a4ca944    00000014     mctnf_ti_rman_config.obj (.text:allignFree)
+                  9a4ca958    00000014     fileio.lib : h264enc_ti_file_io.obj (.text:my_fseek)
+                  9a4ca96c    00000012     mctnf.obj (.text:MCTNF_create)
+                  9a4ca97e    00000002     --HOLE-- [fill = 0]
+                  9a4ca980    00000010     ivahd_ti_api_vm3.lib : hdvicp20_ti_vdma_host.obj (.text:HDVICP20_TI_VDMA_Trigger_Extmem_SL2)
+                  9a4ca990    00000010     fileio.lib : h264enc_ti_file_io.obj (.text:my_fopen)
+                  9a4ca9a0    0000000e     mctnf_ti_rman_config.obj (.text:HDVICP_Reset)
+                  9a4ca9ae    0000000c     mctnf.obj (.text:MCTNF_delete)
+                  9a4ca9ba    0000000c     mctnf_ti_rman_config.obj (.text:MEMUTILS_getPhysicalAddr)
+                  9a4ca9c6    0000000c     fileio.lib : h264enc_ti_file_io.obj (.text:my_fclose)
+                  9a4ca9d2    0000000a     mctnf_ti_config.obj (.text:MCTNF_TI_Scratch_Contaminate)
+
+.stack     0    9a4ca9dc    00003500     UNINITIALIZED
+                  9a4ca9dc    00003500     --HOLE--
+
+.data      0    9a4cdedc    00001b48     
+                  9a4cdedc    00001800     mctnf_ti_config.obj (.data:sTokenMap)
+                  9a4cf6dc    000000f0     rtsv7M3_T_le_eabi.lib : defs.obj (.data:_ftable)
+                  9a4cf7cc    000000cc                           : lowlev.obj (.data)
+                  9a4cf898    00000090     mctnf_ti_rman_config.obj (.data)
+                  9a4cf928    00000080     mctnf_ti_config.obj (.data:gErrorStrings)
+                  9a4cf9a8    00000038     mctnf_ti_rman_config.obj (.data:IRES_HDVICP2_handle)
+                  9a4cf9e0    00000010     rtsv7M3_T_le_eabi.lib : defs.obj (.data)
+                  9a4cf9f0    0000000c                           : memory.obj (.data)
+                  9a4cf9fc    00000008     alg_malloc.obj (.data)
+                  9a4cfa04    00000008     rtsv7M3_T_le_eabi.lib : _lock.obj (.data)
+                  9a4cfa0c    00000008                           : exit.obj (.data)
+                  9a4cfa14    00000004                           : errno.obj (.data)
+                  9a4cfa18    00000004                           : fopen.obj (.data)
+                  9a4cfa1c    00000004                           : rand.obj (.data)
+                  9a4cfa20    00000004                           : stkdepth_vars.obj (.data)
+
+.const     0    9a4cfa28    00000830     
+                  9a4cfa28    00000566     mctnf_ti_config.obj (.const:.string)
+                  9a4cff8e    00000101     rtsv7M3_T_le_eabi.lib : ctype.obj (.const:.string:_ctypes_)
+                  9a4d008f    00000001     --HOLE-- [fill = 0]
+                  9a4d0090    00000098                           : strtod.obj (.const)
+                  9a4d0128    00000098                           : strtold.obj (.const)
+                  9a4d01c0    0000003c     mctnf_ti_rman_config.obj (.const:Input_BlockSizeArray)
+                  9a4d01fc    00000038     MCTNFTest.obj (.const:IVAHD_memory_wfi)
+                  9a4d0234    00000014     tiler.lib : tilerBuf.obj (.const)
+                  9a4d0248    00000010     rtsv7M3_T_le_eabi.lib : _scanfi.obj (.const)
+
+.InternalMemory 
+*          0    9a4d0260    00000800     UNINITIALIZED
+                  9a4d0260    00000800     alg_malloc.obj (.InternalMemory)
+
+.cinit     0    9a4d0a60    00000460     
+                  9a4d0a60    000003dd     (.cinit..data.load) [load image, compression = rle]
+                  9a4d0e3d    00000003     --HOLE-- [fill = 0]
+                  9a4d0e40    0000000e     (.cinit..mctnf_data.load) [load image, compression = rle]
+                  9a4d0e4e    00000002     --HOLE-- [fill = 0]
+                  9a4d0e50    0000000c     (__TI_handler_table)
+                  9a4d0e5c    00000004     --HOLE-- [fill = 0]
+                  9a4d0e60    00000008     (.cinit..InternalMemory.load) [load image, compression = zero_init]
+                  9a4d0e68    00000008     (.cinit..RawInput.load) [load image, compression = zero_init]
+                  9a4d0e70    00000008     (.cinit..bitStream_sect.load) [load image, compression = zero_init]
+                  9a4d0e78    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  9a4d0e80    00000008     (.cinit..inputbuffer_mem.load) [load image, compression = zero_init]
+                  9a4d0e88    00000038     (__TI_cinit_table)
+
+.mctnf_const 
+*          0    9b100000    0000f834     
+                  9b100000    00006560     mctnf_ti_host.lib : mctnf_ti_const.obj (.const:MCTNF_TI_dSect1)
+                  9b106560    00005cb8                       : mctnf_ti_process.obj (.const:MCTNF_TI_ICONT1_DataSect0)
+                  9b10c218    0000248c                       : mctnf_ti_process.obj (.const:MCTNF_TI_ICONT2_DataSect0)
+                  9b10e6a4    00001000                       : mctnf_ti_reciProcTable.obj (.const:MCTNF_TI_reciProcTable)
+                  9b10f6a4    00000098                       : imctnf.obj (.const:MCTNF_TI_DYNAMICPARAMS)
+                  9b10f73c    00000050                       : imctnf.obj (.const:MCTNF_TI_PARAMS)
+                  9b10f78c    00000030                       : mctnf_ti_ialgIvahd.obj (.const:.string:$P$T0$1)
+                  9b10f7bc    0000002c                       : mctnf_ti_vt.obj (.const:MCTNF_TI_IMCTNF)
+                  9b10f7e8    00000028                       : mctnf_ti_ires.obj (.const:MCTNF_TI_IRES)
+                  9b10f810    00000024                       : mctnf_ti_vt.obj (.const:MCTNF_TI_IALG)
+
+.mctnf_lib 
+*          0    9b10f834    00002ad6     
+                  9b10f834    0000086e     mctnf_ti_host.lib : mctnf_ti_process.obj (.text:MCTNF_TI_process)
+                  9b1100a2    00000002     --HOLE-- [fill = 0]
+                  9b1100a4    0000060c                       : mctnf_ti_ialgIvahd.obj (.text:MCTNF_TI_control)
+                  9b1106b0    000003a8                       : mctnf_ti_ialgIvahd.obj (.text:MCTNF_TI_initObj)
+                  9b110a58    000002d4                       : mctnf_ti_process.obj (.text:MCTNF_TI_ActivateHDVICP2)
+                  9b110d2c    000001da                       : mctnf_ti_process.obj (.text:MCTNF_TI_UpdateCodecParams)
+                  9b110f06    000001c0                       : mctnf_ti_process.obj (.text:MCTNF_TI_TransferAnalyticinfoData)
+                  9b1110c6    000001ba                       : mctnf_ti_process.obj (.text:MCTNF_TI_DecideBufferToProcess)
+                  9b111280    00000150                       : mctnf_ti_ires.obj (.text:MCTNF_TI_getResourceDescriptors)
+                  9b1113d0    00000148                       : mctnf_ti_process.obj (.text:MCTNF_TI_WaitforProceessA)
+                  9b111518    00000102                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_DoFrameSwapping)
+                  9b11161a    00000002     --HOLE-- [fill = 0]
+                  9b11161c    000000f4                       : mctnf_ti_ires.obj (.text:MCTNF_TI_HDVICP2_ISR)
+                  9b111710    000000dc                       : mctnf_ti_process.obj (.text:MCTNF_TI_turnOnAllClocks)
+                  9b1117ec    000000d8                       : mctnf_ti_ialg_support.obj (.text:MCTNF_TI_CpyDynamicParamstoHandle)
+                  9b1118c4    000000ce                       : TIMemManager.obj (.text:MCTNF_TI_GetMemoryChunk)
+                  9b111992    000000b4                       : mctnf_ti_ires.obj (.text:MCTNF_TI_BootHDVICP)
+                  9b111a46    000000b4                       : mctnf_ti_ialg_support.obj (.text:MCTNF_TI_ValidateMCTNFParams)
+                  9b111afa    000000b4                       : mctnf_ti_ires.obj (.text:MCTNF_TI_initResources)
+                  9b111bae    000000b0                       : mctnf_ti_ialg_support.obj (.text:MCTNF_TI_ValidateCreateParams)
+                  9b111c5e    0000009c                       : mctnf_ti_process.obj (.text:MCTNF_TI_DeActivateHDVICP2)
+                  9b111cfa    00000086                       : mctnf_ti_ires.obj (.text:MCTNF_TI_deactivateResource)
+                  9b111d80    0000006e                       : mctnf_ti_ires.obj (.text:MCTNF_TI_activateAllResources)
+                  9b111dee    0000006a                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_FillCaptureBuffer)
+                  9b111e58    00000060                       : mctnf_ti_process.obj (.text:MCTNF_TI_turnOffAllClocks)
+                  9b111eb8    0000005e                       : mctnf_ti_ires.obj (.text:MCTNF_TI_activateResource)
+                  9b111f16    0000005a                       : mctnf_ti_process.obj (.text:MCTNF_TI_UpdateSL2)
+                  9b111f70    00000056                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_GetCaptureBuffer)
+                  9b111fc6    00000002     --HOLE-- [fill = 0]
+                  9b111fc8    00000050                       : mctnf_ti_ialgIvahd.obj (.text:MCTNF_TI_free)
+                  9b112018    0000004a                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_IsCaptureBufferEmpty)
+                  9b112062    00000048                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_CaptureBufferInit)
+                  9b1120aa    00000002     --HOLE-- [fill = 0]
+                  9b1120ac    00000040                       : mctnf_ti_process.obj (.text:MCTNF_TI_CheckForIVAHDStandby)
+                  9b1120ec    00000040                       : mctnf_ti_ialgIvahd.obj (.text:MCTNF_TI_alloc)
+                  9b11212c    0000003c                       : mctnf_ti_process.obj (.text:MCTNF_TI_Configure_Mailbox)
+                  9b112168    00000034                       : mctnf_ti_process.obj (.text:MCTNF_TI_WaitForIVAHDStandby)
+                  9b11219c    00000030                       : mctnf_ti_process.obj (.text:MCTNF_TI_deactivate)
+                  9b1121cc    0000002e                       : mctnf_ti_process.obj (.text:MCTNF_TI_activate)
+                  9b1121fa    0000002e                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_markRefAvailable)
+                  9b112228    0000002a                       : mctnf_ti_process.obj (.text:MCTNF_TI_dataTransfer)
+                  9b112252    00000026                       : TIMemManager.obj (.text:MCTNF_TI_CreateMemoryHandle)
+                  9b112278    00000024                       : mctnf_ti_process.obj (.text:MCTNF_TI_ReleaseHDVICP2)
+                  9b11229c    0000001e                       : mctnf_ti_process.obj (.text:MCTNF_TI_UpdateSl2Code)
+                  9b1122ba    00000012                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_markRefNonAvailable)
+                  9b1122cc    00000010                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_GetCaptureBufferCovertedFlag)
+                  9b1122dc    0000000e                       : mctnf_ti_datasync.obj (.text:MCTNF_TI_initDataSyncElements)
+                  9b1122ea    00000008                       : mctnf_ti_ires.obj (.text:MCTNF_TI_getPhysicalAddr)
+                  9b1122f2    00000004                       : mctnf_ti_inbuf_control.obj (.text:MCTNF_TI_GetCaptureBufferCount)
+                  9b1122f6    00000004                       : mctnf_ti_ires.obj (.text:MCTNF_TI_deactivateAllResources)
+                  9b1122fa    00000004                       : mctnf_ti_ires.obj (.text:MCTNF_TI_deinitResources)
+                  9b1122fe    00000004                       : mctnf_ti_ialgIvahd.obj (.text:MCTNF_TI_numAlloc)
+                  9b112302    00000004                       : mctnf_ti_ires.obj (.text:MCTNF_TI_numResourceDescriptors)
+                  9b112306    00000004                       : mctnf_ti_ires.obj (.text:MCTNF_TI_reinitResources)
+
+.mctnf_data 
+*          0    9b11230c    00000018     
+                  9b11230c    00000018     mctnf_ti_host.lib : mctnf_ti_ires.obj (.data)
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 9a4d0e88 records: 7, size/record: 8, table size: 56
+	.data: load addr=9a4d0a60, load size=000003dd bytes, run addr=9a4cdedc, run size=00001b48 bytes, compression=rle
+	.mctnf_data: load addr=9a4d0e40, load size=0000000e bytes, run addr=9b11230c, run size=00000018 bytes, compression=rle
+	.InternalMemory: load addr=9a4d0e60, load size=00000008 bytes, run addr=9a4d0260, run size=00000800 bytes, compression=zero_init
+	.RawInput: load addr=9a4d0e68, load size=00000008 bytes, run addr=9a100000, run size=003ae000 bytes, compression=zero_init
+	.bitStream_sect: load addr=9a4d0e70, load size=00000008 bytes, run addr=97700120, run size=00620000 bytes, compression=zero_init
+	.bss: load addr=9a4d0e78, load size=00000008 bytes, run addr=9a4ae000, run size=00013e00 bytes, compression=zero_init
+	.inputbuffer_mem: load addr=9a4d0e80, load size=00000008 bytes, run addr=94100000, run size=03600120 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 9a4d0e50 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+FAR CALL TRAMPOLINES
+
+callee name               trampoline name
+   callee addr  tramp addr   call addr  call info
+--------------  -----------  ---------  ----------------
+main                      $Tramp$TT$S$$main
+   9a4c65b5     9a4c65a8     9a4c64bc   rtsv7M3_T_le_eabi.lib : args_main.obj (.text)
+
+[1 trampolines]
+[1 trampoline calls]
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+9a4c9d75   ALG_create
+9a4ca49d   ALG_delete
+9a4c9c2d   BUFFMGR_GetFreeBuffer
+9a4c7c25   BUFFMGR_Init
+9a4ca5a5   BUFFMGR_ReleaseAllBuffers
+9a4ca061   BUFFMGR_ReleaseBuffer
+9a4c630d   C$$EXIT
+9a4c606f   C$$IO$$
+9a4c8bed   ConvertFrame_Field_Out
+9a4cf8b8   FrameNum
+9a4ca3d5   HDVICP20_TI_DM_Prepare_SL2_TCM
+9a4ca89d   HDVICP20_TI_DM_Trigger_SL2_TCM
+9a4ca801   HDVICP20_TI_DM_WaitForData_SL2_TCM
+9a4ca775   HDVICP20_TI_VDMA_Open_Extmem_SL2
+9a4ca5e9   HDVICP20_TI_VDMA_Prepare_Extmem_SL2
+9a4ca981   HDVICP20_TI_VDMA_Trigger_Extmem_SL2
+9a4ca8d3   HDVICP20_TI_VDMA_WaitForData_Extmem_SL2
+9a4c9491   HDVICP_Acquire
+9a4c95dd   HDVICP_Configure
+9a4c9ea5   HDVICP_Done
+9a4c9aad   HDVICP_Release
+9a4ca9a1   HDVICP_Reset
+9a4c9cd1   HDVICP_Wait
+9a4c9909   HDVICP_reacquireIfOwner
+9a4ca8b9   HFHandler
+9a4c3f93   HOSTclock
+9a4c3f59   HOSTclose
+9a4c3f1b   HOSTgetenv
+9a4c3ebf   HOSTlseek
+9a4c3e6f   HOSTopen
+9a4c3e21   HOSTread
+9a4c3dc1   HOSTrename
+9a4c3d85   HOSTtime
+9a4c3d4b   HOSTunlink
+9a4c3cfd   HOSTwrite
+9a4cf9a8   IRES_HDVICP2_handle
+9a4cf8bc   IRES_TILEDMEMORY_coloMBInfo
+9a4cf8fc   IRES_TILEDMEMORY_debugTraceMemory
+9a4cf8dc   IRES_TILEDMEMORY_persistentMemory
+9a4ca821   ISR_Function
+9a4ca1fd   IVAHD_Standby_power_on_uboot
+9a4d01fc   IVAHD_memory_wfi
+94100000   InBuffers
+9a4ca559   Init_IVAHDAddrSpace
+9a4d01c0   Input_BlockSizeArray
+9a4c96f9   MCTNFTest_DataSyncGetBufFxn
+9a4c9f39   MCTNFTest_DataSyncGetDataFxn1
+9a4ca2f9   MCTNFTest_DataSyncGetDataFxn2
+9a4c99dd   MCTNFTest_DataSyncPutDataFxn
+9b110a59   MCTNF_TI_ActivateHDVICP2
+9b111993   MCTNF_TI_BootHDVICP
+9b112063   MCTNF_TI_CaptureBufferInit
+9a4c83ed   MCTNF_TI_Capture_time
+9b1120ad   MCTNF_TI_CheckForIVAHDStandby
+9b11212d   MCTNF_TI_Configure_Mailbox
+9b100000   MCTNF_TI_ConstData
+9b1117ed   MCTNF_TI_CpyDynamicParamstoHandle
+9b112253   MCTNF_TI_CreateMemoryHandle
+9b10f6a4   MCTNF_TI_DYNAMICPARAMS
+9b111c5f   MCTNF_TI_DeActivateHDVICP2
+9b1110c7   MCTNF_TI_DecideBufferToProcess
+9b111519   MCTNF_TI_DoFrameSwapping
+9b111def   MCTNF_TI_FillCaptureBuffer
+9b111f71   MCTNF_TI_GetCaptureBuffer
+9b1122f3   MCTNF_TI_GetCaptureBufferCount
+9b1122cd   MCTNF_TI_GetCaptureBufferCovertedFlag
+9b1118c5   MCTNF_TI_GetMemoryChunk
+9b11161d   MCTNF_TI_HDVICP2_ISR
+9b10f810   MCTNF_TI_IALG
+9b10f7bc   MCTNF_TI_IMCTNF
+9b10f7e8   MCTNF_TI_IRES
+9a4c9fcd   MCTNF_TI_InitDynamicParams
+9a4c9801   MCTNF_TI_Init_Log
+9b112019   MCTNF_TI_IsCaptureBufferEmpty
+9b10f73c   MCTNF_TI_PARAMS
+9a4c8605   MCTNF_TI_Print_Log
+9b112279   MCTNF_TI_ReleaseHDVICP2
+9a4ca4fd   MCTNF_TI_Report_Error
+9a4ca9d3   MCTNF_TI_Scratch_Contaminate
+9b110f07   MCTNF_TI_TransferAnalyticinfoData
+9b110d2d   MCTNF_TI_UpdateCodecParams
+9b111f17   MCTNF_TI_UpdateSL2
+9b11229d   MCTNF_TI_UpdateSl2Code
+9b111baf   MCTNF_TI_ValidateCreateParams
+9b111a47   MCTNF_TI_ValidateMCTNFParams
+9b112169   MCTNF_TI_WaitForIVAHDStandby
+9b1113d1   MCTNF_TI_WaitforProceessA
+9b1121cd   MCTNF_TI_activate
+9b111d81   MCTNF_TI_activateAllResources
+9b111eb9   MCTNF_TI_activateResource
+9b1120ed   MCTNF_TI_alloc
+9b1100a5   MCTNF_TI_control
+9b112229   MCTNF_TI_dataTransfer
+9b11219d   MCTNF_TI_deactivate
+9b1122f7   MCTNF_TI_deactivateAllResources
+9b111cfb   MCTNF_TI_deactivateResource
+9b1122fb   MCTNF_TI_deinitResources
+9b111fc9   MCTNF_TI_free
+9b1122eb   MCTNF_TI_getPhysicalAddr
+9b111281   MCTNF_TI_getResourceDescriptors
+9b1122dd   MCTNF_TI_initDataSyncElements
+9a4c880d   MCTNF_TI_initInputBufDesc
+9b1106b1   MCTNF_TI_initObj
+9a4c8a09   MCTNF_TI_initOutputBufDesc
+9b111afb   MCTNF_TI_initResources
+9b1121fb   MCTNF_TI_markRefAvailable
+9b1122bb   MCTNF_TI_markRefNonAvailable
+9b1122ff   MCTNF_TI_numAlloc
+9b112303   MCTNF_TI_numResourceDescriptors
+9b10f835   MCTNF_TI_process
+9b10e6a4   MCTNF_TI_reciProcTable
+9b112307   MCTNF_TI_reinitResources
+9b111e59   MCTNF_TI_turnOffAllClocks
+9b111711   MCTNF_TI_turnOnAllClocks
+9a4c81cd   MCTNF_TI_updateMCTNFParams
+9a4ca6b5   MCTNF_control
+9a4ca96d   MCTNF_create
+9a4ca9af   MCTNF_delete
+9a4ca6f5   MCTNF_processFrame
+9a4ca9bb   MEMUTILS_getPhysicalAddr
+9a4c1b40   MEM_BASE
+9a4ca7dd   MemManageHandler
+9a4c8dcb   NMIHandler
+95900080   OutBuffers
+9a4c1b44   REG_BASE
+9a4c8dcd   RMAN_AssignResources
+9a4c9315   RMAN_FreeResources
+9a4ca91d   RMAN_activateAllResources
+9a4ca8ed   RMAN_activateHDVICP2Resource
+9a4ca931   RMAN_deactivateAllResources
+9a4ca905   RMAN_deactivateHDVICP2Resource
+9a4c1b48   RST_CNTL_BASE
+9a374000   RawChroma
+9a100000   RawLuma
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+9a4ca841   SVCallISR
+9a4ca7b1   TestApp_FileLength
+9a4c7f51   TestApp_ReadInputYUVData
+9a4c9165   TestApp_SetInitParams
+9a4c9b6d   TestApp_WriteOutputData
+9a4c15a8   TilerParams
+9a4ca27d   Tiler_DataMove
+9a4ca671   WriteReconOut
+9a4ca177   _ALG_allocMemory
+9a4ca439   _ALG_freeMemory
+9a4c6593   _Dclass
+9a4c62c9   _Dtest
+9a4cfa14   _Errno
+00000040   __A_STACK_SIZE
+9a4c17c4   __CIOBUF_
+00000080   __F_STACK_SIZE
+00000040   __I_STACK_SIZE
+9a4cdedc   __STACK_END
+00003500   __STACK_SIZE
+02000000   __SYSMEM_SIZE
+00000040   __S_STACK_SIZE
+9a4d0e88   __TI_CINIT_Base
+9a4d0ec0   __TI_CINIT_Limit
+9a4d0e50   __TI_Handler_Table_Base
+9a4d0e5c   __TI_Handler_Table_Limit
+00000001   __TI_args_main
+9a4c5aa1   __TI_auto_init
+9a4c6585   __TI_decompress_none
+9a4c65a1   __TI_decompress_rle24
+00000000   __TI_static_base__
+9a4c6561   __TI_zero_init
+00000040   __U_STACK_SIZE
+00000040   __Y_STACK_SIZE
+9a4c5ccd   __aeabi_cdcmpeq
+9a4c5ccd   __aeabi_cdcmple
+9a4c61f1   __aeabi_d2f
+9a4c623b   __aeabi_d2iz
+9a4c4b6f   __aeabi_dadd
+9a4c4fed   __aeabi_ddiv
+9a4c5495   __aeabi_dmul
+9a4c4b65   __aeabi_dsub
+9a4c63e1   __aeabi_i2d
+9a4c5fe5   __aeabi_idivmod
+9a4c64c5   __aeabi_lmul
+9a4c5dc5   __aeabi_memclr
+9a4c5dc5   __aeabi_memclr4
+9a4c5dc5   __aeabi_memclr8
+9a4c5a05   __aeabi_memcpy
+9a4c5a05   __aeabi_memcpy4
+9a4c5a05   __aeabi_memcpy8
+9a4c5dc7   __aeabi_memset
+9a4c5dc7   __aeabi_memset4
+9a4c5dc7   __aeabi_memset8
+9a4cf9ec   __aeabi_stderr
+9a4cf9e4   __aeabi_stdin
+9a4cf9e8   __aeabi_stdout
+9a4c6457   __aeabi_ui2d
+9a4c43f5   __aeabi_uldivmod
+ffffffff   __binit__
+ffffffff   __c_args__
+9a4ca9dc   __stack
+9a4c6383   _abort_msg
+9a4c64ad   _args_main
+9a4c639d   _assert
+9a4c5d4d   _buff_read
+9a4c634d   _c_int00
+9a4c4a6d   _cleanup
+9a4cfa0c   _cleanup_ptr
+9a4c5bc9   _closefile
+9a4cff8e   _ctypes_
+9a4c58c1   _doflush
+9a4cfa10   _dtors_ptr
+9a4cf9e0   _ft_end
+9a4cf6dc   _ftable
+9a4cfa04   _lock
+9a4c6381   _nassert
+9a4c6547   _nop
+9a4c2973   _printfi
+9a4c5877   _rd_ok
+9a4c653f   _register_lock
+9a4c6539   _register_unlock
+9a4c30d5   _scanfi
+98100000   _sys_memory
+9a4c1b8c   _tmpnams
+9a4cfa08   _unlock
+9a4c5815   _wrt_ok
+9a4c6311   abort
+9a4c3c69   add_device
+9a4ca945   allignFree
+9a4ca369   allignMalloc
+9a4c6159   atoi
+ffffffff   binit
+9a4c1b60   blockAddrArray
+9a4cf898   blockSizeArray
+9a4c3945   calloc
+9a4c3c15   close
+9a4c6285   copy_in
+9a4c6319   exit
+9a4c1b08   fGetInpDHandle1
+9a4c1b0c   fGetInpDHandle2
+9a4c5c23   fclose
+9a4c6411   feof
+9a4c590d   fflush
+9a4c5b35   fgetc
+9a4c1db4   fin
+9a4c4ac3   fopen
+9a4c1db8   fout
+9a4c5eb5   fprintf
+9a4c5969   fputc
+9a4c5125   fputs
+9a4c5591   fread
+9a4c369b   free
+9a4c4a99   freopen
+9a4c4933   fscanf
+9a4c5f81   fseek
+9a4c5f19   ftell
+9a4c4e89   fwrite
+9a4c1dbc   gAlgExtendedError
+97d10120   gBlockAddr
+97d00120   gBlockSizes
+9a4c1264   gConfig
+9a4c1dcc   gDataSyncUnitGap
+9a4c1dc8   gDataSynchUnit
+9a4c1c2c   gDynamicParams
+9a4c1af0   gHDVICP2Handle
+9a4c1dc4   gInitialDataUnit
+9a4c18e4   gInputBufDesc
+9a4cf9fc   gInternalMemory
+9a4c1ddc   gLogMessge
+9a4c1dc0   gOutputBlocksRecieved
+9a4c19e0   gOutputBufDesc
+97700120   gOutputData
+9a4c1dd0   gOutputDataProvided
+9a4c1d34   gParams
+9a4c1b88   gSemCount
+9a4c1af4   g_cbArgs
+9a4c1b4c   g_fnPtr
+9a4c1adc   g_handle
+9a4c5bb3   getc
+9a4c5bb7   getchar
+9a4d0260   hostIntMemory
+9a4bb400   inBufArray
+9a4c9163   init_file_io
+9a4c1b10   ip_datasyncDesc1
+9a4c1b28   ip_datasyncDesc2
+9a4c1b84   isAcquireCallMade
+9a4c3bc7   lseek
+9a4c6103   ltoa
+9a4c65b5   main
+9a4cfa20   main_func_sp
+9a4c3639   malloc
+9a4c386f   memalign
+9a4c6493   memccpy
+9a4c650d   memchr
+9a4c6435   memcmp
+9a4c5a05   memcpy
+9a4c5dcd   memset
+9a4c35ad   minit
+9a4ca735   myMemInternal
+9a4ca9c7   my_fclose
+9a4ca991   my_fopen
+9a4ca861   my_fread
+9a4ca959   my_fseek
+9a4ca87f   my_fwrite
+9a4c1dd4   numFramesFiltered
+9a4c1b80   numResourcesBackUp
+9a4c3b3b   open
+9a4bdb60   outBufArray
+9a4c5e45   printf
+9a4c02c0   profileData
+9a4c1d84   profileTimeStamps
+9a4c1cc4   protocolArgsBackUp
+9a4c59ef   putc
+9a4c59f3   putchar
+9a4c522b   puts
+9a4c61bb   rand
+9a4c3ac3   read
+9a4c6073   readmsg
+9a4ca0ed   readparamfile
+9a4c3765   realloc
+9a4c3a3b   remove
+9a4c3a9b   remove_device
+9a4c3a5f   rename
+9a4ca1fb   resetHandler
+9a4c48e3   scanf
+9a4c567d   setvbuf
+9a4c61a5   srand
+9a4c575b   sscanf
+9a4ae000   stack_base
+9a4c1dd8   stopPos
+9a4c6477   strcat
+9a4c6523   strchr
+9a4c64dd   strcmp
+9a4c6573   strcpy
+9a4c654d   strlen
+9a4c63b1   strncpy
+9a4c64f5   strrchr
+9a4c3fe1   strtod
+9a4c5255   strtol
+9a4c41ed   strtold
+9a4c45e9   strtoll
+9a4c5385   strtoul
+9a4c4d1d   strtoull
+9a4d0234   tilerStride
+9a4c8fa5   tiler_init
+9a4c5c4d   ungetc
+9a4c3a3b   unlink
+00000000   vector_table
+9a4c48a3   vfscanf
+9a4c4865   vscanf
+9a4c5749   vsscanf
+9a4c3985   write
+9a4c6045   writemsg
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000000   __TI_static_base__
+00000000   vector_table
+00000001   __TI_args_main
+00000040   __A_STACK_SIZE
+00000040   __I_STACK_SIZE
+00000040   __S_STACK_SIZE
+00000040   __U_STACK_SIZE
+00000040   __Y_STACK_SIZE
+00000080   __F_STACK_SIZE
+00003500   __STACK_SIZE
+02000000   __SYSMEM_SIZE
+94100000   InBuffers
+95900080   OutBuffers
+97700120   gOutputData
+97d00120   gBlockSizes
+97d10120   gBlockAddr
+98100000   _sys_memory
+9a100000   RawLuma
+9a374000   RawChroma
+9a4ae000   stack_base
+9a4bb400   inBufArray
+9a4bdb60   outBufArray
+9a4c02c0   profileData
+9a4c1264   gConfig
+9a4c15a8   TilerParams
+9a4c17c4   __CIOBUF_
+9a4c18e4   gInputBufDesc
+9a4c19e0   gOutputBufDesc
+9a4c1adc   g_handle
+9a4c1af0   gHDVICP2Handle
+9a4c1af4   g_cbArgs
+9a4c1b08   fGetInpDHandle1
+9a4c1b0c   fGetInpDHandle2
+9a4c1b10   ip_datasyncDesc1
+9a4c1b28   ip_datasyncDesc2
+9a4c1b40   MEM_BASE
+9a4c1b44   REG_BASE
+9a4c1b48   RST_CNTL_BASE
+9a4c1b4c   g_fnPtr
+9a4c1b60   blockAddrArray
+9a4c1b80   numResourcesBackUp
+9a4c1b84   isAcquireCallMade
+9a4c1b88   gSemCount
+9a4c1b8c   _tmpnams
+9a4c1c2c   gDynamicParams
+9a4c1cc4   protocolArgsBackUp
+9a4c1d34   gParams
+9a4c1d84   profileTimeStamps
+9a4c1db4   fin
+9a4c1db8   fout
+9a4c1dbc   gAlgExtendedError
+9a4c1dc0   gOutputBlocksRecieved
+9a4c1dc4   gInitialDataUnit
+9a4c1dc8   gDataSynchUnit
+9a4c1dcc   gDataSyncUnitGap
+9a4c1dd0   gOutputDataProvided
+9a4c1dd4   numFramesFiltered
+9a4c1dd8   stopPos
+9a4c1ddc   gLogMessge
+9a4c2973   _printfi
+9a4c30d5   _scanfi
+9a4c35ad   minit
+9a4c3639   malloc
+9a4c369b   free
+9a4c3765   realloc
+9a4c386f   memalign
+9a4c3945   calloc
+9a4c3985   write
+9a4c3a3b   remove
+9a4c3a3b   unlink
+9a4c3a5f   rename
+9a4c3a9b   remove_device
+9a4c3ac3   read
+9a4c3b3b   open
+9a4c3bc7   lseek
+9a4c3c15   close
+9a4c3c69   add_device
+9a4c3cfd   HOSTwrite
+9a4c3d4b   HOSTunlink
+9a4c3d85   HOSTtime
+9a4c3dc1   HOSTrename
+9a4c3e21   HOSTread
+9a4c3e6f   HOSTopen
+9a4c3ebf   HOSTlseek
+9a4c3f1b   HOSTgetenv
+9a4c3f59   HOSTclose
+9a4c3f93   HOSTclock
+9a4c3fe1   strtod
+9a4c41ed   strtold
+9a4c43f5   __aeabi_uldivmod
+9a4c45e9   strtoll
+9a4c4865   vscanf
+9a4c48a3   vfscanf
+9a4c48e3   scanf
+9a4c4933   fscanf
+9a4c4a6d   _cleanup
+9a4c4a99   freopen
+9a4c4ac3   fopen
+9a4c4b65   __aeabi_dsub
+9a4c4b6f   __aeabi_dadd
+9a4c4d1d   strtoull
+9a4c4e89   fwrite
+9a4c4fed   __aeabi_ddiv
+9a4c5125   fputs
+9a4c522b   puts
+9a4c5255   strtol
+9a4c5385   strtoul
+9a4c5495   __aeabi_dmul
+9a4c5591   fread
+9a4c567d   setvbuf
+9a4c5749   vsscanf
+9a4c575b   sscanf
+9a4c5815   _wrt_ok
+9a4c5877   _rd_ok
+9a4c58c1   _doflush
+9a4c590d   fflush
+9a4c5969   fputc
+9a4c59ef   putc
+9a4c59f3   putchar
+9a4c5a05   __aeabi_memcpy
+9a4c5a05   __aeabi_memcpy4
+9a4c5a05   __aeabi_memcpy8
+9a4c5a05   memcpy
+9a4c5aa1   __TI_auto_init
+9a4c5b35   fgetc
+9a4c5bb3   getc
+9a4c5bb7   getchar
+9a4c5bc9   _closefile
+9a4c5c23   fclose
+9a4c5c4d   ungetc
+9a4c5ccd   __aeabi_cdcmpeq
+9a4c5ccd   __aeabi_cdcmple
+9a4c5d4d   _buff_read
+9a4c5dc5   __aeabi_memclr
+9a4c5dc5   __aeabi_memclr4
+9a4c5dc5   __aeabi_memclr8
+9a4c5dc7   __aeabi_memset
+9a4c5dc7   __aeabi_memset4
+9a4c5dc7   __aeabi_memset8
+9a4c5dcd   memset
+9a4c5e45   printf
+9a4c5eb5   fprintf
+9a4c5f19   ftell
+9a4c5f81   fseek
+9a4c5fe5   __aeabi_idivmod
+9a4c6045   writemsg
+9a4c606f   C$$IO$$
+9a4c6073   readmsg
+9a4c6103   ltoa
+9a4c6159   atoi
+9a4c61a5   srand
+9a4c61bb   rand
+9a4c61f1   __aeabi_d2f
+9a4c623b   __aeabi_d2iz
+9a4c6285   copy_in
+9a4c62c9   _Dtest
+9a4c630d   C$$EXIT
+9a4c6311   abort
+9a4c6319   exit
+9a4c634d   _c_int00
+9a4c6381   _nassert
+9a4c6383   _abort_msg
+9a4c639d   _assert
+9a4c63b1   strncpy
+9a4c63e1   __aeabi_i2d
+9a4c6411   feof
+9a4c6435   memcmp
+9a4c6457   __aeabi_ui2d
+9a4c6477   strcat
+9a4c6493   memccpy
+9a4c64ad   _args_main
+9a4c64c5   __aeabi_lmul
+9a4c64dd   strcmp
+9a4c64f5   strrchr
+9a4c650d   memchr
+9a4c6523   strchr
+9a4c6539   _register_unlock
+9a4c653f   _register_lock
+9a4c6547   _nop
+9a4c654d   strlen
+9a4c6561   __TI_zero_init
+9a4c6573   strcpy
+9a4c6585   __TI_decompress_none
+9a4c6593   _Dclass
+9a4c65a1   __TI_decompress_rle24
+9a4c65b5   main
+9a4c7c25   BUFFMGR_Init
+9a4c7f51   TestApp_ReadInputYUVData
+9a4c81cd   MCTNF_TI_updateMCTNFParams
+9a4c83ed   MCTNF_TI_Capture_time
+9a4c8605   MCTNF_TI_Print_Log
+9a4c880d   MCTNF_TI_initInputBufDesc
+9a4c8a09   MCTNF_TI_initOutputBufDesc
+9a4c8bed   ConvertFrame_Field_Out
+9a4c8dcb   NMIHandler
+9a4c8dcd   RMAN_AssignResources
+9a4c8fa5   tiler_init
+9a4c9163   init_file_io
+9a4c9165   TestApp_SetInitParams
+9a4c9315   RMAN_FreeResources
+9a4c9491   HDVICP_Acquire
+9a4c95dd   HDVICP_Configure
+9a4c96f9   MCTNFTest_DataSyncGetBufFxn
+9a4c9801   MCTNF_TI_Init_Log
+9a4c9909   HDVICP_reacquireIfOwner
+9a4c99dd   MCTNFTest_DataSyncPutDataFxn
+9a4c9aad   HDVICP_Release
+9a4c9b6d   TestApp_WriteOutputData
+9a4c9c2d   BUFFMGR_GetFreeBuffer
+9a4c9cd1   HDVICP_Wait
+9a4c9d75   ALG_create
+9a4c9ea5   HDVICP_Done
+9a4c9f39   MCTNFTest_DataSyncGetDataFxn1
+9a4c9fcd   MCTNF_TI_InitDynamicParams
+9a4ca061   BUFFMGR_ReleaseBuffer
+9a4ca0ed   readparamfile
+9a4ca177   _ALG_allocMemory
+9a4ca1fb   resetHandler
+9a4ca1fd   IVAHD_Standby_power_on_uboot
+9a4ca27d   Tiler_DataMove
+9a4ca2f9   MCTNFTest_DataSyncGetDataFxn2
+9a4ca369   allignMalloc
+9a4ca3d5   HDVICP20_TI_DM_Prepare_SL2_TCM
+9a4ca439   _ALG_freeMemory
+9a4ca49d   ALG_delete
+9a4ca4fd   MCTNF_TI_Report_Error
+9a4ca559   Init_IVAHDAddrSpace
+9a4ca5a5   BUFFMGR_ReleaseAllBuffers
+9a4ca5e9   HDVICP20_TI_VDMA_Prepare_Extmem_SL2
+9a4ca671   WriteReconOut
+9a4ca6b5   MCTNF_control
+9a4ca6f5   MCTNF_processFrame
+9a4ca735   myMemInternal
+9a4ca775   HDVICP20_TI_VDMA_Open_Extmem_SL2
+9a4ca7b1   TestApp_FileLength
+9a4ca7dd   MemManageHandler
+9a4ca801   HDVICP20_TI_DM_WaitForData_SL2_TCM
+9a4ca821   ISR_Function
+9a4ca841   SVCallISR
+9a4ca861   my_fread
+9a4ca87f   my_fwrite
+9a4ca89d   HDVICP20_TI_DM_Trigger_SL2_TCM
+9a4ca8b9   HFHandler
+9a4ca8d3   HDVICP20_TI_VDMA_WaitForData_Extmem_SL2
+9a4ca8ed   RMAN_activateHDVICP2Resource
+9a4ca905   RMAN_deactivateHDVICP2Resource
+9a4ca91d   RMAN_activateAllResources
+9a4ca931   RMAN_deactivateAllResources
+9a4ca945   allignFree
+9a4ca959   my_fseek
+9a4ca96d   MCTNF_create
+9a4ca981   HDVICP20_TI_VDMA_Trigger_Extmem_SL2
+9a4ca991   my_fopen
+9a4ca9a1   HDVICP_Reset
+9a4ca9af   MCTNF_delete
+9a4ca9bb   MEMUTILS_getPhysicalAddr
+9a4ca9c7   my_fclose
+9a4ca9d3   MCTNF_TI_Scratch_Contaminate
+9a4ca9dc   __stack
+9a4cdedc   __STACK_END
+9a4cf6dc   _ftable
+9a4cf898   blockSizeArray
+9a4cf8b8   FrameNum
+9a4cf8bc   IRES_TILEDMEMORY_coloMBInfo
+9a4cf8dc   IRES_TILEDMEMORY_persistentMemory
+9a4cf8fc   IRES_TILEDMEMORY_debugTraceMemory
+9a4cf9a8   IRES_HDVICP2_handle
+9a4cf9e0   _ft_end
+9a4cf9e4   __aeabi_stdin
+9a4cf9e8   __aeabi_stdout
+9a4cf9ec   __aeabi_stderr
+9a4cf9fc   gInternalMemory
+9a4cfa04   _lock
+9a4cfa08   _unlock
+9a4cfa0c   _cleanup_ptr
+9a4cfa10   _dtors_ptr
+9a4cfa14   _Errno
+9a4cfa20   main_func_sp
+9a4cff8e   _ctypes_
+9a4d01c0   Input_BlockSizeArray
+9a4d01fc   IVAHD_memory_wfi
+9a4d0234   tilerStride
+9a4d0260   hostIntMemory
+9a4d0e50   __TI_Handler_Table_Base
+9a4d0e5c   __TI_Handler_Table_Limit
+9a4d0e88   __TI_CINIT_Base
+9a4d0ec0   __TI_CINIT_Limit
+9b100000   MCTNF_TI_ConstData
+9b10e6a4   MCTNF_TI_reciProcTable
+9b10f6a4   MCTNF_TI_DYNAMICPARAMS
+9b10f73c   MCTNF_TI_PARAMS
+9b10f7bc   MCTNF_TI_IMCTNF
+9b10f7e8   MCTNF_TI_IRES
+9b10f810   MCTNF_TI_IALG
+9b10f835   MCTNF_TI_process
+9b1100a5   MCTNF_TI_control
+9b1106b1   MCTNF_TI_initObj
+9b110a59   MCTNF_TI_ActivateHDVICP2
+9b110d2d   MCTNF_TI_UpdateCodecParams
+9b110f07   MCTNF_TI_TransferAnalyticinfoData
+9b1110c7   MCTNF_TI_DecideBufferToProcess
+9b111281   MCTNF_TI_getResourceDescriptors
+9b1113d1   MCTNF_TI_WaitforProceessA
+9b111519   MCTNF_TI_DoFrameSwapping
+9b11161d   MCTNF_TI_HDVICP2_ISR
+9b111711   MCTNF_TI_turnOnAllClocks
+9b1117ed   MCTNF_TI_CpyDynamicParamstoHandle
+9b1118c5   MCTNF_TI_GetMemoryChunk
+9b111993   MCTNF_TI_BootHDVICP
+9b111a47   MCTNF_TI_ValidateMCTNFParams
+9b111afb   MCTNF_TI_initResources
+9b111baf   MCTNF_TI_ValidateCreateParams
+9b111c5f   MCTNF_TI_DeActivateHDVICP2
+9b111cfb   MCTNF_TI_deactivateResource
+9b111d81   MCTNF_TI_activateAllResources
+9b111def   MCTNF_TI_FillCaptureBuffer
+9b111e59   MCTNF_TI_turnOffAllClocks
+9b111eb9   MCTNF_TI_activateResource
+9b111f17   MCTNF_TI_UpdateSL2
+9b111f71   MCTNF_TI_GetCaptureBuffer
+9b111fc9   MCTNF_TI_free
+9b112019   MCTNF_TI_IsCaptureBufferEmpty
+9b112063   MCTNF_TI_CaptureBufferInit
+9b1120ad   MCTNF_TI_CheckForIVAHDStandby
+9b1120ed   MCTNF_TI_alloc
+9b11212d   MCTNF_TI_Configure_Mailbox
+9b112169   MCTNF_TI_WaitForIVAHDStandby
+9b11219d   MCTNF_TI_deactivate
+9b1121cd   MCTNF_TI_activate
+9b1121fb   MCTNF_TI_markRefAvailable
+9b112229   MCTNF_TI_dataTransfer
+9b112253   MCTNF_TI_CreateMemoryHandle
+9b112279   MCTNF_TI_ReleaseHDVICP2
+9b11229d   MCTNF_TI_UpdateSl2Code
+9b1122bb   MCTNF_TI_markRefNonAvailable
+9b1122cd   MCTNF_TI_GetCaptureBufferCovertedFlag
+9b1122dd   MCTNF_TI_initDataSyncElements
+9b1122eb   MCTNF_TI_getPhysicalAddr
+9b1122f3   MCTNF_TI_GetCaptureBufferCount
+9b1122f7   MCTNF_TI_deactivateAllResources
+9b1122fb   MCTNF_TI_deinitResources
+9b1122ff   MCTNF_TI_numAlloc
+9b112303   MCTNF_TI_numResourceDescriptors
+9b112307   MCTNF_TI_reinitResources
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   binit
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+
+[349 symbols]

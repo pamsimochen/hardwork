@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?eclipse version="3.2"?>
+<plugin name="EDMA3 LLD 02.11.10"
+        id="com.ti.sdo.edma3.rtscRegistry_02.11.10"
+        version="02.11.10"
+        provider-name="Texas Instruments">
+  <extension point="org.eclipse.help.toc">
+    <toc file="toc_top.xml"
+         primary="true" />
+    <toc file="toc_cdoc.xml" />
+  </extension>
+  <extension point="org.eclipse.help.contentProducer">
+    <contentProducer>
+      <producer class="org.eclipse.rtsc.xdctools.ui.help.HelpContentProducer"></producer>
+    </contentProducer>
+  </extension>
+  <extension point="org.eclipse.rtsc.xdctools.ui.productInfo">
+    <repository location="../../../packages"></repository>
+    <docs location="../../../" />
+    <info installLocation="../../../"
+          productName="EDMA3 Driver"
+          versionNumber="02.11.10"
+          templateRepositoryPath="../../../packages"
+          templateModule="ti.sdo.edma3.templates.Edma3Template"></info>
+  </extension>
+  <extension point="org.eclipse.rtsc.xdctools.managedbuild.core.rtscProductTypes">
+    <productType id="com.ti.sdo.edma3"
+                 name="EDMA3 Low Level Driver"
+                 folderPrefix="edma3_lld_02_11_10_09"
+                 rootMacroName="EDMA3_LLD_INSTALL_DIR" />
+  </extension>
+  <extension point="org.eclipse.rtsc.xdctools.managedbuild.core.rtscProducts">
+    <product productTypeId="com.ti.sdo.edma3"
+             version="02.11.10" />
+  </extension>
+</plugin>

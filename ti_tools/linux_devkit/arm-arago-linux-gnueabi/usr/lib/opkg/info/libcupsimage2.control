@@ -1,0 +1,13 @@
+Package: libcupsimage2
+Version: 1.2.12-r9.6
+Description: An Internet printing system for Unix.
+Section: console/utils
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2 LGPLv2
+Architecture: armv7a
+OE: cups
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libpng12-0 (>= 1.2.44), libc6 (>= 2.12.2), libjpeg8 (>= 8b), libz1 (>= 1.2.3), libcups2 (>= 1.2.12), libgnutls26 (>= 2.10.4)
+Source: ftp://ftp.easysw.com/pub/cups/1.2.12/cups-1.2.12-source.tar.bz2 file://0001-cups-desktop-fix-cups-desktop-file.patch

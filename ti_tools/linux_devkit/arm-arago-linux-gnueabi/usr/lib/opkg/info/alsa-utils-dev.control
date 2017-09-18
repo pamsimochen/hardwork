@@ -1,0 +1,14 @@
+Package: alsa-utils-dev
+Version: 1.0.24.2-r0-arago1.6
+Description: ALSA Utilities
+Section: devel
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: GPLv2
+Architecture: armv7a
+OE: alsa-utils
+Homepage: http://www.alsa-project.org
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: alsa-utils (= 1.0.24.2-r0-arago1.6)
+Recommends: alsa-lib-dev, ncurses-dev, alsa-utils-dev, ncurses-libformw-dev, ncurses-libmenuw-dev, ncurses-libpanelw-dev, ncurses-libncursesw-dev, ncurses-libtinfo-dev, libasound-dev, libc6-dev, virtual-locale-de-dev, virtual-locale-ru-dev, virtual-locale-fr-dev, virtual-locale-ja-dev
+Source: ftp://ftp.alsa-project.org/pub/utils/alsa-utils-1.0.24.2.tar.bz2 file://remove-xmlto.patch file://alsa-aplay-interactive-patch.diff

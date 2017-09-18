@@ -1,0 +1,1306 @@
+==== Results for dskt2.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14102
+Functions analyzed             : 73
+Paths analyzed                 : 18403
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2_lazydDisable.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2_lazydDisable.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14102
+Functions analyzed             : 73
+Paths analyzed                 : 17498
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14103
+Functions analyzed             : 73
+Paths analyzed                 : 18403
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2_lazydDisable.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2_lazydDisable.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14103
+Functions analyzed             : 73
+Paths analyzed                 : 17498
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14005
+Functions analyzed             : 73
+Paths analyzed                 : 18403
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2_lazydDisable.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2_lazydDisable.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14005
+Functions analyzed             : 73
+Paths analyzed                 : 17498
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14009
+Functions analyzed             : 75
+Paths analyzed                 : 18485
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2_lazydDisable.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2_lazydDisable.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14009
+Functions analyzed             : 75
+Paths analyzed                 : 17577
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14008
+Functions analyzed             : 75
+Paths analyzed                 : 18485
+Defect occurrences found       : 0
+
+ 
+==== Results for dskt2_lazydDisable.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.dskt2/lib/debug/dskt2_lazydDisable.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 16
+Total LoC input to cov-analyze : 14008
+Functions analyzed             : 75
+Paths analyzed                 : 17577
+Defect occurrences found       : 0
+
+ 
+==== Results for ecpy.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.ecpy/lib/debug/ecpy.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 15
+Total LoC input to cov-analyze : 5499
+Functions analyzed             : 25
+Paths analyzed                 : 9534
+Defect occurrences found       : 0
+
+ 
+==== Results for ecpy.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.ecpy/lib/debug/ecpy.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 15
+Total LoC input to cov-analyze : 5503
+Functions analyzed             : 25
+Paths analyzed                 : 9534
+Defect occurrences found       : 0
+
+ 
+==== Results for ecpy.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.ecpy/lib/debug/ecpy.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 15
+Total LoC input to cov-analyze : 5502
+Functions analyzed             : 25
+Paths analyzed                 : 9534
+Defect occurrences found       : 0
+
+ 
+==== Results for edma3.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edma3/lib/debug/edma3.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 12395
+Functions analyzed             : 29
+Paths analyzed                 : 11805
+Defect occurrences found       : 3 OVERRUN_STATIC
+
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:953:
+assignment: Assigning: "edmaWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:937:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:956:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownDmaChannels", with 2 elements, at position 31 with index variable "edmaWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:901:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:915:
+assignment: Assigning: "tccWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:918:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownTccs", with 2 elements, at position 31 with index variable "tccWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1052:
+assignment: Assigning: "k" = "0".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1054:
+assignment: Assigning: "paramWord" = "(k + resObj.resId) / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1032:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1057:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownPaRAMSets", with 16 elements, at position 31 with index variable "paramWord".
+ 
+==== Results for edma3.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edma3/lib/debug/edma3.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 12399
+Functions analyzed             : 29
+Paths analyzed                 : 11805
+Defect occurrences found       : 3 OVERRUN_STATIC
+
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:953:
+assignment: Assigning: "edmaWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:937:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:956:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownDmaChannels", with 2 elements, at position 31 with index variable "edmaWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:901:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:915:
+assignment: Assigning: "tccWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:918:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownTccs", with 2 elements, at position 31 with index variable "tccWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1052:
+assignment: Assigning: "k" = "0".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1054:
+assignment: Assigning: "paramWord" = "(k + resObj.resId) / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1032:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1057:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownPaRAMSets", with 16 elements, at position 31 with index variable "paramWord".
+ 
+==== Results for edma3.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edma3/lib/debug/edma3.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 12398
+Functions analyzed             : 29
+Paths analyzed                 : 11805
+Defect occurrences found       : 3 OVERRUN_STATIC
+
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:953:
+assignment: Assigning: "edmaWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:937:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:956:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownDmaChannels", with 2 elements, at position 31 with index variable "edmaWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:901:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:915:
+assignment: Assigning: "tccWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:918:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownTccs", with 2 elements, at position 31 with index variable "tccWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1052:
+assignment: Assigning: "k" = "0".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1054:
+assignment: Assigning: "paramWord" = "(k + resObj.resId) / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1032:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1057:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownPaRAMSets", with 16 elements, at position 31 with index variable "paramWord".
+ 
+==== Results for edma3_externalRmObj.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edma3/lib/debug/edma3_externalRmObj.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 12395
+Functions analyzed             : 23
+Paths analyzed                 : 11740
+Defect occurrences found       : 3 OVERRUN_STATIC
+
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:953:
+assignment: Assigning: "edmaWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:937:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:956:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownDmaChannels", with 2 elements, at position 31 with index variable "edmaWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:901:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:915:
+assignment: Assigning: "tccWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:918:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownTccs", with 2 elements, at position 31 with index variable "tccWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1052:
+assignment: Assigning: "k" = "0".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1054:
+assignment: Assigning: "paramWord" = "(k + resObj.resId) / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1032:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1057:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownPaRAMSets", with 16 elements, at position 31 with index variable "paramWord".
+ 
+==== Results for edma3_externalRmObj.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edma3/lib/debug/edma3_externalRmObj.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 12399
+Functions analyzed             : 23
+Paths analyzed                 : 11740
+Defect occurrences found       : 3 OVERRUN_STATIC
+
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:953:
+assignment: Assigning: "edmaWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:937:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:956:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownDmaChannels", with 2 elements, at position 31 with index variable "edmaWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:901:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:915:
+assignment: Assigning: "tccWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:918:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownTccs", with 2 elements, at position 31 with index variable "tccWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1052:
+assignment: Assigning: "k" = "0".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1054:
+assignment: Assigning: "paramWord" = "(k + resObj.resId) / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1032:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1057:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownPaRAMSets", with 16 elements, at position 31 with index variable "paramWord".
+ 
+==== Results for edma3_externalRmObj.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edma3/lib/debug/edma3_externalRmObj.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 12398
+Functions analyzed             : 23
+Paths analyzed                 : 11740
+Defect occurrences found       : 3 OVERRUN_STATIC
+
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:953:
+assignment: Assigning: "edmaWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:937:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:956:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownDmaChannels", with 2 elements, at position 31 with index variable "edmaWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:901:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:915:
+assignment: Assigning: "tccWord" = "resObj.resId / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:918:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownTccs", with 2 elements, at position 31 with index variable "tccWord".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1052:
+assignment: Assigning: "k" = "0".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1054:
+assignment: Assigning: "paramWord" = "(k + resObj.resId) / 32U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1032:
+assignment: Assigning: "resObj.resId" = "1010U".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edma3/edma3_config.c:1057:
+overrun-local: Overrunning static array "EDMA3_scratchResourceConfig[scratchGroupId].ownPaRAMSets", with 16 elements, at position 31 with index variable "paramWord".
+ 
+==== Results for edmamgr.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edmamgr/lib/debug/edmamgr.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 4
+Total LoC input to cov-analyze : 5380
+Functions analyzed             : 22
+Paths analyzed                 : 311
+Defect occurrences found       : 1 UNINIT
+
+Error: UNINIT:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edmamgr/edmamgr.c:66:
+var_decl: Declaring variable "edmaInstanceId" without initializer.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edmamgr/edmamgr.c:117:
+uninit_use: Using uninitialized value "edmaInstanceId".
+ 
+==== Results for edmamgr.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edmamgr/lib/debug/edmamgr.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 4
+Total LoC input to cov-analyze : 5384
+Functions analyzed             : 22
+Paths analyzed                 : 311
+Defect occurrences found       : 1 UNINIT
+
+Error: UNINIT:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edmamgr/edmamgr.c:66:
+var_decl: Declaring variable "edmaInstanceId" without initializer.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edmamgr/edmamgr.c:117:
+uninit_use: Using uninitialized value "edmaInstanceId".
+ 
+==== Results for edmamgr.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.edmamgr/lib/debug/edmamgr.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 4
+Total LoC input to cov-analyze : 5383
+Functions analyzed             : 22
+Paths analyzed                 : 311
+Defect occurrences found       : 1 UNINIT
+
+Error: UNINIT:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edmamgr/edmamgr.c:66:
+var_decl: Declaring variable "edmaInstanceId" without initializer.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/edmamgr/edmamgr.c:117:
+uninit_use: Using uninitialized value "edmaInstanceId".
+ 
+==== Results for fcsettings.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.global/lib/debug/fcsettings.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 3611
+Functions analyzed             : 6
+Paths analyzed                 : 5055
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 33.33% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for fcsettings.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.global/lib/debug/fcsettings.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 3612
+Functions analyzed             : 6
+Paths analyzed                 : 5055
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 33.33% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for fcsettings.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.global/lib/debug/fcsettings.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 3514
+Functions analyzed             : 6
+Paths analyzed                 : 5055
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 33.33% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for fcsettings.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.global/lib/debug/fcsettings.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 3518
+Functions analyzed             : 6
+Paths analyzed                 : 5055
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 33.33% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for fcsettings.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.global/lib/debug/fcsettings.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 3517
+Functions analyzed             : 6
+Paths analyzed                 : 5055
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 33.33% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for bufres.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.bufres/lib/debug/bufres.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4478
+Functions analyzed             : 14
+Paths analyzed                 : 1912
+Defect occurrences found       : 0
+
+ 
+==== Results for bufres.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.bufres/lib/debug/bufres.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4479
+Functions analyzed             : 14
+Paths analyzed                 : 1912
+Defect occurrences found       : 0
+
+ 
+==== Results for bufres.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.bufres/lib/debug/bufres.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4390
+Functions analyzed             : 14
+Paths analyzed                 : 1912
+Defect occurrences found       : 0
+
+ 
+==== Results for bufres.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.bufres/lib/debug/bufres.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4394
+Functions analyzed             : 14
+Paths analyzed                 : 1912
+Defect occurrences found       : 0
+
+ 
+==== Results for bufres.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.bufres/lib/debug/bufres.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4393
+Functions analyzed             : 14
+Paths analyzed                 : 1912
+Defect occurrences found       : 0
+
+ 
+==== Results for edma3Chan.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.edma3chan/lib/debug/edma3Chan.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5919
+Functions analyzed             : 16
+Paths analyzed                 : 10116
+Defect occurrences found       : 2 OVERRUN_STATIC
+
+Exceeded path limit of 5000 paths in 12.50% of functions (normally up to 5% of functions encounter this limitation)
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1315:
+overrun-buffer-arg: Overrunning static array "tccArray" of size 64 bytes by passing it to a function which indexes it with argument "numTccs" at byte position 64.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1688:
+loop_bounded_by_parm: "numTccs" bounds loop condition "i < numTccs".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1690:
+index_parm_via_loop_bound: Pointer "tccIndex" is accessed by "i", whose upper bound is "numTccs" in loop conditional "i < numTccs".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:567:
+assignment: Assigning: "toFreeParams" = "numPaRams".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:665:
+overrun-buffer-arg: Overrunning static array "paRamArray" of size 1024 bytes by passing it to a function which indexes it with argument "toFreeParams" at byte position 1024.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1667:
+loop_bounded_by_parm: "numPaRams" bounds loop condition "i < numPaRams".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1672:
+index_parm_via_loop_bound: Pointer "paRamIndex" is accessed by "i", whose upper bound is "numPaRams" in loop conditional "i < numPaRams".
+ 
+==== Results for edma3Chan.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.edma3chan/lib/debug/edma3Chan.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5923
+Functions analyzed             : 16
+Paths analyzed                 : 10116
+Defect occurrences found       : 2 OVERRUN_STATIC
+
+Exceeded path limit of 5000 paths in 12.50% of functions (normally up to 5% of functions encounter this limitation)
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1315:
+overrun-buffer-arg: Overrunning static array "tccArray" of size 64 bytes by passing it to a function which indexes it with argument "numTccs" at byte position 64.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1688:
+loop_bounded_by_parm: "numTccs" bounds loop condition "i < numTccs".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1690:
+index_parm_via_loop_bound: Pointer "tccIndex" is accessed by "i", whose upper bound is "numTccs" in loop conditional "i < numTccs".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:567:
+assignment: Assigning: "toFreeParams" = "numPaRams".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:665:
+overrun-buffer-arg: Overrunning static array "paRamArray" of size 1024 bytes by passing it to a function which indexes it with argument "toFreeParams" at byte position 1024.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1667:
+loop_bounded_by_parm: "numPaRams" bounds loop condition "i < numPaRams".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1672:
+index_parm_via_loop_bound: Pointer "paRamIndex" is accessed by "i", whose upper bound is "numPaRams" in loop conditional "i < numPaRams".
+ 
+==== Results for edma3Chan.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.edma3chan/lib/debug/edma3Chan.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5922
+Functions analyzed             : 16
+Paths analyzed                 : 10116
+Defect occurrences found       : 2 OVERRUN_STATIC
+
+Exceeded path limit of 5000 paths in 12.50% of functions (normally up to 5% of functions encounter this limitation)
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1315:
+overrun-buffer-arg: Overrunning static array "tccArray" of size 64 bytes by passing it to a function which indexes it with argument "numTccs" at byte position 64.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1688:
+loop_bounded_by_parm: "numTccs" bounds loop condition "i < numTccs".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1690:
+index_parm_via_loop_bound: Pointer "tccIndex" is accessed by "i", whose upper bound is "numTccs" in loop conditional "i < numTccs".
+Error: OVERRUN_STATIC:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:567:
+assignment: Assigning: "toFreeParams" = "numPaRams".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:665:
+overrun-buffer-arg: Overrunning static array "paRamArray" of size 1024 bytes by passing it to a function which indexes it with argument "toFreeParams" at byte position 1024.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1667:
+loop_bounded_by_parm: "numPaRams" bounds loop condition "i < numPaRams".
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/ires/edma3chan/iresman_edma3Chan.c:1672:
+index_parm_via_loop_bound: Pointer "paRamIndex" is accessed by "i", whose upper bound is "numPaRams" in loop conditional "i < numPaRams".
+ 
+==== Results for hdvicp2.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.hdvicp/lib/debug/hdvicp2.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 8
+Total LoC input to cov-analyze : 13518
+Functions analyzed             : 47
+Paths analyzed                 : 13782
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 2.13% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for hdvicp2.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.hdvicp/lib/debug/hdvicp2.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 8
+Total LoC input to cov-analyze : 13519
+Functions analyzed             : 47
+Paths analyzed                 : 13782
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 2.13% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for hdvicp.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.hdvicp/lib/debug/hdvicp.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5052
+Functions analyzed             : 18
+Paths analyzed                 : 7697
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 11.11% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for hdvicp.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.hdvicp/lib/debug/hdvicp.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5056
+Functions analyzed             : 18
+Paths analyzed                 : 7697
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 11.11% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for hdvicp.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.hdvicp/lib/debug/hdvicp.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5055
+Functions analyzed             : 18
+Paths analyzed                 : 7697
+Defect occurrences found       : 0
+
+Exceeded path limit of 5000 paths in 11.11% of functions (normally up to 5% of functions encounter this limitation)
+ 
+==== Results for nullres.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.nullresource/lib/debug/nullres.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4254
+Functions analyzed             : 7
+Paths analyzed                 : 56
+Defect occurrences found       : 0
+
+ 
+==== Results for nullres.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.nullresource/lib/debug/nullres.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4255
+Functions analyzed             : 7
+Paths analyzed                 : 56
+Defect occurrences found       : 0
+
+ 
+==== Results for nullres.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.nullresource/lib/debug/nullres.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4166
+Functions analyzed             : 7
+Paths analyzed                 : 56
+Defect occurrences found       : 0
+
+ 
+==== Results for nullres.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.nullresource/lib/debug/nullres.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4170
+Functions analyzed             : 7
+Paths analyzed                 : 56
+Defect occurrences found       : 0
+
+ 
+==== Results for nullres.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.nullresource/lib/debug/nullres.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4169
+Functions analyzed             : 7
+Paths analyzed                 : 56
+Defect occurrences found       : 0
+
+ 
+==== Results for tiledmemory.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.ires.tiledmemory/lib/debug/tiledmemory.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 4
+Total LoC input to cov-analyze : 5267
+Functions analyzed             : 21
+Paths analyzed                 : 4729
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils_std.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils_std.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4398
+Functions analyzed             : 5
+Paths analyzed                 : 35
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4846
+Functions analyzed             : 5
+Paths analyzed                 : 157
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils_std.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils_std.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4399
+Functions analyzed             : 5
+Paths analyzed                 : 35
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4847
+Functions analyzed             : 5
+Paths analyzed                 : 157
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils_std.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils_std.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4268
+Functions analyzed             : 5
+Paths analyzed                 : 35
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4749
+Functions analyzed             : 5
+Paths analyzed                 : 157
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils_std.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils_std.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4272
+Functions analyzed             : 5
+Paths analyzed                 : 35
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4753
+Functions analyzed             : 6
+Paths analyzed                 : 161
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils_std.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils_std.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4271
+Functions analyzed             : 5
+Paths analyzed                 : 35
+Defect occurrences found       : 0
+
+ 
+==== Results for memutils.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.memutils/lib/debug/memutils.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4752
+Functions analyzed             : 6
+Paths analyzed                 : 161
+Defect occurrences found       : 0
+
+ 
+==== Results for rman.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.rman/lib/debug/rman.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 3
+Total LoC input to cov-analyze : 5985
+Functions analyzed             : 27
+Paths analyzed                 : 13826
+Defect occurrences found       : 1 FORWARD_NULL
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1292:
+var_compare_op: Comparing "resDesc" to null implies that "resDesc" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1318:
+var_deref_op: Dereferencing null variable "resDesc".
+ 
+==== Results for rman.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.rman/lib/debug/rman.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 3
+Total LoC input to cov-analyze : 5986
+Functions analyzed             : 27
+Paths analyzed                 : 13826
+Defect occurrences found       : 1 FORWARD_NULL
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1292:
+var_compare_op: Comparing "resDesc" to null implies that "resDesc" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1318:
+var_deref_op: Dereferencing null variable "resDesc".
+ 
+==== Results for rman.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.rman/lib/debug/rman.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 3
+Total LoC input to cov-analyze : 5870
+Functions analyzed             : 27
+Paths analyzed                 : 13826
+Defect occurrences found       : 1 FORWARD_NULL
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1292:
+var_compare_op: Comparing "resDesc" to null implies that "resDesc" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1318:
+var_deref_op: Dereferencing null variable "resDesc".
+ 
+==== Results for rman.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.rman/lib/debug/rman.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 3
+Total LoC input to cov-analyze : 5874
+Functions analyzed             : 27
+Paths analyzed                 : 13826
+Defect occurrences found       : 1 FORWARD_NULL
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1292:
+var_compare_op: Comparing "resDesc" to null implies that "resDesc" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1318:
+var_deref_op: Dereferencing null variable "resDesc".
+ 
+==== Results for rman.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.rman/lib/debug/rman.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 3
+Total LoC input to cov-analyze : 5873
+Functions analyzed             : 27
+Paths analyzed                 : 13826
+Defect occurrences found       : 1 FORWARD_NULL
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1292:
+var_compare_op: Comparing "resDesc" to null implies that "resDesc" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/rman/rman.c:1318:
+var_deref_op: Dereferencing null variable "resDesc".
+ 
+==== Results for rmm.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmm.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4175
+Functions analyzed             : 9
+Paths analyzed                 : 1795
+Defect occurrences found       : 0
+
+ 
+==== Results for smgr.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/smgr.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4211
+Functions analyzed             : 8
+Paths analyzed                 : 1428
+Defect occurrences found       : 0
+
+ 
+==== Results for rmmp.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmmp.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5626
+Functions analyzed             : 19
+Paths analyzed                 : 1933
+Defect occurrences found       : 0
+
+ 
+==== Results for fcutils.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/fcutils.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 8200
+Functions analyzed             : 4
+Paths analyzed                 : 59
+Defect occurrences found       : 6 Total
+                                 2 FORWARD_NULL
+                                 4 SIZEOF_MISMATCH
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:93:
+var_compare_op: Comparing "algList" to null implies that "algList" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "algList".
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:97:
+var_compare_op: Comparing "scratchIds" to null implies that "scratchIds" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "scratchIds".
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:92:
+suspicious_sizeof: Passing argument "4U /* sizeof (algList) */ * numAlgs" to function "myMalloc" and then casting the return value to "IALG_Handle *" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:96:
+suspicious_sizeof: Passing argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myMalloc" and then casting the return value to "int *" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:144:
+suspicious_sizeof: Passing argument "algList" of type "IALG_Handle *" and argument "4U /* sizeof (algList) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:145:
+suspicious_sizeof: Passing argument "scratchIds" of type "int *" and argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+ 
+==== Results for rmm.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmm.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4176
+Functions analyzed             : 9
+Paths analyzed                 : 1795
+Defect occurrences found       : 0
+
+ 
+==== Results for smgr.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/smgr.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4212
+Functions analyzed             : 8
+Paths analyzed                 : 1428
+Defect occurrences found       : 0
+
+ 
+==== Results for rmmp.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmmp.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5627
+Functions analyzed             : 19
+Paths analyzed                 : 1933
+Defect occurrences found       : 0
+
+ 
+==== Results for fcutils.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/fcutils.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 8201
+Functions analyzed             : 4
+Paths analyzed                 : 59
+Defect occurrences found       : 6 Total
+                                 2 FORWARD_NULL
+                                 4 SIZEOF_MISMATCH
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:93:
+var_compare_op: Comparing "algList" to null implies that "algList" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "algList".
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:97:
+var_compare_op: Comparing "scratchIds" to null implies that "scratchIds" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "scratchIds".
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:92:
+suspicious_sizeof: Passing argument "4U /* sizeof (algList) */ * numAlgs" to function "myMalloc" and then casting the return value to "IALG_Handle *" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:96:
+suspicious_sizeof: Passing argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myMalloc" and then casting the return value to "int *" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:144:
+suspicious_sizeof: Passing argument "algList" of type "IALG_Handle *" and argument "4U /* sizeof (algList) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:145:
+suspicious_sizeof: Passing argument "scratchIds" of type "int *" and argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+ 
+==== Results for rmm.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmm.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4087
+Functions analyzed             : 9
+Paths analyzed                 : 1795
+Defect occurrences found       : 0
+
+ 
+==== Results for smgr.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/smgr.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4123
+Functions analyzed             : 8
+Paths analyzed                 : 1428
+Defect occurrences found       : 0
+
+ 
+==== Results for rmmp.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmmp.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5528
+Functions analyzed             : 19
+Paths analyzed                 : 1933
+Defect occurrences found       : 0
+
+ 
+==== Results for fcutils.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/fcutils.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 8112
+Functions analyzed             : 4
+Paths analyzed                 : 59
+Defect occurrences found       : 6 Total
+                                 2 FORWARD_NULL
+                                 4 SIZEOF_MISMATCH
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:93:
+var_compare_op: Comparing "algList" to null implies that "algList" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "algList".
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:97:
+var_compare_op: Comparing "scratchIds" to null implies that "scratchIds" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "scratchIds".
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:92:
+suspicious_sizeof: Passing argument "4U /* sizeof (algList) */ * numAlgs" to function "myMalloc" and then casting the return value to "IALG_Handle *" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:96:
+suspicious_sizeof: Passing argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myMalloc" and then casting the return value to "int *" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:144:
+suspicious_sizeof: Passing argument "algList" of type "IALG_Handle *" and argument "4U /* sizeof (algList) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:145:
+suspicious_sizeof: Passing argument "scratchIds" of type "int *" and argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+ 
+==== Results for rmm.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmm.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4091
+Functions analyzed             : 9
+Paths analyzed                 : 1795
+Defect occurrences found       : 0
+
+ 
+==== Results for smgr.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/smgr.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4127
+Functions analyzed             : 8
+Paths analyzed                 : 1428
+Defect occurrences found       : 0
+
+ 
+==== Results for rmmp.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmmp.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5532
+Functions analyzed             : 19
+Paths analyzed                 : 1933
+Defect occurrences found       : 0
+
+ 
+==== Results for fcutils.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/fcutils.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 8116
+Functions analyzed             : 4
+Paths analyzed                 : 59
+Defect occurrences found       : 6 Total
+                                 2 FORWARD_NULL
+                                 4 SIZEOF_MISMATCH
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:93:
+var_compare_op: Comparing "algList" to null implies that "algList" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "algList".
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:97:
+var_compare_op: Comparing "scratchIds" to null implies that "scratchIds" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "scratchIds".
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:92:
+suspicious_sizeof: Passing argument "4U /* sizeof (algList) */ * numAlgs" to function "myMalloc" and then casting the return value to "IALG_Handle *" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:96:
+suspicious_sizeof: Passing argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myMalloc" and then casting the return value to "int *" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:144:
+suspicious_sizeof: Passing argument "algList" of type "IALG_Handle *" and argument "4U /* sizeof (algList) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:145:
+suspicious_sizeof: Passing argument "scratchIds" of type "int *" and argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+ 
+==== Results for rmm.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmm.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4090
+Functions analyzed             : 9
+Paths analyzed                 : 1795
+Defect occurrences found       : 0
+
+ 
+==== Results for smgr.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/smgr.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 4126
+Functions analyzed             : 8
+Paths analyzed                 : 1428
+Defect occurrences found       : 0
+
+ 
+==== Results for rmmp.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/rmmp.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 2
+Total LoC input to cov-analyze : 5531
+Functions analyzed             : 19
+Paths analyzed                 : 1933
+Defect occurrences found       : 0
+
+ 
+==== Results for fcutils.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.fc.utils/lib/debug/fcutils.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 1
+Total LoC input to cov-analyze : 8115
+Functions analyzed             : 4
+Paths analyzed                 : 59
+Defect occurrences found       : 6 Total
+                                 2 FORWARD_NULL
+                                 4 SIZEOF_MISMATCH
+
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:93:
+var_compare_op: Comparing "algList" to null implies that "algList" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "algList".
+Error: FORWARD_NULL:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:97:
+var_compare_op: Comparing "scratchIds" to null implies that "scratchIds" might be null.
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:107:
+var_deref_op: Dereferencing null variable "scratchIds".
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:92:
+suspicious_sizeof: Passing argument "4U /* sizeof (algList) */ * numAlgs" to function "myMalloc" and then casting the return value to "IALG_Handle *" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:96:
+suspicious_sizeof: Passing argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myMalloc" and then casting the return value to "int *" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:144:
+suspicious_sizeof: Passing argument "algList" of type "IALG_Handle *" and argument "4U /* sizeof (algList) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*algList)" instead of "sizeof (algList)" ?  In this particular case sizeof(IALG_Handle *) happens to be equal to sizeof(IALG_Handle), but this is not a portable assumption.
+Error: SIZEOF_MISMATCH:
+/db/atree/library/trees/fc/fc-u06/devtree/origin/fc-next/packages/ti/sdo/fc/utils/fcutils.c:145:
+suspicious_sizeof: Passing argument "scratchIds" of type "int *" and argument "4U /* sizeof (scratchIds) */ * numAlgs" to function "myFree" is suspicious.  Did you intend to use "sizeof(*scratchIds)" instead of "sizeof (scratchIds)" ?  In this particular case sizeof(int *) happens to be equal to sizeof(int), but this is not a portable assumption.
+ 
+==== Results for osal_support.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.utils.osalsupport/lib/debug/osal_support.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 6169
+Functions analyzed             : 24
+Paths analyzed                 : 62
+Defect occurrences found       : 0
+
+ 
+==== Results for osal_support.aem4 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.utils.osalsupport/lib/debug/osal_support.aem4 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 6170
+Functions analyzed             : 24
+Paths analyzed                 : 62
+Defect occurrences found       : 0
+
+ 
+==== Results for osal_support.ae64T ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.utils.osalsupport/lib/debug/osal_support.ae64T --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 6081
+Functions analyzed             : 24
+Paths analyzed                 : 62
+Defect occurrences found       : 0
+
+ 
+==== Results for osal_support.ae66 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.utils.osalsupport/lib/debug/osal_support.ae66 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 6085
+Functions analyzed             : 24
+Paths analyzed                 : 62
+Defect occurrences found       : 0
+
+ 
+==== Results for osal_support.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.fc.utils.osalsupport/lib/debug/osal_support.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE43/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 6084
+Functions analyzed             : 24
+Paths analyzed                 : 62
+Defect occurrences found       : 0
+
+ 
+Totals - LoC: 589378, Defects: 62

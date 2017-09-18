@@ -1,0 +1,9 @@
+This directory contains a SimpliciTI Board Support Package (BSP).
+This is duply a set of platform-specifi macros and functions required
+by SimpliciTI to operate on this platform.
+
+The directory ./bsp contains a patched copy of the files from the
+SimpliciTI-1.1.1 bsp directory, Components/bsp/boards/EZ430RF.  The
+only _required_ change was to include a patched version of the file
+bsp_msp430_defs.h named bsp_msp430_defs_hack.h.  All other changes
+were to eliminate unused code.

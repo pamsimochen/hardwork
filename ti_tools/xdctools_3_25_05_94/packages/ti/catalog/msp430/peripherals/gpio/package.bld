@@ -1,0 +1,8 @@
+var file = new java.io.File("./");
+var fileList = file.list();
+for (var i = 0; i < fileList.length; i++) {
+    /* All files that end with _pins.xs are needed */
+    if (fileList[i].matches(".*_pins\.xs")) {
+        Pkg.otherSrcs[Pkg.otherSrcs.length++] = fileList[i];
+    }
+}

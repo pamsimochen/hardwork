@@ -1,0 +1,20 @@
+/* we need to add the Pkg.uses here to work around a bug in the msp430 header
+ * files: they embed a '#include <In430.h>' when they should have used
+ * '#include "In430.h"'.
+ */
+Pkg.uses = ["ti/mcu/msp430/include"];
+
+Pkg.generatedFiles = ["lib/"];
+
+for (var i = 0; i < Build.targets.length; i++) {
+    var targ = Build.targets[i];
+
+    if (targ.isa.match(/430/)) {
+        var lib = Pkg.addLibrary("lib/" + Pkg.name, targ);
+        lib.addObjects(Pkg.modules);
+    }
+    else {
+        print("skipping target " + targ.name);
+    }
+}
+

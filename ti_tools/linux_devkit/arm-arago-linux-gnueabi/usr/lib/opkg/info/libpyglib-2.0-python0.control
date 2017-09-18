@@ -1,0 +1,13 @@
+Package: libpyglib-2.0-python0
+Version: 1:2.20.0-r4.6
+Description: Python GObject bindings
+Section: devel/python
+Priority: optional
+Maintainer: Arago Developers <arago-devel@gforge.ti.com>
+License: LGPLv2.1
+Architecture: armv7a
+OE: python-pygobject
+Homepage: unknown
+Build: amsdk-05.05.00.00-integration/a9551ab
+Depends: libgobject-2.0-0 (>= 2.24.1), libgthread-2.0-0 (>= 2.24.1), libc6 (>= 2.12.2), libglib-2.0-0 (>= 2.24.1), libffi5 (>= 3.0.9)
+Source: ftp://ftp.gnome.org/pub/GNOME/sources/pygobject/2.20/pygobject-2.20.0.tar.bz2 file://generate-constants.patch
