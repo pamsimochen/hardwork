@@ -27,8 +27,8 @@ BINARY_MODE    := nand
 
 # Choose the target platform that is needed
 # Values are "DM385", "DMVA3", "DM388" and "DM8127"
-IPNC_DEVICE    := DM8127
-#IPNC_DEVICE    := DM385
+#IPNC_DEVICE    := DM8127
+IPNC_DEVICE    := DM385
 #IPNC_DEVICE    := DM388
 #IPNC_DEVICE    := DMVA3
 

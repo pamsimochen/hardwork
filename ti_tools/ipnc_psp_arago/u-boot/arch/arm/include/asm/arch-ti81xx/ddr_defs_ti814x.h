@@ -187,49 +187,49 @@
 #elif defined(CONFIG_TI813X)  || defined(CONFIG_DM385_IPNC)
 /* TI813X DDR3 PHY CFG parameters   <emif0> */
 
-#define DDR3_PHY_RD_DQS_CS0_BYTE0			0x3c //0x3d //0x30//0x41
-#define DDR3_PHY_RD_DQS_CS0_BYTE1			0x3d //0x3c //0x30//0x38
-#define DDR3_PHY_RD_DQS_CS0_BYTE2			0x3d //0x3e //0x30//0x46
-#define DDR3_PHY_RD_DQS_CS0_BYTE3			0x3e //0x3b //0x30//0x37
+#define DDR3_PHY_RD_DQS_CS0_BYTE0			0x37 //0x3d //0x30//0x41
+#define DDR3_PHY_RD_DQS_CS0_BYTE1			0x37 //0x3c //0x30//0x38
+#define DDR3_PHY_RD_DQS_CS0_BYTE2			0x38 //0x3e //0x30//0x46
+#define DDR3_PHY_RD_DQS_CS0_BYTE3			0x37 //0x3b //0x30//0x37
 
-#define DDR3_PHY_WR_DQS_CS0_BYTE0			0x40 //0x44 //0x21//0x39
-#define DDR3_PHY_WR_DQS_CS0_BYTE1			0x40 //0x43 //0x21//0x3F
-#define DDR3_PHY_WR_DQS_CS0_BYTE2			0x4e //0x55 //0x21//0x46
-#define DDR3_PHY_WR_DQS_CS0_BYTE3			0x53 //0x55 //0x21//0x45
+#define DDR3_PHY_WR_DQS_CS0_BYTE0			0x49 //0x44 //0x21//0x39
+#define DDR3_PHY_WR_DQS_CS0_BYTE1			0x48 //0x43 //0x21//0x3F
+#define DDR3_PHY_WR_DQS_CS0_BYTE2			0x56 //0x55 //0x21//0x46
+#define DDR3_PHY_WR_DQS_CS0_BYTE3			0x56 //0x55 //0x21//0x45
 
-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE0		0xa1 //0xa1 //0xc0//0xBD
-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE1		0xa7 //0xad //0xc0//0xE0
-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE2		0xcb //0xcd //0xc0//0x105
-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE3		0xcb //0xc8 //0xc0//0x12B
+#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE0		0xA0 //0xa1 //0xc0//0xBD
+#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE1		0xA6 //0xad //0xc0//0xE0
+#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE2		0xC0 //0xcd //0xc0//0x105
+#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE3		0xBD //0xc8 //0xc0//0x12B
 
-#define DDR3_PHY_WR_DATA_CS0_BYTE0			0x7a //0x84 //0x44//0x7C
-#define DDR3_PHY_WR_DATA_CS0_BYTE1			0x7a //0x7e //0x44//0x73
-#define DDR3_PHY_WR_DATA_CS0_BYTE2			0x7f //0x82 //0x44//0x78
-#define DDR3_PHY_WR_DATA_CS0_BYTE3			0x7f //0x81 //0x44//0x6D
+#define DDR3_PHY_WR_DATA_CS0_BYTE0			0x8A //0x84 //0x44//0x7C
+#define DDR3_PHY_WR_DATA_CS0_BYTE1			0x89 //0x7e //0x44//0x73
+#define DDR3_PHY_WR_DATA_CS0_BYTE2			0x8C //0x82 //0x44//0x78
+#define DDR3_PHY_WR_DATA_CS0_BYTE3			0x8A //0x81 //0x44//0x6D
 
 #define DDR3_PHY_CTRL_SLAVE_RATIO_CS0_DEFINE	0x80
 
 #else
 /* TI814X DDR3 PHY CFG parameters   <emif0 : emif 1> */
-#define DDR3_PHY_RD_DQS_CS0_BYTE0		((emif == 0) ? 0x3d : 0x39) //((emif == 0) ? 0x30 : 0x30)
-#define DDR3_PHY_RD_DQS_CS0_BYTE1		((emif == 0) ? 0x3c : 0x3c) //((emif == 0) ? 0x30 : 0x30)
-#define DDR3_PHY_RD_DQS_CS0_BYTE2		((emif == 0) ? 0x3e : 0x3c) //((emif == 0) ? 0x30 : 0x30)
-#define DDR3_PHY_RD_DQS_CS0_BYTE3		((emif == 0) ? 0x3d : 0x3e) //((emif == 0) ? 0x30 : 0x30)
+#define DDR3_PHY_RD_DQS_CS0_BYTE0		((emif == 0) ? 0x38 : 0x3A)
+#define DDR3_PHY_RD_DQS_CS0_BYTE1		((emif == 0) ? 0x37 : 0x36)
+#define DDR3_PHY_RD_DQS_CS0_BYTE2		((emif == 0) ? 0x32 : 0x37)
+#define DDR3_PHY_RD_DQS_CS0_BYTE3		((emif == 0) ? 0x31 : 0x33)
 
-#define DDR3_PHY_WR_DQS_CS0_BYTE0		((emif == 0) ? 0x45 : 0x40) //((emif == 0) ? 0x21 : 0x21)
-#define DDR3_PHY_WR_DQS_CS0_BYTE1		((emif == 0) ? 0x44 : 0x3f) //((emif == 0) ? 0x21 : 0x21)
-#define DDR3_PHY_WR_DQS_CS0_BYTE2		((emif == 0) ? 0x47 : 0x45) //((emif == 0) ? 0x21 : 0x21)
-#define DDR3_PHY_WR_DQS_CS0_BYTE3		((emif == 0) ? 0x47 : 0x42) //((emif == 0) ? 0x21 : 0x21)
+#define DDR3_PHY_WR_DQS_CS0_BYTE0		((emif == 0) ? 0x43 : 0x49)
+#define DDR3_PHY_WR_DQS_CS0_BYTE1		((emif == 0) ? 0x44 : 0x4E)
+#define DDR3_PHY_WR_DQS_CS0_BYTE2		((emif == 0) ? 0x53 : 0x54)
+#define DDR3_PHY_WR_DQS_CS0_BYTE3		((emif == 0) ? 0x50 : 0x50)
 
-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE0		((emif == 0) ? 0x9d : 0x9e) //((emif == 0) ? 0xc0 : 0xc0) 
-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE1		((emif == 0) ? 0x9e : 0x9c) //((emif == 0) ? 0xc0 : 0xc0) 
-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE2		((emif == 0) ? 0xa7 : 0xa3) //((emif == 0) ? 0xc0 : 0xc0)
-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE3		((emif == 0) ? 0xa9 : 0xa9) //((emif == 0) ? 0xc0 : 0xc0)
+#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE0		((emif == 0) ? 0xE4 : 0xD3)
+#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE1		((emif == 0) ? 0x111 : 0xF7)
+#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE2		((emif == 0) ? 0x112 : 0x109)
+#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE3		((emif == 0) ? 0x13D : 0x135)
 
-#define DDR3_PHY_WR_DATA_CS0_BYTE0		((emif == 0) ? 0x7e : 0x78) //((emif == 0) ? 0x44 : 0x44)
-#define DDR3_PHY_WR_DATA_CS0_BYTE1		((emif == 0) ? 0x7f : 0x7b) //((emif == 0) ? 0x44 : 0x44)
-#define DDR3_PHY_WR_DATA_CS0_BYTE2		((emif == 0) ? 0x7f : 0x7b) //((emif == 0) ? 0x44 : 0x44)
-#define DDR3_PHY_WR_DATA_CS0_BYTE3		((emif == 0) ? 0x80 : 0x7e) //((emif == 0) ? 0x44 : 0x44)
+#define DDR3_PHY_WR_DATA_CS0_BYTE0		((emif == 0) ? 0x85 : 0x8A)
+#define DDR3_PHY_WR_DATA_CS0_BYTE1		((emif == 0) ? 0x83 : 0x80)
+#define DDR3_PHY_WR_DATA_CS0_BYTE2		((emif == 0) ? 0x85 : 0x7F)
+#define DDR3_PHY_WR_DATA_CS0_BYTE3		((emif == 0) ? 0x7F : 0x85)
 
 #define DDR3_PHY_CTRL_SLAVE_RATIO_CS0_DEFINE	0x80
 #endif
@@ -281,12 +281,12 @@
 /* DM385 DDR3 EMIF CFG Registers values 533MHz */
 #if defined(CONFIG_DM385_DDR3_533)
 #define DDR3_EMIF_READ_LATENCY     	0x00170209 // 0x0017320A		//RD_ODT=0x2, IDLE_ODT=0x0, Dynamic power_down enabled
-#define DDR3_EMIF_TIM1          	0x0CCF46B3 // 0x110F783B
-#define DDR3_EMIF_TIM2          	0x20047FDA // 0x238581E6
+#define DDR3_EMIF_TIM1          	0x0CCF36B3 // 0x110F783B
+#define DDR3_EMIF_TIM2          	0x305A7FDA // 0x238581E6
 #define DDR3_EMIF_TIM3          	0x507F855F // 0x501F86AF
 #define DDR3_EMIF_REF_CTRL      	0x0000103D
-#define DDR3_EMIF_SDRAM_CONFIG      0x61C11AB2 //0x61C21AB2 // 0x61C119B2 // 0x61C121B2
-#define DDR3_EMIF_SDRAM_ZQCR        0x50074BE2 // 0x50074BE1
+#define DDR3_EMIF_SDRAM_CONFIG      0x61C11A32 //0x61C21AB2 // 0x61C119B2 // 0x61C121B2
+#define DDR3_EMIF_SDRAM_ZQCR        0x50074BE1 // 0x50074BE1
 #endif
 /* DM385 DDR3 EMIF CFG Registers values 400MHz */
 #if defined(CONFIG_DM385_DDR3_400)

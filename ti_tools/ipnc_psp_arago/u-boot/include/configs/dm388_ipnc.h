@@ -48,7 +48,7 @@
 #define CONFIG_SYS_MALLOC_LEN          (CONFIG_ENV_SIZE + (8 * 1024))
 #define CONFIG_SYS_PROMPT              "TI-MIN#"
 /* set to negative value for no autoboot */
-# define CONFIG_BOOTDELAY               0
+#define CONFIG_BOOTDELAY               1
 #if defined(CONFIG_SPI_BOOT)           /* Autoload the 2nd stage from SPI */
 #define CONFIG_SPI                    1
 # if defined(CONFIG_TI81XX_PCIE_BOOT)
@@ -110,7 +110,7 @@
 #define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + (32 * 1024))
 #define CONFIG_ENV_OVERWRITE
 #define CONFIG_SYS_LONGHELP
-#define CONFIG_SYS_PROMPT		"DM388_IPNC#"
+#define CONFIG_SYS_PROMPT		"DM385_IPNC#"
 #if 0
 #define CONFIG_SYS_HUSH_PARSER		/* Use HUSH parser to allow command parsing */
 #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
@@ -165,7 +165,7 @@
 /* size in bytes reserved for initial data */
 #define CONFIG_ENV_OVERWRITE
 #define CONFIG_SYS_LONGHELP
-#define CONFIG_SYS_PROMPT		"DM388_IPNC#"
+#define CONFIG_SYS_PROMPT		"DM385_IPNC#"
 /* Use HUSH parser to allow command parsing */
 #define CONFIG_SYS_HUSH_PARSER
 #define CONFIG_SYS_PROMPT_HUSH_PS2     "> "
@@ -210,7 +210,7 @@
 #define CONFIG_SYS_GBL_DATA_SIZE	128
 #define CONFIG_MISC_INIT_R		1
 #ifndef CONFIG_DM385_MIN_CONFIG
-#define CONFIG_DM388_ASCIIART		1
+#define CONFIG_DM385_ASCIIART		1
 #endif
 #define CONFIG_CMD_CACHE
 #define CONFIG_CMD_ECHO
@@ -468,7 +468,7 @@ extern unsigned int boot_flash_type;
 #endif	/* CONFIG_TI814X_OPTI_CONFIG */
 /* U-boot Version */
 #define CONFIG_VERSION_VARIABLE
-#define CONFIG_IDENT_STRING " DM388_IPNC_3.80.00"
+#define CONFIG_IDENT_STRING " DM385_IPNC_3.80.00"
 /* Unsupported features */
 #undef CONFIG_USE_IRQ
 
