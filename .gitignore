@@ -3,5 +3,6 @@ ipnc_rdk/ipnc_app/interface/src/*.o
 ipnc_rdk/tftp/
 ti_tools/ipnc_psp_arago/u-boot/DUMMY
 ti_tools/ipnc_psp_arago/u-boot/board/ti/dm385_ipnc/config.tmp
+ti_tools/ipnc_psp_arago/u-boot/u-boot.min.nand
 
 

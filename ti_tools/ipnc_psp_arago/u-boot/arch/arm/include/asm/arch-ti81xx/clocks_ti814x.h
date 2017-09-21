@@ -21,6 +21,15 @@
 #ifndef _CLOCKS_TI814X_H_
 #define _CLOCKS_TI814X_H_
 
+/*
+ *	Device Operating Points (OPP MODE)
+ *
+ *		OPP			    ARM		HDVICP2	    HDVPSS	    ISS		Media_Ctrl	    L3/L4/Core		DDR
+ *		OPP_100	        600		  220		 200	    400		  200	    	200			    400
+ *		OPP_120	        720		  290		 200	    400		  200	    	200			    400
+ *		OPP_TURBO	    970		  410	     240	    480		  240	    	240			    533
+ *		OPP_NITRO	   1000	      450		 280	    560		  280	    	240			    533
+ */
 #define DDR_PLL_400     /* Values supported 400,533 */
 
 #define OSC_0_FREQ	20
@@ -44,7 +53,9 @@
 #ifdef CONFIG_TI813X
 #define MODENA_M	(opp_val_ti813x(0x3C, 0x3C))
 #else
-#define MODENA_M	(opp_val_dm385(0x3C, 0x3C))
+//#define MODENA_M	(opp_val_dm385(0x3C, 0x3C))
+//#define MODENA_M	(opp_val_dm385(72, 72))//720MHz
+#define MODENA_M	(opp_val_dm385(100, 100))//1000MHz
 #endif
 #define MODENA_M2	1
 #define MODENA_CLKCTRL	0x1
@@ -53,7 +64,8 @@
 #ifdef CONFIG_TI813X
 #define L3_M		(opp_val_ti813x(800, 800))
 #else
-#define L3_M		(opp_val_dm385(800, 800))
+//#define L3_M		(opp_val_dm385(800, 800))
+#define L3_M		(opp_val_dm385(960, 960))//240MHz
 #endif
 #define L3_M2		4
 #define L3_CLKCTRL	0x801
@@ -107,7 +119,9 @@
 #define IVA_CLKCTRL	0x801
 
 #define ISS_N		19
-#define ISS_M		800
+//#define ISS_M		800
+//#define ISS_M		960//480MHz
+#define ISS_M		1120//560MHz
 #ifdef CONFIG_TI813X
 #define ISS_M2		(opp_val_ti813x(4, 2))
 #else
