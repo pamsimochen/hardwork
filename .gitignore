@@ -5,4 +5,16 @@ ti_tools/ipnc_psp_arago/u-boot/DUMMY
 ti_tools/ipnc_psp_arago/u-boot/board/ti/dm385_ipnc/config.tmp
 ti_tools/ipnc_psp_arago/u-boot/u-boot.min.nand
 
+ipnc_rdk/ipnc_mcfw/bin/ti810x/kermod/
+ti_tools/ipnc_psp_arago/kernel/arch/arm/boot/compressed/lib1funcs.S
+ti_tools/ipnc_psp_arago/kernel/arch/arm/boot/compressed/piggy.gzip
+ti_tools/ipnc_psp_arago/kernel/arch/arm/boot/compressed/vmlinux
+ti_tools/linuxutils_3_23_00_01/packages/ti/sdo/linuxutils/cmem/src/module/.cmemk.o.cmd
+ti_tools/linuxutils_3_23_00_01/packages/ti/sdo/linuxutils/cmem/src/module/built-in.o
+ti_tools/linuxutils_3_23_00_01/packages/ti/sdo/linuxutils/cmem/src/module/cmemk.o
+ti_tools/linuxutils_3_23_00_01/packages/ti/sdo/linuxutils/cmem/src/module/modules.order
+ti_tools/linuxutils_3_23_00_01/packages/ti/sdo/linuxutils/cmem/src/module/.built-in.o.cmd
+
+
+
 
