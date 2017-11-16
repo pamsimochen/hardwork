@@ -624,6 +624,8 @@ Int32 IpcFramesOutLink_init()
 
         OSA_SNPRINTF(tskName, "IPC_FRAMES_OUT%d", ipcFramesOutId);
 
+//        VI_DEBUG(" tskName = %s\n", tskName);
+
         System_ipcRegisterNotifyCb(pObj->tskId, IpcFramesOutLink_notifyCb);
 
         IpcFramesOutLink_initListMP(pObj);

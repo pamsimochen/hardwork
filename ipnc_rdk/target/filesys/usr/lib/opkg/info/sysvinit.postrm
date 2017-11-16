@@ -1,2 +1,0 @@
-#!/bin/sh
-update-alternatives --remove init /sbin/init.sysvinit

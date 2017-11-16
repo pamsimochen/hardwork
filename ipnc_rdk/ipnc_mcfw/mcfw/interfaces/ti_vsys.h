@@ -76,117 +76,117 @@ typedef enum
 */
 typedef enum
 {
-    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC,
+    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC, //0
     /**< Video Capture to Video Encode(Progressive)+Video Display and Video Decode+Video Display use-case. All sub-systems are enabled. \n
         This is for Surveillence multi-ch D1 DVR use-case.
         Scaled <CIF or any resolution> Secondary output, encode / bits out is enabled based on runtime flag.
     */
 
-    VSYS_USECASE_MULTICHN_INTERLACED_VCAP_VDIS_VENC_VDEC,
+    VSYS_USECASE_MULTICHN_INTERLACED_VCAP_VDIS_VENC_VDEC, //1
     /**< Video Capture to Video Encode(Inetrlaced)+Video Display and Video Decode+Video Display use-case. All sub-systems are enabled. \n
         This is for Survillence multi-ch D1 DVR use-case.
     */
 
-    VSYS_USECASE_MULTICHN_VCAP_VENC,
+    VSYS_USECASE_MULTICHN_VCAP_VENC, //2
     /**< Video Capture to Video Encode use-case. \n
         This is for Survillence multi-ch D1 DVS use-case.
 
         One HD Display (On-chip HDMI) can be optionally enabled for local preview
      */
 
-    VSYS_USECASE_MULTICHN_HD_VCAP_VENC,
+    VSYS_USECASE_MULTICHN_HD_VCAP_VENC, //3
     /**< Video Capture to Video Encode use-case for 4x 1080p HD. \n
         This is for Survillence multi-ch HD-DVS use-case.
 
         One HD Display (On-chip HDMI) can be optionally enabled for local preview
      */
 
-    VSYS_USECASE_MULTICHN_VDEC_VDIS,
+    VSYS_USECASE_MULTICHN_VDEC_VDIS, //4
     /**< A8 to Video Display use-case,\n
         It will support up to 32D1 to display.
     */
 
-    VSYS_USECASE_MULTICHN_VCAP_VDIS,
+    VSYS_USECASE_MULTICHN_VCAP_VDIS, //5
     /**< Video Capture to Video Display use-case, Video Encode and Decode is kept disabled. \n
         Use-full for HW Board Check out for multi-ch D1 system.
     */
 
-    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC_NON_D1,
+    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC_NON_D1, //6
     /**< Video Capture to Video Encode(Progressive)+Video Display and Video Decode+Video Display use-case. All sub-systems are enabled. \n
         This is for Surveillence multi-ch Non D1 <CIF> DVR use-case.
     */
 
-    VSYS_USECASE_MULTICHN_CUSTOM,
+    VSYS_USECASE_MULTICHN_CUSTOM, //7
     /**<
     */
 
-    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC_4CH,
+    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC_4CH, //8
     /**< Video Capture to Video Encode(Progressive)+Video Display and Video Decode+Video Display use-case. All sub-systems are enabled. \n
         This is for Surveillence multi-ch D1 DVR use-case.
         Scaled <CIF or any resolution> Secondary output, encode / bits out is enabled based on runtime flag.
         Capture is limited to 4D1 in this usecase
     */
 
-    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC_8CH,
+    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC_8CH, //9
     /**< On DM814X only, Video Capture to Video Encode(Progressive)+Video Display and Video Decode+Video Display use-case. All sub-systems are enabled. \n
         This is for Surveillence multi-ch D1 DVR use-case.
     */
 
-    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC_16CH_NRT,
+    VSYS_USECASE_MULTICHN_PROGRESSIVE_VCAP_VDIS_VENC_VDEC_16CH_NRT, //10
     /**< On DM814X only, Video Capture to Video Encode(Progressive)+Video Display and Video Decode+Video Display use-case. All sub-systems are enabled. \n
         This is for Surveillence multi-ch D1 DVR use-case.
     */
 
-    VSYS_USECASE_MULTICHN_TRISTREAM_LOWPWR,
+    VSYS_USECASE_MULTICHN_TRISTREAM_LOWPWR, //11
     /**< Video Capture to Video Encode use-case for 1080p60+D1+JPEG. \n
         This is for Survillence tri stream IPNC use-case.
      */
 
-    VSYS_USECASE_MULTICHN_TRISTREAM_FULLFTR,
+    VSYS_USECASE_MULTICHN_TRISTREAM_FULLFTR, //12
     /**< Video Capture to Video Encode use-case for 1080p60+D1+JPEG. \n
         This is for Survillence tri stream IPNC use-case with VNF applied on first stream.
         This is a full feature usecase with VNF and Facedetect applied
      */
 
-    VSYS_USECASE_DUALCHN_DISPLAY,
+    VSYS_USECASE_DUALCHN_DISPLAY, //13
     /**< Video Capture to Display use-case for 1080p60. \n
         This is for Survillence Single stream IPNC use-case.
      */
 
-	VSYS_USECASE_TRISTREAM_SMARTANALYTICS,
+	VSYS_USECASE_TRISTREAM_SMARTANALYTICS, //14
     /**< Video Capture to Video Encode use-case for 1080p60+D1+JPEG. \n
         This is for Survillence tri stream IPNC use-case with VNF applied on first stream.
         This is a full feature usecase with VNF and Facedetect applied
      */
 
-	VSYS_USECASE_ENC_A8_DEC,
+	VSYS_USECASE_ENC_A8_DEC, //15
     /**< Video Capture to Video Encode use-case for 1080p60+D1+JPEG. \n
         This is for Survillence tri stream IPNC use-case with VNF applied on first stream.
         This is a full feature usecase with VNF and Facedetect applied
      */
 
-	VSYS_USECASE_MULTICHN_QUADSTREAM_NF,
+	VSYS_USECASE_MULTICHN_QUADSTREAM_NF, //16
     /**< Video Capture to Video Encode use-case for 1080p60+D1+JPEG. \n
         This is for Survillence tri stream IPNC use-case with VNF applied on first stream.
         This is a full feature usecase with VNF and Facedetect applied
      */
 
-	VSYS_USECASE_DUALCHN_DEMO,
+	VSYS_USECASE_DUALCHN_DEMO, //17
     /**< Video Capture to Video Encode use-case for 1080p30+1080p30. \n
         This is for Survillence Dual stream IPNC use-case.
      */
 
-    VSYS_USECASE_MCTNF_DEMO,
+    VSYS_USECASE_MCTNF_DEMO, //18
     /**< Video Capture to MCTNF to VNF to Display. Display shows non-NSF and NSF output side by side. \n
         This is for Survillence IPNC MCTNF demo.
      */
 	 
-    VSYS_USECASE_RVM_DEMO,
+    VSYS_USECASE_RVM_DEMO, //19
     /**< Rear View Module Demo usecase. \n
         This is for Survillence IPNC MCTNF demo.
      */	 
 	 
-    VSYS_USECASE_MAX
+    VSYS_USECASE_MAX //20
     /**< Maximum use-case ID */
 
 } VSYS_USECASES_E;

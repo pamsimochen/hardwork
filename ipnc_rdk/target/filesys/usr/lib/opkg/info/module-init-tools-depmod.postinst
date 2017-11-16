@@ -1,2 +1,0 @@
-#!/bin/sh
-update-alternatives --install /sbin/depmod depmod /sbin/depmod.26 60

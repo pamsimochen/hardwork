@@ -94,7 +94,8 @@ Void App_loadDemo(Void)
 {
 	gUI_mcfw_config.initDone = 0;
 
-#ifdef TEARDOWN_LOAD_UNLOAD
+#if 0//def TEARDOWN_LOAD_UNLOAD
+    VI_DEBUG("ifdef TEARDONW_LOAD_UNLOAD\n");
 		system("./scripts/load_vpss.sh &");
         system("./scripts/load_video.sh&");
     #ifdef IPNC_DSP_ON
@@ -107,22 +108,28 @@ Void App_loadDemo(Void)
         system("./scripts/wait_cmd.sh s c6xdsp");
     #endif
 #else
+    VI_DEBUG("else TEARDONW_LOAD_UNLOAD\n");
         system("./scripts/send_cmd.sh T m3vpss");
         system("./scripts/send_cmd.sh T m3video");
-    #ifdef IPNC_DSP_ON
+    #if 0//def IPNC_DSP_ON
+    VI_DEBUG("IPNC_DSP_ON\n");
         system("./scripts/send_cmd.sh T c6xdsp");
     #endif
 
         system("./scripts/wait_cmd.sh t m3vpss");
         system("./scripts/wait_cmd.sh t m3video");
-    #ifdef IPNC_DSP_ON
+    #if 0//def IPNC_DSP_ON
+    VI_DEBUG("IPNC_DSP_ON\n");
         system("./scripts/wait_cmd.sh t c6xdsp");
     #endif
 #endif // #ifdef TEARDOWN_LOAD_UNLOAD
 
     system("./scripts/osa_kermod_load.sh &");
 
-#ifdef IPNC_DSS_ON
+#if 1//def IPNC_DSS_ON
+    printf("/n");
+    VI_DEBUG("ifdef IPNC_DSS_ON\n");
+    printf("/n");
     /* load module fb */
     system("insmod ./kermod/vpss.ko mode=hdmi:1080p-60 sbufaddr=0xbfb00000");
     system("insmod ./kermod/ti81xxhdmi.ko 2> /dev/null");
@@ -130,6 +137,7 @@ Void App_loadDemo(Void)
      * for consumer HDTVs */
     system("./bin/mem_rdwr.out --wr 0x46c00524 2");
 #else
+    VI_DEBUG("else IPNC_DSS_ON\n");
     system("./linux_prcm_ipcam k");                        /* switch off DSS */
 #endif
 
@@ -262,6 +270,7 @@ Void App_runDemo(Void)
     VDIS_PARAMS_S   vdisParams;
     VDIS_MOSAIC_S   *pVmosaicParams;
 
+    OSA_printf("\n======================App_runDemo start======================\n");
 #ifdef CCS_DEBUG
     OSA_printf("You could Connect to CCS Now:: Press any key to continue: \n");
     getchar();
@@ -270,17 +279,19 @@ Void App_runDemo(Void)
     Vsys_params_init(&vsysParams);
 
     /* Use case selection based on compile flag */
-#ifdef IPNC_DSS_ON
+#if 1//def IPNC_DSS_ON
     vsysParams.systemUseCase = VSYS_USECASE_MULTICHN_TRISTREAM_FULLFTR;
 #else
     vsysParams.systemUseCase = VSYS_USECASE_MULTICHN_TRISTREAM_LOWPWR;
 #endif
 
-#ifdef CAPTURE_DISPLAY_MODE
+#if 0//def CAPTURE_DISPLAY_MODE
     vsysParams.systemUseCase = VSYS_USECASE_DUALCHN_DISPLAY;
+    VI_DEBUG("define CAPTURE_DISPLAY_MODE\n");
 #endif
 
-#ifdef CAPTURE_MCTNF_DISP_MODE
+#if 0//def CAPTURE_MCTNF_DISP_MODE
+    VI_DEBUG("define CAPTURE_MCTNF_DISP_MODE\n");
 	vsysParams.systemUseCase = VSYS_USECASE_MCTNF_DEMO;
 #endif
 
@@ -297,15 +308,18 @@ Void App_runDemo(Void)
         (gUI_mcfw_config.ldcEnable == TRUE) ) // as LDC is part of VNF lib
             gUI_mcfw_config.vnfUseCase = TRUE;
     }
-#ifdef ENC_A8_DEC_USE_CASE
+#if 0 //def ENC_A8_DEC_USE_CASE
+    VI_DEBUG("define ENC_A8_DEC_USE_CASE\n");
     vsysParams.systemUseCase = VSYS_USECASE_ENC_A8_DEC;
 #endif
 
-#ifdef QUAD_STREAM_NF_USE_CASE
+#if 0//def QUAD_STREAM_NF_USE_CASE
+    VI_DEBUG("define QUAD_STREAM_NF_USE_CASE\n");
     vsysParams.systemUseCase = VSYS_USECASE_MULTICHN_QUADSTREAM_NF;
 #endif
 
-#ifdef RVM_DEMO_MODE
+#if 0//def RVM_DEMO_MODE
+    VI_DEBUG("define RVM_DEMO_MODE\n");
 	vsysParams.systemUseCase = VSYS_USECASE_RVM_DEMO;
 #endif
 
@@ -478,7 +492,7 @@ Void App_runDemo(Void)
 
 	gUI_mcfw_config.initDone = 1;
 	
-    OSA_printf("\nApplication Run Completed\n");
+    OSA_printf("======================Application Run Completed======================\n\n");
 }
 
 /* ===================================================================
@@ -705,6 +719,7 @@ int main(int argc, char **argv)
         return 0;
     }
 
+
     memset(&gUI_mcfw_config, FALSE, sizeof(gUI_mcfw_config));
 
     OSA_attachSignalHandler(SIGINT, UI_signalHandler);
@@ -763,6 +778,8 @@ int main(int argc, char **argv)
 #ifdef IMGS_MICRON_MT9M034
     gUI_mcfw_config.sensorId = MT_9M034;
 #endif
+
+    VI_DEBUG("snesorId = %d\n", gUI_mcfw_config.sensorId);
 
     gUI_mcfw_config.audioCfg.enable     = FALSE;
     gUI_mcfw_config.audioCfg.shutdown   = FALSE;
@@ -932,6 +949,7 @@ int main(int argc, char **argv)
 		
     while (done==FALSE)
     {
+
         if (gUI_mcfw_config.demoCfg.runDemo == FALSE)
         {
             if (gUI_mcfw_config.demoCfg.loadDemo == FALSE)
@@ -950,7 +968,7 @@ int main(int argc, char **argv)
                 gUI_mcfw_config.demoCfg.loadImgTune = TRUE;
                 OSA_waitMsecs(MCFW_MAIN_WAIT_TIME);
             }
-        }
+        }/*gUI_mcfw_config.demoCfg.runDemo == FALSE*/
         else if (gUI_mcfw_config.demoCfg.stopDemo == TRUE)
         {
             if (gUI_mcfw_config.demoCfg.delImgTune == TRUE)
@@ -974,9 +992,9 @@ int main(int argc, char **argv)
                 OSA_waitMsecs(MCFW_MAIN_WAIT_TIME);
                 exitOK = TRUE;
             }
-        }
+        }/*gUI_mcfw_config.demoCfg.stopDemo == TRUE*/
         else
-        {
+        {/*gUI_mcfw_config.demoCfg.runDemo == TRUE && gUI_mcfw_config.demoCfg.stopDemo == FALSE*/
             if(sleepCnt==MCFW_MAIN_PRINT_CNT)
             {
 #ifdef INCLUDE_MUX_MAP_CHANGE
@@ -1097,13 +1115,13 @@ int main(int argc, char **argv)
                     Vcam_changeCaptMode(0, &chPrms);
                 }
 #endif
-            }
+            }//sleepCnt==MCFW_MAIN_PRINT_CNT
             else {
                 sleepCnt++;
-            }
+            }//else sleepCnt==MCFW_MAIN_PRINT_CNT
 
             OSA_waitMsecs(MCFW_MAIN_SLEEP_TIME);
-        }
+        }/*gUI_mcfw_config.demoCfg.runDemo == TRUE && gUI_mcfw_config.demoCfg.stopDemo == FALSE*/
 
         if (gUI_mcfw_config.demoCfg.exitDemo == TRUE)
         {

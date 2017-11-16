@@ -840,16 +840,16 @@ int SystemInit()
 		return -1;
 	}
 
-#ifndef TEARDOWN_LOAD_UNLOAD
+#if 1//ndef TEARDOWN_LOAD_UNLOAD
 		system("./scripts/load_vpss.sh&");
 		system("./scripts/load_video.sh&");
-	#ifdef IPNC_DSP_ON
+	#if 0//def IPNC_DSP_ON
 		system("./scripts/load_c6xdsp.sh&");
 	#endif
 
 		system("./scripts/wait_cmd.sh s m3vpss");
 		system("./scripts/wait_cmd.sh s m3video");
-	#ifdef IPNC_DSP_ON
+	#if 0//def IPNC_DSP_ON
 		system("./scripts/wait_cmd.sh s c6xdsp");
 	#endif
 #endif
@@ -930,7 +930,8 @@ int SystemInit()
 	tConfig.histogram = pSysInfo->lan_config.histogram;
 	tConfig.vsEnable = pSysInfo->advanceMode.vsEnable;
 	tConfig.ldcEnable = pSysInfo->advanceMode.ldcEnable;
-	tConfig.vnfEnable = pSysInfo->advanceMode.vnfEnable;
+	//tConfig.vnfEnable = pSysInfo->advanceMode.vnfEnable;
+	tConfig.vnfEnable = 0;
 	tConfig.vnfMode = pSysInfo->advanceMode.vnfMode;
 	tConfig.vnfStrength = pSysInfo->advanceMode.vnfStrength;
 	tConfig.dynRange = pSysInfo->advanceMode.dynRange;

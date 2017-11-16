@@ -872,6 +872,8 @@ Int32 IpcFramesInLink_init()
 
         OSA_SNPRINTF(tskName, "IPC_FRAMES_IN%d", ipcFramesInId);
 
+//        VI_DEBUG(" tskName = %s\n", tskName);
+
         System_ipcRegisterNotifyCb(pObj->tskId, IpcFramesInLink_notifyCb);
 
         status = OSA_tskCreate(&pObj->tsk,

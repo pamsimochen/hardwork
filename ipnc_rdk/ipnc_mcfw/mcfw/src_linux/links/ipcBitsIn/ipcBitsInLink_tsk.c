@@ -439,6 +439,8 @@ Int32 IpcBitsInLink_init()
 
         OSA_SNPRINTF(tskName, "IPC_BITS_IN%d", ipcBitsInId);
 
+//        VI_DEBUG(" tskName = %s\n", tskName);
+
         System_ipcRegisterNotifyCb(pObj->tskId, IpcBitsInLink_notifyCb);
 
         status = OSA_tskCreate(&pObj->tsk,

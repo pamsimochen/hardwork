@@ -48,7 +48,7 @@ Int32 SystemLink_cmdHandler(SystemLink_Obj * pObj, UInt32 cmd, Void * pPrm)
         case SYSTEM_M3VPSS_CMD_GET_DISPLAYCTRL_INIT:
         {
             VDIS_PARAMS_S * prm = (VDIS_PARAMS_S *) pPrm;
-
+            
             status = System_displayCtrlInit(prm);
         }
             break;

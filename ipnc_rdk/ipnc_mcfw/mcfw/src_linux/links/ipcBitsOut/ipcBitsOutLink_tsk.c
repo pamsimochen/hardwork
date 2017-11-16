@@ -1002,6 +1002,8 @@ Int32 IpcBitsOutLink_init()
 
         OSA_SNPRINTF(tskName, "IPC_BITS_OUT%d", ipcBitsOutId);
 
+//        VI_DEBUG(" tskName = %s\n", tskName);
+
         System_ipcRegisterNotifyCb(pObj->tskId, IpcBitsOutLink_notifyCb);
 
         IpcBitsOutLink_initListMP(pObj);

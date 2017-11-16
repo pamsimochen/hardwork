@@ -1,2 +1,0 @@
-#!/bin/sh
-update-alternatives --install /sbin/makedevs makedevs /sbin/makedevs.makedevs 100

@@ -1,1 +1,0 @@
-	update-alternatives --remove default_mountall mountall.busybox

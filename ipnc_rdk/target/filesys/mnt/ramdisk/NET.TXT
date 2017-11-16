@@ -1,9 +1,0 @@
-LocalIP="172.24.190.116"
-NetMask="255.255.252.0"
-Gateway="172.24.188.1"
-DNS="172.24.170.29"
-DHCPConfig=0
-DHCPEnable=1
-HTTPPort=80
-Title="TI_IPNC"
-MAC="00:e0:0a:dd:00:00"

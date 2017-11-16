@@ -228,12 +228,13 @@ Void MultiCh_createTriStreamFullFtr()
     MULTICH_INIT_STRUCT(MuxLink_CreateParams, muxPrm);
 #endif
 
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
     MULTICH_INIT_STRUCT(IpcLink_CreateParams, ipcOutVpssIdForMCTNF_params);
     MULTICH_INIT_STRUCT(IpcLink_CreateParams,  ipcInVideoIdForMCTNF_params);
     MULTICH_INIT_STRUCT(IpcLink_CreateParams, ipcOutVideoIdForMCTNF_params);
     MULTICH_INIT_STRUCT(IpcLink_CreateParams,  ipcInVpssIdForMCTNF_params);
 #endif
+#if 0
     if(Vsys_getSystemUseCase() == VSYS_USECASE_TRISTREAM_SMARTANALYTICS)
     {
         OSA_printf("\n********** SMART ANALYTICS USECASE ********\n");
@@ -241,8 +242,9 @@ Void MultiCh_createTriStreamFullFtr()
             ("********* Entered Smart Analytics usecase - H264 1080p @60fps + H264 D1 @30fps + MJPEG 1080p @5fps ********\n\n");
     }
     else
+#endif 
     {
-        OSA_printf("\n********** FULL FEATURE USECASE ********\n");
+        OSA_printf("********** FULL FEATURE USECASE ********\n");
         OSA_printf
             ("********* Entered Tri Streaming usecase - H264 1080p @60fps + H264 D1 @30fps + MJPEG 1080p @5fps ********\n\n");
     }
@@ -291,7 +293,7 @@ Void MultiCh_createTriStreamFullFtr()
     ipcFramesOutVpssId = SYSTEM_VPSS_LINK_ID_IPC_FRAMES_OUT_0;
     ipcFramesInDspId   = SYSTEM_DSP_LINK_ID_IPC_FRAMES_IN_0;
 
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
     ipcOutVpssIdForMCTNF = SYSTEM_VPSS_LINK_ID_IPC_OUT_M3_1;
     ipcInVideoIdForMCTNF = SYSTEM_VIDEO_LINK_ID_IPC_IN_M3_1;
     ipcOutVideoIdForMCTNF = SYSTEM_VIDEO_LINK_ID_IPC_OUT_M3_0;
@@ -320,13 +322,14 @@ Void MultiCh_createTriStreamFullFtr()
      */
     gUI_mcfw_config.noisefilterMode = ISS_VNF_ON;
 #endif
-
+#if 0
     if(gUI_mcfw_config.glbceEnable)
     {
         gVcamModuleContext.glbceId = glbceId;
 #ifdef WDR_ON
         gVcamModuleContext.glbceId = wdrId;
 #endif
+
 
         /* Camera Link params */
         CameraLink_CreateParams_Init(&cameraPrm);
@@ -420,8 +423,9 @@ Void MultiCh_createTriStreamFullFtr()
         /* 2A config */
         cameraPrm.t2aConfig.n2A_vendor = gUI_mcfw_config.n2A_vendor;
         cameraPrm.t2aConfig.n2A_mode = gUI_mcfw_config.n2A_mode;
-    }
+    }/* GLBCE ON */
     else /*GLBCE OFF*/
+#endif
     {
 
         gVcamModuleContext.glbceId = SYSTEM_LINK_ID_INVALID;
@@ -438,7 +442,7 @@ Void MultiCh_createTriStreamFullFtr()
         cameraPrm.captureMode = CAMERA_LINK_CAPMODE_ISIF;
 
 
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
         cameraPrm.mctnfLinkId = SYSTEM_LINK_ID_MCTNF;
 #endif
         cameraPrm.outQueParams[0].nextLink = dupId[VNF_DUP_IDX];
@@ -487,7 +491,7 @@ Void MultiCh_createTriStreamFullFtr()
             cameraPrm.issVnfEnable = 1;
         }
 
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
         pCameraInstPrm->standard = SYSTEM_STD_1080P_30;
 #endif
         pCameraInstPrm->numOutput = 2;
@@ -543,8 +547,7 @@ Void MultiCh_createTriStreamFullFtr()
         /* 2A config */
         cameraPrm.t2aConfig.n2A_vendor = gUI_mcfw_config.n2A_vendor;
         cameraPrm.t2aConfig.n2A_mode = gUI_mcfw_config.n2A_mode;
-    }
-
+    }/*GLBCE OFF*/
     /* vstab Link params */
     vstabPrm.totalFrameWidth  = pCameraInstPrm->sensorOutWidth;
     vstabPrm.totalFrameHeight = pCameraInstPrm->sensorOutHeight;
@@ -553,6 +556,7 @@ Void MultiCh_createTriStreamFullFtr()
     glbceSupportPrm.totalFrameWidth  = pCameraInstPrm->sensorOutWidth;
     glbceSupportPrm.totalFrameHeight = pCameraInstPrm->sensorOutHeight;
 
+#if 0
     if(gUI_mcfw_config.glbceEnable)
     {
         cameraPrm.glbceLinkId = glbceId;
@@ -638,17 +642,20 @@ Void MultiCh_createTriStreamFullFtr()
         ispPrm.outQueuePrm[1].height     = 480;//576;
         ispPrm.outQueuePrm[1].standard   = SYSTEM_STD_NTSC;//SYSTEM_STD_PAL;//SYSTEM_STD_NTSC;
     }
+#endif    
 
     ispPrm.vnfFullResolution = FALSE;
     cameraPrm.vnfFullResolution = FALSE;
 
     /* Dup link for VNF */
+#if 0
     if(gUI_mcfw_config.glbceEnable)
     {
         dupPrm[VNF_DUP_IDX].inQueParams.prevLinkId    = gVcamModuleContext.ispId;
         dupPrm[VNF_DUP_IDX].inQueParams.prevLinkQueId = 0;
     }
     else
+#endif
     {
         dupPrm[VNF_DUP_IDX].inQueParams.prevLinkId    = gVcamModuleContext.cameraId;
         dupPrm[VNF_DUP_IDX].inQueParams.prevLinkQueId = 0;
@@ -657,7 +664,7 @@ Void MultiCh_createTriStreamFullFtr()
     dupPrm[VNF_DUP_IDX].numOutQue                 = 2;
     dupPrm[VNF_DUP_IDX].outQueParams[0].nextLink  = gVcamModuleContext.nsfId;
 
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
     if(Vsys_getSystemUseCase() == VSYS_USECASE_TRISTREAM_SMARTANALYTICS)
     {
         dupPrm[VNF_DUP_IDX].outQueParams[1].nextLink  = ipcOutVpssIdForMCTNF;
@@ -674,7 +681,7 @@ Void MultiCh_createTriStreamFullFtr()
     dupPrm[VNF_DUP_IDX].outQueParams[1].nextLink  = gVcamModuleContext.vnfId;
 #endif
 
-#ifdef MEMORY_256MB
+#if 0//def MEMORY_256MB
     dupPrm[VNF_DUP_IDX].numOutQue = 1;
     if (gUI_mcfw_config.noisefilterMode == DSS_VNF_ON)
         dupPrm[VNF_DUP_IDX].outQueParams[0].nextLink  = gVcamModuleContext.nsfId;
@@ -684,7 +691,7 @@ Void MultiCh_createTriStreamFullFtr()
 
     dupPrm[VNF_DUP_IDX].notifyNextLink = TRUE;
 
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
      /* IPC Out VPSS link params */
     if(Vsys_getSystemUseCase() == VSYS_USECASE_TRISTREAM_SMARTANALYTICS)
     {
@@ -792,7 +799,7 @@ Void MultiCh_createTriStreamFullFtr()
     nsfPrm.inputFrameRate = 60;
     nsfPrm.outputFrameRate = 60;
 
-#ifdef MEMORY_256MB
+#if 0//def MEMORY_256MB
     nsfPrm.numBufsPerCh = 5;
     nsfPrm.outQueParams[0].nextLink = dupId[MJPEG_DUP_LINK_IDX];
 #else
@@ -820,7 +827,7 @@ Void MultiCh_createTriStreamFullFtr()
     VnfLink_CreateParams_Init(&vnfPrm);
 
     /* Vnf Link Params */
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
     #ifdef VNF_BEFORE_MCTNF
         vnfPrm.inQueParams.prevLinkId = dupId[VNF_DUP_IDX];
         vnfPrm.inQueParams.prevLinkQueId = 1;
@@ -857,7 +864,7 @@ Void MultiCh_createTriStreamFullFtr()
         vnfParams->sParams.eOperateMode =  VNF_LINK_3DNF;
 #elif defined (USE_TNF3_FILTER)
         vnfParams->sParams.eOperateMode =  VNF_LINK_TNF3;
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
         //LK- to check TNF3/MCTNF by controlling enable/disable from DCC tool
         vnfParams->sParams.eOperateMode =  VNF_LINK_NSF2;
 #endif
@@ -922,7 +929,7 @@ Void MultiCh_createTriStreamFullFtr()
     muxPrmVnf.inQueParams[0].prevLinkId    = gVcamModuleContext.nsfId;
     muxPrmVnf.inQueParams[0].prevLinkQueId = 0;
 
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
     if(Vsys_getSystemUseCase() == VSYS_USECASE_TRISTREAM_SMARTANALYTICS)
     {
         muxPrmVnf.inQueParams[1].prevLinkId    = ipcInVpssIdForMCTNF;
@@ -1101,7 +1108,7 @@ Void MultiCh_createTriStreamFullFtr()
     sclrPrm.outScaleFactor.absoluteResolution.outHeight  = 192;
     sclrPrm.outDataFormat = VF_YUV420SP_UV;
     sclrPrm.pathId = SCLR_LINK_SEC0_SC3;
-
+#if 0
     if(Vsys_getSystemUseCase() == VSYS_USECASE_TRISTREAM_SMARTANALYTICS)
     {
         dupPrm[VA_DUP_IDX].inQueParams.prevLinkId = gVcamModuleContext.sclrId[0];
@@ -1159,7 +1166,7 @@ Void MultiCh_createTriStreamFullFtr()
         vaPrm.vaFrameRate               = 25;
 #endif
     }
-
+#endif 
     /* FD Link Params */
     if(Vsys_getSystemUseCase() == VSYS_USECASE_TRISTREAM_SMARTANALYTICS)
         fdPrm.inQueParams.prevLinkId = dupId[VA_DUP_IDX];
@@ -1251,7 +1258,7 @@ Void MultiCh_createTriStreamFullFtr()
 #elif defined IMGS_MICRON_MT9M034
     encPrm.chCreateParams[0].defaultDynamicParams.inputFrameRate = 30;  //
 #else
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
     encPrm.chCreateParams[0].defaultDynamicParams.inputFrameRate = 30;  // ENC_LINK_DEFAULT_ALGPARAMS_INPUTFRAMERATE;
 #else
     encPrm.chCreateParams[0].defaultDynamicParams.inputFrameRate = 60;  // ENC_LINK_DEFAULT_ALGPARAMS_INPUTFRAMERATE;
@@ -1310,10 +1317,13 @@ Void MultiCh_createTriStreamFullFtr()
 
     /* Links Creation */
     /* Camera Link */
+    VI_DEBUG("Before System_linkCreate cameraId\n");
     System_linkCreate(gVcamModuleContext.cameraId, &cameraPrm,
                       sizeof(cameraPrm));
+    VI_DEBUG("After System_linkCreate cameraId\n");
     System_linkControl(gVcamModuleContext.cameraId,
                        CAMERA_LINK_CMD_DETECT_VIDEO, NULL, 0, TRUE);
+    VI_DEBUG("After System_linkControl cameraId\n");
 
     if(gUI_mcfw_config.glbceEnable)
     {
@@ -1338,7 +1348,7 @@ Void MultiCh_createTriStreamFullFtr()
 
     System_linkCreate(dupId[VNF_DUP_IDX],&dupPrm[VNF_DUP_IDX],sizeof(dupPrm[VNF_DUP_IDX]));
 
-#ifdef USE_MCTNF
+#if 0//def USE_MCTNF
     if(Vsys_getSystemUseCase() != VSYS_USECASE_TRISTREAM_SMARTANALYTICS)
     {
     #ifdef VNF_BEFORE_MCTNF

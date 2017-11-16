@@ -1,8 +1,0 @@
-/usr/sbin/update-inetd
-/etc/protocols
-/etc/init.d/networking
-/etc/network/interfaces
-/etc/services
-/etc/network/options
-/etc/hosts
-/etc/rpc

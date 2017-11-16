@@ -1816,7 +1816,7 @@ Int32 CameraLink_drvAllocAndQueueFrames(CameraLink_Obj * pObj,
             if (streamId == 0)
             {
                 //Boxcar operation works on 12-bit Bayer data and outputs 16-bit data
-                //The output data is 48-bit RGB data for each 8 × 8 or 16 × 16 block.
+                //The output data is 48-bit RGB data for each 8 ? 8 or 16 ? 16 block.
                 if(gGLBCEnable == 1)
                 {
 					BoxCarDataSize = (format.height*format.width/256*2*4  + 2*1024) & 0xffff1000;//64*1024;

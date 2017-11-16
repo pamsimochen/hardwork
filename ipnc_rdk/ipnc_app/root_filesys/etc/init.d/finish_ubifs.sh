@@ -20,10 +20,11 @@ rm -f /tmp/nand/boa-temp.bin
 
 cd /opt/ipnc
 ./init.sh
+./mount_nfs.sh
 
-./system_server&
-sleep 7
-./autorun_ipnc.sh&
+#./system_server&
+#sleep 7
+#./autorun_ipnc.sh&
 
-cd /
+cd /mnt/nand/nfs/opt/ipnc/
 

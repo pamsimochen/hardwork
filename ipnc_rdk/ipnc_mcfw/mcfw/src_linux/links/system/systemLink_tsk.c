@@ -52,6 +52,8 @@ Int32 SystemLink_init()
 
     sprintf(tskName, "SYSTEM_HOST%d", pObj->tskId);
 
+//    VI_DEBUG(" tskName = %s\n", tskName);
+
     status = OSA_tskCreate(
                 &pObj->tsk,
                 SystemLink_tskMain,

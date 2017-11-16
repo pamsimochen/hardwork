@@ -230,6 +230,8 @@ Int32 GlbceSupportLink_init()
 
         OSA_SNPRINTF(tskName, "GLBCE_SUPPORT%d", glbceSupportId);
 
+//        VI_DEBUG(" tskName = %s\n", tskName);
+
         status = OSA_tskCreate(&pObj->tsk,
                                  GlbceSupportLink_tskMain,
                                  GLBCE_SUPPORT_LINK_TSK_PRI,

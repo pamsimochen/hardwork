@@ -396,7 +396,7 @@ Int32 Vsys_init(VSYS_PARAMS_S * pContext)
         if(gVsysModuleContext.initDone == FALSE)
         {
             gVsysModuleContext.initDone = TRUE;
-	    	System_init();
+	    	System_init(); // in system_common.c
     	}
 	}
 
