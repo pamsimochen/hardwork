@@ -464,6 +464,7 @@ Int32 ittServer_run()
             }
             // recvData = (Int32 * )buf;
             /* Checking connectivity */
+            VI_DEBUG("recvData[0] = %d\n", recvData[0]);
             if (recvData[0] == CMD_CKH_CONNECTION)
             {
                 OSA_printf("Client checking the connectivity \n");

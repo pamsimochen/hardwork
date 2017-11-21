@@ -458,15 +458,18 @@ Void MultiCh_createTriStreamFullFtr()
 #else
         cameraPrm.tilerEnable = FALSE;
 #endif
+        VI_DEBUG("cameraPrm.tilerEnable = %d\n", cameraPrm.tilerEnable);
 
         cameraPrm.vsEnable = gUI_mcfw_config.vsEnable;
         cameraPrm.vstabLinkId = vstabId;
+        VI_DEBUG("cameraPrm.vsEnable = %d\n", cameraPrm.vsEnable);
 
         pCameraInstPrm = &cameraPrm.vipInst[0];
         pCameraInstPrm->vipInstId = SYSTEM_CAMERA_INST_VP_CSI2;
         pCameraInstPrm->videoDecoderId = MultiCh_getSensorId(gUI_mcfw_config.sensorId);
-        pCameraInstPrm->inDataFormat = SYSTEM_DF_YUV420SP_UV;
-
+        //pCameraInstPrm->inDataFormat = SYSTEM_DF_YUV420SP_UV;
+        //pCameraInstPrm->inDataFormat = SYSTEM_DF_YUV422SP_UV;
+        pCameraInstPrm->inDataFormat = SYSTEM_DF_YUV422SP_UV;
 #ifdef IMGS_OMNIVISION_OV10630
         pCameraInstPrm->sensorOutWidth  = 1280;
         pCameraInstPrm->sensorOutHeight = 720;
@@ -480,7 +483,9 @@ Void MultiCh_createTriStreamFullFtr()
         pCameraInstPrm->sensorOutWidth  = 1920;
         pCameraInstPrm->sensorOutHeight = 1080;
 #endif
-
+        VI_DEBUG("\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        VI_DEBUG("gUI_mcfw_config.noisefilterMode = %d\n", gUI_mcfw_config.noisefilterMode);
+        VI_DEBUG("~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
         if (gUI_mcfw_config.noisefilterMode == DSS_VNF_ON)
         {
             pCameraInstPrm->standard = SYSTEM_STD_1080P_60;
@@ -490,6 +495,9 @@ Void MultiCh_createTriStreamFullFtr()
             pCameraInstPrm->standard = SYSTEM_STD_1080P_30;
             cameraPrm.issVnfEnable = 1;
         }
+        VI_DEBUG("\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        VI_DEBUG("pCameraInstPrm->standard = %d\n", pCameraInstPrm->standard);
+        VI_DEBUG("~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
 #if 0//def USE_MCTNF
         pCameraInstPrm->standard = SYSTEM_STD_1080P_30;
@@ -507,6 +515,11 @@ Void MultiCh_createTriStreamFullFtr()
         {
             pCameraOutPrm->dataFormat = SYSTEM_DF_YUV420SP_UV;
         }
+        VI_DEBUG("\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        VI_DEBUG("pCameraOutPrm->dataFormat = %d\n", pCameraOutPrm->dataFormat);
+        VI_DEBUG("~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+        pCameraOutPrm->dataFormat = SYSTEM_DF_YUV422SP_UV;
+
 
         pCameraOutPrm->scEnable = FALSE;
 

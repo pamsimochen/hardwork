@@ -141,11 +141,11 @@ Int32 CameraLink_drvCreateSensor(CameraLink_Obj * pObj, UInt16 instId)
 
     pInst->sensorCreateArgs.vstabEnabled = gVstabEnable;
 
-    #ifdef IMGS_MICRON_AR0330
+    #if 0//def IMGS_MICRON_AR0330
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_AR0331_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_MICRON_AR0331
+    #if 0//def IMGS_MICRON_AR0331
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_AR0331_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
@@ -153,70 +153,73 @@ Int32 CameraLink_drvCreateSensor(CameraLink_Obj * pObj, UInt16 instId)
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_MN34041_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_SONY_IMX035
+    #if 0//def IMGS_SONY_IMX035
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_IMX035_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_OMNIVISION_OV2715
+    #if 0//def IMGS_OMNIVISION_OV2715
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_OV2715_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_SONY_IMX036
+    #if 0//def IMGS_SONY_IMX036
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_IMX036_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_OMNIVISION_OV9712
+    #if 0//def IMGS_OMNIVISION_OV9712
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_OV9712_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_OMNIVISION_OV10630
+    #if 0//def IMGS_OMNIVISION_OV10630
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_OV10630_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_MICRON_MT9P031
+    #if 0//def IMGS_MICRON_MT9P031
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_MT9P031_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_MICRON_MT9D131
+    #if 0//def IMGS_MICRON_MT9D131
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_MT9D131_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_MICRON_MT9M034
+    #if 0//def IMGS_MICRON_MT9M034
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_MT9M034_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_TAXAS_TVP514X
+    #if 0//def IMGS_TAXAS_TVP514X
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_TVP514X_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_MICRON_MT9J003
+    #if 0//def IMGS_MICRON_MT9J003
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_MT9J003_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_MICRON_AR0330
+    #if 0//def IMGS_MICRON_AR0330
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_AR0330_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_MICRON_MT9M034_DUAL_HEAD_BOARD
+    #if 0//def IMGS_MICRON_MT9M034_DUAL_HEAD_BOARD
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_MT9M034_DUAL_HEAD_BOARD_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_SONY_IMX136
+    #if 0//def IMGS_SONY_IMX136
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_IMX136_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_SONY_IMX104
+    #if 0//def IMGS_SONY_IMX104
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_IMX104_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_ALTASENS_AL30210
+    #if 0//def IMGS_ALTASENS_AL30210
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_AL30210_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
 
-    #ifdef IMGS_SONY_IMX140
+    #if 0//def IMGS_SONY_IMX140
     if ((pInstPrm->videoDecoderId == FVID2_ISS_SENSOR_IMX140_DRV) && (pInstPrm->vipInstId == ISS_CAPT_INST_VP || pInstPrm->vipInstId == ISS_CAPT_INST_VP))
     #endif
     {
+        Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        Vps_printf("Iss_platformSelectSensor()\n");
+        Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
         status = Iss_platformSelectSensor(pInstPrm->videoDecoderId, pInstPrm->vipInstId);
     }
 
@@ -470,6 +473,15 @@ Int32 CameraLink_drvCreateInst(CameraLink_Obj * pObj, UInt16 instId)
 #else
     pVipCreateArgs->inFmt.dataFormat = FVID2_DF_BAYER_RAW;
 #endif
+    pVipCreateArgs->inFmt.dataFormat = pInstPrm->inDataFormat;
+    pVipCreateArgs->videoIfMode = ISS_CAPT_YUV_16BIT;
+    Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    Vps_printf("pInstPrm->inDataFormat = %d, pVipCreateArgs->inFmt.dataFormat = %d\n", pInstPrm->inDataFormat, pVipCreateArgs->inFmt.dataFormat);
+    Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+    Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    Vps_printf("pVipCreateArgs->videoIfMode= %d\n", pVipCreateArgs->videoIfMode);
+    Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+
 
     inScanFormat = FVID2_SF_PROGRESSIVE;
     if (instId == 0)

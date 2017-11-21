@@ -5580,6 +5580,9 @@ Int32 Issdrv_setIsifConfig(Iss_IspIsifCfg *isifCfg)
     pObj = &gIss_captCommonObj.captureObj[0];
 
     isifSrcCfg.sync_enable = ISIF_HD_VD_DISABLE;
+    Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    Vps_printf("pObj->inFmt.dataFormat = %d, pObj->createArgs.videoIfMode = %d\n", pObj->inFmt.dataFormat, pObj->createArgs.videoIfMode);
+    Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
     if ((pObj->inFmt.dataFormat == FVID2_DF_BAYER_RAW) ||
         (pObj->inFmt.dataFormat == FVID2_DF_RAW))
@@ -5593,7 +5596,11 @@ Int32 Issdrv_setIsifConfig(Iss_IspIsifCfg *isifCfg)
         else
             isifSrcCfg.ip_pix_fmt = ISIF_DATA_INPUT_MODE_YUV16;
     }
+    Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    Vps_printf("%s|%d|: isifSrcCfg.ip_pix_fmt = %d\n", __FILE__, __LINE__,  isifSrcCfg.ip_pix_fmt);
+    Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
+   
     isifSrcCfg.data_polarity = ISIF_DATA_NORMAL;
     isifSrcCfg.field_pol = ISIF_NEGATIVE_POLARITY;
     if (ISS_ISIF_SYNC_POLARITY_POSITIVE == isifCfg->hdPolarity)

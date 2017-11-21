@@ -292,39 +292,39 @@ typedef enum
 {
     SYSTEM_STD_NTSC = 0u,
     /**< 720x480 30FPS interlaced NTSC standard. */
-    SYSTEM_STD_PAL,
+    SYSTEM_STD_PAL, //1
     /**< 720x576 30FPS interlaced PAL standard. */
 
-    SYSTEM_STD_480I,
+    SYSTEM_STD_480I, //2
     /**< 720x480 30FPS interlaced SD standard. */
-    SYSTEM_STD_576I,
+    SYSTEM_STD_576I, //3
     /**< 720x576 30FPS interlaced SD standard. */
 
-    SYSTEM_STD_CIF,
+    SYSTEM_STD_CIF, //4
     /**< Interlaced, 360x120 per field NTSC, 360x144 per field PAL. */
-    SYSTEM_STD_HALF_D1,
+    SYSTEM_STD_HALF_D1, //5
     /**< Interlaced, 360x240 per field NTSC, 360x288 per field PAL. */
-    SYSTEM_STD_D1,
+    SYSTEM_STD_D1, //6
     /**< Interlaced, 720x240 per field NTSC, 720x288 per field PAL. */
 
-    SYSTEM_STD_480P,
+    SYSTEM_STD_480P, //7
     /**< 720x480 60FPS progressive ED standard. */
-    SYSTEM_STD_576P,
+    SYSTEM_STD_576P, //8
     /**< 720x576 60FPS progressive ED standard. */
 
-    SYSTEM_STD_720P_60,
+    SYSTEM_STD_720P_60, //9
     /**< 1280x720 60FPS progressive HD standard. */
-    SYSTEM_STD_720P_50,
+    SYSTEM_STD_720P_50, //10
     /**< 1280x720 50FPS progressive HD standard. */
 
-    SYSTEM_STD_1080I_60,
+    SYSTEM_STD_1080I_60, //11
     /**< 1920x1080 30FPS interlaced HD standard. */
-    SYSTEM_STD_1080I_50,
+    SYSTEM_STD_1080I_50, //12
     /**< 1920x1080 50FPS interlaced HD standard. */
 
-    SYSTEM_STD_1080P_60,
+    SYSTEM_STD_1080P_60, //13
     /**< 1920x1080 60FPS progressive HD standard. */
-    SYSTEM_STD_1080P_50,
+    SYSTEM_STD_1080P_50, //14
     /**< 1920x1080 50FPS progressive HD standard. */
 
     SYSTEM_STD_1080P_24,

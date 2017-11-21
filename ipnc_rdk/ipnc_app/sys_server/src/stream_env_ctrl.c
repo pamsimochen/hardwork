@@ -93,6 +93,9 @@ int StartStream(StreamEnv_t* pConfig)
         int MJPEG_PORTNUM_1 = pConfig -> MJPEG_PORTNUM_1;
 
 
+    printf("~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("pConfig->nDemoCfg = %d\n", pConfig->nDemoCfg); 
+    printf("~~~~~~~~~~~~~~~~~~~~~~\n");
 	if(pConfig->nDemoCfg == VA_DEMO)
 	{
 	    fSetDmvaEnable(1);
@@ -108,6 +111,9 @@ int StartStream(StreamEnv_t* pConfig)
 		if(pConfig->nDemoCfg)
 			attach_opt(cmdopt, demoFlg);
 	}
+    printf("~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("cmdopt = %s\n", cmdopt); 
+    printf("~~~~~~~~~~~~~~~~~~~~~~\n");
 
 	printf("\n*****************************************************************\n");
 	printf("\n    IPNC BUILD VERSION: %s	\n", IPNC_APP_VERSION);
@@ -142,6 +148,8 @@ int StartStream(StreamEnv_t* pConfig)
 			break;
     }
 
+    printf("pConfig->vsEnable = %d, pConfig->ldcEnable = %d, pConfig->vnfEnable = %d\n", pConfig->vsEnable, pConfig->ldcEnable, pConfig->vnfEnable);
+
 	if((pConfig->nDemoCfg == VNF_DEMO)||(pConfig->nDemoCfg == VS_DEMO)||(pConfig->nDemoCfg == LDC_DEMO)||(pConfig->nDemoCfg == ROI_CENTER_DEMO))
 	{
 		if(pConfig->nDemoCfg == VNF_DEMO)
@@ -173,6 +181,10 @@ int StartStream(StreamEnv_t* pConfig)
 		pConfig -> vnfEnable = 0;
 	}
 
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("pConfig->powerMode = %d\n", pConfig->powerMode); 
+    printf("~~~~~~~~~~~~~~~~~~~~~~\n\n");
+
 	if (pConfig -> vsEnable) {
 		attach_opt(cmdopt, adv_VS);
 	}
@@ -199,8 +211,16 @@ int StartStream(StreamEnv_t* pConfig)
 			attach_opt(cmdopt, adv_VNFMode[0]);
 	}
 
+    printf("pConfig->nStreamType = %d\n", pConfig->nStreamType);
+    printf("pConfig -> nVideocodecmode = %d\n",pConfig -> nVideocodecmode );
+
 	attach_opt(cmdopt, stream_type[pConfig -> nStreamType]);
 	attach_opt(cmdopt, video_codec_mode[pConfig -> nVideocodecmode]);
+
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("cmdopt = %s\n", cmdopt); 
+    printf("~~~~~~~~~~~~~~~~~~~~~~\n\n");
+
 
 	if(pConfig -> nCodectype1!=H264_CODEC) {
 		pConfig -> nMEConfig1 = ENCPRESET_AUTO;
@@ -219,6 +239,10 @@ int StartStream(StreamEnv_t* pConfig)
 			attach_opt(cmdopt, audio_SR[pConfig->audioSampleRate]);
 		}
 	}
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("pConfig -> nAEWswitch = %d\n", pConfig -> nAEWswitch); 
+    printf("~~~~~~~~~~~~~~~~~~~~~~\n\n");
+
 
 #ifdef _ONLY_TI2A
 	if(pConfig -> nAEWswitch==1) {
@@ -258,6 +282,10 @@ int StartStream(StreamEnv_t* pConfig)
 	printf("Videocodecres 	: %d\n", pConfig -> nVideocodecres);
 	printf("streamtype 	: %d\n", pConfig -> nStreamType);
 #endif
+    printf("DEMOCFG Value	: %d\n", pConfig -> nDemoCfg);
+	printf("Videocodecmode	: %d\n", pConfig -> nVideocodecmode);
+	printf("Videocodecres 	: %d\n", pConfig -> nVideocodecres);
+	printf("streamtype 	: %d\n", pConfig -> nStreamType);
 
 	switch (pConfig -> nVideocodecmode) {
 		case CODEC_COMB_TRIPLE_MPEG4:

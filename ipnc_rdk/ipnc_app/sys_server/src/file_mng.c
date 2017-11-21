@@ -54,11 +54,12 @@ static DmvaLogData_t* gDmvaLogHead = NULL;
 
 static SysInfo SysInfoDefault =
 {
-	REL_UNIQUE_ID,
-	1,
-	1,
-	ACOUNT_DEFAULT,
-	DEVICE_TYPE_DEFAULT,
+	REL_UNIQUE_ID, /* relUniqueId */
+	1, /* nprofile */
+	1, /* nrelays */
+	ACOUNT_DEFAULT, /* acounts[ACOUNT_NUM] */
+	DEVICE_TYPE_DEFAULT, /* DeviceType */
+    /* motion_config */
   	{
 		MOTIONENABLE_DEFAULT,
 		MOTIONCENABLE_DEFAULT,
@@ -240,6 +241,7 @@ static SysInfo SysInfoDefault =
 			},
 		},
 	},
+    /* stream_config */
 	{
 		{
 			1920,
@@ -263,6 +265,7 @@ static SysInfo SysInfoDefault =
 			"mjpeg"
 		},
 	},
+    /* advanceMode */
 	{
 		VS_DEFAULT,
 		LDC_DEFAULT,
@@ -272,6 +275,7 @@ static SysInfo SysInfoDefault =
 		DYNRANGE_DEF,
 		DYNRANGE_STRENGTH
 	},
+    /* ftp_config */
 	{
 		FTP_SERVER_IP_DEFAULT,
 		FTP_USERNAME_DEFAULT,
@@ -283,6 +287,7 @@ static SysInfo SysInfoDefault =
         RFTPENABLE_DEFAULT,
 	    FTPFILEFORMAT_DEFAULT
 	},
+    /* smtp_config */
 	{
 		SMTP_SERVER_IP_DEFAULT,
 		SMTP_SERVER_PORT_DEFAULT,
@@ -299,11 +304,13 @@ static SysInfo SysInfoDefault =
 		ASMTPATTACH_DEFAULT,
 		ATTFILEFORMAT_DEFAULT
 	},
+    /* sdcard_config */
 	{
 		SDFILEFORMAT_DEFAULT,
 		SDRENABLE_DEFAULT,
 		SD_INSERT_DEFAULT
     },
+    /* lan_config */
 	{
 		TITLE_DEFAULT,
 		HOST_DEFAULT,
@@ -386,9 +393,9 @@ static SysInfo SysInfoDefault =
 		0,
 		0,
 		0,
-		H264_CODEC,
-		H264_CODEC,
-		H264_CODEC,
+		H264_CODEC, /* codectype1 */
+		H264_CODEC, /* codectype2 */
+		H264_CODEC, /* codectype3 */
      	0,
      	0,
      	POWER_MODE_DEF,
@@ -400,6 +407,7 @@ static SysInfo SysInfoDefault =
      	MAX_FRAMERATE_DEFAULT,
      	MAX_FRAMERATE_DEFAULT,
      	DUMMY_DEF,
+        /* net */
 		{
 			{IP_DEFAULT},
 			{NETMASK_DEFAULT},
