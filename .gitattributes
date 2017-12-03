@@ -1,0 +1,2 @@
+ti_tools/xdctools_3_25_05_94/packages/ti/platforms/sim6xxx/Linux/kelvin filter=lfs diff=lfs merge=lfs -text
+ti_tools/linux_devkit/arm-arago-linux-gnueabi/usr/lib/libc.a filter=lfs diff=lfs merge=lfs -text

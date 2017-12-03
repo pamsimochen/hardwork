@@ -898,8 +898,6 @@ int SystemInit()
     printf("pSysInfo->lan_config.nStreamType = %d\n", pSysInfo->lan_config.nStreamType);
     printf("pSysInfo->lan_config.nVideocodecmode = %d\n",pSysInfo->lan_config.nVideocodecmode);
     printf("~~~~~~~~~~~~~~~~~~~~~~\n\n");
-
-
 	tConfig.nDayNight = pSysInfo->lan_config.nDayNight;
 	tConfig.nWhiteBalance = pSysInfo->lan_config.nWhiteBalance;
 	tConfig.nBackLight = pSysInfo->lan_config.nBackLight;
@@ -937,7 +935,6 @@ int SystemInit()
 	tConfig.vsEnable = pSysInfo->advanceMode.vsEnable;
 	tConfig.ldcEnable = pSysInfo->advanceMode.ldcEnable;
 	tConfig.vnfEnable = pSysInfo->advanceMode.vnfEnable;
-	//tConfig.vnfEnable = 0;
 	tConfig.vnfMode = pSysInfo->advanceMode.vnfMode;
 	tConfig.vnfStrength = pSysInfo->advanceMode.vnfStrength;
 	tConfig.dynRange = pSysInfo->advanceMode.dynRange;
@@ -962,6 +959,7 @@ int SystemInit()
         tConfig.MPEG4_PORTNUM_1 = pSysInfo->RtspServerPort.rtspServerPort_H264_MPEG4_MJPEG[2];
         tConfig.MPEG4_PORTNUM_2 = pSysInfo->RtspServerPort.rtspServerPort_H264_MPEG4_MJPEG[3];
         tConfig.MJPEG_PORTNUM_1 = pSysInfo->RtspServerPort.rtspServerPort_H264_MPEG4_MJPEG[4];
+
 
     printf("~~~~~~~~~~~~~~~~~~~~~~\n");
     printf("tConfig.vnfEnable = %d\n", tConfig.vnfEnable);

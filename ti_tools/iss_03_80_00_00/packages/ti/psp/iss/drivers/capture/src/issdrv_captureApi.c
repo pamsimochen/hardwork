@@ -1536,7 +1536,8 @@ Fdrv_Handle Iss_captCreate(UInt32 drvId,
 	gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT13;
 	isif_reg->CLDCOFST = 0;
 #else
-    gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT11;
+    //gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT11;//original
+    gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT15;
 #endif
     gIss_captCommonObj.pIssConfig->ptBsc = &(gIss_captCommonObj.pModuleInstance->tBscCfg);
     gIss_captCommonObj.pIssConfig->ptLsc2D->nHDirDataOffset = 16;
@@ -2840,6 +2841,8 @@ Int32 Iss_captStart(Fdrv_Handle handle)
 #if defined(IMGS_OMNIVISION_OV10630) || defined(IMGS_OMNIVISION_OV2710)
     isif_reg->SYNCEN = 0x3;
 #endif
+    //add by pamsimochen
+    isif_reg->SYNCEN = 0x3;
 
     pObj->state = ISS_CAPT_STATE_RUNNING;
     /*
@@ -4554,7 +4557,8 @@ Int32 Iss_captResetAndRestart(Iss_CaptOverFlowStatus * overFlowStatus)
 		gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT13;
 		isif_reg->CLDCOFST = 0;
 #else
-    gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT11;
+    //gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT11;//original
+    gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT15;
 #endif	
 
     gIss_captCommonObj.pIssConfig->ptBsc = &(gIss_captCommonObj.pModuleInstance->tBscCfg);
@@ -5563,6 +5567,8 @@ Int32 Issdrv_getIsifConfig(Iss_IspIsifCfg *isifCfg)
 #else
     isifCfg->msbBitPos = ISS_ISIF_BAYER_MSB_POS_BIT11;
 #endif	
+    //add by pamsimochen
+    isifCfg->msbBitPos = ISS_ISIF_BAYER_MSB_POS_BIT15;
 
     return (status);
 }
@@ -5580,9 +5586,6 @@ Int32 Issdrv_setIsifConfig(Iss_IspIsifCfg *isifCfg)
     pObj = &gIss_captCommonObj.captureObj[0];
 
     isifSrcCfg.sync_enable = ISIF_HD_VD_DISABLE;
-    Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    Vps_printf("pObj->inFmt.dataFormat = %d, pObj->createArgs.videoIfMode = %d\n", pObj->inFmt.dataFormat, pObj->createArgs.videoIfMode);
-    Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
     if ((pObj->inFmt.dataFormat == FVID2_DF_BAYER_RAW) ||
         (pObj->inFmt.dataFormat == FVID2_DF_RAW))
@@ -5596,9 +5599,6 @@ Int32 Issdrv_setIsifConfig(Iss_IspIsifCfg *isifCfg)
         else
             isifSrcCfg.ip_pix_fmt = ISIF_DATA_INPUT_MODE_YUV16;
     }
-    Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    Vps_printf("%s|%d|: isifSrcCfg.ip_pix_fmt = %d\n", __FILE__, __LINE__,  isifSrcCfg.ip_pix_fmt);
-    Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
    
     isifSrcCfg.data_polarity = ISIF_DATA_NORMAL;
@@ -5625,7 +5625,8 @@ Int32 Issdrv_setIsifConfig(Iss_IspIsifCfg *isifCfg)
     isifSrcCfg.vd_width = isifCfg->vdWidth;
     isifSrcCfg.ppln_hs_interval = isifCfg->width;
     isifSrcCfg.lpfr_vs_interval = isifCfg->height;
-    isifSrcCfg.yc_in_swap = ISIF_YCINSWAP_DISABLE;
+    //isifSrcCfg.yc_in_swap = ISIF_YCINSWAP_DISABLE; //original
+    isifSrcCfg.yc_in_swap = ISIF_YCINSWAP_ENABLE;
     isifSrcCfg.msb_inverse_cin = ISIF_MSB_INVERSE_CIN_DISABLE;
     isifSrcCfg.ip_data_msb_pos = (ISIF_GAIN_MSB_POS) isifCfg->msbBitPos;
 
@@ -6246,6 +6247,13 @@ Void IssCdrv_setIpipeCfg()
 	gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT13;
 	isif_reg->CLDCOFST = 0;
 #endif	
+    //add by pamsimochen
+    gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT15;
+    ipipeif_reg->CFG2 = 0x0E;
+    ipipe_reg->SRC_FMT = 0x03;
+    ipipe_reg->SRC_HPS = 192;
+    ipipe_reg->SRC_VPS = 41;
+    //add end
 
 }
 

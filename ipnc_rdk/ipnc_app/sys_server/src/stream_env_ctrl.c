@@ -203,6 +203,8 @@ int StartStream(StreamEnv_t* pConfig)
 	}
 	fSetVnfValue(pConfig -> vnfEnable);
 
+    printf("pConfig->powerMode= %d\n", pConfig->powerMode);
+
 	if(pConfig -> powerMode == 1)
 	{
 		if(pConfig -> vnfMode>2)

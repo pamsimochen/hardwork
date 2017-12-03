@@ -220,7 +220,7 @@ Int32 CameraLink_drvCreateSensor(CameraLink_Obj * pObj, UInt16 instId)
         Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         Vps_printf("Iss_platformSelectSensor()\n");
         Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-        status = Iss_platformSelectSensor(pInstPrm->videoDecoderId, pInstPrm->vipInstId);
+   //     status = Iss_platformSelectSensor(pInstPrm->videoDecoderId, pInstPrm->vipInstId);
     }
 
     pInst->sensorVideoModeArgs.videoIfMode = pVipCreateArgs->videoIfMode;
@@ -475,13 +475,6 @@ Int32 CameraLink_drvCreateInst(CameraLink_Obj * pObj, UInt16 instId)
 #endif
     pVipCreateArgs->inFmt.dataFormat = pInstPrm->inDataFormat;
     pVipCreateArgs->videoIfMode = ISS_CAPT_YUV_16BIT;
-    Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    Vps_printf("pInstPrm->inDataFormat = %d, pVipCreateArgs->inFmt.dataFormat = %d\n", pInstPrm->inDataFormat, pVipCreateArgs->inFmt.dataFormat);
-    Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-    Vps_printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    Vps_printf("pVipCreateArgs->videoIfMode= %d\n", pVipCreateArgs->videoIfMode);
-    Vps_printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-
 
     inScanFormat = FVID2_SF_PROGRESSIVE;
     if (instId == 0)

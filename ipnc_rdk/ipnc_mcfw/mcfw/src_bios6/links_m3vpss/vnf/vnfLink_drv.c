@@ -75,6 +75,9 @@ static Int32 VnfLink_drvInitCh(VnfLink_Obj * pObj)
         VnfChObj->nextFid = FVID2_FID_TOP;
         VnfChObj->disable = FALSE;
 
+        Vps_printf("%s|%d: pObj->createArgs.enable[%d] = %d\n", __FILE__, __LINE__, chId, pObj->createArgs.enable[chId]);
+        Vps_printf("%s|%d: inChInfo->dataFormat = %d\n", __FILE__, __LINE__, inChInfo->dataFormat);
+
 		if(pObj->createArgs.enable[chId] == 0)
 		{
 			/*

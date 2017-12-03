@@ -1,0 +1,16 @@
+在昨天黄守伟修改的基础上(因为我加了些打印还没有取消，所以我们行数可能有些不一样的地方，我就没有描述行数)
+
+1.并没有修改multich_tristream_fullfeature.c里面的内容，格式保留为SYSTEM_DF_YUV422SP_UV;
+
+2.将黄守伟修改的\Source\ipnc_rdk\ipnc_mcfw\mcfw\src_bios6\links_m3vpss\camera\cameraLink_drv.c
+line 471： pVipCreateArgs->inFmt.dataFormat = FVID2_DF_YUV422I_UYVY; 修改为pVipCreateArgs->inFmt.dataFormat = pInstPrm->inDataFormat;也就是等于第1点中提到的修改的那个变量值。
+
+3.issdrv_captureApi.c: Issdrv_getIsifConfig(): 最后添加：
+	isifCfg->msbBitPos = ISS_ISIF_BAYER_MSB_POS_BIT15; //不过这个改不改貌似不太影响，因为这个是设置bayer的，姑且还是改了吧
+
+4.issdrv_captureApi.c: IssCdrv_setIpipeCfg(): 最后添加：
+	ipipeif_reg->CFG2 = 0x0E;
+	ipipe_reg->SRC_FMT = 0x03;
+
+4.issdrv_captureApi.c: IssCdrv_setIpipeCfg():
+	变量isifSrcCfg.yc_in_swap = ISIF_YCINSWAP_DISABLE 修改为 ISIF_YCINSWAP_ENABLE

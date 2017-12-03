@@ -1,0 +1,579 @@
+root@DM385_ACS2521-IP:/mnt/nand/nfs/opt/ipnc# ./system_server &
+root@DM385_ACS2521-IP:/mnt/nand/nfs/opt/ipnc# Creat queue id:0
+queue id:0
+FileMngThread created
+Creat queue id:32769
+queue id:32769
+AlramThread created
+Share memory init success
+IPNC_3.80.00 (pamsimochen@pamsimochen-VirtualBox) (gcc version 4.5.3 201 
+Creat queue id:65538
+queue id:65538
+Creat queue id:98307
+queue id:98307
+queue id:32769
+
+ [host] Attached to slave procId 0.
+ [c6xdsp ] Remote Debug Shared Memory @ 0xbff00000
+ [m3video] Remote Debug Shared Memory @ 0xbff05020
+ [m3vpss ] Remote Debug Shared Memory @ 0xbff0a040
+
+ [host] Loaded file ./firmware/ipnc_rdk_fw_m3video.xem3 on slave procId 0.
+
+ [host] Started slave procId 0.
+
+ [host] After Ipc_loadcallback status [0x00000000]
+
+ [host] Attached to slave procId 1.
+ [m3video] ***** SYSTEM  : Frequency <ORG> - 200000000, <NEW> - 200000000
+ [m3video]  
+ [m3video]  *** UTILS: CPU KHz = 400000 Khz ***
+ [m3video]  
+ [m3video]  104: SYSTEM  : System Common Init in progress !!!
+ [m3video]  112: SYSTEM: IPC init in progress !!!
+ [m3video]  119: SYSTEM: Attaching to [HOST] ... 
+ [m3video]  177: SYSTEM: Attaching to [HOST] ... 
+ [m3video]  230: SYSTEM: Attaching to [HOST] ... SUCCESS !!!
+
+ [host] After Ipc_startcallback status [0x00000000]
+ [m3video]  243: SYSTEM: Attaching to [VPSS-M3] ... 
+
+ [host] Loaded file ./firmware/ipnc_rdk_fw_m3vpss.xem3 on slave procId 1.
+
+ [host] Started slave procId 1.
+
+ [host] After Ipc_loadcallback status [0x00000000]
+ [m3video]  300: SYSTEM: Attaching to [VPSS-M3] ... 
+ [m3video]  355: SYSTEM: Attaching to [VPSS-M3] ... 
+ [m3video]  409: SYSTEM: Attaching to [VPSS-M3] ... 
+ [m3vpss ] ***** SYSTEM  : Frequency <ORG> - 200000000, <NEW> - 200000000
+ [m3vpss ] notify_attach  rtnVal  0
+ [m3video]  459: SYSTEM: Attaching to [VPSS-M3] ... 
+ [m3vpss ] initProxyServer  rtnVal  0
+ [m3vpss ]  
+ [m3vpss ]  *** UTILS: CPU KHz = 400000 Khz ***
+ [m3vpss ]  
+ [m3vpss ]  435: SYSTEM  : System Common Init in progress !!!
+ [m3vpss ]  435: SYSTEM: IPC init in progress !!!
+ [m3vpss ]  435: SYSTEM: Attaching to [HOST] ... 
+ [m3vpss ]  485: SYSTEM: Attaching to [HOST] ... 
+
+ [host] After Ipc_startcallback status [0x00000000]
+ [m3vpss ]  496: SYSTEM: Attaching to [HOST] ... SUCCESS !!!
+ [m3vpss ]  496: SYSTEM: Attaching to [VIDEO-M3] ... 
+ [m3video]  509: SYSTEM: Attaching to [VPSS-M3] ... 
+ [m3video]  547: SYSTEM: Attaching to [VPSS-M3] ... SUCCESS !!!
+ [m3vpss ]  546: SYSTEM: Attaching to [VIDEO-M3] ... 
+ [m3video]  547: SYSTEM: Opening MsgQ Heap [IPC_MSGQ_MSG_HEAP] ...
+ [m3vpss ]  547: SYSTEM: Attaching to [VIDEO-M3] ... SUCCESS !!!
+ [m3vpss ]  547: SYSTEM: Creating MsgQ Heap [IPC_MSGQ_MSG_HEAP] ...
+ [m3vpss ]  547: SYSTEM: Creating MsgQ [VPSS-M3_MSGQ] ...
+ [m3vpss ]  548: SYSTEM: Creating MsgQ [VPSS-M3_ACK_MSGQ] ...
+ [m3vpss ]  550: SYSTEM: Notify register to [HOST] line 0, event 12 ... 
+ [m3vpss ]  550: SYSTEM: Notify register to [VIDEO-M3] line 0, event 12 ... 
+ [m3vpss ]  550: SYSTEM: IPC init DONE !!!
+ [m3vpss ]  561: MEM: Shared Region 2: Base = 0xb8000000, Length = 0x06900000 (105 MB) 
+ [m3vpss ]  562: MEM: Shared Region 1: Base = 0x89000000, Length = 0x03b00000 (59 MB) 
+ [m3vpss ]  564: SYSTEM  : System Common Init Done !!!
+ [m3vpss ] Received character 's'
+ [c6xdsp ] Remote Debug Shared Memory @ 0xbff00000
+ [m3video] Remote Debug Shared Memory @ 0xbff05020
+ [m3vpss ] Remote Debug Shared Memory @ 0xbff0a040
+ [m3video]  647: SYSTEM: Opening MsgQ Heap [IPC_MSGQ_MSG_HEAP] ...
+ [m3video]  648: SYSTEM: Creating MsgQ [VIDEO-M3_MSGQ] ...
+ [m3video]  648: SYSTEM: Creating MsgQ [VIDEO-M3_ACK_MSGQ] ...
+ [m3video]  650: SYSTEM: Notify register to [HOST] line 0, event 12 ... 
+ [m3video]  650: SYSTEM: Notify register to [VPSS-M3] line 0, event 12 ... 
+ [m3video]  650: SYSTEM: IPC init DONE !!!
+ [m3video]  661: MEM: Shared Region 2: Base = 0xb8000000, Length = 0x06900000 (105 MB) 
+ [m3video]  661: MEM: Shared Region 1: Base = 0x89000000, Length = 0x03b00000 (59 MB) 
+ [m3video]  663: SYSTEM  : System Common Init Done !!!
+ [m3video] Received character 's'
+queue id:65538
+Creat queue id:131076
+queue id:131076
+
+~~~~~~~~~~~~~~~~~~~~~~
+pSysInfo->lan_config.nStreamType = 2
+pSysInfo->lan_config.nVideocodecmode = 8
+~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~
+tConfig.vnfEnable = 0
+tConfig.vnfMode= 5
+~~~~~~~~~~~~~~~~~~~~~~
+
+CPU is TI812x
+~~~~~~~~~~~~~~~~~~~~~~
+pConfig->nDemoCfg = 0
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+cmdopt =  
+~~~~~~~~~~~~~~~~~~~~~~
+
+*****************************************************************
+
+    IPNC BUILD VERSION: IPNC RDK VERSION 03.80.00.05 (FULL FEATURE)
+
+*****************************************************************
+
+pConfig->vsEnable = 0, pConfig->ldcEnable = 0, pConfig->vnfEnable = 0
+
+~~~~~~~~~~~~~~~~~~~~~~
+pConfig->powerMode = 1
+~~~~~~~~~~~~~~~~~~~~~~
+
+pConfig->powerMode= 1
+pConfig->nStreamType = 2
+pConfig -> nVideocodecmode = 8
+
+~~~~~~~~~~~~~~~~~~~~~~
+cmdopt =   VNF_QUALITY TRISTREAM TRIPLE_H264
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~
+pConfig -> nAEWswitch = 2
+~~~~~~~~~~~~~~~~~~~~~~
+
+DEMOCFG Value   : 0
+Videocodecmode  : 8
+Videocodecres   : 0
+streamtype      : 2
+DEMOCFG Value   : 0
+Videocodecmode  : 8
+Videocodecres   : 0
+streamtype      : 2
+
+ vsenable : 0
+./bin/ipnc_rdk_mcfw.out   VNF_QUALITY TRISTREAM TRIPLE_H264 TI2A AEWB 1080P_D1 H264 HIGH_SPEED1 H264 HIGH_SPEED2 MJPEG 80 &
+Creat queue id:163845
+queue id:163845
+queue id:65538
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (ti_mcfw_ipnc_main.c|main()|782): snesorId = 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (ti_mcfw_ipnc_main.c|App_loadDemo()|111): else TEARDONW_LOAD_UNLOAD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ApproDrvInit: 7
+queue id:163845
+ [c6xdsp ] Remote Debug Shared Memory @ 0xbff00000
+ [m3video] Remote Debug Shared Memory @ 0xbff05020
+ [m3vpss ] Remote Debug Shared Memory @ 0xbff0a040
+ [c6xdsp ] Remote Debug Shared Memory @ 0xbff00000
+ [m3video] Remote Debug Shared Memory @ 0xbff05020
+ [m3vpss ] Remote Debug Shared Memory @ 0xbff0a040
+ [m3video]  863: SYSTEM  : System Video Init in progress !!!
+ [m3vpss ]  863: SYSTEM  : System VPSS Init in progress !!!
+ [m3video]  864: SYSTEM: Creating ListMP [VIDEO-M3_IPC_OUT_0] in region 0 ...
+ [m3video]  864: SYSTEM: Creating ListMP [VIDEO-M3_IPC_IN_0] in region 0 ...
+ [m3video]  864: SYSTEM: ListElem Shared Addr = 0xbe984180
+ [m3video]  867: SYSTEM: Creating ListMP [VIDEO-M3_IPC_OUT_1] in region 0 ...
+ [m3video]  867: SYSTEM: Creating ListMP [VIDEO-M3_IPC_IN_1] in region 0 ...
+ [m3video]  868: SYSTEM: ListElem Shared Addr = 0xbe987680
+ [m3video]  877: SYSTEM: Creating ListMP [VIDEO-M3_IPC_OUT_29] in region 0 ...
+ [m3vpss ] === I2C0/2 Clk is active ===
+ [m3video]  878: SYSTEM: Creating ListMP [VIDEO-M3_IPC_IN_29] in region 0 ...
+ [m3vpss ] PLATFORM: UNKNOWN CPU detected, defaulting to VPS_PLATFORM_CPU_REV_1_0
+ [m3video]  878: SYSTEM: ListElem Shared Addr = 0xbe98ab80
+ [m3vpss ]  PLATFORM: UNKNOWN CPU detected, defaulting to ISS_PLATFORM_CPU_REV_2_1
+ [m3video]  880: SYSTEM: Creating ListMP [VIDEO-M3_IPC_OUT_30] in region 0 ...
+ [m3vpss ]  883: SYSTEM: Creating ListMP [VPSS-M3_IPC_OUT_0] in region 0 ...
+ [m3video]  881: SYSTEM: Creating ListMP [VIDEO-M3_IPC_IN_30] in region 0 ...
+ [m3vpss ]  883: SYSTEM: Creating ListMP [VPSS-M3_IPC_IN_0] in region 0 ...
+ [m3video]  881: SYSTEM: ListElem Shared Addr = 0xbe9a4800
+ [m3vpss ]  884: SYSTEM: ListElem Shared Addr = 0xbe9be480
+ [m3video]  883: HDVICP: Doing PRCM for IVAHD[0] ... 
+ [m3video]  883: HDVICP: PRCM for IVAHD[0] ... DONE.
+ [m3video]  884: SYSTEM  : Initializing Links !!! 
+ [c6xdsp ] Remote Debug Shared Memory @ 0xbff00000
+ [m3video] Remote Debug Shared Memory @ 0xbff05020
+ [m3vpss ] Remote Debug Shared Memory @ 0xbff0a040
+ [m3video]  884: SYSTEM  : FREE SPACE : System Heap      = 2088976 B, Mbx = 10240 msgs) 
+ [m3vpss ]  886: SYSTEM: Creating ListMP [VPSS-M3_IPC_OUT_1] in region 0 ...
+ [m3vpss ]  887: SYSTEM: Creating ListMP [VPSS-M3_IPC_IN_1] in region 0 ...
+ [m3video]  885: SYSTEM  : FREE SPACE : SR0 Heap         = 15985792 B (15 MB) 
+ [m3vpss ]  888: SYSTEM: ListElem Shared Addr = 0xbe9c1980
+ [m3video]  885: SYSTEM  : FREE SPACE : Frame Buffer     = 110100352 B (104 MB) 
+ [m3vpss ]  903: SYSTEM: Creating ListMP [VPSS-M3_IPC_OUT_24] in region 0 ...
+ [m3vpss ]  903: SYSTEM: Creating ListMP [VPSS-M3_IPC_IN_24] in region 0 ...
+ [m3video]  886: SYSTEM  : FREE SPACE : Bitstream Buffer = 61865856 B (58 MB) 
+ [m3vpss ]  904: SYSTEM: ListElem Shared Addr = 0xbe9c4e80
+ [m3vpss ]  907: SYSTEM: Creating ListMP [VPSS-M3_IPC_OUT_25] in region 0 ...
+ [m3video]  886: SYSTEM: Opening MsgQ [VPSS-M3_MSGQ] ...
+ [m3vpss ]  908: SYSTEM: Creating ListMP [VPSS-M3_IPC_IN_25] in region 0 ...
+ [m3video]  887: SYSTEM  : FREE SPACE : Tiler Buffer     = 128 B (0 MB)  - TILER OFF 
+ [m3vpss ]  908: SYSTEM: ListElem Shared Addr = 0xbe9e4880
+ [m3vpss ]  911: SYSTEM: Creating ListMP [VPSS-M3_IPC_OUT_26] in region 0 ...
+ [m3video] Entered the MctnfLink_init() 
+ [m3vpss ]  912: SYSTEM: Creating ListMP [VPSS-M3_IPC_IN_26] in region 0 ...
+ [m3vpss ]  912: SYSTEM: ListElem Shared Addr = 0xbea04280
+ [m3vpss ]  919: SYSTEM: Creating ListMP [VPSS-M3_IPC_OUT_29] in region 0 ...
+ [m3vpss ]  920: SYSTEM: Creating ListMP [VPSS-M3_IPC_IN_29] in region 0 ...
+ [m3vpss ]  921: SYSTEM: ListElem Shared Addr = 0xbea23c80
+ [m3vpss ]  924: SYSTEM: Creating ListMP [VPSS-M3_IPC_OUT_30] in region 0 ...
+ [m3vpss ]  924: SYSTEM: Creating ListMP [VPSS-M3_IPC_IN_30] in region 0 ...
+ [m3vpss ] Received character 't'
+ [m3video]  949: SYSTEM  : Initializing Links ... DONE !!! 
+ [m3vpss ]  925: SYSTEM: ListElem Shared Addr = 0xbea3d900
+ [m3vpss ]  927: SYSTEM : HDVPSS Drivers Version: HDVPSS_01_00_01_37
+ [m3video]  949: SYSTEM  : System Video Init Done !!!
+ [m3vpss ]  927: SYSTEM  : FVID2 Init in progress !!!
+ [m3vpss ]  998: SYSTEM  : FVID2 Init in progress DONE !!!
+ [m3vpss ]  998: SYSTEM  : Device Init in progress !!!
+ [m3vpss ]  Iss_init called !!!!!! 
+ [m3vpss ]  CPIS_init DONE !!!!!! 
+ [m3vpss ] initPrms.isI2cInitReq = 1
+ [c6xdsp ] Remote Debug Shared Memory @ 0xbff00000
+ [m3video] Remote Debug Shared MemorHDMI W1 rev 4.0
+y @ 0xbff05020
+HDMI CEC Spec version 1.2
+ [m3vpss ] Remote Debug Shared Memory @ 0xbff0a040
+ [m3video] Received character 't'
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (ti_mcfw_ipnc_main.c|App_loadDemo()|131): ifdef IPNC_DSS_ON
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] initPrms.isI2cInitReq = 0
+ [m3vpss ]  1122: SYSTEM  : Device Init in progress DONE !!!
+ [m3vpss ]  1168: SYSTEM  : System VPSS Init Done !!!
+ [m3vpss ]  1168: UTILS: DMA: HWI Create for INT62 !!!
+ [m3vpss ]  1168: SYSTEM  : Initializing Links !!! 
+ [m3vpss ]  1169: SYSTEM  : FREE SPACE : System Heap      = 1682704 B, Mbx = 10240 msgs) 
+ [m3vpss ]  1169: SYSTEM  : FREE SPACE : SR0 Heap         = 15372416 B (14 MB) 
+ [m3vpss ]  1169: SYSTEM  : FREE SPACE : Frame Buffer     = 105790336 B (100 MB) 
+ [m3vpss ]  1170: SYSTEM  : FREE SPACE : Bitstream Buffer = 61865856 B (58 MB) 
+ [m3vpss ]  1170: SYSTEM  : FREE SPACE : Tiler Buffer     = 128 B (0 MB)  - TILER OFF 
+DMA: Module install successful, device major num = 246 
+DRV: Module install successful
+DRV: Module built on Nov 26 2017 21:40:06 
+ [m3vpss ]  1301: SYSTEM  : Initializing Links ... DONE !!! 
+I2C No Ack
+
+HDMI failed to read E-EDID
+
+ [host]  
+
+ [host]  ORG 0x46c00524: 0
+
+ [host]  NEW 0x46c00524: 2
+
+ [host]  
+/n/n
+ [host] Application Start Completed
+
+ [host] 
+======================App_runDemo start======================
+
+ [host]  0: SYSTEM: System Common Init in progress !!!
+
+ [host]  0: SYSTEM: IPC init in progress !!!
+
+ [host]  7: SYSTEM: CPU [DSP] is NOT available on this platform !!!
+
+ [host]  7: SYSTEM: CPU [VIDEO-M3] syslink proc ID is [0] !!!
+
+ [host]  7: SYSTEM: CPU [VPSS-M3] syslink proDMA: ChannelID allocated:4
+DMA: ChannelID allocated:5
+
+
+ [host]  7: SYSTEM: CPU [HOST] syslink proc ID is [2] !!!
+
+ [host]  7: SYSTEM: Opening MsgQ Heap [IPC_MSGQ_MSG_HEAP] ...
+
+ [host]  8: SYSTEM: Creating MsgQ [HOST_MSGQ] ...
+
+ [host]  9: SYSTEM: Creating MsgQ [HOST_ACK_MSGQ] ...
+
+ [host]  10: SYSTEM: Opening MsgQ [VIDEO-M3_MSGQ] ...
+
+ [host]  11: SYSTEM: Opening MsgQ [VPSS-M3_MSGQ] ...
+
+ [host]  11: SYSTEM: Notify register to [VIDEO-M3] line 0, event 12 ... 
+
+ [host]  12: SYSTEM: Notify register to [VPSS-M3] line 0, event 12 ... 
+
+ [host]  12: SYSTEM: IPC init DONE !!!
+
+ [host]  13: SYSTEM: Creating ListMP [HOST_IPC_OUT_29] in region 0 ...
+
+ [host]  15: SYSTEM: Creating ListMP [HOST_IPC_IN_29] in region 0 ...
+
+ [host]  15: SYSTEM: ListElem Shared Addr = 0x40ce9580
+
+ [host]  16: SYSTEM: Creating ListMP [HOST_IPC_OUT_30] in region 0 ...
+
+ [host]  17: SYSTEM: Creating ListMP [HOST_IPC_IN_30] in region 0 ...
+
+ [host]  18: SYSTEM: ListElem Shared Addr = 0x40d03200
+
+ [host]  20: SYSTEM: Creating ListMP [HOST_IPC_OUT_24] in region 0 ...
+
+ [host]  21: SYSTEM: Creating ListMP [HOST_IPC_IN_24] in region 0 ...
+
+ [host]  22: SYSTEM: ListElem Shared Addr = 0x40d1ce80
+
+ [host]  22: SYSTEM: Creating ListMP [HOST_IPC_OUT_25] in region 0 ...
+
+ [host]  24: SYSTEM: Creating ListMP [HOST_IPC_IN_25] in region 0 ...
+
+ [host]  25: SYSTEM: ListElem Shared Addr = 0x40d3c880
+
+ [host]  25: SYSTEM: Creating ListMP [HOST_IPC_OUT_26] in region 0 ...
+
+ [host]  27: SYSTEM: Creating ListMP [HOST_IPC_IN_26] in region 0 ...
+
+ [host]  28: SYSTEM: ListElem Shared Addr = 0x40d5c280
+
+ [host]  28: SYSTEM: System Common Init Done !!!
+
+ [host] Vsys_allocBuf - addr = 0x4c660000,size = 65011712
+##########pInfo->totalsize 63897600
+
+ [host] MemMng_memcpy_open:OSA_dmaOpen passed with ch id = 4
+
+ [host] CacheMng_MemCpy_open:OSA_dmaOpen passed with ch id = 5
+
+ [host] MCFW_IPCFRAMES:App_ipcFramesSendRecvFxn:Entered...
+ [host] Vsys_allocBuf - addr = 0x400a5000,size = 27661
+
+ [host] DCC buffer allocated for size 27661
+
+ [host] DCC Default File Intialization Done
+
+ [host] Before System_linkControl SYSTEM_M3VPSS_CMD_GET_DISPLAYCTRL_INIT
+ [m3vpss ] tiedVencs VPS_DC_VENC_HDMI | VPS_DC_VENC_HDCOMP
+
+ [host] ********** FULL FEATURE USECASE ********
+
+ [host] ********* Entered Tri Streaming usecase - H264 1080p @60fps + H264 D1 @30fps + MJPEG 1080p @5fps ********
+
+
+ [host]  95: MCFW  : CPU Revision [ES1.0] !!! 
+
+ [host]  95: MCFW  : Detected [4x TVP5158 VS] Board !!! 
+
+ [host]  95: MCFW  : Base Board Revision [REV A] !!! 
+
+ [host]  95: MCFW  : Daughter Card Revision [REV A] !!! 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|461): cameraPrm.tilerEnable = 0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|465): cameraPrm.vsEnable = 0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|472): pCameraInstPrm->inDataFormat = 0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|486): gUI_mcfw_config.noisefilterMode = 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|496): pCameraInstPrm->standard = 16
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|514): pCameraOutPrm->dataFormat = 7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|1326): Before System_linkCreate cameraId
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] VPS_DCTRL_INST_0
+ [m3vpss ] IOCTL_VPS_DCTRL_SET_VENC_OUTPUT SYSTEM_DC_VENC_DVO2
+ [m3vpss ] IOCTL_VPS_DCTRL_SET_VENC_OUTPUT SYSTEM_DC_VENC_HDMI
+ [m3vpss ] IOCTL_VPS_DCTRL_SET_VENC_OUTPUT SYSTEM_DC_VENC_SD
+ [m3vpss ] IOCTL_VPS_DCTRL_SET_VENC_OUTPUT SYSTEM_DC_VENC_HDCOMP
+ [m3vpss ] IOCTL_VPS_DCTRL_SET_VENC_CLK_SRC VPS_DC_VENC_HDMI | VPS_DC_VENC_HDCOMP
+ [m3vpss ] HDCOMPCLK
+ [m3vpss ]  2539: CAMERA: Create in progress !!!
+ [m3vpss ]  Channel Num Stream 0 Ch 0 ChannelNum 0
+ [m3vpss ]  Channel Num Stream 1 Ch 0 ChannelNum 1
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] links_m3vpss/camera/cameraLink_drv.c|479|: pInstPrm->inDataFormat = 0, pVipCreateArgs->inFmt.dataFormat = 0
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] links_m3vpss/camera/cameraLink_drv.c|482|: pVipCreateArgs->videoIfMode= 1
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] links_m3vpss/camera/cameraLink_drv.c|499|: pVipCreateArgs->vsEnable = 0
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] links_m3vpss/camera/cameraLink_drv.c|502|: pVipCreateArgs->vsDemoEnalbe = 0
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] links_m3vpss/camera/cameraLink_drv.c|505|: pVipCreateArgs->glbcEnable = 1
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ]  2544: CAMERA: VIP0 PortA camera mode is [16-bit, Non-mux Embedded Sync] !!! 
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] Iss_platformSelectSensor()
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ]  I2C: timed out in wait_for_bb: I2C_IRQSTATUS=1000 !!!
+ [m3vpss ]  7545: CAMERA: VIP 0: VID DEC 268436738 (0x10): 0002:20202020:20202020, AUD_STATUS 538976288
+ [m3vpss ] Iss_captCreate:1661
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] pObj->inFmt.dataFormat = 0, pObj->createArgs.videoIfMode = 1
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] drivers/capture/src/issdrv_captureApi.c|5600|: isifSrcCfg.ip_pix_fmt = 1
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|1329): After System_linkCreate cameraId
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] pObj->inFmt.dataFormat = 0, pObj->createArgs.videoIfMode = 1
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ] drivers/capture/src/issdrv_captureApi.c|5600|: isifSrcCfg.ip_pix_fmt = 1
+ [m3vpss ] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ]  7764: CAMERA: Create Done !!!
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[VI DEBUG]] (multich_tristream_fullfeature.c|MultiCh_createTriStreamFullFtr()|1332): After System_linkControl cameraId
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ [m3vpss ]  7854: CAMERA: Detect video in progress !!!
+ [m3vpss ]  7854: CAMERA: Detect video Done !!!
+ [m3vpss ]  8295: DUP   : Create Done !!!
+ [m3vpss ]  7862: VNF: 
+ [m3vpss ] Create in progress ... !!!
+ [m3vpss ] links_m3vpss/vnf/vnfLink_drv.c|78: pObj->createArgs.enable[0] = 1
+ [m3vpss ] links_m3vpss/vnf/vnfLink_drv.c|79: inChInfo->dataFormat = 7
+ [m3vpss ]  7863: VNF: 
+ [m3vpss ] Input Channel CH0 of 1952 x 1112, pitch = (1984, 1984) [0,0][PROGRESSIVE] [7] ... 
+ [m3vpss ]  7863: VNF: 
+ [m3vpss ]  [VNF] eOperateMode=6 [6-TNF3,7-NSF2]chVnfCreateParams->ulStartX = 0                         chVnfCreateParams->ulStartY = 0 chVnfCreateParams->ulInputStride = 1984                         chVnfCreateParams->ulInputWidth=1952,chVnfCreateParams->ulInputHeight=1112 
+ [m3vpss ]  8036: VNF: 
+ [m3vpss ]  [VNF] outChInfo->StartX = 0 outChInfo->startY = 0 outChInfo->pitch[0] = 1952        outChInfo->width=1920,outChInfo->height=1080 
+ [m3vpss ]  8038: VNF: 
+ [m3vpss ] Create ... DONE !!!
+ [m3vpss ]  8472: NSF: Create in progress !!!
+ [m3vpss ] NSF::HEAPID:0        USED:128
+ [m3vpss ] NSDMA: ChannelID allocated:6
+F::HEAPID:1     USEDDMA: ChannelID allocated:7
+:4928
+ [m3vpss ]  8604: NSF: Create Done !!!
+ [m3vpss ] DCC server task running 
+ [m3vpss ]  8608: Mux   : Creating... !!!
+ [m3vpss ]  8610: WARNING MUX Link : Ignoring channel no   0 of Input Q ID   0. As this channel was not mapped !!!
+ [m3vpss ]  8610: Mux   : Create Done !!!
+ [m3vpss ]  8617: DUP   : Create Done !!!
+ [m3vpss ]  8624: DUP   : Create Done !!!
+ [m3vpss ]  8625: Mux   : Creating... !!!
+ [m3vpss ]  8627: Mux   : Create Done !!!
+ [m3vpss ] {SWOSD} edma3Handle->tccVal = 36 
+ [m3vpss ] {SWOSD} edma3Handle->chId   = 36 
+
+ [host] Vsys_eventHandler:OSA_dmaOpen passed with ch id = 6
+
+ [host] Vsys_eventHandlDMA: ChannelID allocated:8
+er:OSA_dmaOpen passed with ch id = 7
+ [m3vpss ] {SWOSD} edma3Handle->tccVal = 37 
+ [m3vpss ] {SWOSD} edma3Handle->chId   = 37 
+ [m3vpss ] {SWOSD} edma3Handle->tccVal = 38 
+ [m3vpss ] {SWOSD} edma3Handle->chId   = 38 
+ [m3vpss ]  8637: SYSTEM: Opening MsgQ [HOST_MSGQ] ...
+ [m3vpss ]  8273: SWOSD   : Create Done !!!
+ [m3vpss ]  8714: DUP   : Create Done !!!
+ [m3vpss ]  8714: SCLR: Create in progress !!!
+
+ [host] Vsys_eventHandler:OSA_dmaOpen passed with ch id = 8
+ [m3vpss ]  8720: SCLR    : Loading Up-scaling Co-effs ... 
+ [m3vpss ]  8720: SCLR    : Co-effs Loading ... DONE !!!
+ [m3video]  8734: IPC_IN_M3   : Create in progress !!!
+ [m3video]  8735: SYSTEM: Opening ListMP [VPSS-M3_IPC_OUT_0] ...
+ [m3vpss ] SCLR:HEAPID:0        USED:64
+ [m3video]  8735: SYSTEM: Opening ListMP [VPSS-M3_IPC_IN_0] ...
+ [m3vpss ] SCLR:HEAPID:1        USED:5952
+ [m3video]  8738: IPC_IN_M3   : Create Done !!!
+ [m3vpss ]  8720: SCLR: Create Done !!!
+ [m3video]  8739: ENCODE: Create in progress ... !!!
+ [m3vpss ]  8298: FD   : Alg Create Done !!!
+ [m3vpss ]  8298: FD   : Create Done !!!
+ [m3vpss ]  8732: IPC_OUT_M3   : Create in progress !!!
+ [m3vpss ]  8734: IPC_OUT_M3   : Create Done !!!
+ [m3video]  8866: ENCODE: Creating CH0 of 1920 x 1080, pitch = (1952, 1952) [PROGRESSIVE] [NON-TILED  ], bitrate = 8000 Kbps ... 
+ [m3video] ENCLINK_H264:HEAPID:0        USED:13272
+ [m3video]  8950: ENCODE: Creating CH1 of 720 x 480, pitch = (720, 720) [PROGRESSIVE] [NON-TILED  ], bitrate = 8000 Kbps ... 
+
+ [host] IpcBitsInLink_tskMain:Entered
+ [host]  4433: IPC_BITS_IN   : Create in progress !!!
+
+ [host]  4433: IPC_BITS_IN   : ListMPOpen start !!!
+
+ [host]  4433: SYSTEM: Opening ListMP [VIDEO-M3_IPC_OUT_29] ...
+
+ [host]  4434: SYSTEM: Opening ListMP [VIDEO-M3_IPC_IN_29] ...
+
+ [host]  4435: IPC_BITS_IN   : ListMPOpen done !!!
+
+ [host]  4436: IPC_BITS_IN   : System_linkGetInfo done !!!
+
+ [host]  4436: IPC_BITS_IN   : Create Done !!!
+
+ [host] USECASE SETUP DONE
+ [m3vpss ]  9050: DISPLAY: Create in progress !!!
+ [m3video] ENCLINK_H264:HEAPID:0        USED:11720
+ [m3vpss ] DisplayId = 1,DataFormat = 7
+ [m3video]  9036: ENCODE: Creating CH2 of 1920 x 1080, pitch = (1952, 1952) [PROGRESSIVE] [NON-TILED  ], bitrate = 100 Kbps ... 
+ [m3vpss ] SC2 displayInstId = 6
+ [m3vpss ]  9051: DISPLAY: Create Done !!!
+ [m3vpss ]  9052: DISPLAY: Create in progress !!!
+ [m3video] ENCLINK_JPEG:HEAPID:0        USED:4368
+ [m3vpss ] DisplayId = 4,DataFormat = 7
+ [m3video]  9037: ENCODE: All CH Create ... DONE !!!
+ [m3vpss ] SD displayInstId = 2
+ [m3vpss ]  9053: DISPLAY: Create Done !!!
+ [m3vpss ]  9054: DISPLAY: Start in progress !!!
+ [m3video] ENCLINK:HEAPID:0     USED:29688
+ [m3video]  9039: ENCODE: Create ... DONE !!!
+ [m3video]  8941: VSTAB   : Alg Create Done !!!
+ [m3video]  8942: VSTAB   : Create Done !!!
+ [m3video]  9041: IPC_BITS_OUT   : Create in progress !!!
+ [m3video]  9043: IPC_BITS_OUT   : Create Done !!!
+ [m3vpss ]  9131: DISPLAY: Start Done !!!
+ [m3vpss ]  9131: DISPLAY: AUX PATH: 26 fps, Latency (Min / Max) = ( 255 / 0 ), Callback Interval (Min / Max) = ( 255 / 0 ) !!! 
+ [m3vpss ]  9132: DISPLAY: Start in progress !!!
+ [m3vpss ]  9213: DISPLAY: Start Done !!!
+ [m3vpss ]  9214: DISPLAY: SDDAC(SEC1): 12 fps, Latency (Min / Max) = ( 255 / 0 ), Callback Interval (Min / Max) = ( 255 / 0 ) !!! 
+ [m3vpss ]  8782: CAMERA: Start in progress !!!
+ [m3vpss ]  8782: CAMERA: Start Done !!!
+
+ [host] ======================Application Run Completed======================
+
+
+ [host] ITT server task running !!!
+
+ [host] 
+ ITT ittServer_run
+
+ [host] ITT Server Message initialization successful
+
+ [host] 
+ ITT capture task created
+
+ [host] DCC server Message ques is open succefully
+
+ [host] Setting cmd <1> in message <40b95c00>
+
+ [host] Posting message <40b95c00> in QId <10002> 
+
+ [host] Response from M3 is : 1
+ [m3vpss ] Command 1 recived from HOST A8 
+ [m3vpss ] Command 2 recived from HOST A8 
+ [m3vpss ] New DCC data of size <27661> 
+
+ [host] Response from M3 is : 1
+
+ [host] Default parameters were sent sucessfully 
+
+ [host] Server Socket created with ID <22> 
+ [m3vpss ] Call to VNF_LINK_CMD_UPDATE_DCC 536870980

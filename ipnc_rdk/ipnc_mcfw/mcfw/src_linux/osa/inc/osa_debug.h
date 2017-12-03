@@ -13,9 +13,10 @@ extern "C" {
 #define VI_DEBUG(...) \
     do \
     { \
-        fprintf(stderr, "[[VI DEBUG]] (%s|%s()|%d): ", \
+        fprintf(stderr, "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n[[VI DEBUG]] (%s|%s()|%d): ", \
                 __FILE__, __func__, __LINE__); \
         fprintf(stderr, __VA_ARGS__); \
+        fprintf(stderr, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"); \
     } \
     while(0)
 

@@ -1665,7 +1665,8 @@ IssIsifFillDefaultParams(iss_config_processing_t * iss_config)
         (PROC_ISIF_VALID_ID) (PROC_ISIF_VALID_2DLSC | PROC_ISIF_VALID_DC);
 
 #ifdef IMGS_PANASONIC_MN34041
-    iss_config->clamp->dcoffset_clamp_value = (uint16)-252;
+    //iss_config->clamp->dcoffset_clamp_value = (uint16)-252;//original
+    iss_config->clamp->dcoffset_clamp_value = (uint16)-0;
 #elif defined IMGS_SONY_IMX136
 #ifdef APPRO_SENSOR_VENDOR
 	iss_config->clamp->dcoffset_clamp_value = 0;
