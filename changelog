@@ -1,0 +1,252 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 000000000..1f7766f86
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,8 @@
++ipnc_rdk/ipnc_app/interface/src/*.a
++ipnc_rdk/ipnc_app/interface/src/*.o
++ipnc_rdk/tftp/
++ti_tools/ipnc_psp_arago/u-boot/DUMMY
++ti_tools/ipnc_psp_arago/u-boot/board/ti/dm385_ipnc/config.tmp
++ti_tools/ipnc_psp_arago/u-boot/u-boot.min.nand
++
++
+diff --git a/ipnc_rdk/Rules.make b/ipnc_rdk/Rules.make
+index 59f759d64..339b715ca 100755
+--- a/ipnc_rdk/Rules.make
++++ b/ipnc_rdk/Rules.make
+@@ -27,8 +27,8 @@ BINARY_MODE    := nand
+ 
+ # Choose the target platform that is needed
+ # Values are "DM385", "DMVA3", "DM388" and "DM8127"
+-IPNC_DEVICE    := DM8127
+-#IPNC_DEVICE    := DM385
++#IPNC_DEVICE    := DM8127
++IPNC_DEVICE    := DM385
+ #IPNC_DEVICE    := DM388
+ #IPNC_DEVICE    := DMVA3
+ 
+diff --git a/ti_tools/ipnc_psp_arago/u-boot/arch/arm/include/asm/arch-ti81xx/clocks_ti814x.h b/ti_tools/ipnc_psp_arago/u-boot/arch/arm/include/asm/arch-ti81xx/clocks_ti814x.h
+index dbe24b6f5..c3d40b1b5 100755
+--- a/ti_tools/ipnc_psp_arago/u-boot/arch/arm/include/asm/arch-ti81xx/clocks_ti814x.h
++++ b/ti_tools/ipnc_psp_arago/u-boot/arch/arm/include/asm/arch-ti81xx/clocks_ti814x.h
+@@ -21,6 +21,15 @@
+ #ifndef _CLOCKS_TI814X_H_
+ #define _CLOCKS_TI814X_H_
+ 
++/*
++ *	Device Operating Points (OPP MODE)
++ *
++ *		OPP			    ARM		HDVICP2	    HDVPSS	    ISS		Media_Ctrl	    L3/L4/Core		DDR
++ *		OPP_100	        600		  220		 200	    400		  200	    	200			    400
++ *		OPP_120	        720		  290		 200	    400		  200	    	200			    400
++ *		OPP_TURBO	    970		  410	     240	    480		  240	    	240			    533
++ *		OPP_NITRO	   1000	      450		 280	    560		  280	    	240			    533
++ */
+ #define DDR_PLL_400     /* Values supported 400,533 */
+ 
+ #define OSC_0_FREQ	20
+@@ -44,7 +53,9 @@
+ #ifdef CONFIG_TI813X
+ #define MODENA_M	(opp_val_ti813x(0x3C, 0x3C))
+ #else
+-#define MODENA_M	(opp_val_dm385(0x3C, 0x3C))
++//#define MODENA_M	(opp_val_dm385(0x3C, 0x3C))
++//#define MODENA_M	(opp_val_dm385(72, 72))//720MHz
++#define MODENA_M	(opp_val_dm385(100, 100))//1000MHz
+ #endif
+ #define MODENA_M2	1
+ #define MODENA_CLKCTRL	0x1
+@@ -53,7 +64,8 @@
+ #ifdef CONFIG_TI813X
+ #define L3_M		(opp_val_ti813x(800, 800))
+ #else
+-#define L3_M		(opp_val_dm385(800, 800))
++//#define L3_M		(opp_val_dm385(800, 800))
++#define L3_M		(opp_val_dm385(960, 960))//240MHz
+ #endif
+ #define L3_M2		4
+ #define L3_CLKCTRL	0x801
+@@ -107,7 +119,9 @@
+ #define IVA_CLKCTRL	0x801
+ 
+ #define ISS_N		19
+-#define ISS_M		800
++//#define ISS_M		800
++//#define ISS_M		960//480MHz
++#define ISS_M		1120//560MHz
+ #ifdef CONFIG_TI813X
+ #define ISS_M2		(opp_val_ti813x(4, 2))
+ #else
+diff --git a/ti_tools/ipnc_psp_arago/u-boot/arch/arm/include/asm/arch-ti81xx/ddr_defs_ti814x.h b/ti_tools/ipnc_psp_arago/u-boot/arch/arm/include/asm/arch-ti81xx/ddr_defs_ti814x.h
+index 689fec8f1..1d59de07b 100755
+--- a/ti_tools/ipnc_psp_arago/u-boot/arch/arm/include/asm/arch-ti81xx/ddr_defs_ti814x.h
++++ b/ti_tools/ipnc_psp_arago/u-boot/arch/arm/include/asm/arch-ti81xx/ddr_defs_ti814x.h
+@@ -187,49 +187,49 @@
+ #elif defined(CONFIG_TI813X)  || defined(CONFIG_DM385_IPNC)
+ /* TI813X DDR3 PHY CFG parameters   <emif0> */
+ 
+-#define DDR3_PHY_RD_DQS_CS0_BYTE0			0x3c //0x3d //0x30//0x41
+-#define DDR3_PHY_RD_DQS_CS0_BYTE1			0x3d //0x3c //0x30//0x38
+-#define DDR3_PHY_RD_DQS_CS0_BYTE2			0x3d //0x3e //0x30//0x46
+-#define DDR3_PHY_RD_DQS_CS0_BYTE3			0x3e //0x3b //0x30//0x37
+-
+-#define DDR3_PHY_WR_DQS_CS0_BYTE0			0x40 //0x44 //0x21//0x39
+-#define DDR3_PHY_WR_DQS_CS0_BYTE1			0x40 //0x43 //0x21//0x3F
+-#define DDR3_PHY_WR_DQS_CS0_BYTE2			0x4e //0x55 //0x21//0x46
+-#define DDR3_PHY_WR_DQS_CS0_BYTE3			0x53 //0x55 //0x21//0x45
+-
+-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE0		0xa1 //0xa1 //0xc0//0xBD
+-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE1		0xa7 //0xad //0xc0//0xE0
+-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE2		0xcb //0xcd //0xc0//0x105
+-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE3		0xcb //0xc8 //0xc0//0x12B
+-
+-#define DDR3_PHY_WR_DATA_CS0_BYTE0			0x7a //0x84 //0x44//0x7C
+-#define DDR3_PHY_WR_DATA_CS0_BYTE1			0x7a //0x7e //0x44//0x73
+-#define DDR3_PHY_WR_DATA_CS0_BYTE2			0x7f //0x82 //0x44//0x78
+-#define DDR3_PHY_WR_DATA_CS0_BYTE3			0x7f //0x81 //0x44//0x6D
++#define DDR3_PHY_RD_DQS_CS0_BYTE0			0x37 //0x3d //0x30//0x41
++#define DDR3_PHY_RD_DQS_CS0_BYTE1			0x37 //0x3c //0x30//0x38
++#define DDR3_PHY_RD_DQS_CS0_BYTE2			0x38 //0x3e //0x30//0x46
++#define DDR3_PHY_RD_DQS_CS0_BYTE3			0x37 //0x3b //0x30//0x37
++
++#define DDR3_PHY_WR_DQS_CS0_BYTE0			0x49 //0x44 //0x21//0x39
++#define DDR3_PHY_WR_DQS_CS0_BYTE1			0x48 //0x43 //0x21//0x3F
++#define DDR3_PHY_WR_DQS_CS0_BYTE2			0x56 //0x55 //0x21//0x46
++#define DDR3_PHY_WR_DQS_CS0_BYTE3			0x56 //0x55 //0x21//0x45
++
++#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE0		0xA0 //0xa1 //0xc0//0xBD
++#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE1		0xA6 //0xad //0xc0//0xE0
++#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE2		0xC0 //0xcd //0xc0//0x105
++#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE3		0xBD //0xc8 //0xc0//0x12B
++
++#define DDR3_PHY_WR_DATA_CS0_BYTE0			0x8A //0x84 //0x44//0x7C
++#define DDR3_PHY_WR_DATA_CS0_BYTE1			0x89 //0x7e //0x44//0x73
++#define DDR3_PHY_WR_DATA_CS0_BYTE2			0x8C //0x82 //0x44//0x78
++#define DDR3_PHY_WR_DATA_CS0_BYTE3			0x8A //0x81 //0x44//0x6D
+ 
+ #define DDR3_PHY_CTRL_SLAVE_RATIO_CS0_DEFINE	0x80
+ 
+ #else
+ /* TI814X DDR3 PHY CFG parameters   <emif0 : emif 1> */
+-#define DDR3_PHY_RD_DQS_CS0_BYTE0		((emif == 0) ? 0x3d : 0x39) //((emif == 0) ? 0x30 : 0x30)
+-#define DDR3_PHY_RD_DQS_CS0_BYTE1		((emif == 0) ? 0x3c : 0x3c) //((emif == 0) ? 0x30 : 0x30)
+-#define DDR3_PHY_RD_DQS_CS0_BYTE2		((emif == 0) ? 0x3e : 0x3c) //((emif == 0) ? 0x30 : 0x30)
+-#define DDR3_PHY_RD_DQS_CS0_BYTE3		((emif == 0) ? 0x3d : 0x3e) //((emif == 0) ? 0x30 : 0x30)
+-
+-#define DDR3_PHY_WR_DQS_CS0_BYTE0		((emif == 0) ? 0x45 : 0x40) //((emif == 0) ? 0x21 : 0x21)
+-#define DDR3_PHY_WR_DQS_CS0_BYTE1		((emif == 0) ? 0x44 : 0x3f) //((emif == 0) ? 0x21 : 0x21)
+-#define DDR3_PHY_WR_DQS_CS0_BYTE2		((emif == 0) ? 0x47 : 0x45) //((emif == 0) ? 0x21 : 0x21)
+-#define DDR3_PHY_WR_DQS_CS0_BYTE3		((emif == 0) ? 0x47 : 0x42) //((emif == 0) ? 0x21 : 0x21)
+-
+-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE0		((emif == 0) ? 0x9d : 0x9e) //((emif == 0) ? 0xc0 : 0xc0) 
+-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE1		((emif == 0) ? 0x9e : 0x9c) //((emif == 0) ? 0xc0 : 0xc0) 
+-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE2		((emif == 0) ? 0xa7 : 0xa3) //((emif == 0) ? 0xc0 : 0xc0)
+-#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE3		((emif == 0) ? 0xa9 : 0xa9) //((emif == 0) ? 0xc0 : 0xc0)
+-
+-#define DDR3_PHY_WR_DATA_CS0_BYTE0		((emif == 0) ? 0x7e : 0x78) //((emif == 0) ? 0x44 : 0x44)
+-#define DDR3_PHY_WR_DATA_CS0_BYTE1		((emif == 0) ? 0x7f : 0x7b) //((emif == 0) ? 0x44 : 0x44)
+-#define DDR3_PHY_WR_DATA_CS0_BYTE2		((emif == 0) ? 0x7f : 0x7b) //((emif == 0) ? 0x44 : 0x44)
+-#define DDR3_PHY_WR_DATA_CS0_BYTE3		((emif == 0) ? 0x80 : 0x7e) //((emif == 0) ? 0x44 : 0x44)
++#define DDR3_PHY_RD_DQS_CS0_BYTE0		((emif == 0) ? 0x38 : 0x3A)
++#define DDR3_PHY_RD_DQS_CS0_BYTE1		((emif == 0) ? 0x37 : 0x36)
++#define DDR3_PHY_RD_DQS_CS0_BYTE2		((emif == 0) ? 0x32 : 0x37)
++#define DDR3_PHY_RD_DQS_CS0_BYTE3		((emif == 0) ? 0x31 : 0x33)
++
++#define DDR3_PHY_WR_DQS_CS0_BYTE0		((emif == 0) ? 0x43 : 0x49)
++#define DDR3_PHY_WR_DQS_CS0_BYTE1		((emif == 0) ? 0x44 : 0x4E)
++#define DDR3_PHY_WR_DQS_CS0_BYTE2		((emif == 0) ? 0x53 : 0x54)
++#define DDR3_PHY_WR_DQS_CS0_BYTE3		((emif == 0) ? 0x50 : 0x50)
++
++#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE0		((emif == 0) ? 0xE4 : 0xD3)
++#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE1		((emif == 0) ? 0x111 : 0xF7)
++#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE2		((emif == 0) ? 0x112 : 0x109)
++#define DDR3_PHY_RD_DQS_GATE_CS0_BYTE3		((emif == 0) ? 0x13D : 0x135)
++
++#define DDR3_PHY_WR_DATA_CS0_BYTE0		((emif == 0) ? 0x85 : 0x8A)
++#define DDR3_PHY_WR_DATA_CS0_BYTE1		((emif == 0) ? 0x83 : 0x80)
++#define DDR3_PHY_WR_DATA_CS0_BYTE2		((emif == 0) ? 0x85 : 0x7F)
++#define DDR3_PHY_WR_DATA_CS0_BYTE3		((emif == 0) ? 0x7F : 0x85)
+ 
+ #define DDR3_PHY_CTRL_SLAVE_RATIO_CS0_DEFINE	0x80
+ #endif
+@@ -281,12 +281,12 @@
+ /* DM385 DDR3 EMIF CFG Registers values 533MHz */
+ #if defined(CONFIG_DM385_DDR3_533)
+ #define DDR3_EMIF_READ_LATENCY     	0x00170209 // 0x0017320A		//RD_ODT=0x2, IDLE_ODT=0x0, Dynamic power_down enabled
+-#define DDR3_EMIF_TIM1          	0x0CCF46B3 // 0x110F783B
+-#define DDR3_EMIF_TIM2          	0x20047FDA // 0x238581E6
++#define DDR3_EMIF_TIM1          	0x0CCF36B3 // 0x110F783B
++#define DDR3_EMIF_TIM2          	0x305A7FDA // 0x238581E6
+ #define DDR3_EMIF_TIM3          	0x507F855F // 0x501F86AF
+ #define DDR3_EMIF_REF_CTRL      	0x0000103D
+-#define DDR3_EMIF_SDRAM_CONFIG      0x61C11AB2 //0x61C21AB2 // 0x61C119B2 // 0x61C121B2
+-#define DDR3_EMIF_SDRAM_ZQCR        0x50074BE2 // 0x50074BE1
++#define DDR3_EMIF_SDRAM_CONFIG      0x61C11A32 //0x61C21AB2 // 0x61C119B2 // 0x61C121B2
++#define DDR3_EMIF_SDRAM_ZQCR        0x50074BE1 // 0x50074BE1
+ #endif
+ /* DM385 DDR3 EMIF CFG Registers values 400MHz */
+ #if defined(CONFIG_DM385_DDR3_400)
+diff --git a/ti_tools/ipnc_psp_arago/u-boot/include/configs/dm385_ipnc.h b/ti_tools/ipnc_psp_arago/u-boot/include/configs/dm385_ipnc.h
+index 2c5a1d404..f326f475b 100755
+--- a/ti_tools/ipnc_psp_arago/u-boot/include/configs/dm385_ipnc.h
++++ b/ti_tools/ipnc_psp_arago/u-boot/include/configs/dm385_ipnc.h
+@@ -48,7 +48,7 @@
+ #define CONFIG_SYS_MALLOC_LEN          (CONFIG_ENV_SIZE + (8 * 1024))
+ #define CONFIG_SYS_PROMPT              "TI-MIN#"
+ /* set to negative value for no autoboot */
+-# define CONFIG_BOOTDELAY               0
++#define CONFIG_BOOTDELAY               1
+ #if defined(CONFIG_SPI_BOOT)           /* Autoload the 2nd stage from SPI */
+ #define CONFIG_SPI                    1
+ # if defined(CONFIG_TI81XX_PCIE_BOOT)
+diff --git a/ti_tools/ipnc_psp_arago/u-boot/include/configs/dm388_ipnc.h b/ti_tools/ipnc_psp_arago/u-boot/include/configs/dm388_ipnc.h
+index d09e0766b..e04558575 100755
+--- a/ti_tools/ipnc_psp_arago/u-boot/include/configs/dm388_ipnc.h
++++ b/ti_tools/ipnc_psp_arago/u-boot/include/configs/dm388_ipnc.h
+@@ -48,7 +48,7 @@
+ #define CONFIG_SYS_MALLOC_LEN          (CONFIG_ENV_SIZE + (8 * 1024))
+ #define CONFIG_SYS_PROMPT              "TI-MIN#"
+ /* set to negative value for no autoboot */
+-# define CONFIG_BOOTDELAY               0
++#define CONFIG_BOOTDELAY               1
+ #if defined(CONFIG_SPI_BOOT)           /* Autoload the 2nd stage from SPI */
+ #define CONFIG_SPI                    1
+ # if defined(CONFIG_TI81XX_PCIE_BOOT)
+@@ -110,7 +110,7 @@
+ #define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + (32 * 1024))
+ #define CONFIG_ENV_OVERWRITE
+ #define CONFIG_SYS_LONGHELP
+-#define CONFIG_SYS_PROMPT		"DM388_IPNC#"
++#define CONFIG_SYS_PROMPT		"DM385_IPNC#"
+ #if 0
+ #define CONFIG_SYS_HUSH_PARSER		/* Use HUSH parser to allow command parsing */
+ #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
+@@ -165,7 +165,7 @@
+ /* size in bytes reserved for initial data */
+ #define CONFIG_ENV_OVERWRITE
+ #define CONFIG_SYS_LONGHELP
+-#define CONFIG_SYS_PROMPT		"DM388_IPNC#"
++#define CONFIG_SYS_PROMPT		"DM385_IPNC#"
+ /* Use HUSH parser to allow command parsing */
+ #define CONFIG_SYS_HUSH_PARSER
+ #define CONFIG_SYS_PROMPT_HUSH_PS2     "> "
+@@ -210,7 +210,7 @@
+ #define CONFIG_SYS_GBL_DATA_SIZE	128
+ #define CONFIG_MISC_INIT_R		1
+ #ifndef CONFIG_DM385_MIN_CONFIG
+-#define CONFIG_DM388_ASCIIART		1
++#define CONFIG_DM385_ASCIIART		1
+ #endif
+ #define CONFIG_CMD_CACHE
+ #define CONFIG_CMD_ECHO
+@@ -468,7 +468,7 @@ extern unsigned int boot_flash_type;
+ #endif	/* CONFIG_TI814X_OPTI_CONFIG */
+ /* U-boot Version */
+ #define CONFIG_VERSION_VARIABLE
+-#define CONFIG_IDENT_STRING " DM388_IPNC_3.80.00"
++#define CONFIG_IDENT_STRING " DM385_IPNC_3.80.00"
+ /* Unsupported features */
+ #undef CONFIG_USE_IRQ
+ 

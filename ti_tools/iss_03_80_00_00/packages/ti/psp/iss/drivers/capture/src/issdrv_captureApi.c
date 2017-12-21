@@ -787,6 +787,12 @@ Void Issdrv_IspIsifVdInt(const UInt32 event, Ptr arg)
 
     for (streamId = 0; streamId < pObj->numStream; streamId++)
     {
+                    //Vps_printf("======================\n");
+                    //Vps_printf("streamId = %d\n", streamId);
+                    //Vps_printf("pObj->createArgs.inFmt = %d\n", pObj->createArgs.inFmt);
+                    //Vps_printf("pObj->inFmt.dataFormat = %d\n", pObj->inFmt.dataFormat);
+                    //Vps_printf("outdataFormat = %d\n", pObj->createArgs.outStreamInfo[streamId].dataFormat);
+                    //Vps_printf("captureMode = %d\n", pObj->createArgs.captureMode);
         if (((pObj->chObj[streamId][0].frameCount < 30) && (((pObj->chObj[streamId][0].frameSkipMask >> pObj->chObj[streamId][0].frameCount) & 0x1) == 0u)) ||
             ((pObj->chObj[streamId][0].frameCount >= 30) && (((pObj->chObj[streamId][0].frameSkipMaskHigh >> (pObj->chObj[streamId][0].frameCount - 30)) & 0x1) == 0u)) ||
             (pObj->createArgs.captureMode == ISS_CAPT_INMODE_DDR))
@@ -2842,7 +2848,32 @@ Int32 Iss_captStart(Fdrv_Handle handle)
     isif_reg->SYNCEN = 0x3;
 #endif
     //add by pamsimochen
-    isif_reg->SYNCEN = 0x3;
+    rsz_reg->SRC_HSZ = 1919;
+    rsz_reg->SRC_VSZ = 1079;
+    rsz_reg->SRC_VPS = 0;
+    rsz_reg->SRC_HPS = 0;
+    rsz_reg->SRC_FMT0 = 0;
+    rsz_reg->SRC_FMT1 = 0;
+
+    rszA_reg->RZA_V_DIF = 256;
+    rszA_reg->RZA_H_DIF = 256;
+    rszA_reg->RZA_DWN_EN = 0;
+    rszA_reg->RZA_DWN_AV = 0;
+
+    ipipeif_reg->CFG2 = 0x08;
+
+    ipipe_reg->SRC_FMT = 0x03;
+    ipipe_reg->SRC_HPS = 192;
+    ipipe_reg->SRC_VPS =41;
+
+    isif_reg->MODESET = 0x1000;
+    isif_reg->SPH = 192;
+    isif_reg->SLV0 = 41;
+    isif_reg->SLV1 = 41;
+    isif_reg->CLDCOFST = 0;
+
+    isif_reg->SYNCEN = 0x1;
+    //end add
 
     pObj->state = ISS_CAPT_STATE_RUNNING;
     /*
