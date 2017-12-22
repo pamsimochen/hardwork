@@ -182,7 +182,7 @@ int StartStream(StreamEnv_t* pConfig)
 	}
 
     printf("\n~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("pConfig->powerMode = %d\n", pConfig->powerMode); 
+    printf("pConfig -> powerMode = %d\n", pConfig->powerMode); 
     printf("~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
 	if (pConfig -> vsEnable) {
@@ -213,7 +213,7 @@ int StartStream(StreamEnv_t* pConfig)
 			attach_opt(cmdopt, adv_VNFMode[0]);
 	}
 
-    printf("pConfig->nStreamType = %d\n", pConfig->nStreamType);
+    printf("pConfig -> nStreamType = %d\n", pConfig -> nStreamType);
     printf("pConfig -> nVideocodecmode = %d\n",pConfig -> nVideocodecmode );
 
 	attach_opt(cmdopt, stream_type[pConfig -> nStreamType]);

@@ -393,9 +393,9 @@ static SysInfo SysInfoDefault =
 		0,
 		0,
 		0,
-		H264_CODEC, /* codectype1 */
-		H264_CODEC, /* codectype2 */
-		H264_CODEC, /* codectype3 */
+		MJPEG_CODEC,//H264_CODEC, /* codectype1 */
+		NO_CODEC, //H264_CODEC, /* codectype2 */
+		NO_CODEC, //H264_CODEC, /* codectype3 */
      	0,
      	0,
      	POWER_MODE_DEF,
@@ -403,7 +403,8 @@ static SysInfo SysInfoDefault =
 		SCHEDULE_DEFAULT,
      	0,
      	0,
-     	MAX_FRAMERATE_DEFAULT,
+     	MAX_FRAMERATE_DEFAULT, //original
+        //5,
      	MAX_FRAMERATE_DEFAULT,
      	MAX_FRAMERATE_DEFAULT,
      	DUMMY_DEF,

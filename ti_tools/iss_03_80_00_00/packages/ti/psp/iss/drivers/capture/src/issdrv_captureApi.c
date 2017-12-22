@@ -2848,28 +2848,28 @@ Int32 Iss_captStart(Fdrv_Handle handle)
     isif_reg->SYNCEN = 0x3;
 #endif
     //add by pamsimochen
-    rsz_reg->SRC_HSZ = 1919;
-    rsz_reg->SRC_VSZ = 1079;
-    rsz_reg->SRC_VPS = 0;
-    rsz_reg->SRC_HPS = 0;
-    rsz_reg->SRC_FMT0 = 0;
-    rsz_reg->SRC_FMT1 = 0;
-
-    rszA_reg->RZA_V_DIF = 256;
-    rszA_reg->RZA_H_DIF = 256;
-    rszA_reg->RZA_DWN_EN = 0;
-    rszA_reg->RZA_DWN_AV = 0;
+//    rsz_reg->SRC_HSZ = 1919;
+//    rsz_reg->SRC_VSZ = 1079;
+//    rsz_reg->SRC_VPS = 0;
+//    rsz_reg->SRC_HPS = 0;
+//    rsz_reg->SRC_FMT0 = 0;
+//    rsz_reg->SRC_FMT1 = 0;
+//
+//    rszA_reg->RZA_V_DIF = 256;
+//    rszA_reg->RZA_H_DIF = 256;
+//    rszA_reg->RZA_DWN_EN = 0;
+//    rszA_reg->RZA_DWN_AV = 0;
 
     ipipeif_reg->CFG2 = 0x08;
 
     ipipe_reg->SRC_FMT = 0x03;
-    ipipe_reg->SRC_HPS = 192;
-    ipipe_reg->SRC_VPS =41;
+//    ipipe_reg->SRC_HPS = 192;
+//    ipipe_reg->SRC_VPS =41;
 
     isif_reg->MODESET = 0x1000;
-    isif_reg->SPH = 192;
-    isif_reg->SLV0 = 41;
-    isif_reg->SLV1 = 41;
+//    isif_reg->SPH = 192;
+//    isif_reg->SLV0 = 41;
+//    isif_reg->SLV1 = 41;
     isif_reg->CLDCOFST = 0;
 
     isif_reg->SYNCEN = 0x1;
@@ -6280,10 +6280,6 @@ Void IssCdrv_setIpipeCfg()
 #endif	
     //add by pamsimochen
     gIss_captCommonObj.pIssConfig->eMsbPos = MSP_IPIPE_BAYER_MSB_BIT15;
-    ipipeif_reg->CFG2 = 0x0E;
-    ipipe_reg->SRC_FMT = 0x03;
-    ipipe_reg->SRC_HPS = 192;
-    ipipe_reg->SRC_VPS = 41;
     //add end
 
 }
