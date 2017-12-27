@@ -464,42 +464,42 @@ static struct resource omap2_mcspi1_resources[] = {
 		.end		= 17,
 		.flags		= IORESOURCE_DMA,
 	},
-	{
-                //SPI0XEVT1: SPI0 Transmit 1
-                .start          = 18,
-                .end            = 18,
-                .flags          = IORESOURCE_DMA,
-        },
-        {
-                //SPI0REVT1: SPI0 Receive 1
-                .start          = 19,
-                .end            = 19,
-                .flags          = IORESOURCE_DMA,
-        },
-	{
-                //SPI0XEVT2: SPI0 Transmit 2
-                .start          = 20,
-                .end            = 20,
-                .flags          = IORESOURCE_DMA,
-        },
-        {
-                //SPI0REVT2: SPI0 Receive 2
-                .start          = 21,
-                .end            = 21,
-                .flags          = IORESOURCE_DMA,
-        },
-	{
-                //SPI0XEVT3: SPI0 Transmit 3
-                .start          = 22,
-                .end            = 22,
-                .flags          = IORESOURCE_DMA,
-        },
-        {
-                //SPI0REVT3: SPI0 Receive 3
-                .start          = 23,
-                .end            = 23,
-                .flags          = IORESOURCE_DMA,
-        },
+	//{
+    //            //SPI0XEVT1: SPI0 Transmit 1
+    //            .start          = 18,
+    //            .end            = 18,
+    //            .flags          = IORESOURCE_DMA,
+    //},
+    //{
+    //            //SPI0REVT1: SPI0 Receive 1
+    //            .start          = 19,
+    //            .end            = 19,
+    //            .flags          = IORESOURCE_DMA,
+    //},
+	//{
+    //            //SPI0XEVT2: SPI0 Transmit 2
+    //            .start          = 20,
+    //            .end            = 20,
+    //            .flags          = IORESOURCE_DMA,
+    //},
+    //{
+    //            //SPI0REVT2: SPI0 Receive 2
+    //            .start          = 21,
+    //            .end            = 21,
+    //            .flags          = IORESOURCE_DMA,
+    //},
+	//{
+    //            //SPI0XEVT3: SPI0 Transmit 3
+    //            .start          = 22,
+    //            .end            = 22,
+    //            .flags          = IORESOURCE_DMA,
+    //},
+    //{
+    //            //SPI0REVT3: SPI0 Receive 3
+    //            .start          = 23,
+    //            .end            = 23,
+    //            .flags          = IORESOURCE_DMA,
+    //},
 
 
 };
@@ -529,27 +529,25 @@ static struct resource omap2_mcspi2_resources[] = {
                 .start          = 42,
                 .end            = 42,
                 .flags          = IORESOURCE_DMA,
-        },
-        {
+    },
+    {
                 //SPI1REVT0: SPI0 Receive 0
                 .start          = 43,
                 .end            = 43,
                 .flags          = IORESOURCE_DMA,
-        },
+    },
 	{
                 //SPI1XEVT1: SPI0 Transmit 1
                 .start          = 44,
                 .end            = 44,
                 .flags          = IORESOURCE_DMA,
-        },
-        {
+    },
+    {
                 //SPI1REVT1: SPI0 Receive 1
                 .start          = 45,
                 .end            = 45,
                 .flags          = IORESOURCE_DMA,
-        },
-
-
+    },
 };
 
 static struct platform_device omap2_mcspi2 = {
@@ -574,6 +572,18 @@ static struct resource omap2_mcspi3_resources[] = {
 	.end		= OMAP2_MCSPI3_BASE + 0xff,
 	.flags		= IORESOURCE_MEM,
 	},
+    {
+                //SPI2XEVT1: SPI2 Transmit 1
+                .start          = 18,
+                .end            = 18,
+                .flags          = IORESOURCE_DMA,
+    },
+    {
+                //SPI2REVT1: SPI2 Receive 1
+                .start          = 19,
+                .end            = 19,
+                .flags          = IORESOURCE_DMA,
+    },
 };
 
 static struct platform_device omap2_mcspi3 = {
@@ -599,6 +609,19 @@ static struct resource omap2_mcspi4_resources[] = {
 		.end		= OMAP2_MCSPI4_BASE + 0xff,
 		.flags		= IORESOURCE_MEM,
 	},
+    {
+                //SPI3XEVT0: SPI3 Transmit 0
+                .start          = 20,
+                .end            = 20,
+                .flags          = IORESOURCE_DMA,
+    },
+    {
+                //SPI3REVT0: SPI3 Receive 0
+                .start          = 21,
+                .end            = 21,
+                .flags          = IORESOURCE_DMA,
+    },
+	
 };
 
 static struct platform_device omap2_mcspi4 = {
@@ -615,7 +638,7 @@ static struct platform_device omap2_mcspi4 = {
 #ifdef CONFIG_ARCH_TI81XX
 static inline void ti81xx_mcspi_fixup(void)
 {
-	omap2_mcspi1_resources[0].start	= TI81XX_MCSPI1_BASE;
+    omap2_mcspi1_resources[0].start	= TI81XX_MCSPI1_BASE;
 	omap2_mcspi1_resources[0].end	= TI81XX_MCSPI1_BASE + 0xff;
 
 	if (cpu_is_ti814x()) {

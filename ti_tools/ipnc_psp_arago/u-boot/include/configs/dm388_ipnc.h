@@ -48,7 +48,7 @@
 #define CONFIG_SYS_MALLOC_LEN          (CONFIG_ENV_SIZE + (8 * 1024))
 #define CONFIG_SYS_PROMPT              "TI-MIN#"
 /* set to negative value for no autoboot */
-#define CONFIG_BOOTDELAY               1
+#define CONFIG_BOOTDELAY               0
 #if defined(CONFIG_SPI_BOOT)           /* Autoload the 2nd stage from SPI */
 #define CONFIG_SPI                    1
 # if defined(CONFIG_TI81XX_PCIE_BOOT)

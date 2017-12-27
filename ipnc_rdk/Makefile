@@ -226,6 +226,18 @@ lsp:
 	cp $(KERNELDIR)/drivers/usb/gadget/g_file_storage.ko $(EXEC_DIR)
 	cp $(KERNELDIR)/block/sbull/sbull.ko $(EXEC_DIR)
 
+pscbuild:
+	cp $(linuxutils_PATH)/packages/ti/sdo/linuxutils/cmem/src/module/cmemk.o $(KERNELDIR)/drivers/char/
+	make lspbuild MAKE_TARGET=uImage
+	make lspbuild MAKE_TARGET=modules
+	cp $(KERNELDIR)/arch/arm/boot/uImage $(TFTP_HOME)/uImage
+	-mkdir -p $(TARGET_MCFW_DIR)/kermod
+	cp $(KERNELDIR)/drivers/video/ti81xx/vpss/vpss.ko $(TARGET_MCFW_DIR)/kermod/.
+	cp $(KERNELDIR)/drivers/video/ti81xx/ti81xxfb/ti81xxfb.ko $(TARGET_MCFW_DIR)/kermod/.
+	cp $(KERNELDIR)/drivers/video/ti81xx/ti81xxhdmi/ti81xxhdmi.ko $(TARGET_MCFW_DIR)/kermod/.
+	cp $(KERNELDIR)/drivers/usb/gadget/g_file_storage.ko $(EXEC_DIR)
+	cp $(KERNELDIR)/block/sbull/sbull.ko $(EXEC_DIR)
+
 lspall:
 	make lspclean
 	make lsp

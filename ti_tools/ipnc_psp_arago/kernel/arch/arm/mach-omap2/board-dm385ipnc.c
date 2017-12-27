@@ -57,6 +57,7 @@
 #include "hsmmc.h"
 #include "control.h"
 
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 
 #ifdef CONFIG_OMAP_MUX
 static struct omap_board_mux board_mux[] __initdata = {
@@ -373,6 +374,59 @@ static struct mtd_partition ti814x_nand_partitions[] = {
 	},
 };
 
+struct spi_board_info __initdata ti385_spi_slave_info[] = {
+	{
+		.modalias	= "spidev",
+		.irq		= -1,
+		.max_speed_hz	= 20000000,
+		.bus_num	= 1,
+		.chip_select	= 0,
+		.mode = SPI_MODE_0,
+	},
+	{
+		.modalias	= "spidev",
+		.irq		= -1,
+		.max_speed_hz	= 20000000,
+		.bus_num	= 2,
+		.chip_select	= 0,
+		.mode = SPI_MODE_0,
+	},
+	{
+		.modalias	= "spidev",
+		.irq		= -1,
+		.max_speed_hz	= 20000000,
+		.bus_num	= 3,
+		.chip_select	= 0,
+		.mode = SPI_MODE_0,
+	},
+	{
+		.modalias	= "spidev",
+		.irq		= -1,
+		.max_speed_hz	= 20000000,
+		.bus_num	= 4,
+		.chip_select	= 0,
+		.mode = SPI_MODE_0,
+	},
+	
+	/*{
+		.modalias	= "tlv320aic26-codec",
+		.irq		= -1,
+		.max_speed_hz	= 100000,
+		.bus_num	= 1,
+		.chip_select	= 0,
+		.mode = SPI_MODE_1,
+	},*/
+};
+
+void __init ti385_spi_init(void)
+{
+	//omap_mux_init_signal("spi0_cs2",TI814X_PULL_UP);
+	//omap_mux_init_signal("spi0_cs3",TI814X_PULL_UP);
+
+	spi_register_board_info(ti385_spi_slave_info,
+				ARRAY_SIZE(ti385_spi_slave_info));
+}
+
 static struct omap_musb_board_data musb_board_data = {
 	.interface_type		= MUSB_INTERFACE_ULPI,
 #ifdef CONFIG_USB_MUSB_OTG
@@ -587,6 +641,7 @@ static void __init dm385_evm_init(void)
 	/* initialize usb */
 	usb_musb_init(&musb_board_data);
 
+	ti385_spi_init();
 #ifdef CONFIG_SND_SOC_TI81XX_HDMI
 	/* hdmi mclk setup */
 	ti813x_hdmi_clk_init();
