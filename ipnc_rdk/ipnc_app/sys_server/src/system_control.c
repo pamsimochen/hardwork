@@ -325,7 +325,11 @@ int StartNetwork(SysInfo *pSysInfo)
 		__E("Error on get MAC address\n");
 		return -1;
 	}
+    dhcp = 0;
 	SetDhcpEnable(dhcp);
+    printf("######################################\n");
+    printf("gPlatform = %d, dhcp = %d, dhcp_fail = %d\n", gPlatform, dhcp, dhcp_fail);
+    printf("######################################\n");
 	if(dhcp_fail)
 		dhcp = 0;
 	if(!dhcp ){

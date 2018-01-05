@@ -848,6 +848,8 @@ static Int32 Iss_platformTI814xSetPinMux(void)
 #endif	
 #endif	
 #endif
+    REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B44) = 0x00080; /* vin1a_d[2] */
+    REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B48) = 0x00080; /* vin1a_d[3] */
     return (FVID2_SOK);
 }
 

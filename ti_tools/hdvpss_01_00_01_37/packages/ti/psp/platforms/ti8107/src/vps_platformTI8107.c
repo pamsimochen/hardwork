@@ -890,7 +890,8 @@ static Int32 Vps_platformTI8107SetPinMux(void)
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x09F0) = 0x50080;   /* vin1_clk1 */
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B30) = 0x50080;   /* vin1_vsync0 */
 #endif
-
+    REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B44) = 0x00080;   /* vin1a_d[2] */
+    REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B48) = 0x00080;   /* vin1a_d[2] */
     return (FVID2_SOK);
 }
 #endif

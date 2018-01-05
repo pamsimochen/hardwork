@@ -3323,6 +3323,10 @@ static int __init omap2_init_devices(void)
 	ti81xx_rtc_init();
 	clkout2_enable();
 #endif
+
+
+	omap_writel(0x80, 0x48140B44);
+	omap_writel(0x80, 0x48140B48);
 	return 0;
 }
 arch_initcall(omap2_init_devices);
