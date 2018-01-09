@@ -80,6 +80,7 @@
 #define OMAP2_MCSPI_SYSSTATUS_RESETDONE	BIT(0)
 
 #define OMAP2_MCSPI_MODULCTRL_SINGLE	BIT(0)
+#define OMAP2_MCSPI_MODULCTRL_PIN34     BIT(1)
 #define OMAP2_MCSPI_MODULCTRL_MS	BIT(2)
 #define OMAP2_MCSPI_MODULCTRL_STEST	BIT(3)
 
@@ -269,6 +270,7 @@ static void omap2_mcspi_set_master_mode(struct spi_master *master)
 	MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_STEST, 0);
 	MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_MS, 0);
 	MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_SINGLE, 1);
+    MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_PIN34, 1);
 	mcspi_write_reg(master, OMAP2_MCSPI_MODULCTRL, l);
 
 	omap2_mcspi_ctx[master->bus_num - 1].modulctrl = l;
@@ -842,6 +844,7 @@ static int omap2_mcspi_setup(struct spi_device *spi)
 	mcspi = spi_master_get_devdata(spi->master);
 	mcspi_dma = &mcspi->dma_channels[spi->chip_select];
 
+    printk("\nmcspi->base = %08x\n", mcspi->base);
 	if (!cs) {
 		cs = kzalloc(sizeof *cs, GFP_KERNEL);
 		if (!cs)

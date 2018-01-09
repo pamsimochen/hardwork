@@ -33,6 +33,7 @@
 
 #include <linux/spi/spi.h>
 #include <linux/spi/spidev.h>
+#include <linux/io.h>
 
 #include <asm/uaccess.h>
 
@@ -475,9 +476,12 @@ static int spidev_open(struct inode *inode, struct file *filp)
 {
 	struct spidev_data	*spidev;
 	int			status = -ENXIO;
+	void __iomem *spi_mux_base;
+    
 
 	mutex_lock(&device_list_lock);
-
+    
+    //printk("\nspidev->spi->modalias = %s\n", spidev->spi->modalias);
 	list_for_each_entry(spidev, &device_list, device_entry) {
 		if (spidev->devt == inode->i_rdev) {
 			status = 0;
@@ -500,6 +504,30 @@ static int spidev_open(struct inode *inode, struct file *filp)
 	} else
 		pr_debug("spidev: nothing for minor %d\n", iminor(inode));
 
+    printk("\nspidev->spi->modalias = %s\n", spidev->spi->modalias);
+    printk("\nspidev->spi->master->bus_num = %d\n", spidev->spi->master->bus_num);
+    if(spidev->spi->master->bus_num == 2)
+    {
+        spi_mux_base = ioremap(0x48140000, SZ_4K);
+        if (WARN_ON(!spi_mux_base))
+        {
+            printk("spi_mux_base is error!\n");
+	    	return -ENOMEM;
+        }
+        else 
+        {
+            printk("\nspi_mux_base = %08X\n", spi_mux_base);
+        }
+
+        //__raw_writel(0x01, (spi_mux_base + 0x950));
+        __raw_writel(0x01, (spi_mux_base + 0x954));
+        __raw_writel(0x01, (spi_mux_base + 0x958));
+        __raw_writel(0x01, (spi_mux_base + 0x95c));
+
+        iounmap(spi_mux_base);
+    }
+ 
+
 	mutex_unlock(&device_list_lock);
 	return status;
 }
@@ -510,6 +538,9 @@ static int spidev_release(struct inode *inode, struct file *filp)
 	int			status = 0;
 
 	mutex_lock(&device_list_lock);
+
+    printk("\nclose spidev\n");
+
 	spidev = filp->private_data;
 	filp->private_data = NULL;
 

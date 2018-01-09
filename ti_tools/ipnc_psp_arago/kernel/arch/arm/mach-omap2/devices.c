@@ -3270,6 +3270,7 @@ static void __init clkout2_enable(void)
 
 static int __init omap2_init_devices(void)
 {
+    int errno = 0;
 	/*
 	 * please keep these calls, and their implementations above,
 	 * in alphabetical order so they're easier to sort through.
@@ -3324,9 +3325,72 @@ static int __init omap2_init_devices(void)
 	clkout2_enable();
 #endif
 
+//set gpio3_2/gpio3_3 as gpio, and input; gpio3_2 is Program_b and gpio3_3 is Done 
+//	omap_writel(0x80, 0x48140B44);
+//	omap_writel(0x80, 0x48140B48);
 
-	omap_writel(0x80, 0x48140B44);
-	omap_writel(0x80, 0x48140B48);
+    errno = gpio_request(98,"Program_B");
+	if (errno) {
+		printk(KERN_ERR "%s: failed to request GPIO for Program_B"
+			": %d\n", __func__, errno);
+		return;
+	}
+	//gpio_direction_input(98);
+    gpio_direction_output(98, 1);
+	gpio_export(98, true);
+
+
+    gpio_request(99,"Done");
+	if (errno) {
+		printk(KERN_ERR "%s: failed to request GPIO for Done"
+			": %d\n", __func__, errno);
+		return 1;
+	}
+	gpio_direction_input(99);
+	gpio_export(99, true);
+
+//set spi1_cs0/sclk/mosi/miso as gpio, and input
+//	omap_writel(0x80, 0x48140950);//spi1_cs0
+//	omap_writel(0x80, 0x48140954);//spi1_sclk
+//	omap_writel(0x80, 0x48140958);//spi1_mios
+//	omap_writel(0x80, 0x4814095C);//spi1_mosi
+//48
+    gpio_request(48, "spi1_cs0");
+	if (errno) {
+		printk(KERN_ERR "%s: failed to request GPIO for Done"
+			": %d\n", __func__, errno);
+		return 1;
+	}
+	gpio_direction_input(48);
+	gpio_export(48, true);
+//49
+    gpio_request(49, "spi1_sclk");
+	if (errno) {
+		printk(KERN_ERR "%s: failed to request GPIO for spi1_sclk"
+			": %d\n", __func__, errno);
+		return 1;
+	}
+	gpio_direction_input(49);
+	gpio_export(49, true);
+//50
+    gpio_request(50, "spi1_miso");
+	if (errno) {
+		printk(KERN_ERR "%s: failed to request GPIO for spi1_miso"
+			": %d\n", __func__, errno);
+		return 1;
+	}
+	gpio_direction_input(50);
+	gpio_export(50, true);
+//
+    gpio_request(58, "spi1_mosi");
+	if (errno) {
+		printk(KERN_ERR "%s: failed to request GPIO for spi_mosi"
+			": %d\n", __func__, errno);
+		return 1;
+	}
+	gpio_direction_input(58);
+	gpio_export(58, true);
+
 	return 0;
 }
 arch_initcall(omap2_init_devices);

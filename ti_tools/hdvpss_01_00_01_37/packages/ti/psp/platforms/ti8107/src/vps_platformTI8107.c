@@ -840,8 +840,8 @@ static Int32 Vps_platformTI8107SetPinMux(void)
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B38) = 0x50004;   /* vin1_clk0 */
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B3C) = 0x50004;   /* vin1a_d[0] */
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B40) = 0x50004;   /* vin1a_d[1] */
-    REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B44) = 0x50004;   /* vin1a_d[2] */
-    REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B48) = 0x50004;   /* vin1a_d[3] */
+    //REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B44) = 0x50004;   /* vin1a_d[2] */
+    //REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B48) = 0x50004;   /* vin1a_d[3] */
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B4C) = 0x50004;   /* vin1a_d[4] */
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B50) = 0x50004;   /* vin1a_d[5] */
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B54) = 0x50004;   /* vin1a_d[6] */
@@ -890,8 +890,9 @@ static Int32 Vps_platformTI8107SetPinMux(void)
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x09F0) = 0x50080;   /* vin1_clk1 */
     REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B30) = 0x50080;   /* vin1_vsync0 */
 #endif
-    REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B44) = 0x00080;   /* vin1a_d[2] */
-    REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B48) = 0x00080;   /* vin1a_d[2] */
+//set gpio3_2/gpio3_3 as gpio, gpio3_2 is Program_b and gpio3_3 is Done 
+//    REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B44) = 0x00080;   /* vin1a_d[2] */
+//    REG32(CSL_TI8107_CTRL_MODULE_BASE + 0x0B48) = 0x00080;   /* vin1a_d[2] */
     return (FVID2_SOK);
 }
 #endif

@@ -747,8 +747,8 @@ static Int32 Iss_platformTI814xSetPinMux(void)
     REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B38) = 0x40001; /* vin1_clk0 */
     REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B3C) = 0x40001; /* vin1a_d[0] */
     REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B40) = 0x40001; /* vin1a_d[1] */
-    REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B44) = 0x40001; /* vin1a_d[2] */
-    REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B48) = 0x40001; /* vin1a_d[3] */
+    //REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B44) = 0x40001; /* vin1a_d[2] */
+    //REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B48) = 0x40001; /* vin1a_d[3] */
     REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B4C) = 0x40001; /* vin1a_d[4] */
     REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B50) = 0x40001; /* vin1a_d[5] */
     REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B54) = 0x40001; /* vin1a_d[6] */
@@ -848,8 +848,9 @@ static Int32 Iss_platformTI814xSetPinMux(void)
 #endif	
 #endif	
 #endif
-    REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B44) = 0x00080; /* vin1a_d[2] */
-    REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B48) = 0x00080; /* vin1a_d[3] */
+//set gpio3_2/gpio3_3 as gpio, gpio3_2 is Program_b and gpio3_3 is Done 
+//    REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B44) = 0x00080; /* vin1a_d[2] */
+//    REG32(CSL_TI814x_CTRL_MODULE_BASE + 0x0B48) = 0x00080; /* vin1a_d[3] */
     return (FVID2_SOK);
 }
 

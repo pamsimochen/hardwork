@@ -155,6 +155,7 @@ tags
 
 ti_tools/linux_devkit/arm-arago-linux-gnueabi/usr/lib/libc.a
 ti_tools/xdctools_3_25_05_94/packages/ti/platforms/sim64Pxx/Linux/kelvin
+ipnc_rdk/ipnc_app/spi_test/
 
 
 

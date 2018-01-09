@@ -1103,6 +1103,24 @@ void set_muxconf_regs(void)
 	}
 	/* MMC/SD pull-down enable */
 	__raw_writel(0x000C0040, 0x48140928);
+
+    __raw_writel(0x0080, 0x48140820); //LED gp0[2]
+    __raw_writel(0x0080, 0x48140950); //spi1_cs0 gp1[16](gio48)
+    __raw_writel(0x0080, 0x48140954); //spi1_sclk gp1[17](gio49)
+    __raw_writel(0x0080, 0x48140958); //spi1_miso gp1[18](gio50)
+    __raw_writel(0x0080, 0x4814095c); //spi1_mosi gp1[26](gio56)
+
+    __raw_writel(0x0080, 0x48140b44); //Program_B gp3[2](gio98)
+    __raw_writel(0x0080, 0x48140b48); //Done gp3[3](gio99)
+    //printf("0x48140820 = %x\n", __raw_readl(0x48140820));
+    //printf("0x48140950 = %x\n", __raw_readl(0x48140950));
+    //printf("0x48140954 = %x\n", __raw_readl(0x48140954));
+    //printf("0x48140958 = %x\n", __raw_readl(0x48140958));
+    //printf("0x4814095c = %x\n", __raw_readl(0x4814095c));
+
+    //printf("0x48140b44 = %x\n", __raw_readl(0x48140b44));
+    //printf("0x48140b48 = %x\n", __raw_readl(0x48140b48));
+
 }
 
 /*
@@ -1123,18 +1141,25 @@ void gpio_init(void)
 	val = __raw_readl(add);
 	val &=~(1<<12);						//RS485_RDE GP0_12-output
 	val &=~(1<<13);						//ARM_OUT GP0_13-output
+    val &=~(1<<2); //acs2521 led_on gp0_2-output
 	__raw_writel(val, add);
+    /* acs2521 led on */
+    __raw_writel((1<<2), 0x48032194); //output gp0_2-led_on high
 
 	//GPIO1[] group
 	add=0x4804c134;						//GPIO_OE Output Enable Register
 	val = __raw_readl(add);
-	val &=~(1<<16);   					//GP1_16-output  FPGA
+	//val &=~(1<<16);   					//GP1_16-output  FPGA
 	val &=~(1<<20); 					//GP1_20-ENET_RSTn output
+    val |= (1<<16); //gp1_16-spi1_cs0 input mode
+    val |= (1<<17); //gp1_17-spi1_sclk input mode
+    val |= (1<<18); //gp1_18-spi1_miso input mode
+    val |= (1<<26); //gp1_26-spi1_mosi input mode
 	__raw_writel(val, add);
 	/* reset FPGA */
-	__raw_writel((1<<16), 0x4804c190);  //output low
-	delay(1000);
-	__raw_writel((1<<16), 0x4804c194);  //output high
+	//__raw_writel((1<<16), 0x4804c190);  //output low
+	//delay(1000);
+	//__raw_writel((1<<16), 0x4804c194);  //output high
 	/* reset ethernet */
 	__raw_writel((1<<20), 0x4804c194); //output GP1_20-ENET_RSTn high
 	delay(40000);
@@ -1167,6 +1192,9 @@ void gpio_init(void)
     val |= (1<<7);    				//P3_7-ARM_IN input mode
 
     val |= (1<<9);    				//P3_9-ARM_RST input mode
+    val &= ~(1<<2); //gp3_2-Program_B output mode
+    val |= (1<<3); //gp3_3-Done input mode
+
 	__raw_writel(val, add);
 	while(__raw_readl(add) != val);
 
@@ -1179,6 +1207,11 @@ void gpio_init(void)
 	#else
 	__raw_writel(1<<12, 0x481ae190);  	//output mode GP3_12-LED1_ON --low
 	#endif
+
+    /* reset fpga */
+    __raw_writel((1<<2), 0x481ae190); //gp3_2-Program_B low
+    delay(1000);
+    __raw_writel((1<<2), 0x481ae194); //gp3_2-Program_B High
 }
 
 #if defined(CONFIG_CODEC_AIC26) || defined(CONFIG_CODEC_AIC3104)

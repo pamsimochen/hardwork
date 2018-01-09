@@ -824,12 +824,12 @@ Int32 Iss_Mn34041PinMux()
                                                            // in supervisor
                                                            // mode
 
-    *PINCNTL85 = 0x00000080;
-    *PINCNTL86 = 0x00000080;
-    *PINCNTL88 = 0x00000080;
-
-    *GIO_INPUT_OUTPUT_DIR &= ~((0x1 << 16) + (0x1 << 17) + (0x1 << 26));
-    *GIO_ENABLE_DISABLE_WAKEUP &= ~((0x1 << 16) + (0x1 << 17) + (0x1 << 26));
+//    *PINCNTL85 = 0x00000080;
+//    *PINCNTL86 = 0x00000080;
+//    *PINCNTL88 = 0x00000080;
+//
+//    *GIO_INPUT_OUTPUT_DIR &= ~((0x1 << 16) + (0x1 << 17) + (0x1 << 26));
+//    *GIO_ENABLE_DISABLE_WAKEUP &= ~((0x1 << 16) + (0x1 << 17) + (0x1 << 26));
 
     return 0;
 }
