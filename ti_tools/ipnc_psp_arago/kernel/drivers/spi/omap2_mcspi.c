@@ -108,7 +108,8 @@
 
 #define OMAP2_MCSPI_WAKEUPENABLE_WKEN	BIT(0)
 
-#define USE_DMA				1
+//#define USE_DMA				1
+#define USE_DMA				0
 
 /* We have 2 DMA channels per CS, one for RX and one for TX */
 struct omap2_mcspi_dma {
@@ -842,9 +843,9 @@ static int omap2_mcspi_setup(struct spi_device *spi)
 	}
 
 	mcspi = spi_master_get_devdata(spi->master);
-	mcspi_dma = &mcspi->dma_channels[spi->chip_select];
+	//mcspi_dma = &mcspi->dma_channels[spi->chip_select];
 
-    printk("\nmcspi->base = %08x\n", mcspi->base);
+    //printk("\nmcspi->base = %08x\n", mcspi->base);
 	if (!cs) {
 		cs = kzalloc(sizeof *cs, GFP_KERNEL);
 		if (!cs)
@@ -858,14 +859,14 @@ static int omap2_mcspi_setup(struct spi_device *spi)
 			&omap2_mcspi_ctx[mcspi->master->bus_num - 1].cs);
 	}
 
-	if (mcspi_dma->dma_rx_channel == -1
-			|| mcspi_dma->dma_tx_channel == -1) {
-		/* TI81XX has EDMA and not SDMA, hence overriding SDMA usage */
-		/* Sheng: using edma here for TI81XX*/
-		ret = omap2_mcspi_request_dma(spi);
-		if (ret < 0)
-			return ret;
-	}
+	//if (mcspi_dma->dma_rx_channel == -1
+	//		|| mcspi_dma->dma_tx_channel == -1) {
+	//	/* TI81XX has EDMA and not SDMA, hence overriding SDMA usage */
+	//	/* Sheng: using edma here for TI81XX*/
+	//	ret = omap2_mcspi_request_dma(spi);
+	//	if (ret < 0)
+	//		return ret;
+	//}
 
 	if (omap2_mcspi_enable_clocks(mcspi))
 		return -ENODEV;

@@ -1209,6 +1209,7 @@ void gpio_init(void)
 	#endif
 
     /* reset fpga */
+    delay(1000);
     __raw_writel((1<<2), 0x481ae190); //gp3_2-Program_B low
     delay(1000);
     __raw_writel((1<<2), 0x481ae194); //gp3_2-Program_B High
