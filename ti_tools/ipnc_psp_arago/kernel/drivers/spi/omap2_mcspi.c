@@ -41,6 +41,7 @@
 #include <plat/mcspi.h>
 #include <asm/mach-types.h>
 #include <asm/hardware/edma.h>
+#include <mach/gpio.h>
 
 #define OMAP2_MCSPI_MAX_FREQ		48000000
 #define DUMMY_SLOTS			5
@@ -270,8 +271,8 @@ static void omap2_mcspi_set_master_mode(struct spi_master *master)
 	l = mcspi_read_reg(master, OMAP2_MCSPI_MODULCTRL);
 	MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_STEST, 0);
 	MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_MS, 0);
-	MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_SINGLE, 1);
-    MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_PIN34, 1);
+	MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_SINGLE, 0);
+    MOD_REG_BIT(l, OMAP2_MCSPI_MODULCTRL_PIN34, 0);
 	mcspi_write_reg(master, OMAP2_MCSPI_MODULCTRL, l);
 
 	omap2_mcspi_ctx[master->bus_num - 1].modulctrl = l;
@@ -513,20 +514,38 @@ omap2_mcspi_txrx_pio(struct spi_device *spi, struct spi_transfer *xfer)
 
 		do {
 			c -= 1;
+            //printk("\n%08x = %08x    OMAP2_MCSPI_SYSCONFIG    \n ", mcspi->base + OMAP2_MCSPI_SYSCONFIG     , __raw_readl(mcspi->base + OMAP2_MCSPI_SYSCONFIG    ));	
+            //printk("%08x = %08x    OMAP2_MCSPI_SYSSTATUS    \n ", mcspi->base + OMAP2_MCSPI_SYSSTATUS     ,   __raw_readl(mcspi->base + OMAP2_MCSPI_SYSSTATUS    ));	
+            //printk("%08x = %08x    OMAP2_MCSPI_IRQSTATUS    \n ", mcspi->base + OMAP2_MCSPI_IRQSTATUS     ,   __raw_readl(mcspi->base + OMAP2_MCSPI_IRQSTATUS    ));	
+            //printk("%08x = %08x    OMAP2_MCSPI_IRQENABLE    \n ", mcspi->base + OMAP2_MCSPI_IRQENABLE     ,   __raw_readl(mcspi->base + OMAP2_MCSPI_IRQENABLE    ));	
+            //printk("%08x = %08x    OMAP2_MCSPI_WAKEUPENABLE \n ", mcspi->base + OMAP2_MCSPI_WAKEUPENABLE  ,   __raw_readl(mcspi->base + OMAP2_MCSPI_WAKEUPENABLE ));
+            //printk("%08x = %08x    OMAP2_MCSPI_SYST	        \n ", mcspi->base + OMAP2_MCSPI_SYST	       ,  __raw_readl(mcspi->base + OMAP2_MCSPI_SYST	     ));   
+            //printk("%08x = %08x    OMAP2_MCSPI_MODULCTRL    \n ", mcspi->base + OMAP2_MCSPI_MODULCTRL     ,   __raw_readl(mcspi->base + OMAP2_MCSPI_MODULCTRL    ));	
+            //printk("%08x = %08x    OMAP2_MCSPI_CHCONF0      \n ", base + OMAP2_MCSPI_CHCONF0       , __raw_readl(base + OMAP2_MCSPI_CHCONF0      ));	
+            //printk("%08x = %08x    OMAP2_MCSPI_CHSTAT0      \n ", base + OMAP2_MCSPI_CHSTAT0       , __raw_readl(base + OMAP2_MCSPI_CHSTAT0      ));	
+            //printk("%08x = %08x    OMAP2_MCSPI_CHCTRL0      \n ", base + OMAP2_MCSPI_CHCTRL0       , __raw_readl(base + OMAP2_MCSPI_CHCTRL0      ));	
+            //printk("%08x = %08x    OMAP2_MCSPI_TX0	        \n ", base + OMAP2_MCSPI_TX0	       , __raw_readl(base + OMAP2_MCSPI_TX0	         )); 
+            //printk("%08x = %08x    OMAP2_MCSPI_RX0	        \n ", base + OMAP2_MCSPI_RX0	       , __raw_readl(base + OMAP2_MCSPI_RX0	         )); 
+
 			if (tx != NULL) {
 				if (mcspi_wait_for_reg_bit(chstat_reg,
 						OMAP2_MCSPI_CHSTAT_TXS) < 0) {
 					dev_err(&spi->dev, "TXS timed out\n");
 					goto out;
 				}
+                //printk("%d:chstat_reg 0x%08x = 0x%08x\n", __LINE__, chstat_reg, __raw_readl(chstat_reg));
 				dev_vdbg(&spi->dev, "write-%d %02x\n",
 						word_len, *tx);
 				__raw_writel(*tx++, tx_reg);
-			}
+ 			}
 			if (rx != NULL) {
+                //printk("%d:chstat_reg 0x%08x = 0x%08x\n", __LINE__, chstat_reg, __raw_readl(chstat_reg));
 				if (mcspi_wait_for_reg_bit(chstat_reg,
 						OMAP2_MCSPI_CHSTAT_RXS) < 0) {
-					dev_err(&spi->dev, "RXS timed out\n");
+                    //printk("%d:chstat_reg 0x%08x = 0x%08x\n", __LINE__, chstat_reg, __raw_readl(chstat_reg));
+                    //printk("%d:%08x = %08x    OMAP2_MCSPI_TX0	        \n ", __LINE__, base + OMAP2_MCSPI_TX0	       , __raw_readl(base + OMAP2_MCSPI_TX0	         )); 
+                    //printk("%d:%08x = %08x    OMAP2_MCSPI_RX0	        \n ", __LINE__, base + OMAP2_MCSPI_RX0	       , __raw_readl(base + OMAP2_MCSPI_RX0	         )); 
+    				dev_err(&spi->dev, "RXS timed out\n");
 					goto out;
 				}
 
@@ -546,8 +565,10 @@ omap2_mcspi_txrx_pio(struct spi_device *spi, struct spi_transfer *xfer)
 				} else if (c == 0 && tx == NULL) {
 					omap2_mcspi_set_enable(spi, 0);
 				}
-
-				*rx++ = __raw_readl(rx_reg);
+                //printk("%d:chstat_reg 0x%08x = 0x%08x\n", __LINE__, chstat_reg, __raw_readl(chstat_reg));
+                //printk("%d:%08x = %08x    OMAP2_MCSPI_TX0	        \n ", __LINE__, base + OMAP2_MCSPI_TX0	       , __raw_readl(base + OMAP2_MCSPI_TX0	         )); 
+                //printk("%d:%08x = %08x    OMAP2_MCSPI_RX0	        \n ", __LINE__, base + OMAP2_MCSPI_RX0	       , __raw_readl(base + OMAP2_MCSPI_RX0	         )); 
+    			*rx++ = __raw_readl(rx_reg);
 				dev_vdbg(&spi->dev, "read-%d %02x\n", word_len, *(rx - 1));
 			}
 		} while (c);
@@ -962,6 +983,8 @@ static void omap2_mcspi_work(struct work_struct *work)
 
 			if (!cs_active) {
 				omap2_mcspi_force_cs(spi, 1);
+                //printk("cs active\n");
+                gpio_direction_output(48, 0);
 				cs_active = 1;
 			}
 
@@ -1007,6 +1030,7 @@ static void omap2_mcspi_work(struct work_struct *work)
 			if (t->cs_change) {
 				omap2_mcspi_force_cs(spi, 0);
 				cs_active = 0;
+                gpio_direction_output(48, 1);
 			}
 		}
 
@@ -1017,8 +1041,10 @@ static void omap2_mcspi_work(struct work_struct *work)
 		}
 
 		if (cs_active)
+        {
 			omap2_mcspi_force_cs(spi, 0);
-
+            gpio_direction_output(48, 1);
+        }
 		omap2_mcspi_set_enable(spi, 0);
 
 		m->status = status;

@@ -34,6 +34,7 @@
 #include <linux/spi/spi.h>
 #include <linux/spi/spidev.h>
 #include <linux/io.h>
+#include <mach/gpio.h>
 
 #include <asm/uaccess.h>
 
@@ -505,7 +506,7 @@ static int spidev_open(struct inode *inode, struct file *filp)
 		pr_debug("spidev: nothing for minor %d\n", iminor(inode));
 
     //printk("\nspidev->spi->modalias = %s\n", spidev->spi->modalias);
-    //printk("\nspidev->spi->master->bus_num = %d\n", spidev->spi->master->bus_num);
+    //printk("\nspidev->spi->chip_select= %d\n", spidev->spi->chip_select);
     if(spidev->spi->master->bus_num == 2)
     {
         spi_mux_base = ioremap(0x48140000, SZ_4K);
@@ -514,12 +515,12 @@ static int spidev_open(struct inode *inode, struct file *filp)
             printk("spi_mux_base is error!\n");
 	    	return -ENOMEM;
         }
-        //else 
-        //{
-        //    printk("\nspi_mux_base = %08X\n", spi_mux_base);
-        //}
+        //printk("spidev->spi->chip_select = %d\n", spidev->spi->chip_select);
+        if(spidev->spi->chip_select == 0)
+        {
+            gpio_direction_output(48, 1);
+        }
 
-        //__raw_writel(0x01, (spi_mux_base + 0x950));
         __raw_writel(0x01, (spi_mux_base + 0x954));
         __raw_writel(0x01, (spi_mux_base + 0x958));
         __raw_writel(0x01, (spi_mux_base + 0x95c));
@@ -540,7 +541,6 @@ static int spidev_release(struct inode *inode, struct file *filp)
 
 	mutex_lock(&device_list_lock);
 
-    //printk("\nclose spidev\n");
 
 	spidev = filp->private_data;
 	filp->private_data = NULL;
@@ -553,12 +553,12 @@ static int spidev_release(struct inode *inode, struct file *filp)
             printk("spi_mux_base is error!\n");
 	    	return -ENOMEM;
         }
-        //else 
-        //{
-        //    printk("\nspi_mux_base = %08X\n", spi_mux_base);
-        //}
+        //printk("spidev->spi->chip_select = %d\n", spidev->spi->chip_select);
+        if(spidev->spi->chip_select == 0)
+        {
+            gpio_direction_input(48);
+        }
 
-        //__raw_writel(0x01, (spi_mux_base + 0x950));
         __raw_writel(0x80, (spi_mux_base + 0x954));
         __raw_writel(0x80, (spi_mux_base + 0x958));
         __raw_writel(0x80, (spi_mux_base + 0x95c));
