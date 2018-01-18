@@ -3325,10 +3325,15 @@ static int __init omap2_init_devices(void)
 	clkout2_enable();
 #endif
 
+/* i2c3(i2c-4) io mux*/
+    omap_writel(0x20, 0x48140854); //i2c3_scl
+    omap_writel(0x20, 0x48140858); //i2c3_sda
+
+/* gpio initial*/
 //set gpio3_2/gpio3_3 as gpio, and input; gpio3_2 is Program_b and gpio3_3 is Done 
 //	omap_writel(0x80, 0x48140B44);
 //	omap_writel(0x80, 0x48140B48);
-
+//98
     errno = gpio_request(98,"Program_B");
 	if (errno) {
 		printk(KERN_ERR "%s: failed to request GPIO for Program_B"
@@ -3339,8 +3344,8 @@ static int __init omap2_init_devices(void)
     gpio_direction_output(98, 1);
 	gpio_export(98, true);
 
-
-    gpio_request(99,"Done");
+//99
+    errno = gpio_request(99,"Done");
 	if (errno) {
 		printk(KERN_ERR "%s: failed to request GPIO for Done"
 			": %d\n", __func__, errno);
@@ -3355,7 +3360,7 @@ static int __init omap2_init_devices(void)
 //	omap_writel(0x80, 0x48140958);//spi1_mios
 //	omap_writel(0x80, 0x4814095C);//spi1_mosi
 //48
-    gpio_request(48, "spi1_cs0");
+    errno = gpio_request(48, "spi1_cs0");
 	if (errno) {
 		printk(KERN_ERR "%s: failed to request GPIO for Done"
 			": %d\n", __func__, errno);
@@ -3364,7 +3369,7 @@ static int __init omap2_init_devices(void)
 	gpio_direction_input(48);
 	gpio_export(48, true);
 //49
-    gpio_request(49, "spi1_sclk");
+    errno = gpio_request(49, "spi1_sclk");
 	if (errno) {
 		printk(KERN_ERR "%s: failed to request GPIO for spi1_sclk"
 			": %d\n", __func__, errno);
@@ -3373,7 +3378,7 @@ static int __init omap2_init_devices(void)
 	gpio_direction_input(49);
 	gpio_export(49, true);
 //50
-    gpio_request(50, "spi1_miso");
+    errno = gpio_request(50, "spi1_miso");
 	if (errno) {
 		printk(KERN_ERR "%s: failed to request GPIO for spi1_miso"
 			": %d\n", __func__, errno);
@@ -3381,8 +3386,8 @@ static int __init omap2_init_devices(void)
 	}
 	gpio_direction_input(50);
 	gpio_export(50, true);
-//
-    gpio_request(58, "spi1_mosi");
+//58
+    errno = gpio_request(58, "spi1_mosi");
 	if (errno) {
 		printk(KERN_ERR "%s: failed to request GPIO for spi_mosi"
 			": %d\n", __func__, errno);

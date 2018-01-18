@@ -272,6 +272,13 @@ static struct i2c_board_info __initdata ti814x_i2c_boardinfo[] = {
 	},
 };
 
+static struct i2c_board_info __initdata ti814x_i2c_boardinfo4[] = {
+	{
+	    I2C_BOARD_INFO("pcf8563", 0x51),
+	},
+
+};
+
 static void __init ti814x_evm_i2c_init(void)
 {
 	/* There are 4 instances of I2C in TI814X but currently only one
@@ -279,6 +286,9 @@ static void __init ti814x_evm_i2c_init(void)
 	 */
 	omap_register_i2c_bus(1, 100, ti814x_i2c_boardinfo,
 				ARRAY_SIZE(ti814x_i2c_boardinfo));
+
+	omap_register_i2c_bus(4, 100, ti814x_i2c_boardinfo4,
+				ARRAY_SIZE(ti814x_i2c_boardinfo4));
 }
 
 static u8 dm385_iis_serializer_direction[] = {

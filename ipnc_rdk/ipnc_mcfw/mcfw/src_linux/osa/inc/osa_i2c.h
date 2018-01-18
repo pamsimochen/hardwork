@@ -10,7 +10,7 @@ extern "C" {
 
 
 #if defined(TI_814X_BUILD) || defined(TI_8107_BUILD)
-#define I2C_DEFAULT_INST_ID  (3)
+#define I2C_DEFAULT_INST_ID  (4)
 #endif
 
 #ifdef TI_816X_BUILD
