@@ -31,6 +31,7 @@
 //#include <asm/arch/v4l_ioctl.h>
 
 //#include "lancam.h"
+#include <sys_env_type.h>
 #include "net_config.h"
 #include "davinci_emac_priv.h"
 
@@ -242,9 +243,11 @@ int net_set_ifaddr(char *ifname, in_addr_t addr)
 		DBG_ERR("socket error");
 		return -1;
 	}
+    VI_DEBUG("ip = %s\n", inet_ntoa(sa.sin_addr));
 	sa.sin_addr.s_addr = addr;
 	strncpy(ifr.ifr_name, ifname, IFNAMSIZ);
 	memcpy((char *) &ifr.ifr_addr, (char *) &sa, sizeof(struct sockaddr));
+    VI_DEBUG("ip = %s\n", inet_ntoa(sa.sin_addr));
 	if (ioctl(skfd, SIOCSIFADDR, &ifr) < 0) {
 		DBG_ERR("net_set_ifaddr: ioctl SIOCSIFADDR");
 		close(skfd);
@@ -512,6 +515,9 @@ void net_enable_dhcpcd(void)
  */
 void net_disable_dhcpcd(void)
 {
+    printf("***************************\n");
+    printf("net_disable_dhcpcd\n");
+    printf("***************************\n");
 	system("killall -9 "DHCPC_EXEC);
 	system("rm /var/run/dhcpcd-eth0.pid\n");
 }

@@ -49,6 +49,7 @@
 #include <signal.h>
 #include <rtsp_ctrl.h>
 #include <semaphore.h>
+#include <sys_env_type.h>
 
 #define PWM1_PERIOD			4166000
 #define DROP_FILESYS_CMD	"echo 1 > /proc/sys/vm/drop_caches"
@@ -320,29 +321,29 @@ int StartNetwork(SysInfo *pSysInfo)
 	if(gPlatform == 0)
 		dhcp = 1;
 	else
-		dhcp = !ipnc_gio_read(GIO_DHCP);
+		dhcp = pSysInfo->lan_config.net.dhcp_enable;//!ipnc_gio_read(GIO_DHCP);
 	if(net_get_hwaddr(ETH_NAME, pSysInfo->lan_config.net.MAC) != 0){
 		__E("Error on get MAC address\n");
 		return -1;
 	}
-    dhcp = 0;
+    //dhcp = 0;
+    VI_DEBUG("(%s:%s:%d): pSysInfo->lan_config.net.dhcp_enable = %d, dhcp = %d\n", __FILE__, __func__, __LINE__, pSysInfo->lan_config.net.dhcp_enable, dhcp); 
 	SetDhcpEnable(dhcp);
-    printf("######################################\n");
-    printf("gPlatform = %d, dhcp = %d, dhcp_fail = %d\n", gPlatform, dhcp, dhcp_fail);
-    printf("######################################\n");
+    VI_DEBUG("gPlatform = %d, dhcp = %d, dhcp_fail = %d\n", gPlatform, dhcp, dhcp_fail);
+    VI_DEBUG("(%s:%s:%d): pSysInfo->lan_config.net.dhcp_enable = %d, dhcp = %d\n", __FILE__, __func__, __LINE__, pSysInfo->lan_config.net.dhcp_enable, dhcp); 
 	if(dhcp_fail)
 		dhcp = 0;
 	if(!dhcp ){
 		system("ifconfig eth0 up\n");
-		if(net_set_ifaddr(ETH_NAME, pSysInfo->lan_config.net.ip.s_addr) < 0){
-			__E("Error on Set ip\n");
-			return -1;
-		}
-		/* set net mask */
-		if(net_set_netmask(ETH_NAME, pSysInfo->lan_config.net.netmask.s_addr) < 0){
-			__E("Fail on set netmask\n");
-			return -1;
-		}
+		//if(net_set_ifaddr(ETH_NAME, pSysInfo->lan_config.net.ip.s_addr) < 0){
+		//	__E("Error on Set ip\n");
+		//	return -1;
+		//}
+		///* set net mask */
+		//if(net_set_netmask(ETH_NAME, pSysInfo->lan_config.net.netmask.s_addr) < 0){
+		//	__E("Fail on set netmask\n");
+		//	return -1;
+		//}
 		/* set gateway */
 		if(net_set_gateway(pSysInfo->lan_config.net.gateway.s_addr) < 0){
 			__E("Fail on set gateway\n");
@@ -508,6 +509,7 @@ static int BootProc1()
 		sdcard_en = 1;
 	}
 	if(!network_en){
+        printf("gpSysInfo.lan_config.net.dhcp_enable = %d\n", gpSysInfo->lan_config.net.dhcp_enable);
 		if(StartNetwork(gpSysInfo)){
 			__E("Network Init Fail\n");
 			return -1;
@@ -593,7 +595,8 @@ static void *PollingThread(void *arg){
 			/* End-Onvif */
 		}
 		if(gPlatform == 1){
-			dhcp = !ipnc_gio_read(GIO_DHCP);
+			//dhcp = !ipnc_gio_read(GIO_DHCP);
+		    dhcp = pSysInfo->lan_config.net.dhcp_enable;//!ipnc_gio_read(GIO_DHCP);
 			if(!dhcp)
 				dhcp_fail = 0;
 			if(sdcard_en)
@@ -693,6 +696,7 @@ static void *PollingThread(void *arg){
 			system("insmod g_file_storage.ko file=/dev/sbulla stall=0 removable=1 ");
 			bIsUsbModify = 0;
 		}
+        VI_DEBUG("network_en = %d, pSysInfo->lan_config.net.dhcp_enable = %d, dhcp = %d\n", network_en, pSysInfo->lan_config.net.dhcp_enable, dhcp); 
 		if(network_en && dhcp != pSysInfo->lan_config.net.dhcp_enable){
 			SetDhcpEnable(dhcp);
 			if(!dhcp ){
@@ -728,6 +732,7 @@ static void *PollingThread(void *arg){
 					}
 				}
 			}
+            printf("2222222222222222222\n");
 			WriteConfigFile();
 			system("cp /tmp/NET.TXT /mnt/ramdisk;sync");
 			system("umount /mnt/ramdisk");
@@ -1037,6 +1042,7 @@ int SystemInit()
     printf("pSysInfo->lan_config.frameRateVal1 = %d\n", pSysInfo->lan_config.frameRateVal1);
     printf("pSysInfo->lan_config.frameRateVal2 = %d\n", pSysInfo->lan_config.frameRateVal2);
     printf("pSysInfo->lan_config.frameRateVal3 = %d\n", pSysInfo->lan_config.frameRateVal3);
+    printf("pSysInfo->lan_config.net.dhcp_enable = %d\n", pSysInfo->lan_config.net.dhcp_enable);
 
 
     printf("~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -1667,6 +1673,7 @@ int SetHttpPort(unsigned short port)
 	/* 0 ~ 1024 to be reserved */
 	if(port == 80 || port > 1024){
 		system("killall -9 boa\n");
+        printf("3333333333333333333333\n");
 		ret = fSetHttpPort(port);
 		ret |= system("./boa -c /etc &\n");
 		WriteConfigFile();
@@ -1723,6 +1730,7 @@ int SetDhcpEnable(int enable)
 		}
 	} else {
 		SysInfo *pSysInfo = GetSysInfo();
+        printf("(%s:%s:%d): pSysInfo->lan_config.net.dhcp_enable = %d\n", __FILE__, __func__, __LINE__, pSysInfo->lan_config.net.dhcp_enable );
 		net_disable_dhcpcd();
 		if(net_set_ifaddr(ETH_NAME, pSysInfo->lan_config.net.ip.s_addr) < 0){
 			__E("Error on Set ip\n");
@@ -3620,6 +3628,7 @@ int WriteConfigFile(void)
 		__u8 mac[6];
 		ip.s_addr = net_get_ifaddr(ETH_NAME);
 		fprintf(fp,"LocalIP=\"%s\"\n",inet_ntoa(ip));
+		printf("LocalIP=\"%s\"\n",inet_ntoa(ip));
 		ip.s_addr = net_get_netmask(ETH_NAME);
 		fprintf(fp,"NetMask=\"%s\"\n",inet_ntoa(ip));
 		ip.s_addr = net_get_gateway();

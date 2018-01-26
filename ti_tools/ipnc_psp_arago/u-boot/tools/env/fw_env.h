@@ -27,17 +27,32 @@
  * See included "fw_env.config" sample file (TRAB board)
  * for notes on configuration.
  */
+//#define VI_DEBUG_MODE
+#ifdef VI_DEBUG_MODE
+#define VI_DEBUG(...) \
+    do \
+    { \
+        fprintf(stderr, "[[VI DEBUG]] (%s|%s()|%d): ", \
+                __FILE__, __func__, __LINE__); \
+        fprintf(stderr, __VA_ARGS__); \
+    } \
+    while(0)
+
+#else
+#define VI_DEBUG(...)
+#endif
+
 #define CONFIG_FILE     "/etc/fw_env.config"
 
-#define HAVE_REDUND /* For systems with 2 env sectors */
-#define DEVICE1_NAME      "/dev/mtd1"
-#define DEVICE2_NAME      "/dev/mtd2"
+//#define HAVE_REDUND /* For systems with 2 env sectors */
+#define DEVICE1_NAME      "/dev/mtd2"
+//#define DEVICE2_NAME      "/dev/mtd2"
 #define DEVICE1_OFFSET    0x0000
-#define ENV1_SIZE         0x4000
-#define DEVICE1_ESIZE     0x4000
-#define DEVICE2_OFFSET    0x0000
-#define ENV2_SIZE         0x4000
-#define DEVICE2_ESIZE     0x4000
+#define ENV1_SIZE         0x20000
+#define DEVICE1_ESIZE     0x20000
+//#define DEVICE2_OFFSET    0x0000
+//#define ENV2_SIZE         0x4000
+//#define DEVICE2_ESIZE     0x4000
 
 #define CONFIG_BAUDRATE		115200
 #define CONFIG_BOOTDELAY	5	/* autoboot after 5 seconds	*/

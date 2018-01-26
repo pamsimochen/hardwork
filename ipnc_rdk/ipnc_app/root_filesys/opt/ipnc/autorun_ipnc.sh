@@ -16,8 +16,8 @@ sleep 1
 cd /opt/ipnc
 ./boot_proc 1&
 sleep 2
-./boa -c /etc &
+#./boa -c /etc &
 sleep 2
-./boot_proc 2&
-sleep 2
+#./boot_proc 2&
+#sleep 2
 

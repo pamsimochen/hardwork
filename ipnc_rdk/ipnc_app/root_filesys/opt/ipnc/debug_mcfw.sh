@@ -1,1 +1,3 @@
-./bin/ipnc_rdk_mcfw.out   VNF_QUALITY TRISTREAM TRIPLE_H264 TI2A AEWB 1080P_D1 H264 HIGH_SPEED1 H264 HIGH_SPEED2 MJPEG 80 &
+./system_server&
+sleep 7
+./autorun_ipnc.sh&

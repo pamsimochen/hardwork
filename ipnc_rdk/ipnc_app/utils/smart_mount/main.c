@@ -56,6 +56,12 @@ int mount_ubi(void)
 	start = GetUbiStart();
 	do{
 		if(ret){
+			/*
+			 *	We need to erase the nand partition otherwise ubiformat will hang.
+			 */
+			sprintf(cmd, "flash_eraseall /dev/mtd%d", gPartition);
+			system(cmd);			 
+		
 			/* Structure needs cleaning */
 			sprintf(cmd, "ubidetach /dev/ubi_ctrl -d %d", start);
 			system(cmd);

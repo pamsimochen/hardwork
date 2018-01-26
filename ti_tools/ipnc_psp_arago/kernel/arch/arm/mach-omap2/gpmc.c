@@ -878,10 +878,10 @@ int gpmc_enable_hwecc(int ecc_type, int cs, int mode,
 
 	case GPMC_ECC_WRITE:
 		if (ecc_type == OMAP_ECC_BCH4_CODE_HW) {
-			eccsize1 = 0x1c; eccsize0 = 0x00;
+			eccsize1 = 0x20; eccsize0 = 0x00;
 			bch_wrapmode = 0x06;
 		} else if (ecc_type == OMAP_ECC_BCH8_CODE_HW) {
-			eccsize1 = 0x1c; eccsize0 = 0x00;
+			eccsize1 = 0x00; eccsize0 = 0x00;
 			bch_wrapmode = 0x01;
 		} else if (ecc_type == OMAP_ECC_BCH16_CODE_HW) {
 			/* eccsize0 & eccsize1 configured in nibbles */
@@ -964,6 +964,8 @@ int gpmc_enable_hwecc(int ecc_type, int cs, int mode,
 
 	gpmc_write_reg(GPMC_ECC_SIZE_CONFIG, ecc_size_conf_val);
 	gpmc_write_reg(GPMC_ECC_CONFIG, ecc_conf_val);
+	/* enable ECC: should be last command after all configurations */
+	gpmc_write_reg(GPMC_ECC_CONFIG, ecc_conf_val | 0x1);
 	gpmc_write_reg(GPMC_ECC_CONTROL, 0x00000101);
 
 	return 0;
@@ -1043,6 +1045,11 @@ int gpmc_calculate_ecc(int ecc_type, int cs,
 			*ecc_code++ = ((val >> 8) & 0xFF);
 			*ecc_code++ = (val & 0xFF);
 		}
+		/*
+		 * Stop reading anymore ECC vals and clear old results
+		 * enable will be called if more reads are required
+		 */
+		gpmc_write_reg(GPMC_ECC_CONFIG, gpmc_read_reg(GPMC_ECC_CONFIG) & ~0x1);
 	} else {
 		/* read ecc result */
 		val = gpmc_read_reg(GPMC_ECC1_RESULT);
