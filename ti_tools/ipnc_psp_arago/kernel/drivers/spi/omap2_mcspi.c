@@ -984,7 +984,15 @@ static void omap2_mcspi_work(struct work_struct *work)
 			if (!cs_active) {
 				omap2_mcspi_force_cs(spi, 1);
                 //printk("cs active\n");
-                gpio_direction_output(48, 0);
+                //printk("spi->master->bus_num = %d\n", spi->master->bus_num);
+                //printk("spi->chip_select = %d\n", spi->chip_select);
+                if(spi->master->bus_num == 2)
+                {
+                    if(spi->chip_select == 0)
+                        gpio_direction_output(48, 0);
+                    if(spi->chip_select == 1)
+                        ;
+                }
 				cs_active = 1;
 			}
 
@@ -1030,7 +1038,13 @@ static void omap2_mcspi_work(struct work_struct *work)
 			if (t->cs_change) {
 				omap2_mcspi_force_cs(spi, 0);
 				cs_active = 0;
-                gpio_direction_output(48, 1);
+                if(spi->master->bus_num == 2)
+                {
+                    if(spi->chip_select == 0)
+                        gpio_direction_output(48, 1);
+                    if(spi->chip_select == 1)
+                        ;
+                }
 			}
 		}
 
@@ -1043,7 +1057,13 @@ static void omap2_mcspi_work(struct work_struct *work)
 		if (cs_active)
         {
 			omap2_mcspi_force_cs(spi, 0);
-            gpio_direction_output(48, 1);
+            if(spi->master->bus_num == 2)
+            {
+                if(spi->chip_select == 0)
+                    gpio_direction_output(48, 1);
+                if(spi->chip_select == 1)
+                    ;
+            }
         }
 		omap2_mcspi_set_enable(spi, 0);
 

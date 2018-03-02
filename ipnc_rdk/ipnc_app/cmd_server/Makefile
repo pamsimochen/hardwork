@@ -1,4 +1,4 @@
-SUBDIRS = interface sys_server multimedia network root_filesys webdata utils cmd_server
+SUBDIRS =src
 
 DEBUGSUBDIRS = $(addsuffix .debug, $(SUBDIRS))
 RELEASESUBDIRS = $(addsuffix .release, $(SUBDIRS))
@@ -37,10 +37,6 @@ $(INSTALLSUBDIRS):
 	@cd $(basename $@) ; $(MAKE) install
 
 clean:	$(CLEANSUBDIRS)
-	@rm -rf lib
 
-depend:
-	
-	
 $(CLEANSUBDIRS):
 	@cd $(basename $@) ; $(MAKE) clean

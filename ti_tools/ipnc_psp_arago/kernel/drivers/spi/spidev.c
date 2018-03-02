@@ -516,10 +516,14 @@ static int spidev_open(struct inode *inode, struct file *filp)
 	    	return -ENOMEM;
         }
         //printk("spidev->spi->chip_select = %d\n", spidev->spi->chip_select);
-        if(spidev->spi->chip_select == 0)
-        {
+        //if(spidev->spi->chip_select == 0)
+        //{
+        //    gpio_direction_output(48, 1);
+        //}
+        //else if(spidev->spi->chip_select == 1)
+        //{
             gpio_direction_output(48, 1);
-        }
+        //}
 
         __raw_writel(0x01, (spi_mux_base + 0x954));
         __raw_writel(0x01, (spi_mux_base + 0x958));
@@ -554,10 +558,14 @@ static int spidev_release(struct inode *inode, struct file *filp)
 	    	return -ENOMEM;
         }
         //printk("spidev->spi->chip_select = %d\n", spidev->spi->chip_select);
-        if(spidev->spi->chip_select == 0)
-        {
+        ////if(spidev->spi->chip_select == 0)
+        //{
+        //    gpio_direction_input(48);
+        //}
+        //if(spidev->spi->chip_select == 1)
+        //{
             gpio_direction_input(48);
-        }
+        //}
 
         __raw_writel(0x80, (spi_mux_base + 0x954));
         __raw_writel(0x80, (spi_mux_base + 0x958));
